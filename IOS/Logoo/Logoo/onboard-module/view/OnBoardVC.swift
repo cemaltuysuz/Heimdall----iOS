@@ -27,7 +27,7 @@ class OnBoardVC : UIViewController {
         onBoardCollectionView.dataSource = self
     }
     @IBAction func getStartButton(_ sender: Any) {
-        
+        performSegue(withIdentifier: "onBoardToLoginPref", sender: nil)
     }
     
     @IBAction func pageChanged(_ sender: UIPageControl) {

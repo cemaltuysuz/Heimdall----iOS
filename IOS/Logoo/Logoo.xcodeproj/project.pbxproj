@@ -26,6 +26,11 @@
 		150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */; };
 		150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C90012799672A000DAFBE /* OnBoardPresenter.swift */; };
 		150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C9003279967FA000DAFBE /* OnBoardRouter.swift */; };
+		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
+		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
+		15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C082799994700903073 /* RegisterPhotoPickCell.swift */; };
+		15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0A2799996000903073 /* RegisterInformationCell.swift */; };
+		15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0C2799997300903073 /* RegisterOTPCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +74,11 @@
 		150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardInteractor.swift; sourceTree = "<group>"; };
 		150C90012799672A000DAFBE /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
 		150C9003279967FA000DAFBE /* OnBoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardRouter.swift; sourceTree = "<group>"; };
+		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
+		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		15983C082799994700903073 /* RegisterPhotoPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoPickCell.swift; sourceTree = "<group>"; };
+		15983C0A2799996000903073 /* RegisterInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInformationCell.swift; sourceTree = "<group>"; };
+		15983C0C2799997300903073 /* RegisterOTPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOTPCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +195,7 @@
 		150C8FE627994E93000DAFBE /* login-pref-module */ = {
 			isa = PBXGroup;
 			children = (
+				15983C0127997C0200903073 /* view */,
 			);
 			path = "login-pref-module";
 			sourceTree = "<group>";
@@ -199,6 +210,8 @@
 		150C8FE827994EBB000DAFBE /* register-module */ = {
 			isa = PBXGroup;
 			children = (
+				15983C072799992300903073 /* collectionview */,
+				15983C042799953300903073 /* view */,
 			);
 			path = "register-module";
 			sourceTree = "<group>";
@@ -267,6 +280,32 @@
 				150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */,
 			);
 			path = protocol;
+			sourceTree = "<group>";
+		};
+		15983C0127997C0200903073 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				15983C0227997C1B00903073 /* LoginPrefVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		15983C042799953300903073 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				15983C052799954500903073 /* RegisterVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		15983C072799992300903073 /* collectionview */ = {
+			isa = PBXGroup;
+			children = (
+				15983C082799994700903073 /* RegisterPhotoPickCell.swift */,
+				15983C0A2799996000903073 /* RegisterInformationCell.swift */,
+				15983C0C2799997300903073 /* RegisterOTPCell.swift */,
+			);
+			path = collectionview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +441,7 @@
 			files = (
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
+				15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */,
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
@@ -409,8 +449,12 @@
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
+				15983C062799954500903073 /* RegisterVC.swift in Sources */,
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
+				15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */,
+				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
+				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
 			);
