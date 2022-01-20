@@ -159,6 +159,9 @@
                             <constraint firstItem="0EZ-c4-NRH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hf8-a5-RZ6" secondAttribute="trailing" symbolic="YES" id="z8y-bO-N25"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="onBoardCollectionView" destination="dYC-cv-vmo" id="MGy-BR-RQP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahm-fN-N0n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

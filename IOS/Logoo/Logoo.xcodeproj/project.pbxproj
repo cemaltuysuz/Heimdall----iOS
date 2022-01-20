@@ -22,6 +22,10 @@
 		150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FF227995774000DAFBE /* OnBoardVC.swift */; };
 		150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */; };
 		150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FF72799615E000DAFBE /* OnBoard.swift */; };
+		150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */; };
+		150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */; };
+		150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C90012799672A000DAFBE /* OnBoardPresenter.swift */; };
+		150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C9003279967FA000DAFBE /* OnBoardRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		150C8FF227995774000DAFBE /* OnBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardVC.swift; sourceTree = "<group>"; };
 		150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCollectionCell.swift; sourceTree = "<group>"; };
 		150C8FF72799615E000DAFBE /* OnBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoard.swift; sourceTree = "<group>"; };
+		150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardProtocols.swift; sourceTree = "<group>"; };
+		150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardInteractor.swift; sourceTree = "<group>"; };
+		150C90012799672A000DAFBE /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
+		150C9003279967FA000DAFBE /* OnBoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +172,12 @@
 		150C8FE527994E62000DAFBE /* onboard-module */ = {
 			isa = PBXGroup;
 			children = (
-				150C8FF62799614F000DAFBE /* entity */,
 				150C8FF12799574E000DAFBE /* view */,
+				150C8FF92799652E000DAFBE /* interactor */,
+				150C8FFC2799654C000DAFBE /* protocol */,
+				150C8FF62799614F000DAFBE /* entity */,
+				150C8FFB27996546000DAFBE /* router */,
+				150C8FFA2799653E000DAFBE /* presenter */,
 			);
 			path = "onboard-module";
 			sourceTree = "<group>";
@@ -223,6 +235,38 @@
 				150C8FF72799615E000DAFBE /* OnBoard.swift */,
 			);
 			path = entity;
+			sourceTree = "<group>";
+		};
+		150C8FF92799652E000DAFBE /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		150C8FFA2799653E000DAFBE /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				150C90012799672A000DAFBE /* OnBoardPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		150C8FFB27996546000DAFBE /* router */ = {
+			isa = PBXGroup;
+			children = (
+				150C9003279967FA000DAFBE /* OnBoardRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		150C8FFC2799654C000DAFBE /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */,
+			);
+			path = protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,14 +401,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
+				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
+				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
+				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
+				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
