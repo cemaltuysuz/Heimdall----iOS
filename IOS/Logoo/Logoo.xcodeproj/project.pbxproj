@@ -16,6 +16,12 @@
 		150C8FD327994C6E000DAFBE /* LogooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FD227994C6E000DAFBE /* LogooUITests.swift */; };
 		150C8FD527994C6E000DAFBE /* LogooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FD427994C6E000DAFBE /* LogooUITestsLaunchTests.swift */; };
 		150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FE127994D12000DAFBE /* WelcomeVC.swift */; };
+		150C8FEB2799506E000DAFBE /* UDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FEA2799506E000DAFBE /* UDService.swift */; };
+		150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FEC27995090000DAFBE /* UDProtocol.swift */; };
+		150C8FEF2799521F000DAFBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FEE2799521F000DAFBE /* Constants.swift */; };
+		150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FF227995774000DAFBE /* OnBoardVC.swift */; };
+		150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */; };
+		150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FF72799615E000DAFBE /* OnBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		150C8FD227994C6E000DAFBE /* LogooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogooUITests.swift; sourceTree = "<group>"; };
 		150C8FD427994C6E000DAFBE /* LogooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogooUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		150C8FE127994D12000DAFBE /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		150C8FEA2799506E000DAFBE /* UDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDService.swift; sourceTree = "<group>"; };
+		150C8FEC27995090000DAFBE /* UDProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDProtocol.swift; sourceTree = "<group>"; };
+		150C8FEE2799521F000DAFBE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		150C8FF227995774000DAFBE /* OnBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardVC.swift; sourceTree = "<group>"; };
+		150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCollectionCell.swift; sourceTree = "<group>"; };
+		150C8FF72799615E000DAFBE /* OnBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +123,6 @@
 				150C8FBA27994C6E000DAFBE /* Assets.xcassets */,
 				150C8FBC27994C6E000DAFBE /* LaunchScreen.storyboard */,
 				150C8FBF27994C6E000DAFBE /* Info.plist */,
-				150C8FE127994D12000DAFBE /* WelcomeVC.swift */,
 			);
 			path = Logoo;
 			sourceTree = "<group>";
@@ -136,6 +147,7 @@
 		150C8FE327994DC0000DAFBE /* welcome-module */ = {
 			isa = PBXGroup;
 			children = (
+				150C8FF027995737000DAFBE /* view */,
 			);
 			path = "welcome-module";
 			sourceTree = "<group>";
@@ -143,6 +155,8 @@
 		150C8FE427994DD9000DAFBE /* service */ = {
 			isa = PBXGroup;
 			children = (
+				150C8FE927995044000DAFBE /* userdefault */,
+				150C8FEE2799521F000DAFBE /* Constants.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -150,6 +164,8 @@
 		150C8FE527994E62000DAFBE /* onboard-module */ = {
 			isa = PBXGroup;
 			children = (
+				150C8FF62799614F000DAFBE /* entity */,
+				150C8FF12799574E000DAFBE /* view */,
 			);
 			path = "onboard-module";
 			sourceTree = "<group>";
@@ -173,6 +189,40 @@
 			children = (
 			);
 			path = "register-module";
+			sourceTree = "<group>";
+		};
+		150C8FE927995044000DAFBE /* userdefault */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FEA2799506E000DAFBE /* UDService.swift */,
+				150C8FEC27995090000DAFBE /* UDProtocol.swift */,
+			);
+			path = userdefault;
+			sourceTree = "<group>";
+		};
+		150C8FF027995737000DAFBE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FE127994D12000DAFBE /* WelcomeVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		150C8FF12799574E000DAFBE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FF227995774000DAFBE /* OnBoardVC.swift */,
+				150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		150C8FF62799614F000DAFBE /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FF72799615E000DAFBE /* OnBoard.swift */,
+			);
+			path = entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,9 +356,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
+				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
+				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
+				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
+				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
+				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
