@@ -466,35 +466,45 @@
             </objects>
             <point key="canvasLocation" x="3389.8550724637685" y="83.705357142857139"/>
         </scene>
-        <!--Keşfet-->
+        <!--Kesfet-->
         <scene sceneID="6FT-zs-5qF">
             <objects>
-                <viewController id="L4m-TP-T3A" customClass="HomeVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L4m-TP-T3A" customClass="DiscoverVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qAV-V9-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9OP-KF-8i2">
-                                <rect key="frame" x="41" y="44" width="332" height="32"/>
-                                <segments>
-                                    <segment title="Keşfet"/>
-                                    <segment title="Global"/>
-                                </segments>
-                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keşfet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-bb-Ega">
+                                <rect key="frame" x="182.5" y="437.5" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZGb-bW-6yi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZGb-bW-6yi" firstAttribute="trailing" secondItem="9OP-KF-8i2" secondAttribute="trailing" constant="41" id="D9r-s9-SOj"/>
-                            <constraint firstItem="9OP-KF-8i2" firstAttribute="leading" secondItem="ZGb-bW-6yi" secondAttribute="leading" constant="41" id="GG7-xY-YnC"/>
-                            <constraint firstItem="9OP-KF-8i2" firstAttribute="top" secondItem="ZGb-bW-6yi" secondAttribute="top" id="j08-jD-lW7"/>
+                            <constraint firstItem="b4P-bb-Ega" firstAttribute="centerY" secondItem="qAV-V9-jA1" secondAttribute="centerY" id="95e-mu-s8k"/>
+                            <constraint firstItem="b4P-bb-Ega" firstAttribute="centerX" secondItem="qAV-V9-jA1" secondAttribute="centerX" id="Ul2-qr-zSj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Keşfet" image="person.3" catalog="system" selectedImage="person.3.fill" id="boN-f2-YSb"/>
+                    <tabBarItem key="tabBarItem" title="Kesfet" id="JSc-6Z-ijK"/>
+                    <navigationItem key="navigationItem" id="4mv-Iw-Kka">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="IcR-Fz-InR">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="rgj-bF-rl9">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5N-dL-kH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5197.1014492753629" y="83.705357142857139"/>
+            <point key="canvasLocation" x="7013" y="84"/>
         </scene>
         <!--Sohbet-->
         <scene sceneID="fD9-dy-cn0">
@@ -510,7 +520,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oR-RG-j12" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5965" y="84"/>
+            <point key="canvasLocation" x="6107" y="790"/>
+        </scene>
+        <!--Global-->
+        <scene sceneID="hp4-9G-jUU">
+            <objects>
+                <viewController id="h2Q-We-vtZ" customClass="GlobalVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gJd-9c-6ju">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BS-Ab-Uyl">
+                                <rect key="frame" x="182.5" y="437.5" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vBz-eu-HnP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6BS-Ab-Uyl" firstAttribute="centerY" secondItem="gJd-9c-6ju" secondAttribute="centerY" id="fq7-cb-92r"/>
+                            <constraint firstItem="6BS-Ab-Uyl" firstAttribute="centerX" secondItem="gJd-9c-6ju" secondAttribute="centerX" id="lDQ-jO-E65"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Global" id="LC9-yi-Qvh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mkq-5a-ogR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7954" y="84"/>
         </scene>
         <!--Profil-->
         <scene sceneID="gGh-CX-A6d">
@@ -526,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uH5-bQ-7I1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6778" y="84"/>
+            <point key="canvasLocation" x="6106" y="-646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EeB-PV-oIY">
@@ -561,14 +599,66 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="L4m-TP-T3A" kind="relationship" relationship="viewControllers" id="1SC-k9-zz7"/>
+                        <segue destination="IAW-dQ-0la" kind="relationship" relationship="viewControllers" id="1SC-k9-zz7"/>
                         <segue destination="cfp-de-2kd" kind="relationship" relationship="viewControllers" id="bYv-Mg-K5L"/>
                         <segue destination="4Ha-V3-pwS" kind="relationship" relationship="viewControllers" id="UhV-cm-WoF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFi-BB-DrF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4300" y="84"/>
+            <point key="canvasLocation" x="4213" y="84"/>
+        </scene>
+        <!--Keşfet-->
+        <scene sceneID="5rr-Vk-GPV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IAW-dQ-0la" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Keşfet" image="person.3" catalog="system" selectedImage="person.3.fill" id="boN-f2-YSb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gN4-Ia-bAw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AmH-Sg-qhr" kind="relationship" relationship="rootViewController" id="f6e-5m-YaB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZQ-e8-ace" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5197.1014492753629" y="83.705357142857139"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="VaX-oa-4ck">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AmH-Sg-qhr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="4J0-vJ-3rz">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Btl-hv-G9p">
+                            <rect key="frame" x="121.5" y="5.5" width="171" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Discorvery"/>
+                                <segment title="Global"/>
+                            </segments>
+                            <connections>
+                                <action selector="valueChangeSegment:" destination="iXr-zv-cqW" eventType="valueChanged" id="roI-UP-MBk"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8t6-BK-909">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="L4m-TP-T3A" kind="relationship" relationship="viewControllers" id="QJv-ig-Tws"/>
+                        <segue destination="h2Q-We-vtZ" kind="relationship" relationship="viewControllers" id="GPl-qf-Czr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3Z-NG-7IT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="iXr-zv-cqW" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6107.2463768115949" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>
