@@ -367,11 +367,11 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="otpRegisterCell" id="78b-AK-nBl" customClass="RegisterOTPCell" customModule="Logoo" customModuleProvider="target">
                                         <rect key="frame" x="848" y="0.0" width="414" height="500"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ULy-hQ-4aJ">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="ULy-hQ-4aJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6G-79-mQ2">
+                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6G-79-mQ2">
                                                     <rect key="frame" x="87" y="230" width="240" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="TXa-uq-js9"/>
@@ -380,13 +380,13 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kod Gönder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1B-u6-tqX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Kod Gönder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1B-u6-tqX">
                                                     <rect key="frame" x="166" y="290" width="82" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail Adresini Onayla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-cF-HTy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mail Adresini Onayla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-cF-HTy">
                                                     <rect key="frame" x="98" y="50" width="218.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -459,27 +459,74 @@
                         <outlet property="registerNextButton" destination="4Ns-kf-kIP" id="uuh-vT-1UU"/>
                         <outlet property="registerProgressView" destination="Qzo-zD-Qtv" id="rcI-A0-mA1"/>
                         <outlet property="registerStepLabel" destination="SSm-m2-V8m" id="YUV-Gw-NjB"/>
-                        <segue destination="L4m-TP-T3A" kind="presentation" identifier="registerToHome" modalPresentationStyle="fullScreen" id="CH6-6k-B12"/>
+                        <segue destination="4SP-qc-ECv" kind="presentation" identifier="registerToHome" modalPresentationStyle="fullScreen" id="CH6-6k-B12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjd-hX-TqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3389.8550724637685" y="83.705357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Keşfet-->
         <scene sceneID="6FT-zs-5qF">
             <objects>
-                <viewController id="L4m-TP-T3A" sceneMemberID="viewController">
+                <viewController id="L4m-TP-T3A" customClass="HomeVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qAV-V9-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9OP-KF-8i2">
+                                <rect key="frame" x="41" y="44" width="332" height="32"/>
+                                <segments>
+                                    <segment title="Keşfet"/>
+                                    <segment title="Global"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZGb-bW-6yi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZGb-bW-6yi" firstAttribute="trailing" secondItem="9OP-KF-8i2" secondAttribute="trailing" constant="41" id="D9r-s9-SOj"/>
+                            <constraint firstItem="9OP-KF-8i2" firstAttribute="leading" secondItem="ZGb-bW-6yi" secondAttribute="leading" constant="41" id="GG7-xY-YnC"/>
+                            <constraint firstItem="9OP-KF-8i2" firstAttribute="top" secondItem="ZGb-bW-6yi" secondAttribute="top" id="j08-jD-lW7"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Keşfet" image="person.3" catalog="system" selectedImage="person.3.fill" id="boN-f2-YSb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5N-dL-kH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4288" y="84"/>
+            <point key="canvasLocation" x="5197.1014492753629" y="83.705357142857139"/>
+        </scene>
+        <!--Sohbet-->
+        <scene sceneID="fD9-dy-cn0">
+            <objects>
+                <viewController id="cfp-de-2kd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tb2-Sv-kth">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="kuH-k7-kwG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sohbet" image="bubble.left.and.bubble.right" catalog="system" selectedImage="bubble.left.and.bubble.right.fill" id="UWb-t8-Vm0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6oR-RG-j12" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5965" y="84"/>
+        </scene>
+        <!--Profil-->
+        <scene sceneID="gGh-CX-A6d">
+            <objects>
+                <viewController id="4Ha-V3-pwS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NXS-fi-6nU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YES-Fh-B1M"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profil" image="person" catalog="system" selectedImage="person.fill" id="RSd-ui-gWr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uH5-bQ-7I1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6778" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EeB-PV-oIY">
@@ -504,12 +551,37 @@
             </objects>
             <point key="canvasLocation" x="1640.5797101449277" y="83.705357142857139"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="OX0-PW-ODg">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="4SP-qc-ECv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UVn-FK-N23">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="L4m-TP-T3A" kind="relationship" relationship="viewControllers" id="1SC-k9-zz7"/>
+                        <segue destination="cfp-de-2kd" kind="relationship" relationship="viewControllers" id="bYv-Mg-K5L"/>
+                        <segue destination="4Ha-V3-pwS" kind="relationship" relationship="viewControllers" id="UhV-cm-WoF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aFi-BB-DrF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4300" y="84"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.backward.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
+        <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="face" width="70" height="70"/>
         <image name="onboard1" width="323" height="318"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="black700">
             <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

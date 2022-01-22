@@ -31,6 +31,9 @@
 		15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C082799994700903073 /* RegisterPhotoPickCell.swift */; };
 		15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0A2799996000903073 /* RegisterInformationCell.swift */; };
 		15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0C2799997300903073 /* RegisterOTPCell.swift */; };
+		159C3BCE279AC7CA001B9607 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BCD279AC7CA001B9607 /* HomeVC.swift */; };
+		159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */; };
+		159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BD2279C110F001B9607 /* ValidationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		15983C082799994700903073 /* RegisterPhotoPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoPickCell.swift; sourceTree = "<group>"; };
 		15983C0A2799996000903073 /* RegisterInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInformationCell.swift; sourceTree = "<group>"; };
 		15983C0C2799997300903073 /* RegisterOTPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOTPCell.swift; sourceTree = "<group>"; };
+		159C3BCD279AC7CA001B9607 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
+		159C3BD2279C110F001B9607 /* ValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				159C3BCB279AC4EE001B9607 /* home-module */,
 				150C8FE827994EBB000DAFBE /* register-module */,
 				150C8FE727994EB0000DAFBE /* login-module */,
 				150C8FE627994E93000DAFBE /* login-pref-module */,
@@ -210,6 +217,7 @@
 		150C8FE827994EBB000DAFBE /* register-module */ = {
 			isa = PBXGroup;
 			children = (
+				159C3BD1279C10DC001B9607 /* entity */,
 				15983C072799992300903073 /* collectionview */,
 				15983C042799953300903073 /* view */,
 			);
@@ -304,8 +312,33 @@
 				15983C082799994700903073 /* RegisterPhotoPickCell.swift */,
 				15983C0A2799996000903073 /* RegisterInformationCell.swift */,
 				15983C0C2799997300903073 /* RegisterOTPCell.swift */,
+				159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */,
 			);
 			path = collectionview;
+			sourceTree = "<group>";
+		};
+		159C3BCB279AC4EE001B9607 /* home-module */ = {
+			isa = PBXGroup;
+			children = (
+				159C3BCC279AC4FF001B9607 /* view */,
+			);
+			path = "home-module";
+			sourceTree = "<group>";
+		};
+		159C3BCC279AC4FF001B9607 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				159C3BCD279AC7CA001B9607 /* HomeVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		159C3BD1279C10DC001B9607 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				159C3BD2279C110F001B9607 /* ValidationResponse.swift */,
+			);
+			path = entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */,
@@ -456,6 +490,8 @@
 				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
+				159C3BCE279AC7CA001B9607 /* HomeVC.swift in Sources */,
+				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

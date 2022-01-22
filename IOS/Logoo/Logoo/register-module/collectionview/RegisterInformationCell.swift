@@ -7,6 +7,10 @@
 
 import UIKit
 
-class RegisterInformationCell: UICollectionViewCell {
+class RegisterInformationCell: UICollectionViewCell, ValidationProtocol {
+    
+    func validate() -> ValidationResponse {
+        return ValidationResponse(status: true, message: "info okey")
+    }
     
 }
