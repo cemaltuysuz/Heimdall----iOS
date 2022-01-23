@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15064F4F279D492A00460334 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F4E279D492A00460334 /* User.swift */; };
+		15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F55279D4B5400460334 /* DiscorveryProtocols.swift */; };
 		150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FB127994C6D000DAFBE /* AppDelegate.swift */; };
 		150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FB327994C6D000DAFBE /* SceneDelegate.swift */; };
 		150C8FB927994C6D000DAFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 150C8FB727994C6D000DAFBE /* Main.storyboard */; };
@@ -33,7 +35,6 @@
 		15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0C2799997300903073 /* RegisterOTPCell.swift */; };
 		159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */; };
 		159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BD2279C110F001B9607 /* ValidationResponse.swift */; };
-		159C3BD9279C5CFB001B9607 /* HomeContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BD8279C5CFB001B9607 /* HomeContainerVC.swift */; };
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15064F4E279D492A00460334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		15064F55279D4B5400460334 /* DiscorveryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscorveryProtocols.swift; sourceTree = "<group>"; };
 		150C8FAE27994C6D000DAFBE /* Logoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		150C8FB127994C6D000DAFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		150C8FB327994C6D000DAFBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		15983C0C2799997300903073 /* RegisterOTPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOTPCell.swift; sourceTree = "<group>"; };
 		159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
 		159C3BD2279C110F001B9607 /* ValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResponse.swift; sourceTree = "<group>"; };
-		159C3BD8279C5CFB001B9607 /* HomeContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerVC.swift; sourceTree = "<group>"; };
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15064F4C279D490E00460334 /* profile-module */ = {
+			isa = PBXGroup;
+			children = (
+				15064F4D279D491900460334 /* entity */,
+			);
+			path = "profile-module";
+			sourceTree = "<group>";
+		};
+		15064F4D279D491900460334 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				15064F4E279D492A00460334 /* User.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		15064F50279D4AE900460334 /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		15064F51279D4AF100460334 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		15064F52279D4AF900460334 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		15064F53279D4AFF00460334 /* router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		15064F54279D4B0800460334 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				15064F55279D4B5400460334 /* DiscorveryProtocols.swift */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
 		150C8FA527994C6D000DAFBE = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +193,9 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				15064F4C279D490E00460334 /* profile-module */,
 				159C3BD6279C5CD5001B9607 /* global-module */,
 				159C3BD5279C5CC6001B9607 /* discover-module */,
-				159C3BD4279C5CA4001B9607 /* home-container-module */,
 				150C8FE827994EBB000DAFBE /* register-module */,
 				150C8FE727994EB0000DAFBE /* login-module */,
 				150C8FE627994E93000DAFBE /* login-pref-module */,
@@ -331,17 +385,14 @@
 			path = entity;
 			sourceTree = "<group>";
 		};
-		159C3BD4279C5CA4001B9607 /* home-container-module */ = {
-			isa = PBXGroup;
-			children = (
-				159C3BD7279C5CE3001B9607 /* view */,
-			);
-			path = "home-container-module";
-			sourceTree = "<group>";
-		};
 		159C3BD5279C5CC6001B9607 /* discover-module */ = {
 			isa = PBXGroup;
 			children = (
+				15064F54279D4B0800460334 /* protocol */,
+				15064F53279D4AFF00460334 /* router */,
+				15064F52279D4AF900460334 /* entity */,
+				15064F51279D4AF100460334 /* presenter */,
+				15064F50279D4AE900460334 /* interactor */,
 				159C3BDA279C5D7E001B9607 /* view */,
 			);
 			path = "discover-module";
@@ -353,14 +404,6 @@
 				159C3BDD279C5D99001B9607 /* view */,
 			);
 			path = "global-module";
-			sourceTree = "<group>";
-		};
-		159C3BD7279C5CE3001B9607 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				159C3BD8279C5CFB001B9607 /* HomeContainerVC.swift */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		159C3BDA279C5D7E001B9607 /* view */ = {
@@ -521,11 +564,11 @@
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
+				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
-				159C3BD9279C5CFB001B9607 /* HomeContainerVC.swift in Sources */,
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
 				15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */,
 				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
@@ -533,6 +576,7 @@
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
+				15064F4F279D492A00460334 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,20 +12,26 @@ class DiscoverVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let asd = self.tabBarController?.navigationItem.titleView
-        let segmentedControl = asd as! UISegmentedControl
-        
+        let navigationItem = self.tabBarController?.navigationItem.titleView
+        let segmentedControl = navigationItem as! UISegmentedControl
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         
     }
     
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            self.tabBarController?.selectedIndex = 0
-        }
-        else if sender.selectedSegmentIndex == 1 {
-            self.tabBarController?.selectedIndex = 1
-        }
+        self.tabBarController?.selectedIndex = sender.selectedSegmentIndex
     }
+}
+
+extension DiscoverVC : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
 }
