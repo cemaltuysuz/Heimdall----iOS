@@ -9,9 +9,23 @@ import UIKit
 
 class DiscoverVC: UIViewController {
 
+    var presenter:ViewToPresenterDiscorveryProtocol?
+    var discoveredUsers:[User]?
+    @IBOutlet weak var discoveryTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // initialize variable
+        discoveredUsers = [User]()
+        
+        discoveryTableView.delegate = self
+        discoveryTableView.dataSource = self
+        
+        DiscoveryRouter.createModule(ref: self)
+        presenter?.getDiscoveredUsers()
+        
+        // Segmented Control Setup
         let navigationItem = self.tabBarController?.navigationItem.titleView
         let segmentedControl = navigationItem as! UISegmentedControl
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
@@ -26,11 +40,28 @@ class DiscoverVC: UIViewController {
 
 extension DiscoverVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return discoveredUsers!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let current = discoveredUsers![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "discoveryTableViewCell", for: indexPath) as! DiscoveryTableViewCell
+        
+        cell.discoveryUsernameLabel.text = current.username!
+        cell.initialize(hobbyList: hobbyToHobbies(hobby: current.userHobbies!))
+        
+        return cell
+    }
+    
+    
+}
+
+extension DiscoverVC : PresenterToViewDiscorveryProtocol {
+    func discoveredUsersToView(users: [User]) {
+        DispatchQueue.main.async {
+            self.discoveredUsers = users
+            self.discoveryTableView.reloadData()
+        }
     }
     
     

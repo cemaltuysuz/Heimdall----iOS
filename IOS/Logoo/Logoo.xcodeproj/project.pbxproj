@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		15064F4F279D492A00460334 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F4E279D492A00460334 /* User.swift */; };
 		15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F55279D4B5400460334 /* DiscorveryProtocols.swift */; };
+		15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F57279D4CD800460334 /* DiscoveryInteractor.swift */; };
+		15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F59279D4D3700460334 /* DiscoveryPresenter.swift */; };
+		15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F5B279D4D9100460334 /* DiscoveryRouter.swift */; };
+		15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F5E279D50DD00460334 /* DiscoveryTableViewCell.swift */; };
+		15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F61279D50FD00460334 /* DiscoveryCollectionViewCell.swift */; };
 		150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FB127994C6D000DAFBE /* AppDelegate.swift */; };
 		150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FB327994C6D000DAFBE /* SceneDelegate.swift */; };
 		150C8FB927994C6D000DAFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 150C8FB727994C6D000DAFBE /* Main.storyboard */; };
@@ -28,6 +33,8 @@
 		150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */; };
 		150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C90012799672A000DAFBE /* OnBoardPresenter.swift */; };
 		150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C9003279967FA000DAFBE /* OnBoardRouter.swift */; };
+		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
+		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
 		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
 		15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C082799994700903073 /* RegisterPhotoPickCell.swift */; };
@@ -59,6 +66,11 @@
 /* Begin PBXFileReference section */
 		15064F4E279D492A00460334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15064F55279D4B5400460334 /* DiscorveryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscorveryProtocols.swift; sourceTree = "<group>"; };
+		15064F57279D4CD800460334 /* DiscoveryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryInteractor.swift; sourceTree = "<group>"; };
+		15064F59279D4D3700460334 /* DiscoveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryPresenter.swift; sourceTree = "<group>"; };
+		15064F5B279D4D9100460334 /* DiscoveryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRouter.swift; sourceTree = "<group>"; };
+		15064F5E279D50DD00460334 /* DiscoveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewCell.swift; sourceTree = "<group>"; };
+		15064F61279D50FD00460334 /* DiscoveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCollectionViewCell.swift; sourceTree = "<group>"; };
 		150C8FAE27994C6D000DAFBE /* Logoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		150C8FB127994C6D000DAFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		150C8FB327994C6D000DAFBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +94,8 @@
 		150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardInteractor.swift; sourceTree = "<group>"; };
 		150C90012799672A000DAFBE /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
 		150C9003279967FA000DAFBE /* OnBoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardRouter.swift; sourceTree = "<group>"; };
+		1517AF88279E968D00D1194E /* Hobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hobby.swift; sourceTree = "<group>"; };
+		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
 		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		15983C082799994700903073 /* RegisterPhotoPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoPickCell.swift; sourceTree = "<group>"; };
@@ -130,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				15064F4E279D492A00460334 /* User.swift */,
+				1517AF88279E968D00D1194E /* Hobby.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -137,6 +152,7 @@
 		15064F50279D4AE900460334 /* interactor */ = {
 			isa = PBXGroup;
 			children = (
+				15064F57279D4CD800460334 /* DiscoveryInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -144,6 +160,7 @@
 		15064F51279D4AF100460334 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
+				15064F59279D4D3700460334 /* DiscoveryPresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -158,6 +175,7 @@
 		15064F53279D4AFF00460334 /* router */ = {
 			isa = PBXGroup;
 			children = (
+				15064F5B279D4D9100460334 /* DiscoveryRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -168,6 +186,22 @@
 				15064F55279D4B5400460334 /* DiscorveryProtocols.swift */,
 			);
 			path = protocol;
+			sourceTree = "<group>";
+		};
+		15064F5D279D50BA00460334 /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				15064F5E279D50DD00460334 /* DiscoveryTableViewCell.swift */,
+			);
+			path = tableview;
+			sourceTree = "<group>";
+		};
+		15064F60279D50E700460334 /* collectionview */ = {
+			isa = PBXGroup;
+			children = (
+				15064F61279D50FD00460334 /* DiscoveryCollectionViewCell.swift */,
+			);
+			path = collectionview;
 			sourceTree = "<group>";
 		};
 		150C8FA527994C6D000DAFBE = {
@@ -208,6 +242,7 @@
 				150C8FBA27994C6E000DAFBE /* Assets.xcassets */,
 				150C8FBC27994C6E000DAFBE /* LaunchScreen.storyboard */,
 				150C8FBF27994C6E000DAFBE /* Info.plist */,
+				1517AF8A279E9AAA00D1194E /* Util.swift */,
 			);
 			path = Logoo;
 			sourceTree = "<group>";
@@ -388,6 +423,8 @@
 		159C3BD5279C5CC6001B9607 /* discover-module */ = {
 			isa = PBXGroup;
 			children = (
+				15064F60279D50E700460334 /* collectionview */,
+				15064F5D279D50BA00460334 /* tableview */,
 				15064F54279D4B0800460334 /* protocol */,
 				15064F53279D4AFF00460334 /* router */,
 				15064F52279D4AF900460334 /* entity */,
@@ -559,10 +596,12 @@
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */,
+				1517AF89279E968D00D1194E /* Hobby.swift in Sources */,
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
+				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
@@ -572,10 +611,15 @@
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
 				15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */,
 				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
+				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
+				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
+				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
+				1517AF8B279E9AAA00D1194E /* Util.swift in Sources */,
+				15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */,
 				15064F4F279D492A00460334 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
