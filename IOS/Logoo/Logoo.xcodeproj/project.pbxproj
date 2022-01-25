@@ -35,6 +35,18 @@
 		150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C9003279967FA000DAFBE /* OnBoardRouter.swift */; };
 		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
+		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
+		1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* ChatProtocols.swift */; };
+		153EA961279FF4B300871246 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA960279FF4B300871246 /* ChatRequest.swift */; };
+		153EA964279FF63800871246 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA963279FF63800871246 /* Room.swift */; };
+		153EA966279FF88000871246 /* P2P.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA965279FF88000871246 /* P2P.swift */; };
+		153EA968279FF97400871246 /* RoomMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA967279FF97400871246 /* RoomMessage.swift */; };
+		153EA96B279FFA2E00871246 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96A279FFA2E00871246 /* RequestType.swift */; };
+		153EA96D279FFA5800871246 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96C279FFA5800871246 /* MessageType.swift */; };
+		153EA96F279FFBA900871246 /* P2PMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96E279FFBA900871246 /* P2PMessage.swift */; };
+		153EA971279FFDC900871246 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA970279FFDC900871246 /* ChatRouter.swift */; };
+		153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA972279FFDE000871246 /* ChatInteractor.swift */; };
+		153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA974279FFE1100871246 /* ChatPresenter.swift */; };
 		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
 		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
 		15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C082799994700903073 /* RegisterPhotoPickCell.swift */; };
@@ -96,6 +108,18 @@
 		150C9003279967FA000DAFBE /* OnBoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardRouter.swift; sourceTree = "<group>"; };
 		1517AF88279E968D00D1194E /* Hobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hobby.swift; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
+		153EA960279FF4B300871246 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
+		153EA963279FF63800871246 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		153EA965279FF88000871246 /* P2P.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2P.swift; sourceTree = "<group>"; };
+		153EA967279FF97400871246 /* RoomMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMessage.swift; sourceTree = "<group>"; };
+		153EA96A279FFA2E00871246 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		153EA96C279FFA5800871246 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		153EA96E279FFBA900871246 /* P2PMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PMessage.swift; sourceTree = "<group>"; };
+		153EA970279FFDC900871246 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		153EA972279FFDE000871246 /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		153EA974279FFE1100871246 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
 		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
 		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		15983C082799994700903073 /* RegisterPhotoPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoPickCell.swift; sourceTree = "<group>"; };
@@ -227,6 +251,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				1517AF8C279EBC5700D1194E /* chat-module */,
 				15064F4C279D490E00460334 /* profile-module */,
 				159C3BD6279C5CD5001B9607 /* global-module */,
 				159C3BD5279C5CC6001B9607 /* discover-module */,
@@ -383,6 +408,81 @@
 				150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */,
 			);
 			path = protocol;
+			sourceTree = "<group>";
+		};
+		1517AF8C279EBC5700D1194E /* chat-module */ = {
+			isa = PBXGroup;
+			children = (
+				1517AF92279EBCA700D1194E /* view */,
+				1517AF91279EBC9C00D1194E /* interactor */,
+				1517AF90279EBC8D00D1194E /* presenter */,
+				1517AF8F279EBC8600D1194E /* entity */,
+				1517AF8E279EBC7400D1194E /* router */,
+				1517AF8D279EBC6E00D1194E /* protocols */,
+			);
+			path = "chat-module";
+			sourceTree = "<group>";
+		};
+		1517AF8D279EBC6E00D1194E /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1517AF95279EBD4D00D1194E /* ChatProtocols.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		1517AF8E279EBC7400D1194E /* router */ = {
+			isa = PBXGroup;
+			children = (
+				153EA970279FFDC900871246 /* ChatRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		1517AF8F279EBC8600D1194E /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				153EA969279FFA0E00871246 /* enums */,
+				153EA960279FF4B300871246 /* ChatRequest.swift */,
+				153EA963279FF63800871246 /* Room.swift */,
+				153EA965279FF88000871246 /* P2P.swift */,
+				153EA967279FF97400871246 /* RoomMessage.swift */,
+				153EA96E279FFBA900871246 /* P2PMessage.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		1517AF90279EBC8D00D1194E /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				153EA974279FFE1100871246 /* ChatPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		1517AF91279EBC9C00D1194E /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				153EA972279FFDE000871246 /* ChatInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		1517AF92279EBCA700D1194E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1517AF93279EBCD900D1194E /* ChatVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		153EA969279FFA0E00871246 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				153EA96A279FFA2E00871246 /* RequestType.swift */,
+				153EA96C279FFA5800871246 /* MessageType.swift */,
+			);
+			path = enums;
 			sourceTree = "<group>";
 		};
 		15983C0127997C0200903073 /* view */ = {
@@ -590,8 +690,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */,
+				1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */,
+				153EA96F279FFBA900871246 /* P2PMessage.swift in Sources */,
+				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
 				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
+				153EA964279FF63800871246 /* Room.swift in Sources */,
+				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
@@ -603,6 +709,7 @@
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
+				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
@@ -613,12 +720,17 @@
 				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
 				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
+				153EA966279FF88000871246 /* P2P.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
+				153EA968279FF97400871246 /* RoomMessage.swift in Sources */,
+				153EA96D279FFA5800871246 /* MessageType.swift in Sources */,
+				153EA96B279FFA2E00871246 /* RequestType.swift in Sources */,
 				1517AF8B279E9AAA00D1194E /* Util.swift in Sources */,
+				153EA961279FF4B300871246 /* ChatRequest.swift in Sources */,
 				15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */,
 				15064F4F279D492A00460334 /* User.swift in Sources */,
 			);
