@@ -12,22 +12,22 @@ protocol ViewToPresenterChatProtocol {
     var view:PresenterToViewChatProtocol? {get set}
     var interactor:PresenterToInteractorChatProtocol? {get set}
     
-    func getAllChats()
+    func getAllRequirements()
 }
 
 protocol PresenterToInteractorChatProtocol{
     var presenter:InteractorToPresenterChatProtocol? {get set}
-    func getAllChats()
+    func getAllRequirements()
 }
 
 protocol InteractorToPresenterChatProtocol {
-    func roomChatsToPresenter(room:[Room])
-    func p2pChatsToPresenter(p2p:[P2P])
+    func chatsToPresenter(chats:[Any])
+    func requestsToPresenter(requests:[ChatRequest])
 }
 
 protocol PresenterToViewChatProtocol {
-    func roomChatsToView(room:[Room])
-    func p2pChatsToView(p2p:[P2P])
+    func chatsToView(chats:[Any])
+    func requestsToView(requests:[ChatRequest])
 }
 
 protocol PresenterToRouterChatProtocol {

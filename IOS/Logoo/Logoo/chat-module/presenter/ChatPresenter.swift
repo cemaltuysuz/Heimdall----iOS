@@ -8,19 +8,22 @@
 import Foundation
 
 class ChatPresenter : ViewToPresenterChatProtocol, InteractorToPresenterChatProtocol {
-    var view: PresenterToViewChatProtocol?
     
+    var view: PresenterToViewChatProtocol?
     var interactor: PresenterToInteractorChatProtocol?
     
-    func getAllChats() {
-        interactor?.getAllChats()
+    
+    
+    func getAllRequirements() {
+        interactor?.getAllRequirements()
     }
     
-    func roomChatsToPresenter(room: [Room]) {
-        view?.roomChatsToView(room: room)
+    func requestsToPresenter(requests: [ChatRequest]) {
+        view?.requestsToView(requests: requests)
     }
     
-    func p2pChatsToPresenter(p2p: [P2P]) {
-        view?.p2pChatsToView(p2p: p2p)
+    
+    func chatsToPresenter(chats: [Any]) {
+        view?.chatsToView(chats: chats)
     }
 }

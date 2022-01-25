@@ -13,12 +13,12 @@ class Room {
     var roomTitle:String?
     var roomDescription:String?
     var roomImageUrl:String?
-    var roomMembers:[String]?
+    var roomMembers:[User]?
     var creationTime:String?
     
     init(){}
     
-     init(roomId: String, creatorId: String, roomTitle: String, roomDescription: String, roomImageUrl: String, roomMembers: [String], creationTime: String) {
+     init(roomId: String, creatorId: String, roomTitle: String, roomDescription: String, roomImageUrl: String, roomMembers: [User], creationTime: String) {
         self.roomId = roomId
         self.creatorId = creatorId
         self.roomTitle = roomTitle
