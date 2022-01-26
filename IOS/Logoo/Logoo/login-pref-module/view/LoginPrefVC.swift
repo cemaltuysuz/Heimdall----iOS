@@ -15,4 +15,7 @@ class LoginPrefVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func toLoginButton(_ sender: Any) {
+        performSegue(withIdentifier: "loginPrefToLogin", sender: nil)
+    }
 }

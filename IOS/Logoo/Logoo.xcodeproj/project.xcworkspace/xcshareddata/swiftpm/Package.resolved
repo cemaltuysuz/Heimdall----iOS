@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CHIOTPField",
+        "repositoryURL": "https://github.com/ChiliLabs/CHIOTPField.git",
+        "state": {
+          "branch": null,
+          "revision": "a18c00e08af660338832c60e6a3789c9c2f4e11b",
+          "version": "0.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

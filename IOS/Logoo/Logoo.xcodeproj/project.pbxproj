@@ -50,6 +50,8 @@
 		153EA97827A0007B00871246 /* WaitingRequestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA97727A0007B00871246 /* WaitingRequestCollectionViewCell.swift */; };
 		153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA97927A0008D00871246 /* InboxCollectionViewCell.swift */; };
 		153EA97C27A0076000871246 /* ChatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA97B27A0076000871246 /* ChatType.swift */; };
+		153EA98127A0468500871246 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA98027A0468500871246 /* LoginVC.swift */; };
+		153EA98427A04B8900871246 /* CHIOTPField in Frameworks */ = {isa = PBXBuildFile; productRef = 153EA98327A04B8900871246 /* CHIOTPField */; };
 		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
 		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
 		15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C082799994700903073 /* RegisterPhotoPickCell.swift */; };
@@ -126,6 +128,7 @@
 		153EA97727A0007B00871246 /* WaitingRequestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRequestCollectionViewCell.swift; sourceTree = "<group>"; };
 		153EA97927A0008D00871246 /* InboxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxCollectionViewCell.swift; sourceTree = "<group>"; };
 		153EA97B27A0076000871246 /* ChatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatType.swift; sourceTree = "<group>"; };
+		153EA98027A0468500871246 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
 		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		15983C082799994700903073 /* RegisterPhotoPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoPickCell.swift; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153EA98427A04B8900871246 /* CHIOTPField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +340,7 @@
 		150C8FE727994EB0000DAFBE /* login-module */ = {
 			isa = PBXGroup;
 			children = (
+				153EA97F27A0466D00871246 /* view */,
 			);
 			path = "login-module";
 			sourceTree = "<group>";
@@ -502,6 +507,14 @@
 			path = collectionview;
 			sourceTree = "<group>";
 		};
+		153EA97F27A0466D00871246 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				153EA98027A0468500871246 /* LoginVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		15983C0127997C0200903073 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +605,9 @@
 			dependencies = (
 			);
 			name = Logoo;
+			packageProductDependencies = (
+				153EA98327A04B8900871246 /* CHIOTPField */,
+			);
 			productName = Logoo;
 			productReference = 150C8FAE27994C6D000DAFBE /* Logoo.app */;
 			productType = "com.apple.product-type.application";
@@ -664,6 +680,9 @@
 				Base,
 			);
 			mainGroup = 150C8FA527994C6D000DAFBE;
+			packageReferences = (
+				153EA98227A04B8900871246 /* XCRemoteSwiftPackageReference "CHIOTPField" */,
+			);
 			productRefGroup = 150C8FAF27994C6D000DAFBE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -742,6 +761,7 @@
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
+				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
@@ -1100,6 +1120,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		153EA98227A04B8900871246 /* XCRemoteSwiftPackageReference "CHIOTPField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChiliLabs/CHIOTPField.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		153EA98327A04B8900871246 /* CHIOTPField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 153EA98227A04B8900871246 /* XCRemoteSwiftPackageReference "CHIOTPField" */;
+			productName = CHIOTPField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 150C8FA627994C6D000DAFBE /* Project object */;
 }
