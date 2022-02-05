@@ -12,6 +12,7 @@ class RegisterBirthDayCell: UICollectionViewCell, RegisterProtocol {
     @IBOutlet weak var registerBirthDayDatePicker: UIDatePicker!
     
     func validate() -> ValidationResponse {
+        
         return ValidationResponse(status: true, message: "birth okey")
     }
     

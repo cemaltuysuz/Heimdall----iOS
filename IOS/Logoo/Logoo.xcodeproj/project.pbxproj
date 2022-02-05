@@ -65,6 +65,7 @@
 		159E051F27A1533800E41035 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 159E051E27A1533800E41035 /* FirebaseDatabase */; };
 		159E052127A1533800E41035 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 159E052027A1533800E41035 /* FirebaseStorage */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */; };
 		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
 		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
 		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
@@ -148,6 +149,7 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
 		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
 		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
 		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				15983C0C2799997300903073 /* RegisterOTPCell.swift */,
 				159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */,
 				15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */,
+				15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */,
 			);
 			path = collectionview;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
+				15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,

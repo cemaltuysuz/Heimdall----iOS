@@ -17,6 +17,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
         steps.append(RegisterPhotoPickCell())
         steps.append(RegisterInformationCell())
         steps.append(RegisterBirthDayCell())
+        steps.append(RegisterGenderCell())
         steps.append(RegisterOTPCell())
         
         presenter?.registerStepsToPresenter(steps: steps)

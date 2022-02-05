@@ -125,6 +125,13 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             self.registerSteps![2] = birthDayCell // init
             return birthDayCell
         }
+        else if self.registerSteps![count] is RegisterGenderCell {
+            let genderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "registerGenderCell", for: indexPath) as! RegisterGenderCell
+            genderCell.initialize()
+            validation = genderCell
+            self.registerSteps![2] = genderCell // init
+            return genderCell
+        }
         else {
             let otpCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otpRegisterCell", for: indexPath) as! RegisterOTPCell
             validation = otpCell
@@ -179,6 +186,9 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         }
         else if rgClass is RegisterBirthDayCell {
             self.validation = rgClass as! RegisterBirthDayCell
+        }
+        else if rgClass is RegisterGenderCell {
+            self.validation = rgClass as! RegisterGenderCell
         }else {
             self.validation = rgClass as! RegisterOTPCell
         }
