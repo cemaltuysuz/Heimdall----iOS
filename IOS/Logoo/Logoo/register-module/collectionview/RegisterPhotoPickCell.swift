@@ -7,10 +7,9 @@
 
 import UIKit
 
-class RegisterPhotoPickCell: UICollectionViewCell,ValidationProtocol {
+class RegisterPhotoPickCell: UICollectionViewCell,RegisterProtocol {
     @IBOutlet weak var registerProfileImage: UIImageView!
-    
-var photoProtocol:RegisterPhotoCellProtocol?
+    var photoProtocol:RegisterPhotoCellProtocol?
     
     /**
      - Kullanıcı tarafından UIImageView için bir dokunuş gerçekleştiğinde bunu algılayabilmek adına bir selector yapısı kurdum.
@@ -26,7 +25,15 @@ var photoProtocol:RegisterPhotoCellProtocol?
      VC tarafdından doğrulama istendiği zaman bu fonksiyon polymorphism ile çalıştırılır.
      */
     func validate() -> ValidationResponse {
-        return ValidationResponse(status: true, message: "foto doğrulama okey")
+        print("bir istek geldi")
+        
+        // kullanıcı resim seçmiş anlamına gelir.
+        if let imageView = registerProfileImage {
+            if imageView.image != nil {
+                return ValidationResponse(status: true, message: "foto doğrulama okey")
+            }
+        }
+        return ValidationResponse(status: false, message: "Kullanıcı resim secmemis")
     }
     
     // Kullanıcı bir fotoğraf seçtiği zaman UI kısmı güncelle.

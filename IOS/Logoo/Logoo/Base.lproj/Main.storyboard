@@ -283,7 +283,7 @@
                                 <color key="progressTintColor" name="black700"/>
                                 <color key="trackTintColor" name="grey500"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSm-m2-V8m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSm-m2-V8m">
                                 <rect key="frame" x="196" y="138" width="22.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="black700"/>
@@ -315,8 +315,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face" translatesAutoresizingMaskIntoConstraints="NO" id="oEq-rG-PeY">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oEq-rG-PeY">
                                                     <rect key="frame" x="142" y="185" width="130" height="130"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="130" id="1dO-Yt-azq"/>
                                                         <constraint firstAttribute="width" constant="130" id="omO-In-NJb"/>
@@ -359,21 +360,21 @@
                                                             <color key="backgroundColor" name="grey200"/>
                                                             <color key="textColor" name="grey500"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" textContentType="username"/>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Neo-QX-LPj">
                                                             <rect key="frame" x="0.0" y="55" width="280" height="40"/>
                                                             <color key="backgroundColor" name="grey200"/>
                                                             <color key="textColor" name="grey500"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" textContentType="email"/>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Şifre" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-Ui-GXa">
                                                             <rect key="frame" x="0.0" y="110" width="280" height="40"/>
                                                             <color key="backgroundColor" name="grey200"/>
                                                             <color key="textColor" name="grey500"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" textContentType="password"/>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -393,20 +394,52 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="500"/>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="otpRegisterCell" id="78b-AK-nBl" customClass="RegisterOTPCell" customModule="Logoo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="registerBirthDayCell" id="76S-Ml-RyH" customClass="RegisterBirthDayCell" customModule="Logoo" customModuleProvider="target">
                                         <rect key="frame" x="848" y="0.0" width="414" height="500"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ULy-hQ-4aJ">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FU7-Iq-MVm">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail Adresini Onayla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-cF-HTy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doğum Tarihinizi Giriniz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1d-Nu-vh4">
+                                                    <rect key="frame" x="81.5" y="50" width="251.5" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dhd-pD-QMQ">
+                                                    <rect key="frame" x="72" y="180" width="270" height="140"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="270" id="0eM-hF-1od"/>
+                                                        <constraint firstAttribute="height" constant="140" id="SX5-Sd-Jfm"/>
+                                                    </constraints>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dhd-pD-QMQ" firstAttribute="centerX" secondItem="FU7-Iq-MVm" secondAttribute="centerX" id="5GN-9h-Fdq"/>
+                                                <constraint firstItem="n1d-Nu-vh4" firstAttribute="centerX" secondItem="FU7-Iq-MVm" secondAttribute="centerX" id="sUL-zQ-i8J"/>
+                                                <constraint firstItem="dhd-pD-QMQ" firstAttribute="centerY" secondItem="FU7-Iq-MVm" secondAttribute="centerY" id="sxO-4e-tSU"/>
+                                                <constraint firstItem="n1d-Nu-vh4" firstAttribute="top" secondItem="FU7-Iq-MVm" secondAttribute="top" constant="50" id="vfa-tt-7dK"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="registerBirthDayDatePicker" destination="dhd-pD-QMQ" id="1Gv-Qv-Atw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="otpRegisterCell" id="78b-AK-nBl" customClass="RegisterOTPCell" customModule="Logoo" customModuleProvider="target">
+                                        <rect key="frame" x="1272" y="0.0" width="414" height="500"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="ULy-hQ-4aJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mail Adresini Onayla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-cF-HTy">
                                                     <rect key="frame" x="98" y="50" width="218.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6G-79-mQ2" customClass="CHIOTPFieldFour" customModule="CHIOTPField">
+                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6G-79-mQ2" customClass="CHIOTPFieldFour" customModule="CHIOTPField">
                                                     <rect key="frame" x="87" y="230" width="240" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="AVX-fd-Iiu"/>
@@ -435,7 +468,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OB-B3-CUD">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OB-B3-CUD">
                                                     <rect key="frame" x="156.5" y="290" width="101" height="31"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Kod Gönder"/>
@@ -512,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjd-hX-TqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3412" y="646"/>
+            <point key="canvasLocation" x="3411.594202898551" y="645.53571428571422"/>
         </scene>
         <!--Kesfet-->
         <scene sceneID="6FT-zs-5qF">
@@ -861,7 +894,7 @@
             </objects>
             <point key="canvasLocation" x="7015.9420289855079" y="789.50892857142856"/>
         </scene>
-        <!--Global-->
+        <!--GlobalVC-->
         <scene sceneID="hp4-9G-jUU">
             <objects>
                 <viewController id="h2Q-We-vtZ" customClass="GlobalVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
@@ -883,11 +916,15 @@
                             <constraint firstItem="6BS-Ab-Uyl" firstAttribute="centerX" secondItem="gJd-9c-6ju" secondAttribute="centerX" id="lDQ-jO-E65"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Global" id="LC9-yi-Qvh"/>
+                    <navigationItem key="navigationItem" id="Csl-ge-80q">
+                        <barButtonItem key="rightBarButtonItem" title="Global Settings" image="gearshape" catalog="system" id="q7r-aG-ydO">
+                            <color key="tintColor" name="black700"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mkq-5a-ogR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7954" y="84"/>
+            <point key="canvasLocation" x="8863.7681159420299" y="83.705357142857139"/>
         </scene>
         <!--Kullanıcı Adı-->
         <scene sceneID="gGh-CX-A6d">
@@ -1134,7 +1171,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="L4m-TP-T3A" kind="relationship" relationship="viewControllers" id="QJv-ig-Tws"/>
-                        <segue destination="h2Q-We-vtZ" kind="relationship" relationship="viewControllers" id="GPl-qf-Czr"/>
+                        <segue destination="aN4-X7-Sdh" kind="relationship" relationship="viewControllers" id="GPl-qf-Czr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3Z-NG-7IT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1179,6 +1216,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZN9-Sk-uzW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6105.7971014492759" y="789.50892857142856"/>
+        </scene>
+        <!--Global-->
+        <scene sceneID="bY2-Bg-vvA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aN4-X7-Sdh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Global" id="LC9-yi-Qvh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VHR-7h-6En">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h2Q-We-vtZ" kind="relationship" relationship="rootViewController" id="JOz-U6-GPg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prM-1A-6Mg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7953.6231884057979" y="83.705357142857139"/>
         </scene>
     </scenes>
     <designables>

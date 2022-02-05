@@ -22,13 +22,19 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var registerNextButton: UIButton!
     @IBOutlet weak var registerBackButton: UIButton!
     
-    // Kayıt sınıfları
-    var registerPhotoPickCell:RegisterPhotoPickCell?
+    var presenter:ViewToPresenterRegisterMail?
+    var currentRegisterClass:Int?
     
-    var validation:ValidationProtocol?
+    var registerSteps:[UICollectionViewCell]?
+    var registerPhotoPickCell:RegisterPhotoPickCell?
+    var validation:RegisterProtocol?
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentRegisterClass = 0
+        
+        RegisterRouter.createModule(ref: self)
+        presenter?.getRegisterSteps()
 
         registerCollectionView.delegate = self
         registerCollectionView.dataSource = self
@@ -47,11 +53,21 @@ class RegisterVC: UIViewController {
      */
     
     @IBAction func registerNextButton(_ sender: Any) {
-       let current = findIndex(list: registerCollectionView) // kullanıcının kayıt kısmında hangi adımda olduğu bilgisini veriyor.
-        if current != 2 {
-            registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
-            let response = validation?.validate()
-            print(response!.message!)
+        print(currentRegisterClass!)
+        if currentRegisterClass != self.registerSteps!.count - 1 {
+            // Anlık kayıt hücresine validation gonderir, cevap validation response tipinde döner.
+            if let response = validation?.validate() {
+                /**
+                 Response status bool tipinde olup true dönüyorsa kullanıcı başarılı bir şekilde kayıt adımını tamamlamış anlamına gelir.
+                 */
+                print(response.message!)
+                if response.status! {
+                    registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
+                }else {
+                    print("geçiş izni verilmedi sebebi :\(response.message!)")
+                }
+            
+            }
         }else {
             performSegue(withIdentifier: "registerToHome", sender: nil)
         }
@@ -61,11 +77,15 @@ class RegisterVC: UIViewController {
      */
     
     @IBAction func registerBackButton(_ sender: Any) {
-        let current = findIndex(list: registerCollectionView)
-        
-        if current != 0 {
+        if currentRegisterClass != 0 {
             registerCollectionView.scrollToPreviousItem()
         }
+    }
+}
+
+extension RegisterVC : PresenterToViewRegisterMail {
+    func registerStepsToView(steps: [UICollectionViewCell]) {
+        self.registerSteps = steps
     }
 }
 
@@ -75,7 +95,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
      Kullanıcının kayıt kısmı 3 farklı adımdan oluştuğu ve bu sayı bir sabit olduğu için direkt olarak 3 döndürüyorum.
      */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return registerSteps!.count
     }
     /**
      - 0. index'de kullanıcı fotoğraf seçimi yapıyor.
@@ -83,21 +103,32 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
      - 2. index'de kullanıcının vermiş olduğu iletişim adresinin doğruluğu kontrol ediliyor.
      */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(indexPath.row)
-        if indexPath.row == 0 {
+        let count = indexPath.row
+        if self.registerSteps![count] is RegisterPhotoPickCell {
             let photoPickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoPickRegisterCell", for: indexPath) as! RegisterPhotoPickCell
             validation = photoPickCell
             photoPickCell.initialize()
             photoPickCell.photoProtocol = self
+            self.registerSteps![0] = photoPickCell // init
             return photoPickCell
         }
-        else if indexPath.row == 1 {
+        else if self.registerSteps![count] is RegisterInformationCell {
             let informationCell = collectionView.dequeueReusableCell(withReuseIdentifier: "informationRegisterCell", for: indexPath) as! RegisterInformationCell
             validation = informationCell
+            self.registerSteps![1] = informationCell // init
             return informationCell
-        }else {
+        }
+        else if self.registerSteps![count] is RegisterBirthDayCell {
+            let birthDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "registerBirthDayCell", for: indexPath) as! RegisterBirthDayCell
+            birthDayCell.initialize()
+            validation = birthDayCell
+            self.registerSteps![2] = birthDayCell // init
+            return birthDayCell
+        }
+        else {
             let otpCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otpRegisterCell", for: indexPath) as! RegisterOTPCell
             validation = otpCell
+            self.registerSteps![3] = otpCell // init
             return otpCell
         }
     }
@@ -119,44 +150,41 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             let offSet = scrollView.contentOffset.x
             let width = scrollView.frame.width
             let horizontalCenter = width / 2
-            let page = Int(offSet + horizontalCenter) / Int(width)
-            
+            let page = Int(offSet + horizontalCenter) / Int(width) // kullanıcının hangi kayıt sayfasında olduğunun bilgisi
+        
+            /**
+             Kullanıcının bulunduğu sayfaya göre yapılacaklar 3 farklı durumda ele alınıyor. Kullanıcı birinci kayıt ekranında, kullanıcı baş ve son arasında ve kullanıcı son adımda.
+             */
+        self.currentRegisterClass = page
         if page == 0 {
-            self.registerProgressView.progress = 0.3
-            self.registerStepLabel.text = "1/3"
-            self.registerNextButton.setTitle("Devam", for: UIControl.State.normal)
             self.registerBackButton.isHidden = true
-            
-        }
-        else if page == 1 {
-            self.registerProgressView.progress = 0.6
-            self.registerStepLabel.text = "2/3"
+        }else if page < self.registerSteps!.count-1 && page > 0 {
             self.registerNextButton.setTitle("Devam", for: UIControl.State.normal)
             self.registerBackButton.isHidden = false
-        }
-        else {
-            self.registerProgressView.progress = 0.9
-            self.registerStepLabel.text = "3/3"
+        }else {
             self.registerNextButton.setTitle("Onayla", for: UIControl.State.normal)
-            self.registerBackButton.isHidden = false
         }
+        
+        // ProgressView
+        self.registerStepLabel.text = "\(page+1)/\(self.registerSteps!.count)"
+        self.registerProgressView.progress = Float(page + 1) / Float(self.registerSteps!.count)
+        
+        let rgClass = self.registerSteps![page]
+        
+        if rgClass is RegisterPhotoPickCell {
+            self.validation = rgClass as! RegisterPhotoPickCell
+        }
+        else if rgClass is RegisterInformationCell {
+            self.validation = rgClass as! RegisterInformationCell
+        }
+        else if rgClass is RegisterBirthDayCell {
+            self.validation = rgClass as! RegisterBirthDayCell
+        }else {
+            self.validation = rgClass as! RegisterOTPCell
+        }
+
         }
     
-    /**
-     - Kullanıcının o anda hangi index'de bulunduğunu döndüren fonksiyon.
-     - B
-     */
-    func findIndex(list:UICollectionView) -> Int{
-        let asd = list.visibleCells
-        if asd.last is RegisterPhotoPickCell {
-            return 0
-        }else if asd.last is RegisterInformationCell {
-            return 1
-        }
-        else {
-            return 2
-        }
-    }
 }
 
 /**

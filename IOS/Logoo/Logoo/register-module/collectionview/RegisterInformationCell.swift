@@ -7,10 +7,13 @@
 
 import UIKit
 
-class RegisterInformationCell: UICollectionViewCell, ValidationProtocol {
+class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
     
     func validate() -> ValidationResponse {
         return ValidationResponse(status: true, message: "info okey")
     }
     
+    func initialize() {
+        
+    }
 }

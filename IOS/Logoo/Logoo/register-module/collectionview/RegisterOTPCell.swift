@@ -7,10 +7,13 @@
 
 import UIKit
 
-class RegisterOTPCell: UICollectionViewCell, ValidationProtocol {
+class RegisterOTPCell: UICollectionViewCell, RegisterProtocol {
     
     func validate() -> ValidationResponse {
         return ValidationResponse(status: true, message: "otp başarılı")
     }
     
+    func initialize() {
+        
+    }
 }

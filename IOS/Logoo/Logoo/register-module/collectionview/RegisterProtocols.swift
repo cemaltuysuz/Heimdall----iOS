@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol ValidationProtocol {
+protocol RegisterProtocol {
     func validate() -> ValidationResponse
+    
+    func initialize()
 }

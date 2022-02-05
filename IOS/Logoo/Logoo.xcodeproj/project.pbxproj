@@ -65,6 +65,11 @@
 		159E051F27A1533800E41035 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 159E051E27A1533800E41035 /* FirebaseDatabase */; };
 		159E052127A1533800E41035 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 159E052027A1533800E41035 /* FirebaseStorage */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
+		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
+		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
+		15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */; };
+		15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2527AC2BB30089779A /* RegisterRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +148,11 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
+		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
+		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		15EACB2527AC2BB30089779A /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,9 +367,13 @@
 		150C8FE827994EBB000DAFBE /* register-module */ = {
 			isa = PBXGroup;
 			children = (
-				159C3BD1279C10DC001B9607 /* entity */,
-				15983C072799992300903073 /* collectionview */,
+				15EACB1E27AC28EB0089779A /* protocols */,
 				15983C042799953300903073 /* view */,
+				15EACB1C27AC28C80089779A /* interactor */,
+				15EACB1B27AC28C00089779A /* presenter */,
+				159C3BD1279C10DC001B9607 /* entity */,
+				15EACB1D27AC28D50089779A /* router */,
+				15983C072799992300903073 /* collectionview */,
 			);
 			path = "register-module";
 			sourceTree = "<group>";
@@ -547,6 +561,7 @@
 				15983C0A2799996000903073 /* RegisterInformationCell.swift */,
 				15983C0C2799997300903073 /* RegisterOTPCell.swift */,
 				159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */,
+				15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */,
 			);
 			path = collectionview;
 			sourceTree = "<group>";
@@ -596,6 +611,38 @@
 				159C3BDE279C5DAA001B9607 /* GlobalVC.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		15EACB1B27AC28C00089779A /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		15EACB1C27AC28C80089779A /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				15EACB2127AC2AA70089779A /* RegisterInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		15EACB1D27AC28D50089779A /* router */ = {
+			isa = PBXGroup;
+			children = (
+				15EACB2527AC2BB30089779A /* RegisterRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		15EACB1E27AC28EB0089779A /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */,
+			);
+			path = protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -744,6 +791,7 @@
 				1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */,
 				153EA96F279FFBA900871246 /* P2PMessage.swift in Sources */,
 				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
+				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
 				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				153EA964279FF63800871246 /* Room.swift in Sources */,
@@ -757,9 +805,11 @@
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
+				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
+				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
@@ -773,6 +823,8 @@
 				153EA966279FF88000871246 /* P2P.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
+				15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */,
+				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
