@@ -12,4 +12,5 @@ enum GenderType : String {
     case Female = "Female"
     case HomoMale = "Homosexuel Male"
     case HomoFemale = "Homosexuel Female"
+    case Other = "Other"
 }

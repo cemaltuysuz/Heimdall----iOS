@@ -33,19 +33,28 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     
     func setUserImage(image: UIImage) {
         self.userImage = image
+        print("image geldi")
     }
     
     func setUserInfo(username: String, userMail: String, userPassword: String) {
+        print("*********")
+        print(username)
+        print(userMail)
+        print(userPassword)
         self.userName = username
         self.userMail = userMail
         self.userPassword = userPassword
     }
     
     func setUserBirthDay(date: String) {
+        print("****")
+        print(date)
         self.userBirthDay = date
     }
     
     func setUserGender(gender: GenderType) {
+        print("*******")
+        print(gender.rawValue)
         self.userGender = gender
     }
     

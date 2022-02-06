@@ -10,13 +10,18 @@ import UIKit
 class RegisterGenderCell: UICollectionViewCell, RegisterProtocol, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var registerGenderPickerView: UIPickerView!
-    let genders = ["Erkek", "Kadın", "Eşcinsel(Kadın)", "Eşcinsel(Erkek)", "Diğer"]
+    var toView:RegisterGenderCellProtocol?
+    let genders = [GenderType.Male, GenderType.Female, GenderType.HomoFemale, GenderType.HomoMale, GenderType.Other]
     
     func validate() -> ValidationResponse {
+        toView?.genderSelected(
+            gender: genders[self.registerGenderPickerView.selectedRow(inComponent: 0)]
+        )
         return ValidationResponse(status: true, message: "")
     }
     
-    func initialize() {
+    func initialize(genderPickerCellProtocol:RegisterGenderCellProtocol) {
+        self.toView = genderPickerCellProtocol
         registerGenderPickerView.delegate = self
         registerGenderPickerView.dataSource = self
     }
@@ -29,7 +34,11 @@ class RegisterGenderCell: UICollectionViewCell, RegisterProtocol, UIPickerViewDe
         return genders.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return genders[row]
+        return genders[row].rawValue
     }
     
+}
+
+protocol RegisterGenderCellProtocol {
+    func genderSelected(gender:GenderType)
 }

@@ -56,7 +56,7 @@ class RegisterVC: UIViewController {
         print(currentRegisterClass!)
         if currentRegisterClass != self.registerSteps!.count - 1 {
             // Anlık kayıt hücresine validation gonderir, cevap validation response tipinde döner.
-            if let response = validation?.validate() {
+            if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 /**
                  Response status bool tipinde olup true dönüyorsa kullanıcı başarılı bir şekilde kayıt adımını tamamlamış anlamına gelir.
                  */
@@ -116,26 +116,27 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             let informationCell = collectionView.dequeueReusableCell(withReuseIdentifier: "informationRegisterCell", for: indexPath) as! RegisterInformationCell
             validation = informationCell
             self.registerSteps![1] = informationCell // init
+            informationCell.initialize(informationProtocol: self)
             return informationCell
         }
         else if self.registerSteps![count] is RegisterBirthDayCell {
             let birthDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "registerBirthDayCell", for: indexPath) as! RegisterBirthDayCell
-            birthDayCell.initialize()
+            birthDayCell.initialize(birthDayCellProtocol: self)
             validation = birthDayCell
             self.registerSteps![2] = birthDayCell // init
             return birthDayCell
         }
         else if self.registerSteps![count] is RegisterGenderCell {
             let genderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "registerGenderCell", for: indexPath) as! RegisterGenderCell
-            genderCell.initialize()
+            genderCell.initialize(genderPickerCellProtocol: self)
             validation = genderCell
-            self.registerSteps![2] = genderCell // init
+            self.registerSteps![3] = genderCell // init
             return genderCell
         }
         else {
             let otpCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otpRegisterCell", for: indexPath) as! RegisterOTPCell
             validation = otpCell
-            self.registerSteps![3] = otpCell // init
+            self.registerSteps![4] = otpCell // init
             return otpCell
         }
     }
@@ -201,7 +202,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
  - Bu extension ile kullanıcının kayıt adımlarında hücreler ile arasında geçen dinamik olayları algılamamı sağlayacak protokolleri kalıtım olarak alıyorum.
  - UIImagePickerControllerDelegate ve UINavigationControllerDelegate protocolleri kullanıcıdan resim alabilmek adına kalıtım alındılar.
  */
-extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtocol, RegisterBirthDayCellProtocol, RegisterGenderCellProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     /**
      - Kullanıcı fotoğraf seçim aşamasında ImageView'a tıklarsa çalışacak method.
@@ -249,6 +250,16 @@ extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtoco
      */
     func informationToView(username: String, userMail: String, userPassword: String) {
         self.presenter?.setUserInfo(username: username, userMail: userMail, userPassword: userPassword)
+    }
+    /**
+     Kullanıcı doğum tarihinini kayıt sınıfından alıp internactor sınıfına iletiyorum.
+     */
+    func birthDaySelected(date: String) {
+        self.presenter?.setUserBirthDay(date: date)
+    }
+    
+    func genderSelected(gender: GenderType) {
+        self.presenter?.setUserGender(gender: gender)
     }
 }
 
