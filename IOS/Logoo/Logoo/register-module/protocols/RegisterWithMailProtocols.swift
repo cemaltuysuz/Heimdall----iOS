@@ -13,12 +13,21 @@ protocol ViewToPresenterRegisterMail {
     var interactor:PresenterToInteractorRegisterMail? {get set}
     
     func getRegisterSteps()
+    
+    func setUserImage(image:UIImage)
+    func setUserInfo(username:String,userMail:String,userPassword:String)
+    func setUserBirthDay(date:String)
+    func setUserGender(gender:GenderType)
 }
 
 protocol PresenterToInteractorRegisterMail {
     var presenter:InteractorToPresenterRegisterMail? {get set}
     
     func getRegisterSteps()
+    func setUserImage(image:UIImage)
+    func setUserInfo(username:String,userMail:String,userPassword:String)
+    func setUserBirthDay(date:String)
+    func setUserGender(gender:GenderType)
 }
 
 protocol InteractorToPresenterRegisterMail {

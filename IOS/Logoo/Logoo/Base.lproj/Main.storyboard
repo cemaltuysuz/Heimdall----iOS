@@ -413,15 +413,18 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dhd-pD-QMQ">
-                                                    <rect key="frame" x="8" y="180" width="398" height="216"/>
+                                                    <rect key="frame" x="8" y="180" width="398" height="215"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="215" id="hWY-nc-uoB"/>
+                                                    </constraints>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="dhd-pD-QMQ" secondAttribute="trailing" constant="8" id="FoC-2p-kSk"/>
-                                                <constraint firstItem="dhd-pD-QMQ" firstAttribute="top" secondItem="n1d-Nu-vh4" secondAttribute="bottom" constant="100" id="Z9q-bZ-u44"/>
-                                                <constraint firstItem="n1d-Nu-vh4" firstAttribute="centerX" secondItem="FU7-Iq-MVm" secondAttribute="centerX" id="daG-BK-8AW"/>
-                                                <constraint firstItem="n1d-Nu-vh4" firstAttribute="top" secondItem="FU7-Iq-MVm" secondAttribute="top" constant="50" id="nkD-8c-TWX"/>
-                                                <constraint firstItem="dhd-pD-QMQ" firstAttribute="leading" secondItem="FU7-Iq-MVm" secondAttribute="leading" constant="8" id="tkJ-MI-qdS"/>
+                                                <constraint firstItem="dhd-pD-QMQ" firstAttribute="leading" secondItem="FU7-Iq-MVm" secondAttribute="leading" constant="8" id="PfC-Le-Sg6"/>
+                                                <constraint firstItem="n1d-Nu-vh4" firstAttribute="centerX" secondItem="FU7-Iq-MVm" secondAttribute="centerX" id="TjK-21-zTM"/>
+                                                <constraint firstAttribute="trailing" secondItem="dhd-pD-QMQ" secondAttribute="trailing" constant="8" id="Z6I-K0-Kz1"/>
+                                                <constraint firstItem="dhd-pD-QMQ" firstAttribute="top" secondItem="n1d-Nu-vh4" secondAttribute="bottom" constant="100" id="w8M-Do-Sy2"/>
+                                                <constraint firstItem="n1d-Nu-vh4" firstAttribute="top" secondItem="FU7-Iq-MVm" secondAttribute="top" constant="50" id="wXu-PO-E9e"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
@@ -435,6 +438,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nh-g8-On5">
+                                                    <rect key="frame" x="8" y="8" width="398" height="484"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cinsiyetinizi Belirtiniz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnf-yx-bVP">
                                                     <rect key="frame" x="94" y="50" width="226.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -442,15 +449,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXh-h0-oew">
-                                                    <rect key="frame" x="8" y="142" width="398" height="216"/>
+                                                    <rect key="frame" x="72" y="142" width="270" height="216"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HXh-h0-oew" firstAttribute="centerY" secondItem="DhK-JG-JBJ" secondAttribute="centerY" id="1HB-KV-qZf"/>
-                                                <constraint firstItem="HXh-h0-oew" firstAttribute="leading" secondItem="DhK-JG-JBJ" secondAttribute="leading" constant="8" id="8E0-zI-E0T"/>
-                                                <constraint firstItem="hnf-yx-bVP" firstAttribute="top" secondItem="DhK-JG-JBJ" secondAttribute="top" constant="50" id="CnJ-qG-74E"/>
-                                                <constraint firstAttribute="trailing" secondItem="HXh-h0-oew" secondAttribute="trailing" constant="8" id="Ueu-Id-UoH"/>
-                                                <constraint firstItem="hnf-yx-bVP" firstAttribute="centerX" secondItem="DhK-JG-JBJ" secondAttribute="centerX" id="qR0-GC-NfF"/>
+                                                <constraint firstItem="HXh-h0-oew" firstAttribute="centerY" secondItem="DhK-JG-JBJ" secondAttribute="centerY" id="2Du-TH-VUv"/>
+                                                <constraint firstItem="hnf-yx-bVP" firstAttribute="centerX" secondItem="DhK-JG-JBJ" secondAttribute="centerX" id="9ob-MW-vA7"/>
+                                                <constraint firstItem="HXh-h0-oew" firstAttribute="leading" secondItem="DhK-JG-JBJ" secondAttribute="leading" constant="72" id="9sa-Ez-HZP"/>
+                                                <constraint firstAttribute="trailing" secondItem="HXh-h0-oew" secondAttribute="trailing" constant="72" id="BE4-5l-dne"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Nh-g8-On5" secondAttribute="bottom" constant="8" id="R5L-ir-aZ8"/>
+                                                <constraint firstItem="0Nh-g8-On5" firstAttribute="leading" secondItem="DhK-JG-JBJ" secondAttribute="leading" constant="8" id="dKf-ln-wbr"/>
+                                                <constraint firstItem="0Nh-g8-On5" firstAttribute="top" secondItem="DhK-JG-JBJ" secondAttribute="top" constant="8" id="iO0-Jb-UEJ"/>
+                                                <constraint firstItem="hnf-yx-bVP" firstAttribute="top" secondItem="DhK-JG-JBJ" secondAttribute="top" constant="50" id="sEm-1q-scd"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Nh-g8-On5" secondAttribute="trailing" constant="8" id="zve-RZ-RLq"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>

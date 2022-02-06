@@ -11,6 +11,14 @@ import UIKit
 class RegisterInteractor : PresenterToInteractorRegisterMail{
     var presenter: InteractorToPresenterRegisterMail?
     
+    private var userImage:UIImage?
+    private var userName:String?
+    private var userMail:String?
+    private var userPassword:String?
+    private var userBirthDay:String?
+    private var userGender:GenderType?
+    
+    
     func getRegisterSteps() {
         var steps = [UICollectionViewCell]()
             
@@ -21,6 +29,24 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
         steps.append(RegisterOTPCell())
         
         presenter?.registerStepsToPresenter(steps: steps)
+    }
+    
+    func setUserImage(image: UIImage) {
+        self.userImage = image
+    }
+    
+    func setUserInfo(username: String, userMail: String, userPassword: String) {
+        self.userName = username
+        self.userMail = userMail
+        self.userPassword = userPassword
+    }
+    
+    func setUserBirthDay(date: String) {
+        self.userBirthDay = date
+    }
+    
+    func setUserGender(gender: GenderType) {
+        self.userGender = gender
     }
     
     

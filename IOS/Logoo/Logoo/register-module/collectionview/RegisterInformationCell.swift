@@ -12,6 +12,8 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
     @IBOutlet weak var registerMailLabel: UITextField!
     @IBOutlet weak var registerPasswordLabel: UITextField!
     
+    var toView:RegisterInformationCellProtocol?
+    
     func validate() -> ValidationResponse {
         // Global check for empty text
         if let username = registerUsernameLabel.text, let mail = registerMailLabel.text, let password = registerPasswordLabel.text {
@@ -27,6 +29,7 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                 if emailPred.evaluate(with: mail) {
                     
                     if password.count > 6 {
+                        toView?.informationToView(username: username, userMail: mail, userPassword: password)
                         return ValidationResponse(status: true, message: "info okey")
                     }else {
                         return ValidationResponse(status: false, message: "Şifre en az 6 karakterli olmalıdır.")
@@ -42,7 +45,11 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
         }
     }
     
-    func initialize() {
-        
+    func initialize(informationProtocol:RegisterInformationCellProtocol) {
+        self.toView = informationProtocol
     }
+}
+
+protocol RegisterInformationCellProtocol {
+    func informationToView(username:String,userMail:String,userPassword:String)
 }

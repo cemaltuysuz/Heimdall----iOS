@@ -201,8 +201,8 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
  - Bu extension ile kullanıcının kayıt adımlarında hücreler ile arasında geçen dinamik olayları algılamamı sağlayacak protokolleri kalıtım olarak alıyorum.
  - UIImagePickerControllerDelegate ve UINavigationControllerDelegate protocolleri kullanıcıdan resim alabilmek adına kalıtım alındılar.
  */
-extension RegisterVC : RegisterPhotoCellProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+   
     /**
      - Kullanıcı fotoğraf seçim aşamasında ImageView'a tıklarsa çalışacak method.
      - Bu method ile kullanıcıdan resim istemek için ilgili pencerenin açılmasını sağlıyorum.
@@ -239,8 +239,16 @@ extension RegisterVC : RegisterPhotoCellProtocol, UIImagePickerControllerDelegat
            print("Expected a dictionary containing an image, but was provided the following: \(info)")
             return
         }
-        // resmi hücre sınıfına geri iletiyorum.
+        // Alınan resmi hem hücre sınıfına hemde interactor sınıfına iletiyorum.
         self.registerPhotoPickCell?.onPhotoUpload(image: image)
+        self.presenter?.setUserImage(image: image)
+    }
+    
+    /**
+     Bu kısımda kullanıcı kendine ait önemli bilgileri (username,mail,password) girdiği ve bu adımı geçmeye çalıştığı zaman eğer bilgiler validation kısmından geçiyor ise interactor katmanına iletilirler.
+     */
+    func informationToView(username: String, userMail: String, userPassword: String) {
+        self.presenter?.setUserInfo(username: username, userMail: userMail, userPassword: userPassword)
     }
 }
 
