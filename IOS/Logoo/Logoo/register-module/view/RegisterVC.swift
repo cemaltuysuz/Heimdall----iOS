@@ -21,6 +21,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var registerCollectionView: UICollectionView!
     @IBOutlet weak var registerNextButton: UIButton!
     @IBOutlet weak var registerBackButton: UIButton!
+    @IBOutlet weak var registerErrorLabel: UILabel!
     
     var presenter:ViewToPresenterRegisterMail?
     var currentRegisterClass:Int?
@@ -39,6 +40,7 @@ class RegisterVC: UIViewController {
         registerCollectionView.delegate = self
         registerCollectionView.dataSource = self
         
+        
     }
     /**
      - Kullanıcı kayıt kısmında ilerlemek istediğinde devam butonuna bastığında çalışacak olan method.
@@ -53,18 +55,19 @@ class RegisterVC: UIViewController {
      */
     
     @IBAction func registerNextButton(_ sender: Any) {
-        print(currentRegisterClass!)
         if currentRegisterClass != self.registerSteps!.count - 1 {
             // Anlık kayıt hücresine validation gonderir, cevap validation response tipinde döner.
             if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 /**
                  Response status bool tipinde olup true dönüyorsa kullanıcı başarılı bir şekilde kayıt adımını tamamlamış anlamına gelir.
                  */
-                print(response.message!)
                 if response.status! {
-                    registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
+                    //registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
+                    self.registerErrorLabel.isHidden = true
+                    scrollToNextItem()
                 }else {
-                    print("geçiş izni verilmedi sebebi :\(response.message!)")
+                    self.registerErrorLabel.text = response.message
+                    self.registerErrorLabel.isHidden = false
                 }
             
             }
@@ -78,7 +81,7 @@ class RegisterVC: UIViewController {
     
     @IBAction func registerBackButton(_ sender: Any) {
         if currentRegisterClass != 0 {
-            registerCollectionView.scrollToPreviousItem()
+            scrollToPreviousItem()
         }
     }
 }
@@ -266,18 +269,18 @@ extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtoco
 /**
  CollectionView yapısını adım adım bir yapı haline getirebilmek adına bir extension oluşturdum. Böylelikle istediğim zaman ileri veya geri scroll edebiliyorum.
  */
-extension UICollectionView {
+extension RegisterVC {
     func scrollToNextItem() {
+        /*
         let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
-        self.moveToFrame(contentOffset: contentOffset)
+        self.moveToFrame(contentOffset: contentOffset) */
+        let nextItem: IndexPath = IndexPath(item: self.currentRegisterClass! + 1, section: 0)
+        self.registerCollectionView.scrollToItem(at: nextItem, at: .left, animated: true)
     }
 
     func scrollToPreviousItem() {
-        let contentOffset = CGFloat(floor(self.contentOffset.x - self.bounds.size.width))
-        self.moveToFrame(contentOffset: contentOffset)
+        let previousItem: IndexPath = IndexPath(item: self.currentRegisterClass! - 1, section: 0)
+        self.registerCollectionView.scrollToItem(at: previousItem, at: .right, animated: true)
     }
 
-    func moveToFrame(contentOffset : CGFloat) {
-        self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
-    }
 }
