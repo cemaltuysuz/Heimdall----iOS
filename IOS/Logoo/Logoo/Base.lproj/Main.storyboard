@@ -301,6 +301,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="2aQ-hJ-1iU">
+                                    <rect key="frame" x="1023" y="0.0" width="414" height="430"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoPickRegisterCell" id="0vR-DA-MxE" customClass="RegisterPhotoPickCell" customModule="Logoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
@@ -595,6 +599,7 @@
                         <outlet property="registerBackButton" destination="jNg-Px-z31" id="upf-69-JBV"/>
                         <outlet property="registerCollectionView" destination="sZt-Zb-Ox7" id="xB5-5T-8BI"/>
                         <outlet property="registerErrorLabel" destination="jAV-se-q5q" id="QzY-3W-ryH"/>
+                        <outlet property="registerIndicator" destination="2aQ-hJ-1iU" id="pxj-5B-DuE"/>
                         <outlet property="registerNextButton" destination="4Ns-kf-kIP" id="uuh-vT-1UU"/>
                         <outlet property="registerProgressView" destination="Qzo-zD-Qtv" id="rcI-A0-mA1"/>
                         <outlet property="registerStepLabel" destination="SSm-m2-V8m" id="YUV-Gw-NjB"/>

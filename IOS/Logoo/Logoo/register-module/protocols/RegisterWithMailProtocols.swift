@@ -18,6 +18,8 @@ protocol ViewToPresenterRegisterMail {
     func setUserInfo(username:String,userMail:String,userPassword:String)
     func setUserBirthDay(date:String)
     func setUserGender(gender:GenderType)
+    
+    func createUser()
 }
 
 protocol PresenterToInteractorRegisterMail {
@@ -28,14 +30,19 @@ protocol PresenterToInteractorRegisterMail {
     func setUserInfo(username:String,userMail:String,userPassword:String)
     func setUserBirthDay(date:String)
     func setUserGender(gender:GenderType)
+    
+    func createUser()
 }
 
 protocol InteractorToPresenterRegisterMail {
     func registerStepsToPresenter(steps:[UICollectionViewCell])
+    
+    func registerProgressVisibility(status:Bool)
 }
 
 protocol PresenterToViewRegisterMail {
     func registerStepsToView(steps:[UICollectionViewCell])
+    func registerProgressVisibility(status:Bool)
 }
 
 protocol PresenterToRouterRegisterMail {

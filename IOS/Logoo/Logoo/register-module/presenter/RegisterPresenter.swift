@@ -36,5 +36,12 @@ class RegisterPresenter : InteractorToPresenterRegisterMail, ViewToPresenterRegi
         interactor?.setUserGender(gender: gender)
     }
     
+    func registerProgressVisibility(status: Bool) {
+        view?.registerProgressVisibility(status: status)
+    }
+    
+    func createUser() {
+        interactor?.createUser()
+    }
     
 }

@@ -22,6 +22,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var registerNextButton: UIButton!
     @IBOutlet weak var registerBackButton: UIButton!
     @IBOutlet weak var registerErrorLabel: UILabel!
+    @IBOutlet weak var registerIndicator: UIActivityIndicatorView!
     
     var presenter:ViewToPresenterRegisterMail?
     var currentRegisterClass:Int?
@@ -55,7 +56,7 @@ class RegisterVC: UIViewController {
      */
     
     @IBAction func registerNextButton(_ sender: Any) {
-        if currentRegisterClass != self.registerSteps!.count - 1 {
+        if currentRegisterClass != self.registerSteps!.count - 1 && currentRegisterClass != self.registerSteps!.count - 2 {
             // Anlık kayıt hücresine validation gonderir, cevap validation response tipinde döner.
             if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 /**
@@ -69,9 +70,20 @@ class RegisterVC: UIViewController {
                     self.registerErrorLabel.text = response.message
                     self.registerErrorLabel.isHidden = false
                 }
-            
             }
-        }else {
+        }else if currentRegisterClass == self.registerSteps!.count - 2 {
+            if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
+                if response.status! {
+                    //registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
+                    self.registerErrorLabel.isHidden = true
+                    presenter?.createUser()
+                }else {
+                    self.registerErrorLabel.text = response.message
+                    self.registerErrorLabel.isHidden = false
+                }
+            }
+        }
+        else {
             performSegue(withIdentifier: "registerToHome", sender: nil)
         }
     }
@@ -87,6 +99,14 @@ class RegisterVC: UIViewController {
 }
 
 extension RegisterVC : PresenterToViewRegisterMail {
+    func registerProgressVisibility(status: Bool) {
+        if status {
+            registerIndicator.startAnimating()
+        }else {
+            registerIndicator.stopAnimating()
+        }
+    }
+    
     func registerStepsToView(steps: [UICollectionViewCell]) {
         self.registerSteps = steps
     }
@@ -169,11 +189,16 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         self.currentRegisterClass = page
         if page == 0 {
             self.registerBackButton.isHidden = true
-        }else if page < self.registerSteps!.count-1 && page > 0 {
+        }else if page < self.registerSteps!.count-1 && page > 0 && currentRegisterClass != self.registerSteps!.count - 2 {
             self.registerNextButton.setTitle("Devam", for: UIControl.State.normal)
             self.registerBackButton.isHidden = false
-        }else {
-            self.registerNextButton.setTitle("Onayla", for: UIControl.State.normal)
+        }
+        else if currentRegisterClass == self.registerSteps!.count - 2 {
+            self.registerNextButton.setTitle("Kayıt Ol", for: UIControl.State.normal)
+            self.registerBackButton.isHidden = false
+        }
+        else {
+            self.registerNextButton.setTitle("Mail Gönder", for: UIControl.State.normal)
         }
         
         // ProgressView
