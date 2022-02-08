@@ -44,4 +44,8 @@ class RegisterPresenter : InteractorToPresenterRegisterMail, ViewToPresenterRegi
         interactor?.createUser()
     }
     
+    func registerFeedBack(response: ValidationResponse) {
+        view?.registerFeedBack(response: response)
+    }
+    
 }

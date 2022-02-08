@@ -38,11 +38,14 @@ protocol InteractorToPresenterRegisterMail {
     func registerStepsToPresenter(steps:[UICollectionViewCell])
     
     func registerProgressVisibility(status:Bool)
+    func registerFeedBack(response:ValidationResponse)
 }
 
 protocol PresenterToViewRegisterMail {
     func registerStepsToView(steps:[UICollectionViewCell])
+    
     func registerProgressVisibility(status:Bool)
+    func registerFeedBack(response:ValidationResponse)
 }
 
 protocol PresenterToRouterRegisterMail {

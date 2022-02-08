@@ -9,14 +9,17 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class RegisterInteractor : PresenterToInteractorRegisterMail{
     
     var presenter: InteractorToPresenterRegisterMail?
-    var ref:DatabaseReference!
+    var databaseRef:DatabaseReference!
+    var storageRef:StorageReference!
     
     init(){
-        ref = Database.database().reference()
+        databaseRef = Database.database().reference()
+        storageRef = Storage.storage().reference()
     }
     
     private var userImage:UIImage?
@@ -68,11 +71,22 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
             withEmail: self.userMail!,
             password: self.userPassword!){ user, error in
                 
+                /**
+                 Kayıt oluşturulurken bir sorun oluşursa ;
+                 - View kısmına bildir
+                 - Indicatoru durdur
+                 - return et
+                 */
                 if let err = error {
-                    print(err)
+                    self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Bir sorun oluştu. \(err.localizedDescription)"))
+                    self.presenter?.registerProgressVisibility(status: false)
                     return
                 }
-                let userRef = self.ref.child("users").child(user!.user.uid)
+                /**
+                  Kullanıcıyı database kısmına kayıt etmek için bir veritabanı referansı oluşturuyorum
+                 */
+                let userRef = self.databaseRef.child("users").child(user!.user.uid)
+                // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
                 let userObject = [
                     "userId"            : user!.user.uid,
                     "username"          : self.userName!,
@@ -91,7 +105,44 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     
                     
                         ] as [String:Any]
-                userRef.setValue(userObject){(error, ref)  in
+                /**
+                 Kullanıcıyı veritabanına işliyorum ;
+                 Bu kısımda eğer kullanıcı veritabanına başarılı bir şekilde işlenirse kullanıcının profil resmini storage alanına upload edeceğim.
+                 Sonrasında aldığım ref değeri ile bunu kullanıcı profil resmi olarak kayıt edeceğim.
+                 */
+                userRef.setValue(userObject){(error, rgRef)  in
+                    if let err = error {
+                        self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Veritabanına kayıt yapılırken hata. \(err.localizedDescription)"))
+                        return
+                    }
+                    
+                    var data = Data()
+                    data = self.userImage!.jpegData(compressionQuality: 0.8)! // Fotoğrafı data haline getirdim.
+                    
+                    // Fotoğrafın yükleneceği dosya yolunu ve dosyanın ismi / tipini belirliyorum.
+                    let fileUUID = UUID().uuidString
+                    let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
+                    let metaData = StorageMetadata()
+                    metaData.contentType = "image/jpg"
+                    
+                    // fotoğraf yükleme işlemini başlatıyorum.
+                    self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
+                        if let err = error {
+                            print("resim yüklemede hata var : \(err.localizedDescription)")
+                            return
+                        }
+                        self.storageRef.child(filePath).downloadURL{(url,error) in
+                            if let error = error {
+                                print("resim url alırken hata : \(error)")
+                                return
+                            }
+                            if let ppUrl = url?.absoluteString {
+                                rgRef.child("userPhotoUrl").setValue(ppUrl)
+                                self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
+                            }
+                            
+                        }
+                    }
                     
                 }
                 

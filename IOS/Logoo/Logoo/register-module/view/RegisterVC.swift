@@ -27,6 +27,7 @@ class RegisterVC: UIViewController {
     var presenter:ViewToPresenterRegisterMail?
     var currentRegisterClass:Int?
     
+    var confirmMailAdress:String?
     var registerSteps:[UICollectionViewCell]?
     var registerPhotoPickCell:RegisterPhotoPickCell?
     var validation:RegisterProtocol?
@@ -99,6 +100,15 @@ class RegisterVC: UIViewController {
 }
 
 extension RegisterVC : PresenterToViewRegisterMail {
+    func registerFeedBack(response: ValidationResponse) {
+        if response.status! {
+            self.confirmMailAdress = response.message!
+            scrollToNextItem()
+        }else {
+            self.registerErrorLabel.text = response.message!
+        }
+    }
+    
     func registerProgressVisibility(status: Bool) {
         if status {
             registerIndicator.startAnimating()

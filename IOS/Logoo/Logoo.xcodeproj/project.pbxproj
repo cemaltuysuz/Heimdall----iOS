@@ -51,7 +51,6 @@
 		153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA97927A0008D00871246 /* InboxCollectionViewCell.swift */; };
 		153EA97C27A0076000871246 /* ChatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA97B27A0076000871246 /* ChatType.swift */; };
 		153EA98127A0468500871246 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA98027A0468500871246 /* LoginVC.swift */; };
-		153EA98427A04B8900871246 /* CHIOTPField in Frameworks */ = {isa = PBXBuildFile; productRef = 153EA98327A04B8900871246 /* CHIOTPField */; };
 		156F042C27AFA80F00D37039 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F042B27AFA80F00D37039 /* GenderType.swift */; };
 		156F042F27B18F2400D37039 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 156F042E27B18F2400D37039 /* FirebaseAuth */; };
 		156F043127B18F2400D37039 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 156F043027B18F2400D37039 /* FirebaseDatabase */; };
@@ -166,7 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				156F043127B18F2400D37039 /* FirebaseDatabase in Frameworks */,
-				153EA98427A04B8900871246 /* CHIOTPField in Frameworks */,
 				156F042F27B18F2400D37039 /* FirebaseAuth in Frameworks */,
 				156F043527B18F2400D37039 /* FirebaseStorage in Frameworks */,
 				156F043327B18F2400D37039 /* FirebaseDynamicLinks in Frameworks */,
@@ -678,7 +676,6 @@
 			);
 			name = Logoo;
 			packageProductDependencies = (
-				153EA98327A04B8900871246 /* CHIOTPField */,
 				156F042E27B18F2400D37039 /* FirebaseAuth */,
 				156F043027B18F2400D37039 /* FirebaseDatabase */,
 				156F043227B18F2400D37039 /* FirebaseDynamicLinks */,
@@ -757,7 +754,6 @@
 			);
 			mainGroup = 150C8FA527994C6D000DAFBE;
 			packageReferences = (
-				153EA98227A04B8900871246 /* XCRemoteSwiftPackageReference "CHIOTPField" */,
 				156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 150C8FAF27994C6D000DAFBE /* Products */;
@@ -1207,14 +1203,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		153EA98227A04B8900871246 /* XCRemoteSwiftPackageReference "CHIOTPField" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ChiliLabs/CHIOTPField.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 		156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1226,11 +1214,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		153EA98327A04B8900871246 /* CHIOTPField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 153EA98227A04B8900871246 /* XCRemoteSwiftPackageReference "CHIOTPField" */;
-			productName = CHIOTPField;
-		};
 		156F042E27B18F2400D37039 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
