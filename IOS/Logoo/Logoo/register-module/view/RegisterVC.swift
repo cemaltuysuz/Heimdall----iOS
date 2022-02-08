@@ -84,8 +84,18 @@ class RegisterVC: UIViewController {
                 }
             }
         }
+        
         else {
-            performSegue(withIdentifier: "registerToHome", sender: nil)
+            performSegue(withIdentifier: "registerToLogin", sender: self.confirmMailAdress!)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "registerToLogin" {
+            if let mail = (sender as? String) {
+                let targetVC = segue.destination as! LoginVC
+                targetVC.incomingMail = mail
+            }
         }
     }
     /**
@@ -170,6 +180,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             let otpCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otpRegisterCell", for: indexPath) as! RegisterOTPCell
             validation = otpCell
             self.registerSteps![4] = otpCell // init
+            otpCell.initialize()
             return otpCell
         }
     }
@@ -208,7 +219,8 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             self.registerBackButton.isHidden = false
         }
         else {
-            self.registerNextButton.setTitle("Mail Gönder", for: UIControl.State.normal)
+            self.registerNextButton.setTitle("Giriş Yap", for: UIControl.State.normal)
+            self.registerBackButton.isHidden = true
         }
         
         // ProgressView

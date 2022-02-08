@@ -138,6 +138,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                             }
                             if let ppUrl = url?.absoluteString {
                                 rgRef.child("userPhotoUrl").setValue(ppUrl)
+                                self.presenter?.registerProgressVisibility(status: false)
                                 self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
                             }
                             
