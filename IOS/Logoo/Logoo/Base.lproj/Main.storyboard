@@ -1102,6 +1102,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Giriş Yap">
                                             <color key="baseBackgroundColor" name="black700"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginButton:" destination="LJg-HY-0DA" eventType="touchUpInside" id="FhU-F5-9Lu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1133,6 +1136,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qQB-Cl-dhC"/>
                     <connections>
+                        <outlet property="loginUserMail" destination="BJq-n7-VBy" id="ue6-hV-Oxg"/>
                         <segue destination="4SP-qc-ECv" kind="presentation" identifier="LoginToHome" modalPresentationStyle="fullScreen" id="lxX-gy-jsd"/>
                     </connections>
                 </viewController>
