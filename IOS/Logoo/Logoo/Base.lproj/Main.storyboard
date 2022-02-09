@@ -1138,11 +1138,96 @@
                     <connections>
                         <outlet property="loginUserMail" destination="BJq-n7-VBy" id="ue6-hV-Oxg"/>
                         <segue destination="4SP-qc-ECv" kind="presentation" identifier="LoginToHome" modalPresentationStyle="fullScreen" id="lxX-gy-jsd"/>
+                        <segue destination="zAk-vi-J8f" kind="presentation" identifier="loginToSelectionOfInterest" modalPresentationStyle="fullScreen" id="CaB-SZ-j1r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gB-uw-Bzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3411.594202898551" y="-459.375"/>
+        </scene>
+        <!--Select InterestVC-->
+        <scene sceneID="pjW-CN-f7E">
+            <objects>
+                <viewController id="zAk-vi-J8f" customClass="SelectInterestVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TNt-vP-98S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İlgi Alanlarına Bir Göz Atmaya Ne Dersin ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZj-oA-jvJ">
+                                <rect key="frame" x="20" y="74" width="374" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="jpQ-Ml-BDc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" name="black700"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daha iyi bir deneyim ve yüksek doğruluk ile eşleşme için ilgi alanlarına ihtiyacımız var !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMb-TE-Ige">
+                                <rect key="frame" x="52" y="202" width="310" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="9PP-Mh-bSc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="grey500"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" placeholder="Spor, sanat, günlük aktivite ..." translatesAutoresizingMaskIntoConstraints="NO" id="JRb-aR-Aka">
+                                <rect key="frame" x="52" y="291" width="310" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-Ab-yQ9">
+                                <rect key="frame" x="52" y="367" width="310" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="gUP-aZ-Tuk"/>
+                                </constraints>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pR3-qH-4uj">
+                                <rect key="frame" x="52" y="757" width="310" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wji-ez-AmE"/>
+                                </constraints>
+                                <color key="tintColor" name="black700"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Kayıt Et">
+                                    <color key="baseBackgroundColor" name="black700"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27F-u3-23w">
+                                <rect key="frame" x="354" y="44" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6jV-O3-who"/>
+                                    <constraint firstAttribute="width" constant="40" id="IRz-p7-Xy6"/>
+                                </constraints>
+                                <color key="tintColor" name="black700"/>
+                                <buttonConfiguration key="configuration" style="plain" image="close-with-transparency.png"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lJR-fQ-0l8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sMb-TE-Ige" firstAttribute="centerX" secondItem="TNt-vP-98S" secondAttribute="centerX" id="6GT-3z-iyT"/>
+                            <constraint firstItem="sMb-TE-Ige" firstAttribute="top" secondItem="bZj-oA-jvJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Edd-gj-fzN"/>
+                            <constraint firstItem="JRb-aR-Aka" firstAttribute="leading" secondItem="lJR-fQ-0l8" secondAttribute="leading" constant="52" id="N79-U1-orQ"/>
+                            <constraint firstItem="q5U-Ab-yQ9" firstAttribute="top" secondItem="JRb-aR-Aka" secondAttribute="bottom" constant="25" id="Pnn-FW-27z"/>
+                            <constraint firstItem="JRb-aR-Aka" firstAttribute="top" secondItem="sMb-TE-Ige" secondAttribute="bottom" constant="60" id="Pq4-bj-gkM"/>
+                            <constraint firstItem="lJR-fQ-0l8" firstAttribute="trailing" secondItem="q5U-Ab-yQ9" secondAttribute="trailing" constant="52" id="Tob-HT-osr"/>
+                            <constraint firstItem="lJR-fQ-0l8" firstAttribute="trailing" secondItem="JRb-aR-Aka" secondAttribute="trailing" constant="52" id="Tyb-GH-qIs"/>
+                            <constraint firstItem="bZj-oA-jvJ" firstAttribute="leading" secondItem="lJR-fQ-0l8" secondAttribute="leading" constant="20" id="VpZ-4W-QZT"/>
+                            <constraint firstItem="pR3-qH-4uj" firstAttribute="top" secondItem="q5U-Ab-yQ9" secondAttribute="bottom" constant="40" id="baB-di-YqH"/>
+                            <constraint firstItem="bZj-oA-jvJ" firstAttribute="top" secondItem="lJR-fQ-0l8" secondAttribute="top" constant="30" id="fBp-l7-cpr"/>
+                            <constraint firstItem="lJR-fQ-0l8" firstAttribute="trailing" secondItem="bZj-oA-jvJ" secondAttribute="trailing" constant="20" id="fLe-5v-cLr"/>
+                            <constraint firstItem="27F-u3-23w" firstAttribute="top" secondItem="lJR-fQ-0l8" secondAttribute="top" id="nDJ-2z-Vtt"/>
+                            <constraint firstItem="lJR-fQ-0l8" firstAttribute="trailing" secondItem="pR3-qH-4uj" secondAttribute="trailing" constant="52" id="oMJ-RX-Dvv"/>
+                            <constraint firstItem="q5U-Ab-yQ9" firstAttribute="leading" secondItem="lJR-fQ-0l8" secondAttribute="leading" constant="52" id="pa6-ND-Ons"/>
+                            <constraint firstItem="lJR-fQ-0l8" firstAttribute="trailing" secondItem="27F-u3-23w" secondAttribute="trailing" constant="20" id="qnb-k1-rsP"/>
+                            <constraint firstItem="pR3-qH-4uj" firstAttribute="leading" secondItem="lJR-fQ-0l8" secondAttribute="leading" constant="52" id="rWI-iq-EhN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1KL-UZ-TQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4211.594202898551" y="-646.20535714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OX0-PW-ODg">
@@ -1287,6 +1372,7 @@
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="close-with-transparency.png" width="44" height="44"/>
         <image name="face" width="70" height="70"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="onboard1" width="323" height="318"/>
