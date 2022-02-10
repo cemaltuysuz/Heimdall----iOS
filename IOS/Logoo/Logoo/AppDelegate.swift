@@ -7,9 +7,7 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseDatabase
-import DeviceKit
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,34 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        if Auth.auth().currentUser != nil {
-            if let userId = Auth.auth().currentUser?.uid{
-                let ref = Database.database().reference().child("users").child(userId).child("isOnline")
-                ref.setValue(false)
-            }
-        }
+        
     }
     
+    
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
-        if Auth.auth().currentUser != nil {
-            if let userId = Auth.auth().currentUser?.uid{
-                let dbRef = Database.database().reference()
-                
-                let onlineRef = dbRef.child("users").child(userId).child("isOnline") // user online state
-                onlineRef.setValue(true)
-                
-                let logObject = [
-                    "userLoginTime"     : timeInSeconds,
-                    "deviceModel"       : Device.current.model ?? "unfounded",
-                    "deviceVersion"     : Device.current.systemVersion ?? "unfounded",
-                    "operatingSystem"   : "IOS"
-                ] as [String : Any]
-                
-                let loginLogRef = dbRef.child("login-log").child(userId).child(UUID().uuidString)
-                loginLogRef.setValue(logObject)
-                
-            }
-        }
+     
     }
 
 

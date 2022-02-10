@@ -16,7 +16,7 @@ class RegisterBirthDayCell: UICollectionViewCell, RegisterProtocol {
     func validate() -> ValidationResponse {
         let dateFormatter = DateFormatter()
         // Set Date Format
-        dateFormatter.dateFormat = "YY/MM/dd"
+        dateFormatter.dateFormat = "dd.MM.YYYY"
         // Convert Date to String
         let strDate = dateFormatter.string(from: self.registerBirthDayDatePicker.date)
         

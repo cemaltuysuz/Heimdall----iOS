@@ -91,13 +91,13 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     "userId"            : user!.user.uid,
                     "username"          : self.userName!,
                     "userMail"          : self.userMail!,
-                    "userPhotoUrl"      : "PHOTO URL",
+                    "userPhotoUrl"      : "",
                     "userGender"        : self.userGender!.rawValue,
                     "userBirthDay"      : self.userBirthDay!,
                     "userBio"           : "",
                     "userHobbies"       : "",
-                    "userLastLogin"     : "LAST LOGIN",
-                    "userRegisterTime"  : "REG TIME",
+                    "userLastSeen"      : "",
+                    "userRegisterTime"  : "\(timeInSeconds)",
                     "isAnonymous"       : "false",
                     "isOnline"          : "false",
                     "isAllowTheGroupInvite" : "true",
@@ -112,7 +112,8 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                  */
                 userRef.setValue(userObject){(error, rgRef)  in
                     if let err = error {
-                        self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Veritabanına kayıt yapılırken hata. \(err.localizedDescription)"))
+                        self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
+                        self.presenter?.registerProgressVisibility(status: false)
                         return
                     }
                     
@@ -128,18 +129,21 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     // fotoğraf yükleme işlemini başlatıyorum.
                     self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
                         if let err = error {
-                            print("resim yüklemede hata var : \(err.localizedDescription)")
+                            print("Error upload user photo : \(err.localizedDescription)")
+                            self.presenter?.registerProgressVisibility(status: false)
                             return
                         }
                         self.storageRef.child(filePath).downloadURL{(url,error) in
                             if let error = error {
-                                print("resim url alırken hata : \(error)")
+                                print("Error when receive the user's profile photo url : \(error)")
+                                self.presenter?.registerProgressVisibility(status: false)
                                 return
                             }
                             if let ppUrl = url?.absoluteString {
                                 rgRef.child("userPhotoUrl").setValue(ppUrl)
                                 self.presenter?.registerProgressVisibility(status: false)
                                 self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
+                                self.presenter?.registerProgressVisibility(status: false)
                             }
                             
                         }
@@ -149,7 +153,6 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                 
             }
        // KAYIT İŞLEMİ BİTTİ
-                self.presenter?.registerProgressVisibility(status: false)
             }
     }
 

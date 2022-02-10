@@ -32,6 +32,7 @@
                     </view>
                     <connections>
                         <segue destination="uVF-dz-q3a" kind="presentation" identifier="welcomeToOnBoard" modalPresentationStyle="fullScreen" id="pi9-1Y-0tj"/>
+                        <segue destination="4SP-qc-ECv" kind="presentation" identifier="welcomeToHome" modalPresentationStyle="fullScreen" id="st2-MW-xKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -473,17 +474,17 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="otpRegisterCell" id="78b-AK-nBl" customClass="RegisterOTPCell" customModule="Logoo" customModuleProvider="target">
                                         <rect key="frame" x="1656" y="0.0" width="414" height="430"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ULy-hQ-4aJ">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="ULy-hQ-4aJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail Adresine Bağlantı Gönderdik" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-cF-HTy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mail Adresine Bağlantı Gönderdik" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-cF-HTy">
                                                     <rect key="frame" x="29.5" y="50" width="355.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6x-J2-pJA">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6x-J2-pJA">
                                                     <rect key="frame" x="107" y="160" width="200" height="200"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
@@ -541,7 +542,7 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="2aQ-hJ-1iU">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="2aQ-hJ-1iU">
                                 <rect key="frame" x="0.0" y="233" width="414" height="430"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -1137,6 +1138,7 @@
                     <navigationItem key="navigationItem" id="qQB-Cl-dhC"/>
                     <connections>
                         <outlet property="loginUserMail" destination="BJq-n7-VBy" id="ue6-hV-Oxg"/>
+                        <outlet property="loginUserPassword" destination="g71-VC-hcN" id="3b6-j5-QEb"/>
                         <segue destination="4SP-qc-ECv" kind="presentation" identifier="LoginToHome" modalPresentationStyle="fullScreen" id="lxX-gy-jsd"/>
                         <segue destination="zAk-vi-J8f" kind="presentation" identifier="loginToSelectionOfInterest" modalPresentationStyle="fullScreen" id="CaB-SZ-j1r"/>
                     </connections>
@@ -1363,6 +1365,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="st2-MW-xKS"/>
         <segue reference="o1r-4g-XK7"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1381,7 +1384,7 @@
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="black700">
-            <color red="0.066666666666666666" green="0.090196078431372548" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grey200">
             <color red="0.94900000095367432" green="0.96100002527236938" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

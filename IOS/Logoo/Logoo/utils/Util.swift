@@ -13,5 +13,8 @@ func hobbyToHobbies(hobby:String) -> [String]{
         return hobbies
 }
 
-let timeInSeconds: TimeInterval = Date().timeIntervalSince1970
+func timeInSeconds() -> Int {
+    return Int(Date().timeIntervalSince1970 * 1000)
+}
+
 

@@ -16,7 +16,7 @@ class User {
     var userBirthDay:String?
     var userBio:String?
     var userHobbies:String?
-    var userLastLogin:String?
+    var userLastSeen:String?
     var userRegisterTime:String?
     var isAnonymous:String?
     var isOnline:String?
@@ -25,7 +25,7 @@ class User {
     
     init(){}
     
-    init(userId: String, username: String, userMail: String, userPhotoUrl: String, userGender: GenderType, userBirthDay: String, userBio: String, userHobbies:String, userLastLogin: String, userRegisterTime: String, isAnonymous: String, isOnline: String, isAllowTheGroupInvite: String, isAllowTheInboxInvite: String) {
+    init(userId: String, username: String, userMail: String, userPhotoUrl: String, userGender: GenderType, userBirthDay: String, userBio: String, userHobbies:String, userLastSeen: String, userRegisterTime: String, isAnonymous: String, isOnline: String, isAllowTheGroupInvite: String, isAllowTheInboxInvite: String) {
         self.userId = userId
         self.username = username
         self.userMail = userMail
@@ -34,7 +34,7 @@ class User {
         self.userBirthDay = userBirthDay
         self.userBio = userBio
         self.userHobbies = userHobbies
-        self.userLastLogin = userLastLogin
+        self.userLastSeen = userLastSeen
         self.userRegisterTime = userRegisterTime
         self.isAnonymous = isAnonymous
         self.isOnline = isOnline

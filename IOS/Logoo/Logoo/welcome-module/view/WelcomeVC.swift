@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class WelcomeVC: UIViewController {
 
@@ -15,6 +16,10 @@ class WelcomeVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        performSegue(withIdentifier: "welcomeToOnBoard", sender: nil)
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "welcomeToHome", sender: nil)
+        }else {
+            performSegue(withIdentifier: "welcomeToOnBoard", sender: nil)
+        }
     }
 }

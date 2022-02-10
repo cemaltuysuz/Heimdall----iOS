@@ -75,6 +75,7 @@
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */; };
 		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
 		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
@@ -167,6 +168,7 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
 		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
 		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 		156F043F27B3A3CD00D37039 /* router */ = {
 			isa = PBXGroup;
 			children = (
+				15DC5D3C27B520E4004CA892 /* LoginRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -931,6 +934,7 @@
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
+				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
