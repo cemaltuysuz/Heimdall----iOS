@@ -1120,6 +1120,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBk-eF-BKo">
+                                <rect key="frame" x="30" y="558" width="354" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="l4F-tX-vTp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q8T-al-bv3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1130,13 +1139,17 @@
                             <constraint firstItem="0mR-jT-w5d" firstAttribute="centerX" secondItem="o5c-cw-9j2" secondAttribute="centerX" id="HtZ-Cm-xeL"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="centerX" secondItem="o5c-cw-9j2" secondAttribute="centerX" id="I0g-dk-AGZ"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="centerY" secondItem="o5c-cw-9j2" secondAttribute="centerY" id="Nuo-no-1rw"/>
+                            <constraint firstItem="sBk-eF-BKo" firstAttribute="leading" secondItem="q8T-al-bv3" secondAttribute="leading" constant="30" id="Ub3-lr-aJR"/>
                             <constraint firstItem="q8T-al-bv3" firstAttribute="bottom" secondItem="0mR-jT-w5d" secondAttribute="bottom" constant="50" id="VyT-fp-vRD"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="leading" secondItem="q8T-al-bv3" secondAttribute="leading" constant="30" id="alC-Fc-H10"/>
+                            <constraint firstItem="q8T-al-bv3" firstAttribute="trailing" secondItem="sBk-eF-BKo" secondAttribute="trailing" constant="30" id="cSR-5k-8C5"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="centerY" secondItem="o5c-cw-9j2" secondAttribute="centerY" id="l4H-eg-pTW"/>
+                            <constraint firstItem="sBk-eF-BKo" firstAttribute="top" secondItem="fXH-6u-Lg7" secondAttribute="bottom" constant="30" id="z8I-89-T3J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qQB-Cl-dhC"/>
                     <connections>
+                        <outlet property="loginErrorMessageLabel" destination="sBk-eF-BKo" id="T0z-Fl-vKH"/>
                         <outlet property="loginUserMail" destination="BJq-n7-VBy" id="ue6-hV-Oxg"/>
                         <outlet property="loginUserPassword" destination="g71-VC-hcN" id="3b6-j5-QEb"/>
                         <segue destination="4SP-qc-ECv" kind="presentation" identifier="LoginToHome" modalPresentationStyle="fullScreen" id="lxX-gy-jsd"/>
@@ -1365,7 +1378,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="st2-MW-xKS"/>
+        <segue reference="lxX-gy-jsd"/>
         <segue reference="o1r-4g-XK7"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -25,6 +25,10 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
             }
             
             if let user = authResult?.user {
+                /**
+                 Kullanıcının giriş bilgileri doğru lakin mail adresini doğrulamamış olma ihtimaline karşın kontrol sağlıyorum.
+                 */
+                
                 self.loginLog(userId: user.uid)
                 let resp = Resource<UserState>(status: .SUCCESS,
                                                data: nil,
@@ -34,7 +38,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
                 }else {
                     resp.data = .MAIL_ADRESS_NOT_CONFIRMED
                 }
-                self.presenter?.loginResponse(status: resp)
+               self.presenter?.loginResponse(status: resp)
             }
         }
     }
@@ -42,7 +46,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
     private func loginLog(userId:String){
         let dbRef = Database.database().reference()
         let logObject = [
-            "userLoginTime"     : timeInSeconds,
+            "userLoginTime"     : timeInSeconds(),
             "deviceModel"       : Device.current.name ?? "unfounded",
             "deviceVersion"     : Device.current.systemVersion ?? "unfounded",
             "operatingSystem"   : "IOS"
@@ -53,3 +57,22 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
     }
 
 }
+
+/**
+ var userDetails:User?
+ let ref = Database.database().reference()
+     
+ ref.child("users").child(user.uid).getData{ (error,snapshot) in
+     
+     guard error == nil else {
+         print(error!.localizedDescription)
+         return;
+       }
+     
+     if let detail =  snapshot.value as? [String:Any] {
+         if let createdTime = detail["userBio"] {
+             print(createdTime)
+         }
+     }
+ }
+ */

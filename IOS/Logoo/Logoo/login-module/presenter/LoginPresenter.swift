@@ -8,6 +8,7 @@
 import Foundation
 
 class LoginPresenter : InteractorToPresenterLoginProtocol, ViewToPresenterLoginProtocol {
+    
     var view: PresenterToViewLoginProtocol?
     var interactor: PresenterToInteractorLoginProtocol?
     

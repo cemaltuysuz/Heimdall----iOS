@@ -11,6 +11,7 @@ class LoginVC: UIViewController {
 
     @IBOutlet weak var loginUserMail: UITextField!
     @IBOutlet weak var loginUserPassword: UITextField!
+    @IBOutlet weak var loginErrorMessageLabel: UILabel!
     
     var incomingMail:String?
     
@@ -49,12 +50,13 @@ extension LoginVC : PresenterToViewLoginProtocol {
              - Kullanıcıya ait hobiler kontrol edilir, eğer hobisi yok ise hobi seçme ekranına yönlendirilir.
              */
             if status.data == .MAIL_ADRESS_CONFIRMED {
-                print("mail adresi onaylanmış kullanıcı ana sayfayafa")
+                self.loginErrorMessageLabel.isHidden = true
+                performSegue(withIdentifier: "LoginToHome", sender: nil)
             }
             else if status.data == .MAIL_ADRESS_NOT_CONFIRMED {
-                print("mail adresi onaylanmamış kullanıcı anasayfaya gidiyor.")
+                self.loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress."
+                self.loginErrorMessageLabel.isHidden = false
             }
-            performSegue(withIdentifier: "LoginToHome", sender: nil)
         }
         else if status.status! == .ERROR {
             print("Login error : \(status.message!)")

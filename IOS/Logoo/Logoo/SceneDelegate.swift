@@ -48,7 +48,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let userId = Auth.auth().currentUser?.uid{
                 let ref = Database.database().reference().child("users").child(userId)
                 
-                
                 ref.child("isOnline").setValue(false)
                 
                 let mills = timeInSeconds()

@@ -16,6 +16,8 @@ class WelcomeVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        performSegue(withIdentifier: "welcomeToOnBoard", sender: nil)
+        return
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "welcomeToHome", sender: nil)
         }else {
