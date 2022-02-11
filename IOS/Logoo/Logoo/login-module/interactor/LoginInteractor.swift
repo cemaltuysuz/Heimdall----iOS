@@ -37,6 +37,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
                     resp.data = .MAIL_ADRESS_CONFIRMED
                 }else {
                     resp.data = .MAIL_ADRESS_NOT_CONFIRMED
+                    resp.message = user.email
                 }
                self.presenter?.loginResponse(status: resp)
             }
@@ -54,6 +55,27 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
         
         let loginLogRef = dbRef.child("login-log").child(userId).child(UUID().uuidString)
         loginLogRef.setValue(logObject)
+    }
+    
+    func sendVerificationLink(mail: String) {
+        if let user = Auth.auth().currentUser {
+            user.sendEmailVerification{(error) in
+                
+                let response = Resource<Any>(status: nil, data: nil, message: nil)
+                if let error = error {
+                    
+                    response.status = .ERROR
+                    response.message = error.localizedDescription
+                    self.presenter?.verificationLinkResponse(status: response)
+                    
+                    print("error : \(error.localizedDescription)")
+                    return
+                }
+                
+                response.status = .SUCCESS
+                self.presenter?.verificationLinkResponse(status: response)
+            }
+        }
     }
 
 }

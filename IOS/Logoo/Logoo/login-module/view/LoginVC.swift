@@ -13,9 +13,16 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginUserPassword: UITextField!
     @IBOutlet weak var loginErrorMessageLabel: UILabel!
     
+    @IBOutlet weak var mailConfirmationContainer: UIStackView!
+    @IBOutlet weak var sendVerificationButtonOutlet: UIButton!
     var incomingMail:String?
+    var countTimer:Timer!
+    var counter = 100
+    
+    
     
     var presenter:ViewToPresenterLoginProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,13 +31,15 @@ class LoginVC: UIViewController {
         }
         
         LoginRouter.createModule(ref: self)
-        
-        
-
     }
     @IBAction func loginButton(_ sender: Any) {
         if let mail = loginUserMail.text, let password = loginUserPassword.text {
             presenter?.loginUser(mail: mail, password: password)
+        }
+    }
+    @IBAction func sendMailVerification(_ sender: Any) {
+        if let mail = self.loginUserMail.text {
+            presenter?.sendVerificationLink(mail: mail)
         }
     }
 }
@@ -41,25 +50,59 @@ extension LoginVC : PresenterToViewLoginProtocol {
      Dönen yanıt Resource sınıfı ile sarmalanmış yapıda, generic olan data kısmı ise UserState (enum) sınıfı tipinde.
      */
     func loginResponse(status: Resource<UserState>) {
-        
-        if status.status! == .SUCCESS{
-            /**
-             Kullanıcı başarılı bir şekilde login oluyor olabilir lakin mail adresinin onaylanmış olmama durumu mevcut.
-             Bunun kontrolünü yapıyorum.
-             Kullanıcı Onaylı ise ;
-             - Kullanıcıya ait hobiler kontrol edilir, eğer hobisi yok ise hobi seçme ekranına yönlendirilir.
-             */
-            if status.data == .MAIL_ADRESS_CONFIRMED {
+        DispatchQueue.main.async {
+            if status.status! == .SUCCESS{
+                /**
+                 Kullanıcı başarılı bir şekilde login oluyor olabilir lakin mail adresinin onaylanmış olmama durumu mevcut.
+                 Bunun kontrolünü yapıyorum.
+                 Kullanıcı Onaylı ise ;
+                 - Kullanıcıya ait hobiler kontrol edilir, eğer hobisi yok ise hobi seçme ekranına yönlendirilir.
+                 */
+                if status.data == .MAIL_ADRESS_CONFIRMED {
+                    self.loginErrorMessageLabel.isHidden = true
+                    self.performSegue(withIdentifier: "loginToRouterVC", sender: nil)
+                }
+                else if status.data == .MAIL_ADRESS_NOT_CONFIRMED {
+                    // Kullanıcıya hesabının onaylanmadığını bildiriyorum.
+                    self.loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress."
+                    self.loginErrorMessageLabel.isHidden = false
+                    
+                    // Hesabını onaylaması için onay konteynırını görünür bir hale getireceğim.
+                    self.mailConfirmationContainer.isHidden = false
+                }
+            }
+            else if status.status! == .ERROR {
+                print("Login error : \(status.message!)")
+            }
+        }
+    }
+    
+    func verificationLinkResponse(status: Resource<Any>) {
+        DispatchQueue.main.async {
+            if status.status == .SUCCESS {
                 self.loginErrorMessageLabel.isHidden = true
-                performSegue(withIdentifier: "LoginToHome", sender: nil)
-            }
-            else if status.data == .MAIL_ADRESS_NOT_CONFIRMED {
-                self.loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress."
-                self.loginErrorMessageLabel.isHidden = false
+                self.sendVerificationButtonOutlet.isEnabled = false
+                self.countTimer = Timer.scheduledTimer(timeInterval: 1 ,
+                                                             target: self,
+                                                             selector: #selector(self.changeLabel),
+                                                             userInfo: nil,
+                                                             repeats: true)
             }
         }
-        else if status.status! == .ERROR {
-            print("Login error : \(status.message!)")
-        }
+    }
+    @objc
+    private func changeLabel(){
+        if counter != 0
+             {
+            self.sendVerificationButtonOutlet.setTitle("\(counter) sonra yeniden mail gonderebilirsiniz.", for: .normal)
+                 counter -= 1
+             }
+             else
+             {
+                 self.sendVerificationButtonOutlet.setTitle("Onay Linki Gönder", for: .normal)
+                 self.sendVerificationButtonOutlet.isEnabled = true
+                  countTimer.invalidate()
+                
+             }
     }
 }

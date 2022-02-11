@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import SwiftUI
 
 class RegisterInteractor : PresenterToInteractorRegisterMail{
     
@@ -97,7 +98,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     "userBio"           : "",
                     "userHobbies"       : "",
                     "userLastSeen"      : "",
-                    "userRegisterTime"  : "\(timeInSeconds)",
+                    "userRegisterTime"  : "\(timeInSeconds())",
                     "isAnonymous"       : "false",
                     "isOnline"          : "false",
                     "isAllowTheGroupInvite" : "true",
@@ -144,6 +145,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                                 self.presenter?.registerProgressVisibility(status: false)
                                 self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
                                 self.presenter?.registerProgressVisibility(status: false)
+                                self.sendEmailVerification()
                             }
                             
                         }
@@ -154,5 +156,26 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
             }
        // KAYIT İŞLEMİ BİTTİ
             }
+    /**
+     Kullanıcıya onay e postası gonderiyorum. Bunu yapabilmek için firebase'in kurallarına göre kullanıcının giriş yapmış olması gerekiyor. Bu yuzden giriş yapıyor, mail gonderiyor ardından hesaptan çıkış yapıyorum.
+     */
+    private func sendEmailVerification(){
+        if let mail = self.userMail, let password = self.userPassword {
+            Auth.auth().signIn(withEmail: mail, password: password){(result,error) in
+               if error != nil {
+                   print("error when sign in user (register) \(error!.localizedDescription)")
+                   return
+               }
+               let cUser = Auth.auth().currentUser
+               cUser?.sendEmailVerification{error in
+                   do{
+                       try Auth.auth().signOut()
+                   }catch{
+                       print(error.localizedDescription)
+                   }
+               }
+           }
+        }
     }
+}
 

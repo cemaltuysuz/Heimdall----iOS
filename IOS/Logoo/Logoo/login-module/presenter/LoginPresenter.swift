@@ -19,4 +19,12 @@ class LoginPresenter : InteractorToPresenterLoginProtocol, ViewToPresenterLoginP
     func loginResponse(status: Resource<UserState>) {
         view?.loginResponse(status: status)
     }
+    
+    func verificationLinkResponse(status: Resource<Any>) {
+        view?.verificationLinkResponse(status: status)
+    }
+    
+    func sendVerificationLink(mail: String) {
+        interactor?.sendVerificationLink(mail: mail)
+    }
 }

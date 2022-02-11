@@ -75,6 +75,7 @@
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDA68527B647440066F469 /* LoginRouterVC.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */; };
 		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
@@ -168,6 +169,7 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15BDA68527B647440066F469 /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
 		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				15BDA68327B646B80066F469 /* login-router-module */,
 				156F045027B3C0E300D37039 /* selection-interest-module */,
 				1517AF8C279EBC5700D1194E /* chat-module */,
 				15064F4C279D490E00460334 /* profile-module */,
@@ -727,6 +730,22 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		15BDA68327B646B80066F469 /* login-router-module */ = {
+			isa = PBXGroup;
+			children = (
+				15BDA68427B647330066F469 /* view */,
+			);
+			path = "login-router-module";
+			sourceTree = "<group>";
+		};
+		15BDA68427B647330066F469 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				15BDA68527B647440066F469 /* LoginRouterVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		15EACB1B27AC28C00089779A /* presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,6 +977,7 @@
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
 				153EA968279FF97400871246 /* RoomMessage.swift in Sources */,
+				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,
 				153EA96D279FFA5800871246 /* MessageType.swift in Sources */,
 				156F044F27B3ACC100D37039 /* UserState.swift in Sources */,
 				153EA96B279FFA2E00871246 /* RequestType.swift in Sources */,
