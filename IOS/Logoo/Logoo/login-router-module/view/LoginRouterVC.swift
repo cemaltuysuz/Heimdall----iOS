@@ -9,21 +9,37 @@ import UIKit
 
 class LoginRouterVC: UIViewController {
 
+    var presenter:ViewToPresenterLoginRouterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        LoginRoutRouter.createModule(ref: self)
+        presenter?.route()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "loginRouterToInterestSelectionVC" {
+            if let uuid = sender as? String {
+                let targetVC = segue.destination as! SelectInterestVC
+                targetVC.userId = uuid
+            }
+        }
     }
-    */
+}
 
+extension LoginRouterVC : PresenterToViewLoginRouterProtocol {
+    func loginToHomeVC() {
+        performSegue(withIdentifier: "loginRouterToHomeVC", sender: nil)
+    }
+    
+    func loginToInterestSelectionVC(userId:String) {
+        performSegue(withIdentifier: "loginRouterToInterestSelectionVC", sender: userId)
+    }
+    
+    func loginToErrorVC(message:String) {
+        // TODO()
+    }
+    
 }

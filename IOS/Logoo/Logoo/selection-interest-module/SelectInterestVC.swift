@@ -9,6 +9,7 @@ import UIKit
 
 class SelectInterestVC: UIViewController {
 
+    var userId:String?
     override func viewDidLoad() {
         super.viewDidLoad()
 

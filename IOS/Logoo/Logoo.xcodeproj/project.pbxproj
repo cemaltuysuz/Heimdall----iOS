@@ -83,6 +83,10 @@
 		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
 		15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */; };
 		15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2527AC2BB30089779A /* RegisterRouter.swift */; };
+		15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */; };
+		15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */; };
+		15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */; };
+		15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +181,10 @@
 		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		15EACB2527AC2BB30089779A /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterProtocols.swift; sourceTree = "<group>"; };
+		15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterInteractor.swift; sourceTree = "<group>"; };
+		15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterPresenter.swift; sourceTree = "<group>"; };
+		15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRoutRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -733,7 +741,12 @@
 		15BDA68327B646B80066F469 /* login-router-module */ = {
 			isa = PBXGroup;
 			children = (
+				15FE356227B6A0EF00D48F9F /* protocols */,
 				15BDA68427B647330066F469 /* view */,
+				15FE356127B6A0E200D48F9F /* interactor */,
+				15FE356027B6A0DB00D48F9F /* presenter */,
+				15FE355F27B6A0D600D48F9F /* entity */,
+				15FE355E27B6A0C700D48F9F /* router */,
 			);
 			path = "login-router-module";
 			sourceTree = "<group>";
@@ -774,6 +787,45 @@
 			isa = PBXGroup;
 			children = (
 				15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		15FE355E27B6A0C700D48F9F /* router */ = {
+			isa = PBXGroup;
+			children = (
+				15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		15FE355F27B6A0D600D48F9F /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		15FE356027B6A0DB00D48F9F /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		15FE356127B6A0E200D48F9F /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		15FE356227B6A0EF00D48F9F /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -935,6 +987,7 @@
 				153EA964279FF63800871246 /* Room.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
+				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */,
@@ -947,6 +1000,7 @@
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
 				156F044527B3A40C00D37039 /* LoginProtocols.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
+				15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
@@ -969,7 +1023,9 @@
 				15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */,
 				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
+				15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */,
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
+				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
 				156F044727B3A58900D37039 /* LoginInteractor.swift in Sources */,

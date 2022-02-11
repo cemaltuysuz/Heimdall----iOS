@@ -80,21 +80,3 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
 
 }
 
-/**
- var userDetails:User?
- let ref = Database.database().reference()
-     
- ref.child("users").child(user.uid).getData{ (error,snapshot) in
-     
-     guard error == nil else {
-         print(error!.localizedDescription)
-         return;
-       }
-     
-     if let detail =  snapshot.value as? [String:Any] {
-         if let createdTime = detail["userBio"] {
-             print(createdTime)
-         }
-     }
- }
- */
