@@ -8,10 +8,11 @@
 import Foundation
 import FirebaseAuth
 import DeviceKit
-import FirebaseDatabase
+import FirebaseFirestore
 
 class LoginInteractor : PresenterToInteractorLoginProtocol {
     var presenter: InteractorToPresenterLoginProtocol?
+    
     
     func loginUser(mail: String, password: String) {
         Auth.auth().signIn(withEmail: mail,
@@ -45,7 +46,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
     }
     
     private func loginLog(userId:String){
-        let dbRef = Database.database().reference()
+        let dbRef = Firestore.firestore()
         let logObject = [
             "userLoginTime"     : timeInSeconds(),
             "deviceModel"       : Device.current.name ?? "unfounded",
@@ -53,8 +54,8 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
             "operatingSystem"   : "IOS"
         ] as [String : Any]
         
-        let loginLogRef = dbRef.child("login-log").child(userId).child(UUID().uuidString)
-        loginLogRef.setValue(logObject)
+        let loginLogRef = dbRef.collection("login-log").document(userId).collection("UUID().uuidString")
+        loginLogRef.parent?.setData(logObject)
     }
     
     func sendVerificationLink(mail: String) {

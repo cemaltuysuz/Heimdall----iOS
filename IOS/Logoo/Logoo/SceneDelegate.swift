@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseDatabase
+import FirebaseFirestore
 import DeviceKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -30,15 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        
         if Auth.auth().currentUser != nil {
             if let userId = Auth.auth().currentUser?.uid{
-                let dbRef = Database.database().reference()
-                let userRef = dbRef.child("users").child(userId)
-                
-                userRef.child("isOnline").setValue(true)
-                
-    
-                
+                let fireStoreDB = Firestore.firestore()
+                let userRef = fireStoreDB.collection("users").document(userId)
+                userRef.updateData(["isOnline":true])
             }
         }
     }
@@ -46,12 +43,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         if Auth.auth().currentUser != nil {
             if let userId = Auth.auth().currentUser?.uid{
-                let ref = Database.database().reference().child("users").child(userId)
                 
-                ref.child("isOnline").setValue(false)
+                let fireStoreDB = Firestore.firestore()
+                let userRef = fireStoreDB.collection("users").document(userId)
                 
-                let mills = timeInSeconds()
-                ref.child("userLastSeen").setValue(mills)
+                userRef.updateData(["isOnline":false])
+                userRef.updateData(["userLastSeen":timeInSeconds()])
             }
         }
     }

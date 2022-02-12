@@ -32,9 +32,9 @@
         "package": "Firebase",
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
-          "branch": null,
-          "revision": "5344857522053b5d4403ec8173ec0d23200a97ea",
-          "version": "8.11.0"
+          "branch": "master",
+          "revision": "4a7a99e30162593774865badc6f22d41193e71d0",
+          "version": null
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "9b2f6aca5b4685c45f9f5481f19bee8e7982c538",
-          "version": "8.9.1"
+          "revision": "6cc2991c11872510a5314bc112cc7558dd9d046a",
+          "version": "8.12.0"
         }
       },
       {
@@ -98,6 +98,15 @@
           "branch": null,
           "revision": "4a6058cbbdfe4f74aeae92c8bd51ad3b0de2a1ee",
           "version": "3.3.0"
+        }
+      },
+      {
+        "package": "M13Checkbox",
+        "repositoryURL": "https://github.com/Marxon13/M13Checkbox.git",
+        "state": {
+          "branch": null,
+          "revision": "96ff6c8862db87095315480a56dcebe51e15dac8",
+          "version": "3.4.1"
         }
       },
       {

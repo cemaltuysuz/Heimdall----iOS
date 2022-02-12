@@ -30,6 +30,9 @@ class LoginVC: UIViewController {
             self.loginUserMail.text = mail
         }
         
+        self.loginUserMail.text = "ctuysuz20@gmail.com"
+        self.loginUserPassword.text = "likapa111"
+        
         LoginRouter.createModule(ref: self)
     }
     @IBAction func loginButton(_ sender: Any) {

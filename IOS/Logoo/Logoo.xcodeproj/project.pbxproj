@@ -37,6 +37,11 @@
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
 		1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* ChatProtocols.swift */; };
+		1535674927B792AE007346D4 /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 1535674827B792AE007346D4 /* M13Checkbox */; };
+		1535674C27B794D0007346D4 /* InterestSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535674B27B794D0007346D4 /* InterestSelectTableViewCell.swift */; };
+		1535674F27B7BDC3007346D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1535674E27B7BDC3007346D4 /* FirebaseAuth */; };
+		1535675127B7BDC3007346D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1535675027B7BDC3007346D4 /* FirebaseFirestore */; };
+		1535675327B7BDC3007346D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1535675227B7BDC3007346D4 /* FirebaseStorage */; };
 		153EA961279FF4B300871246 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA960279FF4B300871246 /* ChatRequest.swift */; };
 		153EA964279FF63800871246 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA963279FF63800871246 /* Room.swift */; };
 		153EA966279FF88000871246 /* P2P.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA965279FF88000871246 /* P2P.swift */; };
@@ -52,10 +57,6 @@
 		153EA97C27A0076000871246 /* ChatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA97B27A0076000871246 /* ChatType.swift */; };
 		153EA98127A0468500871246 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA98027A0468500871246 /* LoginVC.swift */; };
 		156F042C27AFA80F00D37039 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F042B27AFA80F00D37039 /* GenderType.swift */; };
-		156F042F27B18F2400D37039 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 156F042E27B18F2400D37039 /* FirebaseAuth */; };
-		156F043127B18F2400D37039 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 156F043027B18F2400D37039 /* FirebaseDatabase */; };
-		156F043327B18F2400D37039 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 156F043227B18F2400D37039 /* FirebaseDynamicLinks */; };
-		156F043527B18F2400D37039 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 156F043427B18F2400D37039 /* FirebaseStorage */; };
 		156F043827B26DC300D37039 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 156F043727B26DC300D37039 /* Lottie */; };
 		156F043B27B2702B00D37039 /* mail_sended.json in Resources */ = {isa = PBXBuildFile; fileRef = 156F043A27B2702B00D37039 /* mail_sended.json */; };
 		156F043E27B39DBD00D37039 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 156F043D27B39DBD00D37039 /* DeviceKit */; };
@@ -87,6 +88,10 @@
 		15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */; };
 		15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */; };
 		15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */; };
+		15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357127B6C87E00D48F9F /* InterestSelectProtocol.swift */; };
+		15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */; };
+		15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */; };
+		15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +146,7 @@
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
+		1535674B27B794D0007346D4 /* InterestSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectTableViewCell.swift; sourceTree = "<group>"; };
 		153EA960279FF4B300871246 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		153EA963279FF63800871246 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		153EA965279FF88000871246 /* P2P.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2P.swift; sourceTree = "<group>"; };
@@ -185,6 +191,10 @@
 		15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterInteractor.swift; sourceTree = "<group>"; };
 		15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterPresenter.swift; sourceTree = "<group>"; };
 		15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRoutRouter.swift; sourceTree = "<group>"; };
+		15FE357127B6C87E00D48F9F /* InterestSelectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectProtocol.swift; sourceTree = "<group>"; };
+		15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestInteractor.swift; sourceTree = "<group>"; };
+		15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestPresenter.swift; sourceTree = "<group>"; };
+		15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,12 +202,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1535674927B792AE007346D4 /* M13Checkbox in Frameworks */,
 				156F043827B26DC300D37039 /* Lottie in Frameworks */,
-				156F043127B18F2400D37039 /* FirebaseDatabase in Frameworks */,
-				156F042F27B18F2400D37039 /* FirebaseAuth in Frameworks */,
-				156F043527B18F2400D37039 /* FirebaseStorage in Frameworks */,
-				156F043327B18F2400D37039 /* FirebaseDynamicLinks in Frameworks */,
 				156F043E27B39DBD00D37039 /* DeviceKit in Frameworks */,
+				1535675127B7BDC3007346D4 /* FirebaseFirestore in Frameworks */,
+				1535674F27B7BDC3007346D4 /* FirebaseAuth in Frameworks */,
+				1535675327B7BDC3007346D4 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +564,14 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		1535674A27B794A7007346D4 /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				1535674B27B794D0007346D4 /* InterestSelectTableViewCell.swift */,
+			);
+			path = tableview;
+			sourceTree = "<group>";
+		};
 		153EA969279FFA0E00871246 /* enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,7 +675,13 @@
 		156F045027B3C0E300D37039 /* selection-interest-module */ = {
 			isa = PBXGroup;
 			children = (
-				156F045127B3C11700D37039 /* SelectInterestVC.swift */,
+				1535674A27B794A7007346D4 /* tableview */,
+				15FE357027B6C83600D48F9F /* protocols */,
+				15FE356F27B6C83100D48F9F /* view */,
+				15FE356E27B6C82C00D48F9F /* interactor */,
+				15FE356D27B6C82500D48F9F /* presenter */,
+				15FE356C27B6C81D00D48F9F /* entity */,
+				15FE356B27B6C81600D48F9F /* router */,
 			);
 			path = "selection-interest-module";
 			sourceTree = "<group>";
@@ -830,6 +854,53 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		15FE356B27B6C81600D48F9F /* router */ = {
+			isa = PBXGroup;
+			children = (
+				15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		15FE356C27B6C81D00D48F9F /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		15FE356D27B6C82500D48F9F /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		15FE356E27B6C82C00D48F9F /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		15FE356F27B6C83100D48F9F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				156F045127B3C11700D37039 /* SelectInterestVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		15FE357027B6C83600D48F9F /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				15FE357127B6C87E00D48F9F /* InterestSelectProtocol.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -847,12 +918,12 @@
 			);
 			name = Logoo;
 			packageProductDependencies = (
-				156F042E27B18F2400D37039 /* FirebaseAuth */,
-				156F043027B18F2400D37039 /* FirebaseDatabase */,
-				156F043227B18F2400D37039 /* FirebaseDynamicLinks */,
-				156F043427B18F2400D37039 /* FirebaseStorage */,
 				156F043727B26DC300D37039 /* Lottie */,
 				156F043D27B39DBD00D37039 /* DeviceKit */,
+				1535674827B792AE007346D4 /* M13Checkbox */,
+				1535674E27B7BDC3007346D4 /* FirebaseAuth */,
+				1535675027B7BDC3007346D4 /* FirebaseFirestore */,
+				1535675227B7BDC3007346D4 /* FirebaseStorage */,
 			);
 			productName = Logoo;
 			productReference = 150C8FAE27994C6D000DAFBE /* Logoo.app */;
@@ -927,9 +998,10 @@
 			);
 			mainGroup = 150C8FA527994C6D000DAFBE;
 			packageReferences = (
-				156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				156F043627B26DC300D37039 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				156F043C27B39DBD00D37039 /* XCRemoteSwiftPackageReference "DeviceKit" */,
+				1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */,
+				1535674D27B7BDC3007346D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 150C8FAF27994C6D000DAFBE /* Products */;
 			projectDirPath = "";
@@ -995,8 +1067,10 @@
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
+				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */,
+				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
 				156F044527B3A40C00D37039 /* LoginProtocols.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
@@ -1016,8 +1090,10 @@
 				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
 				156F044C27B3AAC500D37039 /* Resource.swift in Sources */,
 				156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */,
+				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
 				153EA966279FF88000871246 /* P2P.swift in Sources */,
+				1535674C27B794D0007346D4 /* InterestSelectTableViewCell.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
 				15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */,
@@ -1027,6 +1103,7 @@
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
+				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
 				156F044727B3A58900D37039 /* LoginInteractor.swift in Sources */,
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,
@@ -1391,12 +1468,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Marxon13/M13Checkbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		1535674D27B7BDC3007346D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 		156F043627B26DC300D37039 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
@@ -1418,24 +1503,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		156F042E27B18F2400D37039 /* FirebaseAuth */ = {
+		1535674827B792AE007346D4 /* M13Checkbox */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */;
+			productName = M13Checkbox;
+		};
+		1535674E27B7BDC3007346D4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1535674D27B7BDC3007346D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		156F043027B18F2400D37039 /* FirebaseDatabase */ = {
+		1535675027B7BDC3007346D4 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
+			package = 1535674D27B7BDC3007346D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
-		156F043227B18F2400D37039 /* FirebaseDynamicLinks */ = {
+		1535675227B7BDC3007346D4 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDynamicLinks;
-		};
-		156F043427B18F2400D37039 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 156F042D27B18F2400D37039 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1535674D27B7BDC3007346D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 		156F043727B26DC300D37039 /* Lottie */ = {

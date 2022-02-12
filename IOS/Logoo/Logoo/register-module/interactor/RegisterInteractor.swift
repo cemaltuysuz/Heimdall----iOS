@@ -8,18 +8,17 @@
 import Foundation
 import UIKit
 import FirebaseAuth
-import FirebaseDatabase
 import FirebaseStorage
 import SwiftUI
+import FirebaseFirestore
 
 class RegisterInteractor : PresenterToInteractorRegisterMail{
     
     var presenter: InteractorToPresenterRegisterMail?
-    var databaseRef:DatabaseReference!
+    var fireStoreDB = Firestore.firestore()
     var storageRef:StorageReference!
     
     init(){
-        databaseRef = Database.database().reference()
         storageRef = Storage.storage().reference()
     }
     
@@ -75,7 +74,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                 /**
                  Kayıt oluşturulurken bir sorun oluşursa ;
                  - View kısmına bildir
-                 - Indicatoru durdur
+                 - IndicatorView'i durdur
                  - return et
                  */
                 if let err = error {
@@ -84,9 +83,9 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     return
                 }
                 /**
-                  Kullanıcıyı database kısmına kayıt etmek için bir veritabanı referansı oluşturuyorum
+                  Kullanıcıyı firestore kısmına kayıt etmek için bir veritabanı referansı oluşturuyorum
                  */
-                let userRef = self.databaseRef.child("users").child(user!.user.uid)
+                let userRef = self.fireStoreDB.collection("users").document(user!.user.uid)
                 // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
                 let userObject = [
                     "userId"            : user!.user.uid,
@@ -107,16 +106,18 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     
                         ] as [String:Any]
                 /**
-                 Kullanıcıyı veritabanına işliyorum ;
+                 Kullanıcıyı firestore'a işliyorum ;
                  Bu kısımda eğer kullanıcı veritabanına başarılı bir şekilde işlenirse kullanıcının profil resmini storage alanına upload edeceğim.
                  Sonrasında aldığım ref değeri ile bunu kullanıcı profil resmi olarak kayıt edeceğim.
                  */
-                userRef.setValue(userObject){(error, rgRef)  in
+                userRef.setData(userObject){err in
                     if let err = error {
                         self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
                         self.presenter?.registerProgressVisibility(status: false)
                         return
                     }
+                    
+                    // Kullanıcının fotoğrafını storage kısmına kayıt ediyorum.
                     
                     var data = Data()
                     data = self.userImage!.jpegData(compressionQuality: 0.8)! // Fotoğrafı data haline getirdim.
@@ -141,9 +142,12 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                                 return
                             }
                             if let ppUrl = url?.absoluteString {
-                                rgRef.child("userPhotoUrl").setValue(ppUrl)
+                                userRef.updateData(["userPhotoUrl":ppUrl])
                                 self.presenter?.registerProgressVisibility(status: false)
-                                self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
+                                self.presenter?.registerFeedBack(response:
+                                                                    ValidationResponse(status: true,
+                                                                                       message:
+                                                                                        self.userMail!))
                                 self.presenter?.registerProgressVisibility(status: false)
                                 self.sendEmailVerification()
                             }
@@ -178,4 +182,41 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
         }
     }
 }
+
+/**
+ 
+ 
+ var data = Data()
+ data = self.userImage!.jpegData(compressionQuality: 0.8)! // Fotoğrafı data haline getirdim.
+ 
+ // Fotoğrafın yükleneceği dosya yolunu ve dosyanın ismi / tipini belirliyorum.
+ let fileUUID = UUID().uuidString
+ let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
+ let metaData = StorageMetadata()
+ metaData.contentType = "image/jpg"
+ 
+ // fotoğraf yükleme işlemini başlatıyorum.
+ self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
+     if let err = error {
+         print("Error upload user photo : \(err.localizedDescription)")
+         self.presenter?.registerProgressVisibility(status: false)
+         return
+     }
+     self.storageRef.child(filePath).downloadURL{(url,error) in
+         if let error = error {
+             print("Error when receive the user's profile photo url : \(error)")
+             self.presenter?.registerProgressVisibility(status: false)
+             return
+         }
+         if let ppUrl = url?.absoluteString {
+             rgRef.child("userPhotoUrl").setValue(ppUrl)
+             self.presenter?.registerProgressVisibility(status: false)
+             self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
+             self.presenter?.registerProgressVisibility(status: false)
+             self.sendEmailVerification()
+         }
+         
+     }
+ }
+ */
 

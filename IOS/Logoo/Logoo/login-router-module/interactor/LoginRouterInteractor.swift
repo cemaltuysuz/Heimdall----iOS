@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseAuth
-import FirebaseDatabase
+import FirebaseFirestore
 
 class LoginRouterInteractor : PresenterToInteractorLoginRouterProtocol{
     var presenter: InteractorToPresenterLoginRouterProtocol?
@@ -15,17 +15,10 @@ class LoginRouterInteractor : PresenterToInteractorLoginRouterProtocol{
     // Kullanıcıyı hangi sayfaya yönlendireceğim ile ilgili bir algoritma.
     func route() {
         if let userID = Auth.auth().currentUser?.uid {
-            let dbRef = Database.database().reference()
-            print(userID)
-            dbRef.child("users").child(userID).getData{ (error,snapshot) in
-                
-                guard error == nil else {
-                    self.presenter?.loginToErrorVC(message: error!.localizedDescription)
-                    return;
-                  }
-                
-                if let detail =  snapshot.value as? NSDictionary {
-                    let userBio = detail["userBio"] as? String ?? ""
+            let dbRef = Firestore.firestore()
+            dbRef.collection("users").document(userID).getDocument{(document,error) in
+                if let document = document, document.exists {
+                    let userBio = document.get("userBio") as? String ?? ""
                     
                     if userBio.isEmpty {
                         self.presenter?.loginToInterestSelectionVC(userId: userID)
@@ -33,9 +26,23 @@ class LoginRouterInteractor : PresenterToInteractorLoginRouterProtocol{
                         self.presenter?.loginToHomeVC()
                     }
                 }
+                
             }
         }
     }
     
     
 }
+
+/***
+ guard error == nil else {
+     self.presenter?.loginToErrorVC(message: error!.localizedDescription)
+     return;
+   }
+ 
+ if let detail =  snapshot.value as? NSDictionary {
+     let userBio = detail["userBio"] as? String ?? ""
+     
+     
+ }
+ */
