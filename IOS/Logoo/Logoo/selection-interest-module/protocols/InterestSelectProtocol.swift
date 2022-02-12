@@ -21,11 +21,11 @@ protocol PresenterToInteractorInterestSelectProtocol {
 }
 
 protocol InteractorToPresenterInterestSelectProtocol {
-    func hobbies(hobbyList:[String], alreadyList:[String])
+    func hobbies(hobbyList:[InterestSelectionModel], alreadyList:[String])
 }
 
 protocol PresenterToViewInterestSelectProtocol {
-    func hobbies(hobbyList:[String], alreadyList:[String])
+    func hobbies(hobbyList:[InterestSelectionModel], alreadyList:[String])
 }
 
 protocol PresenterToRouterInterestSelectProtocol {

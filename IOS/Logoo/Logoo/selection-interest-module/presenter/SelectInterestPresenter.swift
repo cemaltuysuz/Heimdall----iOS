@@ -12,7 +12,7 @@ class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, Vie
     var view: PresenterToViewInterestSelectProtocol?
     var interactor: PresenterToInteractorInterestSelectProtocol?
     
-    func hobbies(hobbyList: [String], alreadyList: [String]) {
+    func hobbies(hobbyList: [InterestSelectionModel], alreadyList: [String]) {
         view?.hobbies(hobbyList: hobbyList, alreadyList: alreadyList)
     }
     

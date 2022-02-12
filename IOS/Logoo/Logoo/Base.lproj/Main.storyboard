@@ -1211,62 +1211,73 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-fX-9XH">
                                 <rect key="frame" x="52" y="367" width="310" height="350"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-Ab-yQ9">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QWN-rg-WHV">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="350"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InterestSelectionCell" id="6vt-FX-pxf" customClass="InterestSelectTableViewCell" customModule="Logoo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="310" height="60"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6vt-FX-pxf" id="Lnn-lJ-s62">
-                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="riI-Hf-IaG">
+                                            <size key="itemSize" width="310" height="70"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="interestSelectionCell" id="IV7-Qs-mg0" customClass="InterestSelectionCell" customModule="Logoo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WzJ-Xa-dvn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seG-6D-0iP">
-                                                            <rect key="frame" x="16" y="11" width="38" height="38"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWS-j8-25L">
+                                                            <rect key="frame" x="8" y="16" width="38" height="38"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="38" id="HaK-3L-z67"/>
-                                                                <constraint firstAttribute="width" constant="38" id="P7S-db-7bQ"/>
+                                                                <constraint firstAttribute="height" constant="38" id="hlb-cc-rlB"/>
+                                                                <constraint firstAttribute="width" constant="38" id="paM-Ud-VMX"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89t-rp-voB">
-                                                            <rect key="frame" x="72" y="11" width="222" height="38"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJB-lK-smO">
+                                                            <rect key="frame" x="66" y="16" width="236" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="dyc-S9-ana"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <color key="textColor" name="black700"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="89t-rp-voB" firstAttribute="top" secondItem="Lnn-lJ-s62" secondAttribute="topMargin" id="5Of-DZ-9ml"/>
-                                                        <constraint firstItem="89t-rp-voB" firstAttribute="trailing" secondItem="Lnn-lJ-s62" secondAttribute="trailingMargin" id="J67-FW-MOi"/>
-                                                        <constraint firstItem="seG-6D-0iP" firstAttribute="bottom" secondItem="Lnn-lJ-s62" secondAttribute="bottomMargin" id="U1e-xK-OQa"/>
-                                                        <constraint firstItem="89t-rp-voB" firstAttribute="leading" secondItem="seG-6D-0iP" secondAttribute="trailing" constant="18" id="rdm-Xt-qpB"/>
-                                                        <constraint firstItem="seG-6D-0iP" firstAttribute="top" secondItem="Lnn-lJ-s62" secondAttribute="topMargin" id="vXa-lF-YWJ"/>
-                                                        <constraint firstItem="seG-6D-0iP" firstAttribute="leading" secondItem="Lnn-lJ-s62" secondAttribute="leadingMargin" id="wGy-jh-czw"/>
-                                                        <constraint firstItem="89t-rp-voB" firstAttribute="bottom" secondItem="Lnn-lJ-s62" secondAttribute="bottomMargin" id="yik-v2-zc2"/>
+                                                        <constraint firstItem="iWS-j8-25L" firstAttribute="leading" secondItem="WzJ-Xa-dvn" secondAttribute="leading" constant="8" id="8hA-Pf-3TR"/>
+                                                        <constraint firstItem="AJB-lK-smO" firstAttribute="leading" secondItem="iWS-j8-25L" secondAttribute="trailing" constant="20" id="Bdt-lr-fQp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="AJB-lK-smO" secondAttribute="bottom" constant="16" id="H1g-n1-V6Y"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iWS-j8-25L" secondAttribute="bottom" constant="16" id="Jka-yi-6mk"/>
+                                                        <constraint firstItem="AJB-lK-smO" firstAttribute="top" secondItem="WzJ-Xa-dvn" secondAttribute="top" constant="16" id="c0R-W7-OR0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="AJB-lK-smO" secondAttribute="trailing" constant="8" id="qu6-DV-DI9"/>
+                                                        <constraint firstItem="iWS-j8-25L" firstAttribute="top" secondItem="WzJ-Xa-dvn" secondAttribute="top" constant="16" id="qvm-hb-aXh"/>
                                                     </constraints>
-                                                </tableViewCellContentView>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="310" height="70"/>
                                                 <connections>
-                                                    <outlet property="CheckBoxContainer" destination="seG-6D-0iP" id="10K-9w-bYO"/>
-                                                    <outlet property="InterestNameLabel" destination="89t-rp-voB" id="iw2-jM-4Qr"/>
+                                                    <outlet property="checkBoxContainer" destination="iWS-j8-25L" id="zWd-je-PkA"/>
+                                                    <outlet property="interestTitle" destination="AJB-lK-smO" id="UgC-E4-d3O"/>
                                                 </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-Rm-f2H">
                                         <rect key="frame" x="136.5" y="156.5" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="q5U-Ab-yQ9" secondAttribute="trailing" id="3Bt-wh-Sn5"/>
-                                    <constraint firstAttribute="bottom" secondItem="q5U-Ab-yQ9" secondAttribute="bottom" id="Ct5-3L-QCf"/>
+                                    <constraint firstItem="QWN-rg-WHV" firstAttribute="leading" secondItem="Kwo-fX-9XH" secondAttribute="leading" id="2T9-9v-Pq4"/>
+                                    <constraint firstAttribute="bottom" secondItem="QWN-rg-WHV" secondAttribute="bottom" id="9hu-gX-LZd"/>
                                     <constraint firstAttribute="height" constant="350" id="Kit-hK-SSw"/>
+                                    <constraint firstAttribute="trailing" secondItem="QWN-rg-WHV" secondAttribute="trailing" id="Nli-I7-wib"/>
                                     <constraint firstItem="Et0-Rm-f2H" firstAttribute="centerX" secondItem="Kwo-fX-9XH" secondAttribute="centerX" id="SWE-rX-VwL"/>
-                                    <constraint firstItem="q5U-Ab-yQ9" firstAttribute="top" secondItem="Kwo-fX-9XH" secondAttribute="top" id="Y5P-32-h4G"/>
                                     <constraint firstItem="Et0-Rm-f2H" firstAttribute="centerY" secondItem="Kwo-fX-9XH" secondAttribute="centerY" id="iLr-lT-Fyl"/>
-                                    <constraint firstItem="q5U-Ab-yQ9" firstAttribute="leading" secondItem="Kwo-fX-9XH" secondAttribute="leading" id="z3J-1K-mEl"/>
+                                    <constraint firstItem="QWN-rg-WHV" firstAttribute="top" secondItem="Kwo-fX-9XH" secondAttribute="top" id="md2-yZ-wEV"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pR3-qH-4uj">
@@ -1316,7 +1327,7 @@
                     </view>
                     <connections>
                         <outlet property="interestSearchBar" destination="JRb-aR-Aka" id="gl2-Rw-9II"/>
-                        <outlet property="interestsTableView" destination="q5U-Ab-yQ9" id="c2Y-AX-ysE"/>
+                        <outlet property="interestSelectionCollectionView" destination="QWN-rg-WHV" id="wZ7-yL-oAq"/>
                         <outlet property="interestsTableViewIndicator" destination="Et0-Rm-f2H" id="Aso-op-lpL"/>
                         <segue destination="4SP-qc-ECv" kind="presentation" identifier="interestSelectionToHomeVC" id="cMF-AX-Wl6"/>
                     </connections>

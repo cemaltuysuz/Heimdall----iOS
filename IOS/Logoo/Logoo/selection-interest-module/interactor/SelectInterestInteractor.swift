@@ -14,24 +14,26 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
     
     func getInterests(uuid: String) {
         print("method çağrıldu")
-        let alreadyHobbies = [String]()
-        var hobbyList = [String]()
+        var alreadyHobbies = [String]()
+        var hobbyList = [InterestSelectionModel]()
         
         let dbRef = Firestore.firestore()
-        /*
-        dbRef.child("users").child(uuid).getData{ (error,snapshot) in
+        
+        dbRef.collection("users").document(uuid).getDocument{ (document,error) in
             if let error = error {
                 print("hata var \(error.localizedDescription)")
                 return
             }
-            
-            if let detail =  snapshot.value as? NSDictionary {
-                let userBio = detail["userBio"] as? String ?? ""
+            if let document = document, document.exists {
+             let userBio = document.get("userBio") as? String ?? ""
                 if !userBio.isEmpty {
                     alreadyHobbies = hobbyToHobbies(hobby: userBio)
                 }
             }
-        } */
+
+        }
+        
+        alreadyHobbies.append("Home Repair")
 
         dbRef.collection("interests").getDocuments{(snapshot, error) in
             if let error = error {
@@ -44,10 +46,12 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
                 for document in snap.documents {
                     //document.
                     let data = document.data()
-                    print(data)
                     let interest = data["Interest"] as? String ?? ""
-                    print(interest)
-                    hobbyList.append(interest)
+                    if !interest.isEmpty {
+                        hobbyList.append(
+                            InterestSelectionModel(title: interest,
+                                                   status: false))
+                    }
                 }
                 self.presenter?.hobbies(hobbyList: hobbyList, alreadyList: alreadyHobbies)
             }
