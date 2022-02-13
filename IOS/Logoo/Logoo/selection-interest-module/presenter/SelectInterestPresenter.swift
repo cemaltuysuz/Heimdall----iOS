@@ -12,11 +12,32 @@ class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, Vie
     var view: PresenterToViewInterestSelectProtocol?
     var interactor: PresenterToInteractorInterestSelectProtocol?
     
-    func hobbies(hobbyList: [InterestSelectionModel], alreadyList: [String]) {
-        view?.hobbies(hobbyList: hobbyList, alreadyList: alreadyList)
+
+    func userAlreadyHobbies(alreadyList: [String]) {
+        view?.userAlreadyHobbies(alreadyList: alreadyList)
+    }
+    
+    func allHobies(hobbyList: [InterestSelectionModel]) {
+        view?.allHobies(hobbyList: hobbyList)
+    }
+    
+    func searchInterest(searchText: String) {
+        interactor?.searchInterest(searchText: searchText)
     }
     
     func getInterests(uuid: String) {
         interactor?.getInterests(uuid: uuid)
+    }
+    
+    func indicatorVisibility(status: Bool) {
+        view?.indicatorVisibility(status: status)
+    }
+    
+    func saveInterestsResponse(resp: Resource<Any>) {
+        view?.saveInterestsResponse(resp: resp)
+    }
+    
+    func saveInterests(list: [String]) {
+        interactor?.saveInterests(list: list)
     }
 }

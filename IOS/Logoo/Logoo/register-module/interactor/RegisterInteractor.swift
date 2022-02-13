@@ -98,10 +98,10 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     "userHobbies"       : "",
                     "userLastSeen"      : "",
                     "userRegisterTime"  : "\(timeInSeconds())",
-                    "isAnonymous"       : "false",
-                    "isOnline"          : "false",
-                    "isAllowTheGroupInvite" : "true",
-                    "isAllowTheInboxInvite" : "true"
+                    "isAnonymous"       : false,
+                    "isOnline"          : false,
+                    "isAllowTheGroupInvite" : true,
+                    "isAllowTheInboxInvite" : true
                     
                     
                         ] as [String:Any]
