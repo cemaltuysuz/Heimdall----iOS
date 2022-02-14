@@ -30,14 +30,17 @@ class LoginVC: UIViewController {
             self.loginUserMail.text = mail
         }
         
-        self.loginUserMail.text = "ctuysuz20@gmail.com"
-        self.loginUserPassword.text = "likapa111"
-        
         LoginRouter.createModule(ref: self)
     }
     @IBAction func loginButton(_ sender: Any) {
         if let mail = loginUserMail.text, let password = loginUserPassword.text {
-            presenter?.loginUser(mail: mail, password: password)
+            if isValidMail(mail: mail) {
+                presenter?.loginUser(mail: mail, password: password)
+                self.loginErrorMessageLabel.isHidden = true
+            }else {
+                self.loginErrorMessageLabel.text = "The e-mail address is not in the correct format."
+                self.loginErrorMessageLabel.isHidden = false
+            }
         }
     }
     @IBAction func sendMailVerification(_ sender: Any) {

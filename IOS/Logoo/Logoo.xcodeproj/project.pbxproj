@@ -43,6 +43,7 @@
 		1535675327B7BDC3007346D4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1535675227B7BDC3007346D4 /* FirebaseStorage */; };
 		1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */; };
 		1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675627B7F97F007346D4 /* InterestSelectionModel.swift */; };
+		1535675927BA671D007346D4 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675827BA671D007346D4 /* Validators.swift */; };
 		153EA961279FF4B300871246 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA960279FF4B300871246 /* ChatRequest.swift */; };
 		153EA964279FF63800871246 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA963279FF63800871246 /* Room.swift */; };
 		153EA966279FF88000871246 /* P2P.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA965279FF88000871246 /* P2P.swift */; };
@@ -149,6 +150,7 @@
 		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
 		1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionCell.swift; sourceTree = "<group>"; };
 		1535675627B7F97F007346D4 /* InterestSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionModel.swift; sourceTree = "<group>"; };
+		1535675827BA671D007346D4 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		153EA960279FF4B300871246 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		153EA963279FF63800871246 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		153EA965279FF88000871246 /* P2P.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2P.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 			children = (
 				1517AF8A279E9AAA00D1194E /* Util.swift */,
 				156F044B27B3AAC500D37039 /* Resource.swift */,
+				1535675827BA671D007346D4 /* Validators.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1092,6 +1095,7 @@
 				15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */,
 				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
 				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
+				1535675927BA671D007346D4 /* Validators.swift in Sources */,
 				156F044C27B3AAC500D37039 /* Resource.swift in Sources */,
 				156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */,
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,

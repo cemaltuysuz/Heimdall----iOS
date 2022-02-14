@@ -20,15 +20,11 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
            // Kullanıcı adı kontrolu yapıyorum.
            // Kullanıcı adı için karakter sayısı 2'den buyuk ve 12 den kucuk olması gerekiyor.
             
-            if username.count > 2 && username.count < 12 {
+            if isValidUsername(username: username) {
                 
-                let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-                let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-                
-                // Mail için doğrulama yapılıyor.
-                if emailPred.evaluate(with: mail) {
+                if isValidMail(mail: mail) {
                     
-                    if password.count > 6 {
+                    if isValidPassword(password: password) {
                         toView?.informationToView(username: username, userMail: mail, userPassword: password)
                         return ValidationResponse(status: true, message: "info okey")
                     }else {
