@@ -14,9 +14,9 @@ class OnBoardInteractor : PresenterToInteractorOnBoardProtocol {
     func getOnBoardList() {
         var onBoardList = [OnBoard]()
         
-        onBoardList.append(OnBoard(image: UIImage(named: "onboard1")!, title: "YENI INSANLAR", description: "Logoo ile farklı konumlardaki farklı insanlar ile tanışabilirsin !"))
-        onBoardList.append(OnBoard(image: UIImage(named: "onboard2")!, title: "OZGUR ANONIMLIK", description: "Logoo ile istediğin zaman anonim olabilirsin."))
-        onBoardList.append(OnBoard(image: UIImage(named: "onboard3")!, title: "DUNYAYA ACIL", description: "Pasaport sistemi ile global çapta ücretsiz bir keşfe çıkabilirsin."))
+        onBoardList.append(OnBoard(image: UIImage(named: "onboard1")!, title: "New People".localized(), description: "With Logoo, You meet different people in different locations !".localized()))
+        onBoardList.append(OnBoard(image: UIImage(named: "onboard2")!, title: "Free Anonymity".localized(), description: "With logoo, you can make your profile anonymous at any time.".localized()))
+        onBoardList.append(OnBoard(image: UIImage(named: "onboard3")!, title: "Open To The World!".localized(), description: "With the passport system, you can go on a global exploration.".localized()))
         
         presenter?.onBoardListToPresenter(onBoardList: onBoardList)
 

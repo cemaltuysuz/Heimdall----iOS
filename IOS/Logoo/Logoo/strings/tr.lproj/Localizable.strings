@@ -1,0 +1,23 @@
+/*
+  Localizable.strings
+  Logoo
+
+  Created by cemal tüysüz on 14.02.2022.
+  
+*/
+
+// On Board Localization
+
+"New People" = "Yeni İnsanlar";
+"With Logoo, You meet different people in different locations !" = "Logoo ile farklı konumlarda bulunan farklı insanlar ile tanışabilirsiniz !";
+
+"Free Anonymity" = "Özgür Anonimlik";
+"With logoo, you can make your profile anonymous at any time." = "Logoo ile istediğin zaman anonim olabilirsin.";
+
+"Open To The World!" = "Dünyaya Açıl !";
+"With the passport system, you can go on a global exploration." = "Pasaport sistemi ile global çapta bir keşife çıkabilirsin.";
+
+// Register Module
+"Next" = "Devam";
+"Finish It" = "Kaydı Tamamla";
+"Log In" = "Giriş Yap";

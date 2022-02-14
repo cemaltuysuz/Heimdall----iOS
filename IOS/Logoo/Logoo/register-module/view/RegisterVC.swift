@@ -86,12 +86,16 @@ class RegisterVC: UIViewController {
         }
         
         else {
-            performSegue(withIdentifier: "registerToLogin", sender: self.confirmMailAdress!)
+            performSegue(
+                withIdentifier: RegisterVCSegues
+                    .registerToLogin
+                    .rawValue,
+                sender: self.confirmMailAdress!)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "registerToLogin" {
+        if segue.identifier == RegisterVCSegues.registerToLogin.rawValue {
             if let mail = (sender as? String) {
                 let targetVC = segue.destination as! LoginVC
                 targetVC.incomingMail = mail
@@ -148,38 +152,49 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let count = indexPath.row
         if self.registerSteps![count] is RegisterPhotoPickCell {
-            let photoPickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoPickRegisterCell", for: indexPath) as! RegisterPhotoPickCell
+            let photoPickCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RegisterCollectionViewCells
+                    .photoPick
+                    .rawValue, for: indexPath) as! RegisterPhotoPickCell
             validation = photoPickCell
             photoPickCell.initialize()
             photoPickCell.photoProtocol = self
-            self.registerSteps![0] = photoPickCell // init
+            self.registerSteps![indexPath.row] = photoPickCell // init
             return photoPickCell
         }
         else if self.registerSteps![count] is RegisterInformationCell {
-            let informationCell = collectionView.dequeueReusableCell(withReuseIdentifier: "informationRegisterCell", for: indexPath) as! RegisterInformationCell
-            validation = informationCell
-            self.registerSteps![1] = informationCell // init
+            let informationCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RegisterCollectionViewCells
+                    .enterInformation
+                    .rawValue,for: indexPath) as! RegisterInformationCell
+            self.registerSteps![indexPath.row] = informationCell // init
             informationCell.initialize(informationProtocol: self)
             return informationCell
         }
         else if self.registerSteps![count] is RegisterBirthDayCell {
-            let birthDayCell = collectionView.dequeueReusableCell(withReuseIdentifier: "registerBirthDayCell", for: indexPath) as! RegisterBirthDayCell
+            let birthDayCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RegisterCollectionViewCells
+                    .enterDateOfBirth
+                    .rawValue, for: indexPath) as! RegisterBirthDayCell
             birthDayCell.initialize(birthDayCellProtocol: self)
-            validation = birthDayCell
-            self.registerSteps![2] = birthDayCell // init
+            self.registerSteps![indexPath.row] = birthDayCell // init
             return birthDayCell
         }
         else if self.registerSteps![count] is RegisterGenderCell {
-            let genderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "registerGenderCell", for: indexPath) as! RegisterGenderCell
+            let genderCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RegisterCollectionViewCells
+                    .enterGender
+                    .rawValue, for: indexPath) as! RegisterGenderCell
             genderCell.initialize(genderPickerCellProtocol: self)
-            validation = genderCell
-            self.registerSteps![3] = genderCell // init
+            self.registerSteps![indexPath.row] = genderCell // init
             return genderCell
         }
         else {
-            let otpCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otpRegisterCell", for: indexPath) as! RegisterOTPCell
-            validation = otpCell
-            self.registerSteps![4] = otpCell // init
+            let otpCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RegisterCollectionViewCells
+                    .confirmation
+                    .rawValue, for: indexPath) as! RegisterOTPCell
+            self.registerSteps![indexPath.row] = otpCell // init
             otpCell.initialize()
             return otpCell
         }
@@ -211,15 +226,15 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         if page == 0 {
             self.registerBackButton.isHidden = true
         }else if page < self.registerSteps!.count-1 && page > 0 && currentRegisterClass != self.registerSteps!.count - 2 {
-            self.registerNextButton.setTitle("Devam", for: UIControl.State.normal)
+            self.registerNextButton.setTitle("Next".localized(), for: UIControl.State.normal)
             self.registerBackButton.isHidden = false
         }
         else if currentRegisterClass == self.registerSteps!.count - 2 {
-            self.registerNextButton.setTitle("Kayıt Ol", for: UIControl.State.normal)
+            self.registerNextButton.setTitle("Finish It".localized(), for: UIControl.State.normal)
             self.registerBackButton.isHidden = false
         }
         else {
-            self.registerNextButton.setTitle("Giriş Yap", for: UIControl.State.normal)
+            self.registerNextButton.setTitle("Log In".localized(), for: UIControl.State.normal)
             self.registerBackButton.isHidden = true
         }
         
@@ -244,7 +259,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             self.validation = rgClass as! RegisterOTPCell
         }
 
-        }
+    }
     
 }
 
@@ -330,4 +345,17 @@ extension RegisterVC {
         self.registerCollectionView.scrollToItem(at: previousItem, at: .right, animated: true)
     }
 
+}
+
+
+enum RegisterVCSegues : String {
+    case registerToLogin = "registerToLogin"
+}
+
+enum RegisterCollectionViewCells : String {
+    case photoPick          = "photoPickRegisterCell"
+    case enterInformation   = "informationRegisterCell"
+    case enterDateOfBirth   = "registerBirthDayCell"
+    case enterGender        = "registerGenderCell"
+    case confirmation       = "otpRegisterCell"
 }
