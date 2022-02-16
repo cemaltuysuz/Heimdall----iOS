@@ -84,6 +84,10 @@
 		15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3027BCED220088DD35 /* CustomAlert.swift */; };
 		15C64C3327BCF39E0088DD35 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 15C64C3227BCF39E0088DD35 /* loading.json */; };
 		15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */; };
+		15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3D27BD26340088DD35 /* ResetPasswordProtocols.swift */; };
+		15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3F27BD277D0088DD35 /* ResetPasswordInteractor.swift */; };
+		15C64C4227BD27A30088DD35 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C4127BD27A30088DD35 /* ResetPasswordPresenter.swift */; };
+		15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C4327BD27EC0088DD35 /* ResetPaswordRouter.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */; };
 		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
@@ -196,6 +200,10 @@
 		15C64C3027BCED220088DD35 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		15C64C3227BCF39E0088DD35 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		15C64C3D27BD26340088DD35 /* ResetPasswordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordProtocols.swift; sourceTree = "<group>"; };
+		15C64C3F27BD277D0088DD35 /* ResetPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInteractor.swift; sourceTree = "<group>"; };
+		15C64C4127BD27A30088DD35 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
+		15C64C4327BD27EC0088DD35 /* ResetPaswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPaswordRouter.swift; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
 		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
@@ -816,7 +824,12 @@
 		15C64C3427BD1D430088DD35 /* reset-password-module */ = {
 			isa = PBXGroup;
 			children = (
+				15C64C3C27BD261A0088DD35 /* protocols */,
 				15C64C3527BD1D4E0088DD35 /* view */,
+				15C64C3B27BD260C0088DD35 /* interactor */,
+				15C64C3A27BD26050088DD35 /* presenter */,
+				15C64C3927BD25FE0088DD35 /* entity */,
+				15C64C3827BD25F90088DD35 /* router */,
 			);
 			path = "reset-password-module";
 			sourceTree = "<group>";
@@ -827,6 +840,45 @@
 				15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		15C64C3827BD25F90088DD35 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C4327BD27EC0088DD35 /* ResetPaswordRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		15C64C3927BD25FE0088DD35 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		15C64C3A27BD26050088DD35 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C4127BD27A30088DD35 /* ResetPasswordPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		15C64C3B27BD260C0088DD35 /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C3F27BD277D0088DD35 /* ResetPasswordInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		15C64C3C27BD261A0088DD35 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C3D27BD26340088DD35 /* ResetPasswordProtocols.swift */,
+			);
+			path = protocols;
 			sourceTree = "<group>";
 		};
 		15EACB1B27AC28C00089779A /* presenter */ = {
@@ -1105,12 +1157,14 @@
 				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
 				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
+				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				153EA964279FF63800871246 /* Room.swift in Sources */,
 				15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
+				15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */,
 				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
@@ -1122,6 +1176,7 @@
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */,
+				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
 				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
 				156F044527B3A40C00D37039 /* LoginProtocols.swift in Sources */,
@@ -1133,6 +1188,7 @@
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
+				15C64C4227BD27A30088DD35 /* ResetPasswordPresenter.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
 				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,

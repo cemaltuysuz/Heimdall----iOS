@@ -32,11 +32,19 @@
 
 "Please fill in all fields." = "Lütfen tüm alanları doldurun.";
 
-"The e-mail address is not in the correct format." = "E-mail adresi yanlış.";
+"The e-mail address is not in the correct format." = "E-mail adresi doğru formatta değil.";
 
 "Your account is not verified. Please confirm your mail adress." = "Hesabınız henüz onaylanmamış. Lütfen mail adresinizi doğrulayın.";
 "Time to resubmit:" = "Yeniden gönder:";
 "Send Confirmation Link" = "Onay linki gönder";
 "Login failed." = "Giriş başarısız.";
+
+// Reset Password
+"Successfully" = "Başarılı";
+"The link was sent successfully. Check your inbox." = "Bağlantı başarılı bir şekilde iletildi. Gelen kutunuzu kontrol ediniz.";
+"Failed" = "Başarısız";
+"Something went wrong. Please check your e-mail address." = "Bir şeyler yanlış gitti. Lütfen mail adresinizi kontrol edin.";
+
+"Close" = "Kapat";
 
 
