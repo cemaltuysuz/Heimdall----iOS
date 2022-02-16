@@ -14,8 +14,12 @@ func hobbyToHobbies(hobby:String) -> [String]{
         return hobbies
 }
 
-func timeInSeconds() -> Int {
-    return Int(Date().timeIntervalSince1970 * 1000)
+func timeInSeconds() -> Int64 {
+    return Int64(Date().timeIntervalSince1970 * 1000)
+}
+
+func milliSecondToDate(milliseconds:Int64) -> Date {
+    return Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
 }
 
 func convertStringToDictionary(text: String) -> [String:AnyObject]? {

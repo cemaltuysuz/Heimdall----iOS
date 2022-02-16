@@ -18,10 +18,44 @@ class UDService : UDProtocol {
      
      */
     func onboardVisibilityInfo() -> Bool {
-        return ud.bool(forKey: Constants.UserDefault.onboardVisibility.rawValue)
+        return ud.bool(forKey: Constants
+                .UserDefault
+                .ONBOARD_VISIBILITY
+                .rawValue)
     }
     
     func changeOnboardVisibilityInfo(value:Bool) {
-        ud.set(value, forKey: Constants.UserDefault.onboardVisibility.rawValue)
+        ud.set(value, forKey: Constants
+                .UserDefault
+                .ONBOARD_VISIBILITY
+                .rawValue)
+    }
+    
+    func getConfirmEmailTime()->Int64 {
+        return Int64(ud.integer(forKey: Constants
+                                    .UserDefault
+                                    .MAIL_CONFIRMATION_TIME
+                                    .rawValue))
+    }
+    
+    func setConfirmEmailTime(time:Int64) {
+        ud.set(time, forKey: Constants
+                .UserDefault
+                .MAIL_CONFIRMATION_TIME
+                .rawValue)
+    }
+    
+    func setConfirmEmailSecond(second:Int64){
+        ud.set(second, forKey: Constants
+                .UserDefault
+                .MAIL_CONFIRMATIN_SECOND
+                .rawValue)
+    }
+    
+    func getConfirmEmailSecond() -> Int64 {
+        return Int64(ud.integer(forKey: Constants
+                                    .UserDefault
+                                    .MAIL_CONFIRMATIN_SECOND
+                                    .rawValue))
     }
 }

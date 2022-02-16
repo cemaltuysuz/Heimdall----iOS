@@ -13,8 +13,10 @@ class LoginRouter : PresenterToRouterLoginProtocol {
         let presenter = LoginPresenter()
         
         ref.presenter = presenter
-        ref.presenter?.interactor = LoginInteractor()
         ref.presenter?.view = ref
+        ref.presenter?.interactor = LoginInteractor()
         ref.presenter?.interactor?.presenter = presenter
+        
+        
     }
 }

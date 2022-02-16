@@ -13,6 +13,7 @@ protocol ViewToPresenterLoginProtocol {
     
     func loginUser(mail:String, password:String)
     func sendVerificationLink(mail:String)
+    func calculateRepeatTime()
     
 }
 
@@ -21,16 +22,19 @@ protocol PresenterToInteractorLoginProtocol {
     
     func loginUser(mail:String, password:String)
     func sendVerificationLink(mail:String)
+    func calculateRepeatTime()
 }
 
 protocol InteractorToPresenterLoginProtocol {
     func loginResponse(status:Resource<UserState>)
     func verificationLinkResponse(status:Resource<Any>)
+    func timeLimitCountinues(status:Bool,continuationTime:Int64?)
 }
 
 protocol PresenterToViewLoginProtocol {
     func loginResponse(status:Resource<UserState>)
     func verificationLinkResponse(status:Resource<Any>)
+    func timeLimitCountinues(status:Bool, continuationTime:Int64?)
 }
 
 protocol PresenterToRouterLoginProtocol {

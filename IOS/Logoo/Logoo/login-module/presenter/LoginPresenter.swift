@@ -8,9 +8,17 @@
 import Foundation
 
 class LoginPresenter : InteractorToPresenterLoginProtocol, ViewToPresenterLoginProtocol {
-    
+        
     var view: PresenterToViewLoginProtocol?
     var interactor: PresenterToInteractorLoginProtocol?
+    
+    func timeLimitCountinues(status: Bool, continuationTime: Int64?) {
+        view?.timeLimitCountinues(status: status, continuationTime: continuationTime)
+    }
+    
+    func calculateRepeatTime() {
+        interactor?.calculateRepeatTime()
+    }
     
     func loginUser(mail: String, password: String) {
         interactor?.loginUser(mail: mail, password: password)

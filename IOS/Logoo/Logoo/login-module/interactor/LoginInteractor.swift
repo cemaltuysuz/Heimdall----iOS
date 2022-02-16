@@ -73,12 +73,29 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
                     print("Error : \(error.localizedDescription)")
                     return
                 }
-                
+                UDService.shared.setConfirmEmailTime(time: timeInSeconds()) // save time
                 response.status = .SUCCESS
                 self.presenter?.verificationLinkResponse(status: response)
             }
         }
     }
+    
+    func calculateRepeatTime() {
+        // Confirm e-mail counter (Last seen)
+        let lastDate = milliSecondToDate(milliseconds: UDService.shared.getConfirmEmailTime()) 
+        let lastSeconds = UDService.shared.getConfirmEmailSecond()
+        let currentDate = Date()
+        
+        
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.second], from: lastDate, to: currentDate)
+        let diff = dateComponents.second
+        let total = Int(lastSeconds) - diff!
+        if total > 0 {
+            presenter?.timeLimitCountinues(status: true, continuationTime: Int64(total))
+        }
+    }
+    
 
 }
 
