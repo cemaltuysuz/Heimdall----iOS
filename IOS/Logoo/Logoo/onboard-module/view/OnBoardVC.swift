@@ -26,8 +26,14 @@ class OnBoardVC : UIViewController {
         onBoardCollectionView.delegate = self
         onBoardCollectionView.dataSource = self
     }
+    /**
+     It directs the user to the Login Pref VC screen to select the login method.
+     */
     @IBAction func getStartButton(_ sender: Any) {
-        performSegue(withIdentifier: "onBoardToLoginPref", sender: nil)
+        performSegue(withIdentifier: OnBoardVCSegues
+                        .onBoardToLoginPref
+                        .rawValue
+                     , sender: nil)
     }
     
     @IBAction func pageChanged(_ sender: UIPageControl) {
@@ -42,7 +48,10 @@ extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "onBoardCollectionViewCell", for: indexPath) as! OnBoardCollectionCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: OnBoardCollectionViewCell
+                .onBoardCell
+                .rawValue, for: indexPath) as! OnBoardCollectionCell
         let current = onBoardList![indexPath.row]
         
         cell.initializeCell(onBoard: current)
@@ -53,7 +62,9 @@ extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
                             sizeForItemAt indexPath: IndexPath) -> CGSize {
             return CGSize(width: self.onBoardCollectionView.frame.width, height: self.onBoardCollectionView.frame.height)
         }
-    
+    /**
+     A function to understand which page the user is on and to update the UI .
+     */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
             let offSet = scrollView.contentOffset.x
             let width = scrollView.frame.width
@@ -71,4 +82,12 @@ extension OnBoardVC : PresenterToViewOnBoardProtocol {
             self.onBoardCollectionView.reloadData()
         }
     }
+}
+
+enum OnBoardVCSegues :String {
+    case onBoardToLoginPref = "onBoardToLoginPref"
+}
+
+enum OnBoardCollectionViewCell : String {
+    case onBoardCell = "onBoardCollectionViewCell"
 }

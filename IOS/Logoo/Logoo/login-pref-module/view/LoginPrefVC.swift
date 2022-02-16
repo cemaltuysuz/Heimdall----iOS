@@ -16,6 +16,12 @@ class LoginPrefVC: UIViewController {
     }
 
     @IBAction func toLoginButton(_ sender: Any) {
-        performSegue(withIdentifier: "loginPrefToLogin", sender: nil)
+        performSegue(withIdentifier: LoginPrefVCSegues
+                        .LoginPrefToLogin
+                        .rawValue, sender: nil)
     }
+}
+
+enum LoginPrefVCSegues :String {
+    case LoginPrefToLogin = "loginPrefToLogin"
 }

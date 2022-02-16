@@ -6,10 +6,9 @@
 //
 
 /**
- - Bu ViewController kullanıcının kayıt olmasına olanak sağlar.
- - Ana mantığında CollectionView yapısı var. Horizontal yapıda olan bu yapı ile kayıt hücrelerimi oluşturarak kullanıcıya
- adım adım kayıt olma imkanı sunuyorum.
- - Not : Doğrulama işlemleri kullanıcı hangi adımda ise o adımın hücre sınıfı içerisinde gerçekleşir.
+ - This ViewController allows the user to register.
+   - There is a CollectionView structure in its main logic. With this horizontal structure, I create my registration cells and offer the user the opportunity to register step by step.
+   - Note: Authentication processes take place in the cell class of the step, whichever step the user is in.
  */
 
 import UIKit
@@ -26,7 +25,7 @@ class RegisterVC: UIViewController {
     
     var presenter:ViewToPresenterRegisterMail?
     var currentRegisterClass:Int?
-    
+    var alert:CustomAlert?
     var confirmMailAdress:String?
     var registerSteps:[UICollectionViewCell]?
     var registerPhotoPickCell:RegisterPhotoPickCell?
@@ -45,26 +44,22 @@ class RegisterVC: UIViewController {
         
     }
     /**
-     - Kullanıcı kayıt kısmında ilerlemek istediğinde devam butonuna bastığında çalışacak olan method.
-     Bu kısımda kullanıcının o anda hangi adımda olduğu bilgisini ediniyorum.
-     
-     - Her kayıt hücresinin sınıfı doğrulama ile ilgili protokolü kalıtım olarak alıyor.
-     Bunun ardından o adımda bulunan collectionviewcell sınıfının sahip olduğu doğrulama fonksiyonunu çalıştırıyorum.
-     Eğer fonksiyon true dönerse bir sonraki hücreye geçiş izni veriyorum.
-     
-     - Kullanıcı 2. index'e sahip ise son kısımda var sayılıyor. Bu kısımda gerçekleşmesi beklenen durum da gerçekleştiğinde
-     kullanıcının kaydı yapılıyor ve home sayfasına yönlendiriliyor.
+     - The method that will work when the user presses the continue button when he wants to progress in the registration section.
+     In this section, I get the information on which step the user is at that moment.
+          
+     - The class of each register cell (CollectionView Cell) inherits the protocol related to validation.
+     After that, I run the validation function of the collectionviewcell class in that step.
+     If the function returns true, I allow the next cell to be passed.
      */
     
     @IBAction func registerNextButton(_ sender: Any) {
         if currentRegisterClass != self.registerSteps!.count - 1 && currentRegisterClass != self.registerSteps!.count - 2 {
-            // Anlık kayıt hücresine validation gonderir, cevap validation response tipinde döner.
+            // Executes the validation function of the current register cell, the response is of type Validation Response.
             if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 /**
-                 Response status bool tipinde olup true dönüyorsa kullanıcı başarılı bir şekilde kayıt adımını tamamlamış anlamına gelir.
+                 If the response status is true, it means that the user has successfully completed the registration step.
                  */
                 if response.status! {
-                    //registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
                     self.registerErrorLabel.isHidden = true
                     scrollToNextItem()
                 }else {
@@ -75,7 +70,6 @@ class RegisterVC: UIViewController {
         }else if currentRegisterClass == self.registerSteps!.count - 2 {
             if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 if response.status! {
-                    //registerCollectionView.scrollToNextItem() // Bir sonraki adıma geç.
                     self.registerErrorLabel.isHidden = true
                     presenter?.createUser()
                 }else {
@@ -103,7 +97,7 @@ class RegisterVC: UIViewController {
         }
     }
     /**
-     - Kullanıcı kayıt kısmında eğer birinci adımda değilse bir önceki adıma dönmek için bu butonu kullanır.
+     - In the registration section, if the user is not in the first step, he uses this button to return to the previous step.
      */
     
     @IBAction func registerBackButton(_ sender: Any) {
@@ -125,9 +119,10 @@ extension RegisterVC : PresenterToViewRegisterMail {
     
     func registerProgressVisibility(status: Bool) {
         if status {
-            registerIndicator.startAnimating()
+            alert =  CustomAlert()
+            alert!.showAlert(with: "title", message: "Lütfen bekleyin.", viewController: self)
         }else {
-            registerIndicator.stopAnimating()
+            alert?.dismissAlert()
         }
     }
     
@@ -138,17 +133,11 @@ extension RegisterVC : PresenterToViewRegisterMail {
 
 extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
     
-    /**
-     Kullanıcının kayıt kısmı 3 farklı adımdan oluştuğu ve bu sayı bir sabit olduğu için direkt olarak 3 döndürüyorum.
-     */
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return registerSteps!.count
     }
-    /**
-     - 0. index'de kullanıcı fotoğraf seçimi yapıyor.
-     - 1. index'de kullanıcı kendisi hakkında gereken bilgileri veriyor. (Kullancı adı, e-mail, doğum tarihi vb.)
-     - 2. index'de kullanıcının vermiş olduğu iletişim adresinin doğruluğu kontrol ediliyor.
-     */
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let count = indexPath.row
         if self.registerSteps![count] is RegisterPhotoPickCell {
@@ -201,7 +190,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     /**
-     - Hücrelerin en ve boy oranlarını collectionView yapısının en ve boy oranı ile bire bir biçimde belirliyorum.
+     - I set the aspect ratio of the cells to be the same as the collectionview.
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                             sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -209,19 +198,15 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         }
     
     /**
-     - Kullanıcı yeni bir adıma geçiş yaptığında (yatayda scroll edildiğinde ve bu scroll yeni ekranı kapsıyorsa) bu fonksiyon içerisinde gerçekleşmesini istediğim yapılar çalışıyor.
-     - Bu yapılar tamamen ui kısmı (progress, hide or visible) güncelleme amacı ile oluşturuldu.
+     - This function works when the user scroll the registration step.
      */
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
             let offSet = scrollView.contentOffset.x
             let width = scrollView.frame.width
             let horizontalCenter = width / 2
-            let page = Int(offSet + horizontalCenter) / Int(width) // kullanıcının hangi kayıt sayfasında olduğunun bilgisi
+            let page = Int(offSet + horizontalCenter) / Int(width) // Current registiration step.
         
-            /**
-             Kullanıcının bulunduğu sayfaya göre yapılacaklar 3 farklı durumda ele alınıyor. Kullanıcı birinci kayıt ekranında, kullanıcı baş ve son arasında ve kullanıcı son adımda.
-             */
         self.currentRegisterClass = page
         if page == 0 {
             self.registerBackButton.isHidden = true
@@ -264,60 +249,57 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 /**
- - Bu extension ile kullanıcının kayıt adımlarında hücreler ile arasında geçen dinamik olayları algılamamı sağlayacak protokolleri kalıtım olarak alıyorum.
- - UIImagePickerControllerDelegate ve UINavigationControllerDelegate protocolleri kullanıcıdan resim alabilmek adına kalıtım alındılar.
+ - With this extension, I inherit protocols that will allow me to detect dynamic events that occur between the user and the cells in the registration steps.
+- The UIImagePickerControllerDelegate and UINavigationControllerDelegate protocols are inherited to receive images from the user.
  */
 extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtocol, RegisterBirthDayCellProtocol, RegisterGenderCellProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     /**
-     - Kullanıcı fotoğraf seçim aşamasında ImageView'a tıklarsa çalışacak method.
-     - Bu method ile kullanıcıdan resim istemek için ilgili pencerenin açılmasını sağlıyorum.
-     - RegisterVC sınıfında nullable yapıda olan photoPickCell sınıfınının referansını isteği yapan sınıftan gelen referans ile yetkilendiriyorum, böylelikle fotoğraf seçildiği zaman seçilen fotoğrafı hücre sınıfına geri gönderebileceğim.
+- The method that will work if the user clicks on ImageView during the photo selection stage.
+- With this method, I enable the relevant window to be opened to request a picture from the user.
+- I authorize the reference of the photoPickCell class, which is nullable in the RegisterVC class, with the reference from the requesting class, so that when the photo is selected, I can send the selected photo back to the cell class.
      */
     func photoOnClick(registerCell: RegisterPhotoPickCell) {
         
-        self.registerPhotoPickCell = registerCell // yetkilendirme
-        
+        self.registerPhotoPickCell = registerCell
         let imagePicker = UIImagePickerController()
-        // Fotoğraf kaynağı kullanılabilir mi değil mi ?
             if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
 
                 imagePicker.delegate = self
                 imagePicker.sourceType = .savedPhotosAlbum
                 imagePicker.allowsEditing = false
 
-                // sayfanın açılması.
                 present(imagePicker, animated: true, completion: nil)
             }
     }
     
     /**
-     Kullanıcı bir resim seçmesi için açılan ekran ile etkileşime geçtiği anda aşağıdaki method çalışacak.
+     The following method will work as soon as the user interacts with the screen that opens to select a picture.
      */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-        self.dismiss(animated: true, completion: nil) // Kullanıcı resim seçince seçim ekranını kapat.
+        self.dismiss(animated: true, completion: nil) // if the user choosed an image, close the window.
         
         /**
-         Kullanıcı resim seçtiğinde bir casting işlemi gerçekleştiriyorum. Eğer resim başarılı ile alındıysa bir sonraki adımda hücre sınıfına UI kısmı güncellemesi için resmi ileteceğim.
+         I'm performing a casting when the user selects an image. If the image is received successfully, in the next step I will pass the image to the cell class for UI part update.
          */
         guard let image = info[.originalImage] as? UIImage else {
            print("Expected a dictionary containing an image, but was provided the following: \(info)")
             return
         }
-        // Alınan resmi hem hücre sınıfına hemde interactor sınıfına iletiyorum.
+        // I pass the received image to both the cell class and the interactor class.
         self.registerPhotoPickCell?.onPhotoUpload(image: image)
         self.presenter?.setUserImage(image: image)
     }
     
     /**
-     Bu kısımda kullanıcı kendine ait önemli bilgileri (username,mail,password) girdiği ve bu adımı geçmeye çalıştığı zaman eğer bilgiler validation kısmından geçiyor ise interactor katmanına iletilirler.
+     In this section, when the user enters important information (username, mail, password) and tries to pass this step, if the information passes through the validation part, they are transmitted to the interactor layer.
      */
     func informationToView(username: String, userMail: String, userPassword: String) {
         self.presenter?.setUserInfo(username: username, userMail: userMail, userPassword: userPassword)
     }
     /**
-     Kullanıcı doğum tarihinini kayıt sınıfından alıp internactor sınıfına iletiyorum.
+     I take the user birthdate from the registration class and pass it to the internactor class.
      */
     func birthDaySelected(date: String) {
         self.presenter?.setUserBirthDay(date: date)
@@ -329,7 +311,7 @@ extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtoco
 }
 
 /**
- CollectionView yapısını adım adım bir yapı haline getirebilmek adına bir extension oluşturdum. Böylelikle istediğim zaman ileri veya geri scroll edebiliyorum.
+ I created an extension to make the CollectionView structure a step-by-step structure. So I can scroll forward or backward whenever I want.
  */
 extension RegisterVC {
     func scrollToNextItem() {

@@ -26,18 +26,18 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                     
                     if isValidPassword(password: password) {
                         toView?.informationToView(username: username, userMail: mail, userPassword: password)
-                        return ValidationResponse(status: true, message: "info okey")
+                        return ValidationResponse(status: true, message: "Successfull.")
                     }else {
-                        return ValidationResponse(status: false, message: "Şifre en az 6 karakterli olmalıdır.")
+                        return ValidationResponse(status: false, message: "passwordRules".localized())
                     }
                 }else {
-                    return ValidationResponse(status: false, message: "Geçersiz e-mail adresi.")
+                    return ValidationResponse(status: false, message: "This email address is not correct format.".localized())
                 }
             }else{
-                return ValidationResponse(status: false, message: "Kullanıcı adı en az 2 ve en fazla 12 karakterden oluşmalıdır.")
+                return ValidationResponse(status: false, message: "usernameRules".localized())
             }
         }else {
-            return ValidationResponse(status: false, message: "Eksik bilgi.")
+            return ValidationResponse(status: false, message: "Please fill in all fields.".localized())
         }
     }
     

@@ -39,7 +39,6 @@ class InterestSelectionCell: UICollectionViewCell {
     }
     
     @objc func checkBoxStateChanged(sender : UITapGestureRecognizer) {
-        print("state tetiklendi")
         if self.checkBox.checkState == .checked {
             self.item.isSelected = true
             cellToVC?.onClick(item: self.item!)

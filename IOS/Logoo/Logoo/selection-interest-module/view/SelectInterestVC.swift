@@ -12,13 +12,17 @@ class SelectInterestVC: UIViewController {
 
     @IBOutlet weak var interestSearchBar: UISearchBar!
     @IBOutlet weak var interestsTableViewIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var interestSelectionCollectionView: UICollectionView!
-   
+    @IBOutlet weak var interestSelectedCollectionView: UICollectionView!
+    
     private var pendingRequestWorkItem: DispatchWorkItem?
     
     var hobbyList:[InterestSelectionModel]?
     var alreadySelectedList:[String]?
     var presenter:ViewToPresenterInterestSelectProtocol?
+    
+    var alert:CustomAlert?
     
     var userId:String?
     override func viewDidLoad() {
@@ -27,14 +31,19 @@ class SelectInterestVC: UIViewController {
         hobbyList = [InterestSelectionModel]()
         alreadySelectedList = [String]()
         
-        self.interestSelectionCollectionView.delegate = self
-        self.interestSelectionCollectionView.dataSource = self
-        self.interestSearchBar.delegate = self
-        
         SelectInterestRouter.createModule(ref: self)
         if let uuid = userId {
             presenter?.getInterests(uuid: uuid)
         }
+        
+         self.interestSelectionCollectionView.delegate = self
+         self.interestSelectionCollectionView.dataSource = self
+         
+         self.interestSelectedCollectionView.delegate = self
+         self.interestSelectedCollectionView.dataSource = self
+         
+         self.interestSearchBar.delegate = self
+     
     }
 
     @IBAction func interestsSaveButton(_ sender: Any) {
@@ -42,11 +51,13 @@ class SelectInterestVC: UIViewController {
             self.interestsTableViewIndicator.startAnimating()
             presenter?.saveInterests(list: self.alreadySelectedList!)
         }else {
-            print("liste boş olduğu için şu anda kayıt işlemi gerçekleştirilemiyor.")
+            print("selected list is empty.")
         }
-    }
+         }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
-        performSegue(withIdentifier: "interestSelectionToHomeVC", sender: nil)
+        performSegue(withIdentifier: SelectInterestVCSegues
+                        .interestSelectionToHomeVC
+                        .rawValue, sender: nil)
     }
     
 }
@@ -63,8 +74,6 @@ extension SelectInterestVC : UISearchBarDelegate {
             pendingRequestWorkItem = requestWorkItem
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
                                                   execute: requestWorkItem)
-            
-            
         }
 }
 
@@ -93,6 +102,7 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
     
     func saveInterestsResponse(resp: Resource<Any>) {
         DispatchQueue.main.async {
+            self.alert?.dismissAlert()
             if resp.status == .SUCCESS {
                 print("interest save status : Success")
             }else {
@@ -105,10 +115,24 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
 
 extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSource, InterestSelectCellToViewProtocol {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if collectionView == self.interestSelectedCollectionView {
+            return self.alreadySelectedList!.count
+        }
         return hobbyList!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if collectionView == self.interestSelectedCollectionView {
+            let current = alreadySelectedList![indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectedCell", for: indexPath) as! InterestSelectedCell
+            cell.deSelect = self
+            cell.initialize(row: current)
+            return cell
+        }
+        
+        
         var current = hobbyList![indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectionCell", for: indexPath) as! InterestSelectionCell
         
@@ -137,9 +161,13 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
                     }
                     count = count + 1
                 }
-                self.interestSelectionCollectionView.reloadData()
             }
+            self.interestSelectionCollectionView.reloadData()
+            self.interestSelectedCollectionView.reloadData()
         }
     }
-    
+}
+
+enum SelectInterestVCSegues : String {
+    case interestSelectionToHomeVC = "interestSelectionToHomeVC"
 }

@@ -24,5 +24,6 @@ class Resource <T> {
 
 enum Status {
     case SUCCESS
+    case LOADING
     case ERROR
 }

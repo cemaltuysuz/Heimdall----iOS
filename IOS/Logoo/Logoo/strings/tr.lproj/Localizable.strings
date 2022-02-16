@@ -21,3 +21,22 @@
 "Next" = "Devam";
 "Finish It" = "Kaydı Tamamla";
 "Log In" = "Giriş Yap";
+"Something went wrong." = "Birşeyler yanlış gitti.";
+
+"No picture selected." = "Fotoğraf seçilmedi.";
+
+"passwordRules" = "Şifreniz en az 8 karakter, bir büyük harf, bir sayı ve bir özel karakter (!.?&/+) içermelidir.";
+"usernameRules" = "Kullanıcı adınız; en az 7 en fazla 18 karakterli olabilir ve özel karakter içeremez.";
+
+"This email address is not correct format." = "E-posta adresiniz doğru formatta değil.";
+
+"Please fill in all fields." = "Lütfen tüm alanları doldurun.";
+
+"The e-mail address is not in the correct format." = "E-mail adresi yanlış.";
+
+"Your account is not verified. Please confirm your mail adress." = "Hesabınız henüz onaylanmamış. Lütfen mail adresinizi doğrulayın.";
+"Time to resubmit:" = "Yeniden gönder:";
+"Send Confirmation Link" = "Onay linki gönder";
+"Login failed." = "Giriş başarısız.";
+
+

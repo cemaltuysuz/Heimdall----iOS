@@ -13,14 +13,14 @@ class RegisterOTPCell: UICollectionViewCell, RegisterProtocol {
     private var anim:AnimationView?
     
     func validate() -> ValidationResponse {
-        return ValidationResponse(status: true, message: "otp başarılı")
+        return ValidationResponse(status: true, message: "Success")
     }
     
     func initialize() {
         anim = AnimationView(name: "mail_sended")
         anim!.frame = animContainer.bounds
         anim!.animationSpeed = 1
-        anim!.loopMode = .loop
+        anim!.loopMode = .playOnce
         anim!.play()
         animContainer.addSubview(anim!)
     }

@@ -19,8 +19,6 @@ class LoginVC: UIViewController {
     var countTimer:Timer!
     var counter = 100
     
-    
-    
     var presenter:ViewToPresenterLoginProtocol?
     
     override func viewDidLoad() {
@@ -38,11 +36,12 @@ class LoginVC: UIViewController {
                 presenter?.loginUser(mail: mail, password: password)
                 self.loginErrorMessageLabel.isHidden = true
             }else {
-                self.loginErrorMessageLabel.text = "The e-mail address is not in the correct format."
+                self.loginErrorMessageLabel.text = "The e-mail address is not in the correct format.".localized()
                 self.loginErrorMessageLabel.isHidden = false
             }
         }
     }
+    
     @IBAction func sendMailVerification(_ sender: Any) {
         if let mail = self.loginUserMail.text {
             presenter?.sendVerificationLink(mail: mail)
@@ -52,28 +51,26 @@ class LoginVC: UIViewController {
 
 extension LoginVC : PresenterToViewLoginProtocol {
     /**
-     Kullanıcı giriş yapmak istediği zaman firebase tarafından dönen yanıt buraya geliyor.
-     Dönen yanıt Resource sınıfı ile sarmalanmış yapıda, generic olan data kısmı ise UserState (enum) sınıfı tipinde.
+     The response from the network part when the user wants to log in.
      */
     func loginResponse(status: Resource<UserState>) {
         DispatchQueue.main.async {
             if status.status! == .SUCCESS{
                 /**
-                 Kullanıcı başarılı bir şekilde login oluyor olabilir lakin mail adresinin onaylanmış olmama durumu mevcut.
-                 Bunun kontrolünü yapıyorum.
-                 Kullanıcı Onaylı ise ;
-                 - Kullanıcıya ait hobiler kontrol edilir, eğer hobisi yok ise hobi seçme ekranına yönlendirilir.
+                 I check if the user's e-mail address is approved.
                  */
                 if status.data == .MAIL_ADRESS_CONFIRMED {
                     self.loginErrorMessageLabel.isHidden = true
-                    self.performSegue(withIdentifier: "loginToRouterVC", sender: nil)
+                    self.performSegue(withIdentifier: LoginVCSegues
+                                        .LoginToRouter
+                                        .rawValue, sender: nil)
                 }
                 else if status.data == .MAIL_ADRESS_NOT_CONFIRMED {
-                    // Kullanıcıya hesabının onaylanmadığını bildiriyorum.
-                    self.loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress."
+                    // I'm notifying the user that their account has not been confirmed.
+                    self.loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress.".localized()
                     self.loginErrorMessageLabel.isHidden = false
                     
-                    // Hesabını onaylaması için onay konteynırını görünür bir hale getireceğim.
+                    // I will make the confirmation container visible for her to approve her account.
                     self.mailConfirmationContainer.isHidden = false
                 }
             }
@@ -100,15 +97,19 @@ extension LoginVC : PresenterToViewLoginProtocol {
     private func changeLabel(){
         if counter != 0
              {
-            self.sendVerificationButtonOutlet.setTitle("\(counter) sonra yeniden mail gonderebilirsiniz.", for: .normal)
+            self.sendVerificationButtonOutlet.setTitle("Time to resubmit:".localized() + "\(counter)", for: .normal)
                  counter -= 1
              }
              else
              {
-                 self.sendVerificationButtonOutlet.setTitle("Onay Linki Gönder", for: .normal)
+                 self.sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
                  self.sendVerificationButtonOutlet.isEnabled = true
                   countTimer.invalidate()
                 
              }
     }
+}
+
+enum LoginVCSegues : String {
+    case LoginToRouter = "loginToRouterVC"
 }

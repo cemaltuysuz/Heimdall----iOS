@@ -21,14 +21,11 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
             if let error = error {
                 let resp = Resource<UserState>(status: .ERROR,
                                                data: nil,
-                                               message: "Giriş Başarısız. \(error.localizedDescription)")
+                                               message: "Login failed. \(error.localizedDescription)")
                 self.presenter?.loginResponse(status: resp)
             }
             
             if let user = authResult?.user {
-                /**
-                 Kullanıcının giriş bilgileri doğru lakin mail adresini doğrulamamış olma ihtimaline karşın kontrol sağlıyorum.
-                 */
                 
                 self.loginLog(userId: user.uid)
                 let resp = Resource<UserState>(status: .SUCCESS,
@@ -49,13 +46,17 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
         let dbRef = Firestore.firestore()
         let logObject = [
             "userLoginTime"     : timeInSeconds(),
-            "deviceModel"       : Device.current.name ?? "unfounded",
-            "deviceVersion"     : Device.current.systemVersion ?? "unfounded",
+            "deviceModel"       : Device.current.name ?? "unknow",
+            "deviceVersion"     : Device.current.systemVersion ?? "unknow",
             "operatingSystem"   : "IOS"
         ] as [String : Any]
         
-        let loginLogRef = dbRef.collection("login-log").document(userId).collection("UUID().uuidString")
-        loginLogRef.parent?.setData(logObject)
+        let loginLogRef = dbRef
+            .collection("login-log")
+            .document(userId)
+            .collection(UUID().uuidString)
+        
+        loginLogRef.addDocument(data: logObject)
     }
     
     func sendVerificationLink(mail: String) {
@@ -69,7 +70,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
                     response.message = error.localizedDescription
                     self.presenter?.verificationLinkResponse(status: response)
                     
-                    print("error : \(error.localizedDescription)")
+                    print("Error : \(error.localizedDescription)")
                     return
                 }
                 

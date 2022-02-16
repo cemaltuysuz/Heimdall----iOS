@@ -80,6 +80,10 @@
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
 		15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDA68527B647440066F469 /* LoginRouterVC.swift */; };
+		15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */; };
+		15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3027BCED220088DD35 /* CustomAlert.swift */; };
+		15C64C3327BCF39E0088DD35 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 15C64C3227BCF39E0088DD35 /* loading.json */; };
+		15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */; };
 		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
@@ -188,6 +192,10 @@
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15BDA68527B647440066F469 /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
+		15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectedCell.swift; sourceTree = "<group>"; };
+		15C64C3027BCED220088DD35 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		15C64C3227BCF39E0088DD35 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
 		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
@@ -332,6 +340,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				15C64C3427BD1D430088DD35 /* reset-password-module */,
 				15BDA68327B646B80066F469 /* login-router-module */,
 				156F045027B3C0E300D37039 /* selection-interest-module */,
 				1517AF8C279EBC5700D1194E /* chat-module */,
@@ -577,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */,
+				15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */,
 			);
 			path = collectionView;
 			sourceTree = "<group>";
@@ -627,6 +637,7 @@
 		156F043927B2700E00D37039 /* anim */ = {
 			isa = PBXGroup;
 			children = (
+				15C64C3227BCF39E0088DD35 /* loading.json */,
 				156F043A27B2702B00D37039 /* mail_sended.json */,
 			);
 			path = anim;
@@ -678,6 +689,7 @@
 				1517AF8A279E9AAA00D1194E /* Util.swift */,
 				156F044B27B3AAC500D37039 /* Resource.swift */,
 				1535675827BA671D007346D4 /* Validators.swift */,
+				15C64C3027BCED220088DD35 /* CustomAlert.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -797,6 +809,22 @@
 			isa = PBXGroup;
 			children = (
 				15BDA68527B647440066F469 /* LoginRouterVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		15C64C3427BD1D430088DD35 /* reset-password-module */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C3527BD1D4E0088DD35 /* view */,
+			);
+			path = "reset-password-module";
+			sourceTree = "<group>";
+		};
+		15C64C3527BD1D4E0088DD35 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1043,6 +1071,7 @@
 				1535675E27BA81D0007346D4 /* Localizable.strings in Resources */,
 				159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */,
 				156F043B27B2702B00D37039 /* mail_sended.json in Resources */,
+				15C64C3327BCF39E0088DD35 /* loading.json in Resources */,
 				150C8FBB27994C6E000DAFBE /* Assets.xcassets in Resources */,
 				150C8FB927994C6D000DAFBE /* Main.storyboard in Resources */,
 			);
@@ -1078,6 +1107,7 @@
 				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				153EA964279FF63800871246 /* Room.swift in Sources */,
+				15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
@@ -1099,6 +1129,7 @@
 				15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
+				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
@@ -1126,6 +1157,7 @@
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
+				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
 				156F044727B3A58900D37039 /* LoginInteractor.swift in Sources */,
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,

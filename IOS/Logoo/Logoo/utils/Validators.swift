@@ -9,7 +9,7 @@ import Foundation
 
 /**
  ***Username Validator**
- * Input range : 7 - 8
+ * Input range : 7 - 18
  * No Special Character  (&%^+ etc.)
  * Only letters, numbers or underscores
  */

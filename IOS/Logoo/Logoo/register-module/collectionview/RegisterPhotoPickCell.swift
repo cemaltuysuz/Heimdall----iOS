@@ -12,8 +12,8 @@ class RegisterPhotoPickCell: UICollectionViewCell,RegisterProtocol {
     var photoProtocol:RegisterPhotoCellProtocol?
     
     /**
-     - Kullanıcı tarafından UIImageView için bir dokunuş gerçekleştiğinde bunu algılayabilmek adına bir selector yapısı kurdum.
-     - Bu yapıyı bir initialize fonksiyonu içerisine yerleştirdim. ViewController kısmında bu hücreyi oluşturduktan sonra bu fonksiyonu çalıştırıyorum.
+     - I have set up a selector structure to detect when the user touches the UIImageView.
+     - I placed this structure inside an initialize function. After creating this cell in the ViewController, I run this function.
      */
     func initialize(){
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(photoClicked))
@@ -22,32 +22,29 @@ class RegisterPhotoPickCell: UICollectionViewCell,RegisterProtocol {
     }
     
     /**
-     VC tarafdından doğrulama istendiği zaman bu fonksiyon polymorphism ile çalıştırılır.
+     This function is run when verification is requested by the View.
      */
     func validate() -> ValidationResponse {
-        print("bir istek geldi")
-        
-        // kullanıcı resim seçmiş anlamına gelir.
         if let imageView = registerProfileImage {
             if imageView.image != nil {
-                return ValidationResponse(status: true, message: "foto doğrulama okey")
+                return ValidationResponse(status: true, message: "Success.")
             }
         }
-        return ValidationResponse(status: false, message: "Kullanıcı resim secmemis")
+        return ValidationResponse(status: false, message: "No picture selected.".localized())
     }
     
-    // Kullanıcı bir fotoğraf seçtiği zaman UI kısmı güncelle.
+    // Update UI when user selects a photo.
     func onPhotoUpload(image:UIImage){
         self.registerProfileImage.image = image
     }
-    // ImageView bir tıklama aldığı zaman fotoğraf seçim ekranının açılması için VC kısmını tetikle.
+    // When the ImageView gets a click, trigger the View to open the photo selection screen.
     @objc
     func photoClicked(){
         photoProtocol?.photoOnClick(registerCell: self)
     }
 }
 
-// VC kısmının tıklanmalardan haberdar olması için oluşturduğum protocol yapısı.
+// The protocol structure I created for the View to be aware of the clicks.
 protocol RegisterPhotoCellProtocol {
     func photoOnClick(registerCell:RegisterPhotoPickCell)
 }

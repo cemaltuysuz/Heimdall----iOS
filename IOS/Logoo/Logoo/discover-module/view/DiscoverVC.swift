@@ -32,7 +32,6 @@ class DiscoverVC: UIViewController {
         
     }
     
-    
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         self.tabBarController?.selectedIndex = sender.selectedSegmentIndex
     }
@@ -65,6 +64,5 @@ extension DiscoverVC : PresenterToViewDiscorveryProtocol {
             self.discoveryTableView.reloadData()
         }
     }
-    
-    
 }
+

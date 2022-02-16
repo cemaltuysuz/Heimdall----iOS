@@ -62,29 +62,28 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     
     func createUser() {
         /**
-         Kayıt işlemlerinin sürdüğünü belirtmek adına kullanıcıya indicator gösteriyorum.
+         I show the indicator to the user to indicate that the registration process is in progress.
          */
         presenter?.registerProgressVisibility(status: true)
         
-        // -- KAYIT İŞLEMİ BAŞLADI --
+        // -- REGISTER IS STARTED --
         Auth.auth().createUser(
             withEmail: self.userMail!,
             password: self.userPassword!){ user, error in
                 
                 /**
+                 *** TODO ()**
                  Kayıt oluşturulurken bir sorun oluşursa ;
                  - View kısmına bildir
                  - IndicatorView'i durdur
                  - return et
                  */
                 if let err = error {
-                    self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Bir sorun oluştu. \(err.localizedDescription)"))
+                    self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Something went wrong. \(err.localizedDescription)"))
                     self.presenter?.registerProgressVisibility(status: false)
                     return
                 }
-                /**
-                  Kullanıcıyı firestore kısmına kayıt etmek için bir veritabanı referansı oluşturuyorum
-                 */
+
                 let userRef = self.fireStoreDB.collection("users").document(user!.user.uid)
                 // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
                 let userObject = [
@@ -106,9 +105,10 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     
                         ] as [String:Any]
                 /**
-                 Kullanıcıyı firestore'a işliyorum ;
-                 Bu kısımda eğer kullanıcı veritabanına başarılı bir şekilde işlenirse kullanıcının profil resmini storage alanına upload edeceğim.
-                 Sonrasında aldığım ref değeri ile bunu kullanıcı profil resmi olarak kayıt edeceğim.
+                 I process the user to firestore;
+                 In this section, if the user is successfully processed into the database,
+                 I will upload the user's profile picture to the storage area.
+                 Then I will save it as a user profile picture with the ref value I got.
                  */
                 userRef.setData(userObject){err in
                     if let err = error {
@@ -117,18 +117,19 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                         return
                     }
                     
-                    // Kullanıcının fotoğrafını storage kısmına kayıt ediyorum.
+                    // I upload user's photo to storage
                     
                     var data = Data()
-                    data = self.userImage!.jpegData(compressionQuality: 0.8)! // Fotoğrafı data haline getirdim.
+                    data = self.userImage!.jpegData(compressionQuality: 0.8)!
+                    // I converted the photo into data.
                     
-                    // Fotoğrafın yükleneceği dosya yolunu ve dosyanın ismi / tipini belirliyorum.
+                    // I determine the path to the file where the photo will be uploaded and the name / type of the file.
                     let fileUUID = UUID().uuidString
                     let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
                     let metaData = StorageMetadata()
                     metaData.contentType = "image/jpg"
                     
-                    // fotoğraf yükleme işlemini başlatıyorum.
+                    // STARTED PHOTO UPLOAD
                     self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
                         if let err = error {
                             print("Error upload user photo : \(err.localizedDescription)")
@@ -158,10 +159,10 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                 }
                 
             }
-       // KAYIT İŞLEMİ BİTTİ
+       // REGISTER IS FINISHED
             }
     /**
-     Kullanıcıya onay e postası gonderiyorum. Bunu yapabilmek için firebase'in kurallarına göre kullanıcının giriş yapmış olması gerekiyor. Bu yuzden giriş yapıyor, mail gonderiyor ardından hesaptan çıkış yapıyorum.
+     I'm sending a confirmation email to the user. In order to do this, the user must be logged in according to firebase's rules. That's why I log in, send mail, then log out of the account.
      */
     private func sendEmailVerification(){
         if let mail = self.userMail, let password = self.userPassword {
@@ -182,41 +183,3 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
         }
     }
 }
-
-/**
- 
- 
- var data = Data()
- data = self.userImage!.jpegData(compressionQuality: 0.8)! // Fotoğrafı data haline getirdim.
- 
- // Fotoğrafın yükleneceği dosya yolunu ve dosyanın ismi / tipini belirliyorum.
- let fileUUID = UUID().uuidString
- let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
- let metaData = StorageMetadata()
- metaData.contentType = "image/jpg"
- 
- // fotoğraf yükleme işlemini başlatıyorum.
- self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
-     if let err = error {
-         print("Error upload user photo : \(err.localizedDescription)")
-         self.presenter?.registerProgressVisibility(status: false)
-         return
-     }
-     self.storageRef.child(filePath).downloadURL{(url,error) in
-         if let error = error {
-             print("Error when receive the user's profile photo url : \(error)")
-             self.presenter?.registerProgressVisibility(status: false)
-             return
-         }
-         if let ppUrl = url?.absoluteString {
-             rgRef.child("userPhotoUrl").setValue(ppUrl)
-             self.presenter?.registerProgressVisibility(status: false)
-             self.presenter?.registerFeedBack(response: ValidationResponse(status: true, message: self.userMail!))
-             self.presenter?.registerProgressVisibility(status: false)
-             self.sendEmailVerification()
-         }
-         
-     }
- }
- */
-
