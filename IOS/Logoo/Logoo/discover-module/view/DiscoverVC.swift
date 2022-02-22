@@ -19,11 +19,12 @@ class DiscoverVC: UIViewController {
         // initialize variable
         discoveredUsers = [User]()
         
+        DiscoveryRouter.createModule(ref: self)
+        presenter?.getDiscoveredUsers()
+        
         discoveryTableView.delegate = self
         discoveryTableView.dataSource = self
         
-        DiscoveryRouter.createModule(ref: self)
-        presenter?.getDiscoveredUsers()
         
         // Segmented Control Setup
         let navigationItem = self.tabBarController?.navigationItem.titleView

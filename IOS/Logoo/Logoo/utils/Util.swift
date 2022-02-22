@@ -34,6 +34,21 @@ func convertStringToDictionary(text: String) -> [String:AnyObject]? {
    return nil
 }
 
+func randomStringWithLength(len: Int) -> NSString {
+
+    let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+    let randomString : NSMutableString = NSMutableString(capacity: len)
+
+    for _ in 1...len{
+        let length = UInt32 (letters.length)
+        let rand = arc4random_uniform(length)
+        randomString.appendFormat("%C", letters.character(at: Int(rand)))
+    }
+
+    return randomString
+}
+
 
 func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))

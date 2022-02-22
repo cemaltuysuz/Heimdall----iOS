@@ -22,7 +22,7 @@ class ResetPasswordVC: UIViewController {
     }
     @IBAction func sendResetLinkButton(_ sender: Any) {
         guard let mail = resetMailTextField.text, isValidMail(mail: mail) else {
-            resetMailErrorLabel.text = "The e-mail address is not in the correct format."
+            resetMailErrorLabel.text = "The e-mail address is not in the correct format.".localized()
             resetMailErrorLabel.isHidden = false
             return
         }

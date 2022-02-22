@@ -30,6 +30,7 @@ class OnBoardVC : UIViewController {
      It directs the user to the Login Pref VC screen to select the login method.
      */
     @IBAction func getStartButton(_ sender: Any) {
+        UDService.shared.changeOnboardVisibilityInfo(value: true)
         performSegue(withIdentifier: OnBoardVCSegues
                         .onBoardToLoginPref
                         .rawValue

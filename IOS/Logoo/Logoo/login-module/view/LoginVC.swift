@@ -33,7 +33,7 @@ class LoginVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let currentTime = counter, currentTime > 0 {
+        if let currentTime = counter, currentTime > 0, !mailConfirmationContainer.isHidden {
             UDService.shared.setConfirmEmailSecond(second: currentTime)
         }
         

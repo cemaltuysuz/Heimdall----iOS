@@ -16,7 +16,9 @@ class Room {
     var roomMembers:[User]?
     var creationTime:String?
     
-    init(){}
+    init(){
+        
+    }
     
      init(roomId: String, creatorId: String, roomTitle: String, roomDescription: String, roomImageUrl: String, roomMembers: [User], creationTime: String) {
         self.roomId = roomId

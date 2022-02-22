@@ -15,7 +15,6 @@ class UDService : UDProtocol {
     /*
      It keeps the information whether the on-board screen has been shown to the user before.
      Default return value is false.
-     
      */
     func onboardVisibilityInfo() -> Bool {
         return ud.bool(forKey: Constants

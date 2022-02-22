@@ -64,6 +64,7 @@ class CustomAlert {
                                 height: closeButtonHeight)
         
         closeButton.backgroundColor = .white
+        closeButton.isHidden = true
         closeButton.tintColor = UIColor(named: "black700")
         closeButton.addTarget(self,
                          action: #selector(self.dismissAlert),

@@ -6,38 +6,44 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class WelcomeVC: UIViewController {
+    
+    var presenter : ViewToPresenterWelcomeProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        WelcomeRouter.createModule(ref: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        performSegue(
-            withIdentifier: WelcomeVCSegues
-                        .welcomeToOnBoardVC
-                        .rawValue,
-            sender: nil)
-        return
-        if Auth.auth().currentUser != nil {
-            performSegue(
-                withIdentifier: WelcomeVCSegues
-                            .welcomeToLoginRouterVC
-                            .rawValue,
-                sender: nil)
-        }else {
-            performSegue(
-                withIdentifier: WelcomeVCSegues
-                            .welcomeToOnBoardVC
-                            .rawValue,
-                sender: nil)
-        }
+        presenter?.routeUser()
     }
 }
 
+extension WelcomeVC : PresenterToViewWelcomeProtocol {
+    func goToOnBoard() {
+        performSegue(withIdentifier: WelcomeVCSegues
+                        .welcomeToOnBoardVC
+                        .rawValue, sender: nil)
+    }
+    
+    func goToLoginPref() {
+        performSegue(withIdentifier: WelcomeVCSegues
+                        .welcomeToLoginPrefVC
+                        .rawValue, sender: nil)
+    }
+    
+    func goToHome() {
+        performSegue(withIdentifier: WelcomeVCSegues
+                        .welcomeToHomeVC
+                        .rawValue, sender: nil)
+    }
+}
+
+
 enum WelcomeVCSegues : String {
-    case welcomeToLoginRouterVC = "welcomeToLoginRouter"
+    case welcomeToLoginPrefVC = "welcomeToLoginPref"
     case welcomeToOnBoardVC = "welcomeToOnBoard"
+    case welcomeToHomeVC = "welcomeToHome"
 }
