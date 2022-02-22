@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+
 
 class ChatVC: UIViewController {
     

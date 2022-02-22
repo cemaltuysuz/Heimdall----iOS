@@ -33,6 +33,12 @@
 		150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */; };
 		150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C90012799672A000DAFBE /* OnBoardPresenter.swift */; };
 		150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C9003279967FA000DAFBE /* OnBoardRouter.swift */; };
+		150D839F27C4E73B009601F0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839927C4E73B009601F0 /* Chat.swift */; };
+		150D83A027C4E73B009601F0 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839A27C4E73B009601F0 /* ChatRequest.swift */; };
+		150D83A127C4E73B009601F0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839B27C4E73B009601F0 /* Room.swift */; };
+		150D83A227C4E73B009601F0 /* RoomMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839C27C4E73B009601F0 /* RoomMessage.swift */; };
+		150D83A327C4E73B009601F0 /* P2PMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839D27C4E73B009601F0 /* P2PMessage.swift */; };
+		150D83A427C4E73B009601F0 /* P2P.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839E27C4E73B009601F0 /* P2P.swift */; };
 		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
@@ -157,6 +163,12 @@
 		150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardInteractor.swift; sourceTree = "<group>"; };
 		150C90012799672A000DAFBE /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
 		150C9003279967FA000DAFBE /* OnBoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardRouter.swift; sourceTree = "<group>"; };
+		150D839927C4E73B009601F0 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		150D839A27C4E73B009601F0 /* ChatRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
+		150D839B27C4E73B009601F0 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		150D839C27C4E73B009601F0 /* RoomMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomMessage.swift; sourceTree = "<group>"; };
+		150D839D27C4E73B009601F0 /* P2PMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2PMessage.swift; sourceTree = "<group>"; };
+		150D839E27C4E73B009601F0 /* P2P.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2P.swift; sourceTree = "<group>"; };
 		1517AF88279E968D00D1194E /* Hobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hobby.swift; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -577,6 +589,12 @@
 		1517AF8F279EBC8600D1194E /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				150D839927C4E73B009601F0 /* Chat.swift */,
+				150D839A27C4E73B009601F0 /* ChatRequest.swift */,
+				150D839E27C4E73B009601F0 /* P2P.swift */,
+				150D839D27C4E73B009601F0 /* P2PMessage.swift */,
+				150D839B27C4E73B009601F0 /* Room.swift */,
+				150D839C27C4E73B009601F0 /* RoomMessage.swift */,
 				153EA969279FFA0E00871246 /* enums */,
 			);
 			path = entity;
@@ -1264,6 +1282,7 @@
 				1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */,
 				156F042C27AFA80F00D37039 /* GenderType.swift in Sources */,
 				15C64C5227BE27480088DD35 /* WelcomePresenter.swift in Sources */,
+				150D83A127C4E73B009601F0 /* Room.swift in Sources */,
 				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
 				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
@@ -1297,6 +1316,7 @@
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
+				150D839F27C4E73B009601F0 /* Chat.swift in Sources */,
 				15C64C5427BE27CE0088DD35 /* WelcomeRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
@@ -1316,7 +1336,10 @@
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
+				150D83A327C4E73B009601F0 /* P2PMessage.swift in Sources */,
+				150D83A227C4E73B009601F0 /* RoomMessage.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
+				150D83A427C4E73B009601F0 /* P2P.swift in Sources */,
 				15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */,
 				15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */,
 				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
@@ -1324,6 +1347,7 @@
 				15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */,
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
+				150D83A027C4E73B009601F0 /* ChatRequest.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
 				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,

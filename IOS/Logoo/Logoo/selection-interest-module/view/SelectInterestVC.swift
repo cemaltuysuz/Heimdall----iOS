@@ -104,7 +104,9 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
         DispatchQueue.main.async {
             self.alert?.dismissAlert()
             if resp.status == .SUCCESS {
-                print("interest save status : Success")
+                self.performSegue(withIdentifier: SelectInterestVCSegues
+                                .interestSelectionToHomeVC
+                                .rawValue, sender: nil)
             }else {
                 print("Error when save interest : \(resp.message!)")
             }
