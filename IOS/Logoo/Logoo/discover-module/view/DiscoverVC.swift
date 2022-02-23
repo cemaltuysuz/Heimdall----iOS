@@ -24,17 +24,8 @@ class DiscoverVC: UIViewController {
         
         discoveryTableView.delegate = self
         discoveryTableView.dataSource = self
+
         
-        
-        // Segmented Control Setup
-        let navigationItem = self.tabBarController?.navigationItem.titleView
-        let segmentedControl = navigationItem as! UISegmentedControl
-        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
-        
-    }
-    
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        self.tabBarController?.selectedIndex = sender.selectedSegmentIndex
     }
 }
 
@@ -48,7 +39,7 @@ extension DiscoverVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "discoveryTableViewCell", for: indexPath) as! DiscoveryTableViewCell
         
         cell.discoveryUsernameLabel.text = current.username!
-        cell.initialize(hobbyList: hobbyToHobbies(hobby: current.userHobbies!))
+     //   cell.initialize(hobbyList: hobbyToHobbies(hobby: current.userHobbies!))
         
         return cell
     }

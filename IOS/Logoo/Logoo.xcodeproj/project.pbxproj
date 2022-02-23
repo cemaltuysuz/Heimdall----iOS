@@ -33,12 +33,8 @@
 		150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */; };
 		150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C90012799672A000DAFBE /* OnBoardPresenter.swift */; };
 		150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C9003279967FA000DAFBE /* OnBoardRouter.swift */; };
-		150D839F27C4E73B009601F0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839927C4E73B009601F0 /* Chat.swift */; };
-		150D83A027C4E73B009601F0 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839A27C4E73B009601F0 /* ChatRequest.swift */; };
-		150D83A127C4E73B009601F0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839B27C4E73B009601F0 /* Room.swift */; };
-		150D83A227C4E73B009601F0 /* RoomMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839C27C4E73B009601F0 /* RoomMessage.swift */; };
-		150D83A327C4E73B009601F0 /* P2PMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839D27C4E73B009601F0 /* P2PMessage.swift */; };
-		150D83A427C4E73B009601F0 /* P2P.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D839E27C4E73B009601F0 /* P2P.swift */; };
+		150D83A627C4F311009601F0 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D83A527C4F311009601F0 /* Inbox.swift */; };
+		150D83A827C4F3BE009601F0 /* InboxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D83A727C4F3BE009601F0 /* InboxType.swift */; };
 		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
@@ -77,6 +73,9 @@
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		15A5B40F27C6854A0082029E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B40E27C6854A0082029E /* Room.swift */; };
+		15A5B41127C686430082029E /* Direct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41027C686420082029E /* Direct.swift */; };
+		15A5B41327C687280082029E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41227C687280082029E /* Message.swift */; };
 		15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDA68527B647440066F469 /* LoginRouterVC.swift */; };
 		15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */; };
 		15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3027BCED220088DD35 /* CustomAlert.swift */; };
@@ -163,12 +162,8 @@
 		150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardInteractor.swift; sourceTree = "<group>"; };
 		150C90012799672A000DAFBE /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
 		150C9003279967FA000DAFBE /* OnBoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardRouter.swift; sourceTree = "<group>"; };
-		150D839927C4E73B009601F0 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		150D839A27C4E73B009601F0 /* ChatRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
-		150D839B27C4E73B009601F0 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		150D839C27C4E73B009601F0 /* RoomMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomMessage.swift; sourceTree = "<group>"; };
-		150D839D27C4E73B009601F0 /* P2PMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2PMessage.swift; sourceTree = "<group>"; };
-		150D839E27C4E73B009601F0 /* P2P.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2P.swift; sourceTree = "<group>"; };
+		150D83A527C4F311009601F0 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
+		150D83A727C4F3BE009601F0 /* InboxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxType.swift; sourceTree = "<group>"; };
 		1517AF88279E968D00D1194E /* Hobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hobby.swift; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -205,6 +200,9 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15A5B40E27C6854A0082029E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		15A5B41027C686420082029E /* Direct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direct.swift; sourceTree = "<group>"; };
+		15A5B41227C687280082029E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		15BDA68527B647440066F469 /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectedCell.swift; sourceTree = "<group>"; };
 		15C64C3027BCED220088DD35 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
@@ -589,13 +587,11 @@
 		1517AF8F279EBC8600D1194E /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				150D839927C4E73B009601F0 /* Chat.swift */,
-				150D839A27C4E73B009601F0 /* ChatRequest.swift */,
-				150D839E27C4E73B009601F0 /* P2P.swift */,
-				150D839D27C4E73B009601F0 /* P2PMessage.swift */,
-				150D839B27C4E73B009601F0 /* Room.swift */,
-				150D839C27C4E73B009601F0 /* RoomMessage.swift */,
 				153EA969279FFA0E00871246 /* enums */,
+				150D83A527C4F311009601F0 /* Inbox.swift */,
+				15A5B40E27C6854A0082029E /* Room.swift */,
+				15A5B41027C686420082029E /* Direct.swift */,
+				15A5B41227C687280082029E /* Message.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -647,6 +643,7 @@
 				153EA96A279FFA2E00871246 /* RequestType.swift */,
 				153EA97B27A0076000871246 /* ChatType.swift */,
 				153EA96C279FFA5800871246 /* MessageType.swift */,
+				150D83A727C4F3BE009601F0 /* InboxType.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -813,6 +810,7 @@
 		159C3BD6279C5CD5001B9607 /* global-module */ = {
 			isa = PBXGroup;
 			children = (
+				15A5B41427C687B60082029E /* entity */,
 				159C3BDD279C5D99001B9607 /* view */,
 			);
 			path = "global-module";
@@ -832,6 +830,13 @@
 				159C3BDE279C5DAA001B9607 /* GlobalVC.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		15A5B41427C687B60082029E /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
 			sourceTree = "<group>";
 		};
 		15BDA68327B646B80066F469 /* login-router-module */ = {
@@ -1282,7 +1287,7 @@
 				1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */,
 				156F042C27AFA80F00D37039 /* GenderType.swift in Sources */,
 				15C64C5227BE27480088DD35 /* WelcomePresenter.swift in Sources */,
-				150D83A127C4E73B009601F0 /* Room.swift in Sources */,
+				15A5B40F27C6854A0082029E /* Room.swift in Sources */,
 				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
 				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
@@ -1300,6 +1305,7 @@
 				15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */,
 				15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */,
 				1517AF89279E968D00D1194E /* Hobby.swift in Sources */,
+				15A5B41127C686430082029E /* Direct.swift in Sources */,
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
@@ -1316,7 +1322,6 @@
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
-				150D839F27C4E73B009601F0 /* Chat.swift in Sources */,
 				15C64C5427BE27CE0088DD35 /* WelcomeRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
@@ -1326,6 +1331,7 @@
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
 				15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */,
+				150D83A627C4F311009601F0 /* Inbox.swift in Sources */,
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
 				15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */,
 				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
@@ -1336,18 +1342,15 @@
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
-				150D83A327C4E73B009601F0 /* P2PMessage.swift in Sources */,
-				150D83A227C4E73B009601F0 /* RoomMessage.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
-				150D83A427C4E73B009601F0 /* P2P.swift in Sources */,
 				15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */,
+				15A5B41327C687280082029E /* Message.swift in Sources */,
 				15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */,
 				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */,
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
-				150D83A027C4E73B009601F0 /* ChatRequest.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
 				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,
@@ -1363,6 +1366,7 @@
 				1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */,
 				156F044F27B3ACC100D37039 /* UserState.swift in Sources */,
 				153EA96B279FFA2E00871246 /* RequestType.swift in Sources */,
+				150D83A827C4F3BE009601F0 /* InboxType.swift in Sources */,
 				1517AF8B279E9AAA00D1194E /* Util.swift in Sources */,
 				153EA97827A0007B00871246 /* WaitingRequestCollectionViewCell.swift in Sources */,
 				15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */,

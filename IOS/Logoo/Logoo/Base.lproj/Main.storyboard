@@ -590,16 +590,16 @@
             </objects>
             <point key="canvasLocation" x="3368" y="842"/>
         </scene>
-        <!--DiscoverVC-->
+        <!--Discovery-->
         <scene sceneID="6FT-zs-5qF">
             <objects>
-                <viewController id="L4m-TP-T3A" customClass="DiscoverVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Discovery" id="L4m-TP-T3A" customClass="DiscoverVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qAV-V9-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="t5H-av-lMY">
-                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <rect key="frame" x="20" y="108" width="374" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="discoveryTableViewCell" id="2Hu-go-rnf" customClass="DiscoveryTableViewCell" customModule="Logoo" customModuleProvider="target">
@@ -693,32 +693,20 @@
                         <viewLayoutGuide key="safeArea" id="ZGb-bW-6yi"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="t5H-av-lMY" firstAttribute="bottom" secondItem="ZGb-bW-6yi" secondAttribute="bottom" id="3vd-Ze-31i"/>
-                            <constraint firstItem="t5H-av-lMY" firstAttribute="top" secondItem="ZGb-bW-6yi" secondAttribute="top" id="A7x-b8-gGQ"/>
-                            <constraint firstItem="ZGb-bW-6yi" firstAttribute="trailing" secondItem="t5H-av-lMY" secondAttribute="trailing" constant="20" id="SkH-9e-hp2"/>
-                            <constraint firstItem="t5H-av-lMY" firstAttribute="leading" secondItem="ZGb-bW-6yi" secondAttribute="leading" constant="20" id="gEp-fU-P0Q"/>
+                            <constraint firstItem="t5H-av-lMY" firstAttribute="top" secondItem="ZGb-bW-6yi" secondAttribute="top" constant="20" id="Cpu-XW-31K"/>
+                            <constraint firstItem="t5H-av-lMY" firstAttribute="bottom" secondItem="ZGb-bW-6yi" secondAttribute="bottom" id="bVc-9x-RmK"/>
+                            <constraint firstItem="ZGb-bW-6yi" firstAttribute="trailing" secondItem="t5H-av-lMY" secondAttribute="trailing" constant="20" id="jDJ-bc-XOh"/>
+                            <constraint firstItem="t5H-av-lMY" firstAttribute="leading" secondItem="ZGb-bW-6yi" secondAttribute="leading" constant="20" id="s8C-vj-CB6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4mv-Iw-Kka">
-                        <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="IcR-Fz-InR">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="rgj-bF-rl9">
-                                <rect key="frame" x="263" y="6" width="131" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Discovery" id="4mv-Iw-Kka"/>
                     <connections>
                         <outlet property="discoveryTableView" destination="t5H-av-lMY" id="XgZ-yY-QCZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5N-dL-kH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5196" y="84"/>
+            <point key="canvasLocation" x="5195.652173913044" y="83.705357142857139"/>
         </scene>
         <!--ChatVC-->
         <scene sceneID="fD9-dy-cn0">
@@ -1643,8 +1631,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="POb-WY-W2F" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discovery" image="person.3" catalog="system" selectedImage="person.3.fill" id="JSc-6Z-ijK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ULi-km-et2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="Discovery" largeTitles="YES" id="ULi-km-et2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1663,6 +1651,7 @@
         <segue reference="3EM-90-pDF"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Discovery" width="128" height="128"/>
         <image name="arrow.backward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>

@@ -15,17 +15,18 @@ class User {
     var userGender:GenderType?
     var userBirthDay:String?
     var userBio:String?
-    var userHobbies:String?
+    var userInterests:String?
     var userLastSeen:String?
     var userRegisterTime:String?
-    var isAnonymous:String?
-    var isOnline:String?
-    var isAllowTheGroupInvite:String?
-    var isAllowTheInboxInvite:String?
+    var isAnonymous:Bool?
+    var isOnline:Bool?
+    var isAllowTheGroupInvite:Bool?
+    var isAllowTheInboxInvite:Bool?
+    var inbox:[InboxType]?
     
     init(){}
     
-    init(userId: String, username: String, userMail: String, userPhotoUrl: String, userGender: GenderType, userBirthDay: String, userBio: String, userHobbies:String, userLastSeen: String, userRegisterTime: String, isAnonymous: String, isOnline: String, isAllowTheGroupInvite: String, isAllowTheInboxInvite: String) {
+    init(userId: String, username: String, userMail: String, userPhotoUrl: String, userGender: GenderType, userBirthDay: String, userBio: String, userInterests:String, userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
         self.userId = userId
         self.username = username
         self.userMail = userMail
@@ -33,7 +34,7 @@ class User {
         self.userGender = userGender
         self.userBirthDay = userBirthDay
         self.userBio = userBio
-        self.userHobbies = userHobbies
+        self.userInterests = userInterests
         self.userLastSeen = userLastSeen
         self.userRegisterTime = userRegisterTime
         self.isAnonymous = isAnonymous

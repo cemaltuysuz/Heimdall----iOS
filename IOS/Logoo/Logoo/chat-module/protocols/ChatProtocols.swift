@@ -8,28 +8,32 @@
 import Foundation
 
 
-protocol ViewToPresenterChatProtocol {
-    var view:PresenterToViewChatProtocol? {get set}
-    var interactor:PresenterToInteractorChatProtocol? {get set}
-    
-    func getAllRequirements()
-}
+/**
+ 
+ protocol ViewToPresenterChatProtocol {
+     var view:PresenterToViewChatProtocol? {get set}
+     var interactor:PresenterToInteractorChatProtocol? {get set}
+     
+     func getAllRequirements()
+ }
 
-protocol PresenterToInteractorChatProtocol{
-    var presenter:InteractorToPresenterChatProtocol? {get set}
-    func getAllRequirements()
-}
+ protocol PresenterToInteractorChatProtocol{
+     var presenter:InteractorToPresenterChatProtocol? {get set}
+     func getAllRequirements()
+ }
 
-protocol InteractorToPresenterChatProtocol {
-    func chatsToPresenter(chats:[Any])
-    func requestsToPresenter(requests:[ChatRequest])
-}
+ protocol InteractorToPresenterChatProtocol {
+     func chatsToPresenter(chats:[Any])
+     func requestsToPresenter(requests:[ChatRequest])
+ }
 
-protocol PresenterToViewChatProtocol {
-    func chatsToView(chats:[Any])
-    func requestsToView(requests:[ChatRequest])
-}
+ protocol PresenterToViewChatProtocol {
+     func chatsToView(chats:[Any])
+     func requestsToView(requests:[ChatRequest])
+ }
 
-protocol PresenterToRouterChatProtocol {
-    static func createModule(ref:ChatVC)
-}
+ protocol PresenterToRouterChatProtocol {
+     static func createModule(ref:ChatVC)
+ }
+ 
+ */

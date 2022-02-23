@@ -6,26 +6,46 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseFirestore
 
 class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
     var presenter: InteractorToPresenterDiscorveryProtocol?
+    var dbRef = Firestore.firestore()
     
     func getDiscoveredUsers() {
-        var userList = [User]()
+       var userList = [User]()
         
-        let user1 = User(userId: "1", username: "Cemal Tuysuz", userMail: "asdfg@gmail.com", userPhotoUrl: "htttp:dsda", userGender: .Female, userBirthDay: "08-09-1999", userBio: "Lorem impsun Dolor sit amet.", userHobbies: "Guitar&Programming&Sing the song&Travel", userLastSeen: "6125345216123", userRegisterTime: "15234562143", isAnonymous: "false", isOnline: "true", isAllowTheGroupInvite: "true", isAllowTheInboxInvite: "true")
-        
-        let user2 = User(userId: "2", username: "Caner Tuysuz", userMail: "asdfg@gmail.com", userPhotoUrl: "htttp:dsda", userGender: .Female, userBirthDay: "08-09-1999", userBio: "Lorem impsun Dolor sit amet.", userHobbies: "Guitar&Programming&Sing the song&Travel", userLastSeen: "6125345216123", userRegisterTime: "15234562143", isAnonymous: "false", isOnline: "true", isAllowTheGroupInvite: "true", isAllowTheInboxInvite: "true")
-        
-        let user3 = User(userId: "3", username: "Celal Çifteci", userMail: "asdfg@gmail.com", userPhotoUrl: "htttp:dsda", userGender: .HomoMale, userBirthDay: "08-09-1999", userBio: "Lorem impsun Dolor sit amet.", userHobbies: "Guitar&Programming&Sing the song&Travel", userLastSeen: "6125345216123", userRegisterTime: "15234562143", isAnonymous: "false", isOnline: "true", isAllowTheGroupInvite: "true", isAllowTheInboxInvite: "true")
-        
-        let user4 = User(userId: "1", username: "Semih Çamcı", userMail: "asdfg@gmail.com", userPhotoUrl: "htttp:dsda", userGender: .HomoFemale, userBirthDay: "08-09-1999", userBio: "Lorem impsun Dolor sit amet.", userHobbies: "Guitar&Programming&Sing the song&Travel", userLastSeen: "6125345216123", userRegisterTime: "15234562143", isAnonymous: "false", isOnline: "true", isAllowTheGroupInvite: "true", isAllowTheInboxInvite: "true")
-        
-        userList.append(user1)
-        userList.append(user2)
-        userList.append(user3)
-        userList.append(user4)
-        
-        presenter?.discoveredUsersToPresenter(users: userList)
+        dbRef.collection("users").getDocuments{(snapshot, error) in
+            if let error = error {
+                print("Error : \(error.localizedDescription)")
+                return
+            }else {
+                guard let snap = snapshot else {
+                    return}
+                                
+                for document in snap.documents {
+                    //document.
+                    let data = document.data()
+                    let user = User(
+                        userId:   data["userId"]   as? String ?? "",
+                        username: data["username"] as? String ?? "",
+                        userMail: data["userMail"] as? String ?? "",
+                        userPhotoUrl: data["userPhotoUrl"] as? String ?? "",
+                        userGender: GenderType(rawValue: data["userGender"] as? String ?? "Other") ?? GenderType.Other,
+                        userBirthDay: data["UserBirthDay"] as? String ?? "",
+                        userBio: data["userBio"] as? String ?? "",
+                        userInterests: data["userHobbies"] as? String ?? "",
+                        userLastSeen: data["userLastSeen"] as? String ?? "",
+                        userRegisterTime: data["userRegisterTime"] as? String ?? "",
+                        isAnonymous: data["isAnonymous"] as! Bool,
+                        isOnline: data["isOnline"] as! Bool,
+                        isAllowTheGroupInvite: data["isAllowTheGroupInvite"] as! Bool,
+                        isAllowTheInboxInvite: data["isAllowTheInboxInvite"] as! Bool
+                    )
+                    userList.append(user)
+                }
+            }
+        }
     }
 }

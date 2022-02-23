@@ -7,14 +7,16 @@
 
 import Foundation
 
-class ChatRouter : PresenterToRouterChatProtocol {
+class ChatRouter  {
     
     static func createModule(ref: ChatVC) {
         let presenter = ChatPresenter()
         
-        ref.presenter = presenter
-        ref.presenter?.interactor = ChatInteractor()
-        ref.presenter?.view = ref
-        ref.presenter?.interactor?.presenter = presenter
+/**
+ ref.presenter = presenter
+ ref.presenter?.interactor = ChatInteractor()
+ ref.presenter?.view = ref
+ ref.presenter?.interactor?.presenter = presenter
+ */
     }
 }
