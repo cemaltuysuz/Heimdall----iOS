@@ -2,13 +2,13 @@
 //  RegisterBirthDayCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 3.02.2022.
+//  Created by cemal tüysüz on 24.02.2022.
 //
 
 import UIKit
 
 class RegisterBirthDayCell: UICollectionViewCell, RegisterProtocol {
-    
+
     var toView:RegisterBirthDayCellProtocol?
     
     @IBOutlet weak var registerBirthDayDatePicker: UIDatePicker!
@@ -37,3 +37,4 @@ class RegisterBirthDayCell: UICollectionViewCell, RegisterProtocol {
 protocol RegisterBirthDayCellProtocol {
     func birthDaySelected(date:String)
 }
+

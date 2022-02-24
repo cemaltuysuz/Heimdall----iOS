@@ -2,12 +2,13 @@
 //  RegisterInformationCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 20.01.2022.
+//  Created by cemal tüysüz on 24.02.2022.
 //
 
 import UIKit
 
 class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
+
     @IBOutlet weak var registerUsernameLabel: UITextField!
     @IBOutlet weak var registerMailLabel: UITextField!
     @IBOutlet weak var registerPasswordLabel: UITextField!

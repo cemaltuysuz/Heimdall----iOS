@@ -1,13 +1,13 @@
 //
-//  RegisterPhotoPickCell.swift
+//  RegisterPhotoChooseCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 20.01.2022.
+//  Created by cemal tüysüz on 24.02.2022.
 //
 
 import UIKit
 
-class RegisterPhotoPickCell: UICollectionViewCell,RegisterProtocol {
+class RegisterPhotoChooseCell: UICollectionViewCell, RegisterProtocol {
     @IBOutlet weak var registerProfileImage: UIImageView!
     var photoProtocol:RegisterPhotoCellProtocol?
     
@@ -46,5 +46,5 @@ class RegisterPhotoPickCell: UICollectionViewCell,RegisterProtocol {
 
 // The protocol structure I created for the View to be aware of the clicks.
 protocol RegisterPhotoCellProtocol {
-    func photoOnClick(registerCell:RegisterPhotoPickCell)
+    func photoOnClick(registerCell:RegisterPhotoChooseCell)
 }

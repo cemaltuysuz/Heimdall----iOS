@@ -65,10 +65,6 @@
 		156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F045127B3C11700D37039 /* SelectInterestVC.swift */; };
 		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
 		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
-		15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C082799994700903073 /* RegisterPhotoPickCell.swift */; };
-		15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0A2799996000903073 /* RegisterInformationCell.swift */; };
-		15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0C2799997300903073 /* RegisterOTPCell.swift */; };
-		159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */; };
 		159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BD2279C110F001B9607 /* ValidationResponse.swift */; };
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
@@ -77,6 +73,17 @@
 		15A5B41127C686430082029E /* Direct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41027C686420082029E /* Direct.swift */; };
 		15A5B41327C687280082029E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41227C687280082029E /* Message.swift */; };
 		15A5B41727C69A200082029E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 15A5B41627C69A200082029E /* Kingfisher */; };
+		15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B42027C76AE10082029E /* RegisterPhotoChooseCell.swift */; };
+		15A5B42327C76AE10082029E /* RegisterPhotoChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */; };
+		15A5B42627C76AF90082029E /* RegisterInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B42427C76AF90082029E /* RegisterInformationCell.swift */; };
+		15A5B42727C76AF90082029E /* RegisterInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42527C76AF90082029E /* RegisterInformationCell.xib */; };
+		15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B42A27C76B740082029E /* RegisterConfirmCell.swift */; };
+		15A5B42D27C76B740082029E /* RegisterConfirmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42B27C76B740082029E /* RegisterConfirmCell.xib */; };
+		15A5B43027C76B930082029E /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B42E27C76B930082029E /* RegisterBirthDayCell.swift */; };
+		15A5B43127C76B930082029E /* RegisterBirthDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42F27C76B930082029E /* RegisterBirthDayCell.xib */; };
+		15A5B43427C76BA80082029E /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B43227C76BA80082029E /* RegisterGenderCell.swift */; };
+		15A5B43527C76BA80082029E /* RegisterGenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B43327C76BA80082029E /* RegisterGenderCell.xib */; };
+		15A5B43727C777DF0082029E /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B43627C777DF0082029E /* RegisterProtocols.swift */; };
 		15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDA68527B647440066F469 /* LoginRouterVC.swift */; };
 		15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */; };
 		15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C3027BCED220088DD35 /* CustomAlert.swift */; };
@@ -99,8 +106,6 @@
 		15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */; };
 		15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
-		15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */; };
-		15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */; };
 		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
 		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
 		15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */; };
@@ -193,10 +198,6 @@
 		156F045127B3C11700D37039 /* SelectInterestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestVC.swift; sourceTree = "<group>"; };
 		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
 		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		15983C082799994700903073 /* RegisterPhotoPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoPickCell.swift; sourceTree = "<group>"; };
-		15983C0A2799996000903073 /* RegisterInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInformationCell.swift; sourceTree = "<group>"; };
-		15983C0C2799997300903073 /* RegisterOTPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOTPCell.swift; sourceTree = "<group>"; };
-		159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
 		159C3BD2279C110F001B9607 /* ValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResponse.swift; sourceTree = "<group>"; };
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
@@ -204,6 +205,17 @@
 		15A5B40E27C6854A0082029E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		15A5B41027C686420082029E /* Direct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direct.swift; sourceTree = "<group>"; };
 		15A5B41227C687280082029E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		15A5B42027C76AE10082029E /* RegisterPhotoChooseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoChooseCell.swift; sourceTree = "<group>"; };
+		15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterPhotoChooseCell.xib; sourceTree = "<group>"; };
+		15A5B42427C76AF90082029E /* RegisterInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInformationCell.swift; sourceTree = "<group>"; };
+		15A5B42527C76AF90082029E /* RegisterInformationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterInformationCell.xib; sourceTree = "<group>"; };
+		15A5B42A27C76B740082029E /* RegisterConfirmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmCell.swift; sourceTree = "<group>"; };
+		15A5B42B27C76B740082029E /* RegisterConfirmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterConfirmCell.xib; sourceTree = "<group>"; };
+		15A5B42E27C76B930082029E /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
+		15A5B42F27C76B930082029E /* RegisterBirthDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterBirthDayCell.xib; sourceTree = "<group>"; };
+		15A5B43227C76BA80082029E /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
+		15A5B43327C76BA80082029E /* RegisterGenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterGenderCell.xib; sourceTree = "<group>"; };
+		15A5B43627C777DF0082029E /* RegisterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
 		15BDA68527B647440066F469 /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		15C64C2E27BCE04E0088DD35 /* InterestSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectedCell.swift; sourceTree = "<group>"; };
 		15C64C3027BCED220088DD35 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
@@ -224,8 +236,6 @@
 		15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefPresenter.swift; sourceTree = "<group>"; };
 		15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPrefRouter.swift; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderCell.swift; sourceTree = "<group>"; };
-		15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthDayCell.swift; sourceTree = "<group>"; };
 		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
 		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
@@ -776,12 +786,17 @@
 		15983C072799992300903073 /* collectionview */ = {
 			isa = PBXGroup;
 			children = (
-				15983C082799994700903073 /* RegisterPhotoPickCell.swift */,
-				15983C0A2799996000903073 /* RegisterInformationCell.swift */,
-				15983C0C2799997300903073 /* RegisterOTPCell.swift */,
-				159C3BCF279C0EA0001B9607 /* RegisterProtocols.swift */,
-				15EACB1927AC272F0089779A /* RegisterBirthDayCell.swift */,
-				15DFABA027AEB7E200051C06 /* RegisterGenderCell.swift */,
+				15A5B42027C76AE10082029E /* RegisterPhotoChooseCell.swift */,
+				15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */,
+				15A5B42427C76AF90082029E /* RegisterInformationCell.swift */,
+				15A5B42527C76AF90082029E /* RegisterInformationCell.xib */,
+				15A5B42A27C76B740082029E /* RegisterConfirmCell.swift */,
+				15A5B42B27C76B740082029E /* RegisterConfirmCell.xib */,
+				15A5B42E27C76B930082029E /* RegisterBirthDayCell.swift */,
+				15A5B42F27C76B930082029E /* RegisterBirthDayCell.xib */,
+				15A5B43227C76BA80082029E /* RegisterGenderCell.swift */,
+				15A5B43327C76BA80082029E /* RegisterGenderCell.xib */,
+				15A5B43627C777DF0082029E /* RegisterProtocols.swift */,
 			);
 			path = collectionview;
 			sourceTree = "<group>";
@@ -1259,7 +1274,12 @@
 				150C8FBE27994C6E000DAFBE /* LaunchScreen.storyboard in Resources */,
 				1535675E27BA81D0007346D4 /* Localizable.strings in Resources */,
 				159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */,
+				15A5B42D27C76B740082029E /* RegisterConfirmCell.xib in Resources */,
+				15A5B43127C76B930082029E /* RegisterBirthDayCell.xib in Resources */,
+				15A5B43527C76BA80082029E /* RegisterGenderCell.xib in Resources */,
 				156F043B27B2702B00D37039 /* mail_sended.json in Resources */,
+				15A5B42727C76AF90082029E /* RegisterInformationCell.xib in Resources */,
+				15A5B42327C76AE10082029E /* RegisterPhotoChooseCell.xib in Resources */,
 				15C64C3327BCF39E0088DD35 /* loading.json in Resources */,
 				150C8FBB27994C6E000DAFBE /* Assets.xcassets in Resources */,
 				150C8FB927994C6D000DAFBE /* Main.storyboard in Resources */,
@@ -1294,19 +1314,19 @@
 				15A5B40F27C6854A0082029E /* Room.swift in Sources */,
 				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
-				159C3BD0279C0EA0001B9607 /* RegisterProtocols.swift in Sources */,
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
+				15A5B43727C777DF0082029E /* RegisterProtocols.swift in Sources */,
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
 				15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */,
 				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
-				15983C0D2799997300903073 /* RegisterOTPCell.swift in Sources */,
+				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
 				15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */,
 				1517AF89279E968D00D1194E /* Hobby.swift in Sources */,
 				15A5B41127C686430082029E /* Direct.swift in Sources */,
@@ -1315,7 +1335,6 @@
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
-				15DFABA127AEB7E200051C06 /* RegisterGenderCell.swift in Sources */,
 				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
 				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
@@ -1336,19 +1355,19 @@
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
 				15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */,
 				150D83A627C4F311009601F0 /* Inbox.swift in Sources */,
+				15A5B42627C76AF90082029E /* RegisterInformationCell.swift in Sources */,
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
-				15983C092799994700903073 /* RegisterPhotoPickCell.swift in Sources */,
-				15983C0B2799996000903073 /* RegisterInformationCell.swift in Sources */,
 				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
 				1535675927BA671D007346D4 /* Validators.swift in Sources */,
 				156F044C27B3AAC500D37039 /* Resource.swift in Sources */,
 				156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */,
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
+				15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
-				15EACB1A27AC272F0089779A /* RegisterBirthDayCell.swift in Sources */,
 				15A5B41327C687280082029E /* Message.swift in Sources */,
+				15A5B43027C76B930082029E /* RegisterBirthDayCell.swift in Sources */,
 				15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */,
 				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
@@ -1361,6 +1380,7 @@
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
 				156F044727B3A58900D37039 /* LoginInteractor.swift in Sources */,
 				15C64C4E27BE24A70088DD35 /* WelcomeVCProtocols.swift in Sources */,
+				15A5B43427C76BA80082029E /* RegisterGenderCell.swift in Sources */,
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
