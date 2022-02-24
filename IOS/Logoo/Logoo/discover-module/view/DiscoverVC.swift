@@ -38,9 +38,7 @@ extension DiscoverVC : UITableViewDelegate, UITableViewDataSource {
         let current = discoveredUsers![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "discoveryTableViewCell", for: indexPath) as! DiscoveryTableViewCell
         
-        cell.discoveryUsernameLabel.text = current.username!
-     //   cell.initialize(hobbyList: hobbyToHobbies(hobby: current.userHobbies!))
-        
+        cell.initialize(user: current)
         return cell
     }
     
@@ -50,6 +48,18 @@ extension DiscoverVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DiscoverVC : PresenterToViewDiscorveryProtocol {
+    func discoveredUsersResponse(response: Resource<[User]>) {
+        DispatchQueue.main.async {
+            if response.status == .SUCCESS {
+                self.discoveredUsers = response.data!
+                self.discoveryTableView.reloadData()
+            }else {
+                print("error")
+            }
+        }
+    }
+        
+    
     func discoveredUsersToView(users: [User]) {
         DispatchQueue.main.async {
             self.discoveredUsers = users

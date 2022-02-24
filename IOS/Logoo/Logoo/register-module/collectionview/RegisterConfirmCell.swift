@@ -1,14 +1,14 @@
 //
-//  RegisterOTPCell.swift
+//  RegisterConfirmCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 20.01.2022.
+//  Created by cemal tüysüz on 24.02.2022.
 //
 
 import UIKit
 import Lottie
 
-class RegisterOTPCell: UICollectionViewCell, RegisterProtocol {
+class RegisterConfirmCell: UICollectionViewCell, RegisterProtocol {
     @IBOutlet weak var animContainer: UIView!
     private var anim:AnimationView?
     

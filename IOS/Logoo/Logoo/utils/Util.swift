@@ -7,6 +7,7 @@
 
 import Foundation
 import SystemConfiguration
+import UIKit
 
 
 func hobbyToHobbies(hobby:String) -> [String]{

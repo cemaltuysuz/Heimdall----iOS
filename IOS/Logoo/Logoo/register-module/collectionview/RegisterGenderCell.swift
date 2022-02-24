@@ -2,7 +2,7 @@
 //  RegisterGenderCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 5.02.2022.
+//  Created by cemal tüysüz on 24.02.2022.
 //
 
 import UIKit
@@ -36,7 +36,6 @@ class RegisterGenderCell: UICollectionViewCell, RegisterProtocol, UIPickerViewDe
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return genders[row].rawValue
     }
-    
 }
 
 protocol RegisterGenderCellProtocol {

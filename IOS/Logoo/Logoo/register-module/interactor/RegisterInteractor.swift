@@ -33,11 +33,11 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     func getRegisterSteps() {
         var steps = [UICollectionViewCell]()
             
-        steps.append(RegisterPhotoPickCell())
+        steps.append(RegisterPhotoChooseCell())
         steps.append(RegisterInformationCell())
         steps.append(RegisterBirthDayCell())
         steps.append(RegisterGenderCell())
-        steps.append(RegisterOTPCell())
+        steps.append(RegisterConfirmCell())
         
         presenter?.registerStepsToPresenter(steps: steps)
     }

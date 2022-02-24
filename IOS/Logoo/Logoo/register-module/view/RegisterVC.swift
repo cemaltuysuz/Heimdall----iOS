@@ -28,7 +28,7 @@ class RegisterVC: UIViewController {
     var alert:CustomAlert?
     var confirmMailAdress:String?
     var registerSteps:[UICollectionViewCell]?
-    var registerPhotoPickCell:RegisterPhotoPickCell?
+    var registerPhotoPickCell:RegisterPhotoChooseCell?
     var validation:RegisterProtocol?
         
     override func viewDidLoad() {
@@ -37,10 +37,20 @@ class RegisterVC: UIViewController {
         
         RegisterRouter.createModule(ref: self)
         presenter?.getRegisterSteps()
-
+        
+        // Register
+        self.registerCollectionView.register(UINib(nibName:"RegisterPhotoChooseCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.photoPick.rawValue)
+        
+        self.registerCollectionView.register(UINib(nibName: "RegisterInformationCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.enterInformation.rawValue)
+        
+        self.registerCollectionView.register(UINib(nibName: "RegisterBirthDayCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.enterDateOfBirth.rawValue)
+        
+        self.registerCollectionView.register(UINib(nibName: "RegisterGenderCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.enterGender.rawValue)
+        
+        self.registerCollectionView.register(UINib(nibName: "RegisterConfirmCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.confirmation.rawValue)
+        
         registerCollectionView.delegate = self
         registerCollectionView.dataSource = self
-        
         
     }
     /**
@@ -140,11 +150,11 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let count = indexPath.row
-        if self.registerSteps![count] is RegisterPhotoPickCell {
+        if self.registerSteps![count] is RegisterPhotoChooseCell {
             let photoPickCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RegisterCollectionViewCells
                     .photoPick
-                    .rawValue, for: indexPath) as! RegisterPhotoPickCell
+                    .rawValue, for: indexPath) as! RegisterPhotoChooseCell
             validation = photoPickCell
             photoPickCell.initialize()
             photoPickCell.photoProtocol = self
@@ -182,7 +192,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             let otpCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RegisterCollectionViewCells
                     .confirmation
-                    .rawValue, for: indexPath) as! RegisterOTPCell
+                    .rawValue, for: indexPath) as! RegisterConfirmCell
             self.registerSteps![indexPath.row] = otpCell // init
             otpCell.initialize()
             return otpCell
@@ -229,8 +239,8 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         
         let rgClass = self.registerSteps![page]
         
-        if rgClass is RegisterPhotoPickCell {
-            self.validation = rgClass as! RegisterPhotoPickCell
+        if rgClass is RegisterPhotoChooseCell {
+            self.validation = rgClass as! RegisterPhotoChooseCell
         }
         else if rgClass is RegisterInformationCell {
             self.validation = rgClass as! RegisterInformationCell
@@ -241,7 +251,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         else if rgClass is RegisterGenderCell {
             self.validation = rgClass as! RegisterGenderCell
         }else {
-            self.validation = rgClass as! RegisterOTPCell
+            self.validation = rgClass as! RegisterConfirmCell
         }
 
     }
@@ -259,7 +269,7 @@ extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtoco
 - With this method, I enable the relevant window to be opened to request a picture from the user.
 - I authorize the reference of the photoPickCell class, which is nullable in the RegisterVC class, with the reference from the requesting class, so that when the photo is selected, I can send the selected photo back to the cell class.
      */
-    func photoOnClick(registerCell: RegisterPhotoPickCell) {
+    func photoOnClick(registerCell: RegisterPhotoChooseCell) {
         
         self.registerPhotoPickCell = registerCell
         let imagePicker = UIImagePickerController()
@@ -326,18 +336,16 @@ extension RegisterVC {
         let previousItem: IndexPath = IndexPath(item: self.currentRegisterClass! - 1, section: 0)
         self.registerCollectionView.scrollToItem(at: previousItem, at: .right, animated: true)
     }
-
 }
-
 
 enum RegisterVCSegues : String {
     case registerToLogin = "registerToLogin"
 }
 
 enum RegisterCollectionViewCells : String {
-    case photoPick          = "photoPickRegisterCell"
-    case enterInformation   = "informationRegisterCell"
+    case photoPick          = "registerPhotoChooseCell"
+    case enterInformation   = "registerInfoCell"
     case enterDateOfBirth   = "registerBirthDayCell"
     case enterGender        = "registerGenderCell"
-    case confirmation       = "otpRegisterCell"
+    case confirmation       = "registerConfirmCell"
 }

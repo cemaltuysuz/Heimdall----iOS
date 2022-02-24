@@ -21,11 +21,11 @@ protocol PresenterToInteractorDiscoveryProtocol {
 }
 
 protocol InteractorToPresenterDiscorveryProtocol {
-    func discoveredUsersToPresenter(users:[User])
+    func discoveredUsersResponse(response:Resource<[User]>)
 }
 
 protocol PresenterToViewDiscorveryProtocol {
-    func discoveredUsersToView(users:[User])
+    func discoveredUsersResponse(response:Resource<[User]>)
 }
 
 protocol PresenterToRouterDiscorveryProtocol {
