@@ -16,7 +16,7 @@ class DiscoveryPresenter : ViewToPresenterDiscorveryProtocol, InteractorToPresen
         interactor?.getDiscoveredUsers()
     }
     
-    func discoveredUsersToPresenter(users: [User]) {
-        view?.discoveredUsersToView(users: users)
+    func discoveredUsersResponse(response: Resource<[User]>) {
+        view?.discoveredUsersResponse(response: response)
     }
 }

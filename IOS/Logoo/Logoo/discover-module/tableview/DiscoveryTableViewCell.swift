@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DiscoveryTableViewCell: UITableViewCell {
     
@@ -14,14 +15,15 @@ class DiscoveryTableViewCell: UITableViewCell {
     @IBOutlet weak var discoveryUsernameLabel: UILabel!
     @IBOutlet weak var discoveryUserHobbiesCollectionView: UICollectionView!
     
-    func initialize(){
-        hobbies = [String]()
-    }
-    
-    func initialize(hobbyList:[String]){
-        hobbies = hobbyList
-        discoveryUserHobbiesCollectionView.delegate = self
-        discoveryUserHobbiesCollectionView.dataSource = self
+    func initialize(user:User){
+        if let interests = user.userInterests, !interests.isEmpty {
+            hobbies = hobbyToHobbies(hobby: interests)
+            discoveryUserHobbiesCollectionView.delegate = self
+            discoveryUserHobbiesCollectionView.dataSource = self
+        }
+        discoveryUserProfilePhotoImage.kf.setImage(with: URL(string: user.userPhotoUrl!))
+        discoveryUsernameLabel.text = user.username!
+        
     }
     
     override func awakeFromNib() {
@@ -38,7 +40,7 @@ class DiscoveryTableViewCell: UITableViewCell {
 
 extension DiscoveryTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.hobbies!.count
+        return self.hobbies?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -46,6 +48,4 @@ extension DiscoveryTableViewCell : UICollectionViewDelegate, UICollectionViewDat
         cell.hobbyLabel.text = hobbies![indexPath.row]
         return cell
     }
-    
-    
 }
