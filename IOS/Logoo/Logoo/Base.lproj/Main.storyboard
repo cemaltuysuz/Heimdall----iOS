@@ -177,85 +177,97 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-bm-UGS">
-                                <rect key="frame" x="0.0" y="428" width="414" height="543"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-sT-Sf3">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUl-Ju-TXy">
-                                        <rect key="frame" x="62" y="100" width="290" height="55"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logoo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-PG-xch">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="323"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" name="grey500"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-bm-UGS">
+                                        <rect key="frame" x="0.0" y="323" width="414" height="485"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emU-as-yRd">
+                                                <rect key="frame" x="88.5" y="364" width="237.5" height="31"/>
+                                                <color key="tintColor" name="black700"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Already have an Account ? Log in"/>
+                                                <connections>
+                                                    <action selector="toLoginButton:" destination="g2a-99-bH7" eventType="touchUpInside" id="61o-hH-NJC"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8Tr-a4-VAE">
+                                                <rect key="frame" x="30" y="70" width="354" height="120"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUl-Ju-TXy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="bHM-w1-u3D"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="black700"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Register By E-mail Adress">
+                                                            <color key="baseBackgroundColor" name="black700"/>
+                                                        </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="rw3-XR-6WM" kind="show" id="BrR-9I-uT0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXG-pA-c5v">
+                                                        <rect key="frame" x="0.0" y="70" width="354" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="KiG-YM-nZx"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="black700"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="google.png">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="   Sign In With Google">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="15" name="Helvetica"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="googleSignInButtonAction:" destination="g2a-99-bH7" eventType="touchUpInside" id="1BD-cd-RHq"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="grey200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="6fv-Xt-Mhb"/>
+                                            <constraint firstItem="emU-as-yRd" firstAttribute="centerX" secondItem="0ez-bm-UGS" secondAttribute="centerX" id="3Zb-fd-ZVW"/>
+                                            <constraint firstAttribute="trailing" secondItem="8Tr-a4-VAE" secondAttribute="trailing" constant="30" id="Fbx-Oc-l3C"/>
+                                            <constraint firstAttribute="bottom" secondItem="emU-as-yRd" secondAttribute="bottom" constant="90" id="WF2-F4-EMS"/>
+                                            <constraint firstItem="8Tr-a4-VAE" firstAttribute="top" secondItem="0ez-bm-UGS" secondAttribute="top" constant="70" id="qYC-y2-ajS"/>
+                                            <constraint firstItem="8Tr-a4-VAE" firstAttribute="leading" secondItem="0ez-bm-UGS" secondAttribute="leading" constant="30" id="zre-5A-Bgy"/>
                                         </constraints>
-                                        <color key="tintColor" name="black700"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Register By E-mail Adress">
-                                            <color key="baseBackgroundColor" name="black700"/>
-                                        </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="rw3-XR-6WM" kind="show" id="BrR-9I-uT0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emU-as-yRd">
-                                        <rect key="frame" x="88.5" y="362" width="237.5" height="31"/>
-                                        <color key="tintColor" name="black700"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Already have an Account ? Log in"/>
-                                        <connections>
-                                            <action selector="toLoginButton:" destination="g2a-99-bH7" eventType="touchUpInside" id="61o-hH-NJC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXG-pA-c5v">
-                                        <rect key="frame" x="113" y="195" width="188" height="32"/>
-                                        <color key="tintColor" name="black700"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="google.png">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="   Sign In With Google">
-                                                    <attributes>
-                                                        <font key="NSFont" size="15" name="Helvetica"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="googleSignInButtonAction:" destination="g2a-99-bH7" eventType="touchUpInside" id="1BD-cd-RHq"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" name="grey200"/>
                                 <constraints>
-                                    <constraint firstItem="emU-as-yRd" firstAttribute="top" secondItem="sXG-pA-c5v" secondAttribute="bottom" constant="135" id="AUe-Da-QYQ"/>
-                                    <constraint firstItem="hUl-Ju-TXy" firstAttribute="top" secondItem="0ez-bm-UGS" secondAttribute="top" constant="100" id="De3-i4-Cbk"/>
-                                    <constraint firstAttribute="trailing" secondItem="hUl-Ju-TXy" secondAttribute="trailing" constant="62" id="JUW-Ui-bVR"/>
-                                    <constraint firstItem="sXG-pA-c5v" firstAttribute="centerX" secondItem="0ez-bm-UGS" secondAttribute="centerX" id="LAT-ff-8SM"/>
-                                    <constraint firstItem="hUl-Ju-TXy" firstAttribute="leading" secondItem="0ez-bm-UGS" secondAttribute="leading" constant="62" id="Lrf-m7-ExJ"/>
-                                    <constraint firstItem="emU-as-yRd" firstAttribute="centerX" secondItem="0ez-bm-UGS" secondAttribute="centerX" id="Vem-ff-2hi"/>
-                                    <constraint firstItem="sXG-pA-c5v" firstAttribute="top" secondItem="hUl-Ju-TXy" secondAttribute="bottom" constant="40" id="xW7-mX-eJa"/>
+                                    <constraint firstItem="0ez-bm-UGS" firstAttribute="height" secondItem="DVY-PG-xch" secondAttribute="height" multiplier="1.5" id="9K8-p7-VYM"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logoo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-PG-xch">
-                                <rect key="frame" x="166" y="225" width="82" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" name="grey500"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="en7-Cq-tFQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DVY-PG-xch" firstAttribute="centerX" secondItem="BCn-Qd-Qsb" secondAttribute="centerX" id="DcD-Bp-0NH"/>
-                            <constraint firstAttribute="bottom" secondItem="0ez-bm-UGS" secondAttribute="bottom" constant="-75" id="aqH-Vc-DRN"/>
-                            <constraint firstItem="DVY-PG-xch" firstAttribute="centerX" secondItem="0ez-bm-UGS" secondAttribute="centerX" id="ejx-PX-dVb"/>
-                            <constraint firstItem="0ez-bm-UGS" firstAttribute="top" secondItem="BCn-Qd-Qsb" secondAttribute="top" constant="428" id="kpG-sp-Du9"/>
-                            <constraint firstItem="DVY-PG-xch" firstAttribute="top" secondItem="en7-Cq-tFQ" secondAttribute="top" constant="137" id="m08-SR-uoc"/>
-                            <constraint firstItem="0ez-bm-UGS" firstAttribute="leading" secondItem="en7-Cq-tFQ" secondAttribute="leading" id="wOq-GQ-sF0"/>
+                            <constraint firstAttribute="bottom" secondItem="GRw-sT-Sf3" secondAttribute="bottom" id="9zI-6a-O1g"/>
+                            <constraint firstItem="GRw-sT-Sf3" firstAttribute="top" secondItem="en7-Cq-tFQ" secondAttribute="top" id="kXp-zW-7gJ"/>
+                            <constraint firstItem="GRw-sT-Sf3" firstAttribute="trailing" secondItem="en7-Cq-tFQ" secondAttribute="trailing" id="mQs-G5-Yyd"/>
+                            <constraint firstItem="GRw-sT-Sf3" firstAttribute="leading" secondItem="en7-Cq-tFQ" secondAttribute="leading" id="z35-xl-pwL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4pP-ZX-grv">
@@ -268,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbv-au-Zwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2499" y="84"/>
+            <point key="canvasLocation" x="2498.5507246376815" y="83.705357142857139"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="0gi-ic-Jd6">
@@ -1712,8 +1724,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cMF-AX-Wl6"/>
-        <segue reference="o1r-4g-XK7"/>
+        <segue reference="7Si-FM-ksr"/>
+        <segue reference="avK-4H-dxN"/>
         <segue reference="3EM-90-pDF"/>
     </inferredMetricsTieBreakers>
     <resources>
