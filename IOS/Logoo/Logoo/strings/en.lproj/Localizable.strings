@@ -10,3 +10,4 @@
 "passwordRules" = "The password must contain; least 8 characters, a special character, a capital letter and a number.";
 
 "usernameRules" = "Username can have a minimum of 7 characters and a maximum of 18 characters. Cannot contain special characters.";
+

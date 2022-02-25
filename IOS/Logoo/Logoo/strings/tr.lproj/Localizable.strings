@@ -51,6 +51,14 @@
 
 "The connection was sent successfully. Check your inbox." =  "Bağlantı başarılı ile beraber gönderildi. Gelen kutunuzu kontrol ediniz.";
 
+"Something went wrong. Please try again later." = "Birşeyler yanlış gitti. Lütfen daha sonra tekrar deneyiniz.";
+
+"We have sent confirmation link to your email address." = "Mail adresine doğrulama bağlantısı gönderdik.";
+
+"Registration Successful" = "Kayıt işlemi başarılı.";
+
+"Please wait" = "Lütfen bekleyiniz.";
+
 "Error" = "Hata";
 "Cancel" = "Kapat";
 

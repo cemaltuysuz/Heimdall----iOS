@@ -46,6 +46,7 @@
             </constraints>
             <connections>
                 <outlet property="animContainer" destination="mmW-qr-NfW" id="Vw4-r0-tch"/>
+                <outlet property="resultMessageLabel" destination="H40-PF-xIc" id="CaL-gV-BFg"/>
             </connections>
             <point key="canvasLocation" x="132" y="131"/>
         </collectionViewCell>

@@ -9,15 +9,28 @@ import Foundation
 import UIKit
 
 class RegisterPresenter : InteractorToPresenterRegisterMail, ViewToPresenterRegisterMail {
-
+    
     var view: PresenterToViewRegisterMail?
     var interactor: PresenterToInteractorRegisterMail?
+    
+    func setUserInfoForGoogleUsers() {
+        interactor?.setUserInfoForGoogleUsers()
+    }
+    
+    func createUserWithEmail() {
+        interactor?.createUserWithEmail()
+    }
     
     func registerStepsToPresenter(steps: [UICollectionViewCell]) {
         view?.registerStepsToView(steps: steps)
     }
-    func getRegisterSteps() {
-        interactor?.getRegisterSteps()
+
+    func getRegisterMailSteps() {
+        interactor?.getRegisterMailSteps()
+    }
+    
+    func getRegisterGoogleSteps() {
+        interactor?.getRegisterGoogleSteps()
     }
     
     func setUserImage(image: UIImage) {
@@ -38,10 +51,6 @@ class RegisterPresenter : InteractorToPresenterRegisterMail, ViewToPresenterRegi
     
     func registerProgressVisibility(status: Bool) {
         view?.registerProgressVisibility(status: status)
-    }
-    
-    func createUser() {
-        interactor?.createUser()
     }
     
     func registerFeedBack(response: ValidationResponse) {

@@ -21,8 +21,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var registerNextButton: UIButton!
     @IBOutlet weak var registerBackButton: UIButton!
     @IBOutlet weak var registerErrorLabel: UILabel!
-    @IBOutlet weak var registerIndicator: UIActivityIndicatorView!
-    
+        
     var presenter:ViewToPresenterRegisterMail?
     var currentRegisterClass:Int?
     var alert:CustomAlert?
@@ -30,14 +29,59 @@ class RegisterVC: UIViewController {
     var registerSteps:[UICollectionViewCell]?
     var registerPhotoPickCell:RegisterPhotoChooseCell?
     var validation:RegisterProtocol?
+    
+    var registerType:RegisterType?
+    
+    var resultScreenMessage:String?
+    var resultScreenAnimName:String?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         currentRegisterClass = 0
         
         RegisterRouter.createModule(ref: self)
-        presenter?.getRegisterSteps()
         
+        if let registerType = registerType {
+            registerCells()
+            
+            if registerType == .REGISTER_WITH_MAIL {
+                presenter?.getRegisterMailSteps()
+            }
+            else if registerType == .REGISTER_WITH_GOOGLE {
+                if getCurrentUserUid() != nil {
+                    presenter?.getRegisterGoogleSteps()
+                }else {
+                    goBackForError()
+                }
+            }
+            
+            registerCollectionView.delegate = self
+            registerCollectionView.dataSource = self
+        }else {
+            goBackForError()
+        }
+    
+
+        
+    }
+    
+    func goBackForError(){
+        let alert = UIAlertController(
+            title: "error".localized(),
+            message: "Something went wrong. Please try again later.".localized(),
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Cancel".localized(),
+                                   style: .cancel, handler: {_ in
+            self.navigationController?.popViewController(animated: true)
+        })
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: {
+            
+        })
+    }
+    
+    func registerCells(){
         // Register
         self.registerCollectionView.register(UINib(nibName:"RegisterPhotoChooseCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.photoPick.rawValue)
         
@@ -48,11 +92,9 @@ class RegisterVC: UIViewController {
         self.registerCollectionView.register(UINib(nibName: "RegisterGenderCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.enterGender.rawValue)
         
         self.registerCollectionView.register(UINib(nibName: "RegisterConfirmCell", bundle: nil), forCellWithReuseIdentifier: RegisterCollectionViewCells.confirmation.rawValue)
-        
-        registerCollectionView.delegate = self
-        registerCollectionView.dataSource = self
-        
     }
+    
+    
     /**
      - The method that will work when the user presses the continue button when he wants to progress in the registration section.
      In this section, I get the information on which step the user is at that moment.
@@ -81,7 +123,11 @@ class RegisterVC: UIViewController {
             if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 if response.status! {
                     self.registerErrorLabel.isHidden = true
-                    presenter?.createUser()
+                    if self.registerType == .REGISTER_WITH_MAIL {
+                        presenter?.createUserWithEmail()
+                    }else if self.registerType == .REGISTER_WITH_GOOGLE {
+                        presenter?.setUserInfoForGoogleUsers()
+                    }
                 }else {
                     self.registerErrorLabel.text = response.message
                     self.registerErrorLabel.isHidden = false
@@ -120,7 +166,15 @@ class RegisterVC: UIViewController {
 extension RegisterVC : PresenterToViewRegisterMail {
     func registerFeedBack(response: ValidationResponse) {
         if response.status! {
-            self.confirmMailAdress = response.message!
+            if registerType == .REGISTER_WITH_MAIL {
+                self.resultScreenMessage = "We have sent confirmation link to your email address.".localized()
+                self.resultScreenAnimName = "mail_sended"
+                self.confirmMailAdress = response.message!
+            }
+            else if registerType == .REGISTER_WITH_GOOGLE {
+                self.resultScreenMessage = "Registration Successful".localized()
+                self.resultScreenAnimName = "success"
+            }
             scrollToNextItem()
         }else {
             self.registerErrorLabel.text = response.message!
@@ -145,7 +199,7 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return registerSteps!.count
+        return registerSteps?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -194,7 +248,6 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
                     .confirmation
                     .rawValue, for: indexPath) as! RegisterConfirmCell
             self.registerSteps![indexPath.row] = otpCell // init
-            otpCell.initialize()
             return otpCell
         }
     }
@@ -231,6 +284,9 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         else {
             self.registerNextButton.setTitle("Log In".localized(), for: UIControl.State.normal)
             self.registerBackButton.isHidden = true
+            if registerType == .REGISTER_WITH_GOOGLE {
+                self.registerNextButton.isHidden = true
+            }
         }
         
         // ProgressView
@@ -250,8 +306,12 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         }
         else if rgClass is RegisterGenderCell {
             self.validation = rgClass as! RegisterGenderCell
-        }else {
-            self.validation = rgClass as! RegisterConfirmCell
+        }
+        else if rgClass is RegisterConfirmCell {
+            let convertClass = rgClass as! RegisterConfirmCell
+            convertClass.animName = self.resultScreenAnimName!
+            convertClass.message = self.resultScreenMessage!
+            convertClass.initialize()
         }
 
     }

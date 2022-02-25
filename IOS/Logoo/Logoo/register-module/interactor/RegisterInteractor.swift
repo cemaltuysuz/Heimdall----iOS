@@ -29,12 +29,23 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     private var userBirthDay:String?
     private var userGender:GenderType?
     
-    
-    func getRegisterSteps() {
+
+    func getRegisterMailSteps() {
         var steps = [UICollectionViewCell]()
             
         steps.append(RegisterPhotoChooseCell())
         steps.append(RegisterInformationCell())
+        steps.append(RegisterBirthDayCell())
+        steps.append(RegisterGenderCell())
+        steps.append(RegisterConfirmCell())
+        
+        presenter?.registerStepsToPresenter(steps: steps)
+    }
+    
+    func getRegisterGoogleSteps() {
+        var steps = [UICollectionViewCell]()
+        
+        steps.append(RegisterPhotoChooseCell())
         steps.append(RegisterBirthDayCell())
         steps.append(RegisterGenderCell())
         steps.append(RegisterConfirmCell())
@@ -60,7 +71,55 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
         self.userGender = gender
     }
     
-    func createUser() {
+    
+    func setUserInfoForGoogleUsers(){
+        presenter?.registerProgressVisibility(status: true)
+        let uuid = Auth.auth().currentUser!.uid
+        
+        let userRef = self.fireStoreDB.collection("users").document(uuid)
+        
+        let username = "User-\(randomStringWithLength(len: 5))"
+        
+        // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
+        let userObject = [
+            "userId"            : uuid,
+            "username"          : username,
+            "userPhotoUrl"      : "",
+            "userGender"        : self.userGender!.rawValue,
+            "userBirthDay"      : self.userBirthDay!,
+            "userBio"           : "",
+            "userHobbies"       : "",
+            "userLastSeen"      : "",
+            "userRegisterTime"  : "\(timeInSeconds())",
+            "isAnonymous"       : false,
+            "isOnline"          : false,
+            "isAllowTheGroupInvite" : true,
+            "isAllowTheInboxInvite" : true
+            
+                ] as [String:Any]
+        /**
+         I process the user to firestore;
+         In this section, if the user is successfully processed into the database,
+         I will upload the user's profile picture to the storage area.
+         Then I will save it as a user profile picture with the ref value I got.
+         */
+        userRef.setData(userObject){err in
+            if let err = err {
+                self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
+                self.presenter?.registerProgressVisibility(status: false)
+                return
+            }
+            self.uploadUserPhoto(uuid: uuid)
+            self.presenter?.registerFeedBack(response:
+            ValidationResponse(status: true,
+                               message:
+                                nil))
+            self.presenter?.registerProgressVisibility(status: false)
+        }
+        
+    }
+    
+    func createUserWithEmail() {
         /**
          I show the indicator to the user to indicate that the registration process is in progress.
          */
@@ -111,56 +170,62 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                  Then I will save it as a user profile picture with the ref value I got.
                  */
                 userRef.setData(userObject){err in
-                    if let err = error {
+                    if let err = err {
                         self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
                         self.presenter?.registerProgressVisibility(status: false)
                         return
                     }
+                    self.uploadUserPhoto(uuid: user!.user.uid)
+                    self.sendEmailVerification()
+                    self.presenter?.registerFeedBack(response:
+                    ValidationResponse(status: true,
+                                       message:
+                                        self.userMail!))
+                    self.presenter?.registerProgressVisibility(status: false)
                     
-                    // I upload user's photo to storage
-                    
-                    var data = Data()
-                    data = self.userImage!.jpegData(compressionQuality: 0.8)!
-                    // I converted the photo into data.
-                    
-                    // I determine the path to the file where the photo will be uploaded and the name / type of the file.
-                    let fileUUID = UUID().uuidString
-                    let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
-                    let metaData = StorageMetadata()
-                    metaData.contentType = "image/jpg"
-                    
-                    // STARTED PHOTO UPLOAD
-                    self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
-                        if let err = error {
-                            print("Error upload user photo : \(err.localizedDescription)")
-                            self.presenter?.registerProgressVisibility(status: false)
-                            return
-                        }
-                        self.storageRef.child(filePath).downloadURL{(url,error) in
-                            if let error = error {
-                                print("Error when receive the user's profile photo url : \(error)")
-                                self.presenter?.registerProgressVisibility(status: false)
-                                return
-                            }
-                            if let ppUrl = url?.absoluteString {
-                                userRef.updateData(["userPhotoUrl":ppUrl])
-                                self.presenter?.registerProgressVisibility(status: false)
-                                self.presenter?.registerFeedBack(response:
-                                                                    ValidationResponse(status: true,
-                                                                                       message:
-                                                                                        self.userMail!))
-                                self.presenter?.registerProgressVisibility(status: false)
-                                self.sendEmailVerification()
-                            }
-                            
-                        }
-                    }
+                }
+            }
+        }
+    
+    private func uploadUserPhoto(uuid:String){
+        // I upload user's photo to storage
+        
+        var data = Data()
+        data = self.userImage!.jpegData(compressionQuality: 0.8)!
+        // I converted the photo into data.
+        
+        // I determine the path to the file where the photo will be uploaded and the name / type of the file.
+        let fileUUID = UUID().uuidString
+        let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        // STARTED PHOTO UPLOAD
+        self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
+            if let err = error {
+                print("Error upload user photo : \(err.localizedDescription)")
+                self.presenter?.registerProgressVisibility(status: false)
+                return
+            }
+            self.storageRef.child(filePath).downloadURL{(url,error) in
+                if let error = error {
+                    print("Error when receive the user's profile photo url : \(error)")
+                    self.presenter?.registerProgressVisibility(status: false)
+                    return
+                }
+                if let ppUrl = url?.absoluteString {
+                    self.fireStoreDB
+                        .collection("users")
+                        .document(uuid)
+                        .updateData(["userPhotoUrl":ppUrl])
+
                     
                 }
                 
             }
-       // REGISTER IS FINISHED
-            }
+        }
+    }
+        
     /**
      I'm sending a confirmation email to the user. In order to do this, the user must be logged in according to firebase's rules. That's why I log in, send mail, then log out of the account.
      */

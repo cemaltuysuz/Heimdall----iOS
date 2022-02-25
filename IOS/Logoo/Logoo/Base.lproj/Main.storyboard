@@ -217,7 +217,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <segue destination="rw3-XR-6WM" kind="show" id="BrR-9I-uT0"/>
+                                                            <action selector="registerWithMail:" destination="g2a-99-bH7" eventType="touchUpInside" id="M72-rc-IS0"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXG-pA-c5v">
@@ -276,11 +276,12 @@
                     <connections>
                         <segue destination="LJg-HY-0DA" kind="show" identifier="loginPrefToLogin" id="avK-4H-dxN"/>
                         <segue destination="4SP-qc-ECv" kind="presentation" identifier="loginPrefToHome" modalPresentationStyle="fullScreen" id="7Si-FM-ksr"/>
+                        <segue destination="rw3-XR-6WM" kind="show" identifier="loginPrefToRegister" id="pVA-Ye-XS6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbv-au-Zwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2498.5507246376815" y="83.705357142857139"/>
+            <point key="canvasLocation" x="2499" y="84"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="0gi-ic-Jd6">
@@ -1530,8 +1531,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bls-mh-3Ee"/>
-        <segue reference="o1r-4g-XK7"/>
+        <segue reference="7Si-FM-ksr"/>
+        <segue reference="avK-4H-dxN"/>
         <segue reference="3EM-90-pDF"/>
     </inferredMetricsTieBreakers>
     <resources>

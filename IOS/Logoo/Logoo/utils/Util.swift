@@ -8,6 +8,7 @@
 import Foundation
 import SystemConfiguration
 import UIKit
+import FirebaseAuth
 
 
 func hobbyToHobbies(hobby:String) -> [String]{
@@ -21,6 +22,10 @@ func timeInSeconds() -> Int64 {
 
 func milliSecondToDate(milliseconds:Int64) -> Date {
     return Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+}
+
+func getCurrentUserUid() -> String? {
+    return Auth.auth().currentUser?.uid
 }
 
 func convertStringToDictionary(text: String) -> [String:AnyObject]? {

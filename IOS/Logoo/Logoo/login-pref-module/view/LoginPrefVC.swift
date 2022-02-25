@@ -25,6 +25,22 @@ class LoginPrefVC: UIViewController {
                         .LoginPrefToLogin
                         .rawValue, sender: nil)
     }
+    
+    @IBAction func registerWithMail(_ sender: Any) {
+        performSegue(withIdentifier: LoginPrefVCSegues
+                        .LoginPrefToRegister
+                        .rawValue, sender: RegisterType.REGISTER_WITH_MAIL)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == LoginPrefVCSegues.LoginPrefToRegister.rawValue {
+            if let type = sender as? RegisterType {
+                let targetVC = segue.destination as! RegisterVC
+                targetVC.registerType = type
+            }
+        }
+    }
+    
     @IBAction func googleSignInButtonAction(_ sender: Any) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
@@ -55,8 +71,8 @@ extension LoginPrefVC : PresenterToViewLoginPref {
     func logInResponse(status: Status) {
         if status == .SUCCESS {
             performSegue(withIdentifier: LoginPrefVCSegues
-                            .LoginPrefToHome
-                            .rawValue, sender: nil)
+                            .LoginPrefToRegister
+                            .rawValue, sender: RegisterType.REGISTER_WITH_GOOGLE)
         }else {
             let alert = UIAlertController(title: "Error".localized(),
                                           message: "Something went wrong.".localized(),
@@ -72,4 +88,5 @@ extension LoginPrefVC : PresenterToViewLoginPref {
 enum LoginPrefVCSegues :String {
     case LoginPrefToLogin = "loginPrefToLogin"
     case LoginPrefToHome = "loginPrefToHome"
+    case LoginPrefToRegister = "loginPrefToRegister"
 }
