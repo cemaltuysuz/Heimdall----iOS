@@ -112,17 +112,17 @@ class RegisterVC: UIViewController {
                  If the response status is true, it means that the user has successfully completed the registration step.
                  */
                 if response.status! {
-                    self.registerErrorLabel.isHidden = true
+                    self.registerErrorLabel.textColor = .clear
                     scrollToNextItem()
                 }else {
                     self.registerErrorLabel.text = response.message
-                    self.registerErrorLabel.isHidden = false
+                    self.registerErrorLabel.textColor = .red
                 }
             }
         }else if currentRegisterClass == self.registerSteps!.count - 2 {
             if let response = (registerSteps![self.currentRegisterClass!] as? RegisterProtocol)?.validate() {
                 if response.status! {
-                    self.registerErrorLabel.isHidden = true
+                    self.registerErrorLabel.textColor = .clear
                     if self.registerType == .REGISTER_WITH_MAIL {
                         presenter?.createUserWithEmail()
                     }else if self.registerType == .REGISTER_WITH_GOOGLE {
@@ -130,7 +130,7 @@ class RegisterVC: UIViewController {
                     }
                 }else {
                     self.registerErrorLabel.text = response.message
-                    self.registerErrorLabel.isHidden = false
+                    self.registerErrorLabel.textColor = .red
                 }
             }
         }
@@ -192,6 +192,7 @@ extension RegisterVC : PresenterToViewRegisterMail {
     
     func registerStepsToView(steps: [UICollectionViewCell]) {
         self.registerSteps = steps
+        self.registerStepLabel.text = "1/\(steps.count)"
     }
 }
 
@@ -341,6 +342,28 @@ extension RegisterVC : RegisterPhotoCellProtocol, RegisterInformationCellProtoco
 
                 present(imagePicker, animated: true, completion: nil)
             }
+    }
+    
+    func usernameRealtimeValidation(response: ValidationResponse) {
+        DispatchQueue.main.async {
+            if let status = response.status, status {
+                self.registerErrorLabel.textColor = .clear
+            }else {
+                self.registerErrorLabel.text = "\(response.message ?? "") "
+                self.registerErrorLabel.textColor = .red
+            }
+        }
+    }
+    
+    func mailRealtimeValidation(response: ValidationResponse) {
+        DispatchQueue.main.async {
+            if let status = response.status, status {
+                self.registerErrorLabel.textColor = .clear
+            }else {
+                self.registerErrorLabel.text = "\(response.message ?? "") "
+                self.registerErrorLabel.textColor = .red
+            }
+        }
     }
     
     /**

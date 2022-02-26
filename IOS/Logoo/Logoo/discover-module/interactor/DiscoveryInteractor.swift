@@ -50,7 +50,7 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
                             username: data["username"] as? String ?? "",
                             userMail: data["userMail"] as? String ?? "",
                             userPhotoUrl: data["userPhotoUrl"] as? String ?? "",
-                            userGender: GenderType(rawValue: data["userGender"] as? String ?? "Other") ?? GenderType.Other,
+                            userGender: data["userGender"] as? String ?? "Other",
                             userBirthDay: data["UserBirthDay"] as? String ?? "",
                             userBio: data["userBio"] as? String ?? "",
                             userInterests: data["userHobbies"] as? String ?? "",

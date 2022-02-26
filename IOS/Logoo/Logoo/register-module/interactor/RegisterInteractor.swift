@@ -80,42 +80,78 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
         
         let username = "User-\(randomStringWithLength(len: 5))"
         
-        // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
-        let userObject = [
-            "userId"            : uuid,
-            "username"          : username,
-            "userPhotoUrl"      : "",
-            "userGender"        : self.userGender!.rawValue,
-            "userBirthDay"      : self.userBirthDay!,
-            "userBio"           : "",
-            "userHobbies"       : "",
-            "userLastSeen"      : "",
-            "userRegisterTime"  : "\(timeInSeconds())",
-            "isAnonymous"       : false,
-            "isOnline"          : false,
-            "isAllowTheGroupInvite" : true,
-            "isAllowTheInboxInvite" : true
-            
-                ] as [String:Any]
-        /**
-         I process the user to firestore;
-         In this section, if the user is successfully processed into the database,
-         I will upload the user's profile picture to the storage area.
-         Then I will save it as a user profile picture with the ref value I got.
-         */
-        userRef.setData(userObject){err in
-            if let err = err {
-                self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
-                self.presenter?.registerProgressVisibility(status: false)
-                return
+        let userObjectt = User(userId: uuid,
+                               username: username,
+                               userMail: Auth.auth().currentUser!.email,
+                               userPhotoUrl: "",
+                               userGender: self.userGender!.rawValue,
+                               userBirthDay: self.userBirthDay!,
+                               userBio: "",
+                               userInterests: "",
+                               userLastSeen: "",
+                               userRegisterTime: "\(timeInSeconds())",
+                               isAnonymous: false,
+                               isOnline: false,
+                               isAllowTheGroupInvite: true,
+                               isAllowTheInboxInvite: true)
+        
+        FireStoreService<User>().pushDocument(userObjectt, ref: userRef, onCompletion: {boolean in
+
+            if let status = boolean {
+                if status {
+                    print("başarılı")
+                    self.uploadUserPhoto(uuid: uuid)
+                    self.presenter?.registerFeedBack(response:
+                    ValidationResponse(status: true,
+                                       message:
+                                        nil))
+                    self.presenter?.registerProgressVisibility(status: false)
+                }else {
+                    print("başarısız")
+                }
+            }else {
+                print("boolean is null")
             }
-            self.uploadUserPhoto(uuid: uuid)
-            self.presenter?.registerFeedBack(response:
-            ValidationResponse(status: true,
-                               message:
-                                nil))
-            self.presenter?.registerProgressVisibility(status: false)
-        }
+        })
+        
+/*
+ // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
+ let userObject = [
+     "userId"            : uuid,
+     "username"          : username,
+     "userPhotoUrl"      : "",
+     "userGender"        : self.userGender!.rawValue,
+     "userBirthDay"      : self.userBirthDay!,
+     "userBio"           : "",
+     "userHobbies"       : "",
+     "userLastSeen"      : "",
+     "userRegisterTime"  : "\(timeInSeconds())",
+     "isAnonymous"       : false,
+     "isOnline"          : false,
+     "isAllowTheGroupInvite" : true,
+     "isAllowTheInboxInvite" : true
+     
+         ] as [String:Any]
+ /**
+  I process the user to firestore;
+  In this section, if the user is successfully processed into the database,
+  I will upload the user's profile picture to the storage area.
+  Then I will save it as a user profile picture with the ref value I got.
+  */
+ userRef.setData(userObject){err in
+     if let err = err {
+         self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
+         self.presenter?.registerProgressVisibility(status: false)
+         return
+     }
+     self.uploadUserPhoto(uuid: uuid)
+     self.presenter?.registerFeedBack(response:
+     ValidationResponse(status: true,
+                        message:
+                         nil))
+     self.presenter?.registerProgressVisibility(status: false)
+ }
+ */
         
     }
     

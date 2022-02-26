@@ -47,14 +47,14 @@ class UDService : UDProtocol {
     func setConfirmEmailSecond(second:Int64){
         ud.set(second, forKey: Constants
                 .UserDefault
-                .MAIL_CONFIRMATIN_SECOND
+                .MAIL_CONFIRMATION_SECOND
                 .rawValue)
     }
     
     func getConfirmEmailSecond() -> Int64 {
         return Int64(ud.integer(forKey: Constants
                                     .UserDefault
-                                    .MAIL_CONFIRMATIN_SECOND
+                                    .MAIL_CONFIRMATION_SECOND
                                     .rawValue))
     }
 }
