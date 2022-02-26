@@ -26,20 +26,21 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
         var hobbyList = [InterestSelectionModel]()
         
         
-        
         dbRef.collection("users").document(uuid).getDocument{ (document,error) in
             if let error = error {
                 print("hata var \(error.localizedDescription)")
                 return
             }
             if let document = document, document.exists {
-                let userBio = document.data()?["userHobbies"] as? String ?? ""
-                if !userBio.isEmpty {
-                    alreadyHobbies = hobbyToHobbies(hobby: userBio)
+                let userInterests = document.data()?["userHobbies"] as? String ?? ""
+                if !userInterests.isEmpty {
+                    alreadyHobbies = hobbyToHobbies(hobby: userInterests)
                     self.presenter?.userAlreadyHobbies(alreadyList: alreadyHobbies)
                 }
             }
         }
+        
+        
         dbRef.collection("interests").getDocuments{(snapshot, error) in
             if let error = error {
                 print("Error : \(error.localizedDescription)")
@@ -58,6 +59,7 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
                                                    status: false))
                     }
                 }
+                
                 self.allHobbies = hobbyList
                 self.presenter?.allHobies(hobbyList: hobbyList)
             }

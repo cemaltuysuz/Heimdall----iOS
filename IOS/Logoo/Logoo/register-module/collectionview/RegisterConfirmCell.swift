@@ -8,16 +8,16 @@
 import UIKit
 import Lottie
 
-class RegisterConfirmCell: UICollectionViewCell, RegisterProtocol {
+class RegisterConfirmCell: UICollectionViewCell {
     @IBOutlet weak var animContainer: UIView!
+    @IBOutlet weak var resultMessageLabel: UILabel!
     private var anim:AnimationView?
-    
-    func validate() -> ValidationResponse {
-        return ValidationResponse(status: true, message: "Success")
-    }
-    
+    var animName:String?
+    var message:String?
+
     func initialize() {
-        anim = AnimationView(name: "mail_sended")
+        resultMessageLabel.text = message!
+        anim = AnimationView(name: animName!)
         anim!.frame = animContainer.bounds
         anim!.animationSpeed = 1
         anim!.loopMode = .playOnce

@@ -18,7 +18,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref{
     func logInWithGoogle(credential:AuthCredential) {
         
         Auth.auth().signIn(with: credential){ authResult, error in
-            if let error = error {
+            if let _ = error {
                 self.presenter?.logInResponse(status: .ERROR)
                 return
             }
@@ -31,12 +31,6 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref{
                             "userId"            : uuid,
                             "username"          : "\(username)",
                             "userMail"          : mail,
-                            "userPhotoUrl"      : "",
-                            "userGender"        : "",
-                            "userBirthDay"      : "",
-                            "userBio"           : "",
-                            "userHobbies"       : "",
-                            "userLastSeen"      : "",
                             "userRegisterTime"  : "\(timeInSeconds())",
                             "isAnonymous"       : false,
                             "isOnline"          : false,

@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Kingfisher
 
-class User {
+class User : Codable {
     var userId:String?
     var username:String?
     var userMail:String?
     var userPhotoUrl:String?
-    var userGender:GenderType?
+    var userGender:String?
     var userBirthDay:String?
     var userBio:String?
     var userInterests:String?
@@ -22,11 +23,10 @@ class User {
     var isOnline:Bool?
     var isAllowTheGroupInvite:Bool?
     var isAllowTheInboxInvite:Bool?
-    var inbox:[InboxType]?
     
     init(){}
     
-    init(userId: String, username: String, userMail: String, userPhotoUrl: String, userGender: GenderType, userBirthDay: String, userBio: String, userInterests:String, userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
+    init(userId: String, username: String, userMail: String?, userPhotoUrl: String, userGender: String, userBirthDay: String, userBio: String, userInterests:String, userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
         self.userId = userId
         self.username = username
         self.userMail = userMail
@@ -42,6 +42,5 @@ class User {
         self.isAllowTheGroupInvite = isAllowTheGroupInvite
         self.isAllowTheInboxInvite = isAllowTheInboxInvite
     }
-    
     
 }
