@@ -19,8 +19,7 @@ class WelcomeVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //presenter?.routeUser()
-        performSegue(withIdentifier: WelcomeVCSegues.welcomeToLoginPrefVC.rawValue, sender: nil)
+        presenter?.routeUser()
     }
 }
 
