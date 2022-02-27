@@ -16,7 +16,7 @@ class LoginPrefPresenter : ViewToPresenterLoginPref, InteractorToPresenterLoginP
         interactor?.logInWithGoogle(credential: credential)
     }
     
-    func logInResponse(status: Status) {
-        view?.logInResponse(status: status)
+    func logInResponse(status: Status,userState:UserState) {
+        view?.logInResponse(status: status, userState: userState)
     }
 }

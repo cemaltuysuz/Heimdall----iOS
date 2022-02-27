@@ -35,10 +35,10 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                             if !isUsernameUsed! {
                                 return ValidationResponse(status: true, message: "Successfull.")
                             }else {
-                                return ValidationResponse(status: false, message: "This username is already exist.")
+                                return ValidationResponse(status: false, message: "This username is being used by another account.".localized())
                             }
                         }else {
-                            return ValidationResponse(status: false, message: "This mail is already exist.")
+                            return ValidationResponse(status: false, message: "This email address is being used by another account.".localized())
                         }
                     }else {
                         return ValidationResponse(status: false, message: "passwordRules".localized())
@@ -78,7 +78,7 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.toView?.usernameRealtimeValidation(response: ValidationResponse(status: false, message: "This username is already exist."))
+                            self?.toView?.usernameRealtimeValidation(response: ValidationResponse(status: false, message: "This username is being used by another account.".localized()))
                             self?.isUsernameUsed = true
                         }else {
                             self?.toView?.usernameRealtimeValidation(response: ValidationResponse(status: true, message: nil))
@@ -109,7 +109,7 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.toView?.mailRealtimeValidation(response: ValidationResponse(status: false, message: "This mail is already exist."))
+                            self?.toView?.mailRealtimeValidation(response: ValidationResponse(status: false, message: "This email address is being used by another account.".localized()))
                             self?.isEmailUsed = true
                         }else {
                             self?.toView?.mailRealtimeValidation(response: ValidationResponse(status: true, message: nil))

@@ -39,6 +39,9 @@
 "Send Confirmation Link" = "Onay linki gönder";
 "Login failed." = "Giriş başarısız.";
 
+"This email address is being used by another account." = "Bu mail adresi zaten kayıtlı.";
+"This email address is being used by another account." = "Bu kullanıcı adı bir başkası tarafından kullanılıyor.";
+
 // Reset Password
 "Successfully" = "Başarılı";
 "The link was sent successfully. Check your inbox." = "Bağlantı başarılı bir şekilde iletildi. Gelen kutunuzu kontrol ediniz.";

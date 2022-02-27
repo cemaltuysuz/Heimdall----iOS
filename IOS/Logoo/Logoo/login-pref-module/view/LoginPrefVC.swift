@@ -68,11 +68,19 @@ class LoginPrefVC: UIViewController {
 }
 
 extension LoginPrefVC : PresenterToViewLoginPref {
-    func logInResponse(status: Status) {
+    func logInResponse(status: Status, userState:UserState) {
         if status == .SUCCESS {
-            performSegue(withIdentifier: LoginPrefVCSegues
-                            .LoginPrefToRegister
-                            .rawValue, sender: RegisterType.REGISTER_WITH_GOOGLE)
+            if userState == .GOOGLE_USER_CONFIRMED {
+                performSegue(withIdentifier: LoginPrefVCSegues
+                                .LoginPrefToHome
+                                .rawValue, sender: nil)
+            }
+            else if userState == .GOOGLE_USER_MISSING_INFORMATION {
+                performSegue(withIdentifier: LoginPrefVCSegues
+                                .LoginPrefToRegister
+                                .rawValue, sender: RegisterType.REGISTER_WITH_GOOGLE)
+            }
+
         }else {
             let alert = UIAlertController(title: "Error".localized(),
                                           message: "Something went wrong.".localized(),
