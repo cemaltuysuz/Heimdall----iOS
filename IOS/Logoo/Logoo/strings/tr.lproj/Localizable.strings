@@ -70,5 +70,14 @@
 "Welcome to Logoo. Missing information has been detected in your subscription. Complete this information ?" = "Logoo'ya hoşgeldiniz. Üyeliğinizde eksik bilgi tespit edildi. Bu bilgileri tamamlamak ister misiniz ?";
 "Complete" = "Tamamla";
 
+// profile settings
+"Security" = "Güvenlik";
+"Privacy" = "Gizlilik";
+"Bell" = "Bildirimler";
+"Invite Friends" = "Arkadaşlarını Davet Et";
+"Preferences" = "Tercihler";
+"About" = "Hakkında";
+"Exit" = "Çıkış";
+
 
 
