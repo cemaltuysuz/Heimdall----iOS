@@ -20,11 +20,11 @@ protocol PresenterToInteractorLoginPref {
 }
 
 protocol InteractorToPresenterLoginPref {
-    func logInResponse(status:Status)
+    func logInResponse(status:Status,userState:UserState)
 }
 
 protocol PresenterToViewLoginPref {
-    func logInResponse(status:Status)
+    func logInResponse(status:Status,userState:UserState)
 }
 
 protocol PresenterToRouterLoginPref {

@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let userRef = fireStoreDB.collection("users").document(userId)
                 
                 userRef.updateData(["isOnline":false])
-                userRef.updateData(["userLastSeen":timeInSeconds()])
+                userRef.updateData(["userLastSeen":"\(timeInSeconds())"])
             }
         }
     }

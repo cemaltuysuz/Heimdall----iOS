@@ -20,19 +20,6 @@ class WelcomeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //presenter?.routeUser()
-        
-        
-        FireStoreService<User>().getDocumentsByField(ref: Firestore.firestore().collection("users"), getByField: "userMail", getByValue: "ctuysuz20@gmail.com", onCompletion: { users,error in
-            
-            if let _ = error {
-                print("jata olustu")
-            }
-            
-            if let users = users {
-                print("geldi \(users.count)")
-            }
-            
-        })
         performSegue(withIdentifier: WelcomeVCSegues.welcomeToLoginPrefVC.rawValue, sender: nil)
     }
 }

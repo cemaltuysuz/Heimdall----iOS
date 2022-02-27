@@ -68,11 +68,35 @@ class LoginPrefVC: UIViewController {
 }
 
 extension LoginPrefVC : PresenterToViewLoginPref {
-    func logInResponse(status: Status) {
+    func logInResponse(status: Status, userState:UserState) {
         if status == .SUCCESS {
-            performSegue(withIdentifier: LoginPrefVCSegues
-                            .LoginPrefToRegister
-                            .rawValue, sender: RegisterType.REGISTER_WITH_GOOGLE)
+            if userState == .GOOGLE_USER_CONFIRMED {
+                performSegue(withIdentifier: LoginPrefVCSegues
+                                .LoginPrefToHome
+                                .rawValue, sender: nil)
+            }
+            else if userState == .GOOGLE_USER_MISSING_INFORMATION {
+                let alert = UIAlertController(title: "Welcome".localized(),
+                                              message: "Welcome to Logoo. Missing information has been detected in your subscription. Complete this information ?".localized(), preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Complete".localized(), style: .default, handler: {_ in
+                    self.performSegue(withIdentifier: LoginPrefVCSegues
+                                    .LoginPrefToRegister
+                                    .rawValue, sender: RegisterType.REGISTER_WITH_GOOGLE)
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: {_ in
+                    self.performSegue(withIdentifier: LoginPrefVCSegues
+                                        .LoginPrefToHome
+                                        .rawValue, sender: nil)
+                })
+                
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+
+            }
+
         }else {
             let alert = UIAlertController(title: "Error".localized(),
                                           message: "Something went wrong.".localized(),

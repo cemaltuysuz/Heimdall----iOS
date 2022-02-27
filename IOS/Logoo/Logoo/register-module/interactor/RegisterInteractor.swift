@@ -75,84 +75,31 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     func setUserInfoForGoogleUsers(){
         presenter?.registerProgressVisibility(status: true)
         let uuid = Auth.auth().currentUser!.uid
-        
         let userRef = self.fireStoreDB.collection("users").document(uuid)
-        
-        let username = "User-\(randomStringWithLength(len: 5))"
-        
-        let userObjectt = User(userId: uuid,
-                               username: username,
-                               userMail: Auth.auth().currentUser!.email,
-                               userPhotoUrl: "",
-                               userGender: self.userGender!.rawValue,
-                               userBirthDay: self.userBirthDay!,
-                               userBio: "",
-                               userInterests: "",
-                               userLastSeen: "",
-                               userRegisterTime: "\(timeInSeconds())",
-                               isAnonymous: false,
-                               isOnline: false,
-                               isAllowTheGroupInvite: true,
-                               isAllowTheInboxInvite: true)
-        
-        FireStoreService<User>().pushDocument(userObjectt, ref: userRef, onCompletion: {boolean in
 
-            if let status = boolean {
-                if status {
-                    print("başarılı")
-                    self.uploadUserPhoto(uuid: uuid)
-                    self.presenter?.registerFeedBack(response:
-                    ValidationResponse(status: true,
-                                       message:
-                                        nil))
-                    self.presenter?.registerProgressVisibility(status: false)
-                }else {
-                    print("başarısız")
-                }
-            }else {
-                print("boolean is null")
+        /**
+         A user logging in with Google already has information such as uuid, username and mail.
+         So I'm just updating the missing information.
+         */
+        let userObject = [
+            "userGender"        : self.userGender!.rawValue,
+            "userBirthDay"      : self.userBirthDay!,
+                ] as [String:Any]
+
+        // update user data
+        userRef.updateData(userObject){err in
+            if let err = err {
+                self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
+                self.presenter?.registerProgressVisibility(status: false)
+                return
             }
-        })
-        
-/*
- // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
- let userObject = [
-     "userId"            : uuid,
-     "username"          : username,
-     "userPhotoUrl"      : "",
-     "userGender"        : self.userGender!.rawValue,
-     "userBirthDay"      : self.userBirthDay!,
-     "userBio"           : "",
-     "userHobbies"       : "",
-     "userLastSeen"      : "",
-     "userRegisterTime"  : "\(timeInSeconds())",
-     "isAnonymous"       : false,
-     "isOnline"          : false,
-     "isAllowTheGroupInvite" : true,
-     "isAllowTheInboxInvite" : true
-     
-         ] as [String:Any]
- /**
-  I process the user to firestore;
-  In this section, if the user is successfully processed into the database,
-  I will upload the user's profile picture to the storage area.
-  Then I will save it as a user profile picture with the ref value I got.
-  */
- userRef.setData(userObject){err in
-     if let err = err {
-         self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
-         self.presenter?.registerProgressVisibility(status: false)
-         return
-     }
-     self.uploadUserPhoto(uuid: uuid)
-     self.presenter?.registerFeedBack(response:
-     ValidationResponse(status: true,
-                        message:
-                         nil))
-     self.presenter?.registerProgressVisibility(status: false)
- }
- */
-        
+            self.uploadUserPhoto(uuid: uuid) // photo upload
+            self.presenter?.registerFeedBack(response:
+            ValidationResponse(status: true,
+                               message:
+                                nil))
+            self.presenter?.registerProgressVisibility(status: false)
+        }
     }
     
     func createUserWithEmail() {
@@ -179,47 +126,48 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     return
                 }
 
-                let userRef = self.fireStoreDB.collection("users").document(user!.user.uid)
+                let userRef = self.fireStoreDB.collection(FireCollections.USER_COLLECTION).document(user!.user.uid)
                 // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
-                let userObject = [
-                    "userId"            : user!.user.uid,
-                    "username"          : self.userName!,
-                    "userMail"          : self.userMail!,
-                    "userPhotoUrl"      : "",
-                    "userGender"        : self.userGender!.rawValue,
-                    "userBirthDay"      : self.userBirthDay!,
-                    "userBio"           : "",
-                    "userHobbies"       : "",
-                    "userLastSeen"      : "",
-                    "userRegisterTime"  : "\(timeInSeconds())",
-                    "isAnonymous"       : false,
-                    "isOnline"          : false,
-                    "isAllowTheGroupInvite" : true,
-                    "isAllowTheInboxInvite" : true
-                    
-                    
-                        ] as [String:Any]
+                let userObjectt = User(userId: user!.user.uid,
+                                       username: self.userName!,
+                                       userMail: self.userMail!,
+                                       userPhotoUrl: "",
+                                       userGender: self.userGender!.rawValue,
+                                       userBirthDay: self.userBirthDay!,
+                                       userBio: "",
+                                       userInterests: "",
+                                       userLastSeen: "",
+                                       userRegisterTime: "\(timeInSeconds())",
+                                       isAnonymous: false,
+                                       isOnline: false,
+                                       isAllowTheGroupInvite: true,
+                                       isAllowTheInboxInvite: true)
+                
                 /**
                  I process the user to firestore;
                  In this section, if the user is successfully processed into the database,
                  I will upload the user's profile picture to the storage area.
                  Then I will save it as a user profile picture with the ref value I got.
                  */
-                userRef.setData(userObject){err in
-                    if let err = err {
-                        self.presenter?.registerFeedBack(response: ValidationResponse(status: false, message: "Error writing user to database. \(err.localizedDescription)"))
-                        self.presenter?.registerProgressVisibility(status: false)
-                        return
+                FireStoreService<User>().pushDocument(userObjectt, ref: userRef, onCompletion: {boolean in
+
+                    if let status = boolean {
+                        if status {
+                            self.uploadUserPhoto(uuid: user!.user.uid)
+                            self.sendEmailVerification()
+                            self.presenter?.registerFeedBack(response:
+                            ValidationResponse(status: true,
+                                               message:
+                                                self.userMail!))
+                        }else {
+                            self.presenter?.registerFeedBack(response: ValidationResponse(status: false,
+                                                                                          message: "Error writing user to database."))
+                        }
+                    }else {
+                        self.presenter?.registerFeedBack(response: ValidationResponse(status: false,
+                                                                                      message: "Error writing user to database."))
                     }
-                    self.uploadUserPhoto(uuid: user!.user.uid)
-                    self.sendEmailVerification()
-                    self.presenter?.registerFeedBack(response:
-                    ValidationResponse(status: true,
-                                       message:
-                                        self.userMail!))
-                    self.presenter?.registerProgressVisibility(status: false)
-                    
-                }
+                })
             }
         }
     
