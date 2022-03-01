@@ -14,7 +14,7 @@ class ProfileSettingsVC: UIViewController {
     var presenter:ViewToPresenterProfileSettingsProtocol?
     @IBOutlet weak var profileUsernameLabel: UILabel!
     @IBOutlet weak var profileUserMailLabel: UILabel!
-    
+    @IBOutlet weak var profileUserPhoto: UIImageView!
     var options:[ProfileOuterOption]?
 
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ class ProfileSettingsVC: UIViewController {
         
         ProfileSettingsRouter.createModule(ref: self)
         presenter?.getOptions()
+        presenter?.getUser()
         
     }
     @IBAction func editProfileButton(_ sender: Any) {
@@ -35,7 +36,15 @@ class ProfileSettingsVC: UIViewController {
 
 extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
     func userToView(user: User) {
-        
+        DispatchQueue.main.async {
+            if let username = user.username, let mail = user.userMail {
+                self.profileUsernameLabel.text = username
+                self.profileUserMailLabel.text = mail
+            }
+            if let link = user.userPhotoUrl, let url = URL(string: link) {
+                self.profileUserPhoto.setImage(url: url)
+            }
+        }
     }
     
     func optionsToView(options: [ProfileOuterOption]) {

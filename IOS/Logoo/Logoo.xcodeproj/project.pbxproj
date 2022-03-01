@@ -63,6 +63,12 @@
 		156F044C27B3AAC500D37039 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F044B27B3AAC500D37039 /* Resource.swift */; };
 		156F044F27B3ACC100D37039 /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F044E27B3ACC100D37039 /* UserState.swift */; };
 		156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F045127B3C11700D37039 /* SelectInterestVC.swift */; };
+		1584957E27CDEDFA00ED57B6 /* UIImageViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */; };
+		1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957F27CE00D700ED57B6 /* ProfileVC.swift */; };
+		1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958127CE00EB00ED57B6 /* EditProfileVC.swift */; };
+		1584958427CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958327CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift */; };
+		1584958627CE134600ED57B6 /* UserFieldtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958527CE134600ED57B6 /* UserFieldtype.swift */; };
+		1584958827CE13FB00ED57B6 /* EditProfileConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */; };
 		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
 		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
 		159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BD2279C110F001B9607 /* ValidationResponse.swift */; };
@@ -209,6 +215,12 @@
 		156F044B27B3AAC500D37039 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		156F044E27B3ACC100D37039 /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		156F045127B3C11700D37039 /* SelectInterestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestVC.swift; sourceTree = "<group>"; };
+		1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewEx.swift; sourceTree = "<group>"; };
+		1584957F27CE00D700ED57B6 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		1584958127CE00EB00ED57B6 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		1584958327CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditWithTextFieldCell.swift; sourceTree = "<group>"; };
+		1584958527CE134600ED57B6 /* UserFieldtype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldtype.swift; sourceTree = "<group>"; };
+		1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfigure.swift; sourceTree = "<group>"; };
 		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
 		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		159C3BD2279C110F001B9607 /* ValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResponse.swift; sourceTree = "<group>"; };
@@ -403,18 +415,8 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
-				15C64C3427BD1D430088DD35 /* reset-password-module */,
-				15BDA68327B646B80066F469 /* login-router-module */,
-				156F045027B3C0E300D37039 /* selection-interest-module */,
-				1517AF8C279EBC5700D1194E /* chat-module */,
-				15064F4C279D490E00460334 /* profile-module */,
-				159C3BD6279C5CD5001B9607 /* global-module */,
-				159C3BD5279C5CC6001B9607 /* discover-module */,
-				150C8FE827994EBB000DAFBE /* register-module */,
-				150C8FE727994EB0000DAFBE /* login-module */,
-				150C8FE627994E93000DAFBE /* login-pref-module */,
-				150C8FE327994DC0000DAFBE /* welcome-module */,
-				150C8FE527994E62000DAFBE /* onboard-module */,
+				1584957C27CDEDD800ED57B6 /* extension */,
+				1584957B27CDEDC000ED57B6 /* module */,
 				150C8FE427994DD9000DAFBE /* service */,
 				156F044A27B3AA7F00D37039 /* utils */,
 				150C8FB127994C6D000DAFBE /* AppDelegate.swift */,
@@ -784,6 +786,33 @@
 			path = "selection-interest-module";
 			sourceTree = "<group>";
 		};
+		1584957B27CDEDC000ED57B6 /* module */ = {
+			isa = PBXGroup;
+			children = (
+				15C64C3427BD1D430088DD35 /* reset-password-module */,
+				15BDA68327B646B80066F469 /* login-router-module */,
+				156F045027B3C0E300D37039 /* selection-interest-module */,
+				1517AF8C279EBC5700D1194E /* chat-module */,
+				15064F4C279D490E00460334 /* profile-module */,
+				159C3BD6279C5CD5001B9607 /* global-module */,
+				159C3BD5279C5CC6001B9607 /* discover-module */,
+				150C8FE827994EBB000DAFBE /* register-module */,
+				150C8FE727994EB0000DAFBE /* login-module */,
+				150C8FE627994E93000DAFBE /* login-pref-module */,
+				150C8FE327994DC0000DAFBE /* welcome-module */,
+				150C8FE527994E62000DAFBE /* onboard-module */,
+			);
+			path = module;
+			sourceTree = "<group>";
+		};
+		1584957C27CDEDD800ED57B6 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		15983C0127997C0200903073 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1100,6 +1129,8 @@
 			isa = PBXGroup;
 			children = (
 				15F272DE27CB7E73005BBC78 /* ProfileSettingsVC.swift */,
+				1584957F27CE00D700ED57B6 /* ProfileVC.swift */,
+				1584958127CE00EB00ED57B6 /* EditProfileVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1108,6 +1139,7 @@
 			isa = PBXGroup;
 			children = (
 				15F272E527CBA73F005BBC78 /* ProfileOuterOptionCell.swift */,
+				1584958327CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -1131,10 +1163,12 @@
 		15F272E927CBA7CC005BBC78 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				15F272F827CBB7A5005BBC78 /* enums */,
 				15064F4E279D492A00460334 /* User.swift */,
 				1517AF88279E968D00D1194E /* Hobby.swift */,
 				15F272F427CBAAEB005BBC78 /* ProfileOuterOption.swift */,
-				15F272F827CBB7A5005BBC78 /* enums */,
+				1584958527CE134600ED57B6 /* UserFieldtype.swift */,
+				1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1430,6 +1464,7 @@
 				15A5B43727C777DF0082029E /* RegisterProtocols.swift in Sources */,
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
 				15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */,
+				1584957E27CDEDFA00ED57B6 /* UIImageViewEx.swift in Sources */,
 				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
@@ -1455,6 +1490,7 @@
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				15F272F127CBAA11005BBC78 /* ProfileSettingsInteractor.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
+				1584958427CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift in Sources */,
 				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
 				15F272DF27CB7E73005BBC78 /* ProfileSettingsVC.swift in Sources */,
@@ -1480,15 +1516,19 @@
 				15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
+				1584958627CE134600ED57B6 /* UserFieldtype.swift in Sources */,
 				15A5B41327C687280082029E /* Message.swift in Sources */,
 				15A5B43027C76B930082029E /* RegisterBirthDayCell.swift in Sources */,
+				1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */,
 				15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */,
 				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */,
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
+				1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */,
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
+				1584958827CE13FB00ED57B6 /* EditProfileConfigure.swift in Sources */,
 				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
 				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
