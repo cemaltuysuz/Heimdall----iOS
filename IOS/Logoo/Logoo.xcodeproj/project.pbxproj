@@ -69,6 +69,10 @@
 		1584958427CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958327CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift */; };
 		1584958627CE134600ED57B6 /* UserFieldtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958527CE134600ED57B6 /* UserFieldtype.swift */; };
 		1584958827CE13FB00ED57B6 /* EditProfileConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */; };
+		1584958A27CE229400ED57B6 /* EditProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958927CE229400ED57B6 /* EditProfileProtocols.swift */; };
+		1584958C27CE242500ED57B6 /* EditProfileInteracor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */; };
+		1584958E27CE249C00ED57B6 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */; };
+		1584959027CE25FB00ED57B6 /* EditProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958F27CE25FB00ED57B6 /* EditProfileRouter.swift */; };
 		15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C0227997C1B00903073 /* LoginPrefVC.swift */; };
 		15983C062799954500903073 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983C052799954500903073 /* RegisterVC.swift */; };
 		159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BD2279C110F001B9607 /* ValidationResponse.swift */; };
@@ -221,6 +225,10 @@
 		1584958327CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditWithTextFieldCell.swift; sourceTree = "<group>"; };
 		1584958527CE134600ED57B6 /* UserFieldtype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldtype.swift; sourceTree = "<group>"; };
 		1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfigure.swift; sourceTree = "<group>"; };
+		1584958927CE229400ED57B6 /* EditProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileProtocols.swift; sourceTree = "<group>"; };
+		1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteracor.swift; sourceTree = "<group>"; };
+		1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		1584958F27CE25FB00ED57B6 /* EditProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRouter.swift; sourceTree = "<group>"; };
 		15983C0227997C1B00903073 /* LoginPrefVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefVC.swift; sourceTree = "<group>"; };
 		15983C052799954500903073 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		159C3BD2279C110F001B9607 /* ValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResponse.swift; sourceTree = "<group>"; };
@@ -1148,6 +1156,7 @@
 			isa = PBXGroup;
 			children = (
 				15F272F027CBAA11005BBC78 /* ProfileSettingsInteractor.swift */,
+				1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -1156,6 +1165,7 @@
 			isa = PBXGroup;
 			children = (
 				15F272F227CBAA4B005BBC78 /* ProfileSettingsRouter.swift */,
+				1584958F27CE25FB00ED57B6 /* EditProfileRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -1167,7 +1177,6 @@
 				15064F4E279D492A00460334 /* User.swift */,
 				1517AF88279E968D00D1194E /* Hobby.swift */,
 				15F272F427CBAAEB005BBC78 /* ProfileOuterOption.swift */,
-				1584958527CE134600ED57B6 /* UserFieldtype.swift */,
 				1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */,
 			);
 			path = entity;
@@ -1177,6 +1186,7 @@
 			isa = PBXGroup;
 			children = (
 				15F272EE27CBA90B005BBC78 /* ProfileSettingsPresenter.swift */,
+				1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -1185,6 +1195,7 @@
 			isa = PBXGroup;
 			children = (
 				15F272EC27CBA806005BBC78 /* ProfileSettingsProtocols.swift */,
+				1584958927CE229400ED57B6 /* EditProfileProtocols.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -1192,6 +1203,7 @@
 		15F272F827CBB7A5005BBC78 /* enums */ = {
 			isa = PBXGroup;
 			children = (
+				1584958527CE134600ED57B6 /* UserFieldtype.swift */,
 				156F042B27AFA80F00D37039 /* GenderType.swift */,
 			);
 			path = enums;
@@ -1488,6 +1500,7 @@
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
 				15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
+				1584958A27CE229400ED57B6 /* EditProfileProtocols.swift in Sources */,
 				15F272F127CBAA11005BBC78 /* ProfileSettingsInteractor.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				1584958427CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift in Sources */,
@@ -1502,6 +1515,7 @@
 				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
+				1584958E27CE249C00ED57B6 /* EditProfilePresenter.swift in Sources */,
 				15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */,
 				150D83A627C4F311009601F0 /* Inbox.swift in Sources */,
 				15A5B42627C76AF90082029E /* RegisterInformationCell.swift in Sources */,
@@ -1510,6 +1524,7 @@
 				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
 				1535675927BA671D007346D4 /* Validators.swift in Sources */,
 				156F044C27B3AAC500D37039 /* Resource.swift in Sources */,
+				1584959027CE25FB00ED57B6 /* EditProfileRouter.swift in Sources */,
 				156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */,
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
@@ -1541,6 +1556,7 @@
 				15C64C5027BE26FE0088DD35 /* WelcomeInteractor.swift in Sources */,
 				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,
 				153EA96D279FFA5800871246 /* MessageType.swift in Sources */,
+				1584958C27CE242500ED57B6 /* EditProfileInteracor.swift in Sources */,
 				1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */,
 				156F044F27B3ACC100D37039 /* UserState.swift in Sources */,
 				153EA96B279FFA2E00871246 /* RequestType.swift in Sources */,

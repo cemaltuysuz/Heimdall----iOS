@@ -82,8 +82,8 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
          So I'm just updating the missing information.
          */
         let userObject = [
-            "userGender"        : self.userGender!.rawValue,
-            "userBirthDay"      : self.userBirthDay!,
+            UserFieldType.USER_GENDER.rawValue        : self.userGender!.rawValue,
+            UserFieldType.USER_BIRTHDAY.rawValue      : self.userBirthDay!,
                 ] as [String:Any]
 
         // update user data
@@ -134,7 +134,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                                        userPhotoUrl: "",
                                        userGender: self.userGender!.rawValue,
                                        userBirthDay: self.userBirthDay!,
-                                       userBio: "",
+                                       userManifesto: "",
                                        userInterests: "",
                                        userLastSeen: "",
                                        userRegisterTime: "\(timeInSeconds())",

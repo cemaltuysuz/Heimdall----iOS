@@ -13,7 +13,7 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
     var model:EditProfileConfigure!
     
     func configure(model:EditProfileConfigure){
-        self.fieldKeyLabel.text = model.key
+        self.fieldKeyLabel.text = model.displayName
         self.fieldValueTextField.text = model.value
         if !model.isEditable {
             self.fieldValueTextField.delegate = self

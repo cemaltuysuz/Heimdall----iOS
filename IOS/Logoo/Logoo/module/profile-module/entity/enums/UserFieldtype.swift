@@ -12,5 +12,5 @@ enum UserFieldType : String {
     case USERNAME = "username"
     case USER_GENDER = "userGender"
     case USER_BIRTHDAY = "userBirthDay"
-    case USER_BIO = "userBio"
+    case USER_MANIFESTO = "userManifesto"
 }
