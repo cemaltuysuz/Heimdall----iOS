@@ -39,6 +39,12 @@
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
 		1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* ChatProtocols.swift */; };
+		151E8D3027D109BC009CDE23 /* BaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D2F27D109BC009CDE23 /* BaseValidator.swift */; };
+		151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3127D109F2009CDE23 /* Validatable.swift */; };
+		151E8D3427D10A1F009CDE23 /* ValidateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3327D10A1F009CDE23 /* ValidateResult.swift */; };
+		151E8D3727D10EA5009CDE23 /* MailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3627D10EA5009CDE23 /* MailValidator.swift */; };
+		151E8D3927D11051009CDE23 /* UsernameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3827D11051009CDE23 /* UsernameValidator.swift */; };
+		151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3A27D1115D009CDE23 /* PasswordValidator.swift */; };
 		1535674927B792AE007346D4 /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 1535674827B792AE007346D4 /* M13Checkbox */; };
 		1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */; };
 		1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675627B7F97F007346D4 /* InterestSelectionModel.swift */; };
@@ -197,6 +203,12 @@
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
+		151E8D2F27D109BC009CDE23 /* BaseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseValidator.swift; sourceTree = "<group>"; };
+		151E8D3127D109F2009CDE23 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		151E8D3327D10A1F009CDE23 /* ValidateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateResult.swift; sourceTree = "<group>"; };
+		151E8D3627D10EA5009CDE23 /* MailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailValidator.swift; sourceTree = "<group>"; };
+		151E8D3827D11051009CDE23 /* UsernameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameValidator.swift; sourceTree = "<group>"; };
+		151E8D3A27D1115D009CDE23 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionCell.swift; sourceTree = "<group>"; };
 		1535675627B7F97F007346D4 /* InterestSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionModel.swift; sourceTree = "<group>"; };
 		1535675827BA671D007346D4 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
@@ -423,6 +435,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				151E8D2E27D10940009CDE23 /* validation */,
 				1584957C27CDEDD800ED57B6 /* extension */,
 				1584957B27CDEDC000ED57B6 /* module */,
 				150C8FE427994DD9000DAFBE /* service */,
@@ -663,6 +676,27 @@
 				1517AF93279EBCD900D1194E /* ChatVC.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		151E8D2E27D10940009CDE23 /* validation */ = {
+			isa = PBXGroup;
+			children = (
+				151E8D3527D10E94009CDE23 /* validators */,
+				151E8D2F27D109BC009CDE23 /* BaseValidator.swift */,
+				151E8D3127D109F2009CDE23 /* Validatable.swift */,
+				151E8D3327D10A1F009CDE23 /* ValidateResult.swift */,
+			);
+			path = validation;
+			sourceTree = "<group>";
+		};
+		151E8D3527D10E94009CDE23 /* validators */ = {
+			isa = PBXGroup;
+			children = (
+				151E8D3627D10EA5009CDE23 /* MailValidator.swift */,
+				151E8D3827D11051009CDE23 /* UsernameValidator.swift */,
+				151E8D3A27D1115D009CDE23 /* PasswordValidator.swift */,
+			);
+			path = validators;
 			sourceTree = "<group>";
 		};
 		1535674A27B794A7007346D4 /* collectionView */ = {
@@ -1470,6 +1504,7 @@
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
+				151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */,
 				15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
@@ -1491,6 +1526,7 @@
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				15F272ED27CBA806005BBC78 /* ProfileSettingsProtocols.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
+				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
@@ -1504,12 +1540,14 @@
 				15F272F127CBAA11005BBC78 /* ProfileSettingsInteractor.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				1584958427CE110000ED57B6 /* ProfileEditWithTextFieldCell.swift in Sources */,
+				151E8D3727D10EA5009CDE23 /* MailValidator.swift in Sources */,
 				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
 				15F272DF27CB7E73005BBC78 /* ProfileSettingsVC.swift in Sources */,
 				15C64C5427BE27CE0088DD35 /* WelcomeRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
+				151E8D3027D109BC009CDE23 /* BaseValidator.swift in Sources */,
 				15C64C4227BD27A30088DD35 /* ResetPasswordPresenter.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
 				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
@@ -1528,6 +1566,7 @@
 				156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */,
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
+				151E8D3927D11051009CDE23 /* UsernameValidator.swift in Sources */,
 				15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
@@ -1553,6 +1592,7 @@
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
+				151E8D3427D10A1F009CDE23 /* ValidateResult.swift in Sources */,
 				15C64C5027BE26FE0088DD35 /* WelcomeInteractor.swift in Sources */,
 				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,
 				153EA96D279FFA5800871246 /* MessageType.swift in Sources */,
