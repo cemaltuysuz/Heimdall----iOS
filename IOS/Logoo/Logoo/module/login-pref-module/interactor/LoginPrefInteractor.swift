@@ -42,20 +42,15 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                         // I check any information of the user that absolutely needs to be filled.
                         // If it's not full I will redirect it back to the registration screen.
                         if let userBirthDay = user.userBirthDay, !userBirthDay.isEmpty {
-                            print("KULLANICI VAR VE ONAYLANDI BILGISI TAM YANİ")
-                            print("birth day : \(userBirthDay)")
                             self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_CONFIRMED)
                         }else {
                             self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_MISSING_INFORMATION)
-                            print("KULLANICI ZATEN VAR AMA EKSIK BILGI TASIYOR")
                         }
                     }
                     else {
-                        print("User is new.")
-                        
                         // NEW REGISTER
                         
-                        let userRef = self.fireStoreDB.collection("users").document(uuid)
+                        let userRef = self.fireStoreDB.collection(FireCollections.USER_COLLECTION).document(uuid)
                         let username = "User-\(randomStringWithLength(len: 5))"
                         
                         let userObjectt = User(userId: uuid,
@@ -64,7 +59,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                                                userPhotoUrl: "",
                                                userGender: "",
                                                userBirthDay: "",
-                                               userBio: "",
+                                               userManifesto: "",
                                                userInterests: "",
                                                userLastSeen: "",
                                                userRegisterTime: "\(timeInSeconds())",
@@ -85,35 +80,6 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                                 self.presenter?.logInResponse(status: .ERROR, userState: .GOOGLE_ERROR)
                             }
                         })
-                        
-/**
- let userObject = [
-             "userId"            : uuid,
-             "username"          : "\(username)",
-             "userMail"          : mail,
-             "userRegisterTime"  : "\(timeInSeconds())",
-             "isAnonymous"       : false,
-             "isOnline"          : false,
-             "isAllowTheGroupInvite" : true,
-             "isAllowTheInboxInvite" : true
-             ] as [String:Any]
-         /**
-          I process the user to firestore;
-          In this section, if the user is successfully processed into the database,
-          I will upload the user's profile picture to the storage area.
-          Then I will save it as a user profile picture with the ref value I got.
-          */
- userRef.setData(userObject){err in
-     if let err = error {
-         self.presenter?.logInResponse(status: .ERROR,userState: .GOOGLE_ERROR)
-         print("Error : \(err.localizedDescription)")
-         self.presenter?.logInResponse(status: .ERROR,userState: .GOOGLE_ERROR)
-         return
-     }
-     self.presenter?.logInResponse(status: .SUCCESS,userState: .GOOGLE_USER_MISSING_INFORMATION)
- }
- */
-                        
                     }
                     
                 })

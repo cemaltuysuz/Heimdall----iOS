@@ -9,16 +9,16 @@ import Foundation
 
 struct EditProfileConfigure {
     
-    var key:String!
+    var displayName:String!
     var value:String!
     var isEditable:Bool!
     var type:UserFieldType!
     
-    init(key: String? = nil, value: String? = nil, isEditable: Bool? = nil, type: UserFieldType? = nil) {
-       self.key = key
+    init(displayName:String? = nil, value: String? = nil, isEditable: Bool? = nil, type: UserFieldType? = nil) {
+        
+       self.displayName = displayName
        self.value = value
        self.isEditable = isEditable
        self.type = type
    }
-    
 }

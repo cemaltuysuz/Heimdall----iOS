@@ -967,6 +967,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="editProfileButton:" destination="SU2-2K-AsD" eventType="touchUpInside" id="jAI-OE-x2p"/>
+                                                    <segue destination="5WQ-aS-D7V" kind="show" id="IU1-qM-8Rn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1097,7 +1098,6 @@
                         <outlet property="profileUserMailLabel" destination="wQc-gO-Ff8" id="i2B-Gm-ERc"/>
                         <outlet property="profileUserPhoto" destination="s5b-P7-Mh5" id="7P2-Vi-Zts"/>
                         <outlet property="profileUsernameLabel" destination="2kT-2h-veh" id="NI6-Z1-59v"/>
-                        <segue destination="5WQ-aS-D7V" kind="show" id="0m5-11-zUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqp-tz-XJo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1202,6 +1202,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m3Z-9t-AkA"/>
+                    <connections>
+                        <outlet property="editUserFieldsTableView" destination="X7P-hm-2uc" id="CDP-7T-Bsk"/>
+                        <outlet property="editUserProfilePhotoImg" destination="dZo-8Y-pBs" id="N6p-XW-AmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLX-oA-dGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
