@@ -40,11 +40,12 @@ class LoginVC: UIViewController {
     }
     @IBAction func loginButton(_ sender: Any) {
         if let mail = loginUserMail.text, let password = loginUserPassword.text {
-            if isValidMail(mail: mail) {
+            let result = MailValidator(mail: mail).validate()
+            if result.isSuccess {
                 presenter?.loginUser(mail: mail, password: password)
                 self.loginErrorMessageLabel.isHidden = true
             }else {
-                self.loginErrorMessageLabel.text = "The e-mail address is not in the correct format.".localized()
+                self.loginErrorMessageLabel.text = result.message!
                 self.loginErrorMessageLabel.isHidden = false
             }
         }
@@ -52,7 +53,8 @@ class LoginVC: UIViewController {
     
     @IBAction func sendMailVerification(_ sender: Any) {
          if let mail = self.loginUserMail.text  {
-             if isValidMail(mail: mail){
+             let result = MailValidator(mail: mail).validate()
+             if result.isSuccess{
                  presenter?.sendVerificationLink(mail: mail)
              }
          }

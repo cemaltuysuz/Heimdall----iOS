@@ -48,7 +48,6 @@
 		1535674927B792AE007346D4 /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 1535674827B792AE007346D4 /* M13Checkbox */; };
 		1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */; };
 		1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675627B7F97F007346D4 /* InterestSelectionModel.swift */; };
-		1535675927BA671D007346D4 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675827BA671D007346D4 /* Validators.swift */; };
 		1535675E27BA81D0007346D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1535676027BA81D0007346D4 /* Localizable.strings */; };
 		153EA96B279FFA2E00871246 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96A279FFA2E00871246 /* RequestType.swift */; };
 		153EA96D279FFA5800871246 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96C279FFA5800871246 /* MessageType.swift */; };
@@ -211,7 +210,6 @@
 		151E8D3A27D1115D009CDE23 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionCell.swift; sourceTree = "<group>"; };
 		1535675627B7F97F007346D4 /* InterestSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionModel.swift; sourceTree = "<group>"; };
-		1535675827BA671D007346D4 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		1535675F27BA81D0007346D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1535676127BA81D3007346D4 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		153EA96A279FFA2E00871246 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -800,7 +798,6 @@
 			children = (
 				1517AF8A279E9AAA00D1194E /* Util.swift */,
 				156F044B27B3AAC500D37039 /* Resource.swift */,
-				1535675827BA671D007346D4 /* Validators.swift */,
 				15C64C3027BCED220088DD35 /* CustomAlert.swift */,
 			);
 			path = utils;
@@ -1560,7 +1557,6 @@
 				150C8FF82799615E000DAFBE /* OnBoard.swift in Sources */,
 				15F272E627CBA73F005BBC78 /* ProfileOuterOptionCell.swift in Sources */,
 				15064F5A279D4D3700460334 /* DiscoveryPresenter.swift in Sources */,
-				1535675927BA671D007346D4 /* Validators.swift in Sources */,
 				156F044C27B3AAC500D37039 /* Resource.swift in Sources */,
 				1584959027CE25FB00ED57B6 /* EditProfileRouter.swift in Sources */,
 				156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */,
