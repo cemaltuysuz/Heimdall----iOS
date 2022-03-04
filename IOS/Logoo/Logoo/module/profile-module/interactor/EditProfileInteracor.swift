@@ -49,6 +49,6 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     }
     
     func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
-        reformable.reformResponse(resp: SimpleResponse(status: true, message: nil))
+        reformable.reformResponse(resp: SimpleResponse(status: true, message: "asdasda"))
     }
 }

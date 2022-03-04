@@ -10,6 +10,7 @@ import UIKit
 class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reformable {
 
     
+    @IBOutlet weak var responseLabel: UILabel!
     @IBOutlet weak var fieldKeyLabel: UILabel!
     @IBOutlet weak var fieldValueTextField: UITextField!
     var model:EditProfileConfigure!
@@ -43,24 +44,33 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reform
             if let result =  self.model.validator?.changeValueAndReValidate(value: newValue) {
                 if result.isSuccess {
                     model.value = newValue
+                    self.responseLabel.isHidden = true
                     self.delegate?.updateUserField(model: model, reformable: self)
                 }else {
-                    // show errror with message
+                    self.responseLabel.text = result.message!
+                    self.responseLabel.textColor = .red
+                    self.responseLabel.isHidden = false
                 }
             }else {
                 model.value = newValue
+                self.responseLabel.isHidden = true
                 self.delegate?.updateUserField(model: model, reformable: self)
             }
+        }else {
+            self.responseLabel.isHidden = true
         }
     }
     
     func reformResponse(resp: SimpleResponse) {
         // check response (if true show saved message / else show error message)
         if resp.status! {
-            print("success \(self.model.type.rawValue)")
+            self.responseLabel.text = "Success".localized()
+            self.responseLabel.textColor = .green
         }else{
-            
+            self.responseLabel.text = resp.message!
+            self.responseLabel.textColor = .red
         }
+        self.responseLabel.isHidden = false
     }
 }
 

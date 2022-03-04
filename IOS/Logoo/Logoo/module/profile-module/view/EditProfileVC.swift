@@ -11,6 +11,8 @@ class EditProfileVC: UIViewController {
 
     @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
+    @IBOutlet weak var errorLabel: UILabel!
+    
     var fields:[EditProfileConfigure]?
     var reformableFields:[Reformable]?
     
