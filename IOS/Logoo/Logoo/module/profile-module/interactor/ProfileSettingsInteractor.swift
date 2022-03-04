@@ -15,7 +15,7 @@ class ProfileSettingsInteractor : PresenterToInteractorProfileSettingsProtocol {
     func getUser() {
         if let uuid = getCurrentUserUid() {
             let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
-            FireStoreService<User>().getDocument(ref: ref, onCompletion: {user in
+            FireStoreService.shared.getDocument(ref: ref, onCompletion: {(user:User?) in
                 if let user = user {
                     self.presenter?.userToPresenter(user: user)
                 }

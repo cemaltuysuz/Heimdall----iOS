@@ -62,8 +62,8 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
             if let text = textField.text , !text.isEmpty {
                 let requestWorkItem = DispatchWorkItem { [weak self] in
                     let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
-                    FireStoreService<User>().getDocumentsByField(ref: ref, getByField: "username", getByValue: text, onCompletion: {
-                        users,error in
+                    FireStoreService.shared.getDocumentsByField(ref: ref, getByField: "username", getByValue: text, onCompletion: {
+                        (users:[User?]?, error:Error?) in
                         guard  error == nil else {
                             print("Error:\(error?.localizedDescription ?? "not found")")
                             return
@@ -93,8 +93,8 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
             if let text = textField.text , !text.isEmpty {
                 let requestWorkItem = DispatchWorkItem { [weak self] in
                     let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
-                    FireStoreService<User>().getDocumentsByField(ref: ref, getByField: "userMail", getByValue: text, onCompletion: {
-                        users,error in
+                    FireStoreService.shared.getDocumentsByField(ref: ref, getByField: "userMail", getByValue: text, onCompletion: {
+                        (users:[User?]?, error:Error?) in
                         guard  error == nil else {
                             print("Error:\(error?.localizedDescription ?? "not found")")
                             return

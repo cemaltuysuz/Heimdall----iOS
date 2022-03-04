@@ -149,7 +149,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                  I will upload the user's profile picture to the storage area.
                  Then I will save it as a user profile picture with the ref value I got.
                  */
-                FireStoreService<User>().pushDocument(userObjectt, ref: userRef, onCompletion: {boolean in
+                FireStoreService.shared.pushDocument(userObjectt, ref: userRef, onCompletion: {boolean in
 
                     if let status = boolean {
                         if status {

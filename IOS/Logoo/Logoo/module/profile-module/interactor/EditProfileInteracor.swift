@@ -18,7 +18,7 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         var fields = [EditProfileConfigure]()
         if let currentUserId = Auth.auth().currentUser?.uid {
             let reference = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(currentUserId)
-            FireStoreService<User>().getDocument(ref: reference, onCompletion: {user in
+            FireStoreService.shared.getDocument(ref: reference, onCompletion: {(user:User?) in
                 
                 if let user = user {
                     fields.append(EditProfileConfigure(displayName: "Username",
@@ -49,6 +49,17 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     }
     
     func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
-        reformable.reformResponse(resp: SimpleResponse(status: true, message: "asdasda"))
+        
+        if let uuid = getCurrentUserUid() {
+            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
+            
+            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [model.type.rawValue : model.value], onCompletion: {status in
+                if status.status! {
+                    reformable.reformResponse(resp: SimpleResponse(status: true, message: status.message))
+                }else {
+                    reformable.reformResponse(resp: SimpleResponse(status: false, message: status.message))
+                }
+            })
+        }
     }
 }

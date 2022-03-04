@@ -17,16 +17,7 @@ class LoginRouterInteractor : PresenterToInteractorLoginRouterProtocol{
         if let userID = Auth.auth().currentUser?.uid {
             let dbRef = Firestore.firestore()
             
-            print("deneme basladi")
-            let myRef = dbRef.collection("users").document(userID)
-            FireStoreService<User>().getDocument(ref: myRef, onCompletion: { resp in
-                print(resp?.userPhotoUrl ?? "yok")
-                print(resp?.userInterests ?? "yok")
-            })
-            print("deneme bitti")
-            
-
-            dbRef.collection("users").document(userID).getDocument{ (document,error) in
+            dbRef.collection(FireCollections.USER_COLLECTION).document(userID).getDocument{ (document,error) in
                 if let error = error {
                     print("hata var \(error.localizedDescription)")
                     return

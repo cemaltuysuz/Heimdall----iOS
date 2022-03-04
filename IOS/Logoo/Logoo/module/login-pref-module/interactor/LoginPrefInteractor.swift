@@ -27,9 +27,9 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                 
                 
                 let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
-                FireStoreService<User>().getDocumentsByField(ref: ref,
+                FireStoreService.shared.getDocumentsByField(ref: ref,
                                                              getByField: "userMail",
-                                                             getByValue: mail, onCompletion: {users,error in
+                                                             getByValue: mail, onCompletion: {(users:[User?]?, error:Error?) in
                     
                     guard error == nil else {
                         return
@@ -68,7 +68,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                                                isAllowTheGroupInvite: true,
                                                isAllowTheInboxInvite: true)
                         
-                        FireStoreService<User>().pushDocument(userObjectt, ref: userRef, onCompletion: {boolean in
+                        FireStoreService.shared.pushDocument(userObjectt, ref: userRef, onCompletion: { boolean in
 
                             if let status = boolean {
                                 if status {
