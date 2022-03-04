@@ -21,15 +21,17 @@ class ResetPasswordVC: UIViewController {
         
     }
     @IBAction func sendResetLinkButton(_ sender: Any) {
-        guard let mail = resetMailTextField.text, isValidMail(mail: mail) else {
-            resetMailErrorLabel.text = "The e-mail address is not in the correct format.".localized()
-            resetMailErrorLabel.isHidden = false
-            return
+        if let mail = resetMailTextField.text {
+            let result = MailValidator(mail: mail).validate()
+            if !result.isSuccess {
+                resetMailErrorLabel.text = result.message!
+                resetMailErrorLabel.isHidden = false
+            }else {
+                resetMailErrorLabel.isHidden = true
+                resetPasswordIndicator.startAnimating()
+                presenter?.sendResetLink(mail: mail)
+            }
         }
-            resetMailErrorLabel.isHidden = true
-            resetPasswordIndicator.startAnimating()
-            presenter?.sendResetLink(mail: mail)
-
     }
 }
 

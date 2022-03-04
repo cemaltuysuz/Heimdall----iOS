@@ -41,8 +41,8 @@ extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
                 self.profileUsernameLabel.text = username
                 self.profileUserMailLabel.text = mail
             }
-            if let link = user.userPhotoUrl, let url = URL(string: link) {
-                self.profileUserPhoto.setImage(url: url)
+            if let link = user.userPhotoUrl {
+                self.profileUserPhoto.setImage(urlString: link)
             }
         }
     }

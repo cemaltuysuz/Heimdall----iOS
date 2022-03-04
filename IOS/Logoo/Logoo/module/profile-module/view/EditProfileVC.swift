@@ -32,8 +32,8 @@ extension EditProfileVC : PresenterToViewEditProfileProtocol {
             self.fields = fields
             self.editUserFieldsTableView.reloadData()
             
-            if let userPhotoUrl = userPhotoUrl, let url = URL(string: userPhotoUrl) {
-                self.editUserProfilePhotoImg.setImage(url: url)
+            if let userPhotoUrl = userPhotoUrl {
+                self.editUserProfilePhotoImg.setImage(urlString: userPhotoUrl)
             }
         }
     }
