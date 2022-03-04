@@ -16,6 +16,7 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reform
     var delegate:EditProfileWithEditTextCellProtocol?
     
     func configure(model:EditProfileConfigure){
+        self.model = model
         self.fieldKeyLabel.text = model.displayName
         self.fieldValueTextField.text = model.value
         if !model.isEditable {
@@ -55,6 +56,11 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reform
     
     func reformResponse(resp: SimpleResponse) {
         // check response (if true show saved message / else show error message)
+        if resp.status! {
+            print("success \(self.model.type.rawValue)")
+        }else{
+            
+        }
     }
 }
 

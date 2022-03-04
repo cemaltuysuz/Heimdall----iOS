@@ -22,23 +22,23 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                 
                 if let user = user {
                     fields.append(EditProfileConfigure(displayName: "Username",
-                                                       value: user.username,
+                                                       value: user.username ?? "",
                                                        isEditable: true,
                                                        type: .USERNAME,
                                                        validator: UsernameValidator()))
                     
                     fields.append(EditProfileConfigure(displayName: "Manifesto",
-                                                       value: user.userManifesto,
+                                                       value: user.userManifesto ?? "",
                                                        isEditable: true,
                                                        type: .USER_MANIFESTO))
                     
                     fields.append(EditProfileConfigure(displayName: "Gender",
-                                                       value: user.userGender,
+                                                       value: user.userGender ?? "",
                                                        isEditable: false,
                                                        type: .USER_GENDER))
                     
                     fields.append(EditProfileConfigure(displayName: "Date of birth",
-                                                       value: user.userBirthDay,
+                                                       value: user.userBirthDay ?? "",
                                                        isEditable: false,
                                                        type: .USER_BIRTHDAY))
                     
@@ -46,5 +46,9 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                 }
             })
         }
+    }
+    
+    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
+        reformable.reformResponse(resp: SimpleResponse(status: true, message: nil))
     }
 }

@@ -51,7 +51,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                         // NEW REGISTER
                         
                         let userRef = self.fireStoreDB.collection(FireCollections.USER_COLLECTION).document(uuid)
-                        let username = "User-\(randomStringWithLength(len: 5))"
+                        let username = "User \(randomStringWithLength(len: 5))"
                         
                         let userObjectt = User(userId: uuid,
                                                username: username,
