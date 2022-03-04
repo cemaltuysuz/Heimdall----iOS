@@ -24,7 +24,8 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                     fields.append(EditProfileConfigure(displayName: "Username",
                                                        value: user.username,
                                                        isEditable: true,
-                                                       type: .USERNAME))
+                                                       type: .USERNAME,
+                                                       validator: UsernameValidator()))
                     
                     fields.append(EditProfileConfigure(displayName: "Manifesto",
                                                        value: user.userManifesto,

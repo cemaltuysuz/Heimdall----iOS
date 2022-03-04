@@ -7,10 +7,13 @@
 
 import UIKit
 
-class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
+class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reformable {
+
+    
     @IBOutlet weak var fieldKeyLabel: UILabel!
     @IBOutlet weak var fieldValueTextField: UITextField!
     var model:EditProfileConfigure!
+    var delegate:EditProfileWithEditTextCellProtocol?
     
     func configure(model:EditProfileConfigure){
         self.fieldKeyLabel.text = model.displayName
@@ -33,4 +36,32 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return false
     }
+    
+    func reform() {
+        if let newValue = fieldValueTextField.text, model.value != newValue {
+            if let result =  self.model.validator?.changeValueAndReValidate(value: newValue) {
+                if result.isSuccess {
+                    model.value = newValue
+                    self.delegate?.updateUserField(model: model, reformable: self)
+                }else {
+                    // show errror with message
+                }
+            }else {
+                model.value = newValue
+                self.delegate?.updateUserField(model: model, reformable: self)
+            }
+        }
+    }
+    
+    func reformResponse(resp: SimpleResponse) {
+        // check response (if true show saved message / else show error message)
+    }
 }
+
+protocol EditProfileWithEditTextCellProtocol {
+    func updateUserField(model:EditProfileConfigure, reformable:Reformable)
+}
+
+
+
+

@@ -13,12 +13,14 @@ struct EditProfileConfigure {
     var value:String!
     var isEditable:Bool!
     var type:UserFieldType!
+    var validator:Validatable?
     
-    init(displayName:String? = nil, value: String? = nil, isEditable: Bool? = nil, type: UserFieldType? = nil) {
+    init(displayName:String? = nil, value: String? = nil, isEditable: Bool? = nil, type: UserFieldType? = nil, validator:Validatable? = nil) {
         
        self.displayName = displayName
        self.value = value
        self.isEditable = isEditable
        self.type = type
+       self.validator = validator
    }
 }

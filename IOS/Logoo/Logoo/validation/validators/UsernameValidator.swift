@@ -12,7 +12,7 @@ class UsernameValidator : Validatable {
     private var username:String!
     
     
-    init(username:String){
+    init(username:String? = nil){
         self.username = username
     }
     
@@ -24,6 +24,11 @@ class UsernameValidator : Validatable {
         }
         
         return ValidateResult(isSuccess: false, message: "usernameRules".localized())
+    }
+    
+    func changeValueAndReValidate(value: String) -> ValidateResult {
+        self.username = value
+        return validate()
     }
 
 }

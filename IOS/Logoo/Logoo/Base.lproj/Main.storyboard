@@ -1201,7 +1201,14 @@
                             <constraint firstItem="X7P-hm-2uc" firstAttribute="leading" secondItem="elW-lG-pps" secondAttribute="leading" constant="20" id="z6C-qT-S41"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="m3Z-9t-AkA"/>
+                    <navigationItem key="navigationItem" id="m3Z-9t-AkA">
+                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" catalog="system" id="gC6-x5-Q5N">
+                            <color key="tintColor" name="black700"/>
+                            <connections>
+                                <action selector="reformAllFieldsBtn:" destination="5WQ-aS-D7V" id="43V-e2-a9Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="editUserFieldsTableView" destination="X7P-hm-2uc" id="CDP-7T-Bsk"/>
                         <outlet property="editUserProfilePhotoImg" destination="dZo-8Y-pBs" id="N6p-XW-AmU"/>
@@ -1838,6 +1845,7 @@
         <image name="arrow.up.doc.fill" catalog="system" width="115" height="128"/>
         <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="close-with-transparency.png" width="44" height="44"/>
         <image name="face" width="70" height="70"/>

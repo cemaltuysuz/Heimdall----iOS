@@ -9,4 +9,5 @@ import Foundation
 
 protocol Validatable {
     func validate() -> ValidateResult
+    func changeValueAndReValidate(value:String) -> ValidateResult
 }

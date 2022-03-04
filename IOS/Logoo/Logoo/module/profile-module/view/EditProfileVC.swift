@@ -12,17 +12,27 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
     var fields:[EditProfileConfigure]?
+    var reformableFields:[Reformable]?
     
     var presenter:ViewToPresenterEditProfileProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reformableFields = [Reformable]()
         
         EditProfileRouter.createModule(ref: self)
         presenter?.getCurrentUserFields()
         
         self.editUserFieldsTableView.delegate = self
         self.editUserFieldsTableView.dataSource = self
+    }
+    
+    @IBAction func reformAllFieldsBtn(_ sender: Any) {
+        if let fields = reformableFields, fields.count > 0 {
+            for field in fields {
+                field.reform()
+            }
+        }
     }
 }
 
@@ -48,6 +58,14 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileEditWithTextFieldCell") as! ProfileEditWithTextFieldCell
         let current = fields![indexPath.row]
         cell.configure(model: current)
+        cell.delegate = self
+        self.reformableFields?.append(cell)
         return cell
+    }
+}
+
+extension EditProfileVC : EditProfileWithEditTextCellProtocol {
+    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
+        self.presenter?.updateUserField(model: model, reformable: reformable)
     }
 }
