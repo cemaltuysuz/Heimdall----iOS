@@ -24,22 +24,26 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                     fields.append(EditProfileConfigure(displayName: "Username",
                                                        value: user.username ?? "",
                                                        isEditable: true,
+                                                       hasPickerView: false,
                                                        type: .USERNAME,
                                                        validator: UsernameValidator()))
                     
                     fields.append(EditProfileConfigure(displayName: "Manifesto",
                                                        value: user.userManifesto ?? "",
                                                        isEditable: true,
+                                                       hasPickerView: false,
                                                        type: .USER_MANIFESTO))
                     
                     fields.append(EditProfileConfigure(displayName: "Gender",
                                                        value: user.userGender ?? "",
                                                        isEditable: false,
+                                                       hasPickerView: true,
                                                        type: .USER_GENDER))
                     
                     fields.append(EditProfileConfigure(displayName: "Date of birth",
                                                        value: user.userBirthDay ?? "",
                                                        isEditable: false,
+                                                       hasPickerView: true,
                                                        type: .USER_BIRTHDAY))
                     
                     self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)

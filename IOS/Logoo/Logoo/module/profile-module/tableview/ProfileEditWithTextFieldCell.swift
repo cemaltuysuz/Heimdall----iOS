@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import Foundation
 
-class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reformable {
+class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
 
     
     @IBOutlet weak var responseLabel: UILabel!
     @IBOutlet weak var fieldKeyLabel: UILabel!
     @IBOutlet weak var fieldValueTextField: UITextField!
+    
+    var timePicker:UIDatePicker?
     var model:EditProfileConfigure!
     var delegate:EditProfileWithEditTextCellProtocol?
     
@@ -21,7 +24,11 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reform
         self.fieldKeyLabel.text = model.displayName
         self.fieldValueTextField.text = model.value
         if !model.isEditable {
-            self.fieldValueTextField.delegate = self
+            if model.hasPickerView {
+                self.routeForPicker()
+            }else {
+                self.fieldValueTextField.isUserInteractionEnabled = false
+            }
         }
     }
     
@@ -32,13 +39,29 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reform
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func routeForPicker(){
+        switch self.model.type {
+        case .USER_BIRTHDAY:
+            self.createUIDatePickerView()
+            break
+        case .USER_GENDER:
+            // create pickerview
+            break
+        default:
+            break
+        }
+    }
+    
+    
+}
 
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return false
-    }
-    
+
+
+// MARK: - Reformable Methods (for data trasfer actions)
+
+extension ProfileEditWithTextFieldCell : Reformable {
     func reform() {
         if let newValue = fieldValueTextField.text, model.value != newValue {
             if let result =  self.model.validator?.changeValueAndReValidate(value: newValue) {
@@ -74,6 +97,37 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate, Reform
     }
 }
 
+// MARK: - Date Of Picker Actions
+
+
+extension ProfileEditWithTextFieldCell {
+    
+    @objc
+    func onChangeBirthOfdate(datePicker:UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YYYY"
+        let data = dateFormatter.string(from: datePicker.date)
+        self.fieldValueTextField.text = data
+    }
+    @objc
+    func dismissPicker() {
+        self.fieldValueTextField.endEditing(true)
+    }
+    
+    func createUIDatePickerView(){
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        if #available(iOS 13.4, *){
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.dismissPicker))
+        self.fieldValueTextField.inputAccessoryView = toolBar
+        self.fieldValueTextField.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(self.onChangeBirthOfdate(datePicker:)), for: .valueChanged)
+    }
+}
+
+// MARK: - This protocol provide communication between this class and VC class.
 protocol EditProfileWithEditTextCellProtocol {
     func updateUserField(model:EditProfileConfigure, reformable:Reformable)
 }
