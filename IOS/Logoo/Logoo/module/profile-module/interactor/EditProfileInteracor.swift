@@ -18,30 +18,54 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         var fields = [EditProfileConfigure]()
         if let currentUserId = Auth.auth().currentUser?.uid {
             let reference = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(currentUserId)
-            FireStoreService<User>().getDocument(ref: reference, onCompletion: {user in
+            FireStoreService.shared.getDocument(ref: reference, onCompletion: {(user:User?) in
                 
                 if let user = user {
                     fields.append(EditProfileConfigure(displayName: "Username",
-                                                       value: user.username,
+                                                       value: user.username ?? "",
                                                        isEditable: true,
-                                                       type: .USERNAME))
+                                                       hasPickerView: false,
+                                                       hasCheckForAlreadyUsed: true,
+                                                       type: .USERNAME,
+                                                       validator: UsernameValidator()))
                     
                     fields.append(EditProfileConfigure(displayName: "Manifesto",
-                                                       value: user.userManifesto,
+                                                       value: user.userManifesto ?? "",
                                                        isEditable: true,
+                                                       hasPickerView: false,
+                                                       hasCheckForAlreadyUsed: false,
                                                        type: .USER_MANIFESTO))
                     
                     fields.append(EditProfileConfigure(displayName: "Gender",
-                                                       value: user.userGender,
+                                                       value: user.userGender ?? "",
                                                        isEditable: false,
+                                                       hasPickerView: true,
+                                                       hasCheckForAlreadyUsed: false,
                                                        type: .USER_GENDER))
                     
                     fields.append(EditProfileConfigure(displayName: "Date of birth",
-                                                       value: user.userBirthDay,
+                                                       value: user.userBirthDay ?? "",
                                                        isEditable: false,
+                                                       hasPickerView: true,
+                                                       hasCheckForAlreadyUsed: false,
                                                        type: .USER_BIRTHDAY))
                     
                     self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)
+                }
+            })
+        }
+    }
+    
+    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
+        
+        if let uuid = getCurrentUserUid() {
+            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
+            
+            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [model.type.rawValue : model.value], onCompletion: {status in
+                if status.status! {
+                    reformable.reformResponse(resp: SimpleResponse(status: true, message: status.message))
+                }else {
+                    reformable.reformResponse(resp: SimpleResponse(status: false, message: status.message))
                 }
             })
         }

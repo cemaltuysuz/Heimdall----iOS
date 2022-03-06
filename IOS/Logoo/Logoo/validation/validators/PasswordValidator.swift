@@ -11,7 +11,7 @@ class PasswordValidator:Validatable {
     
     private var password:String!
     
-    init(password:String){
+    init(password:String? = nil){
         self.password = password
     }
     
@@ -23,5 +23,10 @@ class PasswordValidator:Validatable {
             return ValidateResult(isSuccess: true, message: "success".localized())
         }
         return ValidateResult(isSuccess: false, message: "passwordRules".localized())
+    }
+    
+    func changeValueAndReValidate(value: String) -> ValidateResult {
+        self.password = value
+        return validate()
     }
 }

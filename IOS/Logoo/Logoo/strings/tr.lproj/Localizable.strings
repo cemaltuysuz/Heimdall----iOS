@@ -41,6 +41,7 @@
 
 "This email address is being used by another account." = "Bu mail adresi zaten kayıtlı.";
 "This email address is being used by another account." = "Bu kullanıcı adı bir başkası tarafından kullanılıyor.";
+"The information entered is already in use by another account." = "Girilen bilgi bir başka hesap tarafından zaten kullanılıyor.";
 
 // Reset Password
 "Successfully" = "Başarılı";
@@ -74,10 +75,15 @@
 "Security" = "Güvenlik";
 "Privacy" = "Gizlilik";
 "Notifications" = "Bildirimler";
+"Interests" = "Hobiler";
 "Invite Friends" = "Arkadaşlarını Davet Et";
 "Preferences" = "Tercihler";
 "About" = "Hakkında";
-"Exit" = "Çıkış";
+"LogOut" = "Çıkış";
+
+"Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
+"Yes" = "Evet";
+
 
 
 

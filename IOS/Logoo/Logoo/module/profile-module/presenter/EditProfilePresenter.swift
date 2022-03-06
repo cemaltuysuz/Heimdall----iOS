@@ -8,7 +8,7 @@
 import Foundation
 
 class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPresenterEditProfileProtocol {
-    
+
     var view: PresenterToViewEditProfileProtocol?
     var interactor: PresenterToInteractorEditProfileProtocol?
     
@@ -18,6 +18,10 @@ class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPre
     
     func userFieldsToPresenter(fields: [EditProfileConfigure], userPhotoUrl:String?) {
         view?.userFieldsToView(fields: fields, userPhotoUrl: userPhotoUrl)
+    }
+    
+    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
+        self.interactor?.updateUserField(model: model, reformable: reformable)
     }
     
 }

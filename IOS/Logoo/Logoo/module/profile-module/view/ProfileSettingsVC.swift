@@ -53,11 +53,12 @@ extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
             self.optionsTableView.reloadData()
         }
     }
-    
-    
+    func exitUserFeedback() {
+        print("Çıkış yapılıyor.")
+    }
 }
 
-extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource {
+extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, ProfileOuterOptionCellProtocol {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options?.count ?? 0
     }
@@ -67,8 +68,62 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileOuterCell") as! ProfileOuterOptionCell
         cell.initialize(option: current)
+        cell.delegate = self
         return cell
     }
     
+    func onClick(settingType: UserSettingType) {
+        
+        switch settingType {
+        case .INVITE_FRIENDS:
+            
+            break
+        case .SECURITY:
+            
+            break
+        case .PREFERENCES:
+            
+            break
+        case .INTERESTS:
+            
+            break
+        case .NOTIFICATIONS:
+            
+            break
+        case .PRIVACY:
+            
+            break
+        case .ABOUT:
+            
+            break
+        case .LOGOUT:
+            self.exitUser()
+            break
+        }
+    }
+}
+
+// MARK: - Settings functions
+
+extension ProfileSettingsVC {
     
+    // on Exit
+    func exitUser() {
+        let alert = UIAlertController(title: "Cancel".localized(),
+                                      message: "Are you sure you want to log out?".localized(),
+                                      preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Yes".localized(), style: .default, handler: {_ in
+            self.presenter?.exitUser()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel".localized(),
+                                         style: .cancel, handler: {_ in })
+        
+        alert.addAction(doneAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: {
+            
+        })
+    }
 }

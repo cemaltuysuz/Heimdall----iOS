@@ -8,6 +8,7 @@
 import Foundation
 
 class ProfileSettingsPresenter : ViewToPresenterProfileSettingsProtocol, InteractorToPresenterProfileSettingsProtocol {
+    
     var interactor: PresenterToInteractorProfileSettingsProtocol?
     var view: PresenterToViewProfileSettingsProtocol?
     
@@ -26,5 +27,13 @@ class ProfileSettingsPresenter : ViewToPresenterProfileSettingsProtocol, Interac
     
     func optionsToPresenter(options: [ProfileOuterOption]) {
         view?.optionsToView(options: options)
+    }
+    
+    func exitUser() {
+        self.interactor?.exitUser()
+    }
+    
+    func exitUserFeedback() {
+        self.view?.exitUserFeedback()
     }
 }

@@ -11,7 +11,7 @@ class MailValidator : Validatable {
     
     private var mail:String!
     
-    init(mail:String){
+    init(mail:String? = nil){
         self.mail = mail
     }
     
@@ -23,5 +23,10 @@ class MailValidator : Validatable {
             return ValidateResult(isSuccess: true, message: "Success".localized())
         }
         return ValidateResult(isSuccess: false, message: "This email address is not correct format.".localized())
+    }
+    
+    func changeValueAndReValidate(value: String) -> ValidateResult {
+        self.mail = value
+        return validate()
     }
 }

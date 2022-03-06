@@ -126,6 +126,10 @@
 		15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */; };
 		15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */; };
 		15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */; };
+		15D6E03927D2339500011A36 /* Reformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03827D2339500011A36 /* Reformable.swift */; };
+		15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03A27D23B7600011A36 /* SimpleResponse.swift */; };
+		15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */; };
+		15D6E04127D3A05300011A36 /* UserSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E04027D3A05300011A36 /* UserSettingType.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
 		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
@@ -282,6 +286,10 @@
 		15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefInteractor.swift; sourceTree = "<group>"; };
 		15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefPresenter.swift; sourceTree = "<group>"; };
 		15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPrefRouter.swift; sourceTree = "<group>"; };
+		15D6E03827D2339500011A36 /* Reformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reformable.swift; sourceTree = "<group>"; };
+		15D6E03A27D23B7600011A36 /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
+		15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbarEx.swift; sourceTree = "<group>"; };
+		15D6E04027D3A05300011A36 /* UserSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingType.swift; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
 		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
@@ -799,6 +807,7 @@
 				1517AF8A279E9AAA00D1194E /* Util.swift */,
 				156F044B27B3AAC500D37039 /* Resource.swift */,
 				15C64C3027BCED220088DD35 /* CustomAlert.swift */,
+				15D6E03A27D23B7600011A36 /* SimpleResponse.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -848,6 +857,7 @@
 			isa = PBXGroup;
 			children = (
 				1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */,
+				15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1209,6 +1219,7 @@
 				1517AF88279E968D00D1194E /* Hobby.swift */,
 				15F272F427CBAAEB005BBC78 /* ProfileOuterOption.swift */,
 				1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */,
+				15D6E03827D2339500011A36 /* Reformable.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1236,6 +1247,7 @@
 			children = (
 				1584958527CE134600ED57B6 /* UserFieldtype.swift */,
 				156F042B27AFA80F00D37039 /* GenderType.swift */,
+				15D6E04027D3A05300011A36 /* UserSettingType.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -1502,6 +1514,7 @@
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */,
+				15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */,
 				15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				150C8FED27995090000DAFBE /* UDProtocol.swift in Sources */,
@@ -1512,6 +1525,7 @@
 				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
+				15D6E04127D3A05300011A36 /* UserSettingType.swift in Sources */,
 				15F272EF27CBA90B005BBC78 /* ProfileSettingsPresenter.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
@@ -1526,6 +1540,7 @@
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
+				15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */,
 				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
 				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
@@ -1580,6 +1595,7 @@
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
 				1584958827CE13FB00ED57B6 /* EditProfileConfigure.swift in Sources */,
 				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
+				15D6E03927D2339500011A36 /* Reformable.swift in Sources */,
 				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
 				156F044727B3A58900D37039 /* LoginInteractor.swift in Sources */,
