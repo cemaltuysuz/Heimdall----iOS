@@ -7,6 +7,8 @@
 
 import UIKit
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
 
@@ -15,9 +17,13 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var fieldKeyLabel: UILabel!
     @IBOutlet weak var fieldValueTextField: UITextField!
     
+    private var pendingRequestWorkItem: DispatchWorkItem?
+    
     var timePicker:UIDatePicker?
     var model:EditProfileConfigure!
     var delegate:EditProfileWithEditTextCellProtocol?
+    
+    var isAlreadyUsedAnotherUser:Bool?
     
     func configure(model:EditProfileConfigure){
         self.model = model
@@ -29,6 +35,10 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
             }else {
                 self.fieldValueTextField.isUserInteractionEnabled = false
             }
+        }
+        if model.hasCheckForAlreadyUsed {
+            print("atama yapıldı")
+            self.fieldValueTextField.addTarget(self, action: #selector(self.checkFieldForAlreadyUsed(_:)), for: .editingChanged)
         }
     }
     
@@ -53,10 +63,7 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
             break
         }
     }
-    
-    
 }
-
 
 
 // MARK: - Reformable Methods (for data trasfer actions)
@@ -124,6 +131,44 @@ extension ProfileEditWithTextFieldCell {
         self.fieldValueTextField.inputAccessoryView = toolBar
         self.fieldValueTextField.inputView = datePicker
         datePicker.addTarget(self, action: #selector(self.onChangeBirthOfdate(datePicker:)), for: .valueChanged)
+    }
+}
+
+// MARK: - Check For Already Used From Another User
+
+extension ProfileEditWithTextFieldCell {
+
+    @objc func checkFieldForAlreadyUsed(_ textField: UITextField){
+        DispatchQueue.main.async {
+            self.pendingRequestWorkItem?.cancel()
+            
+            if let text = textField.text , !text.isEmpty {
+                let requestWorkItem = DispatchWorkItem { [weak self] in
+                    let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
+                    FireStoreService.shared.getDocumentsByField(ref: ref, getByField: self!.model.type.rawValue, getByValue: text, onCompletion: {
+                        (users:[User?]?, error:Error?) in
+                        guard  error == nil else {
+                            print("Error:\(error?.localizedDescription ?? "not found")")
+                            return
+                        }
+                        if let users = users, users.count > 0 {
+                            self?.responseLabel.text = "The information entered is already in use by another account.".localized()
+                            self?.responseLabel.textColor = .red
+                            self?.responseLabel.isHidden = false
+                            self?.isAlreadyUsedAnotherUser = true
+                        }else {
+                            // hide error
+                            self?.responseLabel.isHidden = true
+                            self?.isAlreadyUsedAnotherUser = false
+                        }
+                    })
+                }
+                // I created a work with 250 millisecond delay.
+                self.pendingRequestWorkItem = requestWorkItem
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
+                                                      execute: requestWorkItem)
+            }
+        }
     }
 }
 

@@ -64,6 +64,10 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         self.reformableFields?.append(cell)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension EditProfileVC : EditProfileWithEditTextCellProtocol {

@@ -129,6 +129,7 @@
 		15D6E03927D2339500011A36 /* Reformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03827D2339500011A36 /* Reformable.swift */; };
 		15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03A27D23B7600011A36 /* SimpleResponse.swift */; };
 		15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */; };
+		15D6E04127D3A05300011A36 /* UserSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E04027D3A05300011A36 /* UserSettingType.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
 		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
@@ -288,6 +289,7 @@
 		15D6E03827D2339500011A36 /* Reformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reformable.swift; sourceTree = "<group>"; };
 		15D6E03A27D23B7600011A36 /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbarEx.swift; sourceTree = "<group>"; };
+		15D6E04027D3A05300011A36 /* UserSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingType.swift; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
 		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
@@ -1245,6 +1247,7 @@
 			children = (
 				1584958527CE134600ED57B6 /* UserFieldtype.swift */,
 				156F042B27AFA80F00D37039 /* GenderType.swift */,
+				15D6E04027D3A05300011A36 /* UserSettingType.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -1522,6 +1525,7 @@
 				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
+				15D6E04127D3A05300011A36 /* UserSettingType.swift in Sources */,
 				15F272EF27CBA90B005BBC78 /* ProfileSettingsPresenter.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,

@@ -25,6 +25,7 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                                                        value: user.username ?? "",
                                                        isEditable: true,
                                                        hasPickerView: false,
+                                                       hasCheckForAlreadyUsed: true,
                                                        type: .USERNAME,
                                                        validator: UsernameValidator()))
                     
@@ -32,18 +33,21 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                                                        value: user.userManifesto ?? "",
                                                        isEditable: true,
                                                        hasPickerView: false,
+                                                       hasCheckForAlreadyUsed: false,
                                                        type: .USER_MANIFESTO))
                     
                     fields.append(EditProfileConfigure(displayName: "Gender",
                                                        value: user.userGender ?? "",
                                                        isEditable: false,
                                                        hasPickerView: true,
+                                                       hasCheckForAlreadyUsed: false,
                                                        type: .USER_GENDER))
                     
                     fields.append(EditProfileConfigure(displayName: "Date of birth",
                                                        value: user.userBirthDay ?? "",
                                                        isEditable: false,
                                                        hasPickerView: true,
+                                                       hasCheckForAlreadyUsed: false,
                                                        type: .USER_BIRTHDAY))
                     
                     self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)

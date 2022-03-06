@@ -13,22 +13,26 @@ protocol ViewToPresenterProfileSettingsProtocol {
     
     func getUser()
     func getOptions()
+    func exitUser()
 }
 
 protocol PresenterToInteractorProfileSettingsProtocol {
     var presenter:InteractorToPresenterProfileSettingsProtocol? {get set}
     func getUser()
     func getOptions()
+    func exitUser()
 }
 
 protocol InteractorToPresenterProfileSettingsProtocol {
     func userToPresenter(user:User)
     func optionsToPresenter(options:[ProfileOuterOption])
+    func exitUserFeedback()
 }
 
 protocol PresenterToViewProfileSettingsProtocol {
     func userToView(user:User)
     func optionsToView(options:[ProfileOuterOption])
+    func exitUserFeedback()
 }
 
 protocol PresenterToRouterProfileSettingsProtocol {
