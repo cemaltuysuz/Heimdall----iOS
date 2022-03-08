@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditFieldWithPickerViewCell: BaseEditFieldCell<EditProfileConfigure> {
+class EditFieldWithPickerViewCell: BaseEditFieldCell {
 
     var data:[String]?
     

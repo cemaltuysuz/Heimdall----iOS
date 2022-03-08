@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class EditFieldWithTextFieldCell: BaseEditFieldCell<EditProfileConfigure> {
+class EditFieldWithTextFieldCell: BaseEditFieldCell {
     
     private var pendingRequestWorkItem: DispatchWorkItem?
     

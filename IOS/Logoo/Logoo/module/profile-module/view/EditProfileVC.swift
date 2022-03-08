@@ -35,8 +35,11 @@ class EditProfileVC: UIViewController {
         EditProfileRouter.createModule(ref: self)
         presenter?.getCurrentUserFields()
         
+        editUserFieldsTableView.register(UINib(nibName: "BaseEditFieldCell", bundle: nil), forCellReuseIdentifier: "baseEditFieldCell")
+        
         self.editUserFieldsTableView.delegate = self
         self.editUserFieldsTableView.dataSource = self
+
     }
     
     @IBAction func reformAllFieldsBtn(_ sender: Any) {
@@ -70,21 +73,22 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         let current = fields![indexPath.row]
         
         if current.fieldType == .USERNAME || current.fieldType == .USER_MANIFESTO {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ID") as! EditFieldWithTextFieldCell
+            let firstCell = tableView.dequeueReusableCell(withIdentifier: "baseEditFieldCell") as! BaseEditFieldCell
+            let cell = firstCell as! EditFieldWithTextFieldCell
             cell.delegate = self
             cell.configureCell(model: current)
             reformableFields?.append(cell)
             return cell
         }
         else if current.fieldType == .USER_BIRTHDAY {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ID") as! EditFieldWithDatePickerCell
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "baseEditFieldCell") as! BaseEditFieldCell) as! EditFieldWithDatePickerCell
             cell.delegate = self
             cell.configureCell(model: current, minDate: Date(), maxDate: nil)
             reformableFields?.append(cell)
             return cell
         }
         else if current.fieldType == .USER_GENDER {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ID") as! EditFieldWithPickerViewCell
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "baseEditFieldCell") as! BaseEditFieldCell) as! EditFieldWithPickerViewCell
             cell.delegate = self
             cell.configureCell(model: current, data: getGenders)
             reformableFields?.append(cell)
@@ -101,7 +105,7 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension EditProfileVC : BaseEditFieldCellProtocol {
-    func updateField(fieldKey: String?, fieldValue: String?, reformable: Reformable) {
-        // self.presenter?.updateUserField(model: model, reformable: reformable) (do change parameters)
+    func updateField(fieldKey: String, fieldValue: String, reformable: Reformable) {
+        presenter?.updateUserField(key: fieldKey, value: fieldValue, reformable: reformable)
     }
 }

@@ -20,8 +20,8 @@ class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPre
         view?.userFieldsToView(fields: fields, userPhotoUrl: userPhotoUrl)
     }
     
-    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
-        self.interactor?.updateUserField(model: model, reformable: reformable)
+    func updateUserField(key:String,value:String, reformable: Reformable) {
+        self.interactor?.updateUserField(key: key, value: value, reformable: reformable)
     }
     
 }

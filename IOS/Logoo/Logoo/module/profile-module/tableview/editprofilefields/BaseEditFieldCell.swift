@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseEditFieldCell<T>: UITableViewCell {
+class BaseEditFieldCell: UITableViewCell {
 
     @IBOutlet weak var fieldDisplayNameLabel: UILabel!
     @IBOutlet weak var fieldValueTextField: UITextField!
@@ -15,7 +15,7 @@ class BaseEditFieldCell<T>: UITableViewCell {
     
     weak var delegate:BaseEditFieldCellProtocol?
     
-    var model:T!
+    var model:EditProfileConfigure!
     var key:String!
     var value:String!
     var validator:Validatable?
@@ -38,7 +38,7 @@ class BaseEditFieldCell<T>: UITableViewCell {
 // MARK: - Base Protocol
 
 protocol BaseEditFieldCellProtocol : AnyObject {
-    func updateField(fieldKey:String?, fieldValue:String?, reformable:Reformable)
+    func updateField(fieldKey:String, fieldValue:String, reformable:Reformable)
 }
 
 // MARK: - Reformable Protocol

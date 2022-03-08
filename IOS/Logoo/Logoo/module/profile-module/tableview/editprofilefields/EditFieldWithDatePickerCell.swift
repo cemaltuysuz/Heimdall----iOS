@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditFieldWithDatePickerCell: BaseEditFieldCell<EditProfileConfigure> {
+class EditFieldWithDatePickerCell: BaseEditFieldCell {
     
     override var model: EditProfileConfigure!{
         didSet{

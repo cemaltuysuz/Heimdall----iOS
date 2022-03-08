@@ -51,12 +51,12 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         }
     }
     
-    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
+    func updateUserField(key:String, value:String, reformable: Reformable) {
         
         if let uuid = getCurrentUserUid() {
             let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
             
-            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [model.fieldType.rawValue : model.value], onCompletion: {status in
+            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [key : value], onCompletion: {status in
                 if status.status! {
                     reformable.reformResponse(resp: SimpleResponse(status: true, message: status.message))
                 }else {

@@ -13,13 +13,13 @@ protocol ViewToPresenterEditProfileProtocol {
     var interactor:PresenterToInteractorEditProfileProtocol? {get set}
     
     func getCurrentUserFields()
-    func updateUserField(model:EditProfileConfigure,reformable:Reformable)
+    func updateUserField(key:String,value:String,reformable:Reformable)
 }
 
 protocol PresenterToInteractorEditProfileProtocol {
     var presenter:InteractorToPresenterEditProfileProtocol? {get set}
     func getCurrentUserFields()
-    func updateUserField(model:EditProfileConfigure,reformable:Reformable)
+    func updateUserField(key:String,value:String,reformable:Reformable)
 }
 
 protocol InteractorToPresenterEditProfileProtocol {
