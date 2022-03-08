@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 
 class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
 
+    var pickerViewData:[String]?
     
     @IBOutlet weak var responseLabel: UILabel!
     @IBOutlet weak var fieldKeyLabel: UILabel!
@@ -37,7 +38,6 @@ class ProfileEditWithTextFieldCell: UITableViewCell, UITextFieldDelegate {
             }
         }
         if model.hasCheckForAlreadyUsed {
-            print("atama yapıldı")
             self.fieldValueTextField.addTarget(self, action: #selector(self.checkFieldForAlreadyUsed(_:)), for: .editingChanged)
         }
     }
@@ -104,13 +104,13 @@ extension ProfileEditWithTextFieldCell : Reformable {
     }
 }
 
-// MARK: - Date Of Picker Actions
+// MARK: - Picker Actions
 
 
-extension ProfileEditWithTextFieldCell {
+extension ProfileEditWithTextFieldCell : UIPickerViewDataSource, UIPickerViewDelegate {
     
     @objc
-    func onChangeBirthOfdate(datePicker:UIDatePicker){
+    func onChangedDate(datePicker:UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.YYYY"
         let data = dateFormatter.string(from: datePicker.date)
@@ -127,10 +127,22 @@ extension ProfileEditWithTextFieldCell {
         if #available(iOS 13.4, *){
             datePicker.preferredDatePickerStyle = .wheels
         }
-        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.dismissPicker))
+        let toolBar = UIToolbar().ToolbarWithPicker(mySelect: #selector(self.dismissPicker))
         self.fieldValueTextField.inputAccessoryView = toolBar
+        datePicker.addTarget(self, action: #selector(self.onChangedDate(datePicker:)), for: .valueChanged)
         self.fieldValueTextField.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(self.onChangeBirthOfdate(datePicker:)), for: .valueChanged)
+    }
+    
+    func createUIPickerView(data:[String]) {
+        let pickerView = UIPickerView()
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return pickerViewData?.count ?? 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
     }
 }
 

@@ -21,34 +21,29 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
             FireStoreService.shared.getDocument(ref: reference, onCompletion: {(user:User?) in
                 
                 if let user = user {
-                    fields.append(EditProfileConfigure(displayName: "Username",
+                    fields.append(EditProfileConfigure(displayName: "Username".localized(),
                                                        value: user.username ?? "",
-                                                       isEditable: true,
-                                                       hasPickerView: false,
                                                        hasCheckForAlreadyUsed: true,
-                                                       type: .USERNAME,
+                                                       editType: .EDIT_WITH_TEXTFIELD, fieldType: .USERNAME,
                                                        validator: UsernameValidator()))
                     
-                    fields.append(EditProfileConfigure(displayName: "Manifesto",
+                    fields.append(EditProfileConfigure(displayName: "Manifesto".localized(),
                                                        value: user.userManifesto ?? "",
-                                                       isEditable: true,
-                                                       hasPickerView: false,
                                                        hasCheckForAlreadyUsed: false,
-                                                       type: .USER_MANIFESTO))
+                                                       editType: .EDIT_WITH_TEXTFIELD,
+                                                       fieldType: .USER_MANIFESTO))
                     
-                    fields.append(EditProfileConfigure(displayName: "Gender",
+                    fields.append(EditProfileConfigure(displayName: "Gender".localized(),
                                                        value: user.userGender ?? "",
-                                                       isEditable: false,
-                                                       hasPickerView: true,
                                                        hasCheckForAlreadyUsed: false,
-                                                       type: .USER_GENDER))
+                                                       editType: .EDIT_WITH_DATE_PICKER,
+                                                       fieldType: .USER_GENDER))
                     
-                    fields.append(EditProfileConfigure(displayName: "Date of birth",
+                    fields.append(EditProfileConfigure(displayName: "Date of birth".localized(),
                                                        value: user.userBirthDay ?? "",
-                                                       isEditable: false,
-                                                       hasPickerView: true,
                                                        hasCheckForAlreadyUsed: false,
-                                                       type: .USER_BIRTHDAY))
+                                                       editType: .EDIT_WITH_PICKER_VIEW,
+                                                       fieldType: .USER_BIRTHDAY))
                     
                     self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)
                 }
@@ -61,7 +56,7 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         if let uuid = getCurrentUserUid() {
             let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
             
-            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [model.type.rawValue : model.value], onCompletion: {status in
+            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [model.fieldType.rawValue : model.value], onCompletion: {status in
                 if status.status! {
                     reformable.reformResponse(resp: SimpleResponse(status: true, message: status.message))
                 }else {
