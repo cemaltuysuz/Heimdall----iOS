@@ -18,6 +18,16 @@ class EditProfileVC: UIViewController {
     
     var presenter:ViewToPresenterEditProfileProtocol?
     
+    
+    lazy var getGenders:[String] = {
+        var genders = [String]()
+        
+        for gender in CONSTANT_GENDERS {
+            genders.append(gender.rawValue)
+        }
+        return genders
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         reformableFields = [Reformable]()
@@ -57,12 +67,32 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profileEditWithTextFieldCell") as! ProfileEditWithTextFieldCell
         let current = fields![indexPath.row]
-        cell.configure(model: current)
-        cell.delegate = self
-        self.reformableFields?.append(cell)
-        return cell
+        
+        if current.fieldType == .USERNAME || current.fieldType == .USER_MANIFESTO {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ID") as! EditFieldWithTextFieldCell
+            cell.delegate = self
+            cell.configureCell(model: current)
+            reformableFields?.append(cell)
+            return cell
+        }
+        else if current.fieldType == .USER_BIRTHDAY {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ID") as! EditFieldWithDatePickerCell
+            cell.delegate = self
+            cell.configureCell(model: current, minDate: Date(), maxDate: nil)
+            reformableFields?.append(cell)
+            return cell
+        }
+        else if current.fieldType == .USER_GENDER {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ID") as! EditFieldWithPickerViewCell
+            cell.delegate = self
+            cell.configureCell(model: current, data: getGenders)
+            reformableFields?.append(cell)
+            return cell
+        }
+        else {
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,8 +100,8 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension EditProfileVC : EditProfileWithEditTextCellProtocol {
-    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
-        self.presenter?.updateUserField(model: model, reformable: reformable)
+extension EditProfileVC : BaseEditFieldCellProtocol {
+    func updateField(fieldKey: String?, fieldValue: String?, reformable: Reformable) {
+        // self.presenter?.updateUserField(model: model, reformable: reformable) (do change parameters)
     }
 }
