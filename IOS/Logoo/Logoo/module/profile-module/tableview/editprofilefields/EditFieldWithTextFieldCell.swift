@@ -1,43 +1,41 @@
 //
-//  EditFieldWithTextFieldCell.swift
+//  EditProfileFieldWithTextFieldCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 8.03.2022.
+//  Created by cemal tüysüz on 9.03.2022.
 //
 
 import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class EditFieldWithTextFieldCell: BaseEditFieldCell {
+class EditFieldWithTextFieldCell: UITableViewCell {
+
+    @IBOutlet weak var fieldValueTextField: UITextField!
+    @IBOutlet weak var fieldDisplayNameLabel: UILabel!
+    @IBOutlet weak var fieldErrorLabel: UILabel!
+    
+    public weak var delegate:EditFieldCellProtocol?
     
     private var pendingRequestWorkItem: DispatchWorkItem?
+    private var isAlreadyUsedAnotherUser:Bool?
     
-    override var model: EditProfileConfigure!{
+    private var model : EditFieldConfigure!{
         didSet{
-            key = model.fieldType.rawValue
-            value = model.value
-            validator = model.validator
-            
-            fieldValueTextField.text = value
             fieldDisplayNameLabel.text = model.displayName
+            fieldValueTextField.text = model.value
         }
     }
-
+    
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+        super.awakeFromNib()}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+        super.setSelected(selected, animated: animated)}
     
-    func configureCell (model:EditProfileConfigure) {
-        self.model = model // execute didset
-        
+    func configureCell(model:EditFieldConfigure){
+        self.isAlreadyUsedAnotherUser = false
+        self.model = model
         if model.editType == .NO_EDIT {
             fieldValueTextField.isUserInteractionEnabled = false
         }
@@ -48,7 +46,37 @@ class EditFieldWithTextFieldCell: BaseEditFieldCell {
 }
 
 
-// MARK: - Check For Already Used From Another User (if it has)
+// MARK: - Reformable Protocol
+
+extension EditFieldWithTextFieldCell : Reformable {
+    func reform() {
+        if let newValue = fieldValueTextField.text, model.value ?? "" != newValue, let status = isAlreadyUsedAnotherUser, status != true {
+            if let result =  model.validator?.changeValueAndReValidate(value: newValue) {
+                if result.isSuccess {
+                    model.value = newValue
+                    fieldErrorLabel.isHidden = true
+                    delegate?.updateField(fieldKey: model.key, fieldValue: newValue, reformable: self)
+                }else {
+                    fieldErrorLabel.text = result.message!
+                    fieldErrorLabel.textColor = .red
+                    fieldErrorLabel.isHidden = false
+                }
+            }else {
+                model.value = newValue
+                fieldErrorLabel.isHidden = true
+                delegate?.updateField(fieldKey: model.key, fieldValue: newValue, reformable: self)
+            }
+        }else {
+            fieldErrorLabel.isHidden = true
+        }
+    }
+    
+    func reformResponse(resp: SimpleResponse) {
+        // TODO RESP
+    }
+}
+
+// MARK: - Check
 
 extension EditFieldWithTextFieldCell {
     
@@ -59,19 +87,19 @@ extension EditFieldWithTextFieldCell {
             if let text = textField.text , !text.isEmpty {
                 let requestWorkItem = DispatchWorkItem { [weak self] in
                     let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
-                    FireStoreService.shared.getDocumentsByField(ref: ref, getByField: self?.key ?? "", getByValue: text, onCompletion: {
+                    FireStoreService.shared.getDocumentsByField(ref: ref, getByField: self?.model.key ?? "", getByValue: text, onCompletion: {
                         (users:[User?]?, error:Error?) in
                         guard  error == nil else {
                             print("Error:\(error?.localizedDescription ?? "not found")")
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.errorLabel.text = "The information entered is already in use by another account.".localized()
-                            self?.errorLabel.isHidden = false
+                            self?.fieldErrorLabel.text = "The information entered is already in use by another account.".localized()
+                            self?.fieldErrorLabel.isHidden = false
                             self?.isAlreadyUsedAnotherUser = true
                         }else {
                             // hide error
-                            self?.errorLabel.isHidden = true
+                            self?.fieldErrorLabel.isHidden = true
                             self?.isAlreadyUsedAnotherUser = false
                         }
                     })

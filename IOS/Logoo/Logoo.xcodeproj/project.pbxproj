@@ -72,7 +72,7 @@
 		1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957F27CE00D700ED57B6 /* ProfileVC.swift */; };
 		1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958127CE00EB00ED57B6 /* EditProfileVC.swift */; };
 		1584958627CE134600ED57B6 /* UserFieldtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958527CE134600ED57B6 /* UserFieldtype.swift */; };
-		1584958827CE13FB00ED57B6 /* EditProfileConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */; };
+		1584958827CE13FB00ED57B6 /* EditFieldConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958727CE13FB00ED57B6 /* EditFieldConfigure.swift */; };
 		1584958A27CE229400ED57B6 /* EditProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958927CE229400ED57B6 /* EditProfileProtocols.swift */; };
 		1584958C27CE242500ED57B6 /* EditProfileInteracor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */; };
 		1584958E27CE249C00ED57B6 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */; };
@@ -105,11 +105,6 @@
 		15AE073E27C9449B0012A81C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 15AE073D27C9449B0012A81C /* FirebaseFirestore */; };
 		15AE074027C9449B0012A81C /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 15AE073F27C9449B0012A81C /* FirebaseFirestoreSwift-Beta */; };
 		15AE074227C9449B0012A81C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 15AE074127C9449B0012A81C /* FirebaseStorage */; };
-		15B99B3E27D75E3100098B68 /* EditFieldWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B99B3C27D75E3100098B68 /* EditFieldWithTextFieldCell.swift */; };
-		15B99B4227D75FC700098B68 /* EditFieldWithDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B99B4027D75FC700098B68 /* EditFieldWithDatePickerCell.swift */; };
-		15B99B4627D7609D00098B68 /* EditFieldWithPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B99B4427D7609D00098B68 /* EditFieldWithPickerViewCell.swift */; };
-		15B99B4A27D761E900098B68 /* BaseEditFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B99B4827D761E900098B68 /* BaseEditFieldCell.swift */; };
-		15B99B4B27D761E900098B68 /* BaseEditFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15B99B4927D761E900098B68 /* BaseEditFieldCell.xib */; };
 		15B99B4F27D7646600098B68 /* EditFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B99B4E27D7646600098B68 /* EditFieldType.swift */; };
 		15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BDA68527B647440066F469 /* LoginRouterVC.swift */; };
 		15C2003D27C8B53700763934 /* failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 15C2003B27C8B53700763934 /* failure.json */; };
@@ -131,6 +126,13 @@
 		15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */; };
 		15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */; };
 		15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */; };
+		15D5614127D8D3DE0081DA5F /* EditFieldCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */; };
+		15D5614627D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */; };
+		15D5614727D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5614527D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib */; };
+		15D5614A27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614827D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift */; };
+		15D5614B27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5614927D8DFEF0081DA5F /* EditFieldWithDatePickerCell.xib */; };
+		15D5614E27D8E2D40081DA5F /* EditFieldWithPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614C27D8E2D40081DA5F /* EditFieldWithPickerViewCell.swift */; };
+		15D5614F27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5614D27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib */; };
 		15D6E03927D2339500011A36 /* Reformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03827D2339500011A36 /* Reformable.swift */; };
 		15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03A27D23B7600011A36 /* SimpleResponse.swift */; };
 		15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */; };
@@ -242,7 +244,7 @@
 		1584957F27CE00D700ED57B6 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1584958127CE00EB00ED57B6 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		1584958527CE134600ED57B6 /* UserFieldtype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldtype.swift; sourceTree = "<group>"; };
-		1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfigure.swift; sourceTree = "<group>"; };
+		1584958727CE13FB00ED57B6 /* EditFieldConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldConfigure.swift; sourceTree = "<group>"; };
 		1584958927CE229400ED57B6 /* EditProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileProtocols.swift; sourceTree = "<group>"; };
 		1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteracor.swift; sourceTree = "<group>"; };
 		1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
@@ -269,11 +271,6 @@
 		15A5B43627C777DF0082029E /* RegisterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
 		15A5B43927C7A5590082029E /* RegisterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterType.swift; sourceTree = "<group>"; };
 		15AE073527C927630012A81C /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
-		15B99B3C27D75E3100098B68 /* EditFieldWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithTextFieldCell.swift; sourceTree = "<group>"; };
-		15B99B4027D75FC700098B68 /* EditFieldWithDatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithDatePickerCell.swift; sourceTree = "<group>"; };
-		15B99B4427D7609D00098B68 /* EditFieldWithPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithPickerViewCell.swift; sourceTree = "<group>"; };
-		15B99B4827D761E900098B68 /* BaseEditFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditFieldCell.swift; sourceTree = "<group>"; };
-		15B99B4927D761E900098B68 /* BaseEditFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseEditFieldCell.xib; sourceTree = "<group>"; };
 		15B99B4E27D7646600098B68 /* EditFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldType.swift; sourceTree = "<group>"; };
 		15BDA68527B647440066F469 /* LoginRouterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterVC.swift; sourceTree = "<group>"; };
 		15C2003B27C8B53700763934 /* failure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = failure.json; sourceTree = "<group>"; };
@@ -296,6 +293,13 @@
 		15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefInteractor.swift; sourceTree = "<group>"; };
 		15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefPresenter.swift; sourceTree = "<group>"; };
 		15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPrefRouter.swift; sourceTree = "<group>"; };
+		15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCellProtocol.swift; sourceTree = "<group>"; };
+		15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithTextFieldCell.swift; sourceTree = "<group>"; };
+		15D5614527D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithTextFieldCell.xib; sourceTree = "<group>"; };
+		15D5614827D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithDatePickerCell.swift; sourceTree = "<group>"; };
+		15D5614927D8DFEF0081DA5F /* EditFieldWithDatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithDatePickerCell.xib; sourceTree = "<group>"; };
+		15D5614C27D8E2D40081DA5F /* EditFieldWithPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithPickerViewCell.swift; sourceTree = "<group>"; };
+		15D5614D27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithPickerViewCell.xib; sourceTree = "<group>"; };
 		15D6E03827D2339500011A36 /* Reformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reformable.swift; sourceTree = "<group>"; };
 		15D6E03A27D23B7600011A36 /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbarEx.swift; sourceTree = "<group>"; };
@@ -875,11 +879,12 @@
 		158BFCCF27D6713300234462 /* editprofilefields */ = {
 			isa = PBXGroup;
 			children = (
-				15B99B3C27D75E3100098B68 /* EditFieldWithTextFieldCell.swift */,
-				15B99B4027D75FC700098B68 /* EditFieldWithDatePickerCell.swift */,
-				15B99B4427D7609D00098B68 /* EditFieldWithPickerViewCell.swift */,
-				15B99B4827D761E900098B68 /* BaseEditFieldCell.swift */,
-				15B99B4927D761E900098B68 /* BaseEditFieldCell.xib */,
+				15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */,
+				15D5614527D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib */,
+				15D5614827D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift */,
+				15D5614927D8DFEF0081DA5F /* EditFieldWithDatePickerCell.xib */,
+				15D5614C27D8E2D40081DA5F /* EditFieldWithPickerViewCell.swift */,
+				15D5614D27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib */,
 			);
 			path = editprofilefields;
 			sourceTree = "<group>";
@@ -1240,8 +1245,9 @@
 				15064F4E279D492A00460334 /* User.swift */,
 				1517AF88279E968D00D1194E /* Hobby.swift */,
 				15F272F427CBAAEB005BBC78 /* ProfileOuterOption.swift */,
-				1584958727CE13FB00ED57B6 /* EditProfileConfigure.swift */,
+				1584958727CE13FB00ED57B6 /* EditFieldConfigure.swift */,
 				15D6E03827D2339500011A36 /* Reformable.swift */,
+				15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1491,14 +1497,16 @@
 				1535675E27BA81D0007346D4 /* Localizable.strings in Resources */,
 				159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */,
 				15A5B42D27C76B740082029E /* RegisterConfirmCell.xib in Resources */,
+				15D5614F27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib in Resources */,
 				15A5B43127C76B930082029E /* RegisterBirthDayCell.xib in Resources */,
 				15A5B43527C76BA80082029E /* RegisterGenderCell.xib in Resources */,
+				15D5614727D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib in Resources */,
 				156F043B27B2702B00D37039 /* mail_sended.json in Resources */,
 				15A5B42727C76AF90082029E /* RegisterInformationCell.xib in Resources */,
+				15D5614B27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.xib in Resources */,
 				15A5B42327C76AE10082029E /* RegisterPhotoChooseCell.xib in Resources */,
 				15C64C3327BCF39E0088DD35 /* loading.json in Resources */,
 				150C8FBB27994C6E000DAFBE /* Assets.xcassets in Resources */,
-				15B99B4B27D761E900098B68 /* BaseEditFieldCell.xib in Resources */,
 				15C2003E27C8B53700763934 /* success.json in Resources */,
 				15C2003D27C8B53700763934 /* failure.json in Resources */,
 				150C8FB927994C6D000DAFBE /* Main.storyboard in Resources */,
@@ -1538,6 +1546,7 @@
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */,
+				15D5614627D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift in Sources */,
 				15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */,
 				15C64C3127BCED220088DD35 /* CustomAlert.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
@@ -1561,11 +1570,11 @@
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				15F272ED27CBA806005BBC78 /* ProfileSettingsProtocols.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
+				15D5614A27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift in Sources */,
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */,
-				15B99B4627D7609D00098B68 /* EditFieldWithPickerViewCell.swift in Sources */,
 				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
 				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
@@ -1580,14 +1589,12 @@
 				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
 				15F272DF27CB7E73005BBC78 /* ProfileSettingsVC.swift in Sources */,
-				15B99B4A27D761E900098B68 /* BaseEditFieldCell.swift in Sources */,
 				15C64C5427BE27CE0088DD35 /* WelcomeRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				151E8D3027D109BC009CDE23 /* BaseValidator.swift in Sources */,
 				15C64C4227BD27A30088DD35 /* ResetPasswordPresenter.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
-				15B99B4227D75FC700098B68 /* EditFieldWithDatePickerCell.swift in Sources */,
 				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
@@ -1608,6 +1615,7 @@
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
 				1584958627CE134600ED57B6 /* UserFieldtype.swift in Sources */,
+				15D5614127D8D3DE0081DA5F /* EditFieldCellProtocol.swift in Sources */,
 				15A5B41327C687280082029E /* Message.swift in Sources */,
 				15A5B43027C76B930082029E /* RegisterBirthDayCell.swift in Sources */,
 				1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */,
@@ -1616,11 +1624,12 @@
 				15EACB2627AC2BB30089779A /* RegisterRouter.swift in Sources */,
 				15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */,
 				15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */,
+				15D5614E27D8E2D40081DA5F /* EditFieldWithPickerViewCell.swift in Sources */,
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
 				1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */,
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
 				150C8FF527995FFD000DAFBE /* OnBoardCollectionCell.swift in Sources */,
-				1584958827CE13FB00ED57B6 /* EditProfileConfigure.swift in Sources */,
+				1584958827CE13FB00ED57B6 /* EditFieldConfigure.swift in Sources */,
 				15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */,
 				15D6E03927D2339500011A36 /* Reformable.swift in Sources */,
 				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,
@@ -1643,7 +1652,6 @@
 				1517AF8B279E9AAA00D1194E /* Util.swift in Sources */,
 				153EA97827A0007B00871246 /* WaitingRequestCollectionViewCell.swift in Sources */,
 				15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */,
-				15B99B3E27D75E3100098B68 /* EditFieldWithTextFieldCell.swift in Sources */,
 				15064F4F279D492A00460334 /* User.swift in Sources */,
 				15A5B43A27C7A5590082029E /* RegisterType.swift in Sources */,
 			);

@@ -16,7 +16,7 @@ class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPre
         interactor?.getCurrentUserFields()
     }
     
-    func userFieldsToPresenter(fields: [EditProfileConfigure], userPhotoUrl:String?) {
+    func userFieldsToPresenter(fields: [EditFieldConfigure], userPhotoUrl:String?) {
         view?.userFieldsToView(fields: fields, userPhotoUrl: userPhotoUrl)
     }
     

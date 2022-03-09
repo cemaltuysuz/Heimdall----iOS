@@ -23,11 +23,11 @@ protocol PresenterToInteractorEditProfileProtocol {
 }
 
 protocol InteractorToPresenterEditProfileProtocol {
-    func userFieldsToPresenter(fields:[EditProfileConfigure], userPhotoUrl:String?)
+    func userFieldsToPresenter(fields:[EditFieldConfigure], userPhotoUrl:String?)
 }
 
 protocol PresenterToViewEditProfileProtocol {
-    func userFieldsToView(fields:[EditProfileConfigure], userPhotoUrl:String?)
+    func userFieldsToView(fields:[EditFieldConfigure], userPhotoUrl:String?)
 }
 
 protocol PresenterToRouterEditProfileProtocol {

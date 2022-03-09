@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct EditProfileConfigure {
+struct EditFieldConfigure {
     
     var displayName:String!
+    var key:String!
     var value:String!
     var hasCheckForAlreadyUsed:Bool!
     var editType:EditFieldType!
-    var fieldType:UserFieldType!
     var validator:Validatable?
     
-    init(displayName:String? = nil, value: String? = nil, hasCheckForAlreadyUsed:Bool? = nil, editType: EditFieldType? = nil, fieldType:UserFieldType? = nil, validator:Validatable? = nil) {
+    init(displayName:String? = nil, key:String? = nil, value: String? = nil, hasCheckForAlreadyUsed:Bool? = nil, editType: EditFieldType? = nil, validator:Validatable? = nil) {
         
        self.displayName = displayName
+       self.key = key
        self.value = value
        self.hasCheckForAlreadyUsed = hasCheckForAlreadyUsed
        self.editType = editType
-       self.fieldType = fieldType
        self.validator = validator
    }
 }

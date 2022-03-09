@@ -2,36 +2,64 @@
 //  EditFieldWithDatePickerCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 8.03.2022.
+//  Created by cemal tüysüz on 9.03.2022.
 //
 
 import UIKit
 
-class EditFieldWithDatePickerCell: BaseEditFieldCell {
+class EditFieldWithDatePickerCell: UITableViewCell {
+
+    @IBOutlet weak var fieldValueTextField: UITextField!
+    @IBOutlet weak var fieldDisplayNameLabel: UILabel!
     
-    override var model: EditProfileConfigure!{
+    weak var delegate:EditFieldCellProtocol?
+    var minDate:Date?
+    var maxDate:Date?
+    private var model : EditFieldConfigure!{
         didSet{
-            key = model.fieldType.rawValue
-            value = model.value
-            
-            fieldValueTextField.text = value
             fieldDisplayNameLabel.text = model.displayName
+            fieldValueTextField.text = model.value
         }
     }
     
-    var minDate:Date!
-    var maxDate:Date?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
-    func configureCell(model:EditProfileConfigure, minDate:Date, maxDate:Date? = nil){
+    
+    func configureCell(model:EditFieldConfigure, minDate:Date?, maxDate:Date){
         self.model = model
         self.minDate = minDate
         self.maxDate = maxDate
         
-        fieldValueTextField.isUserInteractionEnabled = false
         createUIDatePickerView()
     }
-    
 }
+
+
+// MARK: - Reformable Protocol
+
+extension EditFieldWithDatePickerCell : Reformable {
+    func reform() {
+        if let newValue = fieldValueTextField.text, model.value != newValue {
+                model.value = newValue
+                delegate?.updateField(fieldKey: model.key, fieldValue: newValue, reformable: self)
+        }
+    }
+    
+    func reformResponse(resp: SimpleResponse) {
+        
+    }
+}
+
+// MARK: - UIDatePickerView Actions
 
 extension EditFieldWithDatePickerCell {
     
@@ -51,6 +79,7 @@ extension EditFieldWithDatePickerCell {
     
     @objc
     func dismissPicker() {
+        print("dismiss date picker")
         self.fieldValueTextField.endEditing(true)
     }
     
