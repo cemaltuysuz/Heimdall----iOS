@@ -32,17 +32,30 @@ class EditProfileVC: UIViewController {
         super.viewDidLoad()
         reformableFields = [Reformable]()
         
+        setupVIPER()
+        setupUI()
+    }
+    
+    
+    func setupVIPER(){
         EditProfileRouter.createModule(ref: self)
         presenter?.getCurrentUserFields()
-        
+    }
+    
+    func setupUI(){
         editUserFieldsTableView.register(UINib(nibName: "EditFieldWithTextFieldCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithTextFieldCell")
         editUserFieldsTableView.register(UINib(nibName: "EditFieldWithDatePickerCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithDatePickerCell")
         editUserFieldsTableView.register(UINib(nibName: "EditFieldWithPickerViewCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithPickerViewCell")
         
-        self.editUserFieldsTableView.delegate = self
-        self.editUserFieldsTableView.dataSource = self
-
+        editUserFieldsTableView.delegate = self
+        editUserFieldsTableView.dataSource = self
+        
+        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick))
+        editUserProfilePhotoImg.isUserInteractionEnabled = true
+        editUserProfilePhotoImg.addGestureRecognizer(onDidTap)
+        print("on binded")
     }
+    
     
     @IBAction func reformAllFieldsBtn(_ sender: Any) {
         if let fields = reformableFields, fields.count > 0 {
@@ -110,5 +123,38 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
 extension EditProfileVC : EditFieldCellProtocol {
     func updateField(fieldKey: String, fieldValue: String, reformable: Reformable) {
         presenter?.updateUserField(key: fieldKey, value: fieldValue, reformable: reformable)
+    }
+}
+
+// user change photo
+extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+        
+    @objc
+    func userPhotoClick(){
+        print("user photo on click")
+        let imagePicker = UIImagePickerController()
+            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+
+                imagePicker.delegate = self
+                imagePicker.sourceType = .savedPhotosAlbum
+                imagePicker.allowsEditing = false
+
+                present(imagePicker, animated: true, completion: nil)
+            }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil) // if the user choosed an image, close the window.
+        
+        /**
+         I'm performing a casting when the user selects an image. If the image is received successfully,
+         */
+        guard let image = info[.originalImage] as? UIImage else {
+           print("Expected a dictionary containing an image, but was provided the following: \(info)")
+            return
+        }
+        editUserProfilePhotoImg.image = image
+        // Chage from server
     }
 }
