@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
+import UIKit
 
 class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     
@@ -65,5 +66,9 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                 }
             })
         }
+    }
+    
+    func updateUserPhoto(image: UIImage) {
+        FireStorageService.shared.pushUserPhoto(image: image)
     }
 }

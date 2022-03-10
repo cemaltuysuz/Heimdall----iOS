@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 protocol ViewToPresenterEditProfileProtocol {
@@ -14,12 +15,14 @@ protocol ViewToPresenterEditProfileProtocol {
     
     func getCurrentUserFields()
     func updateUserField(key:String,value:String,reformable:Reformable)
+    func updateUserPhoto(image:UIImage)
 }
 
 protocol PresenterToInteractorEditProfileProtocol {
     var presenter:InteractorToPresenterEditProfileProtocol? {get set}
     func getCurrentUserFields()
     func updateUserField(key:String,value:String,reformable:Reformable)
+    func updateUserPhoto(image:UIImage)
 }
 
 protocol InteractorToPresenterEditProfileProtocol {

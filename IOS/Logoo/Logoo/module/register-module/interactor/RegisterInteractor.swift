@@ -93,7 +93,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                 self.presenter?.registerProgressVisibility(status: false)
                 return
             }
-            self.uploadUserPhoto(uuid: uuid) // photo upload
+            self.uploadUserPhoto() // photo upload
             self.presenter?.registerFeedBack(response:
             ValidationResponse(status: true,
                                message:
@@ -153,7 +153,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
 
                     if let status = boolean {
                         if status {
-                            self.uploadUserPhoto(uuid: user!.user.uid)
+                            self.uploadUserPhoto()
                             self.sendEmailVerification()
                             self.presenter?.registerFeedBack(response:
                             ValidationResponse(status: true,
@@ -171,43 +171,11 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
             }
         }
     
-    private func uploadUserPhoto(uuid:String){
-        // I upload user's photo to storage
-        
-        var data = Data()
-        data = self.userImage!.jpegData(compressionQuality: 0.8)!
-        // I converted the photo into data.
-        
-        // I determine the path to the file where the photo will be uploaded and the name / type of the file.
-        let fileUUID = UUID().uuidString
-        let filePath = "profile/\(Auth.auth().currentUser!.uid)/\(fileUUID)"
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        
-        // STARTED PHOTO UPLOAD
-        self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
-            if let err = error {
-                print("Error upload user photo : \(err.localizedDescription)")
-                self.presenter?.registerProgressVisibility(status: false)
-                return
-            }
-            self.storageRef.child(filePath).downloadURL{(url,error) in
-                if let error = error {
-                    print("Error when receive the user's profile photo url : \(error)")
-                    self.presenter?.registerProgressVisibility(status: false)
-                    return
-                }
-                if let ppUrl = url?.absoluteString {
-                    self.fireStoreDB
-                        .collection("users")
-                        .document(uuid)
-                        .updateData(["userPhotoUrl":ppUrl])
-
-                    
-                }
-                
-            }
+    private func uploadUserPhoto(){
+        if let userImage = userImage {
+            FireStorageService.shared.pushUserPhoto(image: userImage)
         }
+        self.presenter?.registerProgressVisibility(status: false)
     }
         
     /**

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class EditProfileVC: UIViewController {
 
+    @IBOutlet weak var userImageChangeLabel: UILabel!
     @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
@@ -50,10 +52,10 @@ class EditProfileVC: UIViewController {
         editUserFieldsTableView.delegate = self
         editUserFieldsTableView.dataSource = self
         
+        userImageChangeLabel.isUserInteractionEnabled = true
+        
         let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick))
-        editUserProfilePhotoImg.isUserInteractionEnabled = true
-        editUserProfilePhotoImg.addGestureRecognizer(onDidTap)
-        print("on binded")
+        userImageChangeLabel.addGestureRecognizer(onDidTap)
     }
     
     
@@ -132,7 +134,6 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
         
     @objc
     func userPhotoClick(){
-        print("user photo on click")
         let imagePicker = UIImagePickerController()
             if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
 
@@ -155,6 +156,7 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
             return
         }
         editUserProfilePhotoImg.image = image
-        // Chage from server
+        FireStorageService.shared.pushUserPhoto(image: image)
+        
     }
 }

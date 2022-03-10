@@ -1113,29 +1113,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4r-Ef-gK9">
-                                <rect key="frame" x="147" y="140" width="120" height="120"/>
+                                <rect key="frame" x="20" y="140" width="374" height="170"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZo-8Y-pBs">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PHH-28-y0G">
+                                        <rect key="frame" x="10" y="10" width="354" height="150"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZo-8Y-pBs">
+                                                <rect key="frame" x="117" y="0.0" width="120" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="DQE-8M-viA"/>
+                                                    <constraint firstAttribute="width" constant="120" id="ECh-oa-leg"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Photo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUG-NC-eML">
+                                                <rect key="frame" x="117.5" y="128.5" width="119" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="dZo-8Y-pBs" firstAttribute="leading" secondItem="h4r-Ef-gK9" secondAttribute="leading" id="0oh-yS-L98"/>
-                                    <constraint firstItem="dZo-8Y-pBs" firstAttribute="top" secondItem="h4r-Ef-gK9" secondAttribute="top" id="3eV-B6-EQ7"/>
-                                    <constraint firstAttribute="bottom" secondItem="dZo-8Y-pBs" secondAttribute="bottom" id="BgI-D6-K8P"/>
-                                    <constraint firstAttribute="height" constant="120" id="HJr-tH-9VV"/>
-                                    <constraint firstAttribute="trailing" secondItem="dZo-8Y-pBs" secondAttribute="trailing" id="PnI-Nh-DGu"/>
-                                    <constraint firstAttribute="width" constant="120" id="r6Z-ph-nes"/>
+                                    <constraint firstItem="PHH-28-y0G" firstAttribute="top" secondItem="h4r-Ef-gK9" secondAttribute="top" constant="10" id="HIq-GN-Qh9"/>
+                                    <constraint firstItem="PHH-28-y0G" firstAttribute="leading" secondItem="h4r-Ef-gK9" secondAttribute="leading" constant="10" id="LoM-ge-qra"/>
+                                    <constraint firstAttribute="bottom" secondItem="PHH-28-y0G" secondAttribute="bottom" constant="10" id="fmY-si-Xsb"/>
+                                    <constraint firstAttribute="height" constant="170" id="jNZ-Dx-7tK"/>
+                                    <constraint firstAttribute="trailing" secondItem="PHH-28-y0G" secondAttribute="trailing" constant="10" id="m1B-Pu-HKb"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="X7P-hm-2uc">
-                                <rect key="frame" x="20" y="300" width="374" height="513"/>
+                                <rect key="frame" x="20" y="318" width="374" height="495"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profileEditWithTextFieldCell" rowHeight="137" id="tBv-NE-Hb0" customClass="ProfileEditWithTextFieldCell" customModule="Logoo" customModuleProvider="target">
@@ -1190,12 +1203,13 @@
                         <viewLayoutGuide key="safeArea" id="elW-lG-pps"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="X7P-hm-2uc" firstAttribute="bottom" secondItem="elW-lG-pps" secondAttribute="bottom" id="5i4-PG-5gx"/>
-                            <constraint firstItem="X7P-hm-2uc" firstAttribute="top" secondItem="h4r-Ef-gK9" secondAttribute="bottom" constant="40" id="KwC-el-pSr"/>
-                            <constraint firstItem="h4r-Ef-gK9" firstAttribute="centerX" secondItem="bgw-YQ-zEg" secondAttribute="centerX" id="Sbu-xs-Hvg"/>
-                            <constraint firstItem="elW-lG-pps" firstAttribute="trailing" secondItem="X7P-hm-2uc" secondAttribute="trailing" constant="20" id="fu8-IZ-6ln"/>
-                            <constraint firstItem="h4r-Ef-gK9" firstAttribute="top" secondItem="elW-lG-pps" secondAttribute="top" id="oFZ-UX-5Oa"/>
-                            <constraint firstItem="X7P-hm-2uc" firstAttribute="leading" secondItem="elW-lG-pps" secondAttribute="leading" constant="20" id="z6C-qT-S41"/>
+                            <constraint firstItem="elW-lG-pps" firstAttribute="trailing" secondItem="X7P-hm-2uc" secondAttribute="trailing" constant="20" id="3V1-qm-pwj"/>
+                            <constraint firstItem="X7P-hm-2uc" firstAttribute="bottom" secondItem="elW-lG-pps" secondAttribute="bottom" id="5Ye-ut-DC6"/>
+                            <constraint firstItem="elW-lG-pps" firstAttribute="trailing" secondItem="h4r-Ef-gK9" secondAttribute="trailing" constant="20" id="HXF-ov-PMB"/>
+                            <constraint firstItem="h4r-Ef-gK9" firstAttribute="leading" secondItem="elW-lG-pps" secondAttribute="leading" constant="20" id="QSD-F3-qx2"/>
+                            <constraint firstItem="h4r-Ef-gK9" firstAttribute="top" secondItem="elW-lG-pps" secondAttribute="top" id="RcS-mA-3QA"/>
+                            <constraint firstItem="X7P-hm-2uc" firstAttribute="leading" secondItem="elW-lG-pps" secondAttribute="leading" constant="20" id="a4F-XR-Af1"/>
+                            <constraint firstItem="X7P-hm-2uc" firstAttribute="top" secondItem="h4r-Ef-gK9" secondAttribute="bottom" constant="8" symbolic="YES" id="kup-rx-s7W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m3Z-9t-AkA">
@@ -1209,6 +1223,7 @@
                     <connections>
                         <outlet property="editUserFieldsTableView" destination="X7P-hm-2uc" id="CDP-7T-Bsk"/>
                         <outlet property="editUserProfilePhotoImg" destination="dZo-8Y-pBs" id="N6p-XW-AmU"/>
+                        <outlet property="userImageChangeLabel" destination="PUG-NC-eML" id="rts-ab-lF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLX-oA-dGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
