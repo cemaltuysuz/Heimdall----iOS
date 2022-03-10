@@ -13,21 +13,49 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var editUserFieldsTableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
     
-    var fields:[EditProfileConfigure]?
+    var fields:[EditFieldConfigure]?
     var reformableFields:[Reformable]?
     
     var presenter:ViewToPresenterEditProfileProtocol?
+    
+    
+    lazy var getGenders:[String] = {
+        var genders = [String]()
+        
+        for gender in CONSTANT_GENDERS {
+            genders.append(gender.rawValue)
+        }
+        return genders
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reformableFields = [Reformable]()
         
+        setupVIPER()
+        setupUI()
+    }
+    
+    
+    func setupVIPER(){
         EditProfileRouter.createModule(ref: self)
         presenter?.getCurrentUserFields()
-        
-        self.editUserFieldsTableView.delegate = self
-        self.editUserFieldsTableView.dataSource = self
     }
+    
+    func setupUI(){
+        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithTextFieldCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithTextFieldCell")
+        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithDatePickerCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithDatePickerCell")
+        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithPickerViewCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithPickerViewCell")
+        
+        editUserFieldsTableView.delegate = self
+        editUserFieldsTableView.dataSource = self
+        
+        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick))
+        editUserProfilePhotoImg.isUserInteractionEnabled = true
+        editUserProfilePhotoImg.addGestureRecognizer(onDidTap)
+        print("on binded")
+    }
+    
     
     @IBAction func reformAllFieldsBtn(_ sender: Any) {
         if let fields = reformableFields, fields.count > 0 {
@@ -39,7 +67,7 @@ class EditProfileVC: UIViewController {
 }
 
 extension EditProfileVC : PresenterToViewEditProfileProtocol {
-    func userFieldsToView(fields: [EditProfileConfigure], userPhotoUrl:String?) {
+    func userFieldsToView(fields: [EditFieldConfigure], userPhotoUrl:String?) {
         DispatchQueue.main.async {
             self.fields = fields
             self.editUserFieldsTableView.reloadData()
@@ -57,12 +85,34 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profileEditWithTextFieldCell") as! ProfileEditWithTextFieldCell
         let current = fields![indexPath.row]
-        cell.configure(model: current)
-        cell.delegate = self
-        self.reformableFields?.append(cell)
-        return cell
+        
+        if current.editType == .EDIT_WITH_TEXTFIELD || current.editType == .NO_EDIT{
+            //let firstCell =  as! BaseEditFieldCell
+            let fcell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithTextFieldCell")
+            let cell = fcell as! EditFieldWithTextFieldCell
+            cell.delegate = self
+            cell.configureCell(model: current)
+            reformableFields?.append(cell)
+            return cell
+        }
+        else if current.editType == .EDIT_WITH_DATE_PICKER {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithDatePickerCell") as! EditFieldWithDatePickerCell
+            cell.delegate = self
+            cell.configureCell(model: current, minDate: nil, maxDate: Date())
+            reformableFields?.append(cell)
+            return cell
+        }
+        else if current.editType == .EDIT_WITH_PICKER_VIEW {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithPickerViewCell") as! EditFieldWithPickerViewCell
+            cell.delegate = self
+            cell.configureCell(model: current, data: getGenders)
+            reformableFields?.append(cell)
+            return cell
+        }
+        else {
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,8 +120,41 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension EditProfileVC : EditProfileWithEditTextCellProtocol {
-    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
-        self.presenter?.updateUserField(model: model, reformable: reformable)
+extension EditProfileVC : EditFieldCellProtocol {
+    func updateField(fieldKey: String, fieldValue: String, reformable: Reformable) {
+        presenter?.updateUserField(key: fieldKey, value: fieldValue, reformable: reformable)
+    }
+}
+
+// user change photo
+extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+        
+    @objc
+    func userPhotoClick(){
+        print("user photo on click")
+        let imagePicker = UIImagePickerController()
+            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+
+                imagePicker.delegate = self
+                imagePicker.sourceType = .savedPhotosAlbum
+                imagePicker.allowsEditing = false
+
+                present(imagePicker, animated: true, completion: nil)
+            }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil) // if the user choosed an image, close the window.
+        
+        /**
+         I'm performing a casting when the user selects an image. If the image is received successfully,
+         */
+        guard let image = info[.originalImage] as? UIImage else {
+           print("Expected a dictionary containing an image, but was provided the following: \(info)")
+            return
+        }
+        editUserProfilePhotoImg.image = image
+        // Chage from server
     }
 }

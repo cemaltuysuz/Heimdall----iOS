@@ -15,40 +15,36 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     var presenter: InteractorToPresenterEditProfileProtocol?
     
     func getCurrentUserFields() {
-        var fields = [EditProfileConfigure]()
+        var fields = [EditFieldConfigure]()
         if let currentUserId = Auth.auth().currentUser?.uid {
             let reference = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(currentUserId)
             FireStoreService.shared.getDocument(ref: reference, onCompletion: {(user:User?) in
                 
                 if let user = user {
-                    fields.append(EditProfileConfigure(displayName: "Username",
-                                                       value: user.username ?? "",
-                                                       isEditable: true,
-                                                       hasPickerView: false,
-                                                       hasCheckForAlreadyUsed: true,
-                                                       type: .USERNAME,
-                                                       validator: UsernameValidator()))
+                    fields.append(EditFieldConfigure(displayName: "Username".localized(),
+                                                     key: UserFieldType.USERNAME.rawValue,
+                                                     value: user.username ?? "",
+                                                     hasCheckForAlreadyUsed: true,
+                                                     editType: .EDIT_WITH_TEXTFIELD,
+                                                     validator: UsernameValidator()))
                     
-                    fields.append(EditProfileConfigure(displayName: "Manifesto",
-                                                       value: user.userManifesto ?? "",
-                                                       isEditable: true,
-                                                       hasPickerView: false,
-                                                       hasCheckForAlreadyUsed: false,
-                                                       type: .USER_MANIFESTO))
+                    fields.append(EditFieldConfigure(displayName: "Manifesto".localized(),
+                                                     key: UserFieldType.USER_MANIFESTO.rawValue,
+                                                     value: user.userManifesto ?? "",
+                                                     hasCheckForAlreadyUsed: false,
+                                                     editType: .EDIT_WITH_TEXTFIELD))
                     
-                    fields.append(EditProfileConfigure(displayName: "Gender",
-                                                       value: user.userGender ?? "",
-                                                       isEditable: false,
-                                                       hasPickerView: true,
-                                                       hasCheckForAlreadyUsed: false,
-                                                       type: .USER_GENDER))
+                    fields.append(EditFieldConfigure(displayName: "Gender".localized(),
+                                                     key: UserFieldType.USER_GENDER.rawValue,
+                                                     value: user.userGender ?? "",
+                                                     hasCheckForAlreadyUsed: false,
+                                                     editType: .EDIT_WITH_PICKER_VIEW))
                     
-                    fields.append(EditProfileConfigure(displayName: "Date of birth",
-                                                       value: user.userBirthDay ?? "",
-                                                       isEditable: false,
-                                                       hasPickerView: true,
-                                                       hasCheckForAlreadyUsed: false,
-                                                       type: .USER_BIRTHDAY))
+                    fields.append(EditFieldConfigure(displayName: "Date of birth".localized(),
+                                                     key: UserFieldType.USER_BIRTHDAY.rawValue,
+                                                     value: user.userBirthDay ?? "",
+                                                     hasCheckForAlreadyUsed: false,
+                                                     editType: .EDIT_WITH_DATE_PICKER))
                     
                     self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)
                 }
@@ -56,12 +52,12 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         }
     }
     
-    func updateUserField(model: EditProfileConfigure, reformable: Reformable) {
+    func updateUserField(key:String, value:String, reformable: Reformable) {
         
         if let uuid = getCurrentUserUid() {
             let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
             
-            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [model.type.rawValue : model.value], onCompletion: {status in
+            FireStoreService.shared.updateDocumentByField(ref: ref, fields: [key : value], onCompletion: {status in
                 if status.status! {
                     reformable.reformResponse(resp: SimpleResponse(status: true, message: status.message))
                 }else {

@@ -41,6 +41,11 @@ class RegisterVC: UIViewController {
         
         RegisterRouter.createModule(ref: self)
         
+        setupUI()
+        
+    }
+    
+    func setupUI(){
         if let registerType = registerType {
             registerCells()
             
@@ -60,9 +65,6 @@ class RegisterVC: UIViewController {
         }else {
             goBackForError()
         }
-    
-
-        
     }
     
     func goBackForError(){

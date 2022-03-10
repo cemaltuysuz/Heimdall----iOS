@@ -13,21 +13,21 @@ protocol ViewToPresenterEditProfileProtocol {
     var interactor:PresenterToInteractorEditProfileProtocol? {get set}
     
     func getCurrentUserFields()
-    func updateUserField(model:EditProfileConfigure,reformable:Reformable)
+    func updateUserField(key:String,value:String,reformable:Reformable)
 }
 
 protocol PresenterToInteractorEditProfileProtocol {
     var presenter:InteractorToPresenterEditProfileProtocol? {get set}
     func getCurrentUserFields()
-    func updateUserField(model:EditProfileConfigure,reformable:Reformable)
+    func updateUserField(key:String,value:String,reformable:Reformable)
 }
 
 protocol InteractorToPresenterEditProfileProtocol {
-    func userFieldsToPresenter(fields:[EditProfileConfigure], userPhotoUrl:String?)
+    func userFieldsToPresenter(fields:[EditFieldConfigure], userPhotoUrl:String?)
 }
 
 protocol PresenterToViewEditProfileProtocol {
-    func userFieldsToView(fields:[EditProfileConfigure], userPhotoUrl:String?)
+    func userFieldsToView(fields:[EditFieldConfigure], userPhotoUrl:String?)
 }
 
 protocol PresenterToRouterEditProfileProtocol {

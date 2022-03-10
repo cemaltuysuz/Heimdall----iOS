@@ -65,6 +65,7 @@
 
 "Error" = "Hata";
 "Cancel" = "Kapat";
+"Done" = "Tamam";
 
 // LoginPref VC
 
@@ -83,6 +84,14 @@
 
 "Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
 "Yes" = "Evet";
+
+
+// edit profile
+
+"Username" = "Kullanıcı Adı";
+"Manifesto" = "Manifesto";
+"Gender" = "Cinsiyet";
+"Date of birth" = "Doğum Tarihi";
 
 
 

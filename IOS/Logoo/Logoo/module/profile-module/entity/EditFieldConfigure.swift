@@ -7,24 +7,22 @@
 
 import Foundation
 
-struct EditProfileConfigure {
+struct EditFieldConfigure {
     
     var displayName:String!
+    var key:String!
     var value:String!
-    var isEditable:Bool!
-    var hasPickerView:Bool!
     var hasCheckForAlreadyUsed:Bool!
-    var type:UserFieldType!
+    var editType:EditFieldType!
     var validator:Validatable?
     
-    init(displayName:String? = nil, value: String? = nil, isEditable: Bool? = nil, hasPickerView:Bool?, hasCheckForAlreadyUsed:Bool? = nil, type: UserFieldType? = nil, validator:Validatable? = nil) {
+    init(displayName:String? = nil, key:String? = nil, value: String? = nil, hasCheckForAlreadyUsed:Bool? = nil, editType: EditFieldType? = nil, validator:Validatable? = nil) {
         
        self.displayName = displayName
+       self.key = key
        self.value = value
-       self.isEditable = isEditable
-       self.hasPickerView = hasPickerView
        self.hasCheckForAlreadyUsed = hasCheckForAlreadyUsed
-       self.type = type
+       self.editType = editType
        self.validator = validator
    }
 }

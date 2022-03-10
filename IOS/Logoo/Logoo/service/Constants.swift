@@ -7,6 +7,10 @@
 
 import Foundation
 
+// Some data
+
+let CONSTANT_GENDERS = [GenderType.Male, GenderType.Female, GenderType.HomoFemale, GenderType.HomoMale, GenderType.Other]
+
 // For Util Constants
 enum Constants {
     enum UserDefault : String {
