@@ -18,13 +18,13 @@ enum Constants {
         case MAIL_CONFIRMATION_TIME = "MAIL_CONFIRMATION_TIME"
         case MAIL_CONFIRMATION_SECOND = "MAIL_CONFIRMATIN_SECOND"
     }
-    
-    enum LogEvents :String {
-        case USER_SIGN_IN = "USER_SIGN_IN"
-        case USER_SIGN_OUT = "USER_SIGN_OUT"
-        case USER_PASSWORD_CHANGE = "USER_PASSWORD_CHANGE"
-        case USER_MAIL_CHANGE = "USER_CHANGE_MAIL"
-    }
+}
+
+enum LogEventType :String {
+    case USER_SIGN_IN = "USER_SIGN_IN"
+    case USER_SIGN_OUT = "USER_SIGN_OUT"
+    case USER_PASSWORD_CHANGE = "USER_PASSWORD_CHANGE"
+    case USER_MAIL_CHANGE = "USER_CHANGE_MAIL"
 }
 
 // Firebase Constants

@@ -54,7 +54,7 @@
 		1531F94D27E09C5800FA53AE /* SecurityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F94C27E09C5800FA53AE /* SecurityPresenter.swift */; };
 		1531F94F27E09C8500FA53AE /* SecurityProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F94E27E09C8500FA53AE /* SecurityProtocols.swift */; };
 		1531F95127E09EA600FA53AE /* SecurityRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F95027E09EA600FA53AE /* SecurityRouter.swift */; };
-		1531F95327E0A7D800FA53AE /* LoginTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F95227E0A7D800FA53AE /* LoginTransaction.swift */; };
+		1531F95327E0A7D800FA53AE /* UserTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F95227E0A7D800FA53AE /* UserTransaction.swift */; };
 		1531F95527E0A82800FA53AE /* LoginSystemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F95427E0A82800FA53AE /* LoginSystemType.swift */; };
 		1535674927B792AE007346D4 /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 1535674827B792AE007346D4 /* M13Checkbox */; };
 		1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */; };
@@ -241,7 +241,7 @@
 		1531F94C27E09C5800FA53AE /* SecurityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityPresenter.swift; sourceTree = "<group>"; };
 		1531F94E27E09C8500FA53AE /* SecurityProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityProtocols.swift; sourceTree = "<group>"; };
 		1531F95027E09EA600FA53AE /* SecurityRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityRouter.swift; sourceTree = "<group>"; };
-		1531F95227E0A7D800FA53AE /* LoginTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTransaction.swift; sourceTree = "<group>"; };
+		1531F95227E0A7D800FA53AE /* UserTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTransaction.swift; sourceTree = "<group>"; };
 		1531F95427E0A82800FA53AE /* LoginSystemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSystemType.swift; sourceTree = "<group>"; };
 		1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionCell.swift; sourceTree = "<group>"; };
 		1535675627B7F97F007346D4 /* InterestSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionModel.swift; sourceTree = "<group>"; };
@@ -1286,7 +1286,7 @@
 			isa = PBXGroup;
 			children = (
 				15F272F827CBB7A5005BBC78 /* enums */,
-				1531F95227E0A7D800FA53AE /* LoginTransaction.swift */,
+				1531F95227E0A7D800FA53AE /* UserTransaction.swift */,
 				15064F4E279D492A00460334 /* User.swift */,
 				1517AF88279E968D00D1194E /* Hobby.swift */,
 				15F272F427CBAAEB005BBC78 /* UserMenuItem.swift */,
@@ -1666,7 +1666,7 @@
 				15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */,
 				15064F58279D4CD800460334 /* DiscoveryInteractor.swift in Sources */,
 				151E8D3927D11051009CDE23 /* UsernameValidator.swift in Sources */,
-				1531F95327E0A7D800FA53AE /* LoginTransaction.swift in Sources */,
+				1531F95327E0A7D800FA53AE /* UserTransaction.swift in Sources */,
 				15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */,
 				1531F94D27E09C5800FA53AE /* SecurityPresenter.swift in Sources */,
 				1531F94627E0846600FA53AE /* LoginTransactionsCell.swift in Sources */,

@@ -21,5 +21,15 @@ class SecurityVC: UIViewController {
 
 
 extension SecurityVC : PresenterToViewSecurityProtocol {
+    func sections(sections: [SecuritySectionType]) {
+        <#code#>
+    }
     
+    func securityItems(items: [UserMenuItem]) {
+        <#code#>
+    }
+    
+    func loginTransactions(transactions: UserTransaction) {
+        <#code#>
+    }
 }

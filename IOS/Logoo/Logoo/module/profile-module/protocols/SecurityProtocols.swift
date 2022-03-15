@@ -31,14 +31,16 @@ protocol PresenterToInteractorSecurityProtocol {
 
 protocol InteractorToPresenterSecurityProtocol {
     
-    var sections:[SecuritySectionType]? {get set}
-    var menuItems:[UserMenuItem]? {get set}
-    
-    func getLoginTransactions()
+    func sections(sections:[SecuritySectionType])
+    func securityItems(items:[UserMenuItem])
+    func loginTransactions(transactions:UserTransaction)
 }
 
 protocol PresenterToViewSecurityProtocol  {
     
+    func sections(sections:[SecuritySectionType])
+    func securityItems(items:[UserMenuItem])
+    func loginTransactions(transactions:UserTransaction)
 }
 
 protocol PresenterToRouterSecurityProtocol {
