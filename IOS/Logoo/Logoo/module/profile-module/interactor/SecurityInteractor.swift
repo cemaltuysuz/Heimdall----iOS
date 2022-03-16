@@ -6,36 +6,23 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class SecurityInteractor : PresenterToInteractorSecurityProtocol {
+    
     var presenter: InteractorToPresenterSecurityProtocol?
     
-    func initialize() {
-        <#code#>
-    }
-    
-    func getSections(sections: [SecuritySectionType]) {
-        presenter?.sections(sections: SecuritySectionType.allCases)
-    }
-    
-    func getSecurityItems(items: [UserMenuItem]) {
-        var items = [UserMenuItem]()
-        items.append(UserMenuItem(iconName: <#T##String?#>,
-                                  optionTitle: <#T##String?#>,
-                                  userSettingType: <#T##UserSettingType?#>,
-                                  isEnabled: <#T##Bool?#>))
+    func getSecurityItems() {
         
-        items.append(UserMenuItem(iconName: <#T##String?#>,
-                                  optionTitle: <#T##String?#>,
-                                  userSettingType: <#T##UserSettingType?#>,
-                                  isEnabled: <#T##Bool?#>))
+        var items = [MenuItem<SecurityItemType>]()
+        items.append(MenuItem(iconName: "envelope.fill",
+                              itemTitle: "Change Mail",
+                              isEnabled: false))
+        
+        items.append(MenuItem(iconName: "key.fill",
+                              itemTitle: "Change Password",
+                              isEnabled: false))
         
         presenter?.securityItems(items: items)
     }
-    
-    func getLoginTransactions() {
-        <#code#>
-    }
-    
-    
 }

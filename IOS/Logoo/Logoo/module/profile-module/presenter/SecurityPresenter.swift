@@ -12,5 +12,11 @@ class SecurityPresenter : ViewToPresenterSecurityProtocol, InteractorToPresenter
     var view: PresenterToViewSecurityProtocol?
     var interactor: PresenterToInteractorSecurityProtocol?
     
+    func getSecurityItems() {
+        interactor?.getSecurityItems()
+    }
     
+    func securityItems(items: [MenuItem<SecurityItemType>]) {
+        view?.securityItems(items: items)
+    }
 }

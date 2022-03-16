@@ -26,8 +26,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
             }
             
             if let user = authResult?.user {
-                
-                self.loginLog(userId: user.uid)
+                FirebaseLoggerService.shared.login_log()
                 let resp = Resource<UserState>(status: .SUCCESS,
                                                data: nil,
                                                message: nil)
@@ -40,23 +39,6 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
                self.presenter?.loginResponse(status: resp)
             }
         }
-    }
-    
-    private func loginLog(userId:String){
-        let dbRef = Firestore.firestore()
-        let logObject = [
-            "userLoginTime"     : timeInSeconds(),
-            "deviceModel"       : Device.current.name ?? "unknow",
-            "deviceVersion"     : Device.current.systemVersion ?? "unknow",
-            "operatingSystem"   : "IOS"
-        ] as [String : Any]
-        
-        let loginLogRef = dbRef
-            .collection("login-log")
-            .document(userId)
-            .collection(UUID().uuidString)
-        
-        loginLogRef.addDocument(data: logObject)
     }
     
     func sendVerificationLink(mail: String) {

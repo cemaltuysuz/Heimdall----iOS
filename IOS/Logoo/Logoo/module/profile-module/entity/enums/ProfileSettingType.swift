@@ -1,13 +1,13 @@
 //
-//  UserSettingsType.swift
+//  ProfileSettingType.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 5.03.2022.
+//  Created by cemal tüysüz on 16.03.2022.
 //
 
 import Foundation
 
-enum UserSettingType {
+enum ProfileSettingType : Itemable {
     case INVITE_FRIENDS
     case SECURITY
     case PREFERENCES

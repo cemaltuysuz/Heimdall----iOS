@@ -13,19 +13,13 @@ class ProfileSettingsPresenter : ViewToPresenterProfileSettingsProtocol, Interac
     var view: PresenterToViewProfileSettingsProtocol?
     
     
-    func getUser() {
-        interactor?.getUser()
-    }
     
     func getOptions() {
         interactor?.getOptions()
     }
+
     
-    func userToPresenter(user: User) {
-        view?.userToView(user: user)
-    }
-    
-    func optionsToPresenter(options: [ProfileOuterOption]) {
+    func optionsToPresenter(options: [MenuItem<ProfileSettingType>]) {
         view?.optionsToView(options: options)
     }
     

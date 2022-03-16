@@ -12,35 +12,23 @@ protocol ViewToPresenterSecurityProtocol {
     var view:PresenterToViewSecurityProtocol? {get set}
     var interactor:PresenterToInteractorSecurityProtocol? {get set}
     
-    func initialize()
-    func getSections(sections:[SecuritySectionType])
-    func getSecurityItems(items:[UserMenuItem])
-    func getLoginTransactions()
+    func getSecurityItems()
 }
 
 protocol PresenterToInteractorSecurityProtocol {
     var presenter:InteractorToPresenterSecurityProtocol?{get set}
-    
-    func initialize()
-    
-    func getSections(sections:[SecuritySectionType])
-    func getSecurityItems(items:[UserMenuItem])
-    func getLoginTransactions()
-    
+
+    func getSecurityItems()
 }
 
 protocol InteractorToPresenterSecurityProtocol {
     
-    func sections(sections:[SecuritySectionType])
-    func securityItems(items:[UserMenuItem])
-    func loginTransactions(transactions:UserTransaction)
+    func securityItems(items:[MenuItem<SecurityItemType>])
 }
 
 protocol PresenterToViewSecurityProtocol  {
     
-    func sections(sections:[SecuritySectionType])
-    func securityItems(items:[UserMenuItem])
-    func loginTransactions(transactions:UserTransaction)
+    func securityItems(items:[MenuItem<SecurityItemType>])
 }
 
 protocol PresenterToRouterSecurityProtocol {

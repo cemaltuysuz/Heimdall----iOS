@@ -8,16 +8,16 @@
 import Foundation
 import UIKit
 
-struct UserTransaction {
+struct UserTransaction : Codable {
     
-    var systemType:LoginSystemType?
+    var systemInfo:SystemInfo?
     var event:String?
-    var date:String?
+    var timestamp:Int64?
     
-    init(systemType:LoginSystemType, event:String, date:String){
-        self.systemType = systemType
+    init(systemInfo:SystemInfo, event:String, timestamp:Int64){
+        self.systemInfo = systemInfo
         self.event = event
-        self.date = date
+        self.timestamp = timestamp
     }
     
     func getIconByAction() -> UIImage?{
@@ -34,5 +34,18 @@ struct UserTransaction {
             }
         }
         return nil
+    }
+}
+
+struct SystemInfo : Codable {
+    
+    var deviceModel:String?
+    var deviceVersion:String?
+    var operatingSystem:String?
+    
+    init(deviceModel: String? = nil, deviceVersion: String? = nil, operatingSystem: String? = nil) {
+        self.deviceModel = deviceModel
+        self.deviceVersion = deviceVersion
+        self.operatingSystem = operatingSystem
     }
 }

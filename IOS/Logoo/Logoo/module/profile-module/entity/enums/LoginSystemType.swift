@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LoginSystemType {
-    case ANDROID
-    case IOS
+enum SytemType : String {
+    case ANDROID = "Android"
+    case IOS = "iOS"
 }

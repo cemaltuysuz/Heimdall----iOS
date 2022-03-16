@@ -36,22 +36,29 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                     }
                     
                     if let users = users, users.count > 0 {
+                        FirebaseLoggerService.shared.login_log()
                         // this mail is already registered system. No required retry register.
                         let user = users[0]!
                         
                         // I check any information of the user that absolutely needs to be filled.
                         // If it's not full I will redirect it back to the registration screen.
-                        if let userBirthDay = user.userBirthDay, !userBirthDay.isEmpty {
-                            self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_CONFIRMED)
+                        if let userBirthDay = user.userBirthDay, let photoUrl = user.userPhotoUrl, let gender = user.userGender, let manifesto = user.userManifesto, let interest = user.userInterests {
+                            /**
+                             This informations are initially blank when the user registers with google. If one of them is filled, it means that the user left the rest voluntarily.
+                             */
+                            if !userBirthDay.isEmpty || !photoUrl.isEmpty || !gender.isEmpty || !manifesto.isEmpty || !interest.isEmpty {
+                                self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_CONFIRMED)
+                            }else {
+                                self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_MISSING_INFORMATION)
+                            }
                         }else {
                             self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_MISSING_INFORMATION)
                         }
                     }
                     else {
                         // NEW REGISTER
-                        
                         let userRef = self.fireStoreDB.collection(FireCollections.USER_COLLECTION).document(uuid)
-                        let username = "User \(randomStringWithLength(len: 5))"
+                        let username = "User\(randomStringWithLength(len: 5))"
                         
                         let userObjectt = User(userId: uuid,
                                                username: username,
