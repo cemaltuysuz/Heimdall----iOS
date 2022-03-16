@@ -42,6 +42,7 @@
 		150FF45027E1FB370094B359 /* SecurityMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44E27E1FB370094B359 /* SecurityMenuItemCell.swift */; };
 		150FF45127E1FB370094B359 /* SecurityMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150FF44F27E1FB370094B359 /* SecurityMenuItemCell.xib */; };
 		150FF45327E218C00094B359 /* secureAnim.json in Resources */ = {isa = PBXBuildFile; fileRef = 150FF45227E218C00094B359 /* secureAnim.json */; };
+		150FF45527E2281A0094B359 /* ProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF45427E2281A0094B359 /* ProviderType.swift */; };
 		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
@@ -233,6 +234,7 @@
 		150FF44E27E1FB370094B359 /* SecurityMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityMenuItemCell.swift; sourceTree = "<group>"; };
 		150FF44F27E1FB370094B359 /* SecurityMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityMenuItemCell.xib; sourceTree = "<group>"; };
 		150FF45227E218C00094B359 /* secureAnim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secureAnim.json; sourceTree = "<group>"; };
+		150FF45427E2281A0094B359 /* ProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderType.swift; sourceTree = "<group>"; };
 		1517AF88279E968D00D1194E /* Hobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hobby.swift; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 				156F044B27B3AAC500D37039 /* Resource.swift */,
 				15C64C3027BCED220088DD35 /* CustomAlert.swift */,
 				15D6E03A27D23B7600011A36 /* SimpleResponse.swift */,
+				150FF45427E2281A0094B359 /* ProviderType.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1617,6 +1620,7 @@
 				1531F94F27E09C8500FA53AE /* SecurityProtocols.swift in Sources */,
 				153EA973279FFDE000871246 /* ChatInteractor.swift in Sources */,
 				15A5B43727C777DF0082029E /* RegisterProtocols.swift in Sources */,
+				150FF45527E2281A0094B359 /* ProviderType.swift in Sources */,
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
 				15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */,
 				1584957E27CDEDFA00ED57B6 /* UIImageViewEx.swift in Sources */,

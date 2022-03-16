@@ -20,7 +20,7 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
     
     private var pendingRequestWorkItem: DispatchWorkItem?
     
-    var toView:RegisterInformationCellProtocol?
+    weak var toView:RegisterInformationCellProtocol?
     
     func validate() -> ValidationResponse {
         // Global check for empty text
@@ -30,6 +30,7 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
             if result.isSuccess {
                 if !isEmailUsed! {
                     if !isUsernameUsed! {
+                        toView?.informationToView(username: username, userMail: mail, userPassword: password)
                         return ValidationResponse(status: true, message: "Successfull.")
                     }else {
                         return ValidationResponse(status: false, message: "This username is being used by another account.".localized())
@@ -117,7 +118,7 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
     }
 }
 
-protocol RegisterInformationCellProtocol {
+protocol RegisterInformationCellProtocol : AnyObject {
     func informationToView(username:String,userMail:String,userPassword:String)
     func usernameRealtimeValidation(response:ValidationResponse)
     func mailRealtimeValidation(response:ValidationResponse)
