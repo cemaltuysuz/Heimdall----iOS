@@ -8,5 +8,7 @@
 import Foundation
 
 enum SecurityItemType : Itemable {
-    
+    case CHANGE_MAIL
+    case CHANGE_PASSWORD
+    case LOGIN_TRANSACTIONS
 }

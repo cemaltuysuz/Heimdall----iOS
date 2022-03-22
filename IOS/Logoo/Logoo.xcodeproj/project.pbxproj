@@ -88,7 +88,7 @@
 		156F044C27B3AAC500D37039 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F044B27B3AAC500D37039 /* Resource.swift */; };
 		156F044F27B3ACC100D37039 /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F044E27B3ACC100D37039 /* UserState.swift */; };
 		156F045227B3C11700D37039 /* SelectInterestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F045127B3C11700D37039 /* SelectInterestVC.swift */; };
-		1584957E27CDEDFA00ED57B6 /* UIImageViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */; };
+		1584957E27CDEDFA00ED57B6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */; };
 		1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957F27CE00D700ED57B6 /* ProfileVC.swift */; };
 		1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958127CE00EB00ED57B6 /* EditProfileVC.swift */; };
 		1584958627CE134600ED57B6 /* UserFieldtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958527CE134600ED57B6 /* UserFieldtype.swift */; };
@@ -146,6 +146,8 @@
 		15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */; };
 		15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */; };
 		15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */; };
+		15CA338827E9F48D0066C95B /* LGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA338727E9F48C0066C95B /* LGImageView.swift */; };
+		15CA338A27E9F7650066C95B /* LGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA338927E9F7650066C95B /* LGTextField.swift */; };
 		15D5614127D8D3DE0081DA5F /* EditFieldCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */; };
 		15D5614627D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */; };
 		15D5614727D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5614527D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib */; };
@@ -155,7 +157,7 @@
 		15D5614F27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5614D27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib */; };
 		15D6E03927D2339500011A36 /* Reformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03827D2339500011A36 /* Reformable.swift */; };
 		15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03A27D23B7600011A36 /* SimpleResponse.swift */; };
-		15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */; };
+		15D6E03D27D277DC00011A36 /* UIToolbar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6E03C27D277DC00011A36 /* UIToolbar+.swift */; };
 		15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC5D3C27B520E4004CA892 /* LoginRouter.swift */; };
 		15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */; };
 		15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EACB2127AC2AA70089779A /* RegisterInteractor.swift */; };
@@ -278,7 +280,7 @@
 		156F044B27B3AAC500D37039 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		156F044E27B3ACC100D37039 /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		156F045127B3C11700D37039 /* SelectInterestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestVC.swift; sourceTree = "<group>"; };
-		1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewEx.swift; sourceTree = "<group>"; };
+		1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		1584957F27CE00D700ED57B6 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1584958127CE00EB00ED57B6 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		1584958527CE134600ED57B6 /* UserFieldtype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldtype.swift; sourceTree = "<group>"; };
@@ -331,6 +333,8 @@
 		15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefInteractor.swift; sourceTree = "<group>"; };
 		15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefPresenter.swift; sourceTree = "<group>"; };
 		15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPrefRouter.swift; sourceTree = "<group>"; };
+		15CA338727E9F48C0066C95B /* LGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGImageView.swift; sourceTree = "<group>"; };
+		15CA338927E9F7650066C95B /* LGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGTextField.swift; sourceTree = "<group>"; };
 		15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCellProtocol.swift; sourceTree = "<group>"; };
 		15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithTextFieldCell.swift; sourceTree = "<group>"; };
 		15D5614527D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithTextFieldCell.xib; sourceTree = "<group>"; };
@@ -340,7 +344,7 @@
 		15D5614D27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithPickerViewCell.xib; sourceTree = "<group>"; };
 		15D6E03827D2339500011A36 /* Reformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reformable.swift; sourceTree = "<group>"; };
 		15D6E03A27D23B7600011A36 /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
-		15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbarEx.swift; sourceTree = "<group>"; };
+		15D6E03C27D277DC00011A36 /* UIToolbar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+.swift"; sourceTree = "<group>"; };
 		15DC5D3C27B520E4004CA892 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		15EACB1F27AC29050089779A /* RegisterWithMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWithMailProtocols.swift; sourceTree = "<group>"; };
 		15EACB2127AC2AA70089779A /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
@@ -491,6 +495,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
+				15CA338627E9F4730066C95B /* custom */,
 				151E8D2E27D10940009CDE23 /* validation */,
 				1584957C27CDEDD800ED57B6 /* extension */,
 				1584957B27CDEDC000ED57B6 /* module */,
@@ -917,8 +922,8 @@
 		1584957C27CDEDD800ED57B6 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				1584957D27CDEDFA00ED57B6 /* UIImageViewEx.swift */,
-				15D6E03C27D277DC00011A36 /* UIToolbarEx.swift */,
+				1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */,
+				15D6E03C27D277DC00011A36 /* UIToolbar+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1218,6 +1223,15 @@
 			children = (
 			);
 			path = entity;
+			sourceTree = "<group>";
+		};
+		15CA338627E9F4730066C95B /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				15CA338727E9F48C0066C95B /* LGImageView.swift */,
+				15CA338927E9F7650066C95B /* LGTextField.swift */,
+			);
+			path = custom;
 			sourceTree = "<group>";
 		};
 		15EACB1B27AC28C00089779A /* presenter */ = {
@@ -1610,6 +1624,7 @@
 				153EA975279FFE1100871246 /* ChatPresenter.swift in Sources */,
 				15F272F527CBAAEB005BBC78 /* MenuItem.swift in Sources */,
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
+				15CA338827E9F48D0066C95B /* LGImageView.swift in Sources */,
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */,
@@ -1623,7 +1638,7 @@
 				150FF45527E2281A0094B359 /* ProviderType.swift in Sources */,
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
 				15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */,
-				1584957E27CDEDFA00ED57B6 /* UIImageViewEx.swift in Sources */,
+				1584957E27CDEDFA00ED57B6 /* UIImageView+.swift in Sources */,
 				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
@@ -1643,7 +1658,7 @@
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
-				15D6E03D27D277DC00011A36 /* UIToolbarEx.swift in Sources */,
+				15D6E03D27D277DC00011A36 /* UIToolbar+.swift in Sources */,
 				150FF44D27E1F85E0094B359 /* SecurityMenuItemType.swift in Sources */,
 				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
 				1530C24827DA0CCA002EBB90 /* SecurityVC.swift in Sources */,
@@ -1724,6 +1739,7 @@
 				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,
 				153EA96D279FFA5800871246 /* MessageType.swift in Sources */,
 				1584958C27CE242500ED57B6 /* EditProfileInteracor.swift in Sources */,
+				15CA338A27E9F7650066C95B /* LGTextField.swift in Sources */,
 				1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */,
 				156F044F27B3ACC100D37039 /* UserState.swift in Sources */,
 				153EA96B279FFA2E00871246 /* RequestType.swift in Sources */,
@@ -1924,7 +1940,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 34WTB4U8S7;
+				DEVELOPMENT_TEAM = AA46V7LMAT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Logoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1933,7 +1949,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1954,7 +1970,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 34WTB4U8S7;
+				DEVELOPMENT_TEAM = AA46V7LMAT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Logoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1963,7 +1979,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

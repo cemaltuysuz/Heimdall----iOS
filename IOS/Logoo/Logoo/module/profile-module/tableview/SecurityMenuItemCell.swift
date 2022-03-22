@@ -19,6 +19,10 @@ class SecurityMenuItemCell: UITableViewCell {
         itemIcon.image = UIImage(systemName: option.iconName)
         itemTitle.text = item.itemTitle
         
+        if !item.isEnabled{
+            itemTitle.textColor = .darkGray
+        }
+        
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.onSettingClick(recognizer:)))
         self.contentView.addGestureRecognizer(recognizer)
     }
