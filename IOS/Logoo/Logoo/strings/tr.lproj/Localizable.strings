@@ -93,6 +93,12 @@
 "Gender" = "Cinsiyet";
 "Date of birth" = "Doğum Tarihi";
 
+// security
+
+"Change Mail" = "Mail Adresi değişikliği";
+"Change Password" = "Şifre değişikliği";
+"Login Transactions" = "Giriş Hareketleri";
+
 
 
 

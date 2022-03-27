@@ -9,56 +9,36 @@ import UIKit
 
 class ProfileSettingsVC: UIViewController {
     
-    
     @IBOutlet weak var optionsTableView: UITableView!
     var presenter:ViewToPresenterProfileSettingsProtocol?
-    @IBOutlet weak var profileUsernameLabel: UILabel!
-    @IBOutlet weak var profileUserMailLabel: UILabel!
-    @IBOutlet weak var profileUserPhoto: UIImageView!
-    var options:[ProfileOuterOption]?
+    var options:[MenuItem<ProfileSettingType>]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.optionsTableView.delegate = self
-        self.optionsTableView.dataSource = self
+        optionsTableView.register(UINib(nibName: "ProfileMenuItemCell", bundle: nil), forCellReuseIdentifier: "ProfileMenuItemCell")
+        optionsTableView.delegate = self
+        optionsTableView.dataSource = self
         
         ProfileSettingsRouter.createModule(ref: self)
         presenter?.getOptions()
-        presenter?.getUser()
-        
-    }
-    @IBAction func editProfileButton(_ sender: Any) {
-        
     }
 }
 
-
 extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
-    func userToView(user: User) {
-        DispatchQueue.main.async {
-            if let username = user.username, let mail = user.userMail {
-                self.profileUsernameLabel.text = username
-                self.profileUserMailLabel.text = mail
-            }
-            if let link = user.userPhotoUrl {
-                self.profileUserPhoto.setImage(urlString: link)
-            }
-        }
-    }
     
-    func optionsToView(options: [ProfileOuterOption]) {
+    func optionsToView(options: [MenuItem<ProfileSettingType>]) {
         DispatchQueue.main.async {
             self.options = options
             self.optionsTableView.reloadData()
         }
     }
     func exitUserFeedback() {
-        print("Çıkış yapılıyor.")
+        // TODO (GO LOGIN PREF SCREEN)
     }
 }
 
-extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, ProfileOuterOptionCellProtocol {
+extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, ProfileMenuItemCellProtocol {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options?.count ?? 0
     }
@@ -66,20 +46,18 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, Profil
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let current = options![indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileOuterCell") as! ProfileOuterOptionCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuItemCell") as! ProfileMenuItemCell
         cell.initialize(option: current)
         cell.delegate = self
         return cell
     }
     
-    func onClick(settingType: UserSettingType) {
-        
-        switch settingType {
+    func onClick(model: MenuItem<ProfileSettingType>) {
+        switch model.type {
         case .INVITE_FRIENDS:
-            
             break
         case .SECURITY:
-            
+            performSegue(withIdentifier: "ProfileSettingsToSecurityVC", sender: nil)
             break
         case .PREFERENCES:
             
@@ -98,6 +76,8 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, Profil
             break
         case .LOGOUT:
             self.exitUser()
+            break
+        case .none:
             break
         }
     }

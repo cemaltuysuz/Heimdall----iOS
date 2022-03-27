@@ -14,16 +14,6 @@ class ProfileSettingsInteractor : PresenterToInteractorProfileSettingsProtocol {
     
     var presenter: InteractorToPresenterProfileSettingsProtocol?
     
-    func getUser() {
-        if let uuid = getCurrentUserUid() {
-            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
-            FireStoreService.shared.getDocument(ref: ref, onCompletion: {(user:User?) in
-                if let user = user {
-                    self.presenter?.userToPresenter(user: user)
-                }
-            })
-        }
-    }
     /**
      The user will be redirected to the login page in any case. But the result needs to be logged.
      */
@@ -31,53 +21,69 @@ class ProfileSettingsInteractor : PresenterToInteractorProfileSettingsProtocol {
         do{
             try Auth.auth().signOut()
         }catch{
-            print("Log out is failure. status \(error.localizedDescription)")
+            print("Log out is failure. MSG: \(error.localizedDescription)")
         }
         self.presenter?.exitUserFeedback()
     }
     
     func getOptions() {
-        var options = [ProfileOuterOption]()
+        var options = [MenuItem<ProfileSettingType>]()
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "person.fill.badge.plus",
-            optionTitle: "Invite Friends".localized(),
-            userSettingType: .INVITE_FRIENDS))
+            itemTitle: "Invite Friends".localized(),
+            type: .INVITE_FRIENDS,
+            isEnabled: false,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "lock.shield.fill",
-            optionTitle: "Security".localized(),
-            userSettingType: .SECURITY))
+            itemTitle: "Security".localized(),
+            type: .SECURITY,
+            isEnabled: true,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "paintpalette.fill",
-            optionTitle: "Preferences".localized(),
-            userSettingType: .PREFERENCES))
+            itemTitle: "Preferences".localized(),
+            type: .PREFERENCES,
+            isEnabled: true,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "gamecontroller.fill",
-            optionTitle: "Interests".localized(),
-            userSettingType: .INTERESTS))
+            itemTitle: "Interests".localized(),
+            type: .INTERESTS,
+            isEnabled: true,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "bell.fill",
-            optionTitle: "Notifications".localized(),
-            userSettingType: .NOTIFICATIONS))
+            itemTitle: "Notifications".localized(),
+            type: .NOTIFICATIONS,
+            isEnabled: true,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "eye.slash.fill",
-            optionTitle: "Privacy".localized(),
-            userSettingType: .PRIVACY))
+            itemTitle: "Privacy".localized(),
+            type: .PRIVACY,
+            isEnabled: true,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "info.circle.fill",
-            optionTitle: "About".localized(),
-            userSettingType: .ABOUT))
+            itemTitle: "About".localized(),
+            type: .ABOUT,
+            isEnabled: true,
+            warningMessage: nil))
         
-        options.append(ProfileOuterOption(
+        options.append(MenuItem(
             iconName: "rectangle.portrait.and.arrow.right.fill",
-            optionTitle: "LogOut".localized(),
-            userSettingType: .LOGOUT))
+            itemTitle: "LogOut".localized(),
+            type: .LOGOUT,
+            isEnabled: true,
+            warningMessage: nil))
         
         presenter?.optionsToPresenter(options: options)
     }

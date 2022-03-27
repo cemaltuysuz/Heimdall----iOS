@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPresenterEditProfileProtocol {
 
@@ -21,7 +22,10 @@ class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPre
     }
     
     func updateUserField(key:String,value:String, reformable: Reformable) {
-        self.interactor?.updateUserField(key: key, value: value, reformable: reformable)
+        interactor?.updateUserField(key: key, value: value, reformable: reformable)
     }
     
+    func updateUserPhoto(image: UIImage) {
+        interactor?.updateUserPhoto(image: image)
+    }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UDService : UDProtocol {
+class UDService {
     
     private var ud = UserDefaults.standard
     static let shared = UDService()
@@ -56,5 +56,19 @@ class UDService : UDProtocol {
                                     .UserDefault
                                     .MAIL_CONFIRMATION_SECOND
                                     .rawValue))
+    }
+    
+    func getSecurityVisualVisibility() -> Bool {
+        return ud.bool(forKey: Constants
+                .UserDefault
+                .SECURITY_VISUAL_VIBILITY
+                .rawValue)
+    }
+    
+    func setSecurityVisualVisibility(value:Bool) {
+        ud.set(value, forKey: Constants
+                .UserDefault
+                .SECURITY_VISUAL_VIBILITY
+                .rawValue)
     }
 }

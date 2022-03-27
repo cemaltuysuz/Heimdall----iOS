@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
+import UIKit
 
 class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     
@@ -64,6 +65,13 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                     reformable.reformResponse(resp: SimpleResponse(status: false, message: status.message))
                 }
             })
+        }
+    }
+    
+    func updateUserPhoto(image: UIImage) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uid)
+            FireStorageService.shared.pushPhoto(image: image, ref: ref)
         }
     }
 }
