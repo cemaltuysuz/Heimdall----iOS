@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CloudKit
 
 struct UserTransaction : Codable {
     
@@ -32,6 +33,13 @@ struct UserTransaction : Codable {
             case .USER_MAIL_CHANGE:
                 break
             }
+        }
+        return nil
+    }
+    
+    func getTimeAsDate() -> Date? {
+        if let timestamp = timestamp {
+            return milliSecondToDate(milliseconds: timestamp)
         }
         return nil
     }

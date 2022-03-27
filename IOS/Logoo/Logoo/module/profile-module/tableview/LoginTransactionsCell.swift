@@ -16,6 +16,14 @@ class LoginTransactionsCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func configure(transaction:UserTransaction) {
+        transactionTitleLabel.text = transaction.systemInfo?.operatingSystem
+        if let image = transaction.getIconByAction() {
+            transactionIconImageView.image = image
+        }
+        transactionDateLabel.text = transaction.getTimeAsDate()?.toStringWithPattern(pattern: "d MMM - yyyy")
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

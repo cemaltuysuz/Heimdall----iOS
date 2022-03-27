@@ -1259,11 +1259,45 @@
                         <outlet property="infoStackView" destination="KQs-2g-rff" id="FKU-Um-dCQ"/>
                         <outlet property="itemsTableView" destination="utQ-eL-qhT" id="d7A-xX-1gg"/>
                         <outlet property="visualView" destination="JbN-uH-hVj" id="vmA-vP-7ci"/>
+                        <segue destination="m5h-BP-XJv" kind="show" identifier="securityToLoginTransactionsVC" id="mnA-yr-qdc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4o9-lf-FDA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8618.8405797101459" y="-1323.2142857142856"/>
+        </scene>
+        <!--Login TransactionsVC-->
+        <scene sceneID="0tQ-iN-u2j">
+            <objects>
+                <viewController id="m5h-BP-XJv" customClass="LoginTransactionsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yxg-EQ-UXZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-bR-ytj">
+                                <rect key="frame" x="0.0" y="118" width="414" height="695"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mox-s9-6ek">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="695"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LMX-jz-jz8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lfS-bR-ytj" firstAttribute="bottom" secondItem="LMX-jz-jz8" secondAttribute="bottom" id="8tD-b5-7Vc"/>
+                            <constraint firstItem="lfS-bR-ytj" firstAttribute="top" secondItem="LMX-jz-jz8" secondAttribute="top" constant="30" id="Eln-VW-EqZ"/>
+                            <constraint firstItem="lfS-bR-ytj" firstAttribute="leading" secondItem="LMX-jz-jz8" secondAttribute="leading" id="Hwu-6m-th5"/>
+                            <constraint firstItem="lfS-bR-ytj" firstAttribute="trailing" secondItem="LMX-jz-jz8" secondAttribute="trailing" id="VYk-pJ-US6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VIb-fF-aEI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lsy-pC-Qpr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9455" y="-1323"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EeB-PV-oIY">

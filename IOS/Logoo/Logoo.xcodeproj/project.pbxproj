@@ -47,6 +47,12 @@
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
 		1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* ChatProtocols.swift */; };
+		151CBA1227F07AB10088E548 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CBA1127F07AB10088E548 /* Date+.swift */; };
+		151CBA1427F07C180088E548 /* LoginTransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CBA1327F07C180088E548 /* LoginTransactionsVC.swift */; };
+		151CBA1627F07C520088E548 /* LoginTransactionsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CBA1527F07C520088E548 /* LoginTransactionsProtocols.swift */; };
+		151CBA1827F07E930088E548 /* LoginTransactionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CBA1727F07E930088E548 /* LoginTransactionsInteractor.swift */; };
+		151CBA1A27F07EF90088E548 /* LoginTransactionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CBA1927F07EF90088E548 /* LoginTransactionsPresenter.swift */; };
+		151CBA1C27F080C10088E548 /* LoginTransactionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CBA1B27F080C10088E548 /* LoginTransactionsRouter.swift */; };
 		151E8D3027D109BC009CDE23 /* BaseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D2F27D109BC009CDE23 /* BaseValidator.swift */; };
 		151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3127D109F2009CDE23 /* Validatable.swift */; };
 		151E8D3427D10A1F009CDE23 /* ValidateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E8D3327D10A1F009CDE23 /* ValidateResult.swift */; };
@@ -241,6 +247,12 @@
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
+		151CBA1127F07AB10088E548 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		151CBA1327F07C180088E548 /* LoginTransactionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTransactionsVC.swift; sourceTree = "<group>"; };
+		151CBA1527F07C520088E548 /* LoginTransactionsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTransactionsProtocols.swift; sourceTree = "<group>"; };
+		151CBA1727F07E930088E548 /* LoginTransactionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTransactionsInteractor.swift; sourceTree = "<group>"; };
+		151CBA1927F07EF90088E548 /* LoginTransactionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTransactionsPresenter.swift; sourceTree = "<group>"; };
+		151CBA1B27F080C10088E548 /* LoginTransactionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTransactionsRouter.swift; sourceTree = "<group>"; };
 		151E8D2F27D109BC009CDE23 /* BaseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseValidator.swift; sourceTree = "<group>"; };
 		151E8D3127D109F2009CDE23 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		151E8D3327D10A1F009CDE23 /* ValidateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateResult.swift; sourceTree = "<group>"; };
@@ -924,6 +936,7 @@
 			children = (
 				1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */,
 				15D6E03C27D277DC00011A36 /* UIToolbar+.swift */,
+				151CBA1127F07AB10088E548 /* Date+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1273,6 +1286,7 @@
 				1584957F27CE00D700ED57B6 /* ProfileVC.swift */,
 				1584958127CE00EB00ED57B6 /* EditProfileVC.swift */,
 				1530C24727DA0CCA002EBB90 /* SecurityVC.swift */,
+				151CBA1327F07C180088E548 /* LoginTransactionsVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1297,6 +1311,7 @@
 				15F272F027CBAA11005BBC78 /* ProfileSettingsInteractor.swift */,
 				1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */,
 				1531F94A27E09C4800FA53AE /* SecurityInteractor.swift */,
+				151CBA1727F07E930088E548 /* LoginTransactionsInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -1307,6 +1322,7 @@
 				15F272F227CBAA4B005BBC78 /* ProfileSettingsRouter.swift */,
 				1584958F27CE25FB00ED57B6 /* EditProfileRouter.swift */,
 				1531F95027E09EA600FA53AE /* SecurityRouter.swift */,
+				151CBA1B27F080C10088E548 /* LoginTransactionsRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -1330,6 +1346,7 @@
 				15F272EE27CBA90B005BBC78 /* ProfileSettingsPresenter.swift */,
 				1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */,
 				1531F94C27E09C5800FA53AE /* SecurityPresenter.swift */,
+				151CBA1927F07EF90088E548 /* LoginTransactionsPresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -1340,6 +1357,7 @@
 				15F272EC27CBA806005BBC78 /* ProfileSettingsProtocols.swift */,
 				1584958927CE229400ED57B6 /* EditProfileProtocols.swift */,
 				1531F94E27E09C8500FA53AE /* SecurityProtocols.swift */,
+				151CBA1527F07C520088E548 /* LoginTransactionsProtocols.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -1656,6 +1674,8 @@
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				15D5614A27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift in Sources */,
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
+				151CBA1427F07C180088E548 /* LoginTransactionsVC.swift in Sources */,
+				151CBA1627F07C520088E548 /* LoginTransactionsProtocols.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15D6E03D27D277DC00011A36 /* UIToolbar+.swift in Sources */,
@@ -1663,6 +1683,7 @@
 				15C64C3E27BD26340088DD35 /* ResetPasswordProtocols.swift in Sources */,
 				1530C24827DA0CCA002EBB90 /* SecurityVC.swift in Sources */,
 				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
+				151CBA1A27F07EF90088E548 /* LoginTransactionsPresenter.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
 				156F044527B3A40C00D37039 /* LoginProtocols.swift in Sources */,
 				150FF44527E1DB7A0094B359 /* FirebaseLoggerService.swift in Sources */,
@@ -1678,10 +1699,12 @@
 				15F272DF27CB7E73005BBC78 /* ProfileSettingsVC.swift in Sources */,
 				15C64C5427BE27CE0088DD35 /* WelcomeRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
+				151CBA1227F07AB10088E548 /* Date+.swift in Sources */,
 				150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */,
 				151E8D3027D109BC009CDE23 /* BaseValidator.swift in Sources */,
 				15C64C4227BD27A30088DD35 /* ResetPasswordPresenter.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
+				151CBA1827F07E930088E548 /* LoginTransactionsInteractor.swift in Sources */,
 				1531F95127E09EA600FA53AE /* SecurityRouter.swift in Sources */,
 				1531F94B27E09C4800FA53AE /* SecurityInteractor.swift in Sources */,
 				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
@@ -1734,6 +1757,7 @@
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
 				150C8FFE27996582000DAFBE /* OnBoardProtocols.swift in Sources */,
+				151CBA1C27F080C10088E548 /* LoginTransactionsRouter.swift in Sources */,
 				151E8D3427D10A1F009CDE23 /* ValidateResult.swift in Sources */,
 				15C64C5027BE26FE0088DD35 /* WelcomeInteractor.swift in Sources */,
 				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,

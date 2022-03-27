@@ -77,17 +77,18 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = securityItems![indexPath.row]
-        
+        print("\(item.itemTitle) is \(item.isEnabled) and type: \(item.type)")
         if item.isEnabled {
             switch item.type {
             case .CHANGE_MAIL:
-                
+                print("mail chane")
                 break
             case .CHANGE_PASSWORD:
-                
+                print("pass change")
                 break
             case .LOGIN_TRANSACTIONS:
-                
+                print("transactions")
+                performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
                 break
             case .none:
                 break
