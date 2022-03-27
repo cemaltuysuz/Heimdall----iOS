@@ -20,7 +20,7 @@ class FirebaseLoggerService {
             
             let systemInfo = SystemInfo(deviceModel: Device.current.name ?? "unknow",
                                         deviceVersion: Device.current.systemVersion ?? "unknow",
-                                        operatingSystem: SytemType.IOS.rawValue)
+                                        operatingSystem: SystemType.IOS.rawValue)
             let userTransaction = UserTransaction(systemInfo: systemInfo,
                                                   event: LogEventType.USER_SIGN_IN.rawValue,
                                                   timestamp: timeInSeconds())

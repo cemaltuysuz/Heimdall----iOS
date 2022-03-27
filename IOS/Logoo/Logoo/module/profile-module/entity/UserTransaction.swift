@@ -21,17 +21,14 @@ struct UserTransaction : Codable {
         self.timestamp = timestamp
     }
     
-    func getIconByAction() -> UIImage?{
-        if let event = event, let type = LogEventType(rawValue: event) {
+    func getOSIcon() -> UIImage?{
+        if let systemInfo = systemInfo, let os = systemInfo.operatingSystem, let type = SystemType(rawValue: os){
             switch type {
-            case .USER_SIGN_IN:
-                return UIImage() // TODO
-            case .USER_SIGN_OUT:
-                break
-            case .USER_PASSWORD_CHANGE:
-                break
-            case .USER_MAIL_CHANGE:
-                break
+            case .ANDROID:
+                return UIImage(named: "android")
+            case .IOS:
+                let image = UIImage(systemName: "applelogo")?.withTintColor(.black)
+                return image
             }
         }
         return nil

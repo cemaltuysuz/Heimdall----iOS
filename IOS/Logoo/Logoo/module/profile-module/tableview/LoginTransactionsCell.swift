@@ -19,7 +19,7 @@ class LoginTransactionsCell: UITableViewCell {
     
     func configure(transaction:UserTransaction) {
         transactionTitleLabel.text = transaction.systemInfo?.operatingSystem
-        if let image = transaction.getIconByAction() {
+        if let image = transaction.getOSIcon() {
             transactionIconImageView.image = image
         }
         transactionDateLabel.text = transaction.getTimeAsDate()?.toStringWithPattern(pattern: "d MMM - yyyy")
