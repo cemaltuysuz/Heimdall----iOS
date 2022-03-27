@@ -11,7 +11,7 @@ import SwiftUI
 class EditProfileVC: UIViewController {
 
     @IBOutlet weak var userImageChangeLabel: UILabel!
-    @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
+    @IBOutlet weak var editUserProfilePhotoImg: LGImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -130,7 +130,6 @@ extension EditProfileVC : EditFieldCellProtocol {
 
 // user change photo
 extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
         
     @objc
     func userPhotoClick(){
@@ -156,7 +155,6 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
             return
         }
         editUserProfilePhotoImg.image = image
-        FireStorageService.shared.pushUserPhoto(image: image)
-        
+        presenter?.updateUserPhoto(image: image)
     }
 }

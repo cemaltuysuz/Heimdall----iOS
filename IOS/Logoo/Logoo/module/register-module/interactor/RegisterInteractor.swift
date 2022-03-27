@@ -173,7 +173,10 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     
     private func uploadUserPhoto(){
         if let userImage = userImage {
-            FireStorageService.shared.pushUserPhoto(image: userImage)
+            if let uid = Auth.auth().currentUser?.uid {
+                let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uid)
+                FireStorageService.shared.pushPhoto(image: userImage, ref: ref)
+            }
         }
         self.presenter?.registerProgressVisibility(status: false)
     }

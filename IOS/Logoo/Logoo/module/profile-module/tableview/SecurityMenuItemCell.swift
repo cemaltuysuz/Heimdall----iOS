@@ -12,7 +12,6 @@ class SecurityMenuItemCell: UITableViewCell {
     @IBOutlet weak var itemTitle: UILabel!
     
     var item:MenuItem<SecurityItemType>!
-    weak var delegate:SecurityMenuItemCellProtocol?
     
     func initialize(option:MenuItem<SecurityItemType>){
         item = option
@@ -22,9 +21,6 @@ class SecurityMenuItemCell: UITableViewCell {
         if !item.isEnabled{
             itemTitle.textColor = .darkGray
         }
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.onSettingClick(recognizer:)))
-        self.contentView.addGestureRecognizer(recognizer)
     }
     
     override func awakeFromNib() {
@@ -34,16 +30,5 @@ class SecurityMenuItemCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
-    @objc
-    func onSettingClick(recognizer:UITapGestureRecognizer){
-        delegate?.onClick(model: item)
-    }
-}
-
-protocol SecurityMenuItemCellProtocol : AnyObject {
-    func onClick(model:MenuItem<SecurityItemType>)
 }

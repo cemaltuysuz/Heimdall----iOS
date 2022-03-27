@@ -54,7 +54,7 @@ class SecurityVC: UIViewController {
     }
 }
 
-extension SecurityVC : UITableViewDelegate, UITableViewDataSource, SecurityMenuItemCellProtocol {
+extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -71,26 +71,30 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource, SecurityMenuI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = securityItems![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SecurityMenuItemCell") as! SecurityMenuItemCell
-        cell.delegate = self
         cell.initialize(option: model)
         return cell
     }
     
-    
-    func onClick(model: MenuItem<SecurityItemType>) {
-/**
- switch model.type {
- case .CHANGE_MAIL:
-     
- case .CHANGE_PASSWORD:
-     
- case .LOGIN_TRANSACTIONS:
-     
- case .none:
-     
- }
- */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = securityItems![indexPath.row]
+        
+        if item.isEnabled {
+            switch item.type {
+            case .CHANGE_MAIL:
+                
+                break
+            case .CHANGE_PASSWORD:
+                
+                break
+            case .LOGIN_TRANSACTIONS:
+                
+                break
+            case .none:
+                break
+            }
+        }
     }
+
 }
 
 extension SecurityVC : PresenterToViewSecurityProtocol {

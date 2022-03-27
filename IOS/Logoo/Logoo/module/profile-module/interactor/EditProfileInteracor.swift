@@ -69,6 +69,9 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     }
     
     func updateUserPhoto(image: UIImage) {
-        FireStorageService.shared.pushUserPhoto(image: image)
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uid)
+            FireStorageService.shared.pushPhoto(image: image, ref: ref)
+        }
     }
 }

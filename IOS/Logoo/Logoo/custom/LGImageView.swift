@@ -15,14 +15,4 @@ class LGImageView  : UIImageView {
     override func awakeFromNib() {
         layer.cornerRadius = 10
     }
-    
-    override var image: UIImage? {
-        didSet{
-            if oldValue != nil {
-                if reDesigned != nil, reDesigned == true {
-                    self.reDesigned = nil
-                }
-            }
-        }
-    }
 }

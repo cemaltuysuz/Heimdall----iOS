@@ -26,8 +26,7 @@ class FireStorageService {
     }()
     
     
-    func pushUserPhoto(image:UIImage) {
-        if let uuid = Auth.auth().currentUser?.uid {
+    func pushPhoto(image:UIImage,ref:DocumentReference) {
             var data = Data()
             data = image.jpegData(compressionQuality: 0.8)!
             // converted the photo into data.
@@ -38,7 +37,7 @@ class FireStorageService {
             metaData.contentType = "image/jpg"
             
             // STARTED PHOTO UPLOAD
-            self.storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
+            storageRef.child(filePath).putData(data, metadata: metaData){(meta,error) in
                 if let err = error {
                     print("Error upload user photo : \(err.localizedDescription)")
                     return
@@ -49,13 +48,16 @@ class FireStorageService {
                         return
                     }
                     if let ppUrl = url?.absoluteString {
-                        self.fireStoreDB
-                            .collection(FireCollections.USER_COLLECTION)
-                            .document(uuid)
-                            .updateData([UserFieldType.USER_PHOTO.rawValue:ppUrl])
+                        let fields = [UserFieldType.USER_PHOTO.rawValue : ppUrl]
+                        FireStoreService.shared.updateDocumentByField(ref: ref, fields: fields, onCompletion: {(response) in
+                            if let status = response.status, status == true {
+                                print("Photo upload is succeded.")
+                            }else {
+                                print("Photo upload is fail.")
+                            }
+                        })
                     }
                 }
             }
         }
     }
-}
