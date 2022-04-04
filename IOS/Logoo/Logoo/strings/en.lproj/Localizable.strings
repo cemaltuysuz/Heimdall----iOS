@@ -11,3 +11,5 @@
 
 "usernameRules" = "Username can have a minimum of 7 characters and a maximum of 18 characters. Cannot contain special characters.";
 
+"change_password_message" = "A link will be sent to your e-mail address for Password Change. Do you confirm ?";
+

@@ -82,9 +82,13 @@
 "About" = "Hakkında";
 "LogOut" = "Çıkış";
 
+// Logout
 "Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
 "Yes" = "Evet";
 
+// Security
+"Change your mail adress" = "Mail adresi değişikliği";
+"Change your password" = "Şifre değişikiği";
 
 // edit profile
 
@@ -98,6 +102,8 @@
 "Change Mail" = "Mail Adresi değişikliği";
 "Change Password" = "Şifre değişikliği";
 "Login Transactions" = "Giriş Hareketleri";
+
+"change_password_message" = "Şifre Değişikliği için mail adresinize bağlantı gönderilecek. Onaylıyor musunuz ?";
 
 
 

@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class SecurityVC: UIViewController {
+class SecurityVC: BaseVC {
     @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var visualView: UIView!
     @IBOutlet weak var itemsTableView: UITableView!
@@ -80,13 +80,19 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
         if item.isEnabled {
             switch item.type {
             case .CHANGE_MAIL:
-                print("mail chane")
                 break
             case .CHANGE_PASSWORD:
-                print("pass change")
+                createBasicAlert(title: "Change Password".localized(), message: "change_password_message".localized(), onCompletion: {type in
+                    switch type {
+                    case .CONFIRM:
+                        
+                        break
+                    case .DISMISS:
+                        break
+                    }
+                })
                 break
             case .LOGIN_TRANSACTIONS:
-                print("transactions")
                 performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
                 break
             case .none:
@@ -98,6 +104,10 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SecurityVC : PresenterToViewSecurityProtocol {
+    func changePasswordResponse(response: SimpleResponse) {
+        
+    }
+    
     func securityItems(items: [MenuItem<SecurityItemType>]) {
         self.securityItems = items
     }

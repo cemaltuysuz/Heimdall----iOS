@@ -17,17 +17,22 @@ class LoginTransactionsInteractor : PresenterToInteractorLoginTransactionsProtoc
             let ref = Firestore.firestore().collection(FireCollections.LOG_COLLECTION).document(uid).collection(uid)
             
             FireStoreService.shared.getDocumentsByField(ref: ref, getByField: "event", getByValue: LogEventType.USER_SIGN_IN.rawValue, onCompletion: {(transactions:[UserTransaction?]?,error:Error?) in
+                if let error = error {
+                    print(error)
+                    return
+                }
                 
                 var nonOptionalTransactions = [UserTransaction]()
                 if let transactions = transactions {
                     for transaction in transactions {
                         if let transaction = transaction {
+                            print(transaction)
                             nonOptionalTransactions.append(transaction)
                         }
                     }
                 }
                 if !nonOptionalTransactions.isEmpty {
-                    self.presenter?.transactionsToPresenter(transactions: nonOptionalTransactions)
+                    self.presenter?.transactionsToPresenter(transactions: nonOptionalTransactions.sorted(by: {$0.timestamp ?? 0 > $1.timestamp ?? 0}))
                 }
             })
         }

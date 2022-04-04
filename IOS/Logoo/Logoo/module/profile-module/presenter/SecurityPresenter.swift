@@ -8,6 +8,14 @@
 import Foundation
 
 class SecurityPresenter : ViewToPresenterSecurityProtocol, InteractorToPresenterSecurityProtocol {
+    func resetPassword() {
+        
+    }
+    
+    func changePasswordResponse(response: SimpleResponse) {
+        
+    }
+    
     
     var view: PresenterToViewSecurityProtocol?
     var interactor: PresenterToInteractorSecurityProtocol?

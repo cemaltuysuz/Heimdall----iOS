@@ -16,13 +16,14 @@ class LoginTransactionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createModule()
+        //createModule()
         configureUI()
-        presenter?.getLoginTransactions()
+        createModule()
     }
     
     func createModule(){
         LoginTransactionRouter.createModule(ref: self)
+        presenter?.getLoginTransactions()
     }
     
     func configureUI(){
