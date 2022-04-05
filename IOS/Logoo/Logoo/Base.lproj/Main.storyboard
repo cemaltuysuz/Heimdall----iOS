@@ -1362,6 +1362,9 @@
                                                                 <buttonConfiguration key="configuration" style="filled" title="Okey">
                                                                     <color key="baseBackgroundColor" name="black700"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="okButton:" destination="KQu-Ix-Faw" eventType="touchUpInside" id="QlT-7E-2dl"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -1401,15 +1404,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HkV-iF-0Lx"/>
+                    <connections>
+                        <outlet property="currentPasswordTextField" destination="W5L-QR-RRS" id="2p0-Un-qGD"/>
+                        <outlet property="okButtonOutlet" destination="lcJ-aG-Jcj" id="iaz-Px-A7P"/>
+                        <outlet property="screenDescriptionLabel" destination="BR1-h6-nPE" id="TeA-Nx-FTO"/>
+                        <outlet property="screenTitleLabel" destination="oSl-j1-MZd" id="Hqz-qR-Sux"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOk-kN-TqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10231.884057971016" y="-1323.2142857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Change MailVC-->
         <scene sceneID="1Vs-HS-AGY">
             <objects>
-                <viewController id="Ta6-Cw-SiR" sceneMemberID="viewController">
+                <viewController id="Ta6-Cw-SiR" customClass="ChangeMailVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZcM-fQ-WXk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1476,6 +1485,9 @@
                                                                 <buttonConfiguration key="configuration" style="filled" title="Okey">
                                                                     <color key="baseBackgroundColor" name="black700"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="okButtonAction:" destination="Ta6-Cw-SiR" eventType="touchUpInside" id="99h-na-VO0"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -1516,6 +1528,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="44p-QT-lep"/>
+                    <connections>
+                        <outlet property="currentPasswordTextField" destination="JrH-ri-62A" id="g8l-Da-7Ci"/>
+                        <outlet property="newMailAdressTextField" destination="JCe-R7-dcw" id="pEc-lq-yIA"/>
+                        <outlet property="okButtonOutlet" destination="HLT-87-A4l" id="ssc-53-Yqt"/>
+                        <outlet property="screenDescriptionLabel" destination="XhN-sA-v7I" id="pdP-HH-F5Z"/>
+                        <outlet property="screenTitleLabel" destination="sej-bI-Pdn" id="ZRD-eZ-Zc7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9Q-nT-Ddq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1788,11 +1807,11 @@
             <objects>
                 <viewController id="zAk-vi-J8f" customClass="SelectInterestVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TNt-vP-98S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Interests" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZj-oA-jvJ">
-                                <rect key="frame" x="20" y="30" width="374" height="65"/>
+                                <rect key="frame" x="20" y="74" width="374" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="SoE-xF-QhX"/>
                                 </constraints>
@@ -1801,14 +1820,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" placeholder="Sport, art, daily activity ..." translatesAutoresizingMaskIntoConstraints="NO" id="JRb-aR-Aka">
-                                <rect key="frame" x="52" y="248" width="310" height="50"/>
+                                <rect key="frame" x="52" y="292" width="310" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bLW-cj-RDO"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-fX-9XH">
-                                <rect key="frame" x="52" y="323" width="310" height="350"/>
+                                <rect key="frame" x="52" y="367" width="310" height="350"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QWN-rg-WHV">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="350"/>
@@ -1880,7 +1899,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pR3-qH-4uj">
-                                <rect key="frame" x="52" y="713" width="310" height="50"/>
+                                <rect key="frame" x="52" y="757" width="310" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="maY-u3-PGA"/>
                                 </constraints>
@@ -1894,7 +1913,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27F-u3-23w">
-                                <rect key="frame" x="354" y="0.0" width="40" height="40"/>
+                                <rect key="frame" x="354" y="44" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6jV-O3-who"/>
                                     <constraint firstAttribute="width" constant="40" id="IRz-p7-Xy6"/>
@@ -1906,7 +1925,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yih-Ao-FV4">
-                                <rect key="frame" x="52" y="168" width="310" height="50"/>
+                                <rect key="frame" x="52" y="212" width="310" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kqa-O6-iR9"/>
@@ -1965,7 +1984,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need interests to match with better experience and high accuracy!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMb-TE-Ige">
-                                <rect key="frame" x="52" y="103" width="310" height="35"/>
+                                <rect key="frame" x="52" y="147" width="310" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="qeZ-bi-RyI"/>
                                 </constraints>
@@ -2146,7 +2165,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="cMF-AX-Wl6"/>
-        <segue reference="pVS-DB-Cmw"/>
+        <segue reference="NMb-CY-BrP"/>
         <segue reference="o1r-4g-XK7"/>
         <segue reference="3EM-90-pDF"/>
     </inferredMetricsTieBreakers>

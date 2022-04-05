@@ -8,22 +8,45 @@
 import UIKit
 
 class ChangeMailVC: BaseVC {
+    
+    @IBOutlet weak var screenTitleLabel: UILabel!
+    @IBOutlet weak var screenDescriptionLabel: UILabel!
+    @IBOutlet weak var newMailAdressTextField: LGTextField!
+    @IBOutlet weak var currentPasswordTextField: LGTextField!
+    @IBOutlet weak var okButtonOutlet: UIButton!
+    var presenter : ViewToPresenterChangeMailProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureUI()
+        createModule()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureUI(){
+        screenTitleLabel.text = "Change Mail".localized()
+        screenDescriptionLabel.text = "Change_Mail_Screen_Description".localized()
+        okButtonOutlet.setTitle("Okey".localized(), for: .normal)
+        newMailAdressTextField.placeholder = "Enter your new mail adress".localized()
+        currentPasswordTextField.placeholder = "Enter your current password".localized()
     }
-    */
+    
+    func createModule() {
+        ChangeMailRouter.createModule(ref: self)
+    }
+    @IBAction func okButtonAction(_ sender: Any) {
+    }
+}
 
+extension ChangeMailVC : PresenterToViewChangeMailProtocol {
+    func onStateChange(state: ChangeMailState) {
+        
+    }
+}
+
+enum ChangeMailState {
+    case CLEAR_CURTAIN
+    case CURTAIN
+    case CHANGE_PASSWORD_SUCCESS
+    case CHANGE_PASSWORD_FAIL(message:String)
 }

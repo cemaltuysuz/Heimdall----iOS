@@ -27,7 +27,7 @@ class SecurityInteractor : PresenterToInteractorSecurityProtocol {
         items.append(MenuItem(iconName: "key.fill",
                               itemTitle: "Change Password".localized(),
                               type: .CHANGE_PASSWORD,
-                              isEnabled: isEnabledButton))
+                              isEnabled: true))
         
         items.append(MenuItem(iconName: "lock.rotation",
                               itemTitle: "Login Transactions".localized(),

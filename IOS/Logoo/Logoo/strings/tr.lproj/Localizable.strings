@@ -103,7 +103,14 @@
 "Change Password" = "Şifre değişikliği";
 "Login Transactions" = "Giriş Hareketleri";
 
-"change_password_message" = "Şifre Değişikliği için mail adresinize bağlantı gönderilecek. Onaylıyor musunuz ?";
+// Change password
+
+"Change_Password_Screen_Description" = "Şifrenizi değiştirmeniz için mail adresinize bağlantı göndereceğiz. Bağlantı ile şifrenizi değiştirebilirsiniz.";
+"Enter your current password" = "Şu anki şifreniz";
+
+// Change Mail
+"Change_Mail_Screen_Description" = "Mail adresine bir doğrulama bağlantısı gönderilir. Onaylanıncaya kadar hesabınıza giriş yapamazsınız.";
+"Enter your new mail adress" = "Yeni mail adresinizi giriniz";
 
 
 

@@ -24,7 +24,7 @@ class EditProfileVC: UIViewController {
     lazy var getGenders:[String] = {
         var genders = [String]()
         
-        for gender in CONSTANT_GENDERS {
+        for gender in GenderType.allCases  {
             genders.append(gender.rawValue)
         }
         return genders
