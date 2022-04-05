@@ -26,7 +26,7 @@ class ChangePasswordVC: BaseVC {
     
     func configureUI(){
         screenTitleLabel.text = "Change Password".localized()
-        screenDescriptionLabel.text = "We will send a link to your e-mail address for password change. You can change your password via the link.".localized()
+        screenDescriptionLabel.text = "Change_Password_Screen_Description".localized()
         currentPasswordTextField.placeholder = "Enter your current password".localized()
         okButtonOutlet.setTitle("Okey".localized(), for: .normal)
     }
@@ -35,7 +35,7 @@ class ChangePasswordVC: BaseVC {
         ChangePasswordRouter.createModule(ref: self)
     }
     @IBAction func okButton(_ sender: Any) {
-        
+        showCurtain()
     }
 }
 
@@ -43,13 +43,16 @@ extension ChangePasswordVC : PresenterToViewChangePasswordProtocol {
     func onStateChange(state: ChangePasswordState) {
         switch state {
         case .CLEAR_CURTAIN:
-            <#code#>
+            closeCurtain()
         case .CURTAIN:
-            <#code#>
+            showCurtain()
         case .CHANGE_PASSWORD_SUCCESS:
-            <#code#>
+            createAlertNotify(title: "Success".localized(), message: "The link was sent successfully. Check your inbox.".localized(), onCompletion: { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.navigationController?.popViewController(animated: true)
+            })
         case .CHANGE_PASSWORD_FAIL( _):
-            <#code#>
+            break
         }
     }
 }

@@ -13,3 +13,14 @@
 
 "change_password_message" = "A link will be sent to your e-mail address for Password Change. Do you confirm ?";
 
+
+
+// Change Password
+"Change_Password_Screen_Description" = "We will send a link to your e-mail address for password change. You can change your password via the link.";
+"Enter your current password" = "Enter your current password";
+
+// Change Mail
+"Change_Mail_Screen_Description" = "A verification link will be sent to your new e-mail address. You will not be able to log in until your account has been approved.";
+"Enter your new mail adress" = "Enter your new mail adress";
+
+

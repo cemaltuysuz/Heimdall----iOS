@@ -25,7 +25,7 @@ class ChangeMailVC: BaseVC {
     
     func configureUI(){
         screenTitleLabel.text = "Change Mail".localized()
-        screenDescriptionLabel.text = "A verification link will be sent to your new e-mail address. You will not be able to log in until your account has been approved.".localized()
+        screenDescriptionLabel.text = "Change_Mail_Screen_Description".localized()
         okButtonOutlet.setTitle("Okey".localized(), for: .normal)
         newMailAdressTextField.placeholder = "Enter your new mail adress".localized()
         currentPasswordTextField.placeholder = "Enter your current password".localized()
