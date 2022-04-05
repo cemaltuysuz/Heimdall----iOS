@@ -80,17 +80,10 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
         if item.isEnabled {
             switch item.type {
             case .CHANGE_MAIL:
+                performSegue(withIdentifier: "securityToChangeMailVC", sender: nil)
                 break
             case .CHANGE_PASSWORD:
-                createBasicAlert(title: "Change Password".localized(), message: "change_password_message".localized(), onCompletion: {type in
-                    switch type {
-                    case .CONFIRM:
-                        
-                        break
-                    case .DISMISS:
-                        break
-                    }
-                })
+                performSegue(withIdentifier: "SecurityToChangePasswordVC", sender: nil)
                 break
             case .LOGIN_TRANSACTIONS:
                 performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
@@ -104,10 +97,6 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SecurityVC : PresenterToViewSecurityProtocol {
-    func changePasswordResponse(response: SimpleResponse) {
-        
-    }
-    
     func securityItems(items: [MenuItem<SecurityItemType>]) {
         self.securityItems = items
     }

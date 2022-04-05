@@ -21,10 +21,9 @@ class SelectInterestVC: UIViewController {
     var hobbyList:[InterestSelectionModel]?
     var alreadySelectedList:[String]?
     var presenter:ViewToPresenterInterestSelectProtocol?
-    
+    var isFirst:Bool? = false
     var alert:CustomAlert?
     
-    var userId:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,9 +31,7 @@ class SelectInterestVC: UIViewController {
         alreadySelectedList = [String]()
         
         SelectInterestRouter.createModule(ref: self)
-        if let uuid = userId {
-            presenter?.getInterests(uuid: uuid)
-        }
+        presenter?.getInterests()
         
          self.interestSelectionCollectionView.delegate = self
          self.interestSelectionCollectionView.dataSource = self
@@ -55,9 +52,13 @@ class SelectInterestVC: UIViewController {
         }
          }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
-        performSegue(withIdentifier: SelectInterestVCSegues
-                        .interestSelectionToHomeVC
-                        .rawValue, sender: nil)
+        if isFirst ?? false {
+            performSegue(withIdentifier: SelectInterestVCSegues
+                            .interestSelectionToHomeVC
+                            .rawValue, sender: nil)
+        }else {
+            dismiss(animated: true)
+        }
     }
     
 }
@@ -79,38 +80,50 @@ extension SelectInterestVC : UISearchBarDelegate {
 
 extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
     func userAlreadyHobbies(alreadyList: [String]) {
-        self.alreadySelectedList = alreadyList
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {return}
+            strongSelf.alreadySelectedList = alreadyList
+            strongSelf.interestSelectedCollectionView.reloadData()
+        }
     }
     
     func allHobies(hobbyList: [InterestSelectionModel]) {
-        DispatchQueue.main.async {
-            self.hobbyList = hobbyList
-            self.interestSelectionCollectionView.reloadData()
-            self.interestsTableViewIndicator.stopAnimating()
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {return}
+            strongSelf.hobbyList = hobbyList
+            strongSelf.interestSelectionCollectionView.reloadData()
+            strongSelf.interestsTableViewIndicator.stopAnimating()
         }
     }
     
     func indicatorVisibility(status: Bool) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {return}
             if status {
-                self.interestsTableViewIndicator.startAnimating()
+                strongSelf.interestsTableViewIndicator.startAnimating()
             }else {
-                self.interestsTableViewIndicator.stopAnimating()
+                strongSelf.interestsTableViewIndicator.stopAnimating()
             }
         }
     }
     
     func saveInterestsResponse(resp: Resource<Any>) {
-        DispatchQueue.main.async {
-            self.alert?.dismissAlert()
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.alert?.dismissAlert()
             if resp.status == .SUCCESS {
-                self.performSegue(withIdentifier: SelectInterestVCSegues
-                                .interestSelectionToHomeVC
-                                .rawValue, sender: nil)
+                if strongSelf.isFirst ?? false {
+                    strongSelf.performSegue(withIdentifier: SelectInterestVCSegues
+                                    .interestSelectionToHomeVC
+                                    .rawValue, sender: nil)
+                }else {
+                    strongSelf.dismiss(animated: true)
+                }
             }else {
                 print("Error when save interest : \(resp.message!)")
             }
-            self.interestsTableViewIndicator.stopAnimating()
+            strongSelf.interestsTableViewIndicator.stopAnimating()
         }
     }
 }

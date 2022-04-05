@@ -63,7 +63,7 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, Profil
             
             break
         case .INTERESTS:
-            
+            performSegue(withIdentifier: "SettingsToInterestVC", sender: nil)
             break
         case .NOTIFICATIONS:
             

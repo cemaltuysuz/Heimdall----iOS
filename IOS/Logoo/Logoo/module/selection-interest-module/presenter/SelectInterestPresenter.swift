@@ -25,8 +25,8 @@ class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, Vie
         interactor?.searchInterest(searchText: searchText)
     }
     
-    func getInterests(uuid: String) {
-        interactor?.getInterests(uuid: uuid)
+    func getInterests() {
+        interactor?.getInterests()
     }
     
     func indicatorVisibility(status: Bool) {
