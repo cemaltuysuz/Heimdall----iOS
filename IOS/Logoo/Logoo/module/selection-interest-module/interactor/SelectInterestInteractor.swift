@@ -21,10 +21,11 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
         self.allHobbies = [InterestSelectionModel]()
     }
     
-    func getInterests(uuid: String) {
+    func getInterests() {
         var alreadyHobbies = [String]()
         var hobbyList = [InterestSelectionModel]()
         
+        guard let uuid = Auth.auth().currentUser?.uid else {return}
         
         dbRef.collection("users").document(uuid).getDocument{ (document,error) in
             if let error = error {

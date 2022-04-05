@@ -9,7 +9,6 @@ import Foundation
 import FirebaseAuth
 
 class SecurityInteractor : PresenterToInteractorSecurityProtocol {
-    
     var presenter: InteractorToPresenterSecurityProtocol?
     
     func getSecurityItems() {
@@ -31,9 +30,8 @@ class SecurityInteractor : PresenterToInteractorSecurityProtocol {
                               isEnabled: isEnabledButton))
         
         items.append(MenuItem(iconName: "lock.rotation",
-                              itemTitle: "Login Transactions",
+                              itemTitle: "Login Transactions".localized(),
                               type: .LOGIN_TRANSACTIONS,
-                              isEnabled: true,
                               warningMessage: ""))
         
         presenter?.securityItems(items: items)

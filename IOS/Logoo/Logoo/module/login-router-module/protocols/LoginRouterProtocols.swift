@@ -22,13 +22,13 @@ protocol PresenterToInteractorLoginRouterProtocol {
 
 protocol InteractorToPresenterLoginRouterProtocol {
     func loginToHomeVC()
-    func loginToInterestSelectionVC(userId:String)
+    func loginToInterestSelectionVC()
     func loginToErrorVC(message:String)
 }
 
 protocol PresenterToViewLoginRouterProtocol{
     func loginToHomeVC()
-    func loginToInterestSelectionVC(userId:String)
+    func loginToInterestSelectionVC()
     func loginToErrorVC(message:String)
 }
 

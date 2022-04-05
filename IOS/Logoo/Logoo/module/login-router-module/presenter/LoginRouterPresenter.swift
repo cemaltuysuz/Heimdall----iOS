@@ -16,8 +16,8 @@ class LoginRouterPresenter : InteractorToPresenterLoginRouterProtocol, ViewToPre
         view?.loginToHomeVC()
     }
 
-    func loginToInterestSelectionVC(userId: String) {
-        view?.loginToInterestSelectionVC(userId: userId)
+    func loginToInterestSelectionVC() {
+        view?.loginToInterestSelectionVC()
 
     }
     

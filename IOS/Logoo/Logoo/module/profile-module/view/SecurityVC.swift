@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class SecurityVC: UIViewController {
+class SecurityVC: BaseVC {
     @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var visualView: UIView!
     @IBOutlet weak var itemsTableView: UITableView!
@@ -80,13 +80,12 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
         if item.isEnabled {
             switch item.type {
             case .CHANGE_MAIL:
-                print("mail chane")
+                performSegue(withIdentifier: "securityToChangeMailVC", sender: nil)
                 break
             case .CHANGE_PASSWORD:
-                print("pass change")
+                performSegue(withIdentifier: "SecurityToChangePasswordVC", sender: nil)
                 break
             case .LOGIN_TRANSACTIONS:
-                print("transactions")
                 performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
                 break
             case .none:

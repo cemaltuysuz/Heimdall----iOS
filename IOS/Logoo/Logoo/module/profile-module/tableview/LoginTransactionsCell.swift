@@ -14,15 +14,17 @@ class LoginTransactionsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
     func configure(transaction:UserTransaction) {
-        transactionTitleLabel.text = transaction.systemInfo?.operatingSystem
-        if let image = transaction.getOSIcon() {
+        transactionIconImageView.tintColor = UIColor(named: "black700")
+        if let system = transaction.systemInfo, let os = system.operatingSystem, let device = system.deviceModel, let image = transaction.getOSIcon() {
+            transactionTitleLabel.text = "\(device) (\(os))"
             transactionIconImageView.image = image
         }
-        transactionDateLabel.text = transaction.getTimeAsDate()?.toStringWithPattern(pattern: "d MMM - yyyy")
+        transactionDateLabel.text = transaction.getTimeAsDate()?.toStringWithPattern(pattern: "dd-MMM-yyyy HH:mm")
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

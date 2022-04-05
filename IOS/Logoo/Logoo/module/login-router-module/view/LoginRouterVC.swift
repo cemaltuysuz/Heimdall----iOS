@@ -23,7 +23,7 @@ class LoginRouterVC: UIViewController {
         if segue.identifier == "loginRouterToInterestSelectionVC" {
             if let uuid = sender as? String {
                 let targetVC = segue.destination as! SelectInterestVC
-                targetVC.userId = uuid
+                targetVC.isFirst = true
             }
         }
     }
@@ -34,8 +34,8 @@ extension LoginRouterVC : PresenterToViewLoginRouterProtocol {
         performSegue(withIdentifier: "loginRouterToHomeVC", sender: nil)
     }
     
-    func loginToInterestSelectionVC(userId:String) {
-        performSegue(withIdentifier: "loginRouterToInterestSelectionVC", sender: userId)
+    func loginToInterestSelectionVC() {
+        performSegue(withIdentifier: "loginRouterToInterestSelectionVC", sender: nil)
     }
     
     func loginToErrorVC(message:String) {

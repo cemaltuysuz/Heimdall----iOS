@@ -11,7 +11,7 @@ protocol ViewToPresenterInterestSelectProtocol {
     var view: PresenterToViewInterestSelectProtocol? {get set}
     var interactor: PresenterToInteractorInterestSelectProtocol? {get set}
     
-    func getInterests(uuid:String)
+    func getInterests()
     func saveInterests(list:[String])
     func searchInterest(searchText:String)
 }
@@ -19,7 +19,7 @@ protocol ViewToPresenterInterestSelectProtocol {
 protocol PresenterToInteractorInterestSelectProtocol {
     var presenter: InteractorToPresenterInterestSelectProtocol? {get set}
     
-    func getInterests(uuid:String)
+    func getInterests()
     func saveInterests(list:[String])
     func searchInterest(searchText:String)
 }

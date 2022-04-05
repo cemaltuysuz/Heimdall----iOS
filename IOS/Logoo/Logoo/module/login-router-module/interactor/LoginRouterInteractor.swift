@@ -25,7 +25,7 @@ class LoginRouterInteractor : PresenterToInteractorLoginRouterProtocol{
                 if let document = document, document.exists {
                     let userBio = document.data()?["userHobbies"] as? String ?? ""
                     if userBio.isEmpty {
-                        self.presenter?.loginToInterestSelectionVC(userId: userID)
+                        self.presenter?.loginToInterestSelectionVC()
                     }else {
                         self.presenter?.loginToHomeVC()
                     }

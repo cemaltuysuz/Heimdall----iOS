@@ -88,6 +88,41 @@ class FireStoreService {
         }
     }
     
+    public func getCollection<T>(ref:CollectionReference,onCompletion: @escaping ([T?]?, Error?) -> Void) where T:Codable {
+        var docs:[T] = []
+        
+        ref.getDocuments(completion: { (query, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                
+                for document in query!.documents {
+                    print("\(document.documentID) => \(document.data())") // This line returns the snapshot documents correctly!
+                    let doc = document as QueryDocumentSnapshot?
+                    let result = Result {
+                        try doc.flatMap {
+                            try $0.data(as: T.self)
+                        }
+                    }
+                    if let error = error {
+                        print(error)
+                    }
+                    switch result {
+                    case .success(let uploadDocument) :
+                        if let uploadDocument = uploadDocument {
+                            docs.append(uploadDocument)
+                        } else {
+                        }
+                    case .failure(let error):
+                        print("Error decoding Document \(error)")
+                        onCompletion(nil, error)
+                    }
+                }
+                onCompletion(docs, nil)
+            }
+        })
+    }
+    
     public func updateDocumentByField(ref:DocumentReference,fields:[String:String],onCompletion: @escaping (SimpleResponse) -> Void) {
             ref.updateData(fields) {error in
                 if let error = error {
