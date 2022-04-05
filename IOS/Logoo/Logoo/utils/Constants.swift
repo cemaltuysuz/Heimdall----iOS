@@ -7,10 +7,6 @@
 
 import Foundation
 
-// Some data
-
-let CONSTANT_GENDERS = [GenderType.Male, GenderType.Female, GenderType.HomoFemale, GenderType.HomoMale, GenderType.Other]
-
 // For Util Constants
 enum Constants {
     enum UserDefault : String {
@@ -39,3 +35,5 @@ class FireCollections {
     static let MESSAGE_COLLECTION = "messages"
     static let LOCATION_LOCATION = "locations"
 }
+
+
