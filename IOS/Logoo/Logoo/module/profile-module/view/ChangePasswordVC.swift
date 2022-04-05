@@ -8,22 +8,43 @@
 import UIKit
 
 class ChangePasswordVC: BaseVC {
+    
+    var presenter:ViewToPresenterChangePasswordProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureUI()
+        createModule()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureUI(){
+        
     }
-    */
+    
+    func createModule() {
+        ChangePasswordRouter.createModule(ref: self)
+    }
+}
 
+extension ChangePasswordVC : PresenterToViewChangePasswordProtocol {
+    func onStateChange(state: ChangePasswordState) {
+        switch state {
+        case .CLEAR_CURTAIN:
+            <#code#>
+        case .CURTAIN:
+            <#code#>
+        case .CHANGE_PASSWORD_SUCCESS:
+            <#code#>
+        case .CHANGE_PASSWORD_FAIL( _):
+            <#code#>
+        }
+    }
+}
+
+enum ChangePasswordState {
+    case CLEAR_CURTAIN
+    case CURTAIN
+    case CHANGE_PASSWORD_SUCCESS
+    case CHANGE_PASSWORD_FAIL(message:String)
 }

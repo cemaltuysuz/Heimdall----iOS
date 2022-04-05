@@ -179,6 +179,14 @@
 		15F6707527FB238F0083E58C /* BottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6707427FB238F0083E58C /* BottomSheetVC.swift */; };
 		15F6707D27FC359F0083E58C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6707C27FC359F0083E58C /* ChangePasswordVC.swift */; };
 		15F6707F27FC35B90083E58C /* ChangeMailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6707E27FC35B90083E58C /* ChangeMailVC.swift */; };
+		15F6708127FC59980083E58C /* ChangePasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708027FC59980083E58C /* ChangePasswordProtocols.swift */; };
+		15F6708327FC5D050083E58C /* ChangeMailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708227FC5D050083E58C /* ChangeMailProtocols.swift */; };
+		15F6708527FC5DCD0083E58C /* ChangePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708427FC5DCD0083E58C /* ChangePasswordRouter.swift */; };
+		15F6708727FC5DD90083E58C /* ChangeMailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708627FC5DD90083E58C /* ChangeMailRouter.swift */; };
+		15F6708927FC5E1B0083E58C /* ChangeMailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708827FC5E1B0083E58C /* ChangeMailPresenter.swift */; };
+		15F6708B27FC5E2A0083E58C /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */; };
+		15F6708D27FC5F180083E58C /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */; };
+		15F6708F27FC5F2C0083E58C /* ChangeMailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */; };
 		15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */; };
 		15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */; };
 		15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */; };
@@ -376,6 +384,14 @@
 		15F6707427FB238F0083E58C /* BottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetVC.swift; sourceTree = "<group>"; };
 		15F6707C27FC359F0083E58C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		15F6707E27FC35B90083E58C /* ChangeMailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailVC.swift; sourceTree = "<group>"; };
+		15F6708027FC59980083E58C /* ChangePasswordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordProtocols.swift; sourceTree = "<group>"; };
+		15F6708227FC5D050083E58C /* ChangeMailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailProtocols.swift; sourceTree = "<group>"; };
+		15F6708427FC5DCD0083E58C /* ChangePasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRouter.swift; sourceTree = "<group>"; };
+		15F6708627FC5DD90083E58C /* ChangeMailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailRouter.swift; sourceTree = "<group>"; };
+		15F6708827FC5E1B0083E58C /* ChangeMailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailPresenter.swift; sourceTree = "<group>"; };
+		15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordInteractor.swift; sourceTree = "<group>"; };
+		15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailInteractor.swift; sourceTree = "<group>"; };
 		15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterProtocols.swift; sourceTree = "<group>"; };
 		15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterInteractor.swift; sourceTree = "<group>"; };
 		15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterPresenter.swift; sourceTree = "<group>"; };
@@ -1323,6 +1339,8 @@
 				1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */,
 				1531F94A27E09C4800FA53AE /* SecurityInteractor.swift */,
 				151CBA1727F07E930088E548 /* LoginTransactionsInteractor.swift */,
+				15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */,
+				15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -1334,6 +1352,8 @@
 				1584958F27CE25FB00ED57B6 /* EditProfileRouter.swift */,
 				1531F95027E09EA600FA53AE /* SecurityRouter.swift */,
 				151CBA1B27F080C10088E548 /* LoginTransactionsRouter.swift */,
+				15F6708427FC5DCD0083E58C /* ChangePasswordRouter.swift */,
+				15F6708627FC5DD90083E58C /* ChangeMailRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -1358,6 +1378,8 @@
 				1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */,
 				1531F94C27E09C5800FA53AE /* SecurityPresenter.swift */,
 				151CBA1927F07EF90088E548 /* LoginTransactionsPresenter.swift */,
+				15F6708827FC5E1B0083E58C /* ChangeMailPresenter.swift */,
+				15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -1369,6 +1391,8 @@
 				1584958927CE229400ED57B6 /* EditProfileProtocols.swift */,
 				1531F94E27E09C8500FA53AE /* SecurityProtocols.swift */,
 				151CBA1527F07C520088E548 /* LoginTransactionsProtocols.swift */,
+				15F6708027FC59980083E58C /* ChangePasswordProtocols.swift */,
+				15F6708227FC5D050083E58C /* ChangeMailProtocols.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -1665,8 +1689,10 @@
 				15F461F627F9E3CB00FFE46D /* BaseVC.swift in Sources */,
 				15CA338827E9F48D0066C95B /* LGImageView.swift in Sources */,
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
+				15F6708127FC59980083E58C /* ChangePasswordProtocols.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
 				151E8D3227D109F2009CDE23 /* Validatable.swift in Sources */,
+				15F6708327FC5D050083E58C /* ChangeMailProtocols.swift in Sources */,
 				15D5614627D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift in Sources */,
 				1531F95527E0A82800FA53AE /* LoginSystemType.swift in Sources */,
 				15D6E03B27D23B7600011A36 /* SimpleResponse.swift in Sources */,
@@ -1682,6 +1708,7 @@
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
 				15F272EF27CBA90B005BBC78 /* ProfileSettingsPresenter.swift in Sources */,
+				15F6708927FC5E1B0083E58C /* ChangeMailPresenter.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
 				15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */,
@@ -1695,6 +1722,7 @@
 				15F272ED27CBA806005BBC78 /* ProfileSettingsProtocols.swift in Sources */,
 				150C8FF327995774000DAFBE /* OnBoardVC.swift in Sources */,
 				15D5614A27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift in Sources */,
+				15F6708D27FC5F180083E58C /* ChangePasswordInteractor.swift in Sources */,
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				151CBA1427F07C180088E548 /* LoginTransactionsVC.swift in Sources */,
 				151CBA1627F07C520088E548 /* LoginTransactionsProtocols.swift in Sources */,
@@ -1707,6 +1735,7 @@
 				15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */,
 				151CBA1A27F07EF90088E548 /* LoginTransactionsPresenter.swift in Sources */,
 				15EACB2027AC29050089779A /* RegisterWithMailProtocols.swift in Sources */,
+				15F6708727FC5DD90083E58C /* ChangeMailRouter.swift in Sources */,
 				156F044527B3A40C00D37039 /* LoginProtocols.swift in Sources */,
 				150FF44527E1DB7A0094B359 /* FirebaseLoggerService.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
@@ -1726,6 +1755,7 @@
 				151E8D3027D109BC009CDE23 /* BaseValidator.swift in Sources */,
 				15C64C4227BD27A30088DD35 /* ResetPasswordPresenter.swift in Sources */,
 				150C8FEF2799521F000DAFBE /* Constants.swift in Sources */,
+				15F6708B27FC5E2A0083E58C /* ChangePasswordPresenter.swift in Sources */,
 				151CBA1827F07E930088E548 /* LoginTransactionsInteractor.swift in Sources */,
 				1531F95127E09EA600FA53AE /* SecurityRouter.swift in Sources */,
 				1531F94B27E09C4800FA53AE /* SecurityInteractor.swift in Sources */,
@@ -1750,6 +1780,7 @@
 				1531F95327E0A7D800FA53AE /* UserTransaction.swift in Sources */,
 				15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */,
 				1531F94D27E09C5800FA53AE /* SecurityPresenter.swift in Sources */,
+				15F6708527FC5DCD0083E58C /* ChangePasswordRouter.swift in Sources */,
 				1531F94627E0846600FA53AE /* LoginTransactionsCell.swift in Sources */,
 				153EA97A27A0008D00871246 /* InboxCollectionViewCell.swift in Sources */,
 				15983C0327997C1B00903073 /* LoginPrefVC.swift in Sources */,
@@ -1774,6 +1805,7 @@
 				15D6E03927D2339500011A36 /* Reformable.swift in Sources */,
 				15C64C3727BD1DA80088DD35 /* ResetPasswordVC.swift in Sources */,
 				153EA98127A0468500871246 /* LoginVC.swift in Sources */,
+				15F6708F27FC5F2C0083E58C /* ChangeMailInteractor.swift in Sources */,
 				156F044727B3A58900D37039 /* LoginInteractor.swift in Sources */,
 				15F6707F27FC35B90083E58C /* ChangeMailVC.swift in Sources */,
 				15C64C4E27BE24A70088DD35 /* WelcomeVCProtocols.swift in Sources */,

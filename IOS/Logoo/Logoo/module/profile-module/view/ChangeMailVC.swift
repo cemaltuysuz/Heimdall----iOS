@@ -8,22 +8,34 @@
 import UIKit
 
 class ChangeMailVC: BaseVC {
+    
+    var presenter : ViewToPresenterChangeMailProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureUI()
+        createModule()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureUI(){
+        
     }
-    */
+    
+    func createModule() {
+        ChangeMailRouter.createModule(ref: self)
+    }
+}
 
+extension ChangeMailVC : PresenterToViewChangeMailProtocol {
+    func onStateChange(state: ChangeMailState) {
+        
+    }
+}
+
+enum ChangeMailState {
+    case CLEAR_CURTAIN
+    case CURTAIN
+    case CHANGE_PASSWORD_SUCCESS
+    case CHANGE_PASSWORD_FAIL(message:String)
 }
