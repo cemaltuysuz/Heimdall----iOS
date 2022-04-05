@@ -9,6 +9,12 @@ import UIKit
 
 class ChangePasswordVC: BaseVC {
     
+    @IBOutlet weak var screenTitleLabel: UILabel!
+    @IBOutlet weak var screenDescriptionLabel: UILabel!
+    @IBOutlet weak var currentPasswordTextField: LGTextField!
+    @IBOutlet weak var okButtonOutlet: UIButton!
+    
+    
     var presenter:ViewToPresenterChangePasswordProtocol?
 
     override func viewDidLoad() {
@@ -19,11 +25,17 @@ class ChangePasswordVC: BaseVC {
     }
     
     func configureUI(){
-        
+        screenTitleLabel.text = "Change Password".localized()
+        screenDescriptionLabel.text = "We will send a link to your e-mail address for password change. You can change your password via the link.".localized()
+        currentPasswordTextField.placeholder = "Enter your current password".localized()
+        okButtonOutlet.setTitle("Okey".localized(), for: .normal)
     }
     
     func createModule() {
         ChangePasswordRouter.createModule(ref: self)
+    }
+    @IBAction func okButton(_ sender: Any) {
+        
     }
 }
 
