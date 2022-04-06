@@ -12,13 +12,13 @@ protocol ViewToPresenterChangePasswordProtocol {
     var interactor:PresenterToInteractorChangePasswordProtocol? {get set}
     var view:PresenterToViewChangePasswordProtocol? {get set}
     
-    func resetPasswordRequest(currentPassword:String)
+    func resetPasswordRequest(currentPassword:String,newPassword:String)
 }
 
 protocol PresenterToInteractorChangePasswordProtocol {
     var presenter:InteractorToPresenterChangePasswordProtocol? {get set}
     
-    func resetPasswordRequest(currentPassword:String)
+    func resetPasswordRequest(currentPassword:String,newPassword:String)
 }
 
 protocol InteractorToPresenterChangePasswordProtocol {

@@ -5,6 +5,10 @@
   Created by cemal tüysüz on 14.02.2022.
   
 */
+// global
+
+"yes" = "evet";
+
 
 // On Board Localization
 
@@ -72,7 +76,7 @@
 "Welcome to Logoo. Missing information has been detected in your subscription. Complete this information ?" = "Logoo'ya hoşgeldiniz. Üyeliğinizde eksik bilgi tespit edildi. Bu bilgileri tamamlamak ister misiniz ?";
 "Complete" = "Tamamla";
 
-// profile settings
+//  settings
 "Security" = "Güvenlik";
 "Privacy" = "Gizlilik";
 "Notifications" = "Bildirimler";
@@ -82,7 +86,7 @@
 "About" = "Hakkında";
 "LogOut" = "Çıkış";
 
-// Logout
+"Account sign out" = "Hesaptan Çıkış";
 "Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
 "Yes" = "Evet";
 
@@ -105,8 +109,14 @@
 
 // Change password
 
-"Change_Password_Screen_Description" = "Şifrenizi değiştirmeniz için mail adresinize bağlantı göndereceğiz. Bağlantı ile şifrenizi değiştirebilirsiniz.";
+"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri doğru şekilde doldurunuz.";
 "Enter your current password" = "Şu anki şifreniz";
+"Please fill in the missing fields" = "Lütfen eksik alanları doldurun.";
+"Passwords entered must be equal." = "Girilen parolalar eşit olmalıdır.";
+"An error occurred while changing the password. Try again later." = "Şifre değiştirilirken bir hata meydana geldi. Daha sonra tekrar deneyiniz.";
+"The request was denied because the trial limit was exceeded. Try again later." = "Deneme sınırı aşıldı. Lütfen daha sonra tekrar deneyiniz.";
+"Wrong Password" = "Şifre yanlış.";
+"Your password has been successfully updated." = "Şifreniz başarılı bir şekilde güncellendi.";
 
 // Change Mail
 "Change_Mail_Screen_Description" = "Mail adresine bir doğrulama bağlantısı gönderilir. Onaylanıncaya kadar hesabınıza giriş yapamazsınız.";

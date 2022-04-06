@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileSettingsVC: UIViewController {
+class ProfileSettingsVC: BaseVC {
     
     @IBOutlet weak var optionsTableView: UITableView!
     var presenter:ViewToPresenterProfileSettingsProtocol?
@@ -75,7 +75,7 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, Profil
             
             break
         case .LOGOUT:
-            self.exitUser()
+            exitUser()
             break
         case .none:
             break
@@ -89,21 +89,15 @@ extension ProfileSettingsVC {
     
     // on Exit
     func exitUser() {
-        let alert = UIAlertController(title: "Cancel".localized(),
-                                      message: "Are you sure you want to log out?".localized(),
-                                      preferredStyle: .alert)
-        
-        let doneAction = UIAlertAction(title: "Yes".localized(), style: .default, handler: {_ in
-            self.presenter?.exitUser()
+        createBasicAlert(title: "Account sign out".localized(), message: "Are you sure you want to log out?".localized(), okTitle: "Yes".localized(), onCompletion: {type in
+            switch type {
+            case .CONFIRM:
+                self.presenter?.exitUser()
+                break
+            case .DISMISS:
+                break
+            }
         })
-        
-        let cancelAction = UIAlertAction(title: "Cancel".localized(),
-                                         style: .cancel, handler: {_ in })
-        
-        alert.addAction(doneAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: {
-            
-        })
+        navigationController?.popToRootViewController(animated: true)
     }
 }

@@ -31,12 +31,12 @@ class BaseVC: UIViewController {
         super.viewDidLoad()}
     
     // MARK: - Basic Alert | Parameters -> Title, Message And Actiton
-    func createBasicAlert(title:String,message:String,onCompletion: @escaping (BasicAlertActionType) -> Void){
+    func createBasicAlert(title:String,message:String,okTitle:String,onCompletion: @escaping (BasicAlertActionType) -> Void){
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: "Okey".localized(), style: .default, handler: {_ in
+        let okButton = UIAlertAction(title: okTitle, style: .default, handler: {_ in
             onCompletion(.CONFIRM)
         })
         
@@ -51,12 +51,12 @@ class BaseVC: UIViewController {
     }
     
     // MARK: - Basic Alert Sheet | Parameters -> Title, Message And Actiton
-    func createBasicAlertSheet(title:String,message:String,onCompletion: @escaping (BasicAlertActionType) -> Void){
+    func createBasicAlertSheet(title:String,message:String,okTitle:String,onCompletion: @escaping (BasicAlertActionType) -> Void){
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .actionSheet)
         
-        let okButton = UIAlertAction(title: "Okey".localized(), style: .default, handler: {_ in
+        let okButton = UIAlertAction(title: okTitle, style: .default, handler: {_ in
             onCompletion(.CONFIRM)
         })
         
@@ -74,9 +74,9 @@ class BaseVC: UIViewController {
     func createAlertNotify(title:String,message:String,onCompletion: @escaping () -> Void){
         let alert = UIAlertController(title: title,
                                       message: message,
-                                      preferredStyle: .actionSheet)
+                                      preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: "Okey".localized(), style: .default, handler: {_ in
+        let okButton = UIAlertAction(title: "Close".localized(), style: .cancel, handler: {_ in
             onCompletion()
         })
         
