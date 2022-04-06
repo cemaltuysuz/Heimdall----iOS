@@ -16,10 +16,24 @@ class WelcomeInteractor : PresenterToInteractorWelcomeProtocol{
         if !UDService.shared.onboardVisibilityInfo() {
             presenter?.goToOnBoard()
         }else {
-            if let user = Auth.auth().currentUser, user.isEmailVerified {
-                    presenter?.goToHome()
+            guard let user = Auth.auth().currentUser, user.isEmailVerified else {
+                do {
+                    try Auth.auth().signOut()
+                }catch{
+                    print(error)
+                }
+                presenter?.goToLoginPref()
+                return
             }
-             presenter?.goToLoginPref()
+            Auth.auth().currentUser?.reload(completion: { err in
+                if let error = err {
+                    // error
+                }
+                // success
+            })
+            
+            print("USER MAİL : \(user.email ?? "unfound")")
+            presenter?.goToHome()
         }
     }
 }

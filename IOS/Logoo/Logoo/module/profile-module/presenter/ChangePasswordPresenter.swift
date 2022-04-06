@@ -11,8 +11,8 @@ class ChangePasswordPresenter : ViewToPresenterChangePasswordProtocol, Interacto
     var interactor: PresenterToInteractorChangePasswordProtocol?
     var view: PresenterToViewChangePasswordProtocol?
     
-    func resetPasswordRequest(currentPassword: String) {
-        interactor?.resetPasswordRequest(currentPassword: currentPassword)
+    func resetPasswordRequest(currentPassword: String,newPassword:String) {
+        interactor?.resetPasswordRequest(currentPassword: currentPassword, newPassword: newPassword)
     }
     
     func onStateChange(state: ChangePasswordState) {

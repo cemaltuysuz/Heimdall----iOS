@@ -11,6 +11,7 @@ class ChangeMailVC: BaseVC {
     
     @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var screenDescriptionLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var newMailAdressTextField: LGTextField!
     @IBOutlet weak var currentPasswordTextField: LGTextField!
     @IBOutlet weak var okButtonOutlet: UIButton!
@@ -35,18 +36,62 @@ class ChangeMailVC: BaseVC {
         ChangeMailRouter.createModule(ref: self)
     }
     @IBAction func okButtonAction(_ sender: Any) {
+        if let currentPass = currentPasswordTextField.text, !currentPass.isEmpty, let newMail = newMailAdressTextField.text, !newMail.isEmpty {
+            let validateResult = MailValidator(mail: newMail).validate()
+            if validateResult.isSuccess {
+                presenter?.reAuthRequest(currentPassword: currentPass)
+                errorLabel.isHidden = true
+                errorLabel.text = ""
+            }else {
+                errorLabel.text = validateResult.message
+                errorLabel.isHidden = false
+            }
+        }else {
+            errorLabel.text = "Please fill in the missing fields".localized()
+            errorLabel.isHidden = false
+        }
     }
 }
 
 extension ChangeMailVC : PresenterToViewChangeMailProtocol {
     func onStateChange(state: ChangeMailState) {
-        
+        closeCurtain()
+        switch state {
+        case .CURTAIN:
+            showCurtain()
+            break
+        case .RE_AUTH_FAIL(let message):
+            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            break
+        case .CHANGE_MAIL_FAIL(let message):
+            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            break
+        case .SUCCESS_RE_AUTH(let oldMail):
+            let message = "Do you approve the update of your e-mail address?".localized() + "\n" + "Old :".localized() + "\(oldMail)" + "\n" + "New :".localized() + newMailAdressTextField.text!
+            createBasicAlertSheet(title: "Alert".localized(), message: message, okTitle: "Approve".localized(), onCompletion: { type in
+                switch type {
+                case .CONFIRM:
+                    self.showCurtain()
+                    self.presenter?.doChangeMail(mail: self.newMailAdressTextField.text!,pass: self.currentPasswordTextField.text!)
+                    break
+                case .DISMISS:
+                    break
+                }
+            })
+            break
+        case .SUCCESS_MAIL_CHANGE:
+            createAlertNotify(title: "Success".localized(), message: "do_change_mail_success_message".localized() + "\n\(newMailAdressTextField.text!)".localized(), onCompletion: {
+                self.navigationController?.popViewController(animated: true)
+            })
+            break
+        }
     }
 }
 
 enum ChangeMailState {
-    case CLEAR_CURTAIN
     case CURTAIN
-    case CHANGE_PASSWORD_SUCCESS
-    case CHANGE_PASSWORD_FAIL(message:String)
+    case RE_AUTH_FAIL(message:String)
+    case CHANGE_MAIL_FAIL(message:String)
+    case SUCCESS_RE_AUTH(oldMail:String)
+    case SUCCESS_MAIL_CHANGE
 }

@@ -1317,7 +1317,7 @@
                                 <rect key="frame" x="20" y="108" width="374" height="705"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="avA-za-7ar">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="304"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="420"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSl-j1-MZd">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -1340,23 +1340,54 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4Y-iW-Jlt">
-                                                <rect key="frame" x="0.0" y="180" width="374" height="124"/>
+                                                <rect key="frame" x="0.0" y="180" width="374" height="240"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gR3-uC-L5l">
-                                                        <rect key="frame" x="30" y="10" width="314" height="104"/>
+                                                        <rect key="frame" x="30" y="10" width="314" height="220"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W5L-QR-RRS" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="314" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="72t-cb-Ybl"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-aG-Jcj">
-                                                                <rect key="frame" x="0.0" y="64" width="314" height="40"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-Ty-gkd" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="60" width="314" height="40"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="cqL-J3-jpD"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="Ost-xQ-Nr2"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-Z4-Zec" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="120" width="314" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="UCT-pX-Ed0"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyS-vV-zdz">
+                                                                <rect key="frame" x="0.0" y="170" width="314" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-aG-Jcj">
+                                                                <rect key="frame" x="0.0" y="180" width="314" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="C0q-ln-4cx"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" title="Okey">
@@ -1368,7 +1399,9 @@
                                                             </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="lcJ-aG-Jcj" firstAttribute="height" secondItem="W5L-QR-RRS" secondAttribute="height" multiplier="0.911765" id="fMI-ih-dJH"/>
+                                                            <constraint firstItem="lcJ-aG-Jcj" firstAttribute="height" secondItem="W5L-QR-RRS" secondAttribute="height" id="5Xe-RD-mre"/>
+                                                            <constraint firstItem="nz5-Z4-Zec" firstAttribute="height" secondItem="W5L-QR-RRS" secondAttribute="height" id="LM4-t4-1G1"/>
+                                                            <constraint firstItem="qc4-Ty-gkd" firstAttribute="height" secondItem="W5L-QR-RRS" secondAttribute="height" id="b4Z-me-fSl"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
@@ -1406,7 +1439,10 @@
                     <navigationItem key="navigationItem" id="HkV-iF-0Lx"/>
                     <connections>
                         <outlet property="currentPasswordTextField" destination="W5L-QR-RRS" id="2p0-Un-qGD"/>
+                        <outlet property="errorLabel" destination="iyS-vV-zdz" id="9pK-d2-4iX"/>
+                        <outlet property="newPasswordTextField" destination="qc4-Ty-gkd" id="Inh-Au-eVP"/>
                         <outlet property="okButtonOutlet" destination="lcJ-aG-Jcj" id="iaz-Px-A7P"/>
+                        <outlet property="reNewPasswordTextField" destination="nz5-Z4-Zec" id="oo2-kY-Dql"/>
                         <outlet property="screenDescriptionLabel" destination="BR1-h6-nPE" id="TeA-Nx-FTO"/>
                         <outlet property="screenTitleLabel" destination="oSl-j1-MZd" id="Hqz-qR-Sux"/>
                     </connections>
@@ -1476,6 +1512,12 @@
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h73-WI-6yh">
+                                                                <rect key="frame" x="0.0" y="110" width="314" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLT-87-A4l">
                                                                 <rect key="frame" x="0.0" y="120" width="314" height="40"/>
                                                                 <constraints>
@@ -1530,6 +1572,7 @@
                     <navigationItem key="navigationItem" id="44p-QT-lep"/>
                     <connections>
                         <outlet property="currentPasswordTextField" destination="JrH-ri-62A" id="g8l-Da-7Ci"/>
+                        <outlet property="errorLabel" destination="h73-WI-6yh" id="3ex-wv-w0s"/>
                         <outlet property="newMailAdressTextField" destination="JCe-R7-dcw" id="pEc-lq-yIA"/>
                         <outlet property="okButtonOutlet" destination="HLT-87-A4l" id="ssc-53-Yqt"/>
                         <outlet property="screenDescriptionLabel" destination="XhN-sA-v7I" id="pdP-HH-F5Z"/>
