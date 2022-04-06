@@ -27,7 +27,8 @@
 "An error occurred while changing the password. Try again later." = "An error occurred while changing the password. Try again later.";
 
 // Change Mail
-"Change_Mail_Screen_Description" = "A verification link will be sent to your new e-mail address. You will not be able to log in until your account has been approved.";
+"Change_Mail_Screen_Description" = "A confirmation link will be sent to the new e-mail address for the update. Once you confirm, your e-mail address will be updated.";
 "Enter your new mail adress" = "Enter your new mail adress";
+"do_cahnge_mail_success_message" = "We have sent a confirmation link to the e-mail address below. Please check your inbox.";
 
 

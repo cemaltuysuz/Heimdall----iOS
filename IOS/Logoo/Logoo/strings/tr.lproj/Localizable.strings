@@ -119,8 +119,14 @@
 "Your password has been successfully updated." = "Şifreniz başarılı bir şekilde güncellendi.";
 
 // Change Mail
-"Change_Mail_Screen_Description" = "Mail adresine bir doğrulama bağlantısı gönderilir. Onaylanıncaya kadar hesabınıza giriş yapamazsınız.";
+"Change_Mail_Screen_Description" = "Güncelleme için yeni mail adresinize bir onay bağlantısı gönderilir. Onayladığınızda mail adresiniz güncellenir.";
 "Enter your new mail adress" = "Yeni mail adresinizi giriniz";
+"Approve" = "Onayla";
+"An error occurred while changing the mail. Try again later." = "Mail değiştirilirken bir hata meydana geldi. Daha sonra tekrar deneyiniz.";
+"Do you approve the update of your e-mail address?" = "Mail adresinizin güncellenmesini onaylıyor musunuz ?";
+"Old :" = "Eski :";
+"New :" = "Yeni:";
+"do_change_mail_success_message" = "Aşağıdaki mail adresine onay bağlantısı gönderdik. Lütfen gelen kutunuzu kontrol edin.";
 
 
 

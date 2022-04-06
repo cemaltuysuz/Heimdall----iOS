@@ -187,6 +187,7 @@
 		15F6708B27FC5E2A0083E58C /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */; };
 		15F6708D27FC5F180083E58C /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */; };
 		15F6708F27FC5F2C0083E58C /* ChangeMailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */; };
+		15F6709127FDA8C70083E58C /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6709027FDA8C70083E58C /* FirebaseAuthService.swift */; };
 		15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */; };
 		15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */; };
 		15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */; };
@@ -392,6 +393,7 @@
 		15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordInteractor.swift; sourceTree = "<group>"; };
 		15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailInteractor.swift; sourceTree = "<group>"; };
+		15F6709027FDA8C70083E58C /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterProtocols.swift; sourceTree = "<group>"; };
 		15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterInteractor.swift; sourceTree = "<group>"; };
 		15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterPresenter.swift; sourceTree = "<group>"; };
@@ -1085,6 +1087,7 @@
 				15AE073527C927630012A81C /* FirestoreService.swift */,
 				1530C24427D9F674002EBB90 /* FireStorageService.swift */,
 				150FF44427E1DB7A0094B359 /* FirebaseLoggerService.swift */,
+				15F6709027FDA8C70083E58C /* FirebaseAuthService.swift */,
 			);
 			path = firebase;
 			sourceTree = "<group>";
@@ -1725,6 +1728,7 @@
 				15F6708D27FC5F180083E58C /* ChangePasswordInteractor.swift in Sources */,
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				151CBA1427F07C180088E548 /* LoginTransactionsVC.swift in Sources */,
+				15F6709127FDA8C70083E58C /* FirebaseAuthService.swift in Sources */,
 				151CBA1627F07C520088E548 /* LoginTransactionsProtocols.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,

@@ -11,13 +11,15 @@ protocol ViewToPresenterChangeMailProtocol {
     var interactor:PresenterToInteractorChangeMailProtocol? {get set}
     var view:PresenterToViewChangeMailProtocol? {get set}
     
-    func changeMailRequest(currentPassword:String, newMail:String)
+    func reAuthRequest(currentPassword:String)
+    func doChangeMail(mail:String,pass:String)
 }
 
 protocol PresenterToInteractorChangeMailProtocol {
     var presenter:InteractorToPresenterChangeMailProtocol? {get set}
     
-    func changeMailRequest(currentPassword:String, newMail:String)
+    func reAuthRequest(currentPassword:String)
+    func doChangeMail(mail:String,pass:String)
 }
 
 protocol InteractorToPresenterChangeMailProtocol {

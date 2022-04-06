@@ -1512,6 +1512,12 @@
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h73-WI-6yh">
+                                                                <rect key="frame" x="0.0" y="110" width="314" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLT-87-A4l">
                                                                 <rect key="frame" x="0.0" y="120" width="314" height="40"/>
                                                                 <constraints>
@@ -1566,6 +1572,7 @@
                     <navigationItem key="navigationItem" id="44p-QT-lep"/>
                     <connections>
                         <outlet property="currentPasswordTextField" destination="JrH-ri-62A" id="g8l-Da-7Ci"/>
+                        <outlet property="errorLabel" destination="h73-WI-6yh" id="3ex-wv-w0s"/>
                         <outlet property="newMailAdressTextField" destination="JCe-R7-dcw" id="pEc-lq-yIA"/>
                         <outlet property="okButtonOutlet" destination="HLT-87-A4l" id="ssc-53-Yqt"/>
                         <outlet property="screenDescriptionLabel" destination="XhN-sA-v7I" id="pdP-HH-F5Z"/>

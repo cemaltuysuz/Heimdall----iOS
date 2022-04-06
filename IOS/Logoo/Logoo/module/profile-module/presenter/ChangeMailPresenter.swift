@@ -8,14 +8,19 @@
 import Foundation
 
 class ChangeMailPresenter : ViewToPresenterChangeMailProtocol, InteractorToPresenterChangeMailProtocol {
+    
     var interactor: PresenterToInteractorChangeMailProtocol?
     
     var view: PresenterToViewChangeMailProtocol?
     
-    func changeMailRequest(currentPassword: String, newMail: String) {
-        interactor?.changeMailRequest(currentPassword: currentPassword, newMail: newMail)
+    func reAuthRequest(currentPassword: String) {
+        interactor?.reAuthRequest(currentPassword: currentPassword)
     }
     
+    func doChangeMail(mail: String,pass:String) {
+        interactor?.doChangeMail(mail: mail,pass: pass)
+    }
+
     func onStateChange(state: ChangeMailState) {
         view?.onStateChange(state: state)
     }

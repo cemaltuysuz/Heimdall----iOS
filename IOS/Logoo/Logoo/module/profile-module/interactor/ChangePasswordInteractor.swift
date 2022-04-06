@@ -16,7 +16,7 @@ class ChangePasswordInteractor : PresenterToInteractorChangePasswordProtocol {
         
         if let user = Auth.auth().currentUser, let mail = user.email {
             let credential = EmailAuthProvider.credential(withEmail: mail, password: currentPassword)
-            
+                        
             user.reauthenticate(with: credential, completion: {(result,error) in
                 if let error = error {
                     print(error)
@@ -34,10 +34,9 @@ class ChangePasswordInteractor : PresenterToInteractorChangePasswordProtocol {
                             self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "An error occurred while changing the password. Try again later.".localized()))
                         }
                     }
-                    
                     return
                 }
-                
+                // Success
                 user.updatePassword(to: newPassword, completion: {(error) in
                     if let error = error {
                         print(error)
