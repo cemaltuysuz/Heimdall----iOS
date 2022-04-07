@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGPhotoSlider" customModule="Logoo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="354"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv1-lo-duh">
+                    <rect key="frame" x="10" y="10" width="400" height="300"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-l3-iNJ">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="300"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hh-Dh-WuB">
+                                    <rect key="frame" x="8" y="134.5" width="34" height="31"/>
+                                    <color key="tintColor" name="black700"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.left" catalog="system"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="centerY" secondItem="ceg-l3-iNJ" secondAttribute="centerY" id="0NH-7a-gAo"/>
+                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="leading" secondItem="ceg-l3-iNJ" secondAttribute="leading" constant="8" id="hie-VG-HYX"/>
+                                <constraint firstAttribute="trailing" secondItem="0Hh-Dh-WuB" secondAttribute="trailing" constant="8" id="prH-yX-8ah"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="48G-V2-10w">
+                            <rect key="frame" x="50" y="0.0" width="300" height="300"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="0fn-vy-QWK"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6g0-46-cwz">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGd-Em-Hl3">
+                            <rect key="frame" x="350" y="0.0" width="50" height="300"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-Cw-PXE">
+                                    <rect key="frame" x="8" y="134.5" width="34" height="31"/>
+                                    <color key="tintColor" name="black700"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="NNk-Cw-PXE" secondAttribute="trailing" constant="8" id="2a8-wP-WPk"/>
+                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="centerY" secondItem="MGd-Em-Hl3" secondAttribute="centerY" id="Re5-EB-8uA"/>
+                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="leading" secondItem="MGd-Em-Hl3" secondAttribute="leading" constant="8" id="nnx-Zy-E6r"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="MGd-Em-Hl3" firstAttribute="width" secondItem="ceg-l3-iNJ" secondAttribute="width" id="m38-oE-kmf"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Nv1-lo-duh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="5p0-U6-HFc"/>
+                <constraint firstItem="Nv1-lo-duh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="G4P-ji-Hba"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nv1-lo-duh" secondAttribute="trailing" constant="10" id="Mgx-qD-klh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Nv1-lo-duh" secondAttribute="bottom" constant="10" id="OZ0-2G-GWl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftClickArea" destination="ceg-l3-iNJ" id="Slf-ht-LBM"/>
+                <outlet property="leftClickButton" destination="0Hh-Dh-WuB" id="4PI-9S-EAr"/>
+                <outlet property="photoSliderCollectionView" destination="48G-V2-10w" id="7X6-Ek-r1T"/>
+                <outlet property="rightClickArea" destination="MGd-Em-Hl3" id="hhQ-IJ-DRR"/>
+                <outlet property="rightClickButton" destination="NNk-Cw-PXE" id="FiF-VQ-DTW"/>
+            </connections>
+            <point key="canvasLocation" x="321.73913043478262" y="-191.18303571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <namedColor name="black700">
+            <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

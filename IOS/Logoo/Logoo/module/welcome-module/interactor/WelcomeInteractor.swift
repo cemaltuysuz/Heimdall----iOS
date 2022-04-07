@@ -25,14 +25,6 @@ class WelcomeInteractor : PresenterToInteractorWelcomeProtocol{
                 presenter?.goToLoginPref()
                 return
             }
-            Auth.auth().currentUser?.reload(completion: { err in
-                if let error = err {
-                    // error
-                }
-                // success
-            })
-            
-            print("USER MAİL : \(user.email ?? "unfound")")
             presenter?.goToHome()
         }
     }
