@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController {
+class ProfileVC: BaseVC {
 
     @IBOutlet weak var userPhotoImageView: UIImageView!
     @IBOutlet weak var userManifestoTextView: UITextView!
@@ -17,17 +17,38 @@ class ProfileVC: UIViewController {
     var presenter:ViewToPresenterProfileProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        ProfileRouter.createModule(ref: self)
+        configureUI()
+        loadPage()
     }
     @IBAction func insertPhotoButton(_ sender: Any) {
         
+    }
+    
+    func configureUI(){
+        userPhotoSlider.configure()
+    }
+    
+    func loadPage(){
+        presenter?.loadPage()
     }
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
     func onStateChange(state: ProfileState) {
-        
+        switch state {
+        case .onUserLoad(let user):
+            if let url = user.userPhotoUrl {
+                userPhotoImageView.setImage(urlString: url)
+            }
+        case .onPostsLoadSuccess(let posts):
+            userPhotoSlider.updateUserPosts(posts: posts)
+        case .onPostsLoadFail:
+            // TODO: Create fail page
+            break
+        case .onError(let message):
+            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+        }
     }
 }
 

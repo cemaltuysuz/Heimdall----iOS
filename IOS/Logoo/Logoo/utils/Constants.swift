@@ -27,6 +27,7 @@ enum LogEventType :String {
 // Firebase Constants
 class FireCollections {
     static let USER_COLLECTION = "users"
+    static let USER_POSTS = "posts" // inside user document
     static let INBOX_COLLECTION = "inboxes"
     static let DIRECT_COLLECTION = "directs"
     static let GROUP_COLLECTION = "groups"

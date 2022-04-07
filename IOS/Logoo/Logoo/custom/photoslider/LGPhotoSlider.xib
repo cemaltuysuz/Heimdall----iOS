@@ -23,22 +23,26 @@
                             <rect key="frame" x="0.0" y="0.0" width="50" height="300"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hh-Dh-WuB">
-                                    <rect key="frame" x="8" y="134.5" width="34" height="31"/>
+                                    <rect key="frame" x="13" y="141" width="24" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="FEB-PV-MbZ"/>
+                                        <constraint firstAttribute="height" constant="18" id="u0D-90-PA9"/>
+                                    </constraints>
                                     <color key="tintColor" name="black700"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="arrow.left" catalog="system"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="arrow.left" catalog="system"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="centerY" secondItem="ceg-l3-iNJ" secondAttribute="centerY" id="0NH-7a-gAo"/>
-                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="leading" secondItem="ceg-l3-iNJ" secondAttribute="leading" constant="8" id="hie-VG-HYX"/>
-                                <constraint firstAttribute="trailing" secondItem="0Hh-Dh-WuB" secondAttribute="trailing" constant="8" id="prH-yX-8ah"/>
+                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="centerX" secondItem="ceg-l3-iNJ" secondAttribute="centerX" id="TKN-9n-fEM"/>
+                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="centerY" secondItem="ceg-l3-iNJ" secondAttribute="centerY" id="XcG-YV-bUI"/>
+                                <constraint firstAttribute="width" constant="50" id="abJ-yf-0md"/>
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="48G-V2-10w">
                             <rect key="frame" x="50" y="0.0" width="300" height="300"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="AccentColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="0fn-vy-QWK"/>
                             </constraints>
@@ -53,22 +57,26 @@
                             <rect key="frame" x="350" y="0.0" width="50" height="300"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-Cw-PXE">
-                                    <rect key="frame" x="8" y="134.5" width="34" height="31"/>
+                                    <rect key="frame" x="13" y="141" width="24" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="CbH-ko-WJj"/>
+                                        <constraint firstAttribute="height" constant="18" id="UMd-Ng-JNX"/>
+                                    </constraints>
                                     <color key="tintColor" name="black700"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="arrow.right" catalog="system"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="NNk-Cw-PXE" secondAttribute="trailing" constant="8" id="2a8-wP-WPk"/>
-                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="centerY" secondItem="MGd-Em-Hl3" secondAttribute="centerY" id="Re5-EB-8uA"/>
-                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="leading" secondItem="MGd-Em-Hl3" secondAttribute="leading" constant="8" id="nnx-Zy-E6r"/>
+                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="centerX" secondItem="MGd-Em-Hl3" secondAttribute="centerX" id="LQ1-M6-Rl8"/>
+                                <constraint firstAttribute="width" constant="50" id="MHs-Qn-18N"/>
+                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="centerY" secondItem="MGd-Em-Hl3" secondAttribute="centerY" id="hPX-Ap-JG8"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="MGd-Em-Hl3" firstAttribute="width" secondItem="ceg-l3-iNJ" secondAttribute="width" id="m38-oE-kmf"/>
+                        <constraint firstItem="MGd-Em-Hl3" firstAttribute="width" secondItem="ceg-l3-iNJ" secondAttribute="width" id="pin-wm-XkR"/>
                     </constraints>
                 </stackView>
             </subviews>
@@ -94,6 +102,9 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="black700">
             <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

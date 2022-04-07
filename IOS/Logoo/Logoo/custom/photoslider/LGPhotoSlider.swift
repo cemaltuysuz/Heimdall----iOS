@@ -7,8 +7,8 @@
 
 import UIKit
 
-
-class LGPhotoSlider: UIView {
+@IBDesignable
+class LGPhotoSlider: NibLoadableView {
     @IBOutlet weak var leftClickButton: UIButton!
     @IBOutlet weak var leftClickArea: UIView!
     @IBOutlet weak var rightClickButton: UIButton!
@@ -30,6 +30,10 @@ class LGPhotoSlider: UIView {
     }
 
     override func awakeFromNib() {
+
+    }
+    
+    func configure(){
         configureUI()
         setupBindings()
     }

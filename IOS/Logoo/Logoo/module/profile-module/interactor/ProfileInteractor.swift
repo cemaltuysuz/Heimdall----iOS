@@ -6,19 +6,40 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseFirestore
 
 class ProfileInteractor : PresenterToInteractorProfileProtocol {
     
     var presenter: InteractorToPresenterProfileProtocol?
     
-    
     func loadPage() {
-        getUser()
+        if let uuid = FirebaseAuthService.shared.getUUID() {
+            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
+            FireStoreService.shared.getDocument(ref: ref, onCompletion: {(user:User?) in
+                guard let user = user else {
+                    // TODO: SEND ERROR MESSAGE
+                    return
+                }
+                self.presenter?.onStateChange(state: .onUserLoad(user: user))
+            })
+            
+            FireStoreService.shared.getCollection(ref: ref.collection(FireCollections.USER_POSTS), onCompletion: { ( posts:[UserPost?]?, error) in
+                guard let posts = posts, error != nil else {
+                    print(error ?? "posts is nil")
+                    return
+                }
+                var nonNilPosts = [UserPost]()
+                for post in posts {
+                    if let post = post {
+                        nonNilPosts.append(post)
+                    }
+                }
+                self.presenter?.onStateChange(state: .onPostsLoadSuccess(posts: nonNilPosts))
+            })
+            
+        }else {
+            // TODO: SEND ERROR MESSAGE
+        }
     }
-    
-    func getUser(){
-        
-    }
-    
-    
 }
