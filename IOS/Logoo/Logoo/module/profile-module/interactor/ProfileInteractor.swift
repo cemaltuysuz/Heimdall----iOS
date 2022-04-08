@@ -21,6 +21,7 @@ class ProfileInteractor : PresenterToInteractorProfileProtocol {
                     // TODO: SEND ERROR MESSAGE
                     return
                 }
+                print(user.userInterests)
                 self.presenter?.onStateChange(state: .onUserLoad(user: user))
             })
             

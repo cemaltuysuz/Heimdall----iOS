@@ -11,10 +11,6 @@ import UIKit
 import FirebaseAuth
 
 
-func hobbyToHobbies(hobby:String) -> [String]{
-    let hobbies = hobby.components(separatedBy: "&")
-        return hobbies
-}
 
 func timeInSeconds() -> Int64 {
     return Int64(Date().timeIntervalSince1970 * 1000)

@@ -19,18 +19,18 @@ class LGPhotoSlider: NibLoadableView {
         configure()
     }
     
-    func configure(){
+    private func configure(){
         configureUI()
         setupBindings()
     }
     
-    func configureUI(){
+    private func configureUI(){
         pageControl.isHidden = true
         photoSliderCollectionView.isPagingEnabled = true
         photoSliderCollectionView.showsHorizontalScrollIndicator = false
     }
     
-    func setupBindings(){
+    private func setupBindings(){
         photoSliderCollectionView.register(LGPhotoSliderCell.self)
         photoSliderCollectionView.dataSource = self
         photoSliderCollectionView.delegate = self

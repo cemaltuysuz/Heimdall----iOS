@@ -12,6 +12,7 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userPhotoImageView: UIImageView!
     @IBOutlet weak var userManifestoTextView: UITextView!
     @IBOutlet weak var userPhotoSlider: LGPhotoSlider!
+    @IBOutlet weak var userInterestsViewer: InterestsViewer!
     
     
     var presenter:ViewToPresenterProfileProtocol?
@@ -25,13 +26,8 @@ class ProfileVC: BaseVC {
         presenter?.loadPage()
     }
     
-    @IBAction func insertPhotoButton(_ sender: Any) {
-        
-    }
-    
     func configureUI(){
         title = "Logoo"
-        userPhotoSlider.configure()
     }
     
     func loadPage(){
@@ -47,6 +43,11 @@ extension ProfileVC : PresenterToViewProfileProtocol {
                 userPhotoImageView.setImage(urlString: url)
                 title = user.username
                 userManifestoTextView.text = user.userManifesto
+                
+                if let interests = user.userInterests?.toListByCharacter(GeneralSeperators.INTEREST_SEPERATOR) {
+                    userInterestsViewer.updateAndReloadData(interests: interests)
+                }
+                
             }
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)

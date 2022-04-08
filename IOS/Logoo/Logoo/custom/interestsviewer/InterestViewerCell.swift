@@ -17,6 +17,8 @@ class InterestViewerCell: UICollectionViewCell {
 
     
     func congfigureCell(interest:String) {
+        print("**********")
+        print(interest)
         interestLabel.text = interest
     }
 }

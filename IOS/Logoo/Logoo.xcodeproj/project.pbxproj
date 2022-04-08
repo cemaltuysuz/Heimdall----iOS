@@ -86,6 +86,7 @@
 		1541104328002CBF0099CE27 /* InterestsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541104228002CBF0099CE27 /* InterestsViewer.swift */; };
 		1541104628002E3D0099CE27 /* InterestViewerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541104428002E3D0099CE27 /* InterestViewerCell.swift */; };
 		1541104728002E3D0099CE27 /* InterestViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1541104528002E3D0099CE27 /* InterestViewerCell.xib */; };
+		15411049280035610099CE27 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15411048280035610099CE27 /* String+.swift */; };
 		154F826E27DBC02200C0C614 /* EditFieldWithSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F826C27DBC02200C0C614 /* EditFieldWithSwitchCell.swift */; };
 		154F826F27DBC02200C0C614 /* EditFieldWithSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154F826D27DBC02200C0C614 /* EditFieldWithSwitchCell.xib */; };
 		156F042C27AFA80F00D37039 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F042B27AFA80F00D37039 /* GenderType.swift */; };
@@ -319,6 +320,7 @@
 		1541104228002CBF0099CE27 /* InterestsViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewer.swift; sourceTree = "<group>"; };
 		1541104428002E3D0099CE27 /* InterestViewerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestViewerCell.swift; sourceTree = "<group>"; };
 		1541104528002E3D0099CE27 /* InterestViewerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestViewerCell.xib; sourceTree = "<group>"; };
+		15411048280035610099CE27 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		154F826C27DBC02200C0C614 /* EditFieldWithSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithSwitchCell.swift; sourceTree = "<group>"; };
 		154F826D27DBC02200C0C614 /* EditFieldWithSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithSwitchCell.xib; sourceTree = "<group>"; };
 		156F042B27AFA80F00D37039 /* GenderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderType.swift; sourceTree = "<group>"; };
@@ -1021,6 +1023,7 @@
 				1589831A27FEEDA700853BBC /* UICollectionView+.swift */,
 				1589831C27FEFF7200853BBC /* UICollectionViewCell+.swift */,
 				1589832727FF3FDB00853BBC /* NibLoadable+.swift */,
+				15411048280035610099CE27 /* String+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1868,6 +1871,7 @@
 				150C9004279967FB000DAFBE /* OnBoardRouter.swift in Sources */,
 				1584958E27CE249C00ED57B6 /* EditProfilePresenter.swift in Sources */,
 				150FF45027E1FB370094B359 /* SecurityMenuItemCell.swift in Sources */,
+				15411049280035610099CE27 /* String+.swift in Sources */,
 				15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */,
 				150D83A627C4F311009601F0 /* Inbox.swift in Sources */,
 				15A5B42627C76AF90082029E /* RegisterInformationCell.swift in Sources */,

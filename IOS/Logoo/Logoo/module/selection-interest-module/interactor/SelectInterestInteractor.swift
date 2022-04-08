@@ -33,9 +33,9 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
                 return
             }
             if let document = document, document.exists {
-                let userInterests = document.data()?["userHobbies"] as? String ?? ""
+                let userInterests = document.data()?["userInterests"] as? String ?? ""
                 if !userInterests.isEmpty {
-                    alreadyHobbies = hobbyToHobbies(hobby: userInterests)
+                    alreadyHobbies = userInterests.toListByCharacter(GeneralSeperators.INTEREST_SEPERATOR)
                     self.presenter?.userAlreadyHobbies(alreadyList: alreadyHobbies)
                 }
             }
@@ -79,7 +79,7 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
             }
             dbRef.collection("users")
                 .document(uuid)
-                .updateData(["userHobbies":hobby]){error in
+                .updateData(["userInterests":hobby]){error in
                     if let error = error {
                         self.presenter?.indicatorVisibility(status: false)
                         self.presenter?.saveInterestsResponse(resp: Resource<Any>(status: .ERROR, data: nil, message: error.localizedDescription))

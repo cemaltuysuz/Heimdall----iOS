@@ -37,4 +37,8 @@ class FireCollections {
     static let LOCATION_LOCATION = "locations"
 }
 
+class GeneralSeperators {
+    static let INTEREST_SEPERATOR = "&"
+}
+
 

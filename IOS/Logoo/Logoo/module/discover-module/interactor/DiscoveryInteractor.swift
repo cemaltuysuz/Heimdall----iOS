@@ -53,7 +53,7 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
                             userGender: data["userGender"] as? String ?? "Other",
                             userBirthDay: data["UserBirthDay"] as? String ?? "",
                             userManifesto: data["userBio"] as? String ?? "",
-                            userInterests: data["userHobbies"] as? String ?? "",
+                            userInterests: data["userInterests"] as? String ?? "",
                             userLastSeen: data["userLastSeen"] as? String ?? "",
                             userRegisterTime: data["userRegisterTime"] as? String ?? "",
                             isAnonymous: data["isAnonymous"] as! Bool,
