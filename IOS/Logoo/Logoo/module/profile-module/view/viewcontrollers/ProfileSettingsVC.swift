@@ -11,23 +11,26 @@ class ProfileSettingsVC: BaseVC {
     
     @IBOutlet weak var optionsTableView: UITableView!
     var presenter:ViewToPresenterProfileSettingsProtocol?
-    var options:[MenuItem<ProfileSettingType>]?
+    var options:[LineMenuItem]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        optionsTableView.register(UINib(nibName: "ProfileMenuItemCell", bundle: nil), forCellReuseIdentifier: "ProfileMenuItemCell")
-        optionsTableView.delegate = self
-        optionsTableView.dataSource = self
         
         ProfileSettingsRouter.createModule(ref: self)
+        configureBindings()
         presenter?.getOptions()
+    }
+    
+    func configureBindings(){
+        optionsTableView.register(LineMenuItemCell.self)
+        optionsTableView.delegate = self
+        optionsTableView.dataSource = self
     }
 }
 
 extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
     
-    func optionsToView(options: [MenuItem<ProfileSettingType>]) {
+    func optionsToView(options: [LineMenuItem]) {
         DispatchQueue.main.async {
             self.options = options
             self.optionsTableView.reloadData()
@@ -38,7 +41,8 @@ extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
     }
 }
 
-extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, ProfileMenuItemCellProtocol {
+extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemCellProtocol {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options?.count ?? 0
     }
@@ -46,40 +50,41 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, Profil
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let current = options![indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuItemCell") as! ProfileMenuItemCell
-        cell.initialize(option: current)
+        let cell = tableView.dequeue(indexPath, type: LineMenuItemCell.self)
+        cell.initialize(item: current)
         cell.delegate = self
         return cell
     }
     
-    func onClick(model: MenuItem<ProfileSettingType>) {
-        switch model.type {
+    func onClickMenu(instance: LineMenuItem) {
+        guard let securityItem = ProfileMenuItemType(rawValue: instance.rawValue), instance.isEnabled else {return}
+        
+        switch securityItem {
         case .INVITE_FRIENDS:
             break
         case .SECURITY:
             performSegue(withIdentifier: "ProfileSettingsToSecurityVC", sender: nil)
             break
         case .PREFERENCES:
-            
             break
         case .INTERESTS:
             performSegue(withIdentifier: "SettingsToInterestVC", sender: nil)
             break
         case .NOTIFICATIONS:
-            
             break
         case .PRIVACY:
-            
             break
         case .ABOUT:
-            
             break
         case .LOGOUT:
             exitUser()
             break
-        case .none:
-            break
         }
+    }
+    
+    func onClickWarning(instance: LineMenuItem) {
+        guard let _ = ProfileMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
+        createAlertNotify(title: "Alert".localized(), message: message, onCompletion: {})
     }
 }
 

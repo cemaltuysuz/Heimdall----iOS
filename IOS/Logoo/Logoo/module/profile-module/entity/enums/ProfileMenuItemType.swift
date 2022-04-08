@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProfileSettingType : Itemable {
+enum ProfileMenuItemType : Int {
     case INVITE_FRIENDS
     case SECURITY
     case PREFERENCES

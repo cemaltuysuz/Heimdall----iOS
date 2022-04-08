@@ -22,12 +22,12 @@ protocol PresenterToInteractorProfileSettingsProtocol {
 }
 
 protocol InteractorToPresenterProfileSettingsProtocol {
-    func optionsToPresenter(options:[MenuItem<ProfileSettingType>])
+    func optionsToPresenter(options:[LineMenuItem])
     func exitUserFeedback()
 }
 
 protocol PresenterToViewProfileSettingsProtocol {
-    func optionsToView(options:[MenuItem<ProfileSettingType>])
+    func optionsToView(options:[LineMenuItem])
     func exitUserFeedback()
 }
 

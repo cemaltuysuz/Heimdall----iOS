@@ -27,61 +27,61 @@ class ProfileSettingsInteractor : PresenterToInteractorProfileSettingsProtocol {
     }
     
     func getOptions() {
-        var options = [MenuItem<ProfileSettingType>]()
+        var options = [LineMenuItem]()
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "person.fill.badge.plus",
             itemTitle: "Invite Friends".localized(),
-            type: .INVITE_FRIENDS,
+            rawValue: ProfileMenuItemType.INVITE_FRIENDS.rawValue,
             isEnabled: false,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "lock.shield.fill",
             itemTitle: "Security".localized(),
-            type: .SECURITY,
+            rawValue: ProfileMenuItemType.SECURITY.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "paintpalette.fill",
             itemTitle: "Preferences".localized(),
-            type: .PREFERENCES,
+            rawValue: ProfileMenuItemType.PREFERENCES.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "gamecontroller.fill",
             itemTitle: "Interests".localized(),
-            type: .INTERESTS,
+            rawValue: ProfileMenuItemType.INTERESTS.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "bell.fill",
             itemTitle: "Notifications".localized(),
-            type: .NOTIFICATIONS,
+            rawValue: ProfileMenuItemType.NOTIFICATIONS.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "eye.slash.fill",
             itemTitle: "Privacy".localized(),
-            type: .PRIVACY,
+            rawValue: ProfileMenuItemType.PRIVACY.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "info.circle.fill",
             itemTitle: "About".localized(),
-            type: .ABOUT,
+            rawValue: ProfileMenuItemType.ABOUT.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
-        options.append(MenuItem(
+        options.append(LineMenuItem(
             iconName: "rectangle.portrait.and.arrow.right.fill",
             itemTitle: "LogOut".localized(),
-            type: .LOGOUT,
+            rawValue: ProfileMenuItemType.LOGOUT.rawValue,
             isEnabled: true,
             warningMessage: nil))
         

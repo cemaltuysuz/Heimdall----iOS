@@ -23,12 +23,12 @@ protocol PresenterToInteractorSecurityProtocol {
 
 protocol InteractorToPresenterSecurityProtocol {
     
-    func securityItems(items:[MenuItem<SecurityItemType>])
+    func securityItems(items:[LineMenuItem])
 }
 
 protocol PresenterToViewSecurityProtocol  {
     
-    func securityItems(items:[MenuItem<SecurityItemType>])
+    func securityItems(items:[LineMenuItem])
 }
 
 protocol PresenterToRouterSecurityProtocol {
