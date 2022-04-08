@@ -87,6 +87,7 @@
 		1541104628002E3D0099CE27 /* InterestViewerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541104428002E3D0099CE27 /* InterestViewerCell.swift */; };
 		1541104728002E3D0099CE27 /* InterestViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1541104528002E3D0099CE27 /* InterestViewerCell.xib */; };
 		15411049280035610099CE27 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15411048280035610099CE27 /* String+.swift */; };
+		1541104C280045CE0099CE27 /* Mantis in Frameworks */ = {isa = PBXBuildFile; productRef = 1541104B280045CE0099CE27 /* Mantis */; };
 		154F826E27DBC02200C0C614 /* EditFieldWithSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F826C27DBC02200C0C614 /* EditFieldWithSwitchCell.swift */; };
 		154F826F27DBC02200C0C614 /* EditFieldWithSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154F826D27DBC02200C0C614 /* EditFieldWithSwitchCell.xib */; };
 		156F042C27AFA80F00D37039 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F042B27AFA80F00D37039 /* GenderType.swift */; };
@@ -461,6 +462,7 @@
 				15AE074027C9449B0012A81C /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				15AE073C27C9449B0012A81C /* FirebaseAuth in Frameworks */,
 				15C64C6027BE518A0088DD35 /* GoogleSignIn in Frameworks */,
+				1541104C280045CE0099CE27 /* Mantis in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1623,6 +1625,7 @@
 				15AE073D27C9449B0012A81C /* FirebaseFirestore */,
 				15AE073F27C9449B0012A81C /* FirebaseFirestoreSwift-Beta */,
 				15AE074127C9449B0012A81C /* FirebaseStorage */,
+				1541104B280045CE0099CE27 /* Mantis */,
 			);
 			productName = Logoo;
 			productReference = 150C8FAE27994C6D000DAFBE /* Logoo.app */;
@@ -1704,6 +1707,7 @@
 				15A5B41527C69A200082029E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				15AE073727C93AAA0012A81C /* XCRemoteSwiftPackageReference "Runtime" */,
 				15AE073A27C9449B0012A81C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1541104A280045CD0099CE27 /* XCRemoteSwiftPackageReference "Mantis" */,
 			);
 			productRefGroup = 150C8FAF27994C6D000DAFBE /* Products */;
 			projectDirPath = "";
@@ -2311,6 +2315,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		1541104A280045CD0099CE27 /* XCRemoteSwiftPackageReference "Mantis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guoyingtao/Mantis.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		156F043627B26DC300D37039 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -2358,6 +2370,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */;
 			productName = M13Checkbox;
+		};
+		1541104B280045CE0099CE27 /* Mantis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1541104A280045CD0099CE27 /* XCRemoteSwiftPackageReference "Mantis" */;
+			productName = Mantis;
 		};
 		156F043727B26DC300D37039 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

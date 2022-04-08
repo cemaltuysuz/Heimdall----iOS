@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Mantis
 
 class EditProfileVC: UIViewController {
 
@@ -154,7 +155,24 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
            print("Expected a dictionary containing an image, but was provided the following: \(info)")
             return
         }
-        editUserProfilePhotoImg.image = image
-        presenter?.updateUserPhoto(image: image)
+
+        var config = Mantis.Config()
+        config.cropShapeType = .square
+        config.ratioOptions = [.square]
+        let cropViewController = Mantis.cropViewController(image: image,config: config)
+        cropViewController.delegate = self
+        present(cropViewController, animated: true)
+    }
+}
+
+extension EditProfileVC : CropViewControllerDelegate {
+    func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
+        cropViewController.dismiss(animated: true)
+        editUserProfilePhotoImg.image = cropped
+        presenter?.updateUserPhoto(image: cropped)
+    }
+    
+    func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
+        cropViewController.dismiss(animated: true)
     }
 }

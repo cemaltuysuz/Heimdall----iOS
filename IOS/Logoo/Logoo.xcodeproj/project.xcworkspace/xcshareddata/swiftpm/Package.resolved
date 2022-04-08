@@ -137,6 +137,15 @@
         }
       },
       {
+        "package": "Mantis",
+        "repositoryURL": "https://github.com/guoyingtao/Mantis.git",
+        "state": {
+          "branch": null,
+          "revision": "d6880eb97267248f89e6cef2dd52785d50627639",
+          "version": "1.9.0"
+        }
+      },
+      {
         "package": "nanopb",
         "repositoryURL": "https://github.com/firebase/nanopb.git",
         "state": {
