@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SecurityItemType : Itemable {
+enum SecurityMenuItemType : Int {
     case CHANGE_MAIL
     case CHANGE_PASSWORD
     case LOGIN_TRANSACTIONS

@@ -14,13 +14,14 @@ class SecurityVC: BaseVC {
     @IBOutlet weak var itemsTableView: UITableView!
     var animView:AnimationView?
     
-    var securityItems:[MenuItem<SecurityItemType>]?
+    var securityItems:[LineMenuItem]?
     var presenter:ViewToPresenterSecurityProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupModel()
+        setupBindings()
         setupUI()
         
     }
@@ -30,11 +31,13 @@ class SecurityVC: BaseVC {
         presenter?.getSecurityItems()
     }
     
-    func setupUI(){
-        self.itemsTableView.register(UINib(nibName: "SecurityMenuItemCell", bundle: nil), forCellReuseIdentifier: "SecurityMenuItemCell")
+    func setupBindings(){
+        itemsTableView.register(LineMenuItemCell.self)
         itemsTableView.delegate = self
         itemsTableView.dataSource = self
-        
+    }
+    
+    func setupUI(){
         if !UDService.shared.getSecurityVisualVisibility() {
             animView = AnimationView(name: "secureAnim")
             animView!.frame = visualView.bounds
@@ -54,7 +57,7 @@ class SecurityVC: BaseVC {
     }
 }
 
-extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
+extension SecurityVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemCellProtocol {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -70,34 +73,36 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = securityItems![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SecurityMenuItemCell") as! SecurityMenuItemCell
-        cell.initialize(option: model)
+        let cell = tableView.dequeue(indexPath, type: LineMenuItemCell.self)
+        cell.delegate = self
+        cell.initialize(item: model)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = securityItems![indexPath.row]
-        if item.isEnabled {
-            switch item.type {
-            case .CHANGE_MAIL:
-                performSegue(withIdentifier: "securityToChangeMailVC", sender: nil)
-                break
-            case .CHANGE_PASSWORD:
-                performSegue(withIdentifier: "SecurityToChangePasswordVC", sender: nil)
-                break
-            case .LOGIN_TRANSACTIONS:
-                performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
-                break
-            case .none:
-                break
-            }
+
+    func onClickMenu(instance: LineMenuItem) {
+        guard let securityItem = SecurityMenuItemType(rawValue: instance.rawValue), instance.isEnabled else {return}
+        
+        switch securityItem {
+        case .CHANGE_MAIL:
+            performSegue(withIdentifier: "securityToChangeMailVC", sender: nil)
+            break
+        case .CHANGE_PASSWORD:
+            performSegue(withIdentifier: "SecurityToChangePasswordVC", sender: nil)
+            break
+        case .LOGIN_TRANSACTIONS:
+            performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
+            break
         }
     }
-
+    
+    func onClickWarning(instance: LineMenuItem) {
+        guard let _ = SecurityMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
+        createAlertNotify(title: "Alert".localized(), message: message, onCompletion: {})
+    }
 }
 
 extension SecurityVC : PresenterToViewSecurityProtocol {
-    func securityItems(items: [MenuItem<SecurityItemType>]) {
+    func securityItems(items: [LineMenuItem]) {
         self.securityItems = items
     }
 }

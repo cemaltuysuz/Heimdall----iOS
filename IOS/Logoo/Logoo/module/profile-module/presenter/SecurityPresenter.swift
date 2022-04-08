@@ -16,7 +16,7 @@ class SecurityPresenter : ViewToPresenterSecurityProtocol, InteractorToPresenter
         interactor?.getSecurityItems()
     }
     
-    func securityItems(items: [MenuItem<SecurityItemType>]) {
+    func securityItems(items: [LineMenuItem]) {
         view?.securityItems(items: items)
     }
 }

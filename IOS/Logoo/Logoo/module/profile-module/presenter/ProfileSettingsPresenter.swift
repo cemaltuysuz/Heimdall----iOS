@@ -17,9 +17,8 @@ class ProfileSettingsPresenter : ViewToPresenterProfileSettingsProtocol, Interac
     func getOptions() {
         interactor?.getOptions()
     }
-
     
-    func optionsToPresenter(options: [MenuItem<ProfileSettingType>]) {
+    func optionsToPresenter(options: [LineMenuItem]) {
         view?.optionsToView(options: options)
     }
     
