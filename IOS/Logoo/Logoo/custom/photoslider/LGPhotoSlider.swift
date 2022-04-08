@@ -16,7 +16,7 @@ class LGPhotoSlider: NibLoadableView {
     var userPosts:[UserPost]?
 
     override func awakeFromNib() {
-
+        configure()
     }
     
     func configure(){
@@ -58,6 +58,15 @@ extension LGPhotoSlider : UICollectionViewDelegateFlowLayout, UICollectionViewDa
         }
         
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let offSet = scrollView.contentOffset.x
+            let width = scrollView.frame.width
+            let horizontalCenter = width / 2
+
+            let page = Int(offSet + horizontalCenter) / Int(width)
+            pageControl.currentPage = page
+        }
     
 }
 // MARK: - Functions
