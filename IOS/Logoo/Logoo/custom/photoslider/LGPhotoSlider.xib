@@ -16,36 +16,12 @@
             <rect key="frame" x="0.0" y="0.0" width="420" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv1-lo-duh">
-                    <rect key="frame" x="10" y="10" width="400" height="300"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5sa-CT-Sxg">
+                    <rect key="frame" x="0.0" y="0.0" width="420" height="354"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-l3-iNJ">
-                            <rect key="frame" x="0.0" y="0.0" width="50" height="300"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hh-Dh-WuB">
-                                    <rect key="frame" x="13" y="141" width="24" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="FEB-PV-MbZ"/>
-                                        <constraint firstAttribute="height" constant="18" id="u0D-90-PA9"/>
-                                    </constraints>
-                                    <color key="tintColor" name="black700"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" image="arrow.left" catalog="system"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="centerX" secondItem="ceg-l3-iNJ" secondAttribute="centerX" id="TKN-9n-fEM"/>
-                                <constraint firstItem="0Hh-Dh-WuB" firstAttribute="centerY" secondItem="ceg-l3-iNJ" secondAttribute="centerY" id="XcG-YV-bUI"/>
-                                <constraint firstAttribute="width" constant="50" id="abJ-yf-0md"/>
-                            </constraints>
-                        </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="48G-V2-10w">
-                            <rect key="frame" x="50" y="0.0" width="300" height="300"/>
-                            <color key="backgroundColor" name="AccentColor"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="300" id="0fn-vy-QWK"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="0.0" width="420" height="328"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6g0-46-cwz">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -53,60 +29,36 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGd-Em-Hl3">
-                            <rect key="frame" x="350" y="0.0" width="50" height="300"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-Cw-PXE">
-                                    <rect key="frame" x="13" y="141" width="24" height="18"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="CbH-ko-WJj"/>
-                                        <constraint firstAttribute="height" constant="18" id="UMd-Ng-JNX"/>
-                                    </constraints>
-                                    <color key="tintColor" name="black700"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" image="arrow.right" catalog="system"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="centerX" secondItem="MGd-Em-Hl3" secondAttribute="centerX" id="LQ1-M6-Rl8"/>
-                                <constraint firstAttribute="width" constant="50" id="MHs-Qn-18N"/>
-                                <constraint firstItem="NNk-Cw-PXE" firstAttribute="centerY" secondItem="MGd-Em-Hl3" secondAttribute="centerY" id="hPX-Ap-JG8"/>
-                            </constraints>
-                        </view>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="r8F-7G-9JT">
+                            <rect key="frame" x="0.0" y="328" width="420" height="26"/>
+                            <color key="pageIndicatorTintColor" name="grey500"/>
+                            <color key="currentPageIndicatorTintColor" name="black700"/>
+                        </pageControl>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="MGd-Em-Hl3" firstAttribute="width" secondItem="ceg-l3-iNJ" secondAttribute="width" id="pin-wm-XkR"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Nv1-lo-duh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="5p0-U6-HFc"/>
-                <constraint firstItem="Nv1-lo-duh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="G4P-ji-Hba"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nv1-lo-duh" secondAttribute="trailing" constant="10" id="Mgx-qD-klh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Nv1-lo-duh" secondAttribute="bottom" constant="10" id="OZ0-2G-GWl"/>
+                <constraint firstItem="5sa-CT-Sxg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="39Q-T3-OCi"/>
+                <constraint firstItem="5sa-CT-Sxg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="8NB-F1-hbX"/>
+                <constraint firstItem="5sa-CT-Sxg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LrQ-HE-HRG"/>
+                <constraint firstAttribute="bottom" secondItem="5sa-CT-Sxg" secondAttribute="bottom" id="hCw-sM-unY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="leftClickArea" destination="ceg-l3-iNJ" id="Slf-ht-LBM"/>
-                <outlet property="leftClickButton" destination="0Hh-Dh-WuB" id="4PI-9S-EAr"/>
+                <outlet property="pageControl" destination="r8F-7G-9JT" id="r4S-Jp-vhI"/>
                 <outlet property="photoSliderCollectionView" destination="48G-V2-10w" id="7X6-Ek-r1T"/>
-                <outlet property="rightClickArea" destination="MGd-Em-Hl3" id="hhQ-IJ-DRR"/>
-                <outlet property="rightClickButton" destination="NNk-Cw-PXE" id="FiF-VQ-DTW"/>
             </connections>
-            <point key="canvasLocation" x="321.73913043478262" y="-191.18303571428569"/>
+            <point key="canvasLocation" x="321.73913043478262" y="-191.51785714285714"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
-        <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="black700">
             <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey500">
+            <color red="0.59200000762939453" green="0.63499999046325684" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

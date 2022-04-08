@@ -11,9 +11,9 @@ struct UserPost : Codable {
     
     var postUrl:String?
     var timestamp:Int64?
-    var userPostType:UserPostType?
+    var userPostType:String?
  
-    init(postUrl: String? = nil, timestamp: Int64? = nil, userPostType: UserPostType? = nil) {
+    init(postUrl: String? = nil, timestamp: Int64? = nil, userPostType: String? = nil) {
         self.postUrl = postUrl
         self.timestamp = timestamp
         self.userPostType = userPostType

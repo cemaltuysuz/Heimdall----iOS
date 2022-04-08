@@ -13,7 +13,8 @@ class LGPhotoSliderCell: UICollectionViewCell {
     @IBOutlet weak var userPostPhotoImageView: LGImageView!
     
     func configure(post:UserPost) {
-        print(post.postUrl ?? "unfound")
+        guard let url = post.postUrl else{return}
+        userPostPhotoImageView.setImage(urlString: url)
     }
     
     override func awakeFromNib() {

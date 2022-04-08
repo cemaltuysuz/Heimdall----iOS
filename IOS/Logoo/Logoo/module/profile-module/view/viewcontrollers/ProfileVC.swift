@@ -21,11 +21,16 @@ class ProfileVC: BaseVC {
         configureUI()
         loadPage()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.loadPage()
+    }
+    
     @IBAction func insertPhotoButton(_ sender: Any) {
         
     }
     
     func configureUI(){
+        title = "Logoo"
         userPhotoSlider.configure()
     }
     
@@ -40,6 +45,8 @@ extension ProfileVC : PresenterToViewProfileProtocol {
         case .onUserLoad(let user):
             if let url = user.userPhotoUrl {
                 userPhotoImageView.setImage(urlString: url)
+                title = user.username
+                userManifestoTextView.text = user.userManifesto
             }
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)

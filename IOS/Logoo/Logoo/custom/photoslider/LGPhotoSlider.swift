@@ -9,25 +9,11 @@ import UIKit
 
 @IBDesignable
 class LGPhotoSlider: NibLoadableView {
-    @IBOutlet weak var leftClickButton: UIButton!
-    @IBOutlet weak var leftClickArea: UIView!
-    @IBOutlet weak var rightClickButton: UIButton!
-    @IBOutlet weak var rightClickArea: UIView!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var photoSliderCollectionView: UICollectionView!
         
-    var userPosts:[UserPost]? {
-        didSet{
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                if !(strongSelf.userPosts?.isEmpty ?? true) {
-                    return
-                }
-                strongSelf.photoSliderCollectionView.reloadData()
-            }
-        }
-    }
+    var userPosts:[UserPost]?
 
     override func awakeFromNib() {
 
@@ -39,9 +25,7 @@ class LGPhotoSlider: NibLoadableView {
     }
     
     func configureUI(){
-        leftClickButton.isEnabled = false
-        leftClickArea.isUserInteractionEnabled = false
-        rightClickArea.isUserInteractionEnabled = true
+        pageControl.isHidden = true
         photoSliderCollectionView.isPagingEnabled = true
         photoSliderCollectionView.showsHorizontalScrollIndicator = false
     }
@@ -55,7 +39,7 @@ class LGPhotoSlider: NibLoadableView {
 }
 // MARK: - UICollectionView methods
 
-extension LGPhotoSlider : UICollectionViewDelegate, UICollectionViewDataSource {
+extension LGPhotoSlider : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userPosts?.count ?? 0
     }
@@ -66,12 +50,34 @@ extension LGPhotoSlider : UICollectionViewDelegate, UICollectionViewDataSource {
         cell.configure(post: current)
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if pageControl.isHidden {
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        }else {
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height + pageControl.frame.height)
+        }
+        
+    }
+    
 }
 // MARK: - Functions
 
 extension LGPhotoSlider {
     func updateUserPosts(posts: [UserPost]) {
-        userPosts = posts
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            if posts.count > 0 {
+                strongSelf.userPosts = posts
+                if posts.count > 1 {
+                    strongSelf.pageControl.numberOfPages = posts.count
+                    strongSelf.pageControl.isHidden = false
+                }
+                strongSelf.photoSliderCollectionView.reloadData()
+            }
+        }
+        
     }
 }
 

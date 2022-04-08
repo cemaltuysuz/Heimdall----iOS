@@ -25,8 +25,8 @@ class ProfileInteractor : PresenterToInteractorProfileProtocol {
             })
             
             FireStoreService.shared.getCollection(ref: ref.collection(FireCollections.USER_POSTS), onCompletion: { ( posts:[UserPost?]?, error) in
-                guard let posts = posts, error != nil else {
-                    print(error ?? "posts is nil")
+                guard let posts = posts, error == nil else {
+                    print(posts ?? "posts is nil")
                     return
                 }
                 var nonNilPosts = [UserPost]()

@@ -773,7 +773,7 @@
                                 <rect key="frame" x="15" y="88" width="384" height="725"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Np8-H9-4Kn">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="690"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="660"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkb-19-AhH">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="140"/>
@@ -799,20 +799,20 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F36-xs-69x">
-                                                <rect key="frame" x="0.0" y="150" width="384" height="90"/>
+                                                <rect key="frame" x="0.0" y="150" width="384" height="50"/>
                                                 <color key="backgroundColor" name="grey200"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="90" id="hE6-0G-X5B"/>
+                                                    <constraint firstAttribute="height" constant="50" id="hE6-0G-X5B"/>
                                                 </constraints>
                                                 <color key="textColor" name="grey500"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LZK-E6-Ugg">
-                                                <rect key="frame" x="0.0" y="250" width="384" height="120"/>
+                                                <rect key="frame" x="0.0" y="210" width="384" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="TcH-YB-lUN"/>
+                                                    <constraint firstAttribute="height" constant="100" id="TcH-YB-lUN"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Kl-XN-6Ou">
                                                     <size key="itemSize" width="128" height="48"/>
@@ -821,13 +821,13 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <view key="backgroundView" contentMode="scaleToFill" id="CsM-In-ljg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myProfileInterests" id="WOg-ap-DvD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="48"/>
+                                                        <rect key="frame" x="0.0" y="26" width="128" height="48"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CX1-x1-Khs">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="48"/>
@@ -857,15 +857,28 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFE-xo-lex" customClass="LGPhotoSlider" customModule="Logoo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="380" width="384" height="250"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFh-kz-yBb">
+                                                <rect key="frame" x="0.0" y="320" width="384" height="280"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFE-xo-lex" customClass="LGPhotoSlider" customModule="Logoo" customModuleProvider="target">
+                                                        <rect key="frame" x="52" y="0.0" width="280" height="280"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="280" id="Je4-Xn-8DY"/>
+                                                            <constraint firstAttribute="width" constant="280" id="ORt-lj-zId"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="250" id="oTz-6t-cjl"/>
+                                                    <constraint firstItem="aFE-xo-lex" firstAttribute="centerX" secondItem="eFh-kz-yBb" secondAttribute="centerX" id="2a4-Iw-p4V"/>
+                                                    <constraint firstAttribute="bottom" secondItem="aFE-xo-lex" secondAttribute="bottom" id="KwQ-wt-DM2"/>
+                                                    <constraint firstAttribute="height" constant="280" id="kzh-oQ-5hF"/>
+                                                    <constraint firstItem="aFE-xo-lex" firstAttribute="top" secondItem="eFh-kz-yBb" secondAttribute="top" id="lWp-cZ-mbY"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xr2-A2-tpM">
-                                                <rect key="frame" x="0.0" y="640" width="384" height="50"/>
+                                                <rect key="frame" x="0.0" y="610" width="384" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9aP-Se-5I1"/>
                                                 </constraints>
