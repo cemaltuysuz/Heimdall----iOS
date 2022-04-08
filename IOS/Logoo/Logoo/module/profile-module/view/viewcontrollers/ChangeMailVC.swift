@@ -72,7 +72,7 @@ extension ChangeMailVC : PresenterToViewChangeMailProtocol {
                 switch type {
                 case .CONFIRM:
                     self.showCurtain()
-                    self.presenter?.doChangeMail(mail: self.newMailAdressTextField.text!,pass: self.currentPasswordTextField.text!)
+                    self.presenter?.doChangeMail(mail: self.newMailAdressTextField.text!)
                     break
                 case .DISMISS:
                     break

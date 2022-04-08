@@ -17,8 +17,8 @@ class ChangeMailPresenter : ViewToPresenterChangeMailProtocol, InteractorToPrese
         interactor?.reAuthRequest(currentPassword: currentPassword)
     }
     
-    func doChangeMail(mail: String,pass:String) {
-        interactor?.doChangeMail(mail: mail,pass: pass)
+    func doChangeMail(mail: String) {
+        interactor?.doChangeMail(mail: mail)
     }
 
     func onStateChange(state: ChangeMailState) {

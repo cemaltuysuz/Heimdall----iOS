@@ -13,6 +13,6 @@ class LGImageView  : UIImageView {
     var reDesigned:Bool?
     
     override func awakeFromNib() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = 1
     }
 }

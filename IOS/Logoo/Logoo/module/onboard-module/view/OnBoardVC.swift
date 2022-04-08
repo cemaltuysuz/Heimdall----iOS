@@ -72,7 +72,7 @@ extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
             let horizontalCenter = width / 2
 
             let page = Int(offSet + horizontalCenter) / Int(width)
-            self.onBoardPageControl.currentPage = page
+            onBoardPageControl.currentPage = page
         }
 }
 
