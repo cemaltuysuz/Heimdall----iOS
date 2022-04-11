@@ -116,6 +116,7 @@
 		1579A63A28045E7200812D1E /* LGPhotoSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1589831527FEE73300853BBC /* LGPhotoSliderCell.xib */; };
 		1579A63B28045ED400812D1E /* RegisterPhotoChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */; };
 		1579A63C280462D200812D1E /* RegisterInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42527C76AF90082029E /* RegisterInformationCell.xib */; };
+		1579A63D2804740B00812D1E /* InterestViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1541104528002E3D0099CE27 /* InterestViewerCell.xib */; };
 		1584957E27CDEDFA00ED57B6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */; };
 		1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957F27CE00D700ED57B6 /* ProfileVC.swift */; };
 		1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958127CE00EB00ED57B6 /* EditProfileVC.swift */; };
@@ -1731,6 +1732,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1579A63D2804740B00812D1E /* InterestViewerCell.xib in Resources */,
 				1579A63C280462D200812D1E /* RegisterInformationCell.xib in Resources */,
 				1579A63B28045ED400812D1E /* RegisterPhotoChooseCell.xib in Resources */,
 				1579A63A28045E7200812D1E /* LGPhotoSliderCell.xib in Resources */,
