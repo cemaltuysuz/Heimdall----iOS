@@ -12,6 +12,7 @@
  */
 
 import UIKit
+import Mantis
 
 class RegisterVC: BaseVC {
 
@@ -286,8 +287,12 @@ extension RegisterVC : RegisterPhotoChooseCellProtocol, UIImagePickerControllerD
             return
         }
         // I pass the received image to both the cell class and the interactor class.
-        registerPhotoPickCell?.onPhotoUpload(image: image)
-        presenter?.setUserImage(image: image)
+        var config = Mantis.Config()
+        config.cropShapeType = .square
+        config.ratioOptions = [.square]
+        let cropViewController = Mantis.cropViewController(image: image,config: config)
+        cropViewController.delegate = self
+        present(cropViewController, animated: true)
     }
 }
 
@@ -357,6 +362,18 @@ extension RegisterVC {
         guard let cell = registerCollectionView.cellForItem(at: IndexPath(row: currentRegisterCellIndex(), section: 0))
         else {return nil}
         return cell
+    }
+}
+
+extension RegisterVC : CropViewControllerDelegate {
+    func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
+        cropViewController.dismiss(animated: true)
+        registerPhotoPickCell?.onPhotoUpload(image: cropped)
+        presenter?.setUserImage(image: cropped)
+    }
+    
+    func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
+        cropViewController.dismiss(animated: true)
     }
 }
 
