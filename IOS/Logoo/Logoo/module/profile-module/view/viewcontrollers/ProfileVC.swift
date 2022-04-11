@@ -13,6 +13,9 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userManifestoTextView: UITextView!
     @IBOutlet weak var userPhotoSlider: LGPhotoSlider!
     @IBOutlet weak var userInterestsViewer: InterestsViewer!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
     
     
     var presenter:ViewToPresenterProfileProtocol?
@@ -28,10 +31,22 @@ class ProfileVC: BaseVC {
     
     func configureUI(){
         title = "Logoo"
+        let height = userInterestsViewer.interestsCollectionView.collectionViewLayout.collectionViewContentSize.height
+        userInterestsViewer.heightAnchor.constraint(equalToConstant: height).activate(withIdentifier: "interestsHeightConstant")
+        userManifestoTextView.heightAnchor.constraint(equalToConstant: 50).activate(withIdentifier: "userManifestoHeightConstraint")
     }
     
     func loadPage(){
+        userInterestsViewer.delegate = self
         presenter?.loadPage()
+    }
+    
+    func updateUserManifesto(text:String) {
+        if !text.isEmpty, text != userManifestoTextView.text {
+            if let constraint = userManifestoTextView.getConstraint(withIndentifier: "userManifestoHeightConstraint") {
+                constraint.constant = userManifestoTextView.contentSize.height
+            }
+        }
     }
 }
 
@@ -42,6 +57,7 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             if let url = user.userPhotoUrl {
                 userPhotoImageView.setImage(urlString: url)
                 title = user.username
+                usernameLabel.text = user.username
                 userManifestoTextView.text = user.userManifesto
                 
                 if let interests = user.userInterests?.toListByCharacter(GeneralSeperators.INTEREST_SEPERATOR) {
@@ -60,10 +76,37 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     }
 }
 
+extension ProfileVC : InterestsViewerProtocol {
+    func onContentUpdated(_ collectionView: UICollectionView) {
+        DispatchQueue.main.async {
+            let height:CGFloat = collectionView.collectionViewLayout.collectionViewContentSize.height
+            if let filteredConstraint = self.userInterestsViewer.getConstraint(withIndentifier: "interestsHeightConstant") {
+                filteredConstraint.constant = height
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+}
+
 
 enum ProfileState {
     case onUserLoad(user:User)
     case onPostsLoadSuccess(posts:[UserPost])
     case onPostsLoadFail
     case onError(message:String)
+}
+
+extension UIView {
+    func getConstraint(withIndentifier indentifier: String) -> NSLayoutConstraint? {
+        return self.constraints.filter { $0.identifier == indentifier }.first
+    }
+}
+
+extension NSLayoutConstraint {
+    func activate(withIdentifier identifier: String) {
+        self.identifier = identifier
+        self.isActive = true
+    }
 }

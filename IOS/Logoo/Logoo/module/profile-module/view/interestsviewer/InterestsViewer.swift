@@ -8,10 +8,17 @@
 import Foundation
 import UIKit
 
+
+protocol InterestsViewerProtocol : AnyObject {
+    func onContentUpdated(_ collectionView:UICollectionView)
+}
+
+
 class InterestsViewer : NibLoadableView {
     
     @IBOutlet weak var interestsCollectionView: UICollectionView!
     var interests:[String]?
+    weak var delegate:InterestsViewerProtocol?
     
     override func awakeFromNib() {
         configure()
@@ -22,10 +29,11 @@ class InterestsViewer : NibLoadableView {
         setupBinds()
     }
     func setupUI(){
-        let layout = CustomViewFlowLayout()
+        //let layout = CustomViewFlowLayout()
+        let layout = LeftAlignedCollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 3
+        layout.minimumLineSpacing = 3
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         interestsCollectionView.collectionViewLayout = layout
     }
@@ -59,83 +67,31 @@ extension InterestsViewer {
             if interests.count > 0 {
                 strongSelf.interests = interests
                 strongSelf.interestsCollectionView.reloadData()
-                
+                strongSelf.delegate?.onContentUpdated(strongSelf.interestsCollectionView)
             }
         }
     }
 }
 
-class CustomViewFlowLayout : UICollectionViewFlowLayout {
+class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let superAttributes = super.layoutAttributesForElements(in: rect) else { return nil }
-        // Copy each item to prevent "UICollectionViewFlowLayout has cached frame mismatch" warning
-        guard let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes] else { return nil }
-        
-        // Constants
-        let leftPadding: CGFloat = 8
-        let interItemSpacing: CGFloat = 5
-        
-        // Tracking values
-        var leftMargin: CGFloat = leftPadding // Modified to determine origin.x for each item
-        var maxY: CGFloat = -1.0 // Modified to determine origin.y for each item
-        var rowSizes: [[CGFloat]] = [] // Tracks the starting and ending x-values for the first and last item in the row
-        var currentRow: Int = 0 // Tracks the current row
-        attributes.forEach { layoutAttribute in
-            
-            // Each layoutAttribute represents its own item
+        let attributes = super.layoutAttributesForElements(in: rect)
+
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
             if layoutAttribute.frame.origin.y >= maxY {
-                
-                // This layoutAttribute represents the left-most item in the row
-                leftMargin = leftPadding
-                
-                // Register its origin.x in rowSizes for use later
-                if rowSizes.count == 0 {
-                    // Add to first row
-                    rowSizes = [[leftMargin, 0]]
-                } else {
-                    // Append a new row
-                    rowSizes.append([leftMargin, 0])
-                    currentRow += 1
-                }
+                leftMargin = sectionInset.left
             }
-            
+
             layoutAttribute.frame.origin.x = leftMargin
-            
-            leftMargin += layoutAttribute.frame.width + interItemSpacing
-            maxY = max(layoutAttribute.frame.maxY, maxY)
-            
-            // Add right-most x value for last item in the row
-            rowSizes[currentRow][1] = leftMargin - interItemSpacing
+
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
         }
-        
-        // At this point, all cells are left aligned
-        // Reset tracking values and add extra left padding to center align entire row
-        leftMargin = leftPadding
-        maxY = -1.0
-        currentRow = 0
-        attributes.forEach { layoutAttribute in
-            
-            // Each layoutAttribute is its own item
-            if layoutAttribute.frame.origin.y >= maxY {
-                
-                // This layoutAttribute represents the left-most item in the row
-                leftMargin = leftPadding
-                
-                // Need to bump it up by an appended margin
-                let rowWidth = rowSizes[currentRow][1] - rowSizes[currentRow][0] // last.x - first.x
-                let appendedMargin = (collectionView!.frame.width - leftPadding  - rowWidth - leftPadding) / 2
-                leftMargin += appendedMargin
-                
-                currentRow += 1
-            }
-            
-            layoutAttribute.frame.origin.x = leftMargin
-            
-            leftMargin += layoutAttribute.frame.width + interItemSpacing
-            maxY = max(layoutAttribute.frame.maxY, maxY)
-        }
-        
+
         return attributes
     }
 }
+

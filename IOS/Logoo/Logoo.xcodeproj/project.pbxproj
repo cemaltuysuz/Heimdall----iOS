@@ -117,6 +117,7 @@
 		1579A63B28045ED400812D1E /* RegisterPhotoChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */; };
 		1579A63C280462D200812D1E /* RegisterInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42527C76AF90082029E /* RegisterInformationCell.xib */; };
 		1579A63D2804740B00812D1E /* InterestViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1541104528002E3D0099CE27 /* InterestViewerCell.xib */; };
+		1579A63F2804B64F00812D1E /* LGPhotoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A63E2804B64F00812D1E /* LGPhotoSlider.swift */; };
 		1584957E27CDEDFA00ED57B6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */; };
 		1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957F27CE00D700ED57B6 /* ProfileVC.swift */; };
 		1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958127CE00EB00ED57B6 /* EditProfileVC.swift */; };
@@ -133,7 +134,6 @@
 		1589830B27FEDABA00853BBC /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589830A27FEDABA00853BBC /* ProfileInteractor.swift */; };
 		1589830D27FEDAFA00853BBC /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589830C27FEDAFA00853BBC /* ProfileRouter.swift */; };
 		1589831627FEE73300853BBC /* LGPhotoSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589831427FEE73300853BBC /* LGPhotoSliderCell.swift */; };
-		1589831927FEE8C300853BBC /* LGPhotoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589831827FEE8C300853BBC /* LGPhotoSlider.swift */; };
 		1589831B27FEEDA700853BBC /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589831A27FEEDA700853BBC /* UICollectionView+.swift */; };
 		1589831D27FEFF7200853BBC /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589831C27FEFF7200853BBC /* UICollectionViewCell+.swift */; };
 		1589831F27FF001C00853BBC /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589831E27FF001C00853BBC /* Reusable.swift */; };
@@ -338,6 +338,7 @@
 		1579A61A28040B1800812D1E /* RegisterCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCellType.swift; sourceTree = "<group>"; };
 		1579A61C280437BD00812D1E /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		1579A61E2804441A00812D1E /* RegisterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocol.swift; sourceTree = "<group>"; };
+		1579A63E2804B64F00812D1E /* LGPhotoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGPhotoSlider.swift; sourceTree = "<group>"; };
 		1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		1584957F27CE00D700ED57B6 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1584958127CE00EB00ED57B6 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
@@ -356,7 +357,6 @@
 		1589831127FEE2BD00853BBC /* LGPhotoSlider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGPhotoSlider.xib; sourceTree = "<group>"; };
 		1589831427FEE73300853BBC /* LGPhotoSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGPhotoSliderCell.swift; sourceTree = "<group>"; };
 		1589831527FEE73300853BBC /* LGPhotoSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGPhotoSliderCell.xib; sourceTree = "<group>"; };
-		1589831827FEE8C300853BBC /* LGPhotoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGPhotoSlider.swift; sourceTree = "<group>"; };
 		1589831A27FEEDA700853BBC /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		1589831C27FEFF7200853BBC /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		1589831E27FF001C00853BBC /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -1056,7 +1056,7 @@
 				1589831127FEE2BD00853BBC /* LGPhotoSlider.xib */,
 				1589831427FEE73300853BBC /* LGPhotoSliderCell.swift */,
 				1589831527FEE73300853BBC /* LGPhotoSliderCell.xib */,
-				1589831827FEE8C300853BBC /* LGPhotoSlider.swift */,
+				1579A63E2804B64F00812D1E /* LGPhotoSlider.swift */,
 			);
 			path = photoslider;
 			sourceTree = "<group>";
@@ -1930,6 +1930,7 @@
 				15F6707F27FC35B90083E58C /* ChangeMailVC.swift in Sources */,
 				15C64C4E27BE24A70088DD35 /* WelcomeVCProtocols.swift in Sources */,
 				15A5B43427C76BA80082029E /* RegisterGenderCell.swift in Sources */,
+				1579A63F2804B64F00812D1E /* LGPhotoSlider.swift in Sources */,
 				1541105628009CC60099CE27 /* UITableView+.swift in Sources */,
 				153EA97C27A0076000871246 /* ChatType.swift in Sources */,
 				159C3BD3279C110F001B9607 /* ValidationResponse.swift in Sources */,
@@ -1953,7 +1954,6 @@
 				1579A61F2804441A00812D1E /* RegisterProtocol.swift in Sources */,
 				15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */,
 				15064F4F279D492A00460334 /* User.swift in Sources */,
-				1589831927FEE8C300853BBC /* LGPhotoSlider.swift in Sources */,
 				15A5B43A27C7A5590082029E /* RegisterType.swift in Sources */,
 				1579A61B28040B1800812D1E /* RegisterCellType.swift in Sources */,
 			);
