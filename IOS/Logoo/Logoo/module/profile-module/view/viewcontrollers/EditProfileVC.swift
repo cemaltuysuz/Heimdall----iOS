@@ -14,7 +14,6 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var userImageChangeLabel: UILabel!
     @IBOutlet weak var editUserProfilePhotoImg: LGImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
-    @IBOutlet weak var errorLabel: UILabel!
     
     var fields:[EditFieldConfigure]?
     var reformableFields:[Reformable]?
@@ -46,9 +45,9 @@ class EditProfileVC: UIViewController {
     }
     
     func setupUI(){
-        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithTextFieldCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithTextFieldCell")
-        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithDatePickerCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithDatePickerCell")
-        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithPickerViewCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithPickerViewCell")
+        editUserFieldsTableView.register(EditFieldWithTextFieldCell.self)
+        editUserFieldsTableView.register(EditFieldWithDatePickerCell.self)
+        editUserFieldsTableView.register(EditFieldWithPickerViewCell.self)
         
         editUserFieldsTableView.delegate = self
         editUserFieldsTableView.dataSource = self

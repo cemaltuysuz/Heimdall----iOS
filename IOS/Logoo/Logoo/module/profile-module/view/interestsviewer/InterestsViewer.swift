@@ -12,6 +12,7 @@ class InterestsViewer : NibLoadableView {
     
     @IBOutlet weak var interestsCollectionView: UICollectionView!
     var interests:[String]?
+    
     override func awakeFromNib() {
         configure()
     }
@@ -58,6 +59,7 @@ extension InterestsViewer {
             if interests.count > 0 {
                 strongSelf.interests = interests
                 strongSelf.interestsCollectionView.reloadData()
+                
             }
         }
     }

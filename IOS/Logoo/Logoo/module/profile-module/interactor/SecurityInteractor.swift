@@ -26,12 +26,12 @@ class SecurityInteractor : PresenterToInteractorSecurityProtocol {
         
         items.append(LineMenuItem(iconName: "key.fill",
                                   itemTitle: "Change Password".localized(),
-                                  rawValue: SecurityMenuItemType.CHANGE_MAIL.rawValue,
+                                  rawValue: SecurityMenuItemType.CHANGE_PASSWORD.rawValue,
                                   isEnabled: true))
         
         items.append(LineMenuItem(iconName: "lock.rotation",
                                   itemTitle: "Login Transactions".localized(),
-                                  rawValue: SecurityMenuItemType.CHANGE_MAIL.rawValue,
+                                  rawValue: SecurityMenuItemType.LOGIN_TRANSACTIONS.rawValue,
                                   warningMessage: ""))
         
         presenter?.securityItems(items: items)
