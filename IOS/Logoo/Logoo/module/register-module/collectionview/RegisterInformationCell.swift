@@ -9,7 +9,12 @@ import UIKit
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
+protocol RegisterInformationCellProtocol : AnyObject {
+    func informationToView(username:String,userMail:String,userPassword:String)
+    func informationRealtimeValidation(response:ValidationResponse)
+}
+
+class RegisterInformationCell: UICollectionViewCell {
 
     @IBOutlet weak var registerUsernameLabel: UITextField!
     @IBOutlet weak var registerMailLabel: UITextField!
@@ -20,23 +25,37 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
     
     private var pendingRequestWorkItem: DispatchWorkItem?
     
-    weak var toView:RegisterInformationCellProtocol?
+    weak var delegate:RegisterInformationCellProtocol?
     
+    override func awakeFromNib() {
+        initialize()
+    }
+    
+    
+    func initialize() {
+        registerUsernameLabel.addTarget(self, action: #selector(self.usernameTextDidChange(_:)), for: .editingChanged)
+        registerMailLabel.addTarget(self, action: #selector(self.userMailTextDidChange(_:)), for: .editingChanged)
+        
+        isEmailUsed = true
+        isUsernameUsed = true
+    }
+}
+
+extension RegisterInformationCell : Registerable {
     func validate() -> ValidationResponse {
-        // Global check for empty text
-        if let username = registerUsernameLabel.text, let mail = registerMailLabel.text, let password = registerPasswordLabel.text {
+        if let username = registerUsernameLabel.text, let mail = registerMailLabel.text, let password = registerPasswordLabel.text, !username.isEmpty, !mail.isEmpty, !password.isEmpty {
             
-            let result = BaseValidator.validate(validators: [MailValidator(mail: mail),UsernameValidator(username: username),PasswordValidator(password: password)])
+            let result = BaseValidator.validate(validators: [UsernameValidator(username: username),MailValidator(mail: mail),PasswordValidator(password: password)])
             if result.isSuccess {
-                if !isEmailUsed! {
-                    if !isUsernameUsed! {
-                        toView?.informationToView(username: username, userMail: mail, userPassword: password)
+                if !isUsernameUsed!{
+                    if !isEmailUsed! {
+                        delegate?.informationToView(username: username, userMail: mail, userPassword: password)
                         return ValidationResponse(status: true, message: "Successfull.")
                     }else {
-                        return ValidationResponse(status: false, message: "This username is being used by another account.".localized())
+                        return ValidationResponse(status: false, message: "This email address is being used by another account.".localized())
                     }
                 }else {
-                    return ValidationResponse(status: false, message: "This email address is being used by another account.".localized())
+                    return ValidationResponse(status: false, message: "This username is being used by another account.".localized())
                 }
             }else {
                 return ValidationResponse(status: false, message: result.message!)
@@ -45,16 +64,9 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
             return ValidationResponse(status: false, message: "Please fill in all fields.".localized())
         }
     }
-    
-    func initialize(informationProtocol:RegisterInformationCellProtocol) {
-        self.toView = informationProtocol
-        self.registerUsernameLabel.addTarget(self, action: #selector(self.usernameTextDidChange(_:)), for: .editingChanged)
-        self.registerMailLabel.addTarget(self, action: #selector(self.userMailTextDidChange(_:)), for: .editingChanged)
-        
-        self.isEmailUsed = true
-        self.isUsernameUsed = true
-    }
-    
+}
+
+extension RegisterInformationCell {
     @objc
     func usernameTextDidChange(_ textField: UITextField){
         DispatchQueue.main.async {
@@ -70,10 +82,10 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.toView?.usernameRealtimeValidation(response: ValidationResponse(status: false, message: "This username is being used by another account.".localized()))
+                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: false, message: "This username is being used by another account.".localized()))
                             self?.isUsernameUsed = true
                         }else {
-                            self?.toView?.usernameRealtimeValidation(response: ValidationResponse(status: true, message: nil))
+                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: true, message: nil))
                             self?.isUsernameUsed = false
                         }
                     })
@@ -101,10 +113,10 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.toView?.mailRealtimeValidation(response: ValidationResponse(status: false, message: "This email address is being used by another account.".localized()))
+                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: false, message: "This email address is being used by another account.".localized()))
                             self?.isEmailUsed = true
                         }else {
-                            self?.toView?.mailRealtimeValidation(response: ValidationResponse(status: true, message: nil))
+                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: true, message: nil))
                             self?.isEmailUsed = false
                         }
                     })
@@ -118,8 +130,8 @@ class RegisterInformationCell: UICollectionViewCell, RegisterProtocol {
     }
 }
 
-protocol RegisterInformationCellProtocol : AnyObject {
-    func informationToView(username:String,userMail:String,userPassword:String)
-    func usernameRealtimeValidation(response:ValidationResponse)
-    func mailRealtimeValidation(response:ValidationResponse)
+extension RegisterInformationCell : RegisterBindable {
+    func bind(_ viewController: RegisterVC) {
+        delegate = viewController
+    }
 }

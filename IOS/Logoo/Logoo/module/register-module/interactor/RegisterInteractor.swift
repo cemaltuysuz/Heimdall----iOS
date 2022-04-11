@@ -12,9 +12,9 @@ import FirebaseStorage
 import SwiftUI
 import FirebaseFirestore
 
-class RegisterInteractor : PresenterToInteractorRegisterMail{
+class RegisterInteractor : PresenterToInteractorRegister{
     
-    var presenter: InteractorToPresenterRegisterMail?
+    var presenter: InteractorToPresenterRegister?
     var fireStoreDB = Firestore.firestore()
     var storageRef:StorageReference!
     
@@ -31,24 +31,24 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     
 
     func getRegisterMailSteps() {
-        var steps = [UICollectionViewCell]()
+        var steps = [RegisterCellType]()
             
-        steps.append(RegisterPhotoChooseCell())
-        steps.append(RegisterInformationCell())
-        steps.append(RegisterBirthDayCell())
-        steps.append(RegisterGenderCell())
-        steps.append(RegisterConfirmCell())
+        steps.append(.PHOTO_CHOOSE_CELL)
+        steps.append(.INFORMATION_CELL)
+        steps.append(.BIRTH_OF_DATE_CELL)
+        steps.append(.GENDER_CELL)
+        steps.append(.CONFIRM_CELL)
         
         presenter?.registerStepsToPresenter(steps: steps)
     }
     
     func getRegisterGoogleSteps() {
-        var steps = [UICollectionViewCell]()
+        var steps = [RegisterCellType]()
         
-        steps.append(RegisterPhotoChooseCell())
-        steps.append(RegisterBirthDayCell())
-        steps.append(RegisterGenderCell())
-        steps.append(RegisterConfirmCell())
+        steps.append(.PHOTO_CHOOSE_CELL)
+        steps.append(.BIRTH_OF_DATE_CELL)
+        steps.append(.GENDER_CELL)
+        steps.append(.CONFIRM_CELL)
         
         presenter?.registerStepsToPresenter(steps: steps)
     }

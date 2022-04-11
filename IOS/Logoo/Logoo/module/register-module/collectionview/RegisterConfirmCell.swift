@@ -14,14 +14,23 @@ class RegisterConfirmCell: UICollectionViewCell {
     private var anim:AnimationView?
     var animName:String?
     var message:String?
+    
+    override func awakeFromNib() {
+        initialize()
+    }
 
     func initialize() {
-        resultMessageLabel.text = message!
-        anim = AnimationView(name: animName!)
         anim!.frame = animContainer.bounds
         anim!.animationSpeed = 1
         anim!.loopMode = .playOnce
         anim!.play()
         animContainer.addSubview(anim!)
+    }
+}
+
+extension RegisterConfirmCell : RegisterBindable {
+    func bind(_ viewController: RegisterVC) {
+        resultMessageLabel.text = viewController.resultScreenMessage
+        anim = AnimationView(name: viewController.resultScreenAnimName ?? "success")
     }
 }

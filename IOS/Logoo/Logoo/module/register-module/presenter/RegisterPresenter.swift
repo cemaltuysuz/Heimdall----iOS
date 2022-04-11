@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-class RegisterPresenter : InteractorToPresenterRegisterMail, ViewToPresenterRegisterMail {
+class RegisterPresenter : InteractorToPresenterRegister, ViewToPresenterRegister {
     
-    var view: PresenterToViewRegisterMail?
-    var interactor: PresenterToInteractorRegisterMail?
+    var view: PresenterToViewRegister?
+    var interactor: PresenterToInteractorRegister?
     
     func setUserInfoForGoogleUsers() {
         interactor?.setUserInfoForGoogleUsers()
@@ -21,7 +21,7 @@ class RegisterPresenter : InteractorToPresenterRegisterMail, ViewToPresenterRegi
         interactor?.createUserWithEmail()
     }
     
-    func registerStepsToPresenter(steps: [UICollectionViewCell]) {
+    func registerStepsToPresenter(steps: [RegisterCellType]) {
         view?.registerStepsToView(steps: steps)
     }
 

@@ -44,7 +44,7 @@
 "Login failed." = "Giriş başarısız.";
 
 "This email address is being used by another account." = "Bu mail adresi zaten kayıtlı.";
-"This email address is being used by another account." = "Bu kullanıcı adı bir başkası tarafından kullanılıyor.";
+"This email address is being used by another account." = "Bu mail adresi bir başkası tarafından kullanılıyor.";
 "The information entered is already in use by another account." = "Girilen bilgi bir başka hesap tarafından zaten kullanılıyor.";
 
 // Reset Password
