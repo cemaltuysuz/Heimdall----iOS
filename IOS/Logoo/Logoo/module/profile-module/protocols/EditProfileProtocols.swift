@@ -16,13 +16,17 @@ protocol ViewToPresenterEditProfileProtocol {
     func getCurrentUserFields()
     func updateUserField(key:String,value:String,reformable:Reformable)
     func updateUserPhoto(image:UIImage)
+    func deleteUserPhoto(imageUUID:String)
 }
 
 protocol PresenterToInteractorEditProfileProtocol {
     var presenter:InteractorToPresenterEditProfileProtocol? {get set}
+    
     func getCurrentUserFields()
     func updateUserField(key:String,value:String,reformable:Reformable)
+    
     func updateUserPhoto(image:UIImage)
+    func deleteUserPhoto(imageUUID:String)
 }
 
 protocol InteractorToPresenterEditProfileProtocol {

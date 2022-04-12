@@ -9,11 +9,17 @@ import UIKit
 import SwiftUI
 import Mantis
 
+protocol EditProfileVCToAlbumCellProtocol : AnyObject {
+    func updateData(posts:[UserPost])
+}
+
 class EditProfileVC: UIViewController {
 
     @IBOutlet weak var userImageChangeLabel: UILabel!
     @IBOutlet weak var editUserProfilePhotoImg: LGImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
+    
+    weak var editProfileToAlbumCellProtocol:AlbumItemCellProtocol?
     
     var fields:[EditFieldConfigure]?
     var reformableFields:[Reformable]?
@@ -48,13 +54,15 @@ class EditProfileVC: UIViewController {
         editUserFieldsTableView.register(EditFieldWithTextFieldCell.self)
         editUserFieldsTableView.register(EditFieldWithDatePickerCell.self)
         editUserFieldsTableView.register(EditFieldWithPickerViewCell.self)
+        editUserFieldsTableView.register(EditAlbumCell.self) // edit photo album
+        
         
         editUserFieldsTableView.delegate = self
         editUserFieldsTableView.dataSource = self
         
         userImageChangeLabel.isUserInteractionEnabled = true
         
-        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick))
+        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick(_:)))
         userImageChangeLabel.addGestureRecognizer(onDidTap)
     }
     
@@ -91,25 +99,28 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         
         if current.editType == .EDIT_WITH_TEXTFIELD || current.editType == .NO_EDIT{
             //let firstCell =  as! BaseEditFieldCell
-            let fcell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithTextFieldCell")
-            let cell = fcell as! EditFieldWithTextFieldCell
+            let cell = tableView.dequeue(indexPath, type: EditFieldWithTextFieldCell.self)
             cell.delegate = self
             cell.configureCell(model: current)
             reformableFields?.append(cell)
             return cell
         }
         else if current.editType == .EDIT_WITH_DATE_PICKER {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithDatePickerCell") as! EditFieldWithDatePickerCell
+            let cell = tableView.dequeue(indexPath, type: EditFieldWithDatePickerCell.self)
             cell.delegate = self
             cell.configureCell(model: current, minDate: nil, maxDate: Date())
             reformableFields?.append(cell)
             return cell
         }
         else if current.editType == .EDIT_WITH_PICKER_VIEW {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithPickerViewCell") as! EditFieldWithPickerViewCell
+            let cell = tableView.dequeue(indexPath, type: EditFieldWithPickerViewCell.self)
             cell.delegate = self
             cell.configureCell(model: current, data: getGenders)
             reformableFields?.append(cell)
+            return cell
+        }
+        else if current.editType == .EDIT_WITH_ALBUM {
+            let cell = tableView.dequeue(indexPath, type: EditAlbumCell.self)
             return cell
         }
         else {
@@ -130,18 +141,18 @@ extension EditProfileVC : EditFieldCellProtocol {
 
 // user change photo
 extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        
+    
     @objc
-    func userPhotoClick(){
+    func userPhotoClick(_ tap:UITapGestureRecognizer){
         let imagePicker = UIImagePickerController()
-            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-
-                imagePicker.delegate = self
-                imagePicker.sourceType = .savedPhotosAlbum
-                imagePicker.allowsEditing = false
-
-                present(imagePicker, animated: true, completion: nil)
-            }
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -151,10 +162,10 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
          I'm performing a casting when the user selects an image. If the image is received successfully,
          */
         guard let image = info[.originalImage] as? UIImage else {
-           print("Expected a dictionary containing an image, but was provided the following: \(info)")
+            print("Expected a dictionary containing an image, but was provided the following: \(info)")
             return
         }
-
+        
         var config = Mantis.Config()
         config.cropShapeType = .square
         config.ratioOptions = [.square]
@@ -173,5 +184,16 @@ extension EditProfileVC : CropViewControllerDelegate {
     
     func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
         cropViewController.dismiss(animated: true)
+    }
+}
+
+// This ViewController <- EditAlbumCell
+extension EditProfileVC : EditAlbumCellProtocol {
+    func deletePhotoRequest(postUUID: String) {
+        presenter?.deleteUserPhoto(imageUUID: postUUID)
+    }
+    
+    func selectPhotoRequest() {
+        
     }
 }

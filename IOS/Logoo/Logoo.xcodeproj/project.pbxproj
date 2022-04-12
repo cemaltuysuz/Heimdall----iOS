@@ -118,6 +118,10 @@
 		1579A63C280462D200812D1E /* RegisterInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42527C76AF90082029E /* RegisterInformationCell.xib */; };
 		1579A63D2804740B00812D1E /* InterestViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1541104528002E3D0099CE27 /* InterestViewerCell.xib */; };
 		1579A63F2804B64F00812D1E /* LGPhotoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A63E2804B64F00812D1E /* LGPhotoSlider.swift */; };
+		1579A6422804CFBF00812D1E /* EditAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A6402804CFBF00812D1E /* EditAlbumCell.swift */; };
+		1579A6432804CFBF00812D1E /* EditAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1579A6412804CFBF00812D1E /* EditAlbumCell.xib */; };
+		1579A6462804D04E00812D1E /* AlbumItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A6442804D04E00812D1E /* AlbumItemCell.swift */; };
+		1579A6472804D04E00812D1E /* AlbumItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1579A6452804D04E00812D1E /* AlbumItemCell.xib */; };
 		1584957E27CDEDFA00ED57B6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */; };
 		1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584957F27CE00D700ED57B6 /* ProfileVC.swift */; };
 		1584958227CE00EB00ED57B6 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584958127CE00EB00ED57B6 /* EditProfileVC.swift */; };
@@ -339,6 +343,10 @@
 		1579A61C280437BD00812D1E /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		1579A61E2804441A00812D1E /* RegisterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocol.swift; sourceTree = "<group>"; };
 		1579A63E2804B64F00812D1E /* LGPhotoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGPhotoSlider.swift; sourceTree = "<group>"; };
+		1579A6402804CFBF00812D1E /* EditAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlbumCell.swift; sourceTree = "<group>"; };
+		1579A6412804CFBF00812D1E /* EditAlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAlbumCell.xib; sourceTree = "<group>"; };
+		1579A6442804D04E00812D1E /* AlbumItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumItemCell.swift; sourceTree = "<group>"; };
+		1579A6452804D04E00812D1E /* AlbumItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumItemCell.xib; sourceTree = "<group>"; };
 		1584957D27CDEDFA00ED57B6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		1584957F27CE00D700ED57B6 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1584958127CE00EB00ED57B6 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
@@ -1072,6 +1080,8 @@
 				15D5614D27D8E2D40081DA5F /* EditFieldWithPickerViewCell.xib */,
 				154F826C27DBC02200C0C614 /* EditFieldWithSwitchCell.swift */,
 				154F826D27DBC02200C0C614 /* EditFieldWithSwitchCell.xib */,
+				1579A6402804CFBF00812D1E /* EditAlbumCell.swift */,
+				1579A6412804CFBF00812D1E /* EditAlbumCell.xib */,
 			);
 			path = editprofilefields;
 			sourceTree = "<group>";
@@ -1421,6 +1431,8 @@
 				1531F94527E0846600FA53AE /* LoginTransactionsCell.xib */,
 				1541105128008E280099CE27 /* LineMenuItemCell.swift */,
 				1541105228008E280099CE27 /* LineMenuItemCell.xib */,
+				1579A6442804D04E00812D1E /* AlbumItemCell.swift */,
+				1579A6452804D04E00812D1E /* AlbumItemCell.xib */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -1750,8 +1762,10 @@
 				1579A62D28045DE000812D1E /* LineMenuItemCell.xib in Resources */,
 				1579A62C28045DD600812D1E /* LoginTransactionsCell.xib in Resources */,
 				1579A62B28045DCE00812D1E /* RegisterGenderCell.xib in Resources */,
+				1579A6472804D04E00812D1E /* AlbumItemCell.xib in Resources */,
 				1579A62A28045DC300812D1E /* RegisterBirthDayCell.xib in Resources */,
 				1579A62928045DBC00812D1E /* EditFieldWithPickerViewCell.xib in Resources */,
+				1579A6432804CFBF00812D1E /* EditAlbumCell.xib in Resources */,
 				1579A62828045DAD00812D1E /* RegisterConfirmCell.xib in Resources */,
 				1579A62728045DA300812D1E /* Localizable.strings in Resources */,
 				1579A62628045D9400812D1E /* EditFieldWithSwitchCell.xib in Resources */,
@@ -1852,6 +1866,7 @@
 				156F044527B3A40C00D37039 /* LoginProtocols.swift in Sources */,
 				150FF44527E1DB7A0094B359 /* FirebaseLoggerService.swift in Sources */,
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
+				1579A6422804CFBF00812D1E /* EditAlbumCell.swift in Sources */,
 				1541104628002E3D0099CE27 /* InterestViewerCell.swift in Sources */,
 				15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */,
 				1589831B27FEEDA700853BBC /* UICollectionView+.swift in Sources */,
@@ -1875,6 +1890,7 @@
 				1589831D27FEFF7200853BBC /* UICollectionViewCell+.swift in Sources */,
 				151CBA1827F07E930088E548 /* LoginTransactionsInteractor.swift in Sources */,
 				1531F95127E09EA600FA53AE /* SecurityRouter.swift in Sources */,
+				1579A6462804D04E00812D1E /* AlbumItemCell.swift in Sources */,
 				1531F94B27E09C4800FA53AE /* SecurityInteractor.swift in Sources */,
 				15DC5D3D27B520E4004CA892 /* LoginRouter.swift in Sources */,
 				15983C062799954500903073 /* RegisterVC.swift in Sources */,

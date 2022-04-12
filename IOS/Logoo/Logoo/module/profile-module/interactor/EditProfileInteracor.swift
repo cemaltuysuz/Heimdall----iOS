@@ -47,6 +47,13 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                                                      hasCheckForAlreadyUsed: false,
                                                      editType: .EDIT_WITH_DATE_PICKER))
                     
+                    fields.append(EditFieldConfigure(displayName: "Your Photos".localized(),
+                                                     key: nil,
+                                                     value: nil,
+                                                     hasCheckForAlreadyUsed: nil,
+                                                     editType: .EDIT_WITH_ALBUM,
+                                                     validator: nil))
+                    
                     self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)
                 }
             })

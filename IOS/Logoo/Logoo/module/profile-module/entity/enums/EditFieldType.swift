@@ -13,5 +13,6 @@ enum EditFieldType {
     case EDIT_WITH_PICKER_VIEW
     case EDIT_WITH_TEXTFIELD
     case EDIT_WITH_SWITCH
+    case EDIT_WITH_ALBUM
     case NO_EDIT
 }
