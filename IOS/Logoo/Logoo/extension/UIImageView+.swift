@@ -9,14 +9,12 @@ import Foundation
 import Kingfisher
 import UIKit
 
-
-
 extension UIImageView {
     
     func setImage(urlString:String){
         let url = URL(string: urlString)
         let processor = DownsamplingImageProcessor(size: self.bounds.size)
-                     |> RoundCornerImageProcessor(cornerRadius: 20)
+        |> RoundCornerImageProcessor(cornerRadius: 20)
         self.kf.indicatorType = .activity
         self.kf.setImage(
             with: url,
