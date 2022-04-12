@@ -26,6 +26,7 @@ class EditProfileVC: UIViewController {
     
     var presenter:ViewToPresenterEditProfileProtocol?
     
+    var requestRawCode:Int?
     
     lazy var getGenders:[String] = {
         var genders = [String]()
@@ -76,6 +77,7 @@ class EditProfileVC: UIViewController {
     }
 }
 
+// MARK: - Functions from interactor
 extension EditProfileVC : PresenterToViewEditProfileProtocol {
     func userFieldsToView(fields: [EditFieldConfigure], userPhotoUrl:String?) {
         DispatchQueue.main.async {
@@ -88,7 +90,7 @@ extension EditProfileVC : PresenterToViewEditProfileProtocol {
         }
     }
 }
-
+// MARK: - functions from tableview
 extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fields?.count ?? 0
@@ -132,27 +134,20 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
+// MARK: - Update Field
 extension EditProfileVC : EditFieldCellProtocol {
     func updateField(fieldKey: String, fieldValue: String, reformable: Reformable) {
         presenter?.updateUserField(key: fieldKey, value: fieldValue, reformable: reformable)
     }
 }
 
-// user change photo
+// MARK: - Receive photo from user
 extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc
     func userPhotoClick(_ tap:UITapGestureRecognizer){
-        let imagePicker = UIImagePickerController()
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-            
-            present(imagePicker, animated: true, completion: nil)
-        }
+        requestRawCode = EditProfileImageRequestType.REQUEST_FOR_PP.rawValue
+        openGalleryWithVC(self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -166,20 +161,34 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
             return
         }
         
-        var config = Mantis.Config()
-        config.cropShapeType = .square
-        config.ratioOptions = [.square]
-        let cropViewController = Mantis.cropViewController(image: image,config: config)
-        cropViewController.delegate = self
-        present(cropViewController, animated: true)
+        guard let rawCode = requestRawCode, let reqType = EditProfileImageRequestType(rawValue: rawCode) else {return}
+        
+        switch reqType {
+        case .REQUEST_FOR_ALBUM:
+            startMantis(viewController: self, image: image, shapeType: .rect)
+            break
+        case .REQUEST_FOR_PP:
+            startMantis(viewController: self, image: image, shapeType: .square)
+            break
+        }
     }
 }
 
+// MARK: - Crop photo
+
 extension EditProfileVC : CropViewControllerDelegate {
     func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
+        guard let rawCode = requestRawCode, let reqType = EditProfileImageRequestType(rawValue: rawCode) else {return}
+        
+        switch reqType {
+        case .REQUEST_FOR_ALBUM:
+            break
+        case .REQUEST_FOR_PP:
+            editUserProfilePhotoImg.image = cropped
+            presenter?.updateUserPhoto(image: cropped)
+            break
+        }
         cropViewController.dismiss(animated: true)
-        editUserProfilePhotoImg.image = cropped
-        presenter?.updateUserPhoto(image: cropped)
     }
     
     func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
@@ -194,6 +203,12 @@ extension EditProfileVC : EditAlbumCellProtocol {
     }
     
     func selectPhotoRequest() {
-        
+        requestRawCode = EditProfileImageRequestType.REQUEST_FOR_ALBUM.rawValue
+        openGalleryWithVC(self)
     }
+}
+
+enum EditProfileImageRequestType : Int {
+    case REQUEST_FOR_ALBUM
+    case REQUEST_FOR_PP
 }

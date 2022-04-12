@@ -8,7 +8,7 @@
 import Foundation
 import SystemConfiguration
 import UIKit
-import FirebaseAuth
+import Mantis
 
 
 
@@ -55,6 +55,24 @@ func isConnectedToNetwork() -> Bool {
     return ret
 }
 
-func getPhotoFromUserGallery(){
+func openGalleryWithVC<T:UIViewController & UINavigationControllerDelegate>(_ viewController:T) where T : UIImagePickerControllerDelegate{
     
+    let imagePicker = UIImagePickerController()
+    if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+        
+        imagePicker.delegate = viewController
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
+        
+        viewController.present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+func startMantis<T:UIViewController & CropViewControllerDelegate>(viewController:T, image:UIImage, shapeType:CropShapeType){
+    var config = Mantis.Config()
+    config.cropShapeType = shapeType
+    config.ratioOptions = []
+    let cropViewController = Mantis.cropViewController(image: image,config: config)
+    cropViewController.delegate = viewController
+    viewController.present(cropViewController, animated: true)
 }
