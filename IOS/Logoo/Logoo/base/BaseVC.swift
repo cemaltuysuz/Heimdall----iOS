@@ -122,6 +122,12 @@ class BaseVC: UIViewController {
         curtain.removeFromSuperview()
     }
     
+    func getSafeAreaHeight() -> CGFloat {
+        let navbarSize = navigationController?.navigationBar.frame.height ?? 0
+        let tabBarSize = tabBarController?.tabBar.frame.height ?? 0
+        return UIScreen.main.bounds.height - navbarSize - tabBarSize
+    }
+    
 }
 
 // MARK: - Basic Alert

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiscoverVC: UIViewController {
+class DiscoverVC: BaseVC {
 
     var presenter:ViewToPresenterDiscorveryProtocol?
     var discoveredUsers:[User]?
@@ -24,8 +24,6 @@ class DiscoverVC: UIViewController {
         
         discoveryTableView.delegate = self
         discoveryTableView.dataSource = self
-
-        
     }
 }
 

@@ -47,10 +47,12 @@ class ChangeMailInteractor : PresenterToInteractorChangeMailProtocol {
             user.sendEmailVerification(beforeUpdatingEmail: mail, completion: {error in
                 if let error = error {
                     print(error)
-                    self.presenter?.onStateChange(state: .CHANGE_MAIL_FAIL(message: "An error occurred while changing the mail. Try again later.".localized()))
+                    self.presenter?.onStateChange(
+                        state: .CHANGE_MAIL_FAIL(message: "An error occurred. Try again later.".localized())
+                    )
                     return
                 }
-                self.presenter?.onStateChange(state: .SUCCESS_MAIL_CHANGE)
+                self.presenter?.onStateChange(state: .SUCCESS_MAIL_CHANGE) // sended verification link
             })
         }
     }

@@ -15,17 +15,16 @@ class ProfileInteractor : PresenterToInteractorProfileProtocol {
     
     func loadPage() {
         if let uuid = FirebaseAuthService.shared.getUUID() {
-            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
+            let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uuid)
             FireStoreService.shared.getDocument(ref: ref, onCompletion: {(user:User?) in
                 guard let user = user else {
                     // TODO: SEND ERROR MESSAGE
                     return
                 }
-                print(user.userInterests)
                 self.presenter?.onStateChange(state: .onUserLoad(user: user))
             })
             
-            FireStoreService.shared.getCollection(ref: ref.collection(FireCollections.USER_POSTS), onCompletion: { ( posts:[UserPost?]?, error) in
+            FireStoreService.shared.getCollection(ref: ref.collection(FireStoreCollection.USER_POSTS), onCompletion: { ( posts:[UserPost?]?, error) in
                 guard let posts = posts, error == nil else {
                     print(posts ?? "posts is nil")
                     return

@@ -56,7 +56,7 @@ class RegisterVC: BaseVC {
                 presenter?.getRegisterMailSteps()
             }
             else if registerType == .REGISTER_WITH_GOOGLE {
-                if getCurrentUserUid() != nil {
+                if FirebaseAuthService.shared.getUUID() != nil {
                     presenter?.getRegisterGoogleSteps()
                 }else {
                     goBackForError()

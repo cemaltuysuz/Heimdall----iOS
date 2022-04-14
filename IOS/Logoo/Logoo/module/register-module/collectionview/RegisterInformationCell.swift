@@ -74,7 +74,7 @@ extension RegisterInformationCell {
             
             if let text = textField.text , !text.isEmpty {
                 let requestWorkItem = DispatchWorkItem { [weak self] in
-                    let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
+                    let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION)
                     FireStoreService.shared.getDocumentsByField(ref: ref, getByField: "username", getByValue: text, onCompletion: {
                         (users:[User?]?, error:Error?) in
                         guard  error == nil else {
@@ -105,7 +105,7 @@ extension RegisterInformationCell {
             
             if let text = textField.text , !text.isEmpty {
                 let requestWorkItem = DispatchWorkItem { [weak self] in
-                    let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
+                    let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION)
                     FireStoreService.shared.getDocumentsByField(ref: ref, getByField: "userMail", getByValue: text, onCompletion: {
                         (users:[User?]?, error:Error?) in
                         guard  error == nil else {

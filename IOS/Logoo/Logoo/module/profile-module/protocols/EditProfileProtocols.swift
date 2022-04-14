@@ -13,28 +13,33 @@ protocol ViewToPresenterEditProfileProtocol {
     var view:PresenterToViewEditProfileProtocol? {get set}
     var interactor:PresenterToInteractorEditProfileProtocol? {get set}
     
-    func getCurrentUserFields()
+    func loadPage()
+    
     func updateUserField(key:String,value:String,reformable:Reformable)
     func updateUserPhoto(image:UIImage)
-    func deleteUserPhoto(imageUUID:String)
+    func createNewUserPost(image:UIImage)
+    func deleteUserPost(imageUUID:String)
 }
 
 protocol PresenterToInteractorEditProfileProtocol {
     var presenter:InteractorToPresenterEditProfileProtocol? {get set}
     
-    func getCurrentUserFields()
+    func loadPage()
+    
     func updateUserField(key:String,value:String,reformable:Reformable)
     
     func updateUserPhoto(image:UIImage)
-    func deleteUserPhoto(imageUUID:String)
+    func createNewUserPost(image:UIImage)
+    func deleteUserPost(imageUUID:String)
 }
 
 protocol InteractorToPresenterEditProfileProtocol {
-    func userFieldsToPresenter(fields:[EditFieldConfigure], userPhotoUrl:String?)
+    func onStateChange(state:EditProfileState)
+
 }
 
 protocol PresenterToViewEditProfileProtocol {
-    func userFieldsToView(fields:[EditFieldConfigure], userPhotoUrl:String?)
+    func onStateChange(state:EditProfileState)
 }
 
 protocol PresenterToRouterEditProfileProtocol {

@@ -76,3 +76,12 @@ func startMantis<T:UIViewController & CropViewControllerDelegate>(viewController
     cropViewController.delegate = viewController
     viewController.present(cropViewController, animated: true)
 }
+
+func startMantis<T:UIViewController & CropViewControllerDelegate>(viewController:T, image:UIImage, vRatio:Double, hRatio:Double){
+    var config = Mantis.Config()
+    config.ratioOptions = []
+    let cropViewController = Mantis.cropViewController(image: image,config: config)
+    cropViewController.delegate = viewController
+    cropViewController.config.presetFixedRatioType = .alwaysUsingOnePresetFixedRatio(ratio: hRatio / vRatio)
+    viewController.present(cropViewController, animated: true)
+}

@@ -26,7 +26,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
             if let mail = authResult?.user.email, let uuid = authResult?.user.uid {
                 
                 
-                let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
+                let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION)
                 FireStoreService.shared.getDocumentsByField(ref: ref,
                                                              getByField: "userMail",
                                                              getByValue: mail, onCompletion: {(users:[User?]?, error:Error?) in
@@ -57,7 +57,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                     }
                     else {
                         // NEW REGISTER
-                        let userRef = self.fireStoreDB.collection(FireCollections.USER_COLLECTION).document(uuid)
+                        let userRef = self.fireStoreDB.collection(FireStoreCollection.USER_COLLECTION).document(uuid)
                         let username = "User\(randomStringWithLength(len: 5))"
                         
                         let userObjectt = User(userId: uuid,

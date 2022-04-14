@@ -13,38 +13,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGPhotoSlider" customModule="Logoo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="420" height="354"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5sa-CT-Sxg">
-                    <rect key="frame" x="0.0" y="0.0" width="420" height="354"/>
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="375"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rc-nw-Vxm">
-                            <rect key="frame" x="0.0" y="0.0" width="420" height="324"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="345"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rek-3S-btu">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="324"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2G-ml-cMi">
-                                            <rect key="frame" x="15" y="151" width="20" height="22"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="6Ap-PL-4HT"/>
-                                                <constraint firstAttribute="width" constant="20" id="f8h-YD-e4x"/>
-                                            </constraints>
-                                            <color key="tintColor" name="black700"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="arrow.left" catalog="system"/>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstItem="i2G-ml-cMi" firstAttribute="centerX" secondItem="Rek-3S-btu" secondAttribute="centerX" id="4FZ-48-0bj"/>
-                                        <constraint firstAttribute="width" constant="50" id="MZz-8f-Xce"/>
-                                        <constraint firstItem="i2G-ml-cMi" firstAttribute="centerY" secondItem="Rek-3S-btu" secondAttribute="centerY" id="WSc-tm-Ddc"/>
-                                    </constraints>
-                                </view>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="48G-V2-10w">
-                                    <rect key="frame" x="50" y="0.0" width="320" height="324"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="345"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6g0-46-cwz">
                                         <size key="itemSize" width="128" height="128"/>
@@ -53,34 +32,10 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUU-ZZ-JUr">
-                                    <rect key="frame" x="370" y="0.0" width="50" height="324"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmN-Gi-GT3">
-                                            <rect key="frame" x="15" y="151" width="20" height="22"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="FSN-sx-b6H"/>
-                                                <constraint firstAttribute="width" constant="20" id="mSN-H3-u4H"/>
-                                            </constraints>
-                                            <color key="tintColor" name="black700"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="arrow.right" catalog="system"/>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstItem="hmN-Gi-GT3" firstAttribute="centerY" secondItem="EUU-ZZ-JUr" secondAttribute="centerY" id="QeL-mU-DsG"/>
-                                        <constraint firstItem="hmN-Gi-GT3" firstAttribute="centerX" secondItem="EUU-ZZ-JUr" secondAttribute="centerX" id="jWU-tT-011"/>
-                                        <constraint firstAttribute="width" constant="50" id="yum-FM-QFk"/>
-                                    </constraints>
-                                </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="EUU-ZZ-JUr" firstAttribute="width" secondItem="Rek-3S-btu" secondAttribute="width" id="KPN-Ih-1UI"/>
-                            </constraints>
                         </stackView>
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="r8F-7G-9JT">
-                            <rect key="frame" x="0.0" y="324" width="420" height="30"/>
+                            <rect key="frame" x="0.0" y="345" width="300" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="N0I-kA-h8i"/>
                             </constraints>
@@ -100,19 +55,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="leftArea" destination="Rek-3S-btu" id="R9o-sg-tGc"/>
-                <outlet property="leftButtonOutlet" destination="i2G-ml-cMi" id="qks-HZ-8Il"/>
                 <outlet property="pageControl" destination="r8F-7G-9JT" id="r4S-Jp-vhI"/>
                 <outlet property="photoSliderCollectionView" destination="48G-V2-10w" id="7X6-Ek-r1T"/>
-                <outlet property="rightArea" destination="EUU-ZZ-JUr" id="kEo-HY-1nu"/>
-                <outlet property="rightButtonOutlet" destination="hmN-Gi-GT3" id="JrW-QV-opl"/>
             </connections>
             <point key="canvasLocation" x="326" y="-185"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <namedColor name="black700">
             <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

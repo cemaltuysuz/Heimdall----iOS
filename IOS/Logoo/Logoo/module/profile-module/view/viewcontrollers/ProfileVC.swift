@@ -13,7 +13,6 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userManifestoTextView: UITextView!
     @IBOutlet weak var userPhotoSlider: LGPhotoSlider!
     @IBOutlet weak var userInterestsViewer: InterestsViewer!
-    @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
     
@@ -57,10 +56,9 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             if let url = user.userPhotoUrl {
                 userPhotoImageView.setImage(urlString: url)
                 title = user.username
-                usernameLabel.text = user.username
                 userManifestoTextView.text = user.userManifesto
                 
-                if let interests = user.userInterests?.toListByCharacter(GeneralSeperators.INTEREST_SEPERATOR) {
+                if let interests = user.userInterests?.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR) {
                     userInterestsViewer.updateAndReloadData(interests: interests)
                 }
                 
@@ -96,17 +94,4 @@ enum ProfileState {
     case onPostsLoadSuccess(posts:[UserPost])
     case onPostsLoadFail
     case onError(message:String)
-}
-
-extension UIView {
-    func getConstraint(withIndentifier indentifier: String) -> NSLayoutConstraint? {
-        return self.constraints.filter { $0.identifier == indentifier }.first
-    }
-}
-
-extension NSLayoutConstraint {
-    func activate(withIdentifier identifier: String) {
-        self.identifier = identifier
-        self.isActive = true
-    }
 }
