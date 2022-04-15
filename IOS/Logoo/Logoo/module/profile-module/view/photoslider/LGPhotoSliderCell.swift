@@ -14,7 +14,7 @@ class LGPhotoSliderCell: UICollectionViewCell {
     
     func configure(post:UserPost) {
         guard let url = post.postUrl else{return}
-        userPostPhotoImageView.setImage(urlString: url)
+        userPostPhotoImageView.setImage(urlString: url, radius: 10, focustStatus: true)
     }
     
     override func awakeFromNib() {

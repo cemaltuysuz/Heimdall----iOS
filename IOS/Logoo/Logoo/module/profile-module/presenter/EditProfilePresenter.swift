@@ -25,8 +25,8 @@ class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPre
         interactor?.loadPage()
     }
     
-    func deleteUserPost(imageUUID: String) {
-        interactor?.deleteUserPost(imageUUID: imageUUID)
+    func deleteUserPost(postUUID : String) {
+        interactor?.deleteUserPost(postUUID: postUUID)
     }
     
     func onStateChange(state: EditProfileState) {

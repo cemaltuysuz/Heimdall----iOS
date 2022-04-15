@@ -18,7 +18,7 @@ protocol ViewToPresenterEditProfileProtocol {
     func updateUserField(key:String,value:String,reformable:Reformable)
     func updateUserPhoto(image:UIImage)
     func createNewUserPost(image:UIImage)
-    func deleteUserPost(imageUUID:String)
+    func deleteUserPost(postUUID:String)
 }
 
 protocol PresenterToInteractorEditProfileProtocol {
@@ -30,7 +30,7 @@ protocol PresenterToInteractorEditProfileProtocol {
     
     func updateUserPhoto(image:UIImage)
     func createNewUserPost(image:UIImage)
-    func deleteUserPost(imageUUID:String)
+    func deleteUserPost(postUUID:String)
 }
 
 protocol InteractorToPresenterEditProfileProtocol {

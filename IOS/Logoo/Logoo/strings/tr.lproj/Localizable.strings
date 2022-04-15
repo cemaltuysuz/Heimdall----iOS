@@ -130,7 +130,9 @@
 
 // Edit Profile
 
-"post_upload_error_message" = "Gönderin yüklenirken bir hata oluştu.";
+"post_upload_error_message" = "Gönderi yüklenirken bir hata oluştu.";
+"post_delete_error_message" = "Gönderi silinirken bir hata oluştu.";
+"Your post will be deleted. Do you confirm of this ?" = "Gönderin silinecek. Bunu onaylıyor musun ?";
 
 
 

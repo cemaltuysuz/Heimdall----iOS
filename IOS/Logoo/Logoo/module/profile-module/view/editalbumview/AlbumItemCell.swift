@@ -26,7 +26,9 @@ class AlbumItemCell: UICollectionViewCell {
     private func configureDefCell(){
         plusButtonOutlet.isHidden = true
         trashContainer.isHidden = false
+        
         albumItemImageView.image = nil
+        
         let tapGestureTrash = UITapGestureRecognizer(target: self, action: #selector(self.onClickTrash(_:)))
         trashContainer.isUserInteractionEnabled = true
         trashContainer.addGestureRecognizer(tapGestureTrash)
@@ -37,10 +39,15 @@ class AlbumItemCell: UICollectionViewCell {
     func lastCellConfigure(){
         plusButtonOutlet.isHidden = false
         trashContainer.isHidden = true
+        albumItemImageView.image = nil
         
         contentView.isUserInteractionEnabled = true
         let tapGestureContent = UITapGestureRecognizer(target: self, action: #selector(self.onPhotoInsert(_:)))
         contentView.addGestureRecognizer(tapGestureContent)
+        
+        albumItemImageView.layer.masksToBounds = false
+        albumItemImageView.layer.cornerRadius = 0
+        albumItemImageView.removeDashedBorder()
         albumItemImageView.addDashedBorder(radius: contentView.layer.cornerRadius)
     }
     
@@ -60,8 +67,8 @@ extension AlbumItemCell {
     
     @objc
     func onClickTrash(_ tap:UITapGestureRecognizer) {
-        guard let post = post, let url = post.postUrl else {return}
-        delegate?.deletePhotoRequest(postUUID: url)
+        guard let post = post, let uid = post.postUUID else {return}
+        delegate?.deletePhotoRequest(postUUID: uid)
     }
 
     @objc func onPhotoInsert(_ tap:UITapGestureRecognizer) {

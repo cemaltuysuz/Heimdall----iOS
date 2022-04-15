@@ -113,8 +113,8 @@ extension EditProfileVC : PresenterToViewEditProfileProtocol {
             }
             albumDelegate?.updateData(posts: posts)
             break
-        case .onPhotoUploadFail(let message):
-            createAlertNotify(title: "Error".localized(), message: "\("post_upload_error_message".localized())\n \(message ?? "UNKNOW_DESC")", onCompletion: {})
+        case .onErrorNotify(let message):
+            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
             break
         case .showCurtain:
             showCurtain()
@@ -240,7 +240,16 @@ extension EditProfileVC : CropViewControllerDelegate {
 extension EditProfileVC : EditPostAlbumViewProtocol {
     
     func deletePhotoRequest(postUUID: String) {
-        presenter?.deleteUserPost(imageUUID: postUUID)
+        createBasicAlert(title: "Warning".localized(),
+                         message: "Your post will be deleted. Do you confirm of this ?".localized(), okTitle: "Confirm".localized(), onCompletion: {type in
+            
+            switch type {
+            case .CONFIRM:
+                self.presenter?.deleteUserPost(postUUID: postUUID)
+            case .DISMISS:
+                break
+            }
+        })
     }
     
     func selectPhotoRequest() {
@@ -253,7 +262,7 @@ enum EditProfileState{
     case userFields(fields: [EditFieldConfigure])
     case userObject(user:User)
     case posts(posts:[UserPost])
-    case onPhotoUploadFail(message:String?)
+    case onErrorNotify(message:String)
     case showCurtain
 }
 

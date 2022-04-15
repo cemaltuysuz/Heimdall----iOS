@@ -69,8 +69,19 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         }
     }
     
-    func deleteUserPost(imageUUID: String) {
+    func deleteUserPost(postUUID: String) {
+        guard let uid = FirebaseAuthService.shared.getUUID() else {return}
         
+        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uid).collection(FireStoreCollection.USER_POSTS).document(postUUID)
+        
+        FireStoreService.shared.deleteDocument(ref: ref, onCompletion: {response in
+            if response.status! {
+                self.getUserposts()
+            }else {
+                // fail deleted
+                self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_delete_error_message".localized())\n \(response.message ?? "Description_Not_Found")"))
+            }
+        })
     }
     
     func createNewUserPost(image: UIImage) {
@@ -84,8 +95,8 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
             FireStorageService.shared.pushPhoto(image: image, filePath: filePath, onCompletion: { (imageUrl:String?,error) in
                 
                 if let error = error {
-                    print(error)
-                    self.presenter?.onStateChange(state: .onPhotoUploadFail(message: error.localizedDescription))
+                    print(error.localizedDescription)
+                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())\n \(error.localizedDescription)"))
                 }
                 if let imageUrl = imageUrl {
                     let postObject = UserPost(postUUID: documentID,
@@ -97,11 +108,11 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                         if status ?? false {
                             self.getUserposts()
                         }else {
-                            self.presenter?.onStateChange(state: .onPhotoUploadFail(message: nil))
+                            self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())"))
                         }
                     })
                 }else {
-                    self.presenter?.onStateChange(state: .onPhotoUploadFail(message: "URL_NOT_FOUND_ERROR"))
+                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())\n URL_NOT_FOUND_ERROR"))
                 }
             })
 
