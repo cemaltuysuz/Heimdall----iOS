@@ -131,4 +131,14 @@ class FireStoreService {
             }
         onCompletion(SimpleResponse(status: true, message: "Success".localized()))
     }
+    
+    func deleteDocument(ref:DocumentReference, onCompletion:@escaping (SimpleResponse) -> Void) {
+        ref.delete(){error in
+            guard let error = error else {
+                onCompletion(SimpleResponse(status: true, message: nil))
+                return
+            }
+            onCompletion(SimpleResponse(status: false, message: error.localizedDescription))
+        }
+    }
 }

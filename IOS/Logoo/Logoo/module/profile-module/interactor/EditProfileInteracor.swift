@@ -12,13 +12,12 @@ import FirebaseAuth
 import UIKit
 
 class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
-    
     var presenter: InteractorToPresenterEditProfileProtocol?
     
-    func getCurrentUserFields() {
+    func loadPage() {
         var fields = [EditFieldConfigure]()
         if let currentUserId = Auth.auth().currentUser?.uid {
-            let reference = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(currentUserId)
+            let reference = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(currentUserId)
             FireStoreService.shared.getDocument(ref: reference, onCompletion: {(user:User?) in
                 
                 if let user = user {
@@ -47,7 +46,9 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                                                      hasCheckForAlreadyUsed: false,
                                                      editType: .EDIT_WITH_DATE_PICKER))
                     
-                    self.presenter?.userFieldsToPresenter(fields: fields, userPhotoUrl: user.userPhotoUrl)
+                    self.presenter?.onStateChange(state: .userFields(fields: fields))
+                    self.presenter?.onStateChange(state: .userObject(user: (user)))
+                    self.getUserposts()
                 }
             })
         }
@@ -55,8 +56,8 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     
     func updateUserField(key:String, value:String, reformable: Reformable) {
         
-        if let uuid = getCurrentUserUid() {
-            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uuid)
+        if let uuid = FirebaseAuthService.shared.getUUID() {
+            let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uuid)
             
             FireStoreService.shared.updateDocumentByField(ref: ref, fields: [key : value], onCompletion: {status in
                 if status.status! {
@@ -68,10 +69,99 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
         }
     }
     
-    func updateUserPhoto(image: UIImage) {
-        if let uid = Auth.auth().currentUser?.uid {
-            let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uid)
-            FireStorageService.shared.pushPhoto(image: image, ref: ref)
+    func deleteUserPost(postUUID: String) {
+        guard let uid = FirebaseAuthService.shared.getUUID() else {return}
+        
+        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uid).collection(FireStoreCollection.USER_POSTS).document(postUUID)
+        
+        FireStoreService.shared.deleteDocument(ref: ref, onCompletion: {response in
+            if response.status! {
+                self.getUserposts()
+            }else {
+                // fail deleted
+                self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_delete_error_message".localized())\n \(response.message ?? "Description_Not_Found")"))
+            }
+        })
+    }
+    
+    func createNewUserPost(image: UIImage) {
+        if let uuid = FirebaseAuthService.shared.getUUID() {
+            presenter?.onStateChange(state: .showCurtain)
+            let documentID = UUID().uuidString
+            let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uuid).collection(FireStoreCollection.USER_POSTS).document(documentID)
+            
+            let filePath = "\(FireStoragePath.USER_POST)/\(uuid)/\(UUID().uuidString)"
+            
+            FireStorageService.shared.pushPhoto(image: image, filePath: filePath, onCompletion: { (imageUrl:String?,error) in
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())\n \(error.localizedDescription)"))
+                }
+                if let imageUrl = imageUrl {
+                    let postObject = UserPost(postUUID: documentID,
+                                              postUrl: imageUrl,
+                                              timestamp: timeInSeconds(),
+                                              userPostType: UserPostType.PHOTO.rawValue)
+                    
+                    FireStoreService.shared.pushDocument(postObject, ref: ref, onCompletion: { status in
+                        if status ?? false {
+                            self.getUserposts()
+                        }else {
+                            self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())"))
+                        }
+                    })
+                }else {
+                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())\n URL_NOT_FOUND_ERROR"))
+                }
+            })
+
         }
+    }
+    
+    func updateUserPhoto(image: UIImage) {
+        if let uid = FirebaseAuthService.shared.getUUID() {
+            let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uid)
+            let filePath = "\(FireStoragePath.USER_PHOTO)/\(uid)/\(UUID().uuidString)"
+            FireStorageService.shared.pushPhoto(image: image, filePath: filePath, onCompletion: { (imageUrl:String?,error) in
+                
+                guard let imageUrl = imageUrl else {
+                    print(error ?? "not found error")
+                    return
+                }
+                
+                let fields = [UserFieldType.USER_PHOTO.rawValue : imageUrl]
+                FireStoreService.shared.updateDocumentByField(ref: ref, fields: fields, onCompletion: {(response) in
+                    if let status = response.status, status == true {
+                        print("Photo upload is succeded.")
+                    }else {
+                        print("Photo upload is fail.")
+                    }
+                })
+            })
+        }
+    }
+    
+    private func getUserposts(){
+        guard let uuid = FirebaseAuthService.shared.getUUID() else {return}
+        
+        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uuid).collection(FireStoreCollection.USER_POSTS)
+        FireStoreService.shared.getCollection(ref: ref, onCompletion: { (posts:[UserPost?]?,error:Error?) in
+            
+            if let error = error {
+                print("error when get user posts \(error)")
+                return
+            }
+            var nonOptionalUserPosts = [UserPost]()
+            
+            if let posts = posts {
+                for post in posts {
+                    if let post = post {
+                        nonOptionalUserPosts.append(post)
+                    }
+                }
+            }
+            self.presenter?.onStateChange(state: .posts(posts: nonOptionalUserPosts.sorted(by: {$0.timestamp ?? 0 > $1.timestamp ?? 0})))
+        })
     }
 }

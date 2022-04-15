@@ -25,7 +25,14 @@ class WelcomeInteractor : PresenterToInteractorWelcomeProtocol{
                 presenter?.goToLoginPref()
                 return
             }
-            presenter?.goToHome()
+            user.reload(completion: {error in
+                guard let _ = error else {
+                    self.presenter?.goToHome()
+                    return
+                }
+                self.presenter?.goToLoginPref()
+            })
+            
         }
     }
 }

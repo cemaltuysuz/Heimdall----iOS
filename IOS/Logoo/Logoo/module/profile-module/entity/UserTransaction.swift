@@ -36,7 +36,7 @@ struct UserTransaction : Codable {
     
     func getTimeAsDate() -> Date? {
         if let timestamp = timestamp {
-            return milliSecondToDate(milliseconds: timestamp)
+            return timestamp.milliSecondToDate()
         }
         return nil
     }

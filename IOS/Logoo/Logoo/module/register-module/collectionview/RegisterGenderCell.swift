@@ -7,25 +7,36 @@
 
 import UIKit
 
-class RegisterGenderCell: UICollectionViewCell, RegisterProtocol, UIPickerViewDelegate, UIPickerViewDataSource {
+protocol RegisterGenderCellProtocol : AnyObject {
+    func genderSelected(gender:GenderType)
+}
+
+class RegisterGenderCell: UICollectionViewCell {
     
     @IBOutlet weak var registerGenderPickerView: UIPickerView!
-    var toView:RegisterGenderCellProtocol?
-    let genders = [GenderType.Male, GenderType.Female, GenderType.HomoFemale, GenderType.HomoMale, GenderType.Other]
+    weak var delegate:RegisterGenderCellProtocol?
+    let genders = GenderType.allCases
     
-    func validate() -> ValidationResponse {
-        toView?.genderSelected(
-            gender: genders[self.registerGenderPickerView.selectedRow(inComponent: 0)]
-        )
-        return ValidationResponse(status: true, message: "")
+    override func awakeFromNib() {
+        initialize()
     }
-    
-    func initialize(genderPickerCellProtocol:RegisterGenderCellProtocol) {
-        self.toView = genderPickerCellProtocol
+
+    func initialize() {
         registerGenderPickerView.delegate = self
         registerGenderPickerView.dataSource = self
     }
-        
+}
+
+extension RegisterGenderCell : Registerable {
+    func validate() -> ValidationResponse {
+        delegate?.genderSelected(
+            gender: genders[registerGenderPickerView.selectedRow(inComponent: 0)]
+        )
+        return ValidationResponse(status: true, message: "")
+    }
+}
+
+extension RegisterGenderCell :UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -33,11 +44,16 @@ class RegisterGenderCell: UICollectionViewCell, RegisterProtocol, UIPickerViewDe
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return genders.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return genders[row].rawValue
     }
 }
 
-protocol RegisterGenderCellProtocol {
-    func genderSelected(gender:GenderType)
+extension RegisterGenderCell : RegisterBindable {
+    func bind(_ viewController: RegisterVC) {
+        delegate = viewController
+    }
 }
+
+

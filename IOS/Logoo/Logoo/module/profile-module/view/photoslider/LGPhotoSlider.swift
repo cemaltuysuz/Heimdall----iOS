@@ -2,19 +2,19 @@
 //  LGPhotoSlider.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 7.04.2022.
+//  Created by cemal tüysüz on 11.04.2022.
 //
 
+import Foundation
 import UIKit
 
-@IBDesignable
 class LGPhotoSlider: NibLoadableView {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var photoSliderCollectionView: UICollectionView!
-        
+    
     var userPosts:[UserPost]?
-
+    
     override func awakeFromNib() {
         configure()
     }
@@ -35,8 +35,10 @@ class LGPhotoSlider: NibLoadableView {
         photoSliderCollectionView.dataSource = self
         photoSliderCollectionView.delegate = self
     }
-
+    
 }
+
+
 // MARK: - UICollectionView methods
 
 extension LGPhotoSlider : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -56,17 +58,16 @@ extension LGPhotoSlider : UICollectionViewDelegateFlowLayout, UICollectionViewDa
         }else {
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height + pageControl.frame.height)
         }
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let offSet = scrollView.contentOffset.x
-            let width = scrollView.frame.width
-            let horizontalCenter = width / 2
-
-            let page = Int(offSet + horizontalCenter) / Int(width)
-            pageControl.currentPage = page
-        }
+        let offSet = scrollView.contentOffset.x
+        let width = scrollView.frame.width
+        let horizontalCenter = width / 2
+        
+        let page = Int(offSet + horizontalCenter) / Int(width)
+        pageControl.currentPage = page
+    }
     
 }
 // MARK: - Functions
@@ -89,6 +90,3 @@ extension LGPhotoSlider {
         
     }
 }
-
-
-

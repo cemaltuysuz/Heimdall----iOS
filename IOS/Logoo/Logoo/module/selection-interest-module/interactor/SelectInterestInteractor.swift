@@ -35,7 +35,7 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
             if let document = document, document.exists {
                 let userInterests = document.data()?["userInterests"] as? String ?? ""
                 if !userInterests.isEmpty {
-                    alreadyHobbies = userInterests.toListByCharacter(GeneralSeperators.INTEREST_SEPERATOR)
+                    alreadyHobbies = userInterests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
                     self.presenter?.userAlreadyHobbies(alreadyList: alreadyHobbies)
                 }
             }

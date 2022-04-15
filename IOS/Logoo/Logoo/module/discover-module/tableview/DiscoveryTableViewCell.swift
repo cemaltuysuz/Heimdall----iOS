@@ -17,7 +17,7 @@ class DiscoveryTableViewCell: UITableViewCell {
     
     func initialize(user:User){
         if let interests = user.userInterests, !interests.isEmpty {
-            hobbies = interests.toListByCharacter(GeneralSeperators.INTEREST_SEPERATOR)
+            hobbies = interests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
             discoveryUserHobbiesCollectionView.delegate = self
             discoveryUserHobbiesCollectionView.dataSource = self
         }

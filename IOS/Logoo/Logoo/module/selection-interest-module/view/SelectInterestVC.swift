@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 
 class SelectInterestVC: UIViewController {
-
+    
     @IBOutlet weak var interestSearchBar: UISearchBar!
     @IBOutlet weak var interestsTableViewIndicator: UIActivityIndicatorView!
     
@@ -33,16 +33,17 @@ class SelectInterestVC: UIViewController {
         SelectInterestRouter.createModule(ref: self)
         presenter?.getInterests()
         
-         self.interestSelectionCollectionView.delegate = self
-         self.interestSelectionCollectionView.dataSource = self
-         
-         self.interestSelectedCollectionView.delegate = self
-         self.interestSelectedCollectionView.dataSource = self
-         
-         self.interestSearchBar.delegate = self
-     
+        interestSelectionCollectionView.delegate = self
+        interestSelectionCollectionView.dataSource = self
+        
+        interestSelectedCollectionView.delegate = self
+        interestSelectedCollectionView.dataSource = self
+        
+        interestSearchBar.tintColor = .black
+        interestSearchBar.delegate = self
+        
     }
-
+    
     @IBAction func interestsSaveButton(_ sender: Any) {
         if self.alreadySelectedList!.count > 0 {
             self.interestsTableViewIndicator.startAnimating()
@@ -50,7 +51,7 @@ class SelectInterestVC: UIViewController {
         }else {
             print("selected list is empty.")
         }
-         }
+    }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
         if isFirst ?? false {
             performSegue(withIdentifier: SelectInterestVCSegues
@@ -65,17 +66,28 @@ class SelectInterestVC: UIViewController {
 
 extension SelectInterestVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            // Cancel previous work when user input data.
-            pendingRequestWorkItem?.cancel()
-            
-            let requestWorkItem = DispatchWorkItem { [weak self] in
-                self?.presenter?.searchInterest(searchText: searchText)
-            }
-            // I created a work with 250 millisecond delay.
-            pendingRequestWorkItem = requestWorkItem
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
-                                                  execute: requestWorkItem)
+        // Cancel previous work when user input data.
+        pendingRequestWorkItem?.cancel()
+        
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            self?.presenter?.searchInterest(searchText: searchText)
         }
+        // I created a work with 250 millisecond delay.
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
+                                      execute: requestWorkItem)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
+    }
 }
 
 extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
@@ -182,6 +194,7 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
         }
     }
 }
+
 
 enum SelectInterestVCSegues : String {
     case interestSelectionToHomeVC = "interestSelectionToHomeVC"

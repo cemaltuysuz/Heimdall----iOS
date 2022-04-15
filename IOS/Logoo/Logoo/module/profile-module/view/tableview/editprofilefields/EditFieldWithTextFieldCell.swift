@@ -86,7 +86,7 @@ extension EditFieldWithTextFieldCell {
             
             if let text = textField.text , !text.isEmpty {
                 let requestWorkItem = DispatchWorkItem { [weak self] in
-                    let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION)
+                    let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION)
                     FireStoreService.shared.getDocumentsByField(ref: ref, getByField: self?.model.key ?? "", getByValue: text, onCompletion: {
                         (users:[User?]?, error:Error?) in
                         guard  error == nil else {

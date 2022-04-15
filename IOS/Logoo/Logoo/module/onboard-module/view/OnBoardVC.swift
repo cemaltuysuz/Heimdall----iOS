@@ -67,13 +67,13 @@ extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
      A function to understand which page the user is on and to update the UI .
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let offSet = scrollView.contentOffset.x
-            let width = scrollView.frame.width
-            let horizontalCenter = width / 2
-
-            let page = Int(offSet + horizontalCenter) / Int(width)
-            onBoardPageControl.currentPage = page
-        }
+        let offSet = scrollView.contentOffset.x
+        let width = scrollView.frame.width
+        let horizontalCenter = width / 2
+        
+        let page = Int(offSet + horizontalCenter) / Int(width)
+        onBoardPageControl.currentPage = page
+    }
 }
 
 extension OnBoardVC : PresenterToViewOnBoardProtocol {

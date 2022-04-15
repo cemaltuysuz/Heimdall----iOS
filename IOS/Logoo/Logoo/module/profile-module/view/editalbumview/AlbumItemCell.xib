@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumItemCell" id="gTV-IL-0wX" customClass="AlbumItemCell" customModule="Logoo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="225"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="225"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDG-O9-1Bx">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="225"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QRJ-il-l5G">
+                                <rect key="frame" x="5" y="5" width="170" height="215"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBO-Md-E53">
+                                <rect key="frame" x="81" y="101.5" width="18" height="22"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="tintColor" name="black700"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="plusOnClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QNq-L0-btn"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXP-2y-2Mh" userLabel="trash_container">
+                                <rect key="frame" x="138" y="12" width="30" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ffC-tV-fxE">
+                                        <rect key="frame" x="-9" y="-3" width="48" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="grey200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="RCe-cM-rep"/>
+                                            <constraint firstAttribute="height" constant="39.5" id="o5H-of-bn8"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="black700"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="5Zc-DU-dhu"/>
+                                    <constraint firstAttribute="bottom" secondItem="ffC-tV-fxE" secondAttribute="bottom" constant="-5.5" id="Bbx-M1-kh8"/>
+                                    <constraint firstAttribute="height" constant="30" id="Fsy-tP-ZfO"/>
+                                    <constraint firstAttribute="trailing" secondItem="ffC-tV-fxE" secondAttribute="trailing" constant="-9" id="S1M-8Q-Ucb"/>
+                                    <constraint firstItem="ffC-tV-fxE" firstAttribute="leading" secondItem="HXP-2y-2Mh" secondAttribute="leading" constant="-9" id="ci1-bS-r2f"/>
+                                    <constraint firstItem="ffC-tV-fxE" firstAttribute="top" secondItem="HXP-2y-2Mh" secondAttribute="top" constant="-4" id="lCc-X4-Ht8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QRJ-il-l5G" firstAttribute="leading" secondItem="TDG-O9-1Bx" secondAttribute="leading" constant="5" id="4Ri-xH-3cO"/>
+                            <constraint firstItem="VBO-Md-E53" firstAttribute="centerX" secondItem="TDG-O9-1Bx" secondAttribute="centerX" id="8xb-GB-qVs"/>
+                            <constraint firstItem="HXP-2y-2Mh" firstAttribute="top" secondItem="TDG-O9-1Bx" secondAttribute="top" constant="12" id="B38-wn-4BB"/>
+                            <constraint firstAttribute="trailing" secondItem="HXP-2y-2Mh" secondAttribute="trailing" constant="12" id="IpM-ca-dqK"/>
+                            <constraint firstAttribute="trailing" secondItem="QRJ-il-l5G" secondAttribute="trailing" constant="5" id="LUd-tL-Tgb"/>
+                            <constraint firstAttribute="width" constant="180" id="SBb-rz-JQ1"/>
+                            <constraint firstItem="QRJ-il-l5G" firstAttribute="top" secondItem="TDG-O9-1Bx" secondAttribute="top" constant="5" id="duv-o4-dzZ"/>
+                            <constraint firstAttribute="bottom" secondItem="QRJ-il-l5G" secondAttribute="bottom" constant="5" id="edL-Ej-029"/>
+                            <constraint firstItem="VBO-Md-E53" firstAttribute="centerY" secondItem="TDG-O9-1Bx" secondAttribute="centerY" id="oZ0-Xs-2fx"/>
+                            <constraint firstAttribute="height" constant="225" id="rXJ-YK-nSz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="TDG-O9-1Bx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="E86-Xj-b9O"/>
+                <constraint firstAttribute="trailing" secondItem="TDG-O9-1Bx" secondAttribute="trailing" id="SVY-hE-N5w"/>
+                <constraint firstItem="TDG-O9-1Bx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="T3v-fi-01Q"/>
+                <constraint firstAttribute="bottom" secondItem="TDG-O9-1Bx" secondAttribute="bottom" id="tOU-jt-WKA"/>
+            </constraints>
+            <size key="customSize" width="150" height="210"/>
+            <connections>
+                <outlet property="albumItemImageView" destination="QRJ-il-l5G" id="dqI-3x-GmB"/>
+                <outlet property="plusButtonOutlet" destination="VBO-Md-E53" id="KOe-Fa-asy"/>
+                <outlet property="trashContainer" destination="HXP-2y-2Mh" id="NJI-zO-c93"/>
+            </connections>
+            <point key="canvasLocation" x="204.34782608695653" y="183.81696428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="trash.square.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="black700">
+            <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey200">
+            <color red="0.94900000095367432" green="0.96100002527236938" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

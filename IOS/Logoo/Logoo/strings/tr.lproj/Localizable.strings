@@ -44,7 +44,7 @@
 "Login failed." = "Giriş başarısız.";
 
 "This email address is being used by another account." = "Bu mail adresi zaten kayıtlı.";
-"This email address is being used by another account." = "Bu kullanıcı adı bir başkası tarafından kullanılıyor.";
+"This email address is being used by another account." = "Bu mail adresi bir başkası tarafından kullanılıyor.";
 "The information entered is already in use by another account." = "Girilen bilgi bir başka hesap tarafından zaten kullanılıyor.";
 
 // Reset Password
@@ -128,6 +128,11 @@
 "New :" = "Yeni:";
 "do_change_mail_success_message" = "Aşağıdaki mail adresine onay bağlantısı gönderdik. Lütfen gelen kutunuzu kontrol edin.";
 
+// Edit Profile
+
+"post_upload_error_message" = "Gönderi yüklenirken bir hata oluştu.";
+"post_delete_error_message" = "Gönderi silinirken bir hata oluştu.";
+"Your post will be deleted. Do you confirm of this ?" = "Gönderin silinecek. Bunu onaylıyor musun ?";
 
 
 

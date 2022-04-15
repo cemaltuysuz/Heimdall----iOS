@@ -31,4 +31,10 @@
 "Enter your new mail adress" = "Enter your new mail adress";
 "do_cahnge_mail_success_message" = "We have sent a confirmation link to the e-mail address below. Please check your inbox.";
 
+// Edit Profile
+
+"post_upload_error_message" = "An error was encountered while loading the post.";
+"post_delete_error_message" = "An error was encountered while deleting the post.";
+
+
 

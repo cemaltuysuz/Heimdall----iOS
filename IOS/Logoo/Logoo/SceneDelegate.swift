@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if Auth.auth().currentUser != nil {
             if let userId = Auth.auth().currentUser?.uid{
                 let fireStoreDB = Firestore.firestore()
-                let userRef = fireStoreDB.collection(FireCollections.USER_COLLECTION).document(userId)
+                let userRef = fireStoreDB.collection(FireStoreCollection.USER_COLLECTION).document(userId)
                 userRef.updateData(["isOnline":true])
             }
         }
@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let userId = Auth.auth().currentUser?.uid{
                 
                 let fireStoreDB = Firestore.firestore()
-                let userRef = fireStoreDB.collection(FireCollections.USER_COLLECTION).document(userId)
+                let userRef = fireStoreDB.collection(FireStoreCollection.USER_COLLECTION).document(userId)
                 
                 userRef.updateData(["isOnline":false])
                 userRef.updateData(["userLastSeen":"\(timeInSeconds())"])

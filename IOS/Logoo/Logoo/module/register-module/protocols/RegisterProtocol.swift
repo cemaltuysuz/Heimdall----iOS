@@ -1,16 +1,16 @@
 //
-//  RegisterWithMailProtocols.swift
+//  RegisterProtocols.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 3.02.2022.
+//  Created by cemal tüysüz on 11.04.2022.
 //
 
 import Foundation
 import UIKit
 
-protocol ViewToPresenterRegisterMail {
-    var view:PresenterToViewRegisterMail? {get set}
-    var interactor:PresenterToInteractorRegisterMail? {get set}
+protocol ViewToPresenterRegister {
+    var view:PresenterToViewRegister? {get set}
+    var interactor:PresenterToInteractorRegister? {get set}
     
     func getRegisterMailSteps()
     func getRegisterGoogleSteps()
@@ -24,8 +24,8 @@ protocol ViewToPresenterRegisterMail {
     func createUserWithEmail()
 }
 
-protocol PresenterToInteractorRegisterMail {
-    var presenter:InteractorToPresenterRegisterMail? {get set}
+protocol PresenterToInteractorRegister {
+    var presenter:InteractorToPresenterRegister? {get set}
     
     func getRegisterMailSteps()
     func getRegisterGoogleSteps()
@@ -39,20 +39,20 @@ protocol PresenterToInteractorRegisterMail {
     func createUserWithEmail()
 }
 
-protocol InteractorToPresenterRegisterMail {
-    func registerStepsToPresenter(steps:[UICollectionViewCell])
+protocol InteractorToPresenterRegister {
+    func registerStepsToPresenter(steps:[RegisterCellType])
     
     func registerProgressVisibility(status:Bool)
     func registerFeedBack(response:ValidationResponse)
 }
 
-protocol PresenterToViewRegisterMail {
-    func registerStepsToView(steps:[UICollectionViewCell])
+protocol PresenterToViewRegister {
+    func registerStepsToView(steps:[RegisterCellType])
     
     func registerProgressVisibility(status:Bool)
     func registerFeedBack(response:ValidationResponse)
 }
 
-protocol PresenterToRouterRegisterMail {
+protocol PresenterToRouterRegister {
     static func createModule(ref:RegisterVC)
 }

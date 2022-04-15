@@ -64,7 +64,7 @@ class LoginInteractor : PresenterToInteractorLoginProtocol {
     
     func calculateRepeatTime() {
         // Confirm e-mail counter (Last seen)
-        let lastDate = milliSecondToDate(milliseconds: UDService.shared.getConfirmEmailTime()) 
+        let lastDate = UDService.shared.getConfirmEmailTime().milliSecondToDate()
         let lastSeconds = UDService.shared.getConfirmEmailSecond()
         let currentDate = Date()
         

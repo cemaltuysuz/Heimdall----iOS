@@ -26,7 +26,7 @@ class FirebaseLoggerService {
                                                   timestamp: timeInSeconds())
             
             let logRef = dbRef
-                .collection(FireCollections.LOG_COLLECTION)
+                .collection(FireStoreCollection.LOG_COLLECTION)
                 .document(userId)
                 .collection(userId)
                 .document(UUID().uuidString)

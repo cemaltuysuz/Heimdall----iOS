@@ -12,9 +12,9 @@ import FirebaseStorage
 import SwiftUI
 import FirebaseFirestore
 
-class RegisterInteractor : PresenterToInteractorRegisterMail{
+class RegisterInteractor : PresenterToInteractorRegister{
     
-    var presenter: InteractorToPresenterRegisterMail?
+    var presenter: InteractorToPresenterRegister?
     var fireStoreDB = Firestore.firestore()
     var storageRef:StorageReference!
     
@@ -31,24 +31,24 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     
 
     func getRegisterMailSteps() {
-        var steps = [UICollectionViewCell]()
+        var steps = [RegisterCellType]()
             
-        steps.append(RegisterPhotoChooseCell())
-        steps.append(RegisterInformationCell())
-        steps.append(RegisterBirthDayCell())
-        steps.append(RegisterGenderCell())
-        steps.append(RegisterConfirmCell())
+        steps.append(.PHOTO_CHOOSE_CELL)
+        steps.append(.INFORMATION_CELL)
+        steps.append(.BIRTH_OF_DATE_CELL)
+        steps.append(.GENDER_CELL)
+        steps.append(.CONFIRM_CELL)
         
         presenter?.registerStepsToPresenter(steps: steps)
     }
     
     func getRegisterGoogleSteps() {
-        var steps = [UICollectionViewCell]()
+        var steps = [RegisterCellType]()
         
-        steps.append(RegisterPhotoChooseCell())
-        steps.append(RegisterBirthDayCell())
-        steps.append(RegisterGenderCell())
-        steps.append(RegisterConfirmCell())
+        steps.append(.PHOTO_CHOOSE_CELL)
+        steps.append(.BIRTH_OF_DATE_CELL)
+        steps.append(.GENDER_CELL)
+        steps.append(.CONFIRM_CELL)
         
         presenter?.registerStepsToPresenter(steps: steps)
     }
@@ -126,7 +126,7 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
                     return
                 }
 
-                let userRef = self.fireStoreDB.collection(FireCollections.USER_COLLECTION).document(user!.user.uid)
+                let userRef = self.fireStoreDB.collection(FireStoreCollection.USER_COLLECTION).document(user!.user.uid)
                 // Kullanıcı kaydı için gerekli Dic nesnesini oluşturuyorum.
                 let userObjectt = User(userId: user!.user.uid,
                                        username: self.userName!,
@@ -173,9 +173,25 @@ class RegisterInteractor : PresenterToInteractorRegisterMail{
     
     private func uploadUserPhoto(){
         if let userImage = userImage {
-            if let uid = Auth.auth().currentUser?.uid {
-                let ref = Firestore.firestore().collection(FireCollections.USER_COLLECTION).document(uid)
-                FireStorageService.shared.pushPhoto(image: userImage, ref: ref)
+            if let uid = FirebaseAuthService.shared.getUUID() {
+                let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uid)
+                let filePath = "\(FireStoragePath.USER_PHOTO)/\(uid)/\(UUID().uuidString)"
+                
+                FireStorageService.shared.pushPhoto(image: userImage, filePath: filePath, onCompletion: {(imageUrl:String?,error) in
+                    guard let imageUrl = imageUrl else {
+                        print(error ?? "not found error")
+                        return
+                    }
+                    
+                    let fields = [UserFieldType.USER_PHOTO.rawValue : imageUrl]
+                    FireStoreService.shared.updateDocumentByField(ref: ref, fields: fields, onCompletion: {(response) in
+                        if let status = response.status, status == true {
+                            print("Photo upload is succeded.")
+                        }else {
+                            print("Photo upload is fail.")
+                        }
+                    })
+                })
             }
         }
         self.presenter?.registerProgressVisibility(status: false)

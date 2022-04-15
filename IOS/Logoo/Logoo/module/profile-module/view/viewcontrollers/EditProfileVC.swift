@@ -9,18 +9,29 @@ import UIKit
 import SwiftUI
 import Mantis
 
-class EditProfileVC: UIViewController {
+protocol EditProfileVCToEditAlbumViewProtocol : AnyObject {
+    func updateData(posts:[UserPost])
+}
+
+class EditProfileVC: BaseVC {
 
     @IBOutlet weak var userImageChangeLabel: UILabel!
-    @IBOutlet weak var editUserProfilePhotoImg: LGImageView!
+    @IBOutlet weak var editPostAlbumView: EditPostAlbumView!
+    @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
-    @IBOutlet weak var errorLabel: UILabel!
+    
+    let editFieldCellHeight:CGFloat = 80
+    let postLineheight:CGFloat = 240
+    
+    weak var albumDelegate:EditProfileVCToEditAlbumViewProtocol?
     
     var fields:[EditFieldConfigure]?
     var reformableFields:[Reformable]?
     
+    
     var presenter:ViewToPresenterEditProfileProtocol?
     
+    var requestRawCode:Int?
     
     lazy var getGenders:[String] = {
         var genders = [String]()
@@ -34,29 +45,35 @@ class EditProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         reformableFields = [Reformable]()
-        
         setupVIPER()
+        setup()
         setupUI()
     }
     
     
     func setupVIPER(){
         EditProfileRouter.createModule(ref: self)
-        presenter?.getCurrentUserFields()
+        presenter?.loadPage()
     }
     
-    func setupUI(){
-        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithTextFieldCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithTextFieldCell")
-        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithDatePickerCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithDatePickerCell")
-        editUserFieldsTableView.register(UINib(nibName: "EditFieldWithPickerViewCell", bundle: nil), forCellReuseIdentifier: "EditFieldWithPickerViewCell")
+    func setup(){
+        editUserFieldsTableView.register(EditFieldWithTextFieldCell.self)
+        editUserFieldsTableView.register(EditFieldWithDatePickerCell.self)
+        editUserFieldsTableView.register(EditFieldWithPickerViewCell.self)
         
         editUserFieldsTableView.delegate = self
         editUserFieldsTableView.dataSource = self
         
-        userImageChangeLabel.isUserInteractionEnabled = true
+        editPostAlbumView.delegate = self
+        albumDelegate = editPostAlbumView
         
-        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick))
+        userImageChangeLabel.isUserInteractionEnabled = true
+        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick(_:)))
         userImageChangeLabel.addGestureRecognizer(onDidTap)
+    }
+    
+    func setupUI(){
+        editPostAlbumView.heightAnchor.constraint(equalToConstant: getSafeAreaHeight()).activate(withIdentifier: "editAlbumHeight")
     }
     
     
@@ -69,19 +86,43 @@ class EditProfileVC: UIViewController {
     }
 }
 
+// MARK: - Functions from interactor
 extension EditProfileVC : PresenterToViewEditProfileProtocol {
-    func userFieldsToView(fields: [EditFieldConfigure], userPhotoUrl:String?) {
-        DispatchQueue.main.async {
-            self.fields = fields
-            self.editUserFieldsTableView.reloadData()
-            
-            if let userPhotoUrl = userPhotoUrl {
+    
+    func onStateChange(state: EditProfileState) {
+        closeCurtain()
+        switch state {
+        case .userFields(let fields):
+            DispatchQueue.main.async {
+                self.fields = fields
+                self.editUserFieldsTableView.reloadData()
+                if let constraint = self.editUserFieldsTableView.getConstraint(withIndentifier: "editUserFieldsTableView") {
+                    let newHeight = CGFloat(fields.count) * self.editFieldCellHeight
+                    constraint.constant = newHeight
+                    self.view.layoutIfNeeded()
+                }
+            }
+        case .userObject(let user):
+            if let userPhotoUrl = user.userPhotoUrl {
                 self.editUserProfilePhotoImg.setImage(urlString: userPhotoUrl)
             }
+        case .posts(let posts):
+            let totalCell = posts.count
+            if totalCell > 1 {
+                self.editPostAlbumView.forceUpdateConstraint(constant: getSafeAreaHeight(), attribute: .height)
+            }
+            albumDelegate?.updateData(posts: posts)
+            break
+        case .onErrorNotify(let message):
+            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            break
+        case .showCurtain:
+            showCurtain()
+            break
         }
     }
 }
-
+// MARK: - functions from tableview
 extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fields?.count ?? 0
@@ -92,22 +133,21 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         
         if current.editType == .EDIT_WITH_TEXTFIELD || current.editType == .NO_EDIT{
             //let firstCell =  as! BaseEditFieldCell
-            let fcell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithTextFieldCell")
-            let cell = fcell as! EditFieldWithTextFieldCell
+            let cell = tableView.dequeue(indexPath, type: EditFieldWithTextFieldCell.self)
             cell.delegate = self
             cell.configureCell(model: current)
             reformableFields?.append(cell)
             return cell
         }
         else if current.editType == .EDIT_WITH_DATE_PICKER {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithDatePickerCell") as! EditFieldWithDatePickerCell
+            let cell = tableView.dequeue(indexPath, type: EditFieldWithDatePickerCell.self)
             cell.delegate = self
             cell.configureCell(model: current, minDate: nil, maxDate: Date())
             reformableFields?.append(cell)
             return cell
         }
         else if current.editType == .EDIT_WITH_PICKER_VIEW {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EditFieldWithPickerViewCell") as! EditFieldWithPickerViewCell
+            let cell = tableView.dequeue(indexPath, type: EditFieldWithPickerViewCell.self)
             cell.delegate = self
             cell.configureCell(model: current, data: getGenders)
             reformableFields?.append(cell)
@@ -118,31 +158,28 @@ extension EditProfileVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return editFieldCellHeight
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
+// MARK: - Update Field
 extension EditProfileVC : EditFieldCellProtocol {
     func updateField(fieldKey: String, fieldValue: String, reformable: Reformable) {
         presenter?.updateUserField(key: fieldKey, value: fieldValue, reformable: reformable)
     }
 }
 
-// user change photo
+// MARK: - Receive photo from user
 extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        
+    
     @objc
-    func userPhotoClick(){
-        let imagePicker = UIImagePickerController()
-            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-
-                imagePicker.delegate = self
-                imagePicker.sourceType = .savedPhotosAlbum
-                imagePicker.allowsEditing = false
-
-                present(imagePicker, animated: true, completion: nil)
-            }
+    func userPhotoClick(_ tap:UITapGestureRecognizer){
+        requestRawCode = EditProfileImageRequestType.REQUEST_FOR_PP.rawValue
+        openGalleryWithVC(self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -152,27 +189,84 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
          I'm performing a casting when the user selects an image. If the image is received successfully,
          */
         guard let image = info[.originalImage] as? UIImage else {
-           print("Expected a dictionary containing an image, but was provided the following: \(info)")
+            print("Expected a dictionary containing an image, but was provided the following: \(info)")
             return
         }
-
-        var config = Mantis.Config()
-        config.cropShapeType = .square
-        config.ratioOptions = [.square]
-        let cropViewController = Mantis.cropViewController(image: image,config: config)
-        cropViewController.delegate = self
-        present(cropViewController, animated: true)
+        
+        guard let rawCode = requestRawCode, let reqType = EditProfileImageRequestType(rawValue: rawCode) else {return}
+        
+        switch reqType {
+        case .REQUEST_FOR_ALBUM:
+            print("album icin alinacak")
+            startMantis(viewController: self,
+                        image: image,
+                        vRatio: GeneralConstant.USER_POST_VERTICAL_RATIO,
+                        hRatio: GeneralConstant.USER_POST_HORIZONTAL_RATIO)
+            break
+        case .REQUEST_FOR_PP:
+            print("pp icin alınacak")
+            startMantis(viewController: self,
+                        image: image,
+                        shapeType: .square)
+            break
+        }
     }
 }
 
+// MARK: - Crop photo
+
 extension EditProfileVC : CropViewControllerDelegate {
     func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
+        guard let rawCode = requestRawCode, let reqType = EditProfileImageRequestType(rawValue: rawCode) else {return}
+        
+        switch reqType {
+        case .REQUEST_FOR_ALBUM:
+            presenter?.createNewUserPost(image: cropped)
+            break
+        case .REQUEST_FOR_PP:
+            editUserProfilePhotoImg.image = cropped
+            presenter?.updateUserPhoto(image: cropped)
+            break
+        }
         cropViewController.dismiss(animated: true)
-        editUserProfilePhotoImg.image = cropped
-        presenter?.updateUserPhoto(image: cropped)
     }
     
     func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
         cropViewController.dismiss(animated: true)
     }
+}
+
+// This ViewController <- EditAlbumCell
+extension EditProfileVC : EditPostAlbumViewProtocol {
+    
+    func deletePhotoRequest(postUUID: String) {
+        createBasicAlert(title: "Warning".localized(),
+                         message: "Your post will be deleted. Do you confirm of this ?".localized(), okTitle: "Confirm".localized(), onCompletion: {type in
+            
+            switch type {
+            case .CONFIRM:
+                self.presenter?.deleteUserPost(postUUID: postUUID)
+            case .DISMISS:
+                break
+            }
+        })
+    }
+    
+    func selectPhotoRequest() {
+        requestRawCode = EditProfileImageRequestType.REQUEST_FOR_ALBUM.rawValue
+        openGalleryWithVC(self)
+    }
+}
+
+enum EditProfileState{
+    case userFields(fields: [EditFieldConfigure])
+    case userObject(user:User)
+    case posts(posts:[UserPost])
+    case onErrorNotify(message:String)
+    case showCurtain
+}
+
+enum EditProfileImageRequestType : Int {
+    case REQUEST_FOR_ALBUM
+    case REQUEST_FOR_PP
 }

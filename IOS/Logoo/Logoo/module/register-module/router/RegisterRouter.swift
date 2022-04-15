@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RegisterRouter : PresenterToRouterRegisterMail {
+class RegisterRouter : PresenterToRouterRegister {
     static func createModule(ref: RegisterVC) {
         
         let presenter = RegisterPresenter()

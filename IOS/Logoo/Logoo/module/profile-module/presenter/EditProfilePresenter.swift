@@ -13,19 +13,27 @@ class EditProfilePresenter : ViewToPresenterEditProfileProtocol, InteractorToPre
     var view: PresenterToViewEditProfileProtocol?
     var interactor: PresenterToInteractorEditProfileProtocol?
     
-    func getCurrentUserFields() {
-        interactor?.getCurrentUserFields()
-    }
-    
-    func userFieldsToPresenter(fields: [EditFieldConfigure], userPhotoUrl:String?) {
-        view?.userFieldsToView(fields: fields, userPhotoUrl: userPhotoUrl)
-    }
-    
     func updateUserField(key:String,value:String, reformable: Reformable) {
         interactor?.updateUserField(key: key, value: value, reformable: reformable)
     }
     
     func updateUserPhoto(image: UIImage) {
         interactor?.updateUserPhoto(image: image)
+    }
+    
+    func loadPage() {
+        interactor?.loadPage()
+    }
+    
+    func deleteUserPost(postUUID : String) {
+        interactor?.deleteUserPost(postUUID: postUUID)
+    }
+    
+    func onStateChange(state: EditProfileState) {
+        view?.onStateChange(state: state)
+    }
+    
+    func createNewUserPost(image: UIImage) {
+        interactor?.createNewUserPost(image: image)
     }
 }
