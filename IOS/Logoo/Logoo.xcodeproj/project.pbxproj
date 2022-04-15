@@ -14,6 +14,7 @@
 		15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F5B279D4D9100460334 /* DiscoveryRouter.swift */; };
 		15064F5F279D50DD00460334 /* DiscoveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F5E279D50DD00460334 /* DiscoveryTableViewCell.swift */; };
 		15064F62279D50FD00460334 /* DiscoveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15064F61279D50FD00460334 /* DiscoveryCollectionViewCell.swift */; };
+		150C77C7280971DB00181728 /* RegisterInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42527C76AF90082029E /* RegisterInformationCell.xib */; };
 		150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FB127994C6D000DAFBE /* AppDelegate.swift */; };
 		150C8FB427994C6D000DAFBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FB327994C6D000DAFBE /* SceneDelegate.swift */; };
 		150C8FC927994C6E000DAFBE /* LogooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150C8FC827994C6E000DAFBE /* LogooTests.swift */; };
@@ -115,7 +116,6 @@
 		1579A63928045E6800812D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150C8FBA27994C6E000DAFBE /* Assets.xcassets */; };
 		1579A63A28045E7200812D1E /* LGPhotoSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1589831527FEE73300853BBC /* LGPhotoSliderCell.xib */; };
 		1579A63B28045ED400812D1E /* RegisterPhotoChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */; };
-		1579A63C280462D200812D1E /* RegisterInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A5B42527C76AF90082029E /* RegisterInformationCell.xib */; };
 		1579A63D2804740B00812D1E /* InterestViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1541104528002E3D0099CE27 /* InterestViewerCell.xib */; };
 		1579A63F2804B64F00812D1E /* LGPhotoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A63E2804B64F00812D1E /* LGPhotoSlider.swift */; };
 		1579A6462804D04E00812D1E /* AlbumItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A6442804D04E00812D1E /* AlbumItemCell.swift */; };
@@ -149,6 +149,8 @@
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		159FBD5E28098A4400125C4E /* LGUIImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD5D28098A4400125C4E /* LGUIImageView.xib */; };
+		159FBD6028098A6200125C4E /* LGUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FBD5F28098A6200125C4E /* LGUIImageView.swift */; };
 		15A5B40F27C6854A0082029E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B40E27C6854A0082029E /* Room.swift */; };
 		15A5B41127C686430082029E /* Direct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41027C686420082029E /* Direct.swift */; };
 		15A5B41327C687280082029E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41227C687280082029E /* Message.swift */; };
@@ -186,7 +188,6 @@
 		15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */; };
 		15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */; };
 		15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */; };
-		15CA338827E9F48D0066C95B /* LGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA338727E9F48C0066C95B /* LGImageView.swift */; };
 		15CA338A27E9F7650066C95B /* LGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA338927E9F7650066C95B /* LGTextField.swift */; };
 		15D5614127D8D3DE0081DA5F /* EditFieldCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */; };
 		15D5614627D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */; };
@@ -228,6 +229,9 @@
 		15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */; };
 		15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */; };
 		15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */; };
+		3083DAA786BE3532785F33A4 /* Pods_Logoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF12A2101904F239773E380 /* Pods_Logoo.framework */; };
+		840FAACEEF9E9F59CD6CCAE4 /* Pods_LogooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7BBE589E84AA5B4CAC77F3 /* Pods_LogooTests.framework */; };
+		AA3FCBA4AAFD420AA769C78F /* Pods_Logoo_LogooUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7AC6E778DB35D7D90FB8C31 /* Pods_Logoo_LogooUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +252,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F7BBE589E84AA5B4CAC77F3 /* Pods_LogooTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LogooTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15064F4E279D492A00460334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15064F55279D4B5400460334 /* DiscorveryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscorveryProtocols.swift; sourceTree = "<group>"; };
 		15064F57279D4CD800460334 /* DiscoveryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryInteractor.swift; sourceTree = "<group>"; };
@@ -379,6 +384,8 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		159FBD5D28098A4400125C4E /* LGUIImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGUIImageView.xib; sourceTree = "<group>"; };
+		159FBD5F28098A6200125C4E /* LGUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGUIImageView.swift; sourceTree = "<group>"; };
 		15A5B40E27C6854A0082029E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		15A5B41027C686420082029E /* Direct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direct.swift; sourceTree = "<group>"; };
 		15A5B41227C687280082029E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -419,7 +426,6 @@
 		15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefInteractor.swift; sourceTree = "<group>"; };
 		15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefPresenter.swift; sourceTree = "<group>"; };
 		15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPrefRouter.swift; sourceTree = "<group>"; };
-		15CA338727E9F48C0066C95B /* LGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGImageView.swift; sourceTree = "<group>"; };
 		15CA338927E9F7650066C95B /* LGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGTextField.swift; sourceTree = "<group>"; };
 		15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCellProtocol.swift; sourceTree = "<group>"; };
 		15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithTextFieldCell.swift; sourceTree = "<group>"; };
@@ -464,6 +470,14 @@
 		15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestInteractor.swift; sourceTree = "<group>"; };
 		15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestPresenter.swift; sourceTree = "<group>"; };
 		15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestRouter.swift; sourceTree = "<group>"; };
+		45CF9DF633363343CA37F32E /* Pods-LogooTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LogooTests.debug.xcconfig"; path = "Target Support Files/Pods-LogooTests/Pods-LogooTests.debug.xcconfig"; sourceTree = "<group>"; };
+		60FE7B85F8B2900AA4322F0E /* Pods-Logoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logoo.release.xcconfig"; path = "Target Support Files/Pods-Logoo/Pods-Logoo.release.xcconfig"; sourceTree = "<group>"; };
+		A45EBB7B73F2D58CA781DEE8 /* Pods-LogooTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LogooTests.release.xcconfig"; path = "Target Support Files/Pods-LogooTests/Pods-LogooTests.release.xcconfig"; sourceTree = "<group>"; };
+		B7AC6E778DB35D7D90FB8C31 /* Pods_Logoo_LogooUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Logoo_LogooUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C822432C560AD0B88038186E /* Pods-Logoo-LogooUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logoo-LogooUITests.release.xcconfig"; path = "Target Support Files/Pods-Logoo-LogooUITests/Pods-Logoo-LogooUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D68F391AA814F6FAEC9F90B9 /* Pods-Logoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logoo.debug.xcconfig"; path = "Target Support Files/Pods-Logoo/Pods-Logoo.debug.xcconfig"; sourceTree = "<group>"; };
+		DBF12A2101904F239773E380 /* Pods_Logoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Logoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0B455DD58BDB862911D8984 /* Pods-Logoo-LogooUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logoo-LogooUITests.debug.xcconfig"; path = "Target Support Files/Pods-Logoo-LogooUITests/Pods-Logoo-LogooUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,6 +496,7 @@
 				15AE073C27C9449B0012A81C /* FirebaseAuth in Frameworks */,
 				15C64C6027BE518A0088DD35 /* GoogleSignIn in Frameworks */,
 				1541104C280045CE0099CE27 /* Mantis in Frameworks */,
+				3083DAA786BE3532785F33A4 /* Pods_Logoo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +504,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840FAACEEF9E9F59CD6CCAE4 /* Pods_LogooTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3FCBA4AAFD420AA769C78F /* Pods_Logoo_LogooUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +596,7 @@
 				150C8FD127994C6E000DAFBE /* LogooUITests */,
 				150C8FAF27994C6D000DAFBE /* Products */,
 				15C64C5E27BE518A0088DD35 /* Frameworks */,
+				7504A59CF32EBB8606D63192 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1178,6 +1196,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		159FBD5C28098A1500125C4E /* LGUIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				159FBD5D28098A4400125C4E /* LGUIImageView.xib */,
+				159FBD5F28098A6200125C4E /* LGUIImageView.swift */,
+			);
+			path = LGUIImageView;
+			sourceTree = "<group>";
+		};
 		15A5B41427C687B60082029E /* entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1346,6 +1373,9 @@
 		15C64C5E27BE518A0088DD35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBF12A2101904F239773E380 /* Pods_Logoo.framework */,
+				B7AC6E778DB35D7D90FB8C31 /* Pods_Logoo_LogooUITests.framework */,
+				0F7BBE589E84AA5B4CAC77F3 /* Pods_LogooTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1392,7 +1422,7 @@
 		15CA338627E9F4730066C95B /* custom */ = {
 			isa = PBXGroup;
 			children = (
-				15CA338727E9F48C0066C95B /* LGImageView.swift */,
+				159FBD5C28098A1500125C4E /* LGUIImageView */,
 				15CA338927E9F7650066C95B /* LGTextField.swift */,
 			);
 			path = custom;
@@ -1634,6 +1664,19 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		7504A59CF32EBB8606D63192 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D68F391AA814F6FAEC9F90B9 /* Pods-Logoo.debug.xcconfig */,
+				60FE7B85F8B2900AA4322F0E /* Pods-Logoo.release.xcconfig */,
+				E0B455DD58BDB862911D8984 /* Pods-Logoo-LogooUITests.debug.xcconfig */,
+				C822432C560AD0B88038186E /* Pods-Logoo-LogooUITests.release.xcconfig */,
+				45CF9DF633363343CA37F32E /* Pods-LogooTests.debug.xcconfig */,
+				A45EBB7B73F2D58CA781DEE8 /* Pods-LogooTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1641,9 +1684,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 150C8FD827994C6E000DAFBE /* Build configuration list for PBXNativeTarget "Logoo" */;
 			buildPhases = (
+				5EB72FF39C595DA07C173478 /* [CP] Check Pods Manifest.lock */,
 				150C8FAA27994C6D000DAFBE /* Sources */,
 				150C8FAB27994C6D000DAFBE /* Frameworks */,
 				150C8FAC27994C6D000DAFBE /* Resources */,
+				2FAB98B1C589DACC2181C4C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1671,6 +1716,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 150C8FDB27994C6E000DAFBE /* Build configuration list for PBXNativeTarget "LogooTests" */;
 			buildPhases = (
+				8F0BFC860BDB26F220C9ECB4 /* [CP] Check Pods Manifest.lock */,
 				150C8FC027994C6E000DAFBE /* Sources */,
 				150C8FC127994C6E000DAFBE /* Frameworks */,
 				150C8FC227994C6E000DAFBE /* Resources */,
@@ -1689,9 +1735,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 150C8FDE27994C6E000DAFBE /* Build configuration list for PBXNativeTarget "LogooUITests" */;
 			buildPhases = (
+				B0B02FE752DD44FC784E67F0 /* [CP] Check Pods Manifest.lock */,
 				150C8FCA27994C6E000DAFBE /* Sources */,
 				150C8FCB27994C6E000DAFBE /* Frameworks */,
 				150C8FCC27994C6E000DAFBE /* Resources */,
+				4AED37D55B8D4F79F15EFD74 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1761,8 +1809,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				150C77C7280971DB00181728 /* RegisterInformationCell.xib in Resources */,
 				1579A63D2804740B00812D1E /* InterestViewerCell.xib in Resources */,
-				1579A63C280462D200812D1E /* RegisterInformationCell.xib in Resources */,
 				1579A63B28045ED400812D1E /* RegisterPhotoChooseCell.xib in Resources */,
 				1579A63A28045E7200812D1E /* LGPhotoSliderCell.xib in Resources */,
 				1579A63928045E6800812D1E /* Assets.xcassets in Resources */,
@@ -1785,6 +1833,7 @@
 				1579A62928045DBC00812D1E /* EditFieldWithPickerViewCell.xib in Resources */,
 				1579A62828045DAD00812D1E /* RegisterConfirmCell.xib in Resources */,
 				1579A62728045DA300812D1E /* Localizable.strings in Resources */,
+				159FBD5E28098A4400125C4E /* LGUIImageView.xib in Resources */,
 				1579A62628045D9400812D1E /* EditFieldWithSwitchCell.xib in Resources */,
 				1579A62028044ABF00812D1E /* Main.storyboard in Resources */,
 				1579A62128044ABF00812D1E /* LaunchScreen.storyboard in Resources */,
@@ -1808,6 +1857,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2FAB98B1C589DACC2181C4C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Logoo/Pods-Logoo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Logoo/Pods-Logoo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Logoo/Pods-Logoo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AED37D55B8D4F79F15EFD74 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Logoo-LogooUITests/Pods-Logoo-LogooUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Logoo-LogooUITests/Pods-Logoo-LogooUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Logoo-LogooUITests/Pods-Logoo-LogooUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EB72FF39C595DA07C173478 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Logoo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F0BFC860BDB26F220C9ECB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LogooTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0B02FE752DD44FC784E67F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Logoo-LogooUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		150C8FAA27994C6D000DAFBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1826,7 +1978,6 @@
 				1541104328002CBF0099CE27 /* InterestsViewer.swift in Sources */,
 				15EACB2427AC2ACE0089779A /* RegisterPresenter.swift in Sources */,
 				15F461F627F9E3CB00FFE46D /* BaseVC.swift in Sources */,
-				15CA338827E9F48D0066C95B /* LGImageView.swift in Sources */,
 				15C64C4427BD27EC0088DD35 /* ResetPaswordRouter.swift in Sources */,
 				15F6708127FC59980083E58C /* ChangePasswordProtocols.swift in Sources */,
 				159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */,
@@ -1885,6 +2036,7 @@
 				15064F5C279D4D9100460334 /* DiscoveryRouter.swift in Sources */,
 				1541104628002E3D0099CE27 /* InterestViewerCell.swift in Sources */,
 				15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */,
+				159FBD6028098A6200125C4E /* LGUIImageView.swift in Sources */,
 				1589831B27FEEDA700853BBC /* UICollectionView+.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				1584958A27CE229400ED57B6 /* EditProfileProtocols.swift in Sources */,
@@ -2177,6 +2329,7 @@
 		};
 		150C8FD927994C6E000DAFBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D68F391AA814F6FAEC9F90B9 /* Pods-Logoo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2207,6 +2360,7 @@
 		};
 		150C8FDA27994C6E000DAFBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60FE7B85F8B2900AA4322F0E /* Pods-Logoo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2237,6 +2391,7 @@
 		};
 		150C8FDC27994C6E000DAFBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45CF9DF633363343CA37F32E /* Pods-LogooTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2257,6 +2412,7 @@
 		};
 		150C8FDD27994C6E000DAFBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A45EBB7B73F2D58CA781DEE8 /* Pods-LogooTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2277,6 +2433,7 @@
 		};
 		150C8FDF27994C6E000DAFBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0B455DD58BDB862911D8984 /* Pods-Logoo-LogooUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2295,6 +2452,7 @@
 		};
 		150C8FE027994C6E000DAFBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C822432C560AD0B88038186E /* Pods-Logoo-LogooUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

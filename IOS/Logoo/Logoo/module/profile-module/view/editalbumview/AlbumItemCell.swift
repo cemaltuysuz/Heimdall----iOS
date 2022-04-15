@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ImageViewer_swift
+
 
 protocol AlbumItemCellProtocol : AnyObject {
     func selectPhotoRequest()
@@ -24,14 +26,11 @@ class AlbumItemCell: UICollectionViewCell {
     private func configureDefCell(){
         plusButtonOutlet.isHidden = true
         trashContainer.isHidden = false
-        
+        albumItemImageView.image = nil
         let tapGestureTrash = UITapGestureRecognizer(target: self, action: #selector(self.onClickTrash(_:)))
         trashContainer.isUserInteractionEnabled = true
         trashContainer.addGestureRecognizer(tapGestureTrash)
         
-        let tapGesturePhoto = UITapGestureRecognizer(target: self, action: #selector(self.onPhotoClick(_:)))
-        albumItemImageView.isUserInteractionEnabled = true
-        albumItemImageView.addGestureRecognizer(tapGesturePhoto)
         albumItemImageView.removeDashedBorder()
     }
     
@@ -42,15 +41,18 @@ class AlbumItemCell: UICollectionViewCell {
         contentView.isUserInteractionEnabled = true
         let tapGestureContent = UITapGestureRecognizer(target: self, action: #selector(self.onPhotoInsert(_:)))
         contentView.addGestureRecognizer(tapGestureContent)
-        albumItemImageView.addDashedBorder()
+        albumItemImageView.addDashedBorder(radius: contentView.layer.cornerRadius)
     }
     
     func configureCell(post:UserPost){
         configureDefCell()
         self.post = post
         if let url = post.postUrl {
-            albumItemImageView.setImage(urlString: url)
+            albumItemImageView.setImage(urlString: url, radius: 10, focustStatus: true)
         }
+    }
+    @IBAction func plusOnClick(_ sender: Any) {
+        delegate?.selectPhotoRequest()
     }
 }
 
@@ -58,11 +60,10 @@ extension AlbumItemCell {
     
     @objc
     func onClickTrash(_ tap:UITapGestureRecognizer) {
+        guard let post = post, let url = post.postUrl else {return}
+        delegate?.deletePhotoRequest(postUUID: url)
     }
-    
-    @objc func onPhotoClick(_ sender: Any) {
-    }
-    
+
     @objc func onPhotoInsert(_ tap:UITapGestureRecognizer) {
         delegate?.selectPhotoRequest()
     }

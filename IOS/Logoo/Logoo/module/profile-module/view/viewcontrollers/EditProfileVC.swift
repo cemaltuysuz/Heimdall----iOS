@@ -17,7 +17,7 @@ class EditProfileVC: BaseVC {
 
     @IBOutlet weak var userImageChangeLabel: UILabel!
     @IBOutlet weak var editPostAlbumView: EditPostAlbumView!
-    @IBOutlet weak var editUserProfilePhotoImg: LGImageView!
+    @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
     
     let editFieldCellHeight:CGFloat = 80

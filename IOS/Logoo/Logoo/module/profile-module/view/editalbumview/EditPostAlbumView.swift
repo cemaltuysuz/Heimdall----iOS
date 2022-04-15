@@ -48,11 +48,11 @@ extension EditPostAlbumView : UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(indexPath, type: AlbumItemCell.self)
         cell.delegate = self
-        if indexPath.row == posts?.count ?? 0 {
+        if indexPath.row == 0 {
             cell.lastCellConfigure()
             return cell
         }
-        let post = posts![indexPath.row]
+        let post = posts![indexPath.row - 1]
         cell.configureCell(post: post)
         return cell
     }

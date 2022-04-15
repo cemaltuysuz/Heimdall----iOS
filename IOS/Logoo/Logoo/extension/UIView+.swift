@@ -24,7 +24,7 @@ extension UIView {
         superview?.layoutIfNeeded()
     }
     
-    func addDashedBorder(){
+    func addDashedBorder(radius:CGFloat){
         let border = CAShapeLayer()
         border.strokeColor = UIColor.black.cgColor
         border.lineDashPattern = [2, 2]
@@ -32,6 +32,7 @@ extension UIView {
         border.fillColor = nil
         border.path = UIBezierPath(rect: self.bounds).cgPath
         border.name = "dashedLayer"
+        border.cornerRadius = radius
         self.layer.addSublayer(border)
     }
     

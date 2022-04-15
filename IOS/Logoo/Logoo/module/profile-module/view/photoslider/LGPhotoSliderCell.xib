@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="375"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JbJ-Bi-ebH" customClass="LGImageView" customModule="Logoo" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JbJ-Bi-ebH">
                         <rect key="frame" x="20" y="20" width="260" height="335"/>
                     </imageView>
                 </subviews>
@@ -31,7 +31,7 @@
             </constraints>
             <size key="customSize" width="253" height="237"/>
             <connections>
-                <outlet property="userPostPhotoImageView" destination="JbJ-Bi-ebH" id="hE4-sN-qWN"/>
+                <outlet property="userPostPhotoImageView" destination="JbJ-Bi-ebH" id="jE9-G5-Psa"/>
             </connections>
             <point key="canvasLocation" x="278.26086956521743" y="192.85714285714286"/>
         </collectionViewCell>

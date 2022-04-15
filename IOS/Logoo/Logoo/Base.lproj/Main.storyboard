@@ -973,11 +973,11 @@
             <objects>
                 <viewController id="SU2-2K-AsD" customClass="ProfileSettingsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iAG-mr-t6r">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mJh-mS-ErD">
-                                <rect key="frame" x="10" y="30" width="394" height="778"/>
+                                <rect key="frame" x="10" y="170" width="394" height="643"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -1021,7 +1021,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PHH-28-y0G">
                                                         <rect key="frame" x="147" y="12" width="120" height="146.5"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZo-8Y-pBs" customClass="LGImageView" customModule="Logoo" customModuleProvider="target">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZo-8Y-pBs">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="120" id="DQE-8M-viA"/>
@@ -1091,7 +1091,7 @@
                     <connections>
                         <outlet property="editPostAlbumView" destination="fBD-2U-cPd" id="Mf0-CM-EJE"/>
                         <outlet property="editUserFieldsTableView" destination="jvY-BG-MpP" id="HuB-3D-h4u"/>
-                        <outlet property="editUserProfilePhotoImg" destination="dZo-8Y-pBs" id="FqR-h4-ITj"/>
+                        <outlet property="editUserProfilePhotoImg" destination="dZo-8Y-pBs" id="X0e-N3-fcR"/>
                         <outlet property="userImageChangeLabel" destination="PUG-NC-eML" id="rts-ab-lF1"/>
                     </connections>
                 </viewController>
@@ -2163,7 +2163,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LPf-uU-BIR"/>
         <segue reference="cMF-AX-Wl6"/>
         <segue reference="pVS-DB-Cmw"/>
         <segue reference="o1r-4g-XK7"/>

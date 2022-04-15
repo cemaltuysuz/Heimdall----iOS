@@ -76,7 +76,8 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
     func createNewUserPost(image: UIImage) {
         if let uuid = FirebaseAuthService.shared.getUUID() {
             presenter?.onStateChange(state: .showCurtain)
-            let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uuid).collection(FireStoreCollection.USER_POSTS).document(UUID().uuidString)
+            let documentID = UUID().uuidString
+            let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uuid).collection(FireStoreCollection.USER_POSTS).document(documentID)
             
             let filePath = "\(FireStoragePath.USER_POST)/\(uuid)/\(UUID().uuidString)"
             
@@ -87,7 +88,8 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                     self.presenter?.onStateChange(state: .onPhotoUploadFail(message: error.localizedDescription))
                 }
                 if let imageUrl = imageUrl {
-                    let postObject = UserPost(postUrl: imageUrl,
+                    let postObject = UserPost(postUUID: documentID,
+                                              postUrl: imageUrl,
                                               timestamp: timeInSeconds(),
                                               userPostType: UserPostType.PHOTO.rawValue)
                     
