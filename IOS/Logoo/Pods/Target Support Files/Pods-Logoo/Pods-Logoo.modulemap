@@ -1,0 +1,6 @@
+framework module Pods_Logoo {
+  umbrella header "Pods-Logoo-umbrella.h"
+
+  export *
+  module * { export * }
+}
