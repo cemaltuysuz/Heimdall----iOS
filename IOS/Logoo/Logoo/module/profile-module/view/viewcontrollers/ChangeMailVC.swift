@@ -12,8 +12,8 @@ class ChangeMailVC: BaseVC {
     @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var screenDescriptionLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var newMailAdressTextField: LGTextField!
-    @IBOutlet weak var currentPasswordTextField: LGTextField!
+    @IBOutlet weak var newMailAdressTextField: CustomUITextField!
+    @IBOutlet weak var currentPasswordTextField: CustomUITextField!
     @IBOutlet weak var okButtonOutlet: UIButton!
     var presenter : ViewToPresenterChangeMailProtocol?
 
@@ -30,6 +30,9 @@ class ChangeMailVC: BaseVC {
         okButtonOutlet.setTitle("Okey".localized(), for: .normal)
         newMailAdressTextField.placeholder = "Enter your new mail adress".localized()
         currentPasswordTextField.placeholder = "Enter your current password".localized()
+        currentPasswordTextField.customDelegate = self
+        addInputAccessoryForTextFields(textFields: [newMailAdressTextField, currentPasswordTextField], dismissable: true, previousNextable: true)
+
     }
     
     func createModule() {
@@ -88,6 +91,18 @@ extension ChangeMailVC : PresenterToViewChangeMailProtocol {
     }
 }
 
+extension ChangeMailVC : CustomUITextFieldProtocol {
+    func onRightButtonClick(textField: CustomUITextField, isActive: Bool) {
+        textField.isSecureTextEntry = !isActive
+        if isActive {
+            textField.rightImage = UIImage(systemName: "eye.fill")
+        }else {
+            textField.rightImage = UIImage(systemName: "eye.slash.fill")
+        }
+    }
+}
+
+
 enum ChangeMailState {
     case CURTAIN
     case RE_AUTH_FAIL(message:String)
@@ -95,3 +110,5 @@ enum ChangeMailState {
     case SUCCESS_RE_AUTH(oldMail:String)
     case SUCCESS_MAIL_CHANGE
 }
+
+

@@ -1104,11 +1104,11 @@
             <objects>
                 <viewController id="OR3-J5-uEt" customClass="SecurityVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bmv-Ip-kdp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OrF-bd-uOQ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Fch-uy-kPq">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="542"/>
@@ -1119,9 +1119,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-pB-wgC">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqC-Pr-6Pf">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqC-Pr-6Pf">
                                                                 <rect key="frame" x="368.5" y="5" width="40.5" height="20"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="tintColor" name="black700"/>
                                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                                 <connections>
@@ -1131,7 +1130,10 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="CqC-Pr-6Pf" secondAttribute="bottom" constant="5" id="F4M-8I-NN3"/>
                                                             <constraint firstAttribute="height" constant="30" id="Jyv-QH-Bat"/>
+                                                            <constraint firstItem="CqC-Pr-6Pf" firstAttribute="top" secondItem="iV4-pB-wgC" secondAttribute="top" constant="5" id="aAF-tz-gbZ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="CqC-Pr-6Pf" secondAttribute="trailing" constant="5" id="aEo-Ij-7QP"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tem-fu-cUk">
@@ -1230,14 +1232,14 @@
             <objects>
                 <viewController id="m5h-BP-XJv" customClass="LoginTransactionsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yxg-EQ-UXZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-bR-ytj">
-                                <rect key="frame" x="10" y="30" width="394" height="778"/>
+                                <rect key="frame" x="10" y="170" width="394" height="643"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mox-s9-6ek">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="778"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="643"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -1266,11 +1268,11 @@
             <objects>
                 <viewController id="KQu-Ix-Faw" customClass="ChangePasswordVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vM7-QG-pQG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDH-iI-ijY">
-                                <rect key="frame" x="20" y="20" width="374" height="788"/>
+                                <rect key="frame" x="20" y="160" width="374" height="653"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="avA-za-7ar">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="420"/>
@@ -1301,7 +1303,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gR3-uC-L5l">
                                                         <rect key="frame" x="30" y="10" width="314" height="220"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W5L-QR-RRS" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W5L-QR-RRS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="72t-cb-Ybl"/>
@@ -1312,7 +1314,7 @@
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-Ty-gkd" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-Ty-gkd">
                                                                 <rect key="frame" x="0.0" y="60" width="314" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="Ost-xQ-Nr2"/>
@@ -1323,7 +1325,7 @@
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-Z4-Zec" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-Z4-Zec">
                                                                 <rect key="frame" x="0.0" y="120" width="314" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="UCT-pX-Ed0"/>
@@ -1394,11 +1396,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="HkV-iF-0Lx"/>
                     <connections>
-                        <outlet property="currentPasswordTextField" destination="W5L-QR-RRS" id="2p0-Un-qGD"/>
+                        <outlet property="currentPasswordTextField" destination="W5L-QR-RRS" id="uvY-lX-gbK"/>
                         <outlet property="errorLabel" destination="iyS-vV-zdz" id="9pK-d2-4iX"/>
-                        <outlet property="newPasswordTextField" destination="qc4-Ty-gkd" id="Inh-Au-eVP"/>
+                        <outlet property="newPasswordTextField" destination="qc4-Ty-gkd" id="LhP-2d-KmY"/>
                         <outlet property="okButtonOutlet" destination="lcJ-aG-Jcj" id="iaz-Px-A7P"/>
-                        <outlet property="reNewPasswordTextField" destination="nz5-Z4-Zec" id="oo2-kY-Dql"/>
+                        <outlet property="reNewPasswordTextField" destination="nz5-Z4-Zec" id="TtI-PL-NTr"/>
                         <outlet property="screenDescriptionLabel" destination="BR1-h6-nPE" id="TeA-Nx-FTO"/>
                         <outlet property="screenTitleLabel" destination="oSl-j1-MZd" id="Hqz-qR-Sux"/>
                     </connections>
@@ -1412,14 +1414,14 @@
             <objects>
                 <viewController id="Ta6-Cw-SiR" customClass="ChangeMailVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZcM-fQ-WXk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7R-UV-I2R">
-                                <rect key="frame" x="20" y="20" width="374" height="788"/>
+                                <rect key="frame" x="20" y="160" width="374" height="653"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EUR-Xo-QmV">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="350"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Mail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sej-bI-Pdn">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -1441,43 +1443,70 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPx-hB-gUi">
-                                                <rect key="frame" x="0.0" y="140" width="374" height="180"/>
+                                                <rect key="frame" x="0.0" y="140" width="374" height="210"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Veq-nU-dcG">
-                                                        <rect key="frame" x="30" y="10" width="314" height="160"/>
+                                                        <rect key="frame" x="30" y="10" width="314" height="190"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new mail adress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JCe-R7-dcw" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new mail adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JCe-R7-dcw" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="314" height="50"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="Sky-MC-FeV"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="Sky-MC-FeV"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                        <color key="value" name="grey500"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="envelope.fill" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JrH-ri-62A" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="60" width="314" height="40"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JrH-ri-62A" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="70" width="314" height="50"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="eBU-GG-oLB"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="eBU-GG-oLB"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                        <color key="value" name="grey500"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="key.fill" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h73-WI-6yh">
-                                                                <rect key="frame" x="0.0" y="110" width="314" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="130" width="314" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLT-87-A4l">
-                                                                <rect key="frame" x="0.0" y="120" width="314" height="40"/>
+                                                                <rect key="frame" x="0.0" y="140" width="314" height="50"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="ZKb-Bx-izq"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="ZKb-Bx-izq"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" title="Okey">
@@ -1527,9 +1556,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="44p-QT-lep"/>
                     <connections>
-                        <outlet property="currentPasswordTextField" destination="JrH-ri-62A" id="g8l-Da-7Ci"/>
+                        <outlet property="currentPasswordTextField" destination="JrH-ri-62A" id="OBX-HA-FJM"/>
                         <outlet property="errorLabel" destination="h73-WI-6yh" id="3ex-wv-w0s"/>
-                        <outlet property="newMailAdressTextField" destination="JCe-R7-dcw" id="pEc-lq-yIA"/>
+                        <outlet property="newMailAdressTextField" destination="JCe-R7-dcw" id="gV2-WA-ywD"/>
                         <outlet property="okButtonOutlet" destination="HLT-87-A4l" id="ssc-53-Yqt"/>
                         <outlet property="screenDescriptionLabel" destination="XhN-sA-v7I" id="pdP-HH-F5Z"/>
                         <outlet property="screenTitleLabel" destination="sej-bI-Pdn" id="ZRD-eZ-Zc7"/>
@@ -2162,10 +2191,18 @@
             <point key="canvasLocation" x="4212" y="84"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="JCe-R7-dcw">
+            <size key="intrinsicContentSize" width="237" height="34"/>
+        </designable>
+        <designable name="JrH-ri-62A">
+            <size key="intrinsicContentSize" width="273" height="34"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="cMF-AX-Wl6"/>
+        <segue reference="7Si-FM-ksr"/>
         <segue reference="pVS-DB-Cmw"/>
-        <segue reference="o1r-4g-XK7"/>
+        <segue reference="avK-4H-dxN"/>
         <segue reference="3EM-90-pDF"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -2178,11 +2215,14 @@
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="close-with-transparency.png" width="44" height="44"/>
+        <image name="envelope.fill" catalog="system" width="128" height="93"/>
+        <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
         <image name="face" width="70" height="70"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="globe.americas" catalog="system" width="128" height="121"/>
         <image name="globe.americas.fill" catalog="system" width="128" height="121"/>
         <image name="google.png" width="18" height="18"/>
+        <image name="key.fill" catalog="system" width="83" height="128"/>
         <image name="location.square.fill" catalog="system" width="128" height="114"/>
         <image name="onboard1" width="323" height="318"/>
         <image name="pencil" catalog="system" width="128" height="113"/>

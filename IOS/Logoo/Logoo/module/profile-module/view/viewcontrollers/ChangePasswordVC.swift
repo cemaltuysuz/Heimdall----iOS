@@ -11,9 +11,9 @@ class ChangePasswordVC: BaseVC {
     
     @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var screenDescriptionLabel: UILabel!
-    @IBOutlet weak var currentPasswordTextField: LGTextField!
-    @IBOutlet weak var newPasswordTextField: LGTextField!
-    @IBOutlet weak var reNewPasswordTextField: LGTextField!
+    @IBOutlet weak var currentPasswordTextField: UITextField!
+    @IBOutlet weak var newPasswordTextField: UITextField!
+    @IBOutlet weak var reNewPasswordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var okButtonOutlet: UIButton!
     
