@@ -1606,30 +1606,57 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXH-6u-Lg7">
-                                <rect key="frame" x="30" y="368" width="354" height="160"/>
+                                <rect key="frame" x="30" y="363" width="354" height="170"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User E-mail Adress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BJq-n7-VBy" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="46.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User E-mail Adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BJq-n7-VBy" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                         <color key="backgroundColor" name="grey200"/>
                                         <color key="textColor" name="grey500"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="envelope.fill" catalog="system"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" name="grey500"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                <color key="value" name="black700"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g71-VC-hcN" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56.5" width="354" height="47"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g71-VC-hcN" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="354" height="50"/>
                                         <color key="backgroundColor" name="grey200"/>
                                         <color key="textColor" name="grey500"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" name="grey500"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="key.fill" catalog="system"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                <color key="value" name="black700"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
+                                                <color key="value" name="black700"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGt-Fv-tYR">
-                                        <rect key="frame" x="0.0" y="113.5" width="354" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="120" width="354" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Log In">
                                             <color key="baseBackgroundColor" name="black700"/>
@@ -1642,7 +1669,7 @@
                                 <constraints>
                                     <constraint firstItem="nGt-Fv-tYR" firstAttribute="height" secondItem="BJq-n7-VBy" secondAttribute="height" id="Ibd-xT-GNx"/>
                                     <constraint firstItem="g71-VC-hcN" firstAttribute="height" secondItem="BJq-n7-VBy" secondAttribute="height" id="QYs-lY-ZLx"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="mjY-hc-59k"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="mjY-hc-59k"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not registered? Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mR-jT-w5d">
@@ -1661,7 +1688,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMz-66-JxM">
-                                <rect key="frame" x="30" y="536" width="354" height="28"/>
+                                <rect key="frame" x="30" y="541" width="354" height="28"/>
                                 <color key="tintColor" name="black700"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -1679,7 +1706,7 @@
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-o6-CUB">
-                                <rect key="frame" x="30" y="569" width="354" height="31"/>
+                                <rect key="frame" x="30" y="574" width="354" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkQ-1h-V2l">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="31"/>
@@ -1719,8 +1746,8 @@
                     <navigationItem key="navigationItem" id="qQB-Cl-dhC"/>
                     <connections>
                         <outlet property="loginErrorMessageLabel" destination="sBk-eF-BKo" id="T0z-Fl-vKH"/>
-                        <outlet property="loginUserMail" destination="BJq-n7-VBy" id="ue6-hV-Oxg"/>
-                        <outlet property="loginUserPassword" destination="g71-VC-hcN" id="3b6-j5-QEb"/>
+                        <outlet property="loginUserMail" destination="BJq-n7-VBy" id="pye-pV-7bb"/>
+                        <outlet property="loginUserPassword" destination="g71-VC-hcN" id="Y6N-2Q-w2c"/>
                         <outlet property="mailConfirmationContainer" destination="fTm-o6-CUB" id="3PR-tT-hGi"/>
                         <outlet property="sendVerificationButtonOutlet" destination="TkQ-1h-V2l" id="itB-52-ylS"/>
                         <segue destination="CG2-04-KZ0" kind="presentation" identifier="loginToRouterVC" modalPresentationStyle="fullScreen" id="rKC-ge-Kah"/>
