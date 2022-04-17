@@ -93,7 +93,7 @@
 		1579A61B28040B1800812D1E /* RegisterCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A61A28040B1800812D1E /* RegisterCellType.swift */; };
 		1579A61D280437BD00812D1E /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A61C280437BD00812D1E /* Bindable.swift */; };
 		1579A61F2804441A00812D1E /* RegisterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A61E2804441A00812D1E /* RegisterProtocol.swift */; };
-		1579A62028044ABF00812D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 150C8FB727994C6D000DAFBE /* Main.storyboard */; };
+		1579A62028044ABF00812D1E /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 150C8FB727994C6D000DAFBE /* Welcome.storyboard */; };
 		1579A62128044ABF00812D1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 150C8FBC27994C6E000DAFBE /* LaunchScreen.storyboard */; };
 		1579A62628045D9400812D1E /* EditFieldWithSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154F826D27DBC02200C0C614 /* EditFieldWithSwitchCell.xib */; };
 		1579A62728045DA300812D1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1535676027BA81D0007346D4 /* Localizable.strings */; };
@@ -149,6 +149,11 @@
 		159C3BDC279C5D92001B9607 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDB279C5D92001B9607 /* DiscoverVC.swift */; };
 		159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3BDE279C5DAA001B9607 /* GlobalVC.swift */; };
 		159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 159E052227A1550700E41035 /* GoogleService-Info.plist */; };
+		159FBD66280C0D5100125C4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD65280C0D5100125C4E /* Main.storyboard */; };
+		159FBD68280C0EAA00125C4E /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD67280C0EAA00125C4E /* Discovery.storyboard */; };
+		159FBD6A280C103C00125C4E /* Global.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD69280C103C00125C4E /* Global.storyboard */; };
+		159FBD6C280C109C00125C4E /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD6B280C109C00125C4E /* Chat.storyboard */; };
+		159FBD6E280C115100125C4E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD6D280C115100125C4E /* Profile.storyboard */; };
 		15A5B40F27C6854A0082029E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B40E27C6854A0082029E /* Room.swift */; };
 		15A5B41127C686430082029E /* Direct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41027C686420082029E /* Direct.swift */; };
 		15A5B41327C687280082029E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41227C687280082029E /* Message.swift */; };
@@ -265,7 +270,7 @@
 		150C8FAE27994C6D000DAFBE /* Logoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		150C8FB127994C6D000DAFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		150C8FB327994C6D000DAFBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		150C8FB827994C6D000DAFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		150C8FB827994C6D000DAFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		150C8FBA27994C6E000DAFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		150C8FBD27994C6E000DAFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		150C8FBF27994C6E000DAFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -386,6 +391,11 @@
 		159C3BDB279C5D92001B9607 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		159C3BDE279C5DAA001B9607 /* GlobalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVC.swift; sourceTree = "<group>"; };
 		159E052227A1550700E41035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		159FBD65280C0D5100125C4E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		159FBD67280C0EAA00125C4E /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
+		159FBD69280C103C00125C4E /* Global.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Global.storyboard; sourceTree = "<group>"; };
+		159FBD6B280C109C00125C4E /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		159FBD6D280C115100125C4E /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		15A5B40E27C6854A0082029E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		15A5B41027C686420082029E /* Direct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direct.swift; sourceTree = "<group>"; };
 		15A5B41227C687280082029E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -416,7 +426,6 @@
 		15C64C3F27BD277D0088DD35 /* ResetPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInteractor.swift; sourceTree = "<group>"; };
 		15C64C4127BD27A30088DD35 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		15C64C4327BD27EC0088DD35 /* ResetPaswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPaswordRouter.swift; sourceTree = "<group>"; };
-		15C64C4727BE213E0088DD35 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		15C64C4D27BE24A70088DD35 /* WelcomeVCProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVCProtocols.swift; sourceTree = "<group>"; };
 		15C64C4F27BE26FE0088DD35 /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
 		15C64C5127BE27480088DD35 /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
@@ -553,13 +562,6 @@
 			path = presenter;
 			sourceTree = "<group>";
 		};
-		15064F52279D4AF900460334 /* entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
 		15064F53279D4AFF00460334 /* router */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,7 +629,6 @@
 				156F044A27B3AA7F00D37039 /* utils */,
 				150C8FB127994C6D000DAFBE /* AppDelegate.swift */,
 				150C8FB327994C6D000DAFBE /* SceneDelegate.swift */,
-				150C8FB727994C6D000DAFBE /* Main.storyboard */,
 				150C8FBA27994C6E000DAFBE /* Assets.xcassets */,
 				150C8FBC27994C6E000DAFBE /* LaunchScreen.storyboard */,
 				150C8FBF27994C6E000DAFBE /* Info.plist */,
@@ -688,14 +689,9 @@
 		150C8FF027995737000DAFBE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				150C8FB727994C6D000DAFBE /* Welcome.storyboard */,
+				159FBD64280C0A0500125C4E /* viewcontrollers */,
 				159FBD61280C059A00125C4E /* collectionview */,
-				150C8FE127994D12000DAFBE /* WelcomeVC.swift */,
-				150C8FF227995774000DAFBE /* OnBoardVC.swift */,
-				15983C0227997C1B00903073 /* LoginPrefVC.swift */,
-				153EA98027A0468500871246 /* LoginVC.swift */,
-				15983C052799954500903073 /* RegisterVC.swift */,
-				15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */,
-				15BDA68527B647440066F469 /* LoginRouterVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -762,6 +758,7 @@
 			isa = PBXGroup;
 			children = (
 				1517AF93279EBCD900D1194E /* ChatVC.swift */,
+				159FBD6B280C109C00125C4E /* Chat.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -900,12 +897,14 @@
 		1584957B27CDEDC000ED57B6 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				159FBD6F280C123900125C4E /* security-module */,
 				156F045027B3C0E300D37039 /* selection-interest-module */,
 				1517AF8C279EBC5700D1194E /* chat-module */,
 				15064F4C279D490E00460334 /* profile-module */,
 				159C3BD6279C5CD5001B9607 /* global-module */,
-				159C3BD5279C5CC6001B9607 /* discover-module */,
+				159C3BD5279C5CC6001B9607 /* discovery-module */,
 				150C8FE327994DC0000DAFBE /* welcome-module */,
+				159FBD65280C0D5100125C4E /* Main.storyboard */,
 			);
 			path = module;
 			sourceTree = "<group>";
@@ -936,10 +935,6 @@
 				15F272DE27CB7E73005BBC78 /* ProfileSettingsVC.swift */,
 				1584957F27CE00D700ED57B6 /* ProfileVC.swift */,
 				1584958127CE00EB00ED57B6 /* EditProfileVC.swift */,
-				1530C24727DA0CCA002EBB90 /* SecurityVC.swift */,
-				151CBA1327F07C180088E548 /* LoginTransactionsVC.swift */,
-				15F6707C27FC359F0083E58C /* ChangePasswordVC.swift */,
-				15F6707E27FC35B90083E58C /* ChangeMailVC.swift */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -988,19 +983,18 @@
 			path = register;
 			sourceTree = "<group>";
 		};
-		159C3BD5279C5CC6001B9607 /* discover-module */ = {
+		159C3BD5279C5CC6001B9607 /* discovery-module */ = {
 			isa = PBXGroup;
 			children = (
 				15064F60279D50E700460334 /* collectionview */,
 				15064F5D279D50BA00460334 /* tableview */,
 				15064F54279D4B0800460334 /* protocol */,
 				15064F53279D4AFF00460334 /* router */,
-				15064F52279D4AF900460334 /* entity */,
 				15064F51279D4AF100460334 /* presenter */,
 				15064F50279D4AE900460334 /* interactor */,
 				159C3BDA279C5D7E001B9607 /* view */,
 			);
-			path = "discover-module";
+			path = "discovery-module";
 			sourceTree = "<group>";
 		};
 		159C3BD6279C5CD5001B9607 /* global-module */ = {
@@ -1016,6 +1010,7 @@
 			isa = PBXGroup;
 			children = (
 				159C3BDB279C5D92001B9607 /* DiscoverVC.swift */,
+				159FBD67280C0EAA00125C4E /* Discovery.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1024,6 +1019,7 @@
 			isa = PBXGroup;
 			children = (
 				159C3BDE279C5DAA001B9607 /* GlobalVC.swift */,
+				159FBD69280C103C00125C4E /* Global.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1035,6 +1031,126 @@
 				150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */,
 			);
 			path = collectionview;
+			sourceTree = "<group>";
+		};
+		159FBD64280C0A0500125C4E /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				150C8FE127994D12000DAFBE /* WelcomeVC.swift */,
+				150C8FF227995774000DAFBE /* OnBoardVC.swift */,
+				15983C0227997C1B00903073 /* LoginPrefVC.swift */,
+				153EA98027A0468500871246 /* LoginVC.swift */,
+				15983C052799954500903073 /* RegisterVC.swift */,
+				15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */,
+				15BDA68527B647440066F469 /* LoginRouterVC.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		159FBD6F280C123900125C4E /* security-module */ = {
+			isa = PBXGroup;
+			children = (
+				159FBD75280C127B00125C4E /* protocols */,
+				159FBD74280C127500125C4E /* view */,
+				159FBD73280C126C00125C4E /* interactor */,
+				159FBD72280C126100125C4E /* presenter */,
+				159FBD71280C125900125C4E /* entity */,
+				159FBD70280C124E00125C4E /* router */,
+			);
+			path = "security-module";
+			sourceTree = "<group>";
+		};
+		159FBD70280C124E00125C4E /* router */ = {
+			isa = PBXGroup;
+			children = (
+				1531F95027E09EA600FA53AE /* SecurityRouter.swift */,
+				151CBA1B27F080C10088E548 /* LoginTransactionsRouter.swift */,
+				15F6708427FC5DCD0083E58C /* ChangePasswordRouter.swift */,
+				15F6708627FC5DD90083E58C /* ChangeMailRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		159FBD71280C125900125C4E /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				1531F95227E0A7D800FA53AE /* UserTransaction.swift */,
+				159FBD78280C141800125C4E /* enums */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		159FBD72280C126100125C4E /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1531F94C27E09C5800FA53AE /* SecurityPresenter.swift */,
+				151CBA1927F07EF90088E548 /* LoginTransactionsPresenter.swift */,
+				15F6708827FC5E1B0083E58C /* ChangeMailPresenter.swift */,
+				15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		159FBD73280C126C00125C4E /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1531F94A27E09C4800FA53AE /* SecurityInteractor.swift */,
+				151CBA1727F07E930088E548 /* LoginTransactionsInteractor.swift */,
+				15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */,
+				15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		159FBD74280C127500125C4E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1530C24727DA0CCA002EBB90 /* SecurityVC.swift */,
+				151CBA1327F07C180088E548 /* LoginTransactionsVC.swift */,
+				15F6707C27FC359F0083E58C /* ChangePasswordVC.swift */,
+				15F6707E27FC35B90083E58C /* ChangeMailVC.swift */,
+				159FBD77280C13A600125C4E /* tableview */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		159FBD75280C127B00125C4E /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1531F94E27E09C8500FA53AE /* SecurityProtocols.swift */,
+				151CBA1527F07C520088E548 /* LoginTransactionsProtocols.swift */,
+				15F6708027FC59980083E58C /* ChangePasswordProtocols.swift */,
+				15F6708227FC5D050083E58C /* ChangeMailProtocols.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		159FBD76280C131A00125C4E /* line-menu-item */ = {
+			isa = PBXGroup;
+			children = (
+				15F272F427CBAAEB005BBC78 /* LineMenuItem.swift */,
+				1541105128008E280099CE27 /* LineMenuItemCell.swift */,
+				1541105228008E280099CE27 /* LineMenuItemCell.xib */,
+			);
+			path = "line-menu-item";
+			sourceTree = "<group>";
+		};
+		159FBD77280C13A600125C4E /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				1531F94427E0846600FA53AE /* LoginTransactionsCell.swift */,
+				1531F94527E0846600FA53AE /* LoginTransactionsCell.xib */,
+			);
+			path = tableview;
+			sourceTree = "<group>";
+		};
+		159FBD78280C141800125C4E /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				1531F95427E0A82800FA53AE /* LoginSystemType.swift */,
+				150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */,
+			);
+			path = enums;
 			sourceTree = "<group>";
 		};
 		15A5B41427C687B60082029E /* entity */ = {
@@ -1156,19 +1272,20 @@
 		15EF4F04280ACF7B00DBFF48 /* custom */ = {
 			isa = PBXGroup;
 			children = (
-				15EF4F09280B350600DBFF48 /* textfield */,
+				159FBD76280C131A00125C4E /* line-menu-item */,
+				15EF4F09280B350600DBFF48 /* custom-textfield */,
 			);
 			path = custom;
 			sourceTree = "<group>";
 		};
-		15EF4F09280B350600DBFF48 /* textfield */ = {
+		15EF4F09280B350600DBFF48 /* custom-textfield */ = {
 			isa = PBXGroup;
 			children = (
 				15EF4F05280ACFA100DBFF48 /* CustomUITextField.swift */,
 				15EF4F0A280B352E00DBFF48 /* CustomUITextFieldProtocol.swift */,
 				15EF4F0C280B357000DBFF48 /* CompareSettings.swift */,
 			);
-			path = textfield;
+			path = "custom-textfield";
 			sourceTree = "<group>";
 		};
 		15F272DD27CB7E37005BBC78 /* view */ = {
@@ -1179,6 +1296,7 @@
 				1541103F28002C6C0099CE27 /* interestsviewer */,
 				1589831327FEE70B00853BBC /* photoslider */,
 				1589830E27FEE0EA00853BBC /* viewcontrollers */,
+				159FBD6D280C115100125C4E /* Profile.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1187,10 +1305,6 @@
 			isa = PBXGroup;
 			children = (
 				158BFCCF27D6713300234462 /* editprofilefields */,
-				1531F94427E0846600FA53AE /* LoginTransactionsCell.swift */,
-				1531F94527E0846600FA53AE /* LoginTransactionsCell.xib */,
-				1541105128008E280099CE27 /* LineMenuItemCell.swift */,
-				1541105228008E280099CE27 /* LineMenuItemCell.xib */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -1200,10 +1314,6 @@
 			children = (
 				15F272F027CBAA11005BBC78 /* ProfileSettingsInteractor.swift */,
 				1584958B27CE242500ED57B6 /* EditProfileInteracor.swift */,
-				1531F94A27E09C4800FA53AE /* SecurityInteractor.swift */,
-				151CBA1727F07E930088E548 /* LoginTransactionsInteractor.swift */,
-				15F6708C27FC5F180083E58C /* ChangePasswordInteractor.swift */,
-				15F6708E27FC5F2C0083E58C /* ChangeMailInteractor.swift */,
 				1589830A27FEDABA00853BBC /* ProfileInteractor.swift */,
 			);
 			path = interactor;
@@ -1214,10 +1324,6 @@
 			children = (
 				15F272F227CBAA4B005BBC78 /* ProfileSettingsRouter.swift */,
 				1584958F27CE25FB00ED57B6 /* EditProfileRouter.swift */,
-				1531F95027E09EA600FA53AE /* SecurityRouter.swift */,
-				151CBA1B27F080C10088E548 /* LoginTransactionsRouter.swift */,
-				15F6708427FC5DCD0083E58C /* ChangePasswordRouter.swift */,
-				15F6708627FC5DD90083E58C /* ChangeMailRouter.swift */,
 				1589830C27FEDAFA00853BBC /* ProfileRouter.swift */,
 			);
 			path = router;
@@ -1227,10 +1333,8 @@
 			isa = PBXGroup;
 			children = (
 				15F272F827CBB7A5005BBC78 /* enums */,
-				1531F95227E0A7D800FA53AE /* UserTransaction.swift */,
 				15064F4E279D492A00460334 /* User.swift */,
 				1517AF88279E968D00D1194E /* Hobby.swift */,
-				15F272F427CBAAEB005BBC78 /* LineMenuItem.swift */,
 				1530C24627DA0C86002EBB90 /* edits */,
 				1589830227FED7B300853BBC /* UserPost.swift */,
 			);
@@ -1242,10 +1346,6 @@
 			children = (
 				15F272EE27CBA90B005BBC78 /* ProfileSettingsPresenter.swift */,
 				1584958D27CE249C00ED57B6 /* EditProfilePresenter.swift */,
-				1531F94C27E09C5800FA53AE /* SecurityPresenter.swift */,
-				151CBA1927F07EF90088E548 /* LoginTransactionsPresenter.swift */,
-				15F6708827FC5E1B0083E58C /* ChangeMailPresenter.swift */,
-				15F6708A27FC5E2A0083E58C /* ChangePasswordPresenter.swift */,
 				1589830827FEDA5800853BBC /* ProfilePresenter.swift */,
 			);
 			path = presenter;
@@ -1256,10 +1356,6 @@
 			children = (
 				15F272EC27CBA806005BBC78 /* ProfileSettingsProtocols.swift */,
 				1584958927CE229400ED57B6 /* EditProfileProtocols.swift */,
-				1531F94E27E09C8500FA53AE /* SecurityProtocols.swift */,
-				151CBA1527F07C520088E548 /* LoginTransactionsProtocols.swift */,
-				15F6708027FC59980083E58C /* ChangePasswordProtocols.swift */,
-				15F6708227FC5D050083E58C /* ChangeMailProtocols.swift */,
 				1589830627FED8D400853BBC /* ProfileProtocols.swift */,
 			);
 			path = protocols;
@@ -1271,9 +1367,7 @@
 				1584958527CE134600ED57B6 /* UserFieldtype.swift */,
 				156F042B27AFA80F00D37039 /* GenderType.swift */,
 				15B99B4E27D7646600098B68 /* EditFieldType.swift */,
-				1531F95427E0A82800FA53AE /* LoginSystemType.swift */,
 				150FF44A27E1F5090094B359 /* ProfileMenuItemType.swift */,
-				150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */,
 				1589830427FED80100853BBC /* UserPostType.swift */,
 			);
 			path = enums;
@@ -1486,15 +1580,20 @@
 				1579A63B28045ED400812D1E /* RegisterPhotoChooseCell.xib in Resources */,
 				1579A63A28045E7200812D1E /* LGPhotoSliderCell.xib in Resources */,
 				1579A63928045E6800812D1E /* Assets.xcassets in Resources */,
+				159FBD68280C0EAA00125C4E /* Discovery.storyboard in Resources */,
+				159FBD6C280C109C00125C4E /* Chat.storyboard in Resources */,
 				1579A63728045E4B00812D1E /* LGPhotoSlider.xib in Resources */,
+				159FBD6A280C103C00125C4E /* Global.storyboard in Resources */,
 				1579A63628045E4300812D1E /* InterestsViewer.xib in Resources */,
 				1579A63528045E3600812D1E /* EditFieldWithDatePickerCell.xib in Resources */,
 				1579A63428045E2900812D1E /* RegisterInformationCell.swift in Resources */,
+				159FBD6E280C115100125C4E /* Profile.storyboard in Resources */,
 				1579A63328045E1800812D1E /* failure.json in Resources */,
 				1579A63228045E1100812D1E /* success.json in Resources */,
 				1579A63128045E0400812D1E /* loading.json in Resources */,
 				1579A63028045DFD00812D1E /* secureAnim.json in Resources */,
 				1579A62F28045DF600812D1E /* mail_sended.json in Resources */,
+				159FBD66280C0D5100125C4E /* Main.storyboard in Resources */,
 				15B59A4A280713E400CE5B55 /* EditPostAlbumView.xib in Resources */,
 				1579A62E28045DEB00812D1E /* EditFieldWithTextFieldCell.xib in Resources */,
 				1579A62D28045DE000812D1E /* LineMenuItemCell.xib in Resources */,
@@ -1506,7 +1605,7 @@
 				1579A62828045DAD00812D1E /* RegisterConfirmCell.xib in Resources */,
 				1579A62728045DA300812D1E /* Localizable.strings in Resources */,
 				1579A62628045D9400812D1E /* EditFieldWithSwitchCell.xib in Resources */,
-				1579A62028044ABF00812D1E /* Main.storyboard in Resources */,
+				1579A62028044ABF00812D1E /* Welcome.storyboard in Resources */,
 				1579A62128044ABF00812D1E /* LaunchScreen.storyboard in Resources */,
 				159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */,
 			);
@@ -1854,13 +1953,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		150C8FB727994C6D000DAFBE /* Main.storyboard */ = {
+		150C8FB727994C6D000DAFBE /* Welcome.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				150C8FB827994C6D000DAFBE /* Base */,
-				15C64C4727BE213E0088DD35 /* tr */,
 			);
-			name = Main.storyboard;
+			name = Welcome.storyboard;
 			sourceTree = "<group>";
 		};
 		150C8FBC27994C6E000DAFBE /* LaunchScreen.storyboard */ = {
@@ -2014,7 +2112,7 @@
 				INFOPLIST_FILE = Logoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Welcome;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -2045,7 +2143,7 @@
 				INFOPLIST_FILE = Logoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Welcome;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
