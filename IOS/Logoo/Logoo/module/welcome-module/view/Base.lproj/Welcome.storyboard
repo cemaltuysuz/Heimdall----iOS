@@ -14,7 +14,7 @@
         <!--WelcomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeVC" id="BYZ-38-t0r" customClass="WelcomeVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,10 +30,6 @@
                             <constraint firstItem="qxs-RA-ofL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JO8-2G-V3k"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="uVF-dz-q3a" kind="presentation" identifier="welcomeToOnBoard" modalPresentationStyle="fullScreen" id="pi9-1Y-0tj"/>
-                        <segue destination="wfl-XZ-RXY" kind="presentation" identifier="welcomeToLoginPref" modalPresentationStyle="fullScreen" id="3EM-90-pDF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +38,7 @@
         <!--On BoardVC-->
         <scene sceneID="Ldk-GS-RUU">
             <objects>
-                <viewController id="uVF-dz-q3a" customClass="OnBoardVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnBoardVC" id="uVF-dz-q3a" customClass="OnBoardVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jYU-zb-M7F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,7 +157,6 @@
                     <connections>
                         <outlet property="onBoardCollectionView" destination="dYC-cv-vmo" id="MGy-BR-RQP"/>
                         <outlet property="onBoardPageControl" destination="QEG-Qq-nrF" id="vSQ-ls-mwc"/>
-                        <segue destination="wfl-XZ-RXY" kind="presentation" identifier="onBoardToLoginPref" modalPresentationStyle="fullScreen" id="x2g-AW-Z5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahm-fN-N0n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,25 +166,25 @@
         <!--Login PrefVC-->
         <scene sceneID="wTv-FK-5fn">
             <objects>
-                <viewController id="g2a-99-bH7" customClass="LoginPrefVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginPrefVC" id="g2a-99-bH7" customClass="LoginPrefVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BCn-Qd-Qsb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-sT-Sf3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logoo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-PG-xch">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="323"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="341"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" name="grey500"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-bm-UGS">
-                                        <rect key="frame" x="0.0" y="323" width="414" height="485"/>
+                                        <rect key="frame" x="0.0" y="341" width="414" height="511"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emU-as-yRd">
-                                                <rect key="frame" x="88.5" y="364" width="237.5" height="31"/>
+                                                <rect key="frame" x="88.5" y="390" width="237.5" height="31"/>
                                                 <color key="tintColor" name="black700"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Already have an Account ? Log in"/>
@@ -272,25 +267,21 @@
                     <navigationItem key="navigationItem" id="4pP-ZX-grv">
                         <barButtonItem key="backBarButtonItem" title="Geri" id="g43-Ml-8ki"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="LJg-HY-0DA" kind="show" identifier="loginPrefToLogin" id="avK-4H-dxN"/>
-                        <segue destination="rw3-XR-6WM" kind="show" identifier="loginPrefToRegister" id="pVA-Ye-XS6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbv-au-Zwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2499" y="84"/>
+            <point key="canvasLocation" x="1690" y="84"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="0gi-ic-Jd6">
             <objects>
-                <viewController id="rw3-XR-6WM" customClass="RegisterVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="rw3-XR-6WM" customClass="RegisterVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sM0-KR-vvS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Smr-Ev-9zo">
-                                <rect key="frame" x="20" y="98" width="374" height="24.5"/>
+                                <rect key="frame" x="20" y="54" width="374" height="24.5"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Qzo-zD-Qtv">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="4"/>
@@ -306,7 +297,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sZt-Zb-Ox7">
-                                <rect key="frame" x="0.0" y="152.5" width="414" height="430"/>
+                                <rect key="frame" x="0.0" y="108.5" width="414" height="430"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="430" id="0fR-6L-47y"/>
@@ -320,7 +311,7 @@
                                 <cells/>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vS6-8N-H3c">
-                                <rect key="frame" x="20" y="587.5" width="374" height="120"/>
+                                <rect key="frame" x="20" y="543.5" width="374" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAV-se-q5q">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -384,46 +375,22 @@
                         <outlet property="registerNextButton" destination="4Ns-kf-kIP" id="uuh-vT-1UU"/>
                         <outlet property="registerProgressView" destination="Qzo-zD-Qtv" id="rcI-A0-mA1"/>
                         <outlet property="registerStepLabel" destination="SSm-m2-V8m" id="YUV-Gw-NjB"/>
-                        <segue destination="LJg-HY-0DA" kind="show" identifier="registerToLogin" id="o1r-4g-XK7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjd-hX-TqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3367" y="84"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="EeB-PV-oIY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wfl-XZ-RXY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="chevron.backward" catalog="system" backIndicatorTransitionMaskImage="chevron.backward" id="T4g-ia-tPR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="black700"/>
-                        <color key="barTintColor" name="black700"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="black700"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="g2a-99-bH7" kind="relationship" relationship="rootViewController" id="7LT-Uu-wzt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W78-jY-CgX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1690" y="84"/>
+            <point key="canvasLocation" x="2549" y="464"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="DPg-FC-D2Z">
             <objects>
-                <viewController id="LJg-HY-0DA" customClass="LoginVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="LJg-HY-0DA" customClass="LoginVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o5c-cw-9j2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logoo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-Uo-8vG">
-                                <rect key="frame" x="166" y="193" width="82" height="36"/>
+                                <rect key="frame" x="166" y="149" width="82" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" name="grey500"/>
                                 <nil key="highlightedColor"/>
@@ -502,7 +469,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBk-eF-BKo">
-                                <rect key="frame" x="30" y="299" width="354" height="60"/>
+                                <rect key="frame" x="30" y="255" width="354" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="jzj-j4-b3W"/>
                                 </constraints>
@@ -524,9 +491,6 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="ay2-y2-Sq1" kind="show" id="150-Xf-fca"/>
-                                </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-o6-CUB">
                                 <rect key="frame" x="30" y="574" width="354" height="31"/>
@@ -573,23 +537,22 @@
                         <outlet property="loginUserPassword" destination="g71-VC-hcN" id="Y6N-2Q-w2c"/>
                         <outlet property="mailConfirmationContainer" destination="fTm-o6-CUB" id="3PR-tT-hGi"/>
                         <outlet property="sendVerificationButtonOutlet" destination="TkQ-1h-V2l" id="itB-52-ylS"/>
-                        <segue destination="CG2-04-KZ0" kind="presentation" identifier="loginToRouterVC" modalPresentationStyle="fullScreen" id="rKC-ge-Kah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gB-uw-Bzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690" y="-646"/>
+            <point key="canvasLocation" x="2548" y="-241"/>
         </scene>
         <!--Reset PasswordVC-->
         <scene sceneID="eY2-6s-kGk">
             <objects>
-                <viewController id="ay2-y2-Sq1" customClass="ResetPasswordVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPasswordVC" id="ay2-y2-Sq1" customClass="ResetPasswordVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="45n-Gy-X5v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTN-tn-j8F">
-                                <rect key="frame" x="20" y="128" width="374" height="65"/>
+                                <rect key="frame" x="20" y="84" width="374" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="tdX-AA-qFX"/>
                                 </constraints>
@@ -625,7 +588,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egu-h1-CBT">
-                                <rect key="frame" x="30" y="203" width="354" height="100"/>
+                                <rect key="frame" x="30" y="159" width="354" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="AYU-d3-gFb"/>
                                 </constraints>
@@ -678,12 +641,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zg-zF-e9y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2498.5507246376815" y="-646.20535714285711"/>
+            <point key="canvasLocation" x="3354" y="-241"/>
         </scene>
         <!--Login RouterVC-->
         <scene sceneID="QTF-Aj-JM9">
             <objects>
-                <viewController id="CG2-04-KZ0" customClass="LoginRouterVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginRouterVC" id="CG2-04-KZ0" customClass="LoginRouterVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CFQ-LJ-fso">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -702,7 +665,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8uF-Aa-eDK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3367" y="-646"/>
+            <point key="canvasLocation" x="4186" y="84"/>
         </scene>
     </scenes>
     <designables>
@@ -713,13 +676,8 @@
             <size key="intrinsicContentSize" width="152.5" height="34"/>
         </designable>
     </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="o1r-4g-XK7"/>
-        <segue reference="x2g-AW-Z5c"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
         <image name="google.png" width="18" height="18"/>

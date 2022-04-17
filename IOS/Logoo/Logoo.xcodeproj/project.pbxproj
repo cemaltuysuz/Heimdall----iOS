@@ -157,6 +157,7 @@
 		159FBD7A280C14F800125C4E /* Security.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD79280C14F800125C4E /* Security.storyboard */; };
 		159FBD84280C1AD300125C4E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD83280C1AD300125C4E /* Settings.storyboard */; };
 		159FBD87280C1E4F00125C4E /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FBD86280C1E4F00125C4E /* AppStoryboard.swift */; };
+		159FBD8A280C2DEE00125C4E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FBD89280C2DEE00125C4E /* CustomTabBarController.swift */; };
 		15A5B40F27C6854A0082029E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B40E27C6854A0082029E /* Room.swift */; };
 		15A5B41127C686430082029E /* Direct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41027C686420082029E /* Direct.swift */; };
 		15A5B41327C687280082029E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B41227C687280082029E /* Message.swift */; };
@@ -402,6 +403,7 @@
 		159FBD79280C14F800125C4E /* Security.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Security.storyboard; sourceTree = "<group>"; };
 		159FBD83280C1AD300125C4E /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		159FBD86280C1E4F00125C4E /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		159FBD89280C2DEE00125C4E /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		15A5B40E27C6854A0082029E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		15A5B41027C686420082029E /* Direct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direct.swift; sourceTree = "<group>"; };
 		15A5B41227C687280082029E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -1223,6 +1225,14 @@
 			path = enums;
 			sourceTree = "<group>";
 		};
+		159FBD88280C2DC800125C4E /* custom-tabbar-controller */ = {
+			isa = PBXGroup;
+			children = (
+				159FBD89280C2DEE00125C4E /* CustomTabBarController.swift */,
+			);
+			path = "custom-tabbar-controller";
+			sourceTree = "<group>";
+		};
 		15A5B41427C687B60082029E /* entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1342,6 +1352,7 @@
 		15EF4F04280ACF7B00DBFF48 /* custom */ = {
 			isa = PBXGroup;
 			children = (
+				159FBD88280C2DC800125C4E /* custom-tabbar-controller */,
 				159FBD76280C131A00125C4E /* line-menu-item */,
 				15EF4F09280B350600DBFF48 /* custom-textfield */,
 			);
@@ -1788,6 +1799,7 @@
 				1589830727FED8D400853BBC /* ProfileProtocols.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
 				15F272EF27CBA90B005BBC78 /* ProfileSettingsPresenter.swift in Sources */,
+				159FBD8A280C2DEE00125C4E /* CustomTabBarController.swift in Sources */,
 				15F6708927FC5E1B0083E58C /* ChangeMailPresenter.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,

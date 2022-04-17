@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,7 @@
         <!--GlobalVC-->
         <scene sceneID="zsj-09-xc1">
             <objects>
-                <viewController id="rrl-CN-hri" customClass="GlobalVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GlobalVC" id="rrl-CN-hri" customClass="GlobalVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OHy-mA-NYe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,40 +31,14 @@
                             <constraint firstItem="aX6-HN-RHV" firstAttribute="centerX" secondItem="OHy-mA-NYe" secondAttribute="centerX" id="UC8-Rl-YXc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9Vn-1C-0V5">
-                        <barButtonItem key="rightBarButtonItem" title="Global Settings" image="gearshape" catalog="system" id="nY5-rJ-5qv">
-                            <color key="tintColor" name="black700"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="9Vn-1C-0V5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNc-Md-Q6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7926.0869565217399" y="83.705357142857139"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cKp-Sd-Qw9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gcg-Ph-spU" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gb8-ll-wy7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rrl-CN-hri" kind="relationship" relationship="rootViewController" id="bes-6m-5M1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WVc-JH-1Ij" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7015.9420289855079" y="83.705357142857139"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
-        <namedColor name="black700">
-            <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

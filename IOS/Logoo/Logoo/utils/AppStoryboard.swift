@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum AppStoryboard : String {
+    case Main = "Main"
     case Welcome = "Welcome"
     case Discovery = "Discovery"
     case Global = "Global"

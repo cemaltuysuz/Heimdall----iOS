@@ -24,28 +24,27 @@ class WelcomeVC: UIViewController {
 }
 
 extension WelcomeVC : PresenterToViewWelcomeProtocol {
-    func goToOnBoard() {
-        performSegue(withIdentifier: WelcomeVCSegues
-                        .welcomeToOnBoardVC
-                        .rawValue, sender: nil)
-    }
-    
-    func goToLoginPref() {
-        performSegue(withIdentifier: WelcomeVCSegues
-                        .welcomeToLoginPrefVC
-                        .rawValue, sender: nil)
-    }
-    
-    func goToHome() {
-        performSegue(withIdentifier: WelcomeVCSegues
-                        .welcomeToHomeVC
-                        .rawValue, sender: nil)
+    func onStateChange(_ state: WelcomeState) {
+        var vc:UIViewController!
+        
+        switch state {
+        case .goToOnBoard:
+            vc = OnBoardVC.instantiate(from: .Welcome)
+            break
+        case .goToLoginPref:
+            vc = LoginPrefVC.instantiate(from: .Welcome)
+            break
+        case .goToHome:
+            vc = CustomTabBarController.instantiate(from: .Main)
+            break
+        }
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 
-
-enum WelcomeVCSegues : String {
-    case welcomeToLoginPrefVC = "welcomeToLoginPref"
-    case welcomeToOnBoardVC = "welcomeToOnBoard"
-    case welcomeToHomeVC = "welcomeToHome"
+enum WelcomeState {
+    case goToOnBoard
+    case goToLoginPref
+    case goToHome
 }

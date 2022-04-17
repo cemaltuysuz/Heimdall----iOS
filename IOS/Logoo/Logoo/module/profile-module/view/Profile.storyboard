@@ -13,7 +13,7 @@
         <!--Username-->
         <scene sceneID="98Z-yB-BQP">
             <objects>
-                <viewController id="jsq-fE-CoX" customClass="ProfileVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" id="jsq-fE-CoX" customClass="ProfileVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rog-C8-M8d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

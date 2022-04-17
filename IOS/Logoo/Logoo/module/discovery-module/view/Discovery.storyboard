@@ -14,13 +14,13 @@
         <!--Discovery-->
         <scene sceneID="Sgc-Kf-Ojl">
             <objects>
-                <viewController title="Discovery" id="VF0-LV-vpe" customClass="DiscoverVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverVC" title="Discovery" id="VF0-LV-vpe" customClass="DiscoverVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AA7-Uz-3no">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hT3-lq-N9O">
-                                <rect key="frame" x="20" y="108" width="374" height="754"/>
+                                <rect key="frame" x="20" y="64" width="374" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="discoveryTableViewCell" id="4VX-Mc-oFf" customClass="DiscoveryTableViewCell" customModule="Logoo" customModuleProvider="target">
@@ -120,9 +120,8 @@
                             <constraint firstItem="hT3-lq-N9O" firstAttribute="leading" secondItem="Ho7-vx-2Wo" secondAttribute="leading" constant="20" id="ZSM-vI-gOe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Discovery" id="oeR-RV-NgX">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.2.squarepath" catalog="system" id="VIP-Cp-2vQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Discovery" id="oeR-RV-NgX"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="discoveryTableView" destination="hT3-lq-N9O" id="Zsk-zA-uN7"/>
                     </connections>
@@ -131,27 +130,8 @@
             </objects>
             <point key="canvasLocation" x="6105.7971014492759" y="83.705357142857139"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FXw-bn-3sj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mfC-0s-wGe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rWC-Xg-Ico">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VF0-LV-vpe" kind="relationship" relationship="rootViewController" id="eE1-QN-cJz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UVZ-Cr-E0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5195.652173913044" y="83.705357142857139"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="arrow.2.squarepath" catalog="system" width="128" height="89"/>
         <image name="face" width="70" height="70"/>
         <namedColor name="grey500">
             <color red="0.59200000762939453" green="0.63499999046325684" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
