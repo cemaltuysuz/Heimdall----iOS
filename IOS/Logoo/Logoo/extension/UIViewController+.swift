@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    
+    
+    static func storyBoardID()->String {return "\(self)"}
+    
+    static func instantiate(from:AppStoryboard) -> Self { return from.viewController(self)}
+    
     func addInputAccessoryForTextFields(textFields: [UITextField], dismissable: Bool = true, previousNextable: Bool = false) {
         for (index, textField) in textFields.enumerated() {
             let toolbar: UIToolbar = UIToolbar()
