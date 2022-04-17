@@ -32,7 +32,7 @@ extension WelcomeVC : PresenterToViewWelcomeProtocol {
             vc = OnBoardVC.instantiate(from: .Welcome)
             break
         case .goToLoginPref:
-            vc = LoginPrefVC.instantiate(from: .Welcome)
+            vc = UINavigationController(rootViewController: LoginPrefVC.instantiate(from: .Welcome))
             break
         case .goToHome:
             vc = CustomTabBarController.instantiate(from: .Main)

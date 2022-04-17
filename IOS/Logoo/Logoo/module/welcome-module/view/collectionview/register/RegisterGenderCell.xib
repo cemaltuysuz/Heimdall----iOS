@@ -41,6 +41,7 @@
             </constraints>
             <connections>
                 <outlet property="registerGenderPickerView" destination="bC8-43-ZWI" id="Gcp-wy-wm1"/>
+                <outlet property="titleLabel" destination="PQy-Yc-aZP" id="iC9-Vl-atp"/>
             </connections>
             <point key="canvasLocation" x="132" y="131"/>
         </collectionViewCell>

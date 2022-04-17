@@ -16,9 +16,10 @@ protocol RegisterInformationCellProtocol : AnyObject {
 
 class RegisterInformationCell: UICollectionViewCell {
 
-    @IBOutlet weak var registerUsernameLabel: UITextField!
-    @IBOutlet weak var registerMailLabel: UITextField!
-    @IBOutlet weak var registerPasswordLabel: UITextField!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var registerUsernameTextField: CustomUITextField!
+    @IBOutlet weak var registerMailTextField: CustomUITextField!
+    @IBOutlet weak var registerPasswordTextField: CustomUITextField!
     
     private var isEmailUsed:Bool?
     private var isUsernameUsed:Bool?
@@ -28,14 +29,22 @@ class RegisterInformationCell: UICollectionViewCell {
     weak var delegate:RegisterInformationCellProtocol?
     
     override func awakeFromNib() {
+        configureUI()
         initialize()
     }
     
+    func configureUI(){
+        titleLabel.text = "Fill The Informations".localized()
+        registerUsernameTextField.placeholder = "username".localized()
+        registerMailTextField.placeholder = "E-mail adress".localized()
+        registerPasswordTextField.placeholder = "Password".localized()
+    }
     
     func initialize() {
-        registerUsernameLabel.addTarget(self, action: #selector(self.usernameTextDidChange(_:)), for: .editingChanged)
-        registerMailLabel.addTarget(self, action: #selector(self.userMailTextDidChange(_:)), for: .editingChanged)
-        
+        addInputAccessoryForTextFields(textFields: [registerUsernameTextField,registerMailTextField,registerPasswordTextField], dismissable: true, previousNextable: true)
+        registerUsernameTextField.addTarget(self, action: #selector(self.usernameTextDidChange(_:)), for: .editingChanged)
+        registerPasswordTextField.addTarget(self, action: #selector(self.userMailTextDidChange(_:)), for: .editingChanged)
+        registerPasswordTextField.customDelegate = self
         isEmailUsed = true
         isUsernameUsed = true
     }
@@ -43,7 +52,7 @@ class RegisterInformationCell: UICollectionViewCell {
 
 extension RegisterInformationCell : Registerable {
     func validate() -> ValidationResponse {
-        if let username = registerUsernameLabel.text, let mail = registerMailLabel.text, let password = registerPasswordLabel.text, !username.isEmpty, !mail.isEmpty, !password.isEmpty {
+        if let username = registerUsernameTextField.text, let mail = registerMailTextField.text, let password = registerPasswordTextField.text, !username.isEmpty, !mail.isEmpty, !password.isEmpty {
             
             let result = BaseValidator.validate(validators: [UsernameValidator(username: username),MailValidator(mail: mail),PasswordValidator(password: password)])
             if result.isSuccess {
@@ -126,6 +135,17 @@ extension RegisterInformationCell {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
                                                       execute: requestWorkItem)
             }
+        }
+    }
+}
+
+extension RegisterInformationCell : CustomUITextFieldProtocol {
+    func onRightButtonClick(_ textField: CustomUITextField, isActive: Bool) {
+        registerPasswordTextField.isSecureTextEntry = !isActive
+        if isActive {
+            registerPasswordTextField.rightImage = UIImage(systemName: "eye.fill")
+        }else {
+            registerPasswordTextField.rightImage = UIImage(systemName: "eye.slash.fill")
         }
     }
 }

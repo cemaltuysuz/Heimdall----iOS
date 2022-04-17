@@ -16,12 +16,14 @@ class RegisterGenderCell: UICollectionViewCell {
     @IBOutlet weak var registerGenderPickerView: UIPickerView!
     weak var delegate:RegisterGenderCellProtocol?
     let genders = GenderType.allCases
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         initialize()
     }
 
     func initialize() {
+        titleLabel.text = "Choose your gender".localized()
         registerGenderPickerView.delegate = self
         registerGenderPickerView.dataSource = self
     }
@@ -46,7 +48,7 @@ extension RegisterGenderCell :UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return genders[row].rawValue
+        return genders[row].rawValue.localized()
     }
 }
 

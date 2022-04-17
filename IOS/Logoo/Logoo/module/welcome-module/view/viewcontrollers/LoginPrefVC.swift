@@ -10,107 +10,97 @@ import Firebase
 import UIKit
 import FirebaseAuth
 
-class LoginPrefVC: UIViewController {
+class LoginPrefVC: BaseVC {
 
+    @IBOutlet weak var loginButtonOutlet: UIButton!
+    @IBOutlet weak var signInWithGoogleButtonOutlet: UIButton!
+    @IBOutlet weak var registerButtonOutlet: UIButton!
+    
     var presenter : ViewToPresenterLoginPref?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
         LogInPrefRouter.createModule(ref: self)
-        
+    }
+    
+    func configureUI(){
+        loginButtonOutlet.setTitle("Login".localized(), for: .normal)
+        signInWithGoogleButtonOutlet.setTitle("Sign In With Google".localized(), for: .normal)
+        registerButtonOutlet.setTitle("Don't have an account yet? Register".localized(), for: .normal)
     }
 
     @IBAction func toLoginButton(_ sender: Any) {
-        performSegue(withIdentifier: LoginPrefVCSegues
-                        .LoginPrefToLogin
-                        .rawValue, sender: nil)
+        let vc = LoginVC.instantiate(from: .Welcome)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func registerWithMail(_ sender: Any) {
-        performSegue(withIdentifier: LoginPrefVCSegues
-                        .LoginPrefToRegister
-                        .rawValue, sender: RegisterType.REGISTER_WITH_MAIL)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == LoginPrefVCSegues.LoginPrefToRegister.rawValue {
-            if let type = sender as? RegisterType {
-                let targetVC = segue.destination as! RegisterVC
-                targetVC.registerType = type
-            }
-        }
+        let vc = RegisterVC.instantiate(from: .Welcome)
+        vc.registerType = RegisterType.REGISTER_WITH_MAIL
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func googleSignInButtonAction(_ sender: Any) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-
-        // Create Google Sign In configuration object.
+        
         let config = GIDConfiguration(clientID: clientID)
-
-        // Start the sign in flow!
+        
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
-
-          if let error = error {
-              print("error : \(error.localizedDescription)")
-            return
-          }
-
-          guard let authentication = user?.authentication,
-            let idToken = authentication.idToken
-          else {
-            return
-          }
-          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                         accessToken: authentication.accessToken)
+            
+            if let error = error {
+                print("error : \(error.localizedDescription)")
+                return
+            }
+            
+            guard let authentication = user?.authentication,
+                  let idToken = authentication.idToken
+            else {
+                return
+            }
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: authentication.accessToken)
             self.presenter?.logInWithGoogle(credential: credential)
+            self.showCurtain()
         }
     }
 }
 
 extension LoginPrefVC : PresenterToViewLoginPref {
     func logInResponse(status: Status, userState:UserState) {
+        closeCurtain()
         if status == .SUCCESS {
             if userState == .GOOGLE_USER_CONFIRMED {
-                performSegue(withIdentifier: LoginPrefVCSegues
-                                .LoginPrefToHome
-                                .rawValue, sender: nil)
+                let vc = CustomTabBarController.instantiate(from: .Main)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true)
             }
             else if userState == .GOOGLE_USER_MISSING_INFORMATION {
-                let alert = UIAlertController(title: "Welcome".localized(),
-                                              message: "Welcome to Logoo. Missing information has been detected in your subscription. Complete this information ?".localized(), preferredStyle: .alert)
                 
-                let okAction = UIAlertAction(title: "Complete".localized(), style: .default, handler: {_ in
-                    self.performSegue(withIdentifier: LoginPrefVCSegues
-                                    .LoginPrefToRegister
-                                    .rawValue, sender: RegisterType.REGISTER_WITH_GOOGLE)
+                createBasicAlert(title: "Welcome".localized(),
+                                 message: "Welcome to Heimdall. Missing information has been detected in your subscription. Do you want complete informations ?".localized(),
+                                 okTitle: "Complete".localized(),
+                                 onCompletion: {action in
+                    switch action {
+                    case .CONFIRM:
+                        let vc = RegisterVC.instantiate(from: .Welcome)
+                        vc.registerType = RegisterType.REGISTER_WITH_GOOGLE
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case .DISMISS:
+                        let vc = CustomTabBarController.instantiate(from: .Main)
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true)
+                        break
+                    }
                 })
-                
-                let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: {_ in
-                    self.performSegue(withIdentifier: LoginPrefVCSegues
-                                        .LoginPrefToHome
-                                        .rawValue, sender: nil)
-                })
-                
-                alert.addAction(okAction)
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-
             }
-
+            
         }else {
-            let alert = UIAlertController(title: "Error".localized(),
-                                          message: "Something went wrong.".localized(),
-                                          preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: {_ in
-                })
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true)
+            createAlertNotify(title: "Error".localized(),
+                              message: "Something went wrong.".localized(),
+                              onCompletion: {})
         }
     }
-}
-
-enum LoginPrefVCSegues :String {
-    case LoginPrefToLogin = "loginPrefToLogin"
-    case LoginPrefToHome = "loginPrefToHome"
-    case LoginPrefToRegister = "loginPrefToRegister"
 }

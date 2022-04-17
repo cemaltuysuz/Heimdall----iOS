@@ -16,17 +16,18 @@ protocol RegisterPhotoChooseCellProtocol : AnyObject {
 class RegisterPhotoChooseCell: UICollectionViewCell {
     @IBOutlet weak var registerProfileImage: UIImageView!
     weak var delegate:RegisterPhotoChooseCellProtocol?
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         initialize()
     }
     
     func initialize(){
+        titleLabel.text = "Choose a photo".localized()
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(photoClicked))
         registerProfileImage.isUserInteractionEnabled = true
         registerProfileImage.addGestureRecognizer(singleTap)
     }
-    
     
     // Update UI when user selects a photo.
     func onPhotoUpload(image:UIImage){

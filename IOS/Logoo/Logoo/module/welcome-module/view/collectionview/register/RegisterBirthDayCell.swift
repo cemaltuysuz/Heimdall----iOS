@@ -15,6 +15,7 @@ class RegisterBirthDayCell: UICollectionViewCell {
 
     weak var delegate:RegisterBirthDayCellProtocol?
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var registerBirthDayDatePicker: UIDatePicker!
     
     
@@ -23,7 +24,8 @@ class RegisterBirthDayCell: UICollectionViewCell {
     }
     
     func initialize() {
-        self.registerBirthDayDatePicker.datePickerMode = .date
+        titleLabel.text = "Enter your date of birth".localized()
+        registerBirthDayDatePicker.datePickerMode = .date
         if #available(iOS 13.4, *){
             registerBirthDayDatePicker.preferredDatePickerStyle = .wheels
         }

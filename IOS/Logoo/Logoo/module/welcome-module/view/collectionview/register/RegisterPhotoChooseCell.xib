@@ -49,6 +49,7 @@
             <size key="customSize" width="223" height="303"/>
             <connections>
                 <outlet property="registerProfileImage" destination="BnT-er-MbF" id="Utf-5E-reb"/>
+                <outlet property="titleLabel" destination="lYE-JB-EyS" id="vRG-vf-8Qu"/>
             </connections>
             <point key="canvasLocation" x="256.52173913043481" y="172.09821428571428"/>
         </collectionViewCell>

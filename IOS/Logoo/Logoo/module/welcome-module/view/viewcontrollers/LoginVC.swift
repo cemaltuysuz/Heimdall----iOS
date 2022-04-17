@@ -11,6 +11,9 @@ class LoginVC: UIViewController {
 
     @IBOutlet weak var loginUserMail: CustomUITextField!
     @IBOutlet weak var loginUserPassword: CustomUITextField!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
+    @IBOutlet weak var forgetPasswordButtonOutlet: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var loginErrorMessageLabel: UILabel!
     
     @IBOutlet weak var mailConfirmationContainer: UIStackView!
@@ -24,24 +27,35 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         counter = 100
+        configureUI()
         
         if let mail = incomingMail {
             self.loginUserMail.text = mail
         }
         LoginRouter.createModule(ref: self)
         presenter?.calculateRepeatTime()
-        configureUI()
+        configureBinds()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         if let currentTime = counter, currentTime > 0, !mailConfirmationContainer.isHidden {
             UDService.shared.setConfirmEmailSecond(second: currentTime)
         }
-        
     }
     
     func configureUI(){
-        addInputAccessoryForTextFields(textFields: [loginUserMail,loginUserPassword], dismissable: true, previousNextable: true)
+        view.addInputAccessoryForTextFields(textFields: [loginUserMail,loginUserPassword], dismissable: true, previousNextable: true)
+        
+        loginUserMail.placeholder = "E-mail Adress".localized()
+        loginUserPassword.placeholder = "Password".localized()
+        loginButtonOutlet.setTitle("Login".localized(), for: .normal)
+        forgetPasswordButtonOutlet.setTitle("I forget my password", for: .normal)
+        sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
+        registerButton.setTitle("Not registered ? Register".localized(), for: .normal)
+    }
+    
+    func configureBinds(){
+        loginUserPassword.customDelegate = self
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -49,16 +63,16 @@ class LoginVC: UIViewController {
             let result = MailValidator(mail: mail).validate()
             if result.isSuccess {
                 presenter?.loginUser(mail: mail, password: password)
-                self.loginErrorMessageLabel.isHidden = true
+                loginErrorMessageLabel.isHidden = true
             }else {
-                self.loginErrorMessageLabel.text = result.message!
-                self.loginErrorMessageLabel.isHidden = false
+                loginErrorMessageLabel.text = result.message!
+                loginErrorMessageLabel.isHidden = false
             }
         }
     }
     
     @IBAction func sendMailVerification(_ sender: Any) {
-         if let mail = self.loginUserMail.text  {
+         if let mail = loginUserMail.text  {
              let result = MailValidator(mail: mail).validate()
              if result.isSuccess{
                  presenter?.sendVerificationLink(mail: mail)
@@ -77,14 +91,17 @@ class LoginVC: UIViewController {
                                                              repeats: true)
         }
     }
+    @IBAction func onForgotPasswordClick(_ sender: Any) {
+        let vc = ResetPasswordVC.instantiate(from: .Welcome)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func mailVerificationMode(){
-        // I'm notifying the user that their account has not been confirmed.
-        self.loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress.".localized()
-        self.loginErrorMessageLabel.isHidden = false
+        // Notifying the user that their account has not been confirmed.
+        loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress.".localized()
+        loginErrorMessageLabel.isHidden = false
         
-        // I will make the confirmation container visible for her to approve her account.
-        self.mailConfirmationContainer.isHidden = false
+        mailConfirmationContainer.isHidden = false
     }
 }
 
@@ -95,7 +112,7 @@ extension LoginVC : PresenterToViewLoginProtocol {
             counter = continuationTime
             startTimer()
         }else {
-            self.mailConfirmationContainer.isHidden = true
+            mailConfirmationContainer.isHidden = true
         }
     }
     
@@ -105,14 +122,13 @@ extension LoginVC : PresenterToViewLoginProtocol {
     func loginResponse(status: Resource<UserState>) {
         DispatchQueue.main.async {
             if status.status! == .SUCCESS{
-                /**
-                 I check if the user's e-mail address is approved.
-                 */
+
                 if status.data == .MAIL_ADRESS_CONFIRMED {
                     self.loginErrorMessageLabel.isHidden = true
-                    self.performSegue(withIdentifier: LoginVCSegues
-                                        .LoginToRouter
-                                        .rawValue, sender: nil)
+
+                    let vc = LoginRouterVC.instantiate(from: .Welcome)
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true)
                 }
                 else if status.data == .MAIL_ADRESS_NOT_CONFIRMED {
                     self.mailVerificationMode()
@@ -134,19 +150,27 @@ extension LoginVC : PresenterToViewLoginProtocol {
     private func changeLabel(){
         if counter != 0
         {
-            self.sendVerificationButtonOutlet.setTitle("Time to resubmit:".localized() + "\(counter!)", for: .normal)
+            sendVerificationButtonOutlet.setTitle("Time to resubmit:".localized() + "\(counter!)", for: .normal)
             counter -= 1
         }
         else
         {
-            self.sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
-            self.sendVerificationButtonOutlet.isEnabled = true
+            sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
+            sendVerificationButtonOutlet.isEnabled = true
             countTimer.invalidate()
-            self.counter = 100
+            counter = 100
         }
     }
 }
 
-enum LoginVCSegues : String {
-    case LoginToRouter = "loginToRouterVC"
+extension LoginVC : CustomUITextFieldProtocol {
+    func onRightButtonClick(_ textField: CustomUITextField, isActive: Bool) {
+        
+        textField.isSecureTextEntry = !isActive
+        if isActive {
+            textField.rightImage = UIImage(systemName: "eye.fill")
+        }else {
+            textField.rightImage = UIImage(systemName: "eye.slash.fill")
+        }
+    }
 }

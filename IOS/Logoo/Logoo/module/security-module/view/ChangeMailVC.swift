@@ -31,7 +31,7 @@ class ChangeMailVC: BaseVC {
         newMailAdressTextField.placeholder = "Enter your new mail adress".localized()
         currentPasswordTextField.placeholder = "Enter your current password".localized()
         currentPasswordTextField.customDelegate = self
-        addInputAccessoryForTextFields(textFields: [newMailAdressTextField, currentPasswordTextField], dismissable: true, previousNextable: true)
+        view.addInputAccessoryForTextFields(textFields: [newMailAdressTextField, currentPasswordTextField], dismissable: true, previousNextable: true)
 
     }
     

@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class OnBoard {
-    var image:UIImage?
-    var title:String?
-    var description:String?
+    var image:UIImage!
+    var title:String!
+    var description:String?!
     
     init(){}
     

@@ -13,7 +13,7 @@
 
 "change_password_message" = "A link will be sent to your e-mail address for Password Change. Do you confirm ?";
 
-
+"reset_password_description" = "To reset your password, you need the e-mail address that your account is registered to! You can reset your password with the link we will send your mail.";
 // Settings
 "Account sign out" = "Account sign out";
 "Are you sure you want to log out?" = "Are you sure you want to log out?";

@@ -8,14 +8,14 @@
 import UIKit
 
 class OnBoardCollectionCell: UICollectionViewCell {
+    
     @IBOutlet weak var onBoardImage: UIImageView!
     @IBOutlet weak var onBoardTitleLabel: UILabel!
     @IBOutlet weak var onBoardDescriptionLabel: UITextView!
     
     func initializeCell(onBoard:OnBoard){
-        self.onBoardImage.image = onBoard.image!
-        self.onBoardTitleLabel.text = onBoard.title!
-        self.onBoardDescriptionLabel.text = onBoard.description!
+        onBoardImage.image = onBoard.image
+        onBoardTitleLabel.text = onBoard.title
+        onBoardDescriptionLabel.text = onBoard.description
     }
-    
 }

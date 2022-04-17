@@ -55,7 +55,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onBoardCollectionViewCell" id="Oyz-FQ-Ebb" customClass="OnBoardCollectionCell" customModule="Logoo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnBoardCollectionCell" id="Oyz-FQ-Ebb" customClass="OnBoardCollectionCell" customModule="Logoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-34" width="416" height="684"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Cnr-7s-uId">
@@ -127,9 +127,9 @@
                                 </connections>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DK-VJ-Lzk">
-                                <rect key="frame" x="20" y="746" width="374" height="55"/>
+                                <rect key="frame" x="20" y="726" width="374" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="eh0-f8-asa"/>
+                                    <constraint firstAttribute="height" constant="55" id="qdY-LT-GkW"/>
                                 </constraints>
                                 <color key="tintColor" name="black700"/>
                                 <state key="normal" title="Button"/>
@@ -144,17 +144,18 @@
                         <viewLayoutGuide key="safeArea" id="0EZ-c4-NRH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="4DK-VJ-Lzk" firstAttribute="leading" secondItem="0EZ-c4-NRH" secondAttribute="leading" constant="20" id="21j-nQ-Yev"/>
                             <constraint firstItem="dYC-cv-vmo" firstAttribute="leading" secondItem="0EZ-c4-NRH" secondAttribute="leading" id="6EY-rn-Klp"/>
+                            <constraint firstItem="0EZ-c4-NRH" firstAttribute="trailing" secondItem="4DK-VJ-Lzk" secondAttribute="trailing" constant="20" id="6SH-a8-RdU"/>
                             <constraint firstItem="QEG-Qq-nrF" firstAttribute="top" secondItem="dYC-cv-vmo" secondAttribute="bottom" constant="10" id="FpN-Ui-syO"/>
+                            <constraint firstItem="4DK-VJ-Lzk" firstAttribute="top" secondItem="QEG-Qq-nrF" secondAttribute="bottom" constant="30" id="Nli-k6-2IK"/>
                             <constraint firstItem="dYC-cv-vmo" firstAttribute="top" secondItem="0EZ-c4-NRH" secondAttribute="top" id="O9V-7T-VCB"/>
-                            <constraint firstItem="4DK-VJ-Lzk" firstAttribute="top" secondItem="QEG-Qq-nrF" secondAttribute="bottom" constant="50" id="PNA-Ml-ysh"/>
                             <constraint firstItem="dYC-cv-vmo" firstAttribute="trailing" secondItem="0EZ-c4-NRH" secondAttribute="trailing" id="RL0-KO-kbD"/>
                             <constraint firstItem="QEG-Qq-nrF" firstAttribute="centerX" secondItem="jYU-zb-M7F" secondAttribute="centerX" id="WVn-F1-dOq"/>
-                            <constraint firstItem="0EZ-c4-NRH" firstAttribute="trailing" secondItem="4DK-VJ-Lzk" secondAttribute="trailing" constant="20" id="ryT-lC-r17"/>
+                            <constraint firstItem="4DK-VJ-Lzk" firstAttribute="leading" secondItem="0EZ-c4-NRH" secondAttribute="leading" constant="20" id="aNW-RI-QRw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="letStartButtonOutlet" destination="4DK-VJ-Lzk" id="OwX-iz-e44"/>
                         <outlet property="onBoardCollectionView" destination="dYC-cv-vmo" id="MGy-BR-RQP"/>
                         <outlet property="onBoardPageControl" destination="QEG-Qq-nrF" id="vSQ-ls-mwc"/>
                     </connections>
@@ -174,7 +175,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-sT-Sf3">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logoo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-PG-xch">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heimdall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-PG-xch">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="341"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" name="grey500"/>
@@ -184,12 +185,14 @@
                                         <rect key="frame" x="0.0" y="341" width="414" height="511"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emU-as-yRd">
-                                                <rect key="frame" x="88.5" y="390" width="237.5" height="31"/>
+                                                <rect key="frame" x="98.5" y="393" width="217.5" height="28"/>
                                                 <color key="tintColor" name="black700"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Already have an Account ? Log in"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Don't have an account yet? Register">
+                                                    <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                                </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="toLoginButton:" destination="g2a-99-bH7" eventType="touchUpInside" id="61o-hH-NJC"/>
+                                                    <action selector="registerWithMail:" destination="g2a-99-bH7" eventType="touchUpInside" id="jlu-ct-DlO"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8Tr-a4-VAE">
@@ -202,7 +205,7 @@
                                                         </constraints>
                                                         <color key="tintColor" name="black700"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Register By E-mail Adress">
+                                                        <buttonConfiguration key="configuration" style="filled" title="Login">
                                                             <color key="baseBackgroundColor" name="black700"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
@@ -211,7 +214,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="registerWithMail:" destination="g2a-99-bH7" eventType="touchUpInside" id="M72-rc-IS0"/>
+                                                            <action selector="toLoginButton:" destination="g2a-99-bH7" eventType="touchUpInside" id="dNg-4z-2Iq"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXG-pA-c5v">
@@ -267,6 +270,11 @@
                     <navigationItem key="navigationItem" id="4pP-ZX-grv">
                         <barButtonItem key="backBarButtonItem" title="Geri" id="g43-Ml-8ki"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="loginButtonOutlet" destination="hUl-Ju-TXy" id="nLw-Vf-XLs"/>
+                        <outlet property="registerButtonOutlet" destination="emU-as-yRd" id="hMh-9V-SbF"/>
+                        <outlet property="signInWithGoogleButtonOutlet" destination="sXG-pA-c5v" id="qgY-fY-GrV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbv-au-Zwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -339,13 +347,13 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNg-Px-z31">
-                                <rect key="frame" x="184.5" y="802" width="45" height="30"/>
+                                <rect key="frame" x="196.5" y="802" width="21" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6Tm-V8-SXv"/>
                                 </constraints>
                                 <color key="tintColor" name="black700"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward.circle.fill" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="arrow.backward.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="registerBackButton:" destination="rw3-XR-6WM" eventType="touchUpInside" id="e1T-Ke-XNZ"/>
                                 </connections>
@@ -389,8 +397,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logoo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-Uo-8vG">
-                                <rect key="frame" x="166" y="149" width="82" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heimdall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-Uo-8vG">
+                                <rect key="frame" x="150" y="149" width="114" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" name="grey500"/>
                                 <nil key="highlightedColor"/>
@@ -423,7 +431,7 @@
                                         <color key="backgroundColor" name="grey200"/>
                                         <color key="textColor" name="grey500"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
@@ -462,12 +470,6 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="mjY-hc-59k"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not registered? Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mR-jT-w5d">
-                                <rect key="frame" x="115" y="791.5" width="184.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBk-eF-BKo">
                                 <rect key="frame" x="30" y="255" width="354" height="60"/>
                                 <constraints>
@@ -481,16 +483,12 @@
                                 <rect key="frame" x="30" y="541" width="354" height="28"/>
                                 <color key="tintColor" name="black700"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Did you forget your password ?">
-                                            <attributes>
-                                                <font key="NSFont" size="12" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="I forget my password">
+                                    <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="onForgotPasswordClick:" destination="LJg-HY-0DA" eventType="touchUpInside" id="IvA-Ys-sxv"/>
+                                </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-o6-CUB">
                                 <rect key="frame" x="30" y="574" width="354" height="31"/>
@@ -506,6 +504,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAr-Ls-H6i">
+                                <rect key="frame" x="114.5" y="781" width="185" height="31"/>
+                                <color key="tintColor" name="black700"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Not registered ? Register"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q8T-al-bv3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -517,14 +521,14 @@
                             <constraint firstItem="q8T-al-bv3" firstAttribute="trailing" secondItem="fTm-o6-CUB" secondAttribute="trailing" constant="30" id="GNf-q3-LTP"/>
                             <constraint firstItem="hMz-66-JxM" firstAttribute="leading" secondItem="q8T-al-bv3" secondAttribute="leading" constant="30" id="H0x-6j-vT0"/>
                             <constraint firstItem="q8T-al-bv3" firstAttribute="trailing" secondItem="fXH-6u-Lg7" secondAttribute="trailing" constant="30" id="HeE-8N-6kv"/>
-                            <constraint firstItem="0mR-jT-w5d" firstAttribute="centerX" secondItem="o5c-cw-9j2" secondAttribute="centerX" id="HtZ-Cm-xeL"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="centerX" secondItem="o5c-cw-9j2" secondAttribute="centerX" id="I0g-dk-AGZ"/>
                             <constraint firstItem="q8T-al-bv3" firstAttribute="trailing" secondItem="sBk-eF-BKo" secondAttribute="trailing" constant="30" id="KAL-OF-amb"/>
                             <constraint firstItem="fTm-o6-CUB" firstAttribute="leading" secondItem="q8T-al-bv3" secondAttribute="leading" constant="30" id="KK9-FW-nHn"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="centerY" secondItem="o5c-cw-9j2" secondAttribute="centerY" id="Nuo-no-1rw"/>
                             <constraint firstItem="sBk-eF-BKo" firstAttribute="leading" secondItem="q8T-al-bv3" secondAttribute="leading" constant="30" id="Ozv-G6-5Xw"/>
-                            <constraint firstItem="q8T-al-bv3" firstAttribute="bottom" secondItem="0mR-jT-w5d" secondAttribute="bottom" constant="50" id="VyT-fp-vRD"/>
+                            <constraint firstItem="q8T-al-bv3" firstAttribute="bottom" secondItem="jAr-Ls-H6i" secondAttribute="bottom" constant="50" id="ZbY-7b-jHd"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="leading" secondItem="q8T-al-bv3" secondAttribute="leading" constant="30" id="alC-Fc-H10"/>
+                            <constraint firstItem="jAr-Ls-H6i" firstAttribute="centerX" secondItem="o5c-cw-9j2" secondAttribute="centerX" id="jTH-E5-B4k"/>
                             <constraint firstItem="fXH-6u-Lg7" firstAttribute="centerY" secondItem="o5c-cw-9j2" secondAttribute="centerY" id="l4H-eg-pTW"/>
                             <constraint firstItem="sBk-eF-BKo" firstAttribute="top" secondItem="XeR-Uo-8vG" secondAttribute="bottom" constant="70" id="lNm-U5-lrl"/>
                             <constraint firstItem="hMz-66-JxM" firstAttribute="top" secondItem="fXH-6u-Lg7" secondAttribute="bottom" constant="8" symbolic="YES" id="z6e-cJ-14r"/>
@@ -532,10 +536,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="qQB-Cl-dhC"/>
                     <connections>
+                        <outlet property="forgetPasswordButtonOutlet" destination="hMz-66-JxM" id="1yg-JQ-yQW"/>
+                        <outlet property="loginButtonOutlet" destination="nGt-Fv-tYR" id="vj2-8j-2aI"/>
                         <outlet property="loginErrorMessageLabel" destination="sBk-eF-BKo" id="T0z-Fl-vKH"/>
                         <outlet property="loginUserMail" destination="BJq-n7-VBy" id="pye-pV-7bb"/>
                         <outlet property="loginUserPassword" destination="g71-VC-hcN" id="Y6N-2Q-w2c"/>
                         <outlet property="mailConfirmationContainer" destination="fTm-o6-CUB" id="3PR-tT-hGi"/>
+                        <outlet property="registerButton" destination="jAr-Ls-H6i" id="liL-Rn-j0Z"/>
                         <outlet property="sendVerificationButtonOutlet" destination="TkQ-1h-V2l" id="itB-52-ylS"/>
                     </connections>
                 </viewController>
@@ -560,7 +567,7 @@
                                 <color key="textColor" name="black700"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User E-mail Adress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dP-3B-9MH" customClass="LGTextField" customModule="Logoo" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User E-mail Adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dP-3B-9MH" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
                                 <rect key="frame" x="30" y="423" width="354" height="50"/>
                                 <color key="backgroundColor" name="grey200"/>
                                 <constraints>
@@ -571,6 +578,13 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="envelope.fill" catalog="system"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                        <color key="value" name="black700"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3un-rj-iZ8">
@@ -597,9 +611,6 @@
                                 <color key="textColor" name="grey500"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KyX-za-71n">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                            </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DN2-Up-l1j">
                                 <rect key="frame" x="30" y="583" width="354" height="60"/>
                                 <constraints>
@@ -624,19 +635,19 @@
                             <constraint firstItem="XTN-tn-j8F" firstAttribute="top" secondItem="BEA-Cw-uxl" secondAttribute="top" constant="40" id="VHB-VF-KvX"/>
                             <constraint firstItem="XTN-tn-j8F" firstAttribute="leading" secondItem="BEA-Cw-uxl" secondAttribute="leading" constant="20" id="Xxk-Is-JCc"/>
                             <constraint firstItem="3dP-3B-9MH" firstAttribute="centerY" secondItem="45n-Gy-X5v" secondAttribute="centerY" id="b03-Gx-VcY"/>
-                            <constraint firstItem="KyX-za-71n" firstAttribute="centerY" secondItem="45n-Gy-X5v" secondAttribute="centerY" id="bOG-vT-pmk"/>
                             <constraint firstItem="BEA-Cw-uxl" firstAttribute="trailing" secondItem="3un-rj-iZ8" secondAttribute="trailing" constant="30" id="bYj-es-zdE"/>
                             <constraint firstItem="egu-h1-CBT" firstAttribute="top" secondItem="XTN-tn-j8F" secondAttribute="bottom" constant="10" id="hrr-bA-Iia"/>
                             <constraint firstItem="BEA-Cw-uxl" firstAttribute="trailing" secondItem="3dP-3B-9MH" secondAttribute="trailing" constant="30" id="nDK-D1-wfo"/>
-                            <constraint firstItem="KyX-za-71n" firstAttribute="centerX" secondItem="45n-Gy-X5v" secondAttribute="centerX" id="qk1-7v-EMf"/>
                             <constraint firstItem="BEA-Cw-uxl" firstAttribute="trailing" secondItem="egu-h1-CBT" secondAttribute="trailing" constant="30" id="xf8-RC-Zf6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UiG-dS-XdV"/>
                     <connections>
                         <outlet property="resetMailErrorLabel" destination="DN2-Up-l1j" id="vdl-6H-Wcg"/>
-                        <outlet property="resetMailTextField" destination="3dP-3B-9MH" id="NKw-ww-F4P"/>
-                        <outlet property="resetPasswordIndicator" destination="KyX-za-71n" id="qvh-Au-EA8"/>
+                        <outlet property="resetMailTextField" destination="3dP-3B-9MH" id="Okb-me-EKp"/>
+                        <outlet property="screenDescriptionLabel" destination="egu-h1-CBT" id="rMy-Pe-AKU"/>
+                        <outlet property="screenTitleLabel" destination="XTN-tn-j8F" id="JLg-qU-xfu"/>
+                        <outlet property="sendResetLinkButtonOutlet" destination="3un-rj-iZ8" id="Mji-52-dX8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zg-zF-e9y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -670,10 +681,10 @@
     </scenes>
     <designables>
         <designable name="BJq-n7-VBy">
-            <size key="intrinsicContentSize" width="186.5" height="34"/>
+            <size key="intrinsicContentSize" width="151.5" height="34"/>
         </designable>
         <designable name="g71-VC-hcN">
-            <size key="intrinsicContentSize" width="152.5" height="34"/>
+            <size key="intrinsicContentSize" width="90.5" height="34"/>
         </designable>
     </designables>
     <resources>

@@ -51,6 +51,7 @@ class RegisterVC: BaseVC {
     }
     
     func setupUI(){
+        registerNextButton.setTitle("Next".localized(), for: .normal)
         if let registerType = registerType {
             if registerType == .REGISTER_WITH_MAIL {
                 presenter?.getRegisterMailSteps()
@@ -71,17 +72,10 @@ class RegisterVC: BaseVC {
     }
     
     func goBackForError(){
-        createBasicAlert(title: "error".localized(),
+        createAlertNotify(title: "error".localized(),
                          message: "Something went wrong. Please try again later.".localized(),
-                         okTitle: "okey".localized(),
-                         onCompletion: {type in
-            switch type {
-            case .CONFIRM:
-                self.navigationController?.popViewController(animated: true)
-                break
-            case .DISMISS:
-                break
-            }
+                         onCompletion: {
+            self.navigationController?.popViewController(animated: true)
         })
     }
     
@@ -107,43 +101,34 @@ class RegisterVC: BaseVC {
              If the response status is true, it means that the user has successfully completed the registration step.
              */
             if response.status! {
-                self.registerErrorLabel.textColor = .clear
+                registerErrorLabel.textColor = .clear
                 scrollToNextItem()
             }else {
-                self.registerErrorLabel.text = response.message
-                self.registerErrorLabel.textColor = .red
+                registerErrorLabel.text = response.message
+                registerErrorLabel.textColor = .red
             }
         }else if currentRegisterCellIndex() == registerSteps!.count - 2 {
             let response = currentRegisterProtocol.validate()
             if response.status! {
-                self.registerErrorLabel.textColor = .clear
-                if self.registerType == .REGISTER_WITH_MAIL {
+                registerErrorLabel.textColor = .clear
+                if registerType == .REGISTER_WITH_MAIL {
                     presenter?.createUserWithEmail()
-                }else if self.registerType == .REGISTER_WITH_GOOGLE {
+                }else if registerType == .REGISTER_WITH_GOOGLE {
                     presenter?.setUserInfoForGoogleUsers()
                 }
             }else {
-                self.registerErrorLabel.text = response.message
-                self.registerErrorLabel.textColor = .red
+                registerErrorLabel.text = response.message
+                registerErrorLabel.textColor = .red
             }
         }
         else {
-            performSegue(
-                withIdentifier: RegisterVCSegues
-                    .registerToLogin
-                    .rawValue,
-                sender: confirmMailAdress!)
+            let vc = LoginVC.instantiate(from: .Welcome)
+            vc.incomingMail = confirmMailAdress
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == RegisterVCSegues.registerToLogin.rawValue {
-            if let mail = (sender as? String) {
-                let targetVC = segue.destination as! LoginVC
-                targetVC.incomingMail = mail
-            }
-        }
-    }
     /**
      - In the registration section, if the user is not in the first step, he uses this button to return to the previous step.
      */
@@ -159,17 +144,17 @@ extension RegisterVC : PresenterToViewRegister {
     func registerFeedBack(response: ValidationResponse) {
         if response.status! {
             if registerType == .REGISTER_WITH_MAIL {
-                self.resultScreenMessage = "We have sent confirmation link to your email address.".localized()
-                self.resultScreenAnimName = "mail_sended"
-                self.confirmMailAdress = response.message!
+                resultScreenMessage = "We have sent confirmation link to your email address.".localized()
+                resultScreenAnimName = "mail_sended"
+                confirmMailAdress = response.message!
             }
             else if registerType == .REGISTER_WITH_GOOGLE {
-                self.resultScreenMessage = "Registration Successful".localized()
-                self.resultScreenAnimName = "success"
+                resultScreenMessage = "Registration Successful".localized()
+                resultScreenAnimName = "success"
             }
             scrollToNextItem()
         }else {
-            self.registerErrorLabel.text = response.message!
+            registerErrorLabel.text = response.message!
         }
     }
     
@@ -224,26 +209,26 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
             let page = Int(offSet + horizontalCenter) / Int(width) // Current registiration step.
         
         if page == 0 {
-            self.registerBackButton.isHidden = true
-        }else if page < self.registerSteps!.count-1 && page > 0 && page != self.registerSteps!.count - 2 {
-            self.registerNextButton.setTitle("Next".localized(), for: UIControl.State.normal)
-            self.registerBackButton.isHidden = false
+            registerBackButton.isHidden = true
+        }else if page < registerSteps!.count-1 && page > 0 && page != self.registerSteps!.count - 2 {
+            registerNextButton.setTitle("Next".localized(), for: UIControl.State.normal)
+            registerBackButton.isHidden = false
         }
-        else if page == self.registerSteps!.count - 2 {
-            self.registerNextButton.setTitle("Finish It".localized(), for: UIControl.State.normal)
-            self.registerBackButton.isHidden = false
+        else if page == registerSteps!.count - 2 {
+            registerNextButton.setTitle("Finish It".localized(), for: UIControl.State.normal)
+            registerBackButton.isHidden = false
         }
         else {
-            self.registerNextButton.setTitle("Log In".localized(), for: UIControl.State.normal)
-            self.registerBackButton.isHidden = true
+            registerNextButton.setTitle("Log In".localized(), for: UIControl.State.normal)
+            registerBackButton.isHidden = true
             if registerType == .REGISTER_WITH_GOOGLE {
-                self.registerNextButton.isHidden = true
+                registerNextButton.isHidden = true
             }
         }
         
         // ProgressView
-        self.registerStepLabel.text = "\(page+1)/\(self.registerSteps!.count)"
-        self.registerProgressView.progress = Float(page + 1) / Float(self.registerSteps!.count)
+        registerStepLabel.text = "\(page+1)/\(self.registerSteps!.count)"
+        registerProgressView.progress = Float(page + 1) / Float(self.registerSteps!.count)
     }
     
 }
@@ -260,8 +245,8 @@ extension RegisterVC : RegisterPhotoChooseCellProtocol, UIImagePickerControllerD
      - I authorize the reference of the photoPickCell class, which is nullable in the RegisterVC class, with the reference from the requesting class, so that when the photo is selected, I can send the selected photo back to the cell class.
      */
     func photoOnClick(registerCell: RegisterPhotoChooseCell) {
-        
-        self.registerPhotoPickCell = registerCell
+        showCurtain()
+        registerPhotoPickCell = registerCell
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             
@@ -269,7 +254,9 @@ extension RegisterVC : RegisterPhotoChooseCellProtocol, UIImagePickerControllerD
             imagePicker.sourceType = .savedPhotosAlbum
             imagePicker.allowsEditing = false
             
-            present(imagePicker, animated: true, completion: nil)
+            present(imagePicker, animated: true, completion: {
+                self.closeCurtain()
+            })
         }
     }
     /**
@@ -335,12 +322,12 @@ extension RegisterVC {
         let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
         self.moveToFrame(contentOffset: contentOffset) */
         let nextItem: IndexPath = IndexPath(item: currentRegisterCellIndex() + 1, section: 0)
-        self.registerCollectionView.scrollToItem(at: nextItem, at: .left, animated: true)
+        registerCollectionView.scrollToItem(at: nextItem, at: .left, animated: true)
     }
 
     func scrollToPreviousItem() {
         let previousItem: IndexPath = IndexPath(item: currentRegisterCellIndex() - 1, section: 0)
-        self.registerCollectionView.scrollToItem(at: previousItem, at: .right, animated: true)
+        registerCollectionView.scrollToItem(at: previousItem, at: .right, animated: true)
     }
     
     func registerCellsForCollectionView(_ cells:[RegisterCellType]){
@@ -375,17 +362,4 @@ extension RegisterVC : CropViewControllerDelegate {
     func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
         cropViewController.dismiss(animated: true)
     }
-}
-
-
-enum RegisterVCSegues : String {
-    case registerToLogin = "registerToLogin"
-}
-
-enum RegisterCollectionViewCells : String {
-    case photoPick          = "registerPhotoChooseCell"
-    case enterInformation   = "registerInfoCell"
-    case enterDateOfBirth   = "registerBirthDayCell"
-    case enterGender        = "registerGenderCell"
-    case confirmation       = "registerConfirmCell"
 }

@@ -479,10 +479,10 @@
     </scenes>
     <designables>
         <designable name="4d7-Cr-0o5">
-            <size key="intrinsicContentSize" width="237" height="34"/>
+            <size key="intrinsicContentSize" width="202" height="34"/>
         </designable>
         <designable name="Ajm-Ay-5vY">
-            <size key="intrinsicContentSize" width="273" height="34"/>
+            <size key="intrinsicContentSize" width="211" height="34"/>
         </designable>
     </designables>
     <resources>

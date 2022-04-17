@@ -41,6 +41,7 @@
             </constraints>
             <connections>
                 <outlet property="registerBirthDayDatePicker" destination="5gE-Lj-ecZ" id="SJz-Mz-GDj"/>
+                <outlet property="titleLabel" destination="WyI-B6-2bq" id="5F4-kk-mR1"/>
             </connections>
             <point key="canvasLocation" x="132" y="131"/>
         </collectionViewCell>
