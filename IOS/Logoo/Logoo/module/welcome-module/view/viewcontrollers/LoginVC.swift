@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: BaseVC {
 
     @IBOutlet weak var loginUserMail: CustomUITextField!
     @IBOutlet weak var loginUserPassword: CustomUITextField!
@@ -49,7 +49,7 @@ class LoginVC: UIViewController {
         loginUserMail.placeholder = "E-mail Adress".localized()
         loginUserPassword.placeholder = "Password".localized()
         loginButtonOutlet.setTitle("Login".localized(), for: .normal)
-        forgetPasswordButtonOutlet.setTitle("I forget my password", for: .normal)
+        forgetPasswordButtonOutlet.setTitle("I forget my password".localized(), for: .normal)
         sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
         registerButton.setTitle("Not registered ? Register".localized(), for: .normal)
     }

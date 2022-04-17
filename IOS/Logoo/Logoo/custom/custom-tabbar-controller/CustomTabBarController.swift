@@ -13,6 +13,7 @@ class CustomTabBarController : UITabBarController {
     
     override func viewDidLoad() {
         setupVC()
+        configureUI()
     }
     
     func setupVC(){
@@ -30,7 +31,6 @@ class CustomTabBarController : UITabBarController {
         globalVC.tabBarItem.selectedImage = UIImage(systemName: "globe.americas.fill")
         
         let globalNavigationController = UINavigationController(rootViewController: globalVC)
-        globalNavigationController.navigationBar.prefersLargeTitles = true
         
         let chatVC = ChatVC.instantiate(from: .Chat)
         chatVC.tabBarItem.title = "Chat".localized()
@@ -49,5 +49,9 @@ class CustomTabBarController : UITabBarController {
         profileNavigationController.navigationBar.prefersLargeTitles = true
         
         viewControllers = [discoveryNavigationController, globalNavigationController, chatNavigationController, profileNavigationController]
+    }
+    
+    func configureUI(){
+        tabBar.tintColor = Color.black700 ?? UIColor.black
     }
 }

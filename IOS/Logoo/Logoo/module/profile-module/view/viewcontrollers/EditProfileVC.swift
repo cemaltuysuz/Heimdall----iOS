@@ -114,7 +114,7 @@ extension EditProfileVC : PresenterToViewEditProfileProtocol {
             albumDelegate?.updateData(posts: posts)
             break
         case .onErrorNotify(let message):
-            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            createAlertNotify(title: "Error".localized(), message: message)
             break
         case .showCurtain:
             showCurtain()

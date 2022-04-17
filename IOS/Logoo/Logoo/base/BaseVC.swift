@@ -28,7 +28,16 @@ class BaseVC: UIViewController {
     let curtainAlpha:CGFloat =  0.5
     
     override func viewDidLoad() {
-        super.viewDidLoad()}
+        super.viewDidLoad()
+        configureNavigationController()
+    }
+    
+    func configureNavigationController(){
+        let image = UIImage(systemName: "chevron.left")
+        navigationController?.navigationBar.backIndicatorImage = image
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = image
+        navigationController?.navigationBar.tintColor = Color.black700 ?? UIColor.black
+    }
     
     // MARK: - Basic Alert | Parameters -> Title, Message And Actiton
     func createBasicAlert(title:String,message:String,okTitle:String,onCompletion: @escaping (BasicAlertActionType) -> Void){
@@ -71,13 +80,15 @@ class BaseVC: UIViewController {
     }
     
     
-    func createAlertNotify(title:String,message:String,onCompletion: @escaping () -> Void){
+    func createAlertNotify(title:String,message:String,onCompletion: (() -> Void)? = nil){
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
         
         let okButton = UIAlertAction(title: "Close".localized(), style: .cancel, handler: {_ in
-            onCompletion()
+            if onCompletion != nil {
+                onCompletion!()
+            }
         })
         
         alert.addAction(okButton)

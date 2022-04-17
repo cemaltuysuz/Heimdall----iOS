@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginRouterVC: UIViewController {
+class LoginRouterVC: BaseVC {
 
     var presenter:ViewToPresenterLoginRouterProtocol?
     

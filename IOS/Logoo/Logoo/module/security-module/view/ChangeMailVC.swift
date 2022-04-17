@@ -64,10 +64,10 @@ extension ChangeMailVC : PresenterToViewChangeMailProtocol {
             showCurtain()
             break
         case .RE_AUTH_FAIL(let message):
-            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            createAlertNotify(title: "Error".localized(), message: message)
             break
         case .CHANGE_MAIL_FAIL(let message):
-            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            createAlertNotify(title: "Error".localized(), message: message)
             break
         case .SUCCESS_RE_AUTH(let oldMail):
             let message = "Do you approve the update of your e-mail address?".localized() + "\n" + "Old :".localized() + "\(oldMail)" + "\n" + "New :".localized() + newMailAdressTextField.text!

@@ -27,7 +27,7 @@ class ResetPasswordVC: BaseVC {
     func configureUI(){
         screenTitleLabel.text = "Reset Password".localized()
         screenDescriptionLabel.text = "reset_password_description".localized()
-        resetMailTextField.placeholder = "E-mail adress".localized()
+        resetMailTextField.placeholder = "E-mail Adress".localized()
         sendResetLinkButtonOutlet.setTitle("Send Reset Link".localized(), for: .normal)
     }
     
@@ -49,30 +49,19 @@ class ResetPasswordVC: BaseVC {
 
 extension ResetPasswordVC : PresenterToViewResetPasswordProtocol {
     func sendLinkResponse(resp: Status) {
-        var alert:UIAlertController?
         closeCurtain()
         if resp == .SUCCESS {
-            alert = UIAlertController(title: "Successfully".localized(),
-                                      message: "The connection was sent successfully. Check your inbox.".localized(),
-                                      preferredStyle: .alert)
-            alert!.addAction(
-                UIAlertAction(title: "Close".localized(),
-                              style: .cancel, handler: {_ in
-                                  self.navigationController?.popViewController(animated: true)
-           }))
-            self.present(alert!, animated: true)
-            
+            createAlertNotify(title: "Successfully".localized(),
+                              message: "The connection was sent successfully. Check your inbox.".localized(),
+                              onCompletion: {
+                self.navigationController?.popViewController(animated: true)
+            })
         }else {
-            print("false")
-            alert = UIAlertController(title: "Failed".localized(),
-                                      message: "Something went wrong. Please check your e-mail address.".localized(),
-                                      preferredStyle: .alert)
-            alert!.addAction(
-                UIAlertAction(title: "Close".localized(),
-                              style: .cancel)
-            )
-            self.present(alert!, animated: true)
+            createAlertNotify(title: "Failed".localized(),
+                              message: "Something went wrong. Please check your e-mail address.".localized(),
+                              onCompletion: {
+                self.navigationController?.popViewController(animated: true)
+            })
         }
     }
-
 }

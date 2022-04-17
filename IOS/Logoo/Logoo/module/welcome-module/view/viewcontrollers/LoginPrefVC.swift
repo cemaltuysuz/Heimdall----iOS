@@ -99,8 +99,7 @@ extension LoginPrefVC : PresenterToViewLoginPref {
             
         }else {
             createAlertNotify(title: "Error".localized(),
-                              message: "Something went wrong.".localized(),
-                              onCompletion: {})
+                              message: "Something went wrong.".localized())
         }
     }
 }

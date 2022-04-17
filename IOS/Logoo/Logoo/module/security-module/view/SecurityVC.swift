@@ -97,7 +97,7 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemC
     
     func onClickWarning(instance: LineMenuItem) {
         guard let _ = SecurityMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
-        createAlertNotify(title: "Alert".localized(), message: message, onCompletion: {})
+        createAlertNotify(title: "Alert".localized(), message: message)
     }
 }
 

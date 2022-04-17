@@ -69,7 +69,7 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             // TODO: Create fail page
             break
         case .onError(let message):
-            createAlertNotify(title: "Error".localized(), message: message, onCompletion: {})
+            createAlertNotify(title: "Error".localized(), message: message)
         }
     }
 }
