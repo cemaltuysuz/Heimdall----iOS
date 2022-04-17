@@ -9,7 +9,7 @@ import Foundation
 
 protocol CustomUITextFieldProtocol {
      func onRightButtonClick(_ textField:CustomUITextField,isActive:Bool)
-     func onValidate(_ validateResult:ValidateResult)
+     func onValidateResult(_ textField:CustomUITextField, validateResult:ValidateResult)
 }
 
 // optional

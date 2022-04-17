@@ -9,8 +9,8 @@ import UIKit
 
 class LoginVC: UIViewController {
 
-    @IBOutlet weak var loginUserMail: UITextField!
-    @IBOutlet weak var loginUserPassword: UITextField!
+    @IBOutlet weak var loginUserMail: CustomUITextField!
+    @IBOutlet weak var loginUserPassword: CustomUITextField!
     @IBOutlet weak var loginErrorMessageLabel: UILabel!
     
     @IBOutlet weak var mailConfirmationContainer: UIStackView!
@@ -30,6 +30,7 @@ class LoginVC: UIViewController {
         }
         LoginRouter.createModule(ref: self)
         presenter?.calculateRepeatTime()
+        configureUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,6 +39,11 @@ class LoginVC: UIViewController {
         }
         
     }
+    
+    func configureUI(){
+        addInputAccessoryForTextFields(textFields: [loginUserMail,loginUserPassword], dismissable: true, previousNextable: true)
+    }
+    
     @IBAction func loginButton(_ sender: Any) {
         if let mail = loginUserMail.text, let password = loginUserPassword.text {
             let result = MailValidator(mail: mail).validate()
@@ -127,17 +133,17 @@ extension LoginVC : PresenterToViewLoginProtocol {
     @objc
     private func changeLabel(){
         if counter != 0
-             {
+        {
             self.sendVerificationButtonOutlet.setTitle("Time to resubmit:".localized() + "\(counter!)", for: .normal)
-                 counter -= 1
-             }
-             else
-             {
-                 self.sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
-                 self.sendVerificationButtonOutlet.isEnabled = true
-                  countTimer.invalidate()
-                 self.counter = 100
-       }
+            counter -= 1
+        }
+        else
+        {
+            self.sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
+            self.sendVerificationButtonOutlet.isEnabled = true
+            countTimer.invalidate()
+            self.counter = 100
+        }
     }
 }
 
