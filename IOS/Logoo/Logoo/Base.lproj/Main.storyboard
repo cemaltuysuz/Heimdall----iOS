@@ -2219,11 +2219,17 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="BJq-n7-VBy">
+            <size key="intrinsicContentSize" width="186.5" height="34"/>
+        </designable>
         <designable name="JCe-R7-dcw">
             <size key="intrinsicContentSize" width="237" height="34"/>
         </designable>
         <designable name="JrH-ri-62A">
             <size key="intrinsicContentSize" width="273" height="34"/>
+        </designable>
+        <designable name="g71-VC-hcN">
+            <size key="intrinsicContentSize" width="152.5" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

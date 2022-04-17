@@ -677,59 +677,6 @@
 			path = service;
 			sourceTree = "<group>";
 		};
-		150C8FE527994E62000DAFBE /* onboard-module */ = {
-			isa = PBXGroup;
-			children = (
-				150C8FF12799574E000DAFBE /* view */,
-				150C8FF92799652E000DAFBE /* interactor */,
-				150C8FFC2799654C000DAFBE /* protocol */,
-				150C8FF62799614F000DAFBE /* entity */,
-				150C8FFB27996546000DAFBE /* router */,
-				150C8FFA2799653E000DAFBE /* presenter */,
-			);
-			path = "onboard-module";
-			sourceTree = "<group>";
-		};
-		150C8FE627994E93000DAFBE /* login-pref-module */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C6D27BE8C2C0088DD35 /* entity */,
-				15C64C6427BE6DF70088DD35 /* protocols */,
-				15983C0127997C0200903073 /* view */,
-				15C64C6327BE6DE00088DD35 /* interactor */,
-				15C64C6227BE6DD90088DD35 /* presenter */,
-				15C64C6127BE6D7A0088DD35 /* router */,
-			);
-			path = "login-pref-module";
-			sourceTree = "<group>";
-		};
-		150C8FE727994EB0000DAFBE /* login-module */ = {
-			isa = PBXGroup;
-			children = (
-				156F044327B3A3F400D37039 /* protocols */,
-				153EA97F27A0466D00871246 /* view */,
-				156F044227B3A3E800D37039 /* interactor */,
-				156F044127B3A3DF00D37039 /* presenter */,
-				156F044027B3A3DA00D37039 /* entity */,
-				156F043F27B3A3CD00D37039 /* router */,
-			);
-			path = "login-module";
-			sourceTree = "<group>";
-		};
-		150C8FE827994EBB000DAFBE /* register-module */ = {
-			isa = PBXGroup;
-			children = (
-				15EACB1E27AC28EB0089779A /* protocols */,
-				15983C042799953300903073 /* view */,
-				15EACB1C27AC28C80089779A /* interactor */,
-				15EACB1B27AC28C00089779A /* presenter */,
-				159C3BD1279C10DC001B9607 /* entity */,
-				15EACB1D27AC28D50089779A /* router */,
-				15983C072799992300903073 /* collectionview */,
-			);
-			path = "register-module";
-			sourceTree = "<group>";
-		};
 		150C8FE927995044000DAFBE /* userdefault */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,58 +688,16 @@
 		150C8FF027995737000DAFBE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				159FBD61280C059A00125C4E /* collectionview */,
 				150C8FE127994D12000DAFBE /* WelcomeVC.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		150C8FF12799574E000DAFBE /* view */ = {
-			isa = PBXGroup;
-			children = (
 				150C8FF227995774000DAFBE /* OnBoardVC.swift */,
-				150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */,
+				15983C0227997C1B00903073 /* LoginPrefVC.swift */,
+				153EA98027A0468500871246 /* LoginVC.swift */,
+				15983C052799954500903073 /* RegisterVC.swift */,
+				15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */,
+				15BDA68527B647440066F469 /* LoginRouterVC.swift */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		150C8FF62799614F000DAFBE /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				150C8FF72799615E000DAFBE /* OnBoard.swift */,
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		150C8FF92799652E000DAFBE /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		150C8FFA2799653E000DAFBE /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				150C90012799672A000DAFBE /* OnBoardPresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		150C8FFB27996546000DAFBE /* router */ = {
-			isa = PBXGroup;
-			children = (
-				150C9003279967FA000DAFBE /* OnBoardRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		150C8FFC2799654C000DAFBE /* protocol */ = {
-			isa = PBXGroup;
-			children = (
-				150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */,
-			);
-			path = protocol;
 			sourceTree = "<group>";
 		};
 		1517AF8C279EBC5700D1194E /* chat-module */ = {
@@ -929,14 +834,6 @@
 			path = collectionview;
 			sourceTree = "<group>";
 		};
-		153EA97F27A0466D00871246 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				153EA98027A0468500871246 /* LoginVC.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		1541103F28002C6C0099CE27 /* interestsviewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -960,46 +857,6 @@
 			path = anim;
 			sourceTree = "<group>";
 		};
-		156F043F27B3A3CD00D37039 /* router */ = {
-			isa = PBXGroup;
-			children = (
-				15DC5D3C27B520E4004CA892 /* LoginRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		156F044027B3A3DA00D37039 /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				156F044D27B3AC9C00D37039 /* enums */,
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		156F044127B3A3DF00D37039 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				156F044827B3A61300D37039 /* LoginPresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		156F044227B3A3E800D37039 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				156F044627B3A58900D37039 /* LoginInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		156F044327B3A3F400D37039 /* protocols */ = {
-			isa = PBXGroup;
-			children = (
-				156F044427B3A40C00D37039 /* LoginProtocols.swift */,
-			);
-			path = protocols;
-			sourceTree = "<group>";
-		};
 		156F044A27B3AA7F00D37039 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,7 +877,8 @@
 		156F044D27B3AC9C00D37039 /* enums */ = {
 			isa = PBXGroup;
 			children = (
-				156F044E27B3ACC100D37039 /* UserState.swift */,
+				1579A61A28040B1800812D1E /* RegisterCellType.swift */,
+				15A5B43927C7A5590082029E /* RegisterType.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -1042,18 +900,12 @@
 		1584957B27CDEDC000ED57B6 /* module */ = {
 			isa = PBXGroup;
 			children = (
-				15C64C3427BD1D430088DD35 /* reset-password-module */,
-				15BDA68327B646B80066F469 /* login-router-module */,
 				156F045027B3C0E300D37039 /* selection-interest-module */,
 				1517AF8C279EBC5700D1194E /* chat-module */,
 				15064F4C279D490E00460334 /* profile-module */,
 				159C3BD6279C5CD5001B9607 /* global-module */,
 				159C3BD5279C5CC6001B9607 /* discover-module */,
-				150C8FE827994EBB000DAFBE /* register-module */,
-				150C8FE727994EB0000DAFBE /* login-module */,
-				150C8FE627994E93000DAFBE /* login-pref-module */,
 				150C8FE327994DC0000DAFBE /* welcome-module */,
-				150C8FE527994E62000DAFBE /* onboard-module */,
 			);
 			path = module;
 			sourceTree = "<group>";
@@ -1118,23 +970,7 @@
 			path = editprofilefields;
 			sourceTree = "<group>";
 		};
-		15983C0127997C0200903073 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				15983C0227997C1B00903073 /* LoginPrefVC.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		15983C042799953300903073 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				15983C052799954500903073 /* RegisterVC.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		15983C072799992300903073 /* collectionview */ = {
+		15983C072799992300903073 /* register */ = {
 			isa = PBXGroup;
 			children = (
 				15A5B42027C76AE10082029E /* RegisterPhotoChooseCell.swift */,
@@ -1149,18 +985,7 @@
 				15A5B43327C76BA80082029E /* RegisterGenderCell.xib */,
 				15A5B43627C777DF0082029E /* RegisterProtocols.swift */,
 			);
-			path = collectionview;
-			sourceTree = "<group>";
-		};
-		159C3BD1279C10DC001B9607 /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				15A5B43827C7A5420082029E /* enums */,
-				159C3BD2279C110F001B9607 /* ValidationResponse.swift */,
-				1579A61A28040B1800812D1E /* RegisterCellType.swift */,
-				1579A61C280437BD00812D1E /* Bindable.swift */,
-			);
-			path = entity;
+			path = register;
 			sourceTree = "<group>";
 		};
 		159C3BD5279C5CC6001B9607 /* discover-module */ = {
@@ -1203,19 +1028,20 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		159FBD61280C059A00125C4E /* collectionview */ = {
+			isa = PBXGroup;
+			children = (
+				15983C072799992300903073 /* register */,
+				150C8FF427995FFD000DAFBE /* OnBoardCollectionCell.swift */,
+			);
+			path = collectionview;
+			sourceTree = "<group>";
+		};
 		15A5B41427C687B60082029E /* entity */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = entity;
-			sourceTree = "<group>";
-		};
-		15A5B43827C7A5420082029E /* enums */ = {
-			isa = PBXGroup;
-			children = (
-				15A5B43927C7A5590082029E /* RegisterType.swift */,
-			);
-			path = enums;
 			sourceTree = "<group>";
 		};
 		15AE073427C927390012A81C /* firebase */ = {
@@ -1240,91 +1066,16 @@
 			path = editalbumview;
 			sourceTree = "<group>";
 		};
-		15BDA68327B646B80066F469 /* login-router-module */ = {
-			isa = PBXGroup;
-			children = (
-				15FE356227B6A0EF00D48F9F /* protocols */,
-				15BDA68427B647330066F469 /* view */,
-				15FE356127B6A0E200D48F9F /* interactor */,
-				15FE356027B6A0DB00D48F9F /* presenter */,
-				15FE355F27B6A0D600D48F9F /* entity */,
-				15FE355E27B6A0C700D48F9F /* router */,
-			);
-			path = "login-router-module";
-			sourceTree = "<group>";
-		};
-		15BDA68427B647330066F469 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				15BDA68527B647440066F469 /* LoginRouterVC.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		15C64C3427BD1D430088DD35 /* reset-password-module */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C3C27BD261A0088DD35 /* protocols */,
-				15C64C3527BD1D4E0088DD35 /* view */,
-				15C64C3B27BD260C0088DD35 /* interactor */,
-				15C64C3A27BD26050088DD35 /* presenter */,
-				15C64C3927BD25FE0088DD35 /* entity */,
-				15C64C3827BD25F90088DD35 /* router */,
-			);
-			path = "reset-password-module";
-			sourceTree = "<group>";
-		};
-		15C64C3527BD1D4E0088DD35 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C3627BD1DA80088DD35 /* ResetPasswordVC.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		15C64C3827BD25F90088DD35 /* router */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C4327BD27EC0088DD35 /* ResetPaswordRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		15C64C3927BD25FE0088DD35 /* entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		15C64C3A27BD26050088DD35 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C4127BD27A30088DD35 /* ResetPasswordPresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		15C64C3B27BD260C0088DD35 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C3F27BD277D0088DD35 /* ResetPasswordInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		15C64C3C27BD261A0088DD35 /* protocols */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C3D27BD26340088DD35 /* ResetPasswordProtocols.swift */,
-			);
-			path = protocols;
-			sourceTree = "<group>";
-		};
 		15C64C4827BE246B0088DD35 /* interactor */ = {
 			isa = PBXGroup;
 			children = (
 				15C64C4F27BE26FE0088DD35 /* WelcomeInteractor.swift */,
+				150C8FFF279966EA000DAFBE /* OnBoardInteractor.swift */,
+				15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */,
+				156F044627B3A58900D37039 /* LoginInteractor.swift */,
+				15EACB2127AC2AA70089779A /* RegisterInteractor.swift */,
+				15C64C3F27BD277D0088DD35 /* ResetPasswordInteractor.swift */,
+				15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -1333,6 +1084,12 @@
 			isa = PBXGroup;
 			children = (
 				15C64C5127BE27480088DD35 /* WelcomePresenter.swift */,
+				150C90012799672A000DAFBE /* OnBoardPresenter.swift */,
+				15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */,
+				156F044827B3A61300D37039 /* LoginPresenter.swift */,
+				15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */,
+				15C64C4127BD27A30088DD35 /* ResetPasswordPresenter.swift */,
+				15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -1340,6 +1097,11 @@
 		15C64C4A27BE247F0088DD35 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				156F044D27B3AC9C00D37039 /* enums */,
+				159C3BD2279C110F001B9607 /* ValidationResponse.swift */,
+				1579A61C280437BD00812D1E /* Bindable.swift */,
+				156F044E27B3ACC100D37039 /* UserState.swift */,
+				150C8FF72799615E000DAFBE /* OnBoard.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1348,6 +1110,12 @@
 			isa = PBXGroup;
 			children = (
 				15C64C5327BE27CE0088DD35 /* WelcomeRouter.swift */,
+				150C9003279967FA000DAFBE /* OnBoardRouter.swift */,
+				15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */,
+				15DC5D3C27B520E4004CA892 /* LoginRouter.swift */,
+				15EACB2527AC2BB30089779A /* RegisterRouter.swift */,
+				15C64C4327BD27EC0088DD35 /* ResetPaswordRouter.swift */,
+				15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -1356,6 +1124,12 @@
 			isa = PBXGroup;
 			children = (
 				15C64C4D27BE24A70088DD35 /* WelcomeVCProtocols.swift */,
+				150C8FFD27996582000DAFBE /* OnBoardProtocols.swift */,
+				15C64C6527BE6E170088DD35 /* LoginPrefProtocols.swift */,
+				156F044427B3A40C00D37039 /* LoginProtocols.swift */,
+				1579A61E2804441A00812D1E /* RegisterProtocol.swift */,
+				15C64C3D27BD26340088DD35 /* ResetPasswordProtocols.swift */,
+				15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -1377,77 +1151,6 @@
 				0F7BBE589E84AA5B4CAC77F3 /* Pods_LogooTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		15C64C6127BE6D7A0088DD35 /* router */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		15C64C6227BE6DD90088DD35 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		15C64C6327BE6DE00088DD35 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C6727BE6F690088DD35 /* LoginPrefInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		15C64C6427BE6DF70088DD35 /* protocols */ = {
-			isa = PBXGroup;
-			children = (
-				15C64C6527BE6E170088DD35 /* LoginPrefProtocols.swift */,
-			);
-			path = protocols;
-			sourceTree = "<group>";
-		};
-		15C64C6D27BE8C2C0088DD35 /* entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		15EACB1B27AC28C00089779A /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				15EACB2327AC2ACE0089779A /* RegisterPresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		15EACB1C27AC28C80089779A /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				15EACB2127AC2AA70089779A /* RegisterInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		15EACB1D27AC28D50089779A /* router */ = {
-			isa = PBXGroup;
-			children = (
-				15EACB2527AC2BB30089779A /* RegisterRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		15EACB1E27AC28EB0089779A /* protocols */ = {
-			isa = PBXGroup;
-			children = (
-				1579A61E2804441A00812D1E /* RegisterProtocol.swift */,
-			);
-			path = protocols;
 			sourceTree = "<group>";
 		};
 		15EF4F04280ACF7B00DBFF48 /* custom */ = {
@@ -1583,45 +1286,6 @@
 				15F6707427FB238F0083E58C /* BottomSheetVC.swift */,
 			);
 			path = base;
-			sourceTree = "<group>";
-		};
-		15FE355E27B6A0C700D48F9F /* router */ = {
-			isa = PBXGroup;
-			children = (
-				15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		15FE355F27B6A0D600D48F9F /* entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		15FE356027B6A0DB00D48F9F /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		15FE356127B6A0E200D48F9F /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		15FE356227B6A0EF00D48F9F /* protocols */ = {
-			isa = PBXGroup;
-			children = (
-				15FE356327B6A10500D48F9F /* LoginRouterProtocols.swift */,
-			);
-			path = protocols;
 			sourceTree = "<group>";
 		};
 		15FE356B27B6C81600D48F9F /* router */ = {

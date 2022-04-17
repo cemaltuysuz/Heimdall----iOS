@@ -16,7 +16,5 @@ class LoginRouter : PresenterToRouterLoginProtocol {
         ref.presenter?.view = ref
         ref.presenter?.interactor = LoginInteractor()
         ref.presenter?.interactor?.presenter = presenter
-        
-        
     }
 }
