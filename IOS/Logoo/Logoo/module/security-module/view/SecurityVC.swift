@@ -84,13 +84,16 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemC
         
         switch securityItem {
         case .CHANGE_MAIL:
-            performSegue(withIdentifier: "securityToChangeMailVC", sender: nil)
+            let vc = ChangeMailVC.instantiate(from: .Security)
+            navigationController?.pushViewController(vc, animated: true)
             break
         case .CHANGE_PASSWORD:
-            performSegue(withIdentifier: "SecurityToChangePasswordVC", sender: nil)
+            let vc = ChangePasswordVC.instantiate(from: .Security)
+            navigationController?.pushViewController(vc, animated: true)
             break
         case .LOGIN_TRANSACTIONS:
-            performSegue(withIdentifier: "securityToLoginTransactionsVC", sender: nil)
+            let vc = LoginTransactionsVC.instantiate(from: .Security)
+            navigationController?.pushViewController(vc, animated: true)
             break
         }
     }

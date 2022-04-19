@@ -13,7 +13,7 @@
         <!--Security-->
         <scene sceneID="6YO-G8-6M1">
             <objects>
-                <viewController id="Nv0-jt-6Yk" customClass="SecurityVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecurityVC" id="Nv0-jt-6Yk" customClass="SecurityVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bXH-dt-SKt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +138,7 @@
         <!--Login TransactionsVC-->
         <scene sceneID="8C4-Ue-BbL">
             <objects>
-                <viewController id="KDW-vM-wf3" customClass="LoginTransactionsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginTransactionsVC" id="KDW-vM-wf3" customClass="LoginTransactionsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FHR-zq-nNE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +174,7 @@
         <!--Change PasswordVC-->
         <scene sceneID="zm1-3W-ugY">
             <objects>
-                <viewController id="3d8-fX-FSr" customClass="ChangePasswordVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordVC" id="3d8-fX-FSr" customClass="ChangePasswordVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pw8-et-AdP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +320,7 @@
         <!--Change MailVC-->
         <scene sceneID="ZBR-SP-miT">
             <objects>
-                <viewController id="ejG-7l-VcU" customClass="ChangeMailVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangeMailVC" id="ejG-7l-VcU" customClass="ChangeMailVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KAw-G3-vVP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,10 +479,10 @@
     </scenes>
     <designables>
         <designable name="4d7-Cr-0o5">
-            <size key="intrinsicContentSize" width="202" height="34"/>
+            <size key="intrinsicContentSize" width="237" height="34"/>
         </designable>
         <designable name="Ajm-Ay-5vY">
-            <size key="intrinsicContentSize" width="211" height="34"/>
+            <size key="intrinsicContentSize" width="273" height="34"/>
         </designable>
     </designables>
     <resources>

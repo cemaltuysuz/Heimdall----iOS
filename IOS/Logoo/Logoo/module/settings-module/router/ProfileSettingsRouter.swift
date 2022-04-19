@@ -7,12 +7,12 @@
 
 import Foundation
 
-class ProfileSettingsRouter : PresenterToRouterProfileSettingsProtocol {
+class ProfileSettingsRouter : PresenterToRouterSettingsProtocol {
     
-    static func createModule(ref: ProfileSettingsVC) {
-        let p = ProfileSettingsPresenter()
+    static func createModule(ref: SettingsVC) {
+        let p = SettingsPresenter()
         ref.presenter = p
-        ref.presenter?.interactor = ProfileSettingsInteractor()
+        ref.presenter?.interactor = SettingsInteractor()
         ref.presenter?.view = ref
         ref.presenter?.interactor?.presenter = p
     }

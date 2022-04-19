@@ -21,6 +21,13 @@ extension String {
                                  comment: self)
     }
     
+    func toDate(withFormat format: String = "dd.MM.YYYY")-> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+    
     func convertStringToDictionary() -> [String:AnyObject]? {
        if let data = self.data(using: .utf8) {
            do {

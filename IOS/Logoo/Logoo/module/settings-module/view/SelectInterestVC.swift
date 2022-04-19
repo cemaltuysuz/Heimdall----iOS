@@ -48,8 +48,6 @@ class SelectInterestVC: UIViewController {
         if self.alreadySelectedList!.count > 0 {
             self.interestsTableViewIndicator.startAnimating()
             presenter?.saveInterests(list: self.alreadySelectedList!)
-        }else {
-            print("selected list is empty.")
         }
     }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {

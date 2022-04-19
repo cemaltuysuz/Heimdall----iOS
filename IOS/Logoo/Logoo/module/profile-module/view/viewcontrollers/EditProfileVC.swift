@@ -15,10 +15,10 @@ protocol EditProfileVCToEditAlbumViewProtocol : AnyObject {
 
 class EditProfileVC: BaseVC {
 
-    @IBOutlet weak var userImageChangeLabel: UILabel!
     @IBOutlet weak var editPostAlbumView: EditPostAlbumView!
     @IBOutlet weak var editUserProfilePhotoImg: UIImageView!
     @IBOutlet weak var editUserFieldsTableView: UITableView!
+    @IBOutlet weak var changePhotoButtonOutlet: UIButton!
     
     let editFieldCellHeight:CGFloat = 80
     let postLineheight:CGFloat = 240
@@ -66,14 +66,18 @@ class EditProfileVC: BaseVC {
         
         editPostAlbumView.delegate = self
         albumDelegate = editPostAlbumView
-        
-        userImageChangeLabel.isUserInteractionEnabled = true
-        let onDidTap = UITapGestureRecognizer(target: self, action: #selector(self.userPhotoClick(_:)))
-        userImageChangeLabel.addGestureRecognizer(onDidTap)
+    }
+    
+    @IBAction func onChangePhotoButtonClick(_ sender: Any) {
+        requestRawCode = EditProfileImageRequestType.REQUEST_FOR_PP.rawValue
+        openGalleryWithVC(self)
     }
     
     func setupUI(){
+        navigationController?.navigationBar.prefersLargeTitles = false
+        changePhotoButtonOutlet.setTitle("Change Photo".localized(), for: .normal)
         editPostAlbumView.heightAnchor.constraint(equalToConstant: getSafeAreaHeight()).activate(withIdentifier: "editAlbumHeight")
+        editUserFieldsTableView.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -104,7 +108,7 @@ extension EditProfileVC : PresenterToViewEditProfileProtocol {
             }
         case .userObject(let user):
             if let userPhotoUrl = user.userPhotoUrl {
-                self.editUserProfilePhotoImg.setImage(urlString: userPhotoUrl)
+                self.editUserProfilePhotoImg.setImage(urlString: userPhotoUrl, radius: 5, focustStatus: true)
             }
         case .posts(let posts):
             let totalCell = posts.count
@@ -176,12 +180,6 @@ extension EditProfileVC : EditFieldCellProtocol {
 // MARK: - Receive photo from user
 extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @objc
-    func userPhotoClick(_ tap:UITapGestureRecognizer){
-        requestRawCode = EditProfileImageRequestType.REQUEST_FOR_PP.rawValue
-        openGalleryWithVC(self)
-    }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true, completion: nil) // if the user choosed an image, close the window.
         
@@ -197,14 +195,12 @@ extension EditProfileVC :UIImagePickerControllerDelegate, UINavigationController
         
         switch reqType {
         case .REQUEST_FOR_ALBUM:
-            print("album icin alinacak")
             startMantis(viewController: self,
                         image: image,
                         vRatio: GeneralConstant.USER_POST_VERTICAL_RATIO,
                         hRatio: GeneralConstant.USER_POST_HORIZONTAL_RATIO)
             break
         case .REQUEST_FOR_PP:
-            print("pp icin alınacak")
             startMantis(viewController: self,
                         image: image,
                         shapeType: .square)

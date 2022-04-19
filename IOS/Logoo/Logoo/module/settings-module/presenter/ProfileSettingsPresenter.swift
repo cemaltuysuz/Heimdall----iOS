@@ -7,10 +7,10 @@
 
 import Foundation
 
-class ProfileSettingsPresenter : ViewToPresenterProfileSettingsProtocol, InteractorToPresenterProfileSettingsProtocol {
+class SettingsPresenter : ViewToPresenterSettingsProtocol, InteractorToPresenterSettingsProtocol {
     
-    var interactor: PresenterToInteractorProfileSettingsProtocol?
-    var view: PresenterToViewProfileSettingsProtocol?
+    var interactor: PresenterToInteractorSettingsProtocol?
+    var view: PresenterToViewSettingsProtocol?
     
     
     

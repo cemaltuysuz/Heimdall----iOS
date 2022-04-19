@@ -10,7 +10,7 @@ import UIKit
 class EditFieldWithPickerViewCell: UITableViewCell {
 
     @IBOutlet weak var fieldDisplayNameLabel: UILabel!
-    @IBOutlet weak var fieldValueTextField: UITextField!
+    @IBOutlet weak var fieldValueTextField: CustomUITextField!
 
     weak var delegate:EditFieldCellProtocol?
     var data:[String]?
@@ -21,17 +21,12 @@ class EditFieldWithPickerViewCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)}
-    
     func configureCell(model:EditFieldConfigure, data:[String]) {
+        if let name = model.fieldLeftIconName {
+            fieldValueTextField.leftImage = UIImage(systemName: name)
+            fieldValueTextField.leftPadding = 10
+        }
         self.model = model
-        print("picker count : \(data.count)")
         self.data = data
         createUIPickerView()
     }

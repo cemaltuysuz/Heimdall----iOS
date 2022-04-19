@@ -14,7 +14,7 @@
         <!--Settings-->
         <scene sceneID="HOg-JT-uQ6">
             <objects>
-                <viewController id="Xk4-Qm-fvV" customClass="ProfileSettingsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsVC" id="Xk4-Qm-fvV" customClass="SettingsVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fvw-5V-Kua">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
         <!--Select InterestVC-->
         <scene sceneID="JEt-Na-zJc">
             <objects>
-                <viewController id="swo-ya-BT6" customClass="SelectInterestVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectInterestVC" id="swo-ya-BT6" customClass="SelectInterestVC" customModule="Logoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cHg-U7-Pax">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

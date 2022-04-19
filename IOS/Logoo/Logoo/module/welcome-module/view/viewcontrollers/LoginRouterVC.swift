@@ -18,28 +18,24 @@ class LoginRouterVC: BaseVC {
         presenter?.route()
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginRouterToInterestSelectionVC" {
-            if let uuid = sender as? String {
-                let targetVC = segue.destination as! SelectInterestVC
-                targetVC.isFirst = true
-            }
-        }
-    }
 }
 
 extension LoginRouterVC : PresenterToViewLoginRouterProtocol {
     func loginToHomeVC() {
-        performSegue(withIdentifier: "loginRouterToHomeVC", sender: nil)
+        let vc = CustomTabBarController.instantiate(from: .Main)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     func loginToInterestSelectionVC() {
-        performSegue(withIdentifier: "loginRouterToInterestSelectionVC", sender: nil)
+        let vc = SelectInterestVC.instantiate(from: .Settings)
+        vc.modalPresentationStyle = .fullScreen
+        vc.isFirst = true
+        present(vc, animated: true)
     }
     
     func loginToErrorVC(message:String) {
-        // TODO()
+        // TODO: err
     }
     
 }

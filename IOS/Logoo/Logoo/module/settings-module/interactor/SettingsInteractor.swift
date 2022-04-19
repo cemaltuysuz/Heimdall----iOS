@@ -10,9 +10,9 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-class ProfileSettingsInteractor : PresenterToInteractorProfileSettingsProtocol {
+class SettingsInteractor : PresenterToInteractorSettingsProtocol {
     
-    var presenter: InteractorToPresenterProfileSettingsProtocol?
+    var presenter: InteractorToPresenterSettingsProtocol?
     
     /**
      The user will be redirected to the login page in any case. But the result needs to be logged.
@@ -32,56 +32,56 @@ class ProfileSettingsInteractor : PresenterToInteractorProfileSettingsProtocol {
         options.append(LineMenuItem(
             iconName: "person.fill.badge.plus",
             itemTitle: "Invite Friends".localized(),
-            rawValue: ProfileMenuItemType.INVITE_FRIENDS.rawValue,
+            rawValue: SettingsMenuItemType.INVITE_FRIENDS.rawValue,
             isEnabled: false,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "lock.shield.fill",
             itemTitle: "Security".localized(),
-            rawValue: ProfileMenuItemType.SECURITY.rawValue,
+            rawValue: SettingsMenuItemType.SECURITY.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "paintpalette.fill",
             itemTitle: "Preferences".localized(),
-            rawValue: ProfileMenuItemType.PREFERENCES.rawValue,
+            rawValue: SettingsMenuItemType.PREFERENCES.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "gamecontroller.fill",
             itemTitle: "Interests".localized(),
-            rawValue: ProfileMenuItemType.INTERESTS.rawValue,
+            rawValue: SettingsMenuItemType.INTERESTS.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "bell.fill",
             itemTitle: "Notifications".localized(),
-            rawValue: ProfileMenuItemType.NOTIFICATIONS.rawValue,
+            rawValue: SettingsMenuItemType.NOTIFICATIONS.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "eye.slash.fill",
             itemTitle: "Privacy".localized(),
-            rawValue: ProfileMenuItemType.PRIVACY.rawValue,
+            rawValue: SettingsMenuItemType.PRIVACY.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "info.circle.fill",
             itemTitle: "About".localized(),
-            rawValue: ProfileMenuItemType.ABOUT.rawValue,
+            rawValue: SettingsMenuItemType.ABOUT.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "rectangle.portrait.and.arrow.right.fill",
             itemTitle: "LogOut".localized(),
-            rawValue: ProfileMenuItemType.LOGOUT.rawValue,
+            rawValue: SettingsMenuItemType.LOGOUT.rawValue,
             isEnabled: true,
             warningMessage: nil))
         

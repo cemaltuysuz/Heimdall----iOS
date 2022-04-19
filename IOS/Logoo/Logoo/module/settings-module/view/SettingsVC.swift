@@ -1,5 +1,5 @@
 //
-//  ProfileSettingsVC.swift
+//  ProfileSettingsVC.swift -> SettingsVC.swift (at 18 april 2022)
 //  Logoo
 //
 //  Created by cemal tüysüz on 27.02.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ProfileSettingsVC: BaseVC {
+class SettingsVC: BaseVC {
     
     @IBOutlet weak var optionsTableView: UITableView!
-    var presenter:ViewToPresenterProfileSettingsProtocol?
+    var presenter:ViewToPresenterSettingsProtocol?
     var options:[LineMenuItem]?
 
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ProfileSettingsVC: BaseVC {
     }
 }
 
-extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
+extension SettingsVC : PresenterToViewSettingsProtocol {
     
     func optionsToView(options: [LineMenuItem]) {
         DispatchQueue.main.async {
@@ -41,7 +41,7 @@ extension ProfileSettingsVC : PresenterToViewProfileSettingsProtocol {
     }
 }
 
-extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemCellProtocol {
+extension SettingsVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemCellProtocol {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options?.count ?? 0
@@ -57,18 +57,20 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, LineMe
     }
     
     func onClickMenu(instance: LineMenuItem) {
-        guard let securityItem = ProfileMenuItemType(rawValue: instance.rawValue), instance.isEnabled else {return}
+        guard let securityItem = SettingsMenuItemType(rawValue: instance.rawValue), instance.isEnabled else {return}
         
         switch securityItem {
         case .INVITE_FRIENDS:
             break
         case .SECURITY:
-            performSegue(withIdentifier: "ProfileSettingsToSecurityVC", sender: nil)
+            let vc = SecurityVC.instantiate(from: .Security)
+            navigationController?.pushViewController(vc, animated: true)
             break
         case .PREFERENCES:
             break
         case .INTERESTS:
-            performSegue(withIdentifier: "SettingsToInterestVC", sender: nil)
+            let vc = SelectInterestVC.instantiate(from: .Settings)
+            present(vc, animated: true)
             break
         case .NOTIFICATIONS:
             break
@@ -83,14 +85,14 @@ extension ProfileSettingsVC : UITableViewDelegate, UITableViewDataSource, LineMe
     }
     
     func onClickWarning(instance: LineMenuItem) {
-        guard let _ = ProfileMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
+        guard let _ = SettingsMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
         createAlertNotify(title: "Alert".localized(), message: message)
     }
 }
 
 // MARK: - Settings functions
 
-extension ProfileSettingsVC {
+extension SettingsVC {
     
     // on Exit
     func exitUser() {

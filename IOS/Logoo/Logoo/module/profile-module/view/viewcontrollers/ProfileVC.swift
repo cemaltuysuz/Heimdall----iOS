@@ -14,6 +14,11 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userPhotoSlider: LGPhotoSlider!
     @IBOutlet weak var userInterestsViewer: InterestsViewer!
     
+    @IBOutlet weak var userAgeLabel: UILabel!
+    @IBOutlet weak var userCountryLabel: UILabel!
+    @IBOutlet weak var userGenderLabel: UILabel!
+    
+    
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
     
     
@@ -29,7 +34,6 @@ class ProfileVC: BaseVC {
     }
     
     func configureUI(){
-        title = "Logoo"
         let height = userInterestsViewer.interestsCollectionView.collectionViewLayout.collectionViewContentSize.height
         userInterestsViewer.heightAnchor.constraint(equalToConstant: height).activate(withIdentifier: "interestsHeightConstant")
         userManifestoTextView.heightAnchor.constraint(equalToConstant: 50).activate(withIdentifier: "userManifestoHeightConstraint")
@@ -47,22 +51,25 @@ class ProfileVC: BaseVC {
             }
         }
     }
+    
+    @IBAction func onSettingsBarButtonItemClick(_ sender: Any) {
+        let vc = SettingsVC.instantiate(from: .Settings)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func onEditProfileBarButtonItemClick(_ sender: Any) {
+        let vc = EditProfileVC.instantiate(from: .Profile)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
     func onStateChange(state: ProfileState) {
         switch state {
         case .onUserLoad(let user):
-            if let url = user.userPhotoUrl {
-                userPhotoImageView.setImage(urlString: url)
-                title = user.username
-                userManifestoTextView.text = user.userManifesto
-                
-                if let interests = user.userInterests?.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR) {
-                    userInterestsViewer.updateAndReloadData(interests: interests)
-                }
-                
-            }
+            loadUser(user: user)
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
         case .onPostsLoadFail:
@@ -70,6 +77,34 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             break
         case .onError(let message):
             createAlertNotify(title: "Error".localized(), message: message)
+        }
+    }
+    
+    func loadUser(user:User) {
+        DispatchQueue.main.async {
+            
+            if let url = user.userPhotoUrl {
+                self.userPhotoImageView.setImage(urlString: url)
+                self.title = user.username
+            }
+            
+            if let userBirth = user.userBirthDay?.toDate() {
+                self.userAgeLabel.text = "\(Date().years(from: userBirth))"
+            }
+            
+            self.userCountryLabel.text = user.userLiveCountry ?? "Turkey"
+            
+            if let gender = user.userGender {
+                self.userGenderLabel.text = gender.localized()
+            }
+            
+            self.userManifestoTextView.text = user.userManifesto
+            
+            if let interests = user.userInterests?.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR) {
+                self.userInterestsViewer.updateAndReloadData(interests: interests)
+            }
+            
+            
         }
     }
 }

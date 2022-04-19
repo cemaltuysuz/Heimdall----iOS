@@ -13,4 +13,8 @@ extension Date {
         dateformat.dateFormat = pattern
         return dateformat.string(from: self)
     }
+    
+    func years(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
+    }
 }

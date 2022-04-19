@@ -33,7 +33,7 @@
 		150D83A627C4F311009601F0 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D83A527C4F311009601F0 /* Inbox.swift */; };
 		150D83A827C4F3BE009601F0 /* InboxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D83A727C4F3BE009601F0 /* InboxType.swift */; };
 		150FF44527E1DB7A0094B359 /* FirebaseLoggerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44427E1DB7A0094B359 /* FirebaseLoggerService.swift */; };
-		150FF44B27E1F5090094B359 /* ProfileMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44A27E1F5090094B359 /* ProfileMenuItemType.swift */; };
+		150FF44B27E1F5090094B359 /* SettingsMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44A27E1F5090094B359 /* SettingsMenuItemType.swift */; };
 		150FF44D27E1F85E0094B359 /* SecurityMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */; };
 		150FF45527E2281A0094B359 /* ProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF45427E2281A0094B359 /* ProviderType.swift */; };
 		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
@@ -211,10 +211,10 @@
 		15EF4F08280AD7C500DBFF48 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF4F07280AD7C500DBFF48 /* Color.swift */; };
 		15EF4F0B280B352E00DBFF48 /* CustomUITextFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF4F0A280B352E00DBFF48 /* CustomUITextFieldProtocol.swift */; };
 		15EF4F0D280B357000DBFF48 /* CompareSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF4F0C280B357000DBFF48 /* CompareSettings.swift */; };
-		15F272DF27CB7E73005BBC78 /* ProfileSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272DE27CB7E73005BBC78 /* ProfileSettingsVC.swift */; };
+		15F272DF27CB7E73005BBC78 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272DE27CB7E73005BBC78 /* SettingsVC.swift */; };
 		15F272ED27CBA806005BBC78 /* ProfileSettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272EC27CBA806005BBC78 /* ProfileSettingsProtocols.swift */; };
 		15F272EF27CBA90B005BBC78 /* ProfileSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272EE27CBA90B005BBC78 /* ProfileSettingsPresenter.swift */; };
-		15F272F127CBAA11005BBC78 /* ProfileSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272F027CBAA11005BBC78 /* ProfileSettingsInteractor.swift */; };
+		15F272F127CBAA11005BBC78 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272F027CBAA11005BBC78 /* SettingsInteractor.swift */; };
 		15F272F327CBAA4B005BBC78 /* ProfileSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272F227CBAA4B005BBC78 /* ProfileSettingsRouter.swift */; };
 		15F272F527CBAAEB005BBC78 /* LineMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F272F427CBAAEB005BBC78 /* LineMenuItem.swift */; };
 		15F461F627F9E3CB00FFE46D /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F461F527F9E3CB00FFE46D /* BaseVC.swift */; };
@@ -296,7 +296,7 @@
 		150D83A527C4F311009601F0 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		150D83A727C4F3BE009601F0 /* InboxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxType.swift; sourceTree = "<group>"; };
 		150FF44427E1DB7A0094B359 /* FirebaseLoggerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoggerService.swift; sourceTree = "<group>"; };
-		150FF44A27E1F5090094B359 /* ProfileMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuItemType.swift; sourceTree = "<group>"; };
+		150FF44A27E1F5090094B359 /* SettingsMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenuItemType.swift; sourceTree = "<group>"; };
 		150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityMenuItemType.swift; sourceTree = "<group>"; };
 		150FF45227E218C00094B359 /* secureAnim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secureAnim.json; sourceTree = "<group>"; };
 		150FF45427E2281A0094B359 /* ProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderType.swift; sourceTree = "<group>"; };
@@ -463,10 +463,10 @@
 		15EF4F07280AD7C500DBFF48 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		15EF4F0A280B352E00DBFF48 /* CustomUITextFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextFieldProtocol.swift; sourceTree = "<group>"; };
 		15EF4F0C280B357000DBFF48 /* CompareSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareSettings.swift; sourceTree = "<group>"; };
-		15F272DE27CB7E73005BBC78 /* ProfileSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsVC.swift; sourceTree = "<group>"; };
+		15F272DE27CB7E73005BBC78 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		15F272EC27CBA806005BBC78 /* ProfileSettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsProtocols.swift; sourceTree = "<group>"; };
 		15F272EE27CBA90B005BBC78 /* ProfileSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsPresenter.swift; sourceTree = "<group>"; };
-		15F272F027CBAA11005BBC78 /* ProfileSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsInteractor.swift; sourceTree = "<group>"; };
+		15F272F027CBAA11005BBC78 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		15F272F227CBAA4B005BBC78 /* ProfileSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsRouter.swift; sourceTree = "<group>"; };
 		15F272F427CBAAEB005BBC78 /* LineMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineMenuItem.swift; sourceTree = "<group>"; };
 		15F461F527F9E3CB00FFE46D /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -1192,7 +1192,7 @@
 			isa = PBXGroup;
 			children = (
 				15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */,
-				15F272F027CBAA11005BBC78 /* ProfileSettingsInteractor.swift */,
+				15F272F027CBAA11005BBC78 /* SettingsInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -1202,7 +1202,7 @@
 			children = (
 				1535674A27B794A7007346D4 /* collectionView */,
 				156F045127B3C11700D37039 /* SelectInterestVC.swift */,
-				15F272DE27CB7E73005BBC78 /* ProfileSettingsVC.swift */,
+				15F272DE27CB7E73005BBC78 /* SettingsVC.swift */,
 				159FBD83280C1AD300125C4E /* Settings.storyboard */,
 			);
 			path = view;
@@ -1220,7 +1220,7 @@
 		159FBD85280C1BC000125C4E /* enums */ = {
 			isa = PBXGroup;
 			children = (
-				150FF44A27E1F5090094B359 /* ProfileMenuItemType.swift */,
+				150FF44A27E1F5090094B359 /* SettingsMenuItemType.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -1811,7 +1811,7 @@
 				15F6707D27FC359F0083E58C /* ChangePasswordVC.swift in Sources */,
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				1589830527FED80100853BBC /* UserPostType.swift in Sources */,
-				150FF44B27E1F5090094B359 /* ProfileMenuItemType.swift in Sources */,
+				150FF44B27E1F5090094B359 /* SettingsMenuItemType.swift in Sources */,
 				1589832427FF1DC400853BBC /* NibLoadable.swift in Sources */,
 				150C8FE227994D12000DAFBE /* WelcomeVC.swift in Sources */,
 				15F272ED27CBA806005BBC78 /* ProfileSettingsProtocols.swift in Sources */,
@@ -1842,12 +1842,12 @@
 				1589831B27FEEDA700853BBC /* UICollectionView+.swift in Sources */,
 				150C90022799672A000DAFBE /* OnBoardPresenter.swift in Sources */,
 				1584958A27CE229400ED57B6 /* EditProfileProtocols.swift in Sources */,
-				15F272F127CBAA11005BBC78 /* ProfileSettingsInteractor.swift in Sources */,
+				15F272F127CBAA11005BBC78 /* SettingsInteractor.swift in Sources */,
 				153EA971279FFDC900871246 /* ChatRouter.swift in Sources */,
 				151E8D3727D10EA5009CDE23 /* MailValidator.swift in Sources */,
 				15C64C2F27BCE04E0088DD35 /* InterestSelectedCell.swift in Sources */,
 				15EACB2227AC2AA70089779A /* RegisterInteractor.swift in Sources */,
-				15F272DF27CB7E73005BBC78 /* ProfileSettingsVC.swift in Sources */,
+				15F272DF27CB7E73005BBC78 /* SettingsVC.swift in Sources */,
 				15C64C5427BE27CE0088DD35 /* WelcomeRouter.swift in Sources */,
 				15064F56279D4B5400460334 /* DiscorveryProtocols.swift in Sources */,
 				151CBA1227F07AB10088E548 /* Date+.swift in Sources */,
@@ -2139,7 +2139,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 34WTB4U8S7;
+				DEVELOPMENT_TEAM = AA46V7LMAT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Logoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2170,7 +2170,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 34WTB4U8S7;
+				DEVELOPMENT_TEAM = AA46V7LMAT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Logoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

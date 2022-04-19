@@ -7,30 +7,30 @@
 
 import Foundation
 
-protocol ViewToPresenterProfileSettingsProtocol {
-    var view:PresenterToViewProfileSettingsProtocol? {get set}
-    var interactor:PresenterToInteractorProfileSettingsProtocol? {get set}
+protocol ViewToPresenterSettingsProtocol {
+    var view:PresenterToViewSettingsProtocol? {get set}
+    var interactor:PresenterToInteractorSettingsProtocol? {get set}
     
     func getOptions()
     func exitUser()
 }
 
-protocol PresenterToInteractorProfileSettingsProtocol {
-    var presenter:InteractorToPresenterProfileSettingsProtocol? {get set}
+protocol PresenterToInteractorSettingsProtocol {
+    var presenter:InteractorToPresenterSettingsProtocol? {get set}
     func getOptions()
     func exitUser()
 }
 
-protocol InteractorToPresenterProfileSettingsProtocol {
+protocol InteractorToPresenterSettingsProtocol {
     func optionsToPresenter(options:[LineMenuItem])
     func exitUserFeedback()
 }
 
-protocol PresenterToViewProfileSettingsProtocol {
+protocol PresenterToViewSettingsProtocol {
     func optionsToView(options:[LineMenuItem])
     func exitUserFeedback()
 }
 
-protocol PresenterToRouterProfileSettingsProtocol {
-    static func createModule(ref:ProfileSettingsVC)
+protocol PresenterToRouterSettingsProtocol {
+    static func createModule(ref:SettingsVC)
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProfileMenuItemType : Int {
+enum SettingsMenuItemType : Int {
     case INVITE_FRIENDS
     case SECURITY
     case PREFERENCES

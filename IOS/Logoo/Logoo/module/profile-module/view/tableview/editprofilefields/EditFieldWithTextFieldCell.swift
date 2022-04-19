@@ -11,14 +11,14 @@ import FirebaseFirestoreSwift
 
 class EditFieldWithTextFieldCell: UITableViewCell {
 
-    @IBOutlet weak var fieldValueTextField: UITextField!
+    @IBOutlet weak var fieldValueTextField: CustomUITextField!
     @IBOutlet weak var fieldDisplayNameLabel: UILabel!
     @IBOutlet weak var fieldErrorLabel: UILabel!
     
     public weak var delegate:EditFieldCellProtocol?
     
     private var pendingRequestWorkItem: DispatchWorkItem?
-    private var isAlreadyUsedAnotherUser:Bool?
+    private var isAlreadyUsedAnotherUser:Bool? = false
     
     private var model : EditFieldConfigure!{
         didSet{
@@ -28,14 +28,15 @@ class EditFieldWithTextFieldCell: UITableViewCell {
     }
     
     override func awakeFromNib() {
-        super.awakeFromNib()}
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)}
+        print("run cell with \(frame.height) height size")
+    }
     
     func configureCell(model:EditFieldConfigure){
-        self.isAlreadyUsedAnotherUser = false
         self.model = model
+        if let name = model.fieldLeftIconName {
+            fieldValueTextField.leftImage = UIImage(systemName: name)
+            fieldValueTextField.leftPadding = 10
+        }
         if model.editType == .NO_EDIT {
             fieldValueTextField.isUserInteractionEnabled = false
         }
