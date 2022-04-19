@@ -14,7 +14,7 @@ class WelcomeInteractor : PresenterToInteractorWelcomeProtocol{
     
     func routeUser() {
         if !UDService.shared.onboardVisibilityInfo() {
-            presenter?.goToOnBoard()
+            presenter?.onStateChange(.goToOnBoard)
         }else {
             guard let user = Auth.auth().currentUser, user.isEmailVerified else {
                 do {
@@ -22,15 +22,15 @@ class WelcomeInteractor : PresenterToInteractorWelcomeProtocol{
                 }catch{
                     print(error)
                 }
-                presenter?.goToLoginPref()
+                presenter?.onStateChange(.goToLoginPref)
                 return
             }
             user.reload(completion: {error in
                 guard let _ = error else {
-                    self.presenter?.goToHome()
+                    self.presenter?.onStateChange(.goToHome)
                     return
                 }
-                self.presenter?.goToLoginPref()
+                self.presenter?.onStateChange(.goToLoginPref)
             })
             
         }

@@ -9,7 +9,7 @@ import UIKit
 
 class EditFieldWithDatePickerCell: UITableViewCell {
 
-    @IBOutlet weak var fieldValueTextField: UITextField!
+    @IBOutlet weak var fieldValueTextField: CustomUITextField!
     @IBOutlet weak var fieldDisplayNameLabel: UILabel!
     
     weak var delegate:EditFieldCellProtocol?
@@ -22,19 +22,11 @@ class EditFieldWithDatePickerCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    
     func configureCell(model:EditFieldConfigure, minDate:Date?, maxDate:Date){
+        if let name = model.fieldLeftIconName {
+            fieldValueTextField.leftImage = UIImage(systemName: name)
+            fieldValueTextField.leftPadding = 10
+        }
         self.model = model
         self.minDate = minDate
         self.maxDate = maxDate

@@ -40,6 +40,7 @@ class EditPostAlbumView : NibLoadableView {
 }
 
 extension EditPostAlbumView : UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let posts = posts else {return 1}
         return posts.count + 1

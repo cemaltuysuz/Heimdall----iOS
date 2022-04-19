@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RegisterBirthDayCell" id="gTV-IL-0wX" customClass="RegisterBirthDayCell" customModule="Logoo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your date of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-B6-2bq">
+                        <rect key="frame" x="84.5" y="50" width="245" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5gE-Lj-ecZ">
+                        <rect key="frame" x="20" y="130" width="374" height="215"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="215" id="kCr-0P-gBK"/>
+                        </constraints>
+                    </datePicker>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="5gE-Lj-ecZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="63s-PU-Urp"/>
+                <constraint firstItem="WyI-B6-2bq" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Bsk-95-mWP"/>
+                <constraint firstAttribute="trailing" secondItem="5gE-Lj-ecZ" secondAttribute="trailing" constant="20" id="SWf-NY-YY7"/>
+                <constraint firstItem="WyI-B6-2bq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="50" id="esV-Fe-2Cs"/>
+                <constraint firstItem="5gE-Lj-ecZ" firstAttribute="top" secondItem="WyI-B6-2bq" secondAttribute="bottom" constant="50" id="yGe-7v-zV1"/>
+            </constraints>
+            <connections>
+                <outlet property="registerBirthDayDatePicker" destination="5gE-Lj-ecZ" id="SJz-Mz-GDj"/>
+                <outlet property="titleLabel" destination="WyI-B6-2bq" id="5F4-kk-mR1"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="131"/>
+        </collectionViewCell>
+    </objects>
+</document>

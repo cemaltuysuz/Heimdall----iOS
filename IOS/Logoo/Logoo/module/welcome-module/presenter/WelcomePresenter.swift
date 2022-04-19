@@ -8,6 +8,7 @@
 import Foundation
 
 class WelcomePresenter: ViewToPresenterWelcomeProtocol, InteractorToPresenterWelcomeProtocol {
+    
     var view: PresenterToViewWelcomeProtocol?
     var interactor: PresenterToInteractorWelcomeProtocol?
     
@@ -15,16 +16,7 @@ class WelcomePresenter: ViewToPresenterWelcomeProtocol, InteractorToPresenterWel
         interactor?.routeUser()
     }
     
-    func goToOnBoard() {
-        view?.goToOnBoard()
+    func onStateChange(_ state: WelcomeState) {
+        view?.onStateChange(state)
     }
-    
-    func goToLoginPref() {
-        view?.goToLoginPref()
-    }
-    
-    func goToHome() {
-        view?.goToHome()
-    }
-    
 }

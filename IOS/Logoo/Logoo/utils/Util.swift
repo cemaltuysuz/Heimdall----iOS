@@ -55,8 +55,8 @@ func isConnectedToNetwork() -> Bool {
     return ret
 }
 
-func openGalleryWithVC<T:UIViewController & UINavigationControllerDelegate>(_ viewController:T) where T : UIImagePickerControllerDelegate{
-    
+func openGalleryWithVC<T:BaseVC & UINavigationControllerDelegate>(_ viewController:T) where T : UIImagePickerControllerDelegate{
+    viewController.showCurtain()
     let imagePicker = UIImagePickerController()
     if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
         
@@ -64,7 +64,9 @@ func openGalleryWithVC<T:UIViewController & UINavigationControllerDelegate>(_ vi
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = false
         
-        viewController.present(imagePicker, animated: true, completion: nil)
+        viewController.present(imagePicker, animated: true, completion: {
+            viewController.closeCurtain()
+        })
     }
 }
 

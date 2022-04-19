@@ -26,25 +26,29 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                                                      value: user.username ?? "",
                                                      hasCheckForAlreadyUsed: true,
                                                      editType: .EDIT_WITH_TEXTFIELD,
-                                                     validator: UsernameValidator()))
+                                                     validator: UsernameValidator(),
+                                                     fieldLeftIconName: "person.fill"))
                     
                     fields.append(EditFieldConfigure(displayName: "Manifesto".localized(),
                                                      key: UserFieldType.USER_MANIFESTO.rawValue,
                                                      value: user.userManifesto ?? "",
                                                      hasCheckForAlreadyUsed: false,
-                                                     editType: .EDIT_WITH_TEXTFIELD))
+                                                     editType: .EDIT_WITH_TEXTFIELD,
+                                                     fieldLeftIconName: "doc.append.fill.rtl"))
                     
                     fields.append(EditFieldConfigure(displayName: "Gender".localized(),
                                                      key: UserFieldType.USER_GENDER.rawValue,
                                                      value: user.userGender ?? "",
                                                      hasCheckForAlreadyUsed: false,
-                                                     editType: .EDIT_WITH_PICKER_VIEW))
+                                                     editType: .EDIT_WITH_PICKER_VIEW,
+                                                     fieldLeftIconName: "person.crop.circle.badge.questionmark.fill"))
                     
                     fields.append(EditFieldConfigure(displayName: "Date of birth".localized(),
                                                      key: UserFieldType.USER_BIRTHDAY.rawValue,
                                                      value: user.userBirthDay ?? "",
                                                      hasCheckForAlreadyUsed: false,
-                                                     editType: .EDIT_WITH_DATE_PICKER))
+                                                     editType: .EDIT_WITH_DATE_PICKER,
+                                                     fieldLeftIconName: "calendar"))
                     
                     self.presenter?.onStateChange(state: .userFields(fields: fields))
                     self.presenter?.onStateChange(state: .userObject(user: (user)))

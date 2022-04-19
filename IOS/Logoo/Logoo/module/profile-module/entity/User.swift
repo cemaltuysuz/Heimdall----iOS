@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Kingfisher
 
 class User : Codable {
     var userId:String?
@@ -15,6 +14,7 @@ class User : Codable {
     var userPhotoUrl:String?
     var userGender:String?
     var userBirthDay:String?
+    var userLiveCountry:String?
     var userManifesto:String?
     var userInterests:String?
     var userLastSeen:String?
@@ -26,13 +26,14 @@ class User : Codable {
     
     init(){}
     
-    init(userId: String, username: String, userMail: String?, userPhotoUrl: String, userGender: String, userBirthDay: String, userManifesto: String, userInterests:String, userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
+    init(userId: String, username: String, userMail: String?, userPhotoUrl: String, userGender: String, userBirthDay: String, userLiveCountry:String? = nil, userManifesto: String, userInterests:String, userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
         self.userId = userId
         self.username = username
         self.userMail = userMail
         self.userPhotoUrl = userPhotoUrl
         self.userGender = userGender
         self.userBirthDay = userBirthDay
+        self.userLiveCountry = userLiveCountry
         self.userManifesto = userManifesto
         self.userInterests = userInterests
         self.userLastSeen = userLastSeen
@@ -42,5 +43,4 @@ class User : Codable {
         self.isAllowTheGroupInvite = isAllowTheGroupInvite
         self.isAllowTheInboxInvite = isAllowTheInboxInvite
     }
-    
 }

@@ -8,6 +8,11 @@
 // global
 
 "yes" = "evet";
+"Ok" = "Tamam";
+"Error" = "Hata";
+"Cancel" = "Kapat";
+"Done" = "Tamam";
+
 
 
 // On Board Localization
@@ -20,6 +25,30 @@
 
 "Open To The World!" = "Dünyaya Açıl !";
 "With the passport system, you can go on a global exploration." = "Pasaport sistemi ile global çapta bir keşife çıkabilirsin.";
+
+"Let's Start !" = "Haydi Başlayalım !";
+
+// Login Pref Module
+"Welcome" = "Hoşgeldiniz";
+"Welcome to Heimdall. Missing information has been detected in your subscription. Do you want complete informations ?" = "Heimdall'a hoşgeldiniz. Üyeliğinizde eksik bilgiler tespit edildi. Bu bilgileri tamamlamak ister misiniz ?";
+"Complete" = "Tamamla";
+"Login" = "Giriş yap";
+"Sign In With Google" = "Google ile giriş yap";
+"Don't have an account yet? Register" = "Henüz bir hesabın yok mu ? Kayıt ol.";
+
+// LoginVC
+"E-mail Adress" = "Mail Adresiniz";
+"Password" = "Şifreniz";
+"I forget my password" = "Şifremi unuttum";
+"Your account is not verified. Please confirm your mail adress." = "Hesabınız henüz onaylanmamış. Lütfen mail adresinizi doğrulayın.";
+"Send Confirmation Link" = "Doğrulama bağlantısı gönder";
+"Time to resubmit:" = "Yeniden gönder:";
+"Send Confirmation Link" = "Onay linki gönder";
+"Not registered ? Register" = "Kayıt olmadın mı ? Kayıt ol.";
+"Login failed." = "Giriş başarısız.";
+"This email address is being used by another account." = "Bu mail adresi zaten kayıtlı.";
+"This email address is being used by another account." = "Bu mail adresi bir başkası tarafından kullanılıyor.";
+"The information entered is already in use by another account." = "Girilen bilgi bir başka hesap tarafından zaten kullanılıyor.";
 
 // Register Module
 "Next" = "Devam";
@@ -38,16 +67,21 @@
 
 "The e-mail address is not in the correct format." = "E-mail adresi doğru formatta değil.";
 
-"Your account is not verified. Please confirm your mail adress." = "Hesabınız henüz onaylanmamış. Lütfen mail adresinizi doğrulayın.";
-"Time to resubmit:" = "Yeniden gönder:";
-"Send Confirmation Link" = "Onay linki gönder";
-"Login failed." = "Giriş başarısız.";
+"Choose a photo" = "Bir fotoğraf seç";
+"Fill The Informations" = "Bilgileri Doldur";
+"Enter your date of birth" = "Doğum tarihinizi giriniz";
+"Choose your gender" = "Cinsiyet seçiniz";
 
-"This email address is being used by another account." = "Bu mail adresi zaten kayıtlı.";
-"This email address is being used by another account." = "Bu mail adresi bir başkası tarafından kullanılıyor.";
-"The information entered is already in use by another account." = "Girilen bilgi bir başka hesap tarafından zaten kullanılıyor.";
+"Male" = "Erkek";
+"Female" = "Kadın";
+"Homosexuel Male" = "Eşcinsel Erkek";
+"Homosexuel Female" = "Eşcinsel Kadın";
+"Other" = "Diğer";
+
+
 
 // Reset Password
+"Reset Password" = "Şifre Sıfırlama";
 "Successfully" = "Başarılı";
 "The link was sent successfully. Check your inbox." = "Bağlantı başarılı bir şekilde iletildi. Gelen kutunuzu kontrol ediniz.";
 "Failed" = "Başarısız";
@@ -55,6 +89,8 @@
 
 "Close" = "Kapat";
 
+"reset_password_description" = "Şifreni sıfırlamamız için hesabına kayıtlı mail adresine ihtiyacımız var! Sana göndereceğimiz mail ile hesabının şifresini sıfırlayabilirsin.";
+"Send Reset Link" = "Bağlantıyı Gönder";
 "The e-mail address is not in the correct format." = "Mail adresi doğru formatta değil.";
 
 "The connection was sent successfully. Check your inbox." =  "Bağlantı başarılı ile beraber gönderildi. Gelen kutunuzu kontrol ediniz.";
@@ -66,15 +102,6 @@
 "Registration Successful" = "Kayıt işlemi başarılı.";
 
 "Please wait" = "Lütfen bekleyiniz.";
-
-"Error" = "Hata";
-"Cancel" = "Kapat";
-"Done" = "Tamam";
-
-// LoginPref VC
-
-"Welcome to Logoo. Missing information has been detected in your subscription. Complete this information ?" = "Logoo'ya hoşgeldiniz. Üyeliğinizde eksik bilgi tespit edildi. Bu bilgileri tamamlamak ister misiniz ?";
-"Complete" = "Tamamla";
 
 //  settings
 "Security" = "Güvenlik";
@@ -90,12 +117,19 @@
 "Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
 "Yes" = "Evet";
 
+// Interests
+"Your Interests" = "İlgi Alanların";
+"With the right area of ​​interest, you can get better recommendations." = "Doğru ilgi alanı seçimi ile daha iyi öneriler yakalayabilirsiniz.";
+"Sport, art, daily activity..." = "Spor, sanat, günlük aktivite...";
+"Save" = "Kayıt Et";
+
 // Security
+"Account Security" = "Hesap Güvenliği";
 "Change your mail adress" = "Mail adresi değişikliği";
 "Change your password" = "Şifre değişikiği";
 
 // edit profile
-
+"Change Photo" = "Fotoğrafı Değiştir";
 "Username" = "Kullanıcı Adı";
 "Manifesto" = "Manifesto";
 "Gender" = "Cinsiyet";
@@ -109,7 +143,7 @@
 
 // Change password
 
-"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri doğru şekilde doldurunuz.";
+"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri  doldurunuz.";
 "Enter your current password" = "Şu anki şifreniz";
 "Please fill in the missing fields" = "Lütfen eksik alanları doldurun.";
 "Passwords entered must be equal." = "Girilen parolalar eşit olmalıdır.";

@@ -20,15 +20,11 @@ protocol PresenterToInteractorWelcomeProtocol{
 }
 
 protocol InteractorToPresenterWelcomeProtocol {
-    func goToOnBoard()
-    func goToLoginPref()
-    func goToHome()
+    func onStateChange(_ state:WelcomeState)
 }
 
 protocol PresenterToViewWelcomeProtocol {
-    func goToOnBoard()
-    func goToLoginPref()
-    func goToHome()
+    func onStateChange(_ state:WelcomeState)
 }
 
 protocol PresenterToRouterWelcomeProtocol{
