@@ -49,4 +49,9 @@
             <point key="canvasLocation" x="131.8840579710145" y="146.65178571428569"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="FCz-46-mCk">
+            <size key="intrinsicContentSize" width="32" height="34"/>
+        </designable>
+    </designables>
 </document>

@@ -64,7 +64,7 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemC
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Hesap Güvenliği"
+        return "Account Security".localized()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -12,6 +12,9 @@ class SelectInterestVC: UIViewController {
     
     @IBOutlet weak var interestSearchBar: UISearchBar!
     @IBOutlet weak var interestsTableViewIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var screenTitleLabel: UILabel!
+    @IBOutlet weak var screenDescriptionLabel: UILabel!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
     
     @IBOutlet weak var interestSelectionCollectionView: UICollectionView!
     @IBOutlet weak var interestSelectedCollectionView: UICollectionView!
@@ -26,40 +29,46 @@ class SelectInterestVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        hobbyList = [InterestSelectionModel]()
-        alreadySelectedList = [String]()
-        
         SelectInterestRouter.createModule(ref: self)
         presenter?.getInterests()
-        
+                
+        configureUI()
+        configureBinds()
+    }
+    
+    func configureBinds(){
         interestSelectionCollectionView.delegate = self
         interestSelectionCollectionView.dataSource = self
         
         interestSelectedCollectionView.delegate = self
         interestSelectedCollectionView.dataSource = self
         
-        interestSearchBar.tintColor = .black
         interestSearchBar.delegate = self
-        
+    }
+    
+    func configureUI(){
+        screenTitleLabel.text = "Your Interests".localized()
+        screenDescriptionLabel.text = "With the right area of ​​interest, you can get better recommendations.".localized()
+        interestSearchBar.placeholder = "Sport, art, daily activity...".localized()
+        saveButtonOutlet.setTitle("Save".localized(), for: .normal)
+        interestSearchBar.tintColor = .black
     }
     
     @IBAction func interestsSaveButton(_ sender: Any) {
-        if self.alreadySelectedList!.count > 0 {
-            self.interestsTableViewIndicator.startAnimating()
-            presenter?.saveInterests(list: self.alreadySelectedList!)
+        if self.alreadySelectedList?.count ?? 0 > 0 {
+            interestsTableViewIndicator.startAnimating()
+            presenter?.saveInterests(list: alreadySelectedList!)
         }
     }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
         if isFirst ?? false {
-            performSegue(withIdentifier: SelectInterestVCSegues
-                            .interestSelectionToHomeVC
-                            .rawValue, sender: nil)
+            let vc = CustomTabBarController.instantiate(from: .Main)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }else {
             dismiss(animated: true)
         }
     }
-    
 }
 
 extension SelectInterestVC : UISearchBarDelegate {
@@ -94,6 +103,7 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
             guard let strongSelf = self else {return}
             strongSelf.alreadySelectedList = alreadyList
             strongSelf.interestSelectedCollectionView.reloadData()
+            strongSelf.interestSelectionCollectionView.reloadData()
         }
     }
     
@@ -124,9 +134,9 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
             strongSelf.alert?.dismissAlert()
             if resp.status == .SUCCESS {
                 if strongSelf.isFirst ?? false {
-                    strongSelf.performSegue(withIdentifier: SelectInterestVCSegues
-                                    .interestSelectionToHomeVC
-                                    .rawValue, sender: nil)
+                    let vc = CustomTabBarController.instantiate(from: .Main)
+                    vc.modalPresentationStyle = .fullScreen
+                    strongSelf.present(vc, animated: true)
                 }else {
                     strongSelf.dismiss(animated: true)
                 }
@@ -142,9 +152,9 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == self.interestSelectedCollectionView {
-            return self.alreadySelectedList!.count
+            return alreadySelectedList?.count ?? 0
         }
-        return hobbyList!.count
+        return hobbyList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -15,63 +15,33 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
     
     func getDiscoveredUsers() {
         
-        guard let currentUserId = Auth.auth().currentUser?.uid else {
-            
-            self.presenter?.discoveredUsersResponse(
-                response: Resource<[User]>(
-                    status: .ERROR,
-                    data: nil,
-                    message: nil // TODO
-                )
-            )
+        getCurrentUser(userCompletion: {user in
+            if let user = user {
+                
+            }
+        })
+    }
+    
+    
+    // MARK: - Get Current User From FireStore
+    private func getCurrentUser(userCompletion : @escaping (User?) -> Void) {
+        guard let uid = FirebaseAuthService.shared.getUUID() else{
+            print("Eror : User UUID is not found.")
+            userCompletion(nil)
             return
         }
         
-       var userList = [User]()
-        
-        
-        dbRef.collection("users").getDocuments{(snapshot, error) in
-            if let error = error {
-                print("Error : \(error.localizedDescription)")
-                return
+        let currentUserDocumentRef = dbRef.collection(FireStoreCollection.USER_COLLECTION).document(uid)
+        FireStoreService.shared.getDocument(ref: currentUserDocumentRef,
+                                            onCompletion: {(user:User?) in
+            if let user = user {
+                userCompletion(user)
             }else {
-                guard let snap = snapshot else {
-                    return}
-                                
-                for document in snap.documents {
-                    //document.
-                    let data = document.data()
-                    let userId = data["userId"]   as? String ?? ""
-                    
-                    if !userId.isEmpty && userId != currentUserId {
-                        
-                        let user = User(
-                            userId: userId,
-                            username: data["username"] as? String ?? "",
-                            userMail: data["userMail"] as? String ?? "",
-                            userPhotoUrl: data["userPhotoUrl"] as? String ?? "",
-                            userGender: data["userGender"] as? String ?? "Other",
-                            userBirthDay: data["UserBirthDay"] as? String ?? "",
-                            userManifesto: data["userBio"] as? String ?? "",
-                            userInterests: data["userInterests"] as? String ?? "",
-                            userLastSeen: data["userLastSeen"] as? String ?? "",
-                            userRegisterTime: data["userRegisterTime"] as? String ?? "",
-                            isAnonymous: data["isAnonymous"] as! Bool,
-                            isOnline: data["isOnline"] as! Bool,
-                            isAllowTheGroupInvite: data["isAllowTheGroupInvite"] as! Bool,
-                            isAllowTheInboxInvite: data["isAllowTheInboxInvite"] as! Bool
-                        )
-                        userList.append(user)
-                    }
-                }
-                self.presenter?.discoveredUsersResponse(
-                    response: Resource<[User]>(
-                        status: .SUCCESS,
-                        data: userList,
-                        message: nil
-                    )
-                )
+                print("Error: User document is not found.")
+                userCompletion(nil)
+                return
             }
-        }
+        })
     }
+
 }

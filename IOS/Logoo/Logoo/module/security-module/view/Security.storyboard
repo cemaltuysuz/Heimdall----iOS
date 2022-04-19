@@ -211,37 +211,79 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fze-cz-RJr">
                                                         <rect key="frame" x="30" y="10" width="314" height="220"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-jc-FLJ">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-jc-FLJ" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="HPX-t1-Bh8"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="key.fill" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6q-DY-bTc">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6q-DY-bTc" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="60" width="314" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="tEK-fU-Vl0"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="lock.circle" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your new password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sBd-x2-ll5">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your new password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sBd-x2-ll5" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="120" width="314" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="roy-5c-U6a"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="lock.rotation" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2B-G5-BVX">
@@ -304,11 +346,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="nfk-zz-voC"/>
                     <connections>
-                        <outlet property="currentPasswordTextField" destination="XgG-jc-FLJ" id="Dtf-N1-GPe"/>
+                        <outlet property="currentPasswordTextField" destination="XgG-jc-FLJ" id="XLm-BC-orR"/>
                         <outlet property="errorLabel" destination="I2B-G5-BVX" id="Kh9-js-wGj"/>
-                        <outlet property="newPasswordTextField" destination="W6q-DY-bTc" id="UOI-0e-O70"/>
+                        <outlet property="newPasswordTextField" destination="W6q-DY-bTc" id="4Es-Bw-Mjd"/>
                         <outlet property="okButtonOutlet" destination="RE7-e1-LJS" id="NMR-OT-OzZ"/>
-                        <outlet property="reNewPasswordTextField" destination="sBd-x2-ll5" id="nk9-8V-Vrq"/>
+                        <outlet property="reNewPasswordTextField" destination="sBd-x2-ll5" id="LBg-C8-xTJ"/>
                         <outlet property="screenDescriptionLabel" destination="KSF-vc-ZpB" id="U1A-q5-AQk"/>
                         <outlet property="screenTitleLabel" destination="Uio-tB-o7t" id="LQj-ql-OaZ"/>
                     </connections>
@@ -356,8 +398,33 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SoZ-oW-lHv">
                                                         <rect key="frame" x="30" y="10" width="314" height="190"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new mail adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4d7-Cr-0o5" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ajm-Ay-5vY" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="T1G-yn-ctc"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="key.fill" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
+                                                                        <color key="value" name="black700"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new mail adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4d7-Cr-0o5" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="70" width="314" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="IPW-er-dX1"/>
                                                                 </constraints>
@@ -374,34 +441,6 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                                         <real key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your current password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ajm-Ay-5vY" customClass="CustomUITextField" customModule="Logoo" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="70" width="314" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="T1G-yn-ctc"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                                        <color key="value" name="grey500"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="key.fill" catalog="system"/>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="leftImageColor">
-                                                                        <color key="value" name="black700"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                                                        <real key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash.fill" catalog="system"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
-                                                                        <real key="value" value="10"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="rightImageColor">
-                                                                        <color key="value" name="black700"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
@@ -464,7 +503,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FGf-4i-tzg"/>
                     <connections>
-                        <outlet property="currentPasswordTextField" destination="Ajm-Ay-5vY" id="krb-Y4-pur"/>
+                        <outlet property="currentPasswordTextField" destination="Ajm-Ay-5vY" id="t4X-HI-FQP"/>
                         <outlet property="errorLabel" destination="nAn-i8-7S9" id="KOJ-x7-Dga"/>
                         <outlet property="newMailAdressTextField" destination="4d7-Cr-0o5" id="R9r-d7-xzK"/>
                         <outlet property="okButtonOutlet" destination="Dob-wO-FdG" id="kdc-Xa-kcq"/>
@@ -484,11 +523,22 @@
         <designable name="Ajm-Ay-5vY">
             <size key="intrinsicContentSize" width="273" height="34"/>
         </designable>
+        <designable name="W6q-DY-bTc">
+            <size key="intrinsicContentSize" width="252.5" height="34"/>
+        </designable>
+        <designable name="XgG-jc-FLJ">
+            <size key="intrinsicContentSize" width="273" height="34"/>
+        </designable>
+        <designable name="sBd-x2-ll5">
+            <size key="intrinsicContentSize" width="276" height="34"/>
+        </designable>
     </designables>
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
         <image name="key.fill" catalog="system" width="83" height="128"/>
+        <image name="lock.circle" catalog="system" width="128" height="121"/>
+        <image name="lock.rotation" catalog="system" width="128" height="110"/>
         <namedColor name="black700">
             <color red="0.067000001668930054" green="0.090000003576278687" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

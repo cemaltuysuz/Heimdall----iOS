@@ -16,7 +16,7 @@ class SettingsVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ProfileSettingsRouter.createModule(ref: self)
+        SettingsRouter.createModule(ref: self)
         configureBindings()
         presenter?.getOptions()
     }
@@ -35,9 +35,6 @@ extension SettingsVC : PresenterToViewSettingsProtocol {
             self.options = options
             self.optionsTableView.reloadData()
         }
-    }
-    func exitUserFeedback() {
-        // TODO (GO LOGIN PREF SCREEN)
     }
 }
 
@@ -97,14 +94,12 @@ extension SettingsVC {
     // on Exit
     func exitUser() {
         createBasicAlert(title: "Account sign out".localized(), message: "Are you sure you want to log out?".localized(), okTitle: "Yes".localized(), onCompletion: {type in
-            switch type {
-            case .CONFIRM:
+            if type == .CONFIRM {
                 self.presenter?.exitUser()
-                break
-            case .DISMISS:
-                break
+                let vc = LoginPrefVC.instantiate(from: .Welcome)
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
             }
         })
-        navigationController?.popToRootViewController(animated: true)
     }
 }

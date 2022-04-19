@@ -20,7 +20,7 @@
 
 
 // Change Password
-"Change_Password_Screen_Description" = "Please fill in the information below correctly so that you can change your password.";
+"Change_Password_Screen_Description" = "Please fill in the information below so that you can change your password.";
 "Enter your current password" = "Enter your current password";
 "Please fill in the missing fields" = "Please fill in the missing fields";
 "Passwords entered must be equal." = "Passwords entered must be equal.";

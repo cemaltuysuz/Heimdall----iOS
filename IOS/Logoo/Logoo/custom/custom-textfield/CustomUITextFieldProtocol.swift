@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CustomUITextFieldProtocol {
+protocol CustomUITextFieldProtocol : AnyObject {
      func onRightButtonClick(_ textField:CustomUITextField,isActive:Bool)
      func onValidateResult(_ textField:CustomUITextField, validateResult:ValidateResult)
 }

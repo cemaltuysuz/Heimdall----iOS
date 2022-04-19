@@ -264,6 +264,9 @@
                         <outlet property="interestSelectedCollectionView" destination="ORv-iw-Hug" id="PIs-Fe-9On"/>
                         <outlet property="interestSelectionCollectionView" destination="xAU-vG-IaP" id="Uth-3Y-AS3"/>
                         <outlet property="interestsTableViewIndicator" destination="nel-In-ekA" id="39I-3a-ktZ"/>
+                        <outlet property="saveButtonOutlet" destination="V8D-Uo-8Fr" id="peP-Qf-BI6"/>
+                        <outlet property="screenDescriptionLabel" destination="7mv-Y4-etG" id="gcv-kW-oZR"/>
+                        <outlet property="screenTitleLabel" destination="gGJ-JV-tPw" id="6iE-vz-wG7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfp-bd-qj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

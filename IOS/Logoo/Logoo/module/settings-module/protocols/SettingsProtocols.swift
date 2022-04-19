@@ -23,12 +23,10 @@ protocol PresenterToInteractorSettingsProtocol {
 
 protocol InteractorToPresenterSettingsProtocol {
     func optionsToPresenter(options:[LineMenuItem])
-    func exitUserFeedback()
 }
 
 protocol PresenterToViewSettingsProtocol {
     func optionsToView(options:[LineMenuItem])
-    func exitUserFeedback()
 }
 
 protocol PresenterToRouterSettingsProtocol {

@@ -25,8 +25,4 @@ class SettingsPresenter : ViewToPresenterSettingsProtocol, InteractorToPresenter
     func exitUser() {
         self.interactor?.exitUser()
     }
-    
-    func exitUserFeedback() {
-        self.view?.exitUserFeedback()
-    }
 }

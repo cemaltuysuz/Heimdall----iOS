@@ -103,9 +103,6 @@
 
 "Please wait" = "Lütfen bekleyiniz.";
 
-
-
-
 //  settings
 "Security" = "Güvenlik";
 "Privacy" = "Gizlilik";
@@ -120,7 +117,14 @@
 "Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
 "Yes" = "Evet";
 
+// Interests
+"Your Interests" = "İlgi Alanların";
+"With the right area of ​​interest, you can get better recommendations." = "Doğru ilgi alanı seçimi ile daha iyi öneriler yakalayabilirsiniz.";
+"Sport, art, daily activity..." = "Spor, sanat, günlük aktivite...";
+"Save" = "Kayıt Et";
+
 // Security
+"Account Security" = "Hesap Güvenliği";
 "Change your mail adress" = "Mail adresi değişikliği";
 "Change your password" = "Şifre değişikiği";
 
@@ -139,7 +143,7 @@
 
 // Change password
 
-"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri doğru şekilde doldurunuz.";
+"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri  doldurunuz.";
 "Enter your current password" = "Şu anki şifreniz";
 "Please fill in the missing fields" = "Lütfen eksik alanları doldurun.";
 "Passwords entered must be equal." = "Girilen parolalar eşit olmalıdır.";
