@@ -36,7 +36,6 @@
 		150FF44B27E1F5090094B359 /* SettingsMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44A27E1F5090094B359 /* SettingsMenuItemType.swift */; };
 		150FF44D27E1F85E0094B359 /* SecurityMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */; };
 		150FF45527E2281A0094B359 /* ProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF45427E2281A0094B359 /* ProviderType.swift */; };
-		1517AF89279E968D00D1194E /* Hobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF88279E968D00D1194E /* Hobby.swift */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
 		1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* ChatProtocols.swift */; };
@@ -63,7 +62,6 @@
 		1531F95527E0A82800FA53AE /* LoginSystemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1531F95427E0A82800FA53AE /* LoginSystemType.swift */; };
 		1535674927B792AE007346D4 /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 1535674827B792AE007346D4 /* M13Checkbox */; };
 		1535675527B7F3C9007346D4 /* InterestSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */; };
-		1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535675627B7F97F007346D4 /* InterestSelectionModel.swift */; };
 		153EA96B279FFA2E00871246 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96A279FFA2E00871246 /* RequestType.swift */; };
 		153EA96D279FFA5800871246 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA96C279FFA5800871246 /* MessageType.swift */; };
 		153EA971279FFDC900871246 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA970279FFDC900871246 /* ChatRouter.swift */; };
@@ -195,6 +193,7 @@
 		15C64C6A27BE6F9D0088DD35 /* LoginPrefPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */; };
 		15C64C6C27BE70100088DD35 /* LogInPrefRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */; };
 		15C8704B280EF725006ADBEA /* PreviousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8704A280EF725006ADBEA /* PreviousUser.swift */; };
+		15C8704D280F5205006ADBEA /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8704C280F5205006ADBEA /* Interest.swift */; };
 		15D5614127D8D3DE0081DA5F /* EditFieldCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */; };
 		15D5614627D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */; };
 		15D5614A27D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5614827D8DFEF0081DA5F /* EditFieldWithDatePickerCell.swift */; };
@@ -237,7 +236,7 @@
 		15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */; };
 		15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */; };
 		15FE356A27B6A4CA00D48F9F /* LoginRoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */; };
-		15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357127B6C87E00D48F9F /* InterestSelectProtocol.swift */; };
+		15FE357227B6C87E00D48F9F /* InterestProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357127B6C87E00D48F9F /* InterestProtocols.swift */; };
 		15FE357427B6CCF000D48F9F /* SelectInterestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */; };
 		15FE357627B6CCFA00D48F9F /* SelectInterestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */; };
 		15FE357827B6CD0500D48F9F /* SelectInterestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */; };
@@ -301,7 +300,6 @@
 		150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityMenuItemType.swift; sourceTree = "<group>"; };
 		150FF45227E218C00094B359 /* secureAnim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secureAnim.json; sourceTree = "<group>"; };
 		150FF45427E2281A0094B359 /* ProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderType.swift; sourceTree = "<group>"; };
-		1517AF88279E968D00D1194E /* Hobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hobby.swift; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 		1531F95227E0A7D800FA53AE /* UserTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTransaction.swift; sourceTree = "<group>"; };
 		1531F95427E0A82800FA53AE /* LoginSystemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSystemType.swift; sourceTree = "<group>"; };
 		1535675427B7F3C9007346D4 /* InterestSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionCell.swift; sourceTree = "<group>"; };
-		1535675627B7F97F007346D4 /* InterestSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionModel.swift; sourceTree = "<group>"; };
 		1535675F27BA81D0007346D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1535676127BA81D3007346D4 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		153EA96A279FFA2E00871246 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -445,6 +442,7 @@
 		15C64C6927BE6F9D0088DD35 /* LoginPrefPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPrefPresenter.swift; sourceTree = "<group>"; };
 		15C64C6B27BE70100088DD35 /* LogInPrefRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPrefRouter.swift; sourceTree = "<group>"; };
 		15C8704A280EF725006ADBEA /* PreviousUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousUser.swift; sourceTree = "<group>"; };
+		15C8704C280F5205006ADBEA /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
 		15D5614027D8D3DE0081DA5F /* EditFieldCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCellProtocol.swift; sourceTree = "<group>"; };
 		15D5614427D8D5F60081DA5F /* EditFieldWithTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldWithTextFieldCell.swift; sourceTree = "<group>"; };
 		15D5614527D8D5F60081DA5F /* EditFieldWithTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldWithTextFieldCell.xib; sourceTree = "<group>"; };
@@ -490,7 +488,7 @@
 		15FE356527B6A33100D48F9F /* LoginRouterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterInteractor.swift; sourceTree = "<group>"; };
 		15FE356727B6A3A400D48F9F /* LoginRouterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterPresenter.swift; sourceTree = "<group>"; };
 		15FE356927B6A4CA00D48F9F /* LoginRoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRoutRouter.swift; sourceTree = "<group>"; };
-		15FE357127B6C87E00D48F9F /* InterestSelectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectProtocol.swift; sourceTree = "<group>"; };
+		15FE357127B6C87E00D48F9F /* InterestProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestProtocols.swift; sourceTree = "<group>"; };
 		15FE357327B6CCF000D48F9F /* SelectInterestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestInteractor.swift; sourceTree = "<group>"; };
 		15FE357527B6CCFA00D48F9F /* SelectInterestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestPresenter.swift; sourceTree = "<group>"; };
 		15FE357727B6CD0500D48F9F /* SelectInterestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestRouter.swift; sourceTree = "<group>"; };
@@ -1176,8 +1174,8 @@
 		159FBD7D280C19CE00125C4E /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				1535675627B7F97F007346D4 /* InterestSelectionModel.swift */,
 				159FBD85280C1BC000125C4E /* enums */,
+				15C8704C280F5205006ADBEA /* Interest.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1214,7 +1212,7 @@
 		159FBD81280C1ABC00125C4E /* protocols */ = {
 			isa = PBXGroup;
 			children = (
-				15FE357127B6C87E00D48F9F /* InterestSelectProtocol.swift */,
+				15FE357127B6C87E00D48F9F /* InterestProtocols.swift */,
 				15F272EC27CBA806005BBC78 /* SettingsProtocols.swift */,
 			);
 			path = protocols;
@@ -1424,7 +1422,6 @@
 			children = (
 				15F272F827CBB7A5005BBC78 /* enums */,
 				15064F4E279D492A00460334 /* User.swift */,
-				1517AF88279E968D00D1194E /* Hobby.swift */,
 				1589830227FED7B300853BBC /* UserPost.swift */,
 				1530C24627DA0C86002EBB90 /* edits */,
 			);
@@ -1806,7 +1803,6 @@
 				15FE356627B6A33100D48F9F /* LoginRouterInteractor.swift in Sources */,
 				15C64C4027BD277D0088DD35 /* ResetPasswordInteractor.swift in Sources */,
 				1584957E27CDEDFA00ED57B6 /* UIImageView+.swift in Sources */,
-				1535675727B7F97F007346D4 /* InterestSelectionModel.swift in Sources */,
 				159C3BDF279C5DAA001B9607 /* GlobalVC.swift in Sources */,
 				1589830727FED8D400853BBC /* ProfileProtocols.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
@@ -1816,11 +1812,11 @@
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
 				15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */,
-				1517AF89279E968D00D1194E /* Hobby.swift in Sources */,
 				15A5B41127C686430082029E /* Direct.swift in Sources */,
 				1589832627FF217100853BBC /* NibLoadableView.swift in Sources */,
 				15F272F327CBAA4B005BBC78 /* SettingsRouter.swift in Sources */,
 				15F6707D27FC359F0083E58C /* ChangePasswordVC.swift in Sources */,
+				15C8704D280F5205006ADBEA /* Interest.swift in Sources */,
 				150C8FEB2799506E000DAFBE /* UDService.swift in Sources */,
 				1589830527FED80100853BBC /* UserPostType.swift in Sources */,
 				150FF44B27E1F5090094B359 /* SettingsMenuItemType.swift in Sources */,
@@ -1835,7 +1831,7 @@
 				151CBA1427F07C180088E548 /* LoginTransactionsVC.swift in Sources */,
 				15F6709127FDA8C70083E58C /* FirebaseAuthService.swift in Sources */,
 				151CBA1627F07C520088E548 /* LoginTransactionsProtocols.swift in Sources */,
-				15FE357227B6C87E00D48F9F /* InterestSelectProtocol.swift in Sources */,
+				15FE357227B6C87E00D48F9F /* InterestProtocols.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15D6E03D27D277DC00011A36 /* UIToolbar+.swift in Sources */,
 				150FF44D27E1F85E0094B359 /* SecurityMenuItemType.swift in Sources */,

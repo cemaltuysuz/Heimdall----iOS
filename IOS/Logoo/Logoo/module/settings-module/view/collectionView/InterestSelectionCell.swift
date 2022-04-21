@@ -14,38 +14,35 @@ class InterestSelectionCell: UICollectionViewCell {
     @IBOutlet weak var checkBoxContainer: UIView!
     @IBOutlet weak var interestTitle: UILabel!
     var checkBox:M13Checkbox!
-    var item:InterestSelectionModel!
-    
+    var item:Interest!
+    weak var delegate:InterestActionCellProtocol?
     var indexPath:IndexPath?
-    var cellToVC:InterestSelectCellToViewProtocol?
     
-    func initialize (item:InterestSelectionModel) {
-        
+    func initialize (item:Interest, isSelected:Bool) {
         self.item = item
         
         for view in self.checkBoxContainer.subviews {
             view.removeFromSuperview()
         }
-                
-        if item.isSelected! {
-            self.checkBox = checkBoxGenerator(state: .checked)
-        }else {
-            self.checkBox = checkBoxGenerator(state: .unchecked)
-        }
-        self.checkBox.addTarget(self, action: #selector(self.checkBoxStateChanged), for: .valueChanged)
         
-        self.checkBoxContainer.addSubview(self.checkBox)
-        self.interestTitle.text = item.interestTitle!
+        if isSelected {
+            checkBox = checkBoxGenerator(state: .checked)
+        }else {
+            checkBox = checkBoxGenerator(state: .unchecked)
+        }
+        checkBox.addTarget(self, action: #selector(self.checkBoxStateChanged), for: .valueChanged)
+        
+        checkBoxContainer.addSubview(self.checkBox)
+        interestTitle.text = getLanguageCode == "tr" ? item.interestTR : item.interestEN
     }
     
-    @objc func checkBoxStateChanged(sender : UITapGestureRecognizer) {
-        if self.checkBox.checkState == .checked {
-            self.item.isSelected = true
-            cellToVC?.onClick(item: self.item!)
-        }else {
-            self.item.isSelected = false
-            cellToVC?.onClick(item: self.item!)
+    @objc
+    func checkBoxStateChanged(sender : UITapGestureRecognizer) {
+        if checkBox.checkState == .checked {
+            delegate?.onClickItem(item: item, isInsertAction: true)
+            return
         }
+        delegate?.onClickItem(item: item, isInsertAction: false)
     }
     
     func onClick(indexPath: IndexPath) {
@@ -58,13 +55,9 @@ class InterestSelectionCell: UICollectionViewCell {
         myCheckBox.markType = .checkmark
         myCheckBox.stateChangeAnimation = .expand(.fill)
         myCheckBox.checkState = state
-        myCheckBox.tintColor = UIColor(named: "black700")
-       // myCheckBox.setCheckState(state, animated: true)
-        myCheckBox.frame = self.checkBoxContainer.bounds
+        myCheckBox.tintColor = Color.black700 ?? UIColor.black
+        myCheckBox.frame = checkBoxContainer.bounds
+        
         return myCheckBox
     }
-}
-
-protocol InterestSelectCellToViewProtocol {
-    func onClick(item:InterestSelectionModel)
 }

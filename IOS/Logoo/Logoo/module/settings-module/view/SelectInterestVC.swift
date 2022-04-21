@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class SelectInterestVC: UIViewController {
+class SelectInterestVC: BaseVC {
     
     @IBOutlet weak var interestSearchBar: UISearchBar!
     @IBOutlet weak var interestsTableViewIndicator: UIActivityIndicatorView!
@@ -21,8 +21,9 @@ class SelectInterestVC: UIViewController {
     
     private var pendingRequestWorkItem: DispatchWorkItem?
     
-    var hobbyList:[InterestSelectionModel]?
-    var alreadySelectedList:[String]?
+    var allInterests = [Interest]()
+    var userInterests:[Interest]?
+    
     var presenter:ViewToPresenterInterestSelectProtocol?
     var isFirst:Bool? = false
     var alert:CustomAlert?
@@ -55,9 +56,8 @@ class SelectInterestVC: UIViewController {
     }
     
     @IBAction func interestsSaveButton(_ sender: Any) {
-        if self.alreadySelectedList?.count ?? 0 > 0 {
-            interestsTableViewIndicator.startAnimating()
-            presenter?.saveInterests(list: alreadySelectedList!)
+        if let userInterests = userInterests {
+            presenter?.saveInterests(list: userInterests)
         }
     }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
@@ -98,112 +98,102 @@ extension SelectInterestVC : UISearchBarDelegate {
 }
 
 extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
-    func userAlreadyHobbies(alreadyList: [String]) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            strongSelf.alreadySelectedList = alreadyList
-            strongSelf.interestSelectedCollectionView.reloadData()
-            strongSelf.interestSelectionCollectionView.reloadData()
-        }
-    }
     
-    func allHobies(hobbyList: [InterestSelectionModel]) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            strongSelf.hobbyList = hobbyList
-            strongSelf.interestSelectionCollectionView.reloadData()
-            strongSelf.interestsTableViewIndicator.stopAnimating()
-        }
-    }
-    
-    func indicatorVisibility(status: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            if status {
-                strongSelf.interestsTableViewIndicator.startAnimating()
-            }else {
-                strongSelf.interestsTableViewIndicator.stopAnimating()
+    func onStateChange(state: InterestsState) {
+        closeCurtain()
+        switch state {
+        case .interests(let pagedInterests):
+            DispatchQueue.main.async {
+                self.allInterests += pagedInterests
+                self.interestSelectionCollectionView.reloadData()
             }
-        }
-    }
-    
-    func saveInterestsResponse(resp: Resource<Any>) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            
-            strongSelf.alert?.dismissAlert()
-            if resp.status == .SUCCESS {
-                if strongSelf.isFirst ?? false {
+            break
+        case .userInterests(let userInterests):
+            DispatchQueue.main.async {
+                self.userInterests = userInterests
+                self.interestSelectedCollectionView.reloadData()
+            }
+            break
+        case .showCurtain:
+            showCurtain()
+            break
+        case .saveInterestsResponse(let response):
+            if response.status ?? false {
+                if self.isFirst ?? false {
                     let vc = CustomTabBarController.instantiate(from: .Main)
                     vc.modalPresentationStyle = .fullScreen
-                    strongSelf.present(vc, animated: true)
+                    self.present(vc, animated: true)
                 }else {
-                    strongSelf.dismiss(animated: true)
+                    self.dismiss(animated: true)
                 }
             }else {
-                print("Error when save interest : \(resp.message!)")
+                createAlertNotify(title: "Error".localized(),
+                                  message: "An error occurred while saving interests. Please try again later.".localized())
             }
-            strongSelf.interestsTableViewIndicator.stopAnimating()
+            break
         }
     }
 }
 
-extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSource, InterestSelectCellToViewProtocol {
+extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSource, InterestActionCellProtocol {
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == self.interestSelectedCollectionView {
-            return alreadySelectedList?.count ?? 0
+            return userInterests?.count ?? 0
         }
-        return hobbyList?.count ?? 0
+        return allInterests.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == self.interestSelectedCollectionView {
-            let current = alreadySelectedList![indexPath.row]
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectedCell", for: indexPath) as! InterestSelectedCell
-            cell.deSelect = self
-            cell.initialize(row: current)
+            let item = userInterests![indexPath.row]
+            let cell = collectionView.dequeue(indexPath, type: InterestSelectedCell.self)
+            cell.delegate = self
+            cell.initialize(item: item)
             return cell
         }
         
-        
-        var current = hobbyList![indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectionCell", for: indexPath) as! InterestSelectionCell
-        
-        current.isSelected = alreadySelectedList!.contains(current.interestTitle!)
-        
-        cell.initialize(item: current)
+        let item = allInterests[indexPath.row]
+        let cell = collectionView.dequeue(indexPath, type: InterestSelectionCell.self)
         cell.indexPath = indexPath
-        cell.cellToVC = self
+        cell.delegate = self
+        
+        for index in userInterests ?? [] {
+            if item.interestKey == index.interestKey {
+                cell.initialize(item: item, isSelected: true)
+                return cell
+            }
+        }
+        cell.initialize(item: item, isSelected: false)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    // From CollectionView Cell
-    func onClick(item: InterestSelectionModel) {
+    func onClickItem(item: Interest, isInsertAction: Bool) {
         DispatchQueue.main.async {
-            if item.isSelected! == true {
-                self.alreadySelectedList?.append(item.interestTitle!)
+            if isInsertAction == true {
+                self.userInterests?.append(item)
             }else {
                 var count = 0
-                for i in self.alreadySelectedList! {
-                    if i == item.interestTitle! {
-                        self.alreadySelectedList!.remove(at: count)
+                for i in self.userInterests! {
+                    if i.interestKey == item.interestKey {
+                        self.userInterests!.remove(at: count)
                         break
                     }
                     count = count + 1
                 }
             }
-            self.interestSelectionCollectionView.reloadData()
             self.interestSelectedCollectionView.reloadData()
+            self.interestSelectionCollectionView.reloadData()
         }
     }
 }
 
-
-enum SelectInterestVCSegues : String {
-    case interestSelectionToHomeVC = "interestSelectionToHomeVC"
+enum InterestsState  {
+    case interests(pagedInterests:[Interest])
+    case userInterests(userInterests:[Interest]?)
+    case showCurtain
+    case saveInterestsResponse(response:SimpleResponse)
 }

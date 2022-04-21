@@ -122,6 +122,7 @@
 "With the right area of ​​interest, you can get better recommendations." = "Doğru ilgi alanı seçimi ile daha iyi öneriler yakalayabilirsiniz.";
 "Sport, art, daily activity..." = "Spor, sanat, günlük aktivite...";
 "Save" = "Kayıt Et";
+"An error occurred while saving interests. Please try again later." = "İlgi alanları kayıt edilirken hata meydana geldi. Lütfen sonra tekrar deneyiniz.";
 
 // Security
 "Account Security" = "Hesap Güvenliği";

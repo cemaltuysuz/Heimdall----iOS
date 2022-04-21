@@ -14,98 +14,88 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
     
     var presenter: InteractorToPresenterInterestSelectProtocol?
     let dbRef = Firestore.firestore()
+    var lastSnapshot:DocumentSnapshot?
     
-    private var allHobbies:[InterestSelectionModel]?
-    
-    init(){
-        self.allHobbies = [InterestSelectionModel]()
-    }
+    var interestPageLimit:Int = 20
     
     func getInterests() {
-        var alreadyHobbies = [String]()
-        var hobbyList = [InterestSelectionModel]()
         
         guard let uuid = Auth.auth().currentUser?.uid else {return}
-        
-        dbRef.collection("users").document(uuid).getDocument{ (document,error) in
+        let query = getQuery()
+        FireStoreService.shared.getCollection(query: query,
+                                              onCompletion: {(interests:[Interest?]?, lastSnap,error) in
+            
             if let error = error {
-                print("hata var \(error.localizedDescription)")
-                return
-            }
-            if let document = document, document.exists {
-                let userInterests = document.data()?["userInterests"] as? String ?? ""
-                if !userInterests.isEmpty {
-                    alreadyHobbies = userInterests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
-                    self.presenter?.userAlreadyHobbies(alreadyList: alreadyHobbies)
+                print(error)
+                if let _ = self.lastSnapshot {
+                    // TODO: Close pagination indicator
+                }else {
+                    // TODO: SHOW ERROR MESSAGE
                 }
-            }
-        }
-        
-        
-        dbRef.collection("interests").getDocuments{(snapshot, error) in
-            if let error = error {
-                print("Error : \(error.localizedDescription)")
                 return
-            }else {
-                guard let snap = snapshot else {
-                    return}
-                                
-                for document in snap.documents {
-                    //document.
-                    let data = document.data()
-                    let interest = data["Interest"] as? String ?? ""
-                    if !interest.isEmpty {
-                        hobbyList.append(
-                            InterestSelectionModel(title: interest,
-                                                   status: false))
+            }
+            self.lastSnapshot = lastSnap
+            var nonOptionalInterests = [Interest]()
+            
+            if let interests = interests {
+                for interest in interests {
+                    if let interest = interest {
+                        nonOptionalInterests.append(interest)
                     }
                 }
-                
-                self.allHobbies = hobbyList
-                self.presenter?.allHobies(hobbyList: hobbyList)
             }
-        }
+            self.presenter?.onStateChange(state: .interests(pagedInterests: nonOptionalInterests))
+            
+            let userDocumentRef = self.dbRef.collection(FireStoreCollection.USER_COLLECTION).document(uuid)
+            FireStoreService.shared.getDocument(ref: userDocumentRef,
+                                                onCompletion: {(user:User?) in
+                if let user = user {
+                    self.presenter?.onStateChange(state: .userInterests(userInterests: user.userInterests))
+                }
+            })
+        })
     }
     
-    func saveInterests(list: [String]) {
-        if let uuid = Auth.auth().currentUser?.uid {
-            var hobby:String = ""
+    func getQuery() -> Query{
+        var query:Query!
+        if let lastSnapshot = lastSnapshot {
+            query = dbRef.collection(FireStoreCollection.INTEREST_COLLECTION).start(afterDocument: lastSnapshot)
+        }else {
+            query = dbRef.collection(FireStoreCollection.INTEREST_COLLECTION).limit(to: interestPageLimit)
+        }
+        return query
+    }
+    
+    func saveInterests(list: [Interest]) {
+        guard let uuid = FirebaseAuthService.shared.getUUID() else { return }
             
-            for index in list {
-                hobby = (hobby + index)
-                if index != list.last {
-                    hobby = hobby + "&"
-                }
-            }
-            dbRef.collection("users")
+            dbRef.collection(FireStoreCollection.USER_COLLECTION)
                 .document(uuid)
-                .updateData(["userInterests":hobby]){error in
+                .updateData(["userInterests":list]){error in
                     if let error = error {
-                        self.presenter?.indicatorVisibility(status: false)
-                        self.presenter?.saveInterestsResponse(resp: Resource<Any>(status: .ERROR, data: nil, message: error.localizedDescription))
+                        self.presenter?.onStateChange(state: .saveInterestsResponse(response: SimpleResponse(status: false, message: error.localizedDescription)))
                         return
                     }
-                    
-                } 
-            self.presenter?.indicatorVisibility(status: false)
-            self.presenter?.saveInterestsResponse(resp: Resource<Any>(status: .SUCCESS, data: nil, message: nil))
-        }
+                    self.presenter?.onStateChange(state: .saveInterestsResponse(response: SimpleResponse(status: true, message: nil)))
+                }
     }
     
     func searchInterest(searchText: String) {
-        var searchList = [InterestSelectionModel]()
-        if !searchText.isEmpty {
-            if !self.allHobbies!.isEmpty {
-                for index in self.allHobbies! {
-                        if index.interestTitle!.lowercased().contains(searchText.lowercased()) {
-                            searchList.append(index)
-                        }
-                    }
-                    self.presenter?.allHobies(hobbyList: searchList)
-                }
-        }else {
-            self.presenter?.allHobies(hobbyList: self.allHobbies!)
-        }
+/**
+ var searchList = [InterestSelectionModel]()
+ if !searchText.isEmpty {
+     if !self.allHobbies!.isEmpty {
+         for index in self.allHobbies! {
+                 if index.interestTitle!.lowercased().contains(searchText.lowercased()) {
+                     searchList.append(index)
+                 }
+             }
+             self.presenter?.allHobies(hobbyList: searchList)
+         }
+ }else {
+     self.presenter?.allHobies(hobbyList: self.allHobbies!)
+ }
+ */
     }
     
 }
