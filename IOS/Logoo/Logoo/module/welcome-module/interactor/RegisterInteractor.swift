@@ -135,7 +135,7 @@ class RegisterInteractor : PresenterToInteractorRegister{
                                        userGender: self.userGender!.rawValue,
                                        userBirthDay: self.userBirthDay!,
                                        userManifesto: "",
-                                       userInterests: "",
+                                       userInterests: [],
                                        userLastSeen: "",
                                        userRegisterTime: "\(timeInSeconds())",
                                        isAnonymous: false,

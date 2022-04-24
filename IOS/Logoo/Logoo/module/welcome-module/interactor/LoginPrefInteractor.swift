@@ -67,7 +67,7 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                                                userGender: "",
                                                userBirthDay: "",
                                                userManifesto: "",
-                                               userInterests: "",
+                                               userInterests: [],
                                                userLastSeen: "",
                                                userRegisterTime: "\(timeInSeconds())",
                                                isAnonymous: false,

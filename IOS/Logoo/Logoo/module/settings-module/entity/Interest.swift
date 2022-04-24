@@ -15,4 +15,8 @@ struct Interest: Codable {
         case interestEN = "InterestEN"
         case interestTR = "InterestTR"
     }
+    
+    func getInterest() -> String {
+        return Locale.current.languageCode == "tr" ? interestTR : interestEN
+    }
 }

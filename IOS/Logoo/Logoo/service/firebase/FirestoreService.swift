@@ -156,7 +156,7 @@ class FireStoreService {
             }
         })
     }
-    
+
     public func updateDocumentByField(ref:DocumentReference,fields:[String:String],onCompletion: @escaping (SimpleResponse) -> Void) {
             ref.updateData(fields) {error in
                 if let error = error {

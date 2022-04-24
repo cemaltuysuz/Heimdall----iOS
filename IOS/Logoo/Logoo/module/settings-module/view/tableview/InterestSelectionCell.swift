@@ -1,15 +1,14 @@
 //
-//  InterestSelectionCell.swift
+//  InterestsTableViewCell.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 12.02.2022.
+//  Created by cemal tüysüz on 24.04.2022.
 //
 
 import UIKit
 import M13Checkbox
 
-class InterestSelectionCell: UICollectionViewCell {
-    
+class InterestSelectionCell: UITableViewCell {
     
     @IBOutlet weak var checkBoxContainer: UIView!
     @IBOutlet weak var interestTitle: UILabel!

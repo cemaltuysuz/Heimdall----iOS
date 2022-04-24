@@ -14,11 +14,8 @@ class InterestViewerCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
     
     func congfigureCell(interest:String) {
-        print("**********")
-        print(interest)
         interestLabel.text = interest
     }
 }

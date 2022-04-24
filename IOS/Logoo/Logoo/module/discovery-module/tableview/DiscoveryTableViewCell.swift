@@ -17,7 +17,7 @@ class DiscoveryTableViewCell: UITableViewCell {
     
     func initialize(user:User){
         if let interests = user.userInterests, !interests.isEmpty {
-            hobbies = interests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
+           // hobbies = interests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
             discoveryUserHobbiesCollectionView.delegate = self
             discoveryUserHobbiesCollectionView.dataSource = self
         }
@@ -25,17 +25,6 @@ class DiscoveryTableViewCell: UITableViewCell {
         discoveryUsernameLabel.text = user.username!
         
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
 }
 
 extension DiscoveryTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource {

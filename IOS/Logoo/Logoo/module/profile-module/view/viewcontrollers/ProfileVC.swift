@@ -100,7 +100,7 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             
             self.userManifestoTextView.text = user.userManifesto
             
-            if let interests = user.userInterests?.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR) {
+            if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
             

@@ -22,9 +22,9 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
         getCurrentUser(userCompletion: {currentUser in
             if let currentUser = currentUser {
                 // current user interests
-                var currentUserInterests = [String]()
+                var _ = [String]()
                 if let cInterests = currentUser.userInterests, !cInterests.isEmpty {
-                    currentUserInterests += cInterests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
+                    //currentUserInterests += cInterests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
                 }
                 // get previous users
                 self.getPreviousUsers(dateLimit: self.previousUsersDateLimit,
@@ -67,7 +67,7 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
         let previousUsersQuery = dbRef.collection(FireStoreCollection.USER_COLLECTION).whereField("timestamp", isGreaterThanOrEqualTo: previousTimestamp)
         
         FireStoreService.shared.getCollection(query: previousUsersQuery,
-                                              onCompletion: {(users: [PreviousUser?]?,error) in
+                                              onCompletion: {(users: [PreviousUser?]?,_,error) in
             guard let error = error else {
                 var nonOptionalPreviousUsers = [PreviousUser]()
                 

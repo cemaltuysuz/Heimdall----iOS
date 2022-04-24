@@ -11,12 +11,11 @@ import FirebaseFirestore
 class SelectInterestVC: BaseVC {
     
     @IBOutlet weak var interestSearchBar: UISearchBar!
-    @IBOutlet weak var interestsTableViewIndicator: UIActivityIndicatorView!
     @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var screenDescriptionLabel: UILabel!
     @IBOutlet weak var saveButtonOutlet: UIButton!
     
-    @IBOutlet weak var interestSelectionCollectionView: UICollectionView!
+    @IBOutlet weak var interestSelectionTableView: UITableView!
     @IBOutlet weak var interestSelectedCollectionView: UICollectionView!
     
     private var pendingRequestWorkItem: DispatchWorkItem?
@@ -37,9 +36,9 @@ class SelectInterestVC: BaseVC {
         configureBinds()
     }
     
-    func configureBinds(){
-        interestSelectionCollectionView.delegate = self
-        interestSelectionCollectionView.dataSource = self
+    func configureBinds() {
+        interestSelectionTableView.delegate = self
+        interestSelectionTableView.dataSource = self
         
         interestSelectedCollectionView.delegate = self
         interestSelectedCollectionView.dataSource = self
@@ -47,12 +46,15 @@ class SelectInterestVC: BaseVC {
         interestSearchBar.delegate = self
     }
     
-    func configureUI(){
+    func configureUI() {
         screenTitleLabel.text = "Your Interests".localized()
         screenDescriptionLabel.text = "With the right area of ​​interest, you can get better recommendations.".localized()
         interestSearchBar.placeholder = "Sport, art, daily activity...".localized()
         saveButtonOutlet.setTitle("Save".localized(), for: .normal)
         interestSearchBar.tintColor = .black
+        
+        interestSelectionTableView.register(InterestSelectionCell.self)
+        interestSelectionTableView.rowHeight = UITableView.automaticDimension
     }
     
     @IBAction func interestsSaveButton(_ sender: Any) {
@@ -105,13 +107,14 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
         case .interests(let pagedInterests):
             DispatchQueue.main.async {
                 self.allInterests += pagedInterests
-                self.interestSelectionCollectionView.reloadData()
+                self.interestSelectionTableView.reloadData()
             }
             break
         case .userInterests(let userInterests):
             DispatchQueue.main.async {
                 self.userInterests = userInterests
                 self.interestSelectedCollectionView.reloadData()
+                self.interestSelectionTableView.reloadData()
             }
             break
         case .showCurtain:
@@ -140,34 +143,15 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == self.interestSelectedCollectionView {
-            return userInterests?.count ?? 0
-        }
-        return allInterests.count
+        return userInterests?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == self.interestSelectedCollectionView {
-            let item = userInterests![indexPath.row]
-            let cell = collectionView.dequeue(indexPath, type: InterestSelectedCell.self)
-            cell.delegate = self
-            cell.initialize(item: item)
-            return cell
-        }
-        
-        let item = allInterests[indexPath.row]
-        let cell = collectionView.dequeue(indexPath, type: InterestSelectionCell.self)
-        cell.indexPath = indexPath
+        let item = userInterests![indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectedCell", for: indexPath) as! InterestSelectedCell
         cell.delegate = self
-        
-        for index in userInterests ?? [] {
-            if item.interestKey == index.interestKey {
-                cell.initialize(item: item, isSelected: true)
-                return cell
-            }
-        }
-        cell.initialize(item: item, isSelected: false)
+        cell.initialize(item: item)
         return cell
     }
     
@@ -186,8 +170,31 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
                 }
             }
             self.interestSelectedCollectionView.reloadData()
-            self.interestSelectionCollectionView.reloadData()
+            self.interestSelectionTableView.reloadData()
         }
+    }
+}
+
+extension SelectInterestVC : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allInterests.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = allInterests[indexPath.row]
+        let cell = tableView.dequeue(indexPath, type: InterestSelectionCell.self)
+        cell.indexPath = indexPath
+        cell.delegate = self
+        
+        for index in userInterests ?? [] {
+            if item.interestKey == index.interestKey {
+                cell.initialize(item: item, isSelected: true)
+                return cell
+            }
+        }
+        cell.initialize(item: item, isSelected: false)
+        return cell
     }
 }
 
@@ -197,3 +204,4 @@ enum InterestsState  {
     case showCurtain
     case saveInterestsResponse(response:SimpleResponse)
 }
+
