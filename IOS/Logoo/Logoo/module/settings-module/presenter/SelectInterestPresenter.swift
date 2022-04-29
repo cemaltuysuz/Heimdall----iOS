@@ -20,6 +20,10 @@ class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, Vie
         interactor?.getInterests(pageLimit)
     }
     
+    func getUserInterests() {
+        interactor?.getUserInterests()
+    }
+    
     func saveInterests(list: [Interest]) {
         interactor?.saveInterests(list: list)
     }
@@ -27,5 +31,12 @@ class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, Vie
     func searchInterest(searchText: String) {
         interactor?.searchInterest(searchText: searchText)
     }
+    
+    func deleteInterest(_ interestID: String) {
+        interactor?.deleteInterest(interestID)
+    }
 
+    func resetPagination() {
+        interactor?.resetPagination()
+    }
 }

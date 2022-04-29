@@ -34,6 +34,7 @@ class SelectInterestVC: BaseVC {
         super.viewDidLoad()
         SelectInterestRouter.createModule(ref: self)
         presenter?.getInterests(pageLimit)
+        presenter?.getUserInterests()
                 
         configureUI()
         configureBinds()
@@ -79,11 +80,20 @@ class SelectInterestVC: BaseVC {
 
 extension SelectInterestVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.resetPagination()
+        
         // Cancel previous work when user input data.
         searchBarPendingRequestWorkItem?.cancel()
         
         let requestWorkItem = DispatchWorkItem { [weak self] in
-            self?.presenter?.searchInterest(searchText: searchText)
+            if !searchText.isEmpty {
+                if searchText.count >= 4 {
+                    self?.presenter?.searchInterest(searchText: searchText)
+                }
+            }else {
+                self?.allInterests.removeAll()
+                self?.presenter?.getInterests(self?.pageLimit ?? 0)
+            }
         }
         // I created a work with 250 millisecond delay.
         searchBarPendingRequestWorkItem = requestWorkItem
@@ -92,7 +102,11 @@ extension SelectInterestVC : UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
+        if let searchString = searchBar.text, !searchString.trimmingCharacters(in: .whitespaces).isEmpty {
+            allInterests.removeAll()
+            presenter?.getInterests(pageLimit)
+            searchBar.text = ""
+        }
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
     }
@@ -149,6 +163,11 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
             self.loadViewPendingRequestWorkItem = workItem
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500), execute: workItem)
             break
+        case .searchedInterests(let interests):
+            allInterests.removeAll()
+            allInterests += interests
+            interestSelectionTableView.reloadData()
+            break
         }
     }
 }
@@ -178,6 +197,7 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
                 for i in self.userInterests! {
                     if i.interestKey == item.interestKey {
                         self.userInterests!.remove(at: count)
+                        //self.presenter?.deleteInterest(item.interestKey)
                         break
                     }
                     count = count + 1
@@ -197,15 +217,12 @@ extension SelectInterestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sectionType = InterestSelectionTableViewSection(rawValue: section) else {return 0}
-        print("********* Bu el ki section : \(section)")
         
         switch sectionType {
         case .Interests:
-            print("******** Interests Donus yapiliyor stat is")
             return allInterests.count
         case .LoadView:
             let stat = allInterests.count >= pageLimit
-            print("******** LoadView Donus yapiliyor stat is \(stat)")
             return stat ? 1 : 0
         }
     }
@@ -228,7 +245,6 @@ extension SelectInterestVC : UITableViewDelegate, UITableViewDataSource {
             cell.initialize(item: item, isSelected: false)
             return cell
         }
-        print("***********load cell ayağa kalktı")
         let cell = tableView.dequeue(indexPath, type: PaginationLoadCell.self)
         return cell
     }
@@ -238,7 +254,6 @@ extension SelectInterestVC : UITableViewDelegate, UITableViewDataSource {
         guard !allInterests.isEmpty else { return }
         
         if sectionType == .LoadView {
-            print("********load cell gösterilecek")
             (cell as! PaginationLoadCell).startAnimating()
             presenter?.getInterests(pageLimit)
         }
@@ -251,6 +266,7 @@ enum InterestsState  {
     case showCurtain
     case saveInterestsResponse(response:SimpleResponse)
     case getInterestError
+    case searchedInterests(interests:[Interest])
 }
 
 enum InterestSelectionTableViewSection : Int,CaseIterable {

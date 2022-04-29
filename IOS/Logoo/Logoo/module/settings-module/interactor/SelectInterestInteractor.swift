@@ -15,10 +15,9 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
     var presenter: InteractorToPresenterInterestSelectProtocol?
     let dbRef = Firestore.firestore()
     var lastSnapshot:DocumentSnapshot?
-        
+    
     func getInterests(_ pageLimit:Int) {
         
-        guard let uuid = Auth.auth().currentUser?.uid else {return}
         // get query by lastSnapshot
         let query = getQuery(pageLimit)
         // Paginated Interests
@@ -47,29 +46,33 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
             }
             // push paginated list to view
             self.presenter?.onStateChange(state: .interests(pagedInterests: nonOptionalInterests))
+        })
+    }
+    
+    func getUserInterests(){
+        guard let uuid = Auth.auth().currentUser?.uid else {return}
+        
+        // user interests firestore reference
+        let userInterestsRef = self.dbRef.collection(FireStoreCollection.USER_COLLECTION).document(uuid).collection(FireStoreCollection.USER_INTERESTS)
+        
+        FireStoreService.shared.getCollection(ref: userInterestsRef,
+                                              onCompletion: {(interests:[Interest?]?,error) in
             
-            // user interests firestore reference
-            let userInterestsRef = self.dbRef.collection(FireStoreCollection.USER_COLLECTION).document(uuid).collection(FireStoreCollection.USER_INTERESTS)
+            if let error = error {
+                print(error)
+                return
+            }
             
-            FireStoreService.shared.getCollection(ref: userInterestsRef,
-                                                  onCompletion: {(interests:[Interest?]?,error) in
-                
-                if let error = error {
-                    print(error)
-                    return
-                }
-                
-                var noOptionalUserInterests = [Interest]()
-                if let interests = interests {
-                    for interest in interests {
-                        if let interest = interest {
-                            noOptionalUserInterests.append(interest)
-                        }
+            var noOptionalUserInterests = [Interest]()
+            if let interests = interests {
+                for interest in interests {
+                    if let interest = interest {
+                        noOptionalUserInterests.append(interest)
                     }
                 }
-                // push user's interests to view
-                self.presenter?.onStateChange(state: .userInterests(userInterests: noOptionalUserInterests))
-            })
+            }
+            // push user's interests to view
+            self.presenter?.onStateChange(state: .userInterests(userInterests: noOptionalUserInterests))
         })
     }
     
@@ -139,8 +142,50 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
             })
         }
     }
+    
     func searchInterest(searchText: String) {
-
+        lastSnapshot = nil
+        let key = (Locale.current.languageCode ?? "en" == "en") ? Interest.CodingKeys.interestEN.rawValue : Interest.CodingKeys.interestTR.rawValue
+        
+        let lessValue = searchText + "\u{f8ff}"
+        let query = dbRef.collection(FireStoreCollection.INTEREST_COLLECTION)
+            .whereField(key, isGreaterThanOrEqualTo: searchText)
+            .whereField(key, isLessThanOrEqualTo: lessValue)
+            
+        
+        FireStoreService.shared.getCollection(query: query, onCompletion: {(interests:[Interest?]?,_,error) in
+            if let error = error {
+                print(error)
+                // show error
+            }
+            
+            var nonOptionalInterests = [Interest]()
+            if let interests = interests {
+                for interest in interests {
+                    if let interest = interest {
+                        nonOptionalInterests.append(interest)
+                    }
+                }
+                self.presenter?.onStateChange(state: .searchedInterests(interests: nonOptionalInterests))
+            }
+        })
+    }
+    
+    func resetPagination() {
+        lastSnapshot = nil
+    }
+    
+    func deleteInterest(_ interestID: String) {
+        guard let userUid = FirebaseAuthService.shared.getUUID() else {return}
+        
+        let document = dbRef.collection(FireStoreCollection.USER_COLLECTION).document(userUid).collection(FireStoreCollection.USER_INTERESTS).document(interestID)
+        
+        document.delete(completion: {error in
+            if let error = error {
+                print(error)
+                // TODO: SHOW ERROR FOR INTEREST DELETE FAILED
+            }
+        })
     }
     
 }
