@@ -18,30 +18,44 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userCountryLabel: UILabel!
     @IBOutlet weak var userGenderLabel: UILabel!
     
+    @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
-    
-    
     var presenter:ViewToPresenterProfileProtocol?
+    var userUUID:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ProfileRouter.createModule(ref: self)
         configureUI()
         loadPage()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.loadPage()
+        loadPage()
     }
     
     func configureUI(){
         let height = userInterestsViewer.interestsCollectionView.collectionViewLayout.collectionViewContentSize.height
         userInterestsViewer.heightAnchor.constraint(equalToConstant: height).activate(withIdentifier: "interestsHeightConstant")
         userManifestoTextView.heightAnchor.constraint(equalToConstant: 50).activate(withIdentifier: "userManifestoHeightConstraint")
+        userInterestsViewer.delegate = self
+        if userUUID != nil {
+            print("nil değil")
+            settingsBarButtonItem.isEnabled = false
+            editProfileBarButtonItem.isEnabled = false
+            settingsBarButtonItem.tintColor = UIColor.clear
+            editProfileBarButtonItem.tintColor = UIColor.clear
+        }else {
+            print("nil nil")
+        }
     }
     
     func loadPage(){
-        userInterestsViewer.delegate = self
-        presenter?.loadPage()
+        // if userUUD object is nil, interactor get account owner informations.
+        // is userUUID object is not nil, interactor get spesific user informations.
+        presenter?.loadPage(userUUID)
     }
     
     func updateUserManifesto(text:String) {
@@ -82,6 +96,7 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     
     func loadUser(user:User) {
         DispatchQueue.main.async {
+            print("user geldi :\(user)")
             
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)

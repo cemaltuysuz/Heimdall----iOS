@@ -11,58 +11,95 @@ class DiscoverVC: BaseVC {
 
     var presenter:ViewToPresenterDiscorveryProtocol?
     var discoveredUsers:[User]?
-    @IBOutlet weak var discoveryTableView: UITableView!
+    
+    let cellWidthRatio:CGFloat = 0.23 // by frame width
+    let cellHeightRatio:CGFloat = 1.4 // by cell frame width
+    let discoveredUsersCollectionViewPadding:CGFloat = 20
+    
+    var cellWidth : CGFloat!
+    var cellHeiht: CGFloat!
+    
+   // @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var discoveredUsersCollectionView: UICollectionView!
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // initialize variable
-        discoveredUsers = [User]()
+        configureUI()
+        configureBinds()
         
         DiscoveryRouter.createModule(ref: self)
         presenter?.getDiscoveredUsers()
         
-        discoveryTableView.delegate = self
-        discoveryTableView.dataSource = self
+    }
+    
+    func configureUI(){
+        let deviceWidth = view.frame.width
+        cellWidth = deviceWidth * cellWidthRatio
+        cellHeiht = cellWidth * cellHeightRatio
+        let totalCellArea = cellWidth * 3
+        let totalDiscoveredUsersCollectionViewPadding = CGFloat(discoveredUsersCollectionViewPadding * 2)
+        let interItemSpace = (deviceWidth - (totalCellArea + totalDiscoveredUsersCollectionViewPadding)) / 2
+        
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0,
+                                           left: discoveredUsersCollectionViewPadding,
+                                           bottom: 0,
+                                           right: discoveredUsersCollectionViewPadding)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = interItemSpace
+        layout.minimumLineSpacing = 5
+        discoveredUsersCollectionView.collectionViewLayout = layout
+    }
+    
+    func configureBinds(){
+        discoveredUsersCollectionView.delegate = self
+        discoveredUsersCollectionView.dataSource = self
+        discoveredUsersCollectionView.register(DiscoveredUserCollectionViewCell.self)
     }
 }
 
-extension DiscoverVC : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return discoveredUsers!.count
+extension DiscoverVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return discoveredUsers?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let current = discoveredUsers![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "discoveryTableViewCell", for: indexPath) as! DiscoveryTableViewCell
-        
-        cell.initialize(user: current)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = discoveredUsers![indexPath.row]
+        let cell = collectionView.dequeue(indexPath, type: DiscoveredUserCollectionViewCell.self)
+        cell.delegate = self
+        cell.initialize(item)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellHeiht)
     }
 }
 
 extension DiscoverVC : PresenterToViewDiscorveryProtocol {
-    func discoveredUsersResponse(response: Resource<[User]>) {
-        DispatchQueue.main.async {
-            if response.status == .SUCCESS {
-                self.discoveredUsers = response.data!
-                self.discoveryTableView.reloadData()
-            }else {
-                print("error")
+    func onStateChange(state: DiscoveryState) {
+        switch state {
+        case .discoveredUsers(let users):
+            DispatchQueue.main.async {
+                self.discoveredUsers = users
+                self.discoveredUsersCollectionView.reloadData()
             }
+            break
         }
     }
-        
-    
-    func discoveredUsersToView(users: [User]) {
-        DispatchQueue.main.async {
-            self.discoveredUsers = users
-            self.discoveryTableView.reloadData()
-        }
+}
+
+extension DiscoverVC : DiscoveredUserCollectionViewCellProtocol {
+    func onUserClick(_ user: User) {
+        let vc = ProfileVC.instantiate(from: .Profile)
+        vc.userUUID = user.userId
+        navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+enum DiscoveryState{
+    case discoveredUsers(users:[User])
 }
 

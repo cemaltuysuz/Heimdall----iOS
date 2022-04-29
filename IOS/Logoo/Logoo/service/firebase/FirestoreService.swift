@@ -31,7 +31,7 @@ class FireStoreService {
     func getDocument<T>(ref: DocumentReference, onCompletion: @escaping (T?) -> Void) where T:Codable{
         ref.getDocument{ (document,error) in
             if let error = error {
-                print("Error: \(error.localizedDescription)")
+                print("Error: \(error)")
                 return
             }
             let result = Result {

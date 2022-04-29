@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RegisterBirthDayCellProtocol : AnyObject {
-    func birthDaySelected(date:String)
+    func birthDaySelected(birthDay:String)
 }
 
 class RegisterBirthDayCell: UICollectionViewCell {
@@ -34,12 +34,10 @@ class RegisterBirthDayCell: UICollectionViewCell {
 
 extension RegisterBirthDayCell : Registerable {
     func validate() -> ValidationResponse {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY"
-        let strDate = dateFormatter.string(from: registerBirthDayDatePicker.date)
+        let date = registerBirthDayDatePicker.date
         
-        delegate?.birthDaySelected(date: strDate)
-        return ValidationResponse(status: true, message: "birth okey")
+        delegate?.birthDaySelected(birthDay: date.toStringWithPattern(pattern: GeneralConstant.DATE_OF_BIRTH_PATTERN))
+        return ValidationResponse(status: true, message: nil)
     }
 }
 

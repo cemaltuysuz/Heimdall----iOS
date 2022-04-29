@@ -18,22 +18,9 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
     var dbRef = Firestore.firestore()
     
     func getDiscoveredUsers() {
-        // get current user
-        getCurrentUser(userCompletion: {currentUser in
-            if let currentUser = currentUser {
-                // current user interests
-                var _ = [String]()
-                if let cInterests = currentUser.userInterests, !cInterests.isEmpty {
-                    //currentUserInterests += cInterests.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR)
-                }
-                // get previous users
-                self.getPreviousUsers(dateLimit: self.previousUsersDateLimit,
-                                 userCompletion: {previousUsers in
-                    
-                })
-            }else {
-                // TODO: SHOW ERROR PAGE
-            }
+        guard let currentUserId = FirebaseAuthService.shared.getUUID() else {return}
+        getUsers(currentUserId,usersCompletion: {users in
+            self.presenter?.onStateChange(state: .discoveredUsers(users: users))
         })
     }
     
@@ -87,6 +74,39 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
             print("Error : When getting Previous Users \(error)")
             userCompletion([])
 
+        })
+    }
+    
+    private func getUsers(_ currentUserId:String,usersCompletion: @escaping ([User]) -> Void){
+        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION)
+        FireStoreService.shared.getCollection(ref: ref,
+                                              onCompletion: {(users:[User?]?,error) in
+            var nonOptionalUsers = [User]()
+            
+            if let users = users {
+                for user in users {
+                    if let user = user, let uid = user.userId, currentUserId != uid {
+                        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uid).collection(FireStoreCollection.USER_INTERESTS)
+                        FireStoreService.shared.getCollection(ref: ref,
+                                                              onCompletion: {(interests:[Interest?]?,error) in
+                            var nonOptionalInterestList = [Interest]()
+                            if let interests = interests {
+                                for interest in interests {
+                                    if let interest = interest {
+                                        nonOptionalInterestList.append(interest)
+                                    }
+                                }
+                                user.userInterests = nonOptionalInterestList
+                                if user.userId == users.last??.userId {
+                                    usersCompletion(nonOptionalUsers)
+                                }
+                            }
+                        })
+                        nonOptionalUsers.append(user)
+                    }
+                }
+            }
+            
         })
     }
 }

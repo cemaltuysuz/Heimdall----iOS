@@ -206,7 +206,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="editProfileBarButtonItem" destination="oMF-WT-dCc" id="3Pv-ms-tR0"/>
                         <outlet property="interestViewerHeightConstraint" destination="VZ9-jn-TuX" id="nfn-Aa-2v1"/>
+                        <outlet property="settingsBarButtonItem" destination="omv-rB-8j6" id="iNd-aV-LrA"/>
                         <outlet property="userAgeLabel" destination="S32-E7-Kk6" id="aQe-qq-QwY"/>
                         <outlet property="userCountryLabel" destination="QO6-ES-gbo" id="tDE-dO-m1R"/>
                         <outlet property="userGenderLabel" destination="qqY-dU-3DH" id="QwV-8I-ckU"/>

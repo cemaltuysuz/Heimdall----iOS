@@ -106,7 +106,12 @@ class BaseVC: UIViewController {
         tabBarController?.tabBar.isUserInteractionEnabled = false
         
         curtain.addSubview(indicator)
-        view.addSubview(curtain)
+        if let window = view.window {
+            window.addSubview(curtain)
+        }else {
+            return
+        }
+        //view.addSubview(curtain)
         
         NSLayoutConstraint.activate([
             curtain.topAnchor.constraint(equalTo: view.topAnchor),

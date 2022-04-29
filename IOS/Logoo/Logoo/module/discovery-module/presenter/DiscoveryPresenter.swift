@@ -16,7 +16,7 @@ class DiscoveryPresenter : ViewToPresenterDiscorveryProtocol, InteractorToPresen
         interactor?.getDiscoveredUsers()
     }
     
-    func discoveredUsersResponse(response: Resource<[User]>) {
-        view?.discoveredUsersResponse(response: response)
+    func onStateChange(state: DiscoveryState) {
+        view?.onStateChange(state: state)
     }
 }

@@ -29,7 +29,6 @@ class InterestsViewer : NibLoadableView {
         setupBinds()
     }
     func setupUI(){
-        //let layout = CustomViewFlowLayout()
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 3

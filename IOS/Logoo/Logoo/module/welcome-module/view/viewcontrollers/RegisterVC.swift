@@ -302,9 +302,11 @@ extension RegisterVC : RegisterInformationCellProtocol {
 }
 
 extension RegisterVC : RegisterBirthDayCellProtocol {
-    func birthDaySelected(date: String) {
-        presenter?.setUserBirthDay(date: date)
+    func birthDaySelected(birthDay: String) {
+        presenter?.setUserBirthDay(birthDay: birthDay)
     }
+    
+
 }
 
 extension RegisterVC : RegisterGenderCellProtocol {

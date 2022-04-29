@@ -42,11 +42,11 @@ class LoginPrefInteractor : PresenterToInteractorLoginPref {
                         
                         // I check any information of the user that absolutely needs to be filled.
                         // If it's not full I will redirect it back to the registration screen.
-                        if let userBirthDay = user.userBirthDay, let photoUrl = user.userPhotoUrl, let gender = user.userGender, let manifesto = user.userManifesto, let interest = user.userInterests {
+                        if let userBirthDay = user.userBirthDay, let photoUrl = user.userPhotoUrl, let gender = user.userGender {
                             /**
                              This informations are initially blank when the user registers with google. If one of them is filled, it means that the user left the rest voluntarily.
                              */
-                            if !userBirthDay.isEmpty || !photoUrl.isEmpty || !gender.isEmpty || !manifesto.isEmpty || !interest.isEmpty {
+                            if !userBirthDay.isEmpty || !photoUrl.isEmpty || !gender.isEmpty {
                                 self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_CONFIRMED)
                             }else {
                                 self.presenter?.logInResponse(status: .SUCCESS, userState: .GOOGLE_USER_MISSING_INFORMATION)

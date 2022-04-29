@@ -71,15 +71,14 @@ extension EditFieldWithDatePickerCell {
     
     @objc
     func dismissPicker() {
-        print("dismiss date picker")
-        self.fieldValueTextField.endEditing(true)
+        fieldValueTextField.endEditing(true)
     }
     
     @objc
     func onChangedDate(datePicker:UIDatePicker){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY"
+        dateFormatter.dateFormat = GeneralConstant.DATE_OF_BIRTH_PATTERN
         let data = dateFormatter.string(from: datePicker.date)
-        self.fieldValueTextField.text = data
+        fieldValueTextField.text = data
     }
 }
