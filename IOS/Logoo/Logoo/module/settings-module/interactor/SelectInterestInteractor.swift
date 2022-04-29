@@ -15,14 +15,12 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
     var presenter: InteractorToPresenterInterestSelectProtocol?
     let dbRef = Firestore.firestore()
     var lastSnapshot:DocumentSnapshot?
-    
-    var interestPageLimit:Int = 20
-    
-    func getInterests() {
+        
+    func getInterests(_ pageLimit:Int) {
         
         guard let uuid = Auth.auth().currentUser?.uid else {return}
         // get query by lastSnapshot
-        let query = getQuery()
+        let query = getQuery(pageLimit)
         // Paginated Interests
         FireStoreService.shared.getCollection(query: query,
                                               onCompletion: {(interests:[Interest?]?, lastSnap,error) in
@@ -30,8 +28,9 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
             if let error = error {
                 print(error)
                 if let _ = self.lastSnapshot {
-                    // TODO: Close pagination indicator
+                    self.presenter?.onStateChange(state: .getInterestError) // get paged data error
                 }else {
+                    // Starter data are null
                     // TODO: SHOW ERROR MESSAGE
                 }
                 return
@@ -74,11 +73,11 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
         })
     }
     
-    func getQuery() -> Query{
+    func getQuery(_ limit:Int) -> Query{
         if let lastSnapshot = lastSnapshot {
-            return dbRef.collection(FireStoreCollection.INTEREST_COLLECTION).start(afterDocument: lastSnapshot)
+            return dbRef.collection(FireStoreCollection.INTEREST_COLLECTION).limit(to: limit).start(afterDocument: lastSnapshot)
         }
-        return dbRef.collection(FireStoreCollection.INTEREST_COLLECTION).limit(to: interestPageLimit)
+        return dbRef.collection(FireStoreCollection.INTEREST_COLLECTION).limit(to: limit)
     }
     
     func saveInterests(list: [Interest]) {

@@ -81,6 +81,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="discoveredUsersCollectionView" destination="ICO-xj-asJ" id="Nqq-EN-aQP"/>
+                        <outlet property="searchBar" destination="pWq-yU-EQd" id="e20-4W-bAY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZL-6b-vdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -16,8 +16,8 @@ class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, Vie
         view?.onStateChange(state: state)
     }
     
-    func getInterests() {
-        interactor?.getInterests()
+    func getInterests(_ pageLimit:Int) {
+        interactor?.getInterests(pageLimit)
     }
     
     func saveInterests(list: [Interest]) {

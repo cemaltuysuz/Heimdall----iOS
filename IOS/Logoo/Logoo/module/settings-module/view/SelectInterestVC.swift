@@ -18,10 +18,13 @@ class SelectInterestVC: BaseVC {
     @IBOutlet weak var interestSelectionTableView: UITableView!
     @IBOutlet weak var interestSelectedCollectionView: UICollectionView!
     
-    private var pendingRequestWorkItem: DispatchWorkItem?
+    private var searchBarPendingRequestWorkItem: DispatchWorkItem?
+    private var loadViewPendingRequestWorkItem: DispatchWorkItem?
     
     var allInterests = [Interest]()
     var userInterests:[Interest]?
+    
+    var pageLimit = 12
     
     var presenter:ViewToPresenterInterestSelectProtocol?
     var isFirst:Bool? = false
@@ -30,13 +33,14 @@ class SelectInterestVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         SelectInterestRouter.createModule(ref: self)
-        presenter?.getInterests()
+        presenter?.getInterests(pageLimit)
                 
         configureUI()
         configureBinds()
     }
     
     func configureBinds() {
+        interestSelectionTableView.register(PaginationLoadCell.self)
         interestSelectionTableView.delegate = self
         interestSelectionTableView.dataSource = self
         
@@ -76,13 +80,13 @@ class SelectInterestVC: BaseVC {
 extension SelectInterestVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // Cancel previous work when user input data.
-        pendingRequestWorkItem?.cancel()
+        searchBarPendingRequestWorkItem?.cancel()
         
         let requestWorkItem = DispatchWorkItem { [weak self] in
             self?.presenter?.searchInterest(searchText: searchText)
         }
         // I created a work with 250 millisecond delay.
-        pendingRequestWorkItem = requestWorkItem
+        searchBarPendingRequestWorkItem = requestWorkItem
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
                                       execute: requestWorkItem)
     }
@@ -134,15 +138,24 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
                                   message: "An error occurred while saving interests. Please try again later.".localized())
             }
             break
+        case .getInterestError:
+            loadViewPendingRequestWorkItem?.cancel()
+            let workItem = DispatchWorkItem{[weak self] in
+                if let interests = self?.allInterests, !interests.isEmpty {
+                    let last = IndexPath(row: interests.count - 1, section: InterestSelectionTableViewSection.Interests.rawValue)
+                    self?.interestSelectionTableView.scrollToRow(at: last, at: .bottom, animated: true)
+                }
+            }
+            self.loadViewPendingRequestWorkItem = workItem
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500), execute: workItem)
+            break
         }
     }
 }
 
 extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSource, InterestActionCellProtocol {
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return userInterests?.count ?? 0
     }
     
@@ -153,6 +166,7 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
         cell.delegate = self
         cell.initialize(item: item)
         return cell
+        
     }
     
     func onClickItem(item: Interest, isInsertAction: Bool) {
@@ -177,24 +191,57 @@ extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSourc
 
 extension SelectInterestVC : UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return InterestSelectionTableViewSection.allCases.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allInterests.count
+        guard let sectionType = InterestSelectionTableViewSection(rawValue: section) else {return 0}
+        print("********* Bu el ki section : \(section)")
+        
+        switch sectionType {
+        case .Interests:
+            print("******** Interests Donus yapiliyor stat is")
+            return allInterests.count
+        case .LoadView:
+            let stat = allInterests.count >= pageLimit
+            print("******** LoadView Donus yapiliyor stat is \(stat)")
+            return stat ? 1 : 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = allInterests[indexPath.row]
-        let cell = tableView.dequeue(indexPath, type: InterestSelectionCell.self)
-        cell.indexPath = indexPath
-        cell.delegate = self
+        guard let sectionType = InterestSelectionTableViewSection(rawValue: indexPath.section) else {return UITableViewCell()}
         
-        for index in userInterests ?? [] {
-            if item.interestKey == index.interestKey {
-                cell.initialize(item: item, isSelected: true)
-                return cell
+        if sectionType == .Interests {
+            let item = allInterests[indexPath.row]
+            let cell = tableView.dequeue(indexPath, type: InterestSelectionCell.self)
+            cell.indexPath = indexPath
+            cell.delegate = self
+            
+            for index in userInterests ?? [] {
+                if item.interestKey == index.interestKey {
+                    cell.initialize(item: item, isSelected: true)
+                    return cell
+                }
             }
+            cell.initialize(item: item, isSelected: false)
+            return cell
         }
-        cell.initialize(item: item, isSelected: false)
+        print("***********load cell ayağa kalktı")
+        let cell = tableView.dequeue(indexPath, type: PaginationLoadCell.self)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let sectionType = InterestSelectionTableViewSection(rawValue: indexPath.section) else {return}
+        guard !allInterests.isEmpty else { return }
+        
+        if sectionType == .LoadView {
+            print("********load cell gösterilecek")
+            (cell as! PaginationLoadCell).startAnimating()
+            presenter?.getInterests(pageLimit)
+        }
     }
 }
 
@@ -203,5 +250,11 @@ enum InterestsState  {
     case userInterests(userInterests:[Interest]?)
     case showCurtain
     case saveInterestsResponse(response:SimpleResponse)
+    case getInterestError
+}
+
+enum InterestSelectionTableViewSection : Int,CaseIterable {
+    case Interests
+    case LoadView
 }
 

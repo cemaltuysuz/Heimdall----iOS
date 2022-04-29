@@ -19,7 +19,7 @@ class DiscoverVC: BaseVC {
     var cellWidth : CGFloat!
     var cellHeiht: CGFloat!
     
-   // @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var discoveredUsersCollectionView: UICollectionView!
         
     
