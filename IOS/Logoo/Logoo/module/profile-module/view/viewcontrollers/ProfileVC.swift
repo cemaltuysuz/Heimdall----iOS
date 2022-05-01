@@ -17,10 +17,12 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userAgeLabel: UILabel!
     @IBOutlet weak var userCountryLabel: UILabel!
     @IBOutlet weak var userGenderLabel: UILabel!
+    @IBOutlet weak var sendMessageButton: UIButton!
     
     @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
     
+    var user:User?
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
     var presenter:ViewToPresenterProfileProtocol?
     var userUUID:String?
@@ -35,20 +37,33 @@ class ProfileVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         loadPage()
     }
+    @IBAction func onClickSendMessageButton(_ sender: Any) {
+        if let user = user, let hasSendMessagePermission = user.isAllowTheInboxInvite {
+            if hasSendMessagePermission {
+                // TODO: GO TO CHAT SCREEN
+            }else {
+                createBasicAlert(title: "Confirm".localized(),
+                                 message: "This user does not allow direct messages. You can send a request.".localized(),
+                                 okTitle: "Send", onCompletion: { type in
+                    if type == .CONFIRM {
+                        // TODO: SEND REQUEST
+                    }
+                })
+            }
+        }
+    }
     
     func configureUI(){
         let height = userInterestsViewer.interestsCollectionView.collectionViewLayout.collectionViewContentSize.height
         userInterestsViewer.heightAnchor.constraint(equalToConstant: height).activate(withIdentifier: "interestsHeightConstant")
         userManifestoTextView.heightAnchor.constraint(equalToConstant: 50).activate(withIdentifier: "userManifestoHeightConstraint")
         userInterestsViewer.delegate = self
+        
         if userUUID != nil {
-            print("nil değil")
             settingsBarButtonItem.isEnabled = false
             editProfileBarButtonItem.isEnabled = false
             settingsBarButtonItem.tintColor = UIColor.clear
             editProfileBarButtonItem.tintColor = UIColor.clear
-        }else {
-            print("nil nil")
         }
     }
     
@@ -83,6 +98,19 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     func onStateChange(state: ProfileState) {
         switch state {
         case .onUserLoad(let user):
+            self.user = user
+            if userUUID != nil {
+                let hasSendMessagePermission = user.isAllowTheInboxInvite ?? false
+                print(hasSendMessagePermission)
+                if hasSendMessagePermission {
+                    sendMessageButton.setImage(nil, for: .normal)
+                }else {
+                    let lockImage = UIImage(systemName: "lock")
+                    sendMessageButton.setImage(lockImage, for: .normal)
+                }
+                sendMessageButton.isHidden = false
+            }
+            
             loadUser(user: user)
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
@@ -96,7 +124,6 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     
     func loadUser(user:User) {
         DispatchQueue.main.async {
-            print("user geldi :\(user)")
             
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)
@@ -118,8 +145,6 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
-            
-            
         }
     }
 }

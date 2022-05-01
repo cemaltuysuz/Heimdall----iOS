@@ -169,5 +169,7 @@
 "post_delete_error_message" = "Gönderi silinirken bir hata oluştu.";
 "Your post will be deleted. Do you confirm of this ?" = "Gönderin silinecek. Bunu onaylıyor musun ?";
 
+//  discovery
 
+"Search a user.." = "Bir kullanıcı ara..";
 

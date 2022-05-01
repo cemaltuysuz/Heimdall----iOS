@@ -34,7 +34,7 @@ class DiscoverVC: BaseVC {
         
     }
     
-    func configureUI(){
+    func configureUI(){        
         let deviceWidth = view.frame.width
         cellWidth = deviceWidth * cellWidthRatio
         cellHeiht = cellWidth * cellHeightRatio

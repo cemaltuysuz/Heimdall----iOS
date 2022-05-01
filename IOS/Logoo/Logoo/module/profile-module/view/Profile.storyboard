@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjY-1u-FKJ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjY-1u-FKJ">
                                 <rect key="frame" x="15" y="44" width="384" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wcX-Ii-ctH">
@@ -133,6 +133,17 @@
                                                     <constraint firstAttribute="height" constant="120" id="a6C-yY-ane"/>
                                                 </constraints>
                                             </stackView>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Pa-Hjj">
+                                                <rect key="frame" x="0.0" y="151" width="384" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="iyQ-dd-9XI"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Send Message"/>
+                                                <connections>
+                                                    <action selector="onClickSendMessageButton:" destination="jsq-fE-CoX" eventType="touchUpInside" id="yDH-gq-yEO"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="f0V-xg-OuV" customClass="InterestsViewer" customModule="Logoo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="159" width="384" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -208,6 +219,7 @@
                     <connections>
                         <outlet property="editProfileBarButtonItem" destination="oMF-WT-dCc" id="3Pv-ms-tR0"/>
                         <outlet property="interestViewerHeightConstraint" destination="VZ9-jn-TuX" id="nfn-Aa-2v1"/>
+                        <outlet property="sendMessageButton" destination="cPL-Pa-Hjj" id="byT-kB-Fyg"/>
                         <outlet property="settingsBarButtonItem" destination="omv-rB-8j6" id="iNd-aV-LrA"/>
                         <outlet property="userAgeLabel" destination="S32-E7-Kk6" id="aQe-qq-QwY"/>
                         <outlet property="userCountryLabel" destination="QO6-ES-gbo" id="tDE-dO-m1R"/>
