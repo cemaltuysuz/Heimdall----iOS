@@ -8,12 +8,19 @@
 import Foundation
 
 class DiscoveryPresenter : ViewToPresenterDiscorveryProtocol, InteractorToPresenterDiscorveryProtocol{
-    
     var interactor: PresenterToInteractorDiscoveryProtocol?
     var view: PresenterToViewDiscorveryProtocol?
     
-    func getDiscoveredUsers() {
-        interactor?.getDiscoveredUsers()
+    func getDiscoveredUsers(_ limit: Int) {
+        interactor?.getDiscoveredUsers(limit)
+    }
+    
+    func searchUser(_ keyword: String) {
+        interactor?.searchUser(keyword)
+    }
+    
+    func resetPagination() {
+        interactor?.resetPagination()
     }
     
     func onStateChange(state: DiscoveryState) {

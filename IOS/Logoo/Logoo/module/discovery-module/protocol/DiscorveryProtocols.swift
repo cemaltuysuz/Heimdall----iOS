@@ -11,13 +11,17 @@ protocol ViewToPresenterDiscorveryProtocol {
     var view:PresenterToViewDiscorveryProtocol? {get set}
     var interactor:PresenterToInteractorDiscoveryProtocol? {get set}
     
-    func getDiscoveredUsers()
+    func getDiscoveredUsers(_ limit:Int)
+    func searchUser(_ keyword:String)
+    func resetPagination()
 }
 
 protocol PresenterToInteractorDiscoveryProtocol {
     var presenter:InteractorToPresenterDiscorveryProtocol? {get set}
     
-    func getDiscoveredUsers()
+    func getDiscoveredUsers(_ limit:Int)
+    func searchUser(_ keyword:String)
+    func resetPagination()
 }
 
 protocol InteractorToPresenterDiscorveryProtocol {

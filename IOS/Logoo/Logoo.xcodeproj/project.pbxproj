@@ -34,6 +34,9 @@
 		150FF44B27E1F5090094B359 /* SettingsMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44A27E1F5090094B359 /* SettingsMenuItemType.swift */; };
 		150FF44D27E1F85E0094B359 /* SecurityMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */; };
 		150FF45527E2281A0094B359 /* ProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150FF45427E2281A0094B359 /* ProviderType.swift */; };
+		1510A2C528216EFF003E89AB /* CHTCollectionViewWaterfallLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 1510A2C428216EFF003E89AB /* CHTCollectionViewWaterfallLayout */; };
+		1510A2CE28218274003E89AB /* PaginationLoadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510A2CC28218274003E89AB /* PaginationLoadCollectionViewCell.swift */; };
+		1510A2CF28218274003E89AB /* PaginationLoadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1510A2CD28218274003E89AB /* PaginationLoadCollectionViewCell.xib */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* ChatVC.swift */; };
 		1517AF96279EBD4D00D1194E /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* ChatProtocols.swift */; };
@@ -303,6 +306,8 @@
 		150FF44C27E1F85E0094B359 /* SecurityMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityMenuItemType.swift; sourceTree = "<group>"; };
 		150FF45227E218C00094B359 /* secureAnim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secureAnim.json; sourceTree = "<group>"; };
 		150FF45427E2281A0094B359 /* ProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderType.swift; sourceTree = "<group>"; };
+		1510A2CC28218274003E89AB /* PaginationLoadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationLoadCollectionViewCell.swift; sourceTree = "<group>"; };
+		1510A2CD28218274003E89AB /* PaginationLoadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaginationLoadCollectionViewCell.xib; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		1517AF95279EBD4D00D1194E /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
@@ -517,6 +522,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1510A2C528216EFF003E89AB /* CHTCollectionViewWaterfallLayout in Frameworks */,
 				1535674927B792AE007346D4 /* M13Checkbox in Frameworks */,
 				156F043827B26DC300D37039 /* Lottie in Frameworks */,
 				156F043E27B39DBD00D37039 /* DeviceKit in Frameworks */,
@@ -714,6 +720,24 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		1510A2C628218017003E89AB /* tableview */ = {
+			isa = PBXGroup;
+			children = (
+				156284292813FA8D00832B5A /* PaginationLoadCell.swift */,
+				1562842A2813FA8D00832B5A /* PaginationLoadCell.xib */,
+			);
+			path = tableview;
+			sourceTree = "<group>";
+		};
+		1510A2C728218022003E89AB /* collectionview */ = {
+			isa = PBXGroup;
+			children = (
+				1510A2CC28218274003E89AB /* PaginationLoadCollectionViewCell.swift */,
+				1510A2CD28218274003E89AB /* PaginationLoadCollectionViewCell.xib */,
+			);
+			path = collectionview;
+			sourceTree = "<group>";
+		};
 		1517AF8C279EBC5700D1194E /* chat-module */ = {
 			isa = PBXGroup;
 			children = (
@@ -862,8 +886,8 @@
 		156284282813FA1800832B5A /* pagination-load */ = {
 			isa = PBXGroup;
 			children = (
-				156284292813FA8D00832B5A /* PaginationLoadCell.swift */,
-				1562842A2813FA8D00832B5A /* PaginationLoadCell.xib */,
+				1510A2C728218022003E89AB /* collectionview */,
+				1510A2C628218017003E89AB /* tableview */,
 			);
 			path = "pagination-load";
 			sourceTree = "<group>";
@@ -1548,6 +1572,7 @@
 				15AE074127C9449B0012A81C /* FirebaseStorage */,
 				1541104B280045CE0099CE27 /* Mantis */,
 				15EF4F00280ABEC900DBFF48 /* GoogleSignIn */,
+				1510A2C428216EFF003E89AB /* CHTCollectionViewWaterfallLayout */,
 			);
 			productName = Logoo;
 			productReference = 150C8FAE27994C6D000DAFBE /* Logoo.app */;
@@ -1633,6 +1658,7 @@
 				15AE073727C93AAA0012A81C /* XCRemoteSwiftPackageReference "Runtime" */,
 				15AE073A27C9449B0012A81C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1541104A280045CD0099CE27 /* XCRemoteSwiftPackageReference "Mantis" */,
+				1510A2C328216EFF003E89AB /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */,
 			);
 			productRefGroup = 150C8FAF27994C6D000DAFBE /* Products */;
 			projectDirPath = "";
@@ -1672,6 +1698,7 @@
 				1579A63128045E0400812D1E /* loading.json in Resources */,
 				1579A63028045DFD00812D1E /* secureAnim.json in Resources */,
 				1579A62F28045DF600812D1E /* mail_sended.json in Resources */,
+				1510A2CF28218274003E89AB /* PaginationLoadCollectionViewCell.xib in Resources */,
 				159FBD66280C0D5100125C4E /* Main.storyboard in Resources */,
 				15B59A4A280713E400CE5B55 /* EditPostAlbumView.xib in Resources */,
 				1579A62E28045DEB00812D1E /* EditFieldWithTextFieldCell.xib in Resources */,
@@ -1856,6 +1883,7 @@
 				15F6708927FC5E1B0083E58C /* ChangeMailPresenter.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
+				1510A2CE28218274003E89AB /* PaginationLoadCollectionViewCell.swift in Sources */,
 				15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */,
 				15A5B41127C686430082029E /* Direct.swift in Sources */,
 				1589832627FF217100853BBC /* NibLoadableView.swift in Sources */,
@@ -2367,6 +2395,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1510A2C328216EFF003E89AB /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
 		1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Marxon13/M13Checkbox.git";
@@ -2426,6 +2462,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1510A2C428216EFF003E89AB /* CHTCollectionViewWaterfallLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1510A2C328216EFF003E89AB /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */;
+			productName = CHTCollectionViewWaterfallLayout;
+		};
 		1535674827B792AE007346D4 /* M13Checkbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */;

@@ -6,75 +6,147 @@
 //
 
 import UIKit
+#if canImport(CHTCollectionViewWaterfallLayout)
+import CHTCollectionViewWaterfallLayout
+#endif
 
 class DiscoverVC: BaseVC {
 
     var presenter:ViewToPresenterDiscorveryProtocol?
     var discoveredUsers:[User]?
     
-    let cellWidthRatio:CGFloat = 0.23 // by frame width
-    let cellHeightRatio:CGFloat = 1.4 // by cell frame width
-    let discoveredUsersCollectionViewPadding:CGFloat = 20
+    let cellWidthRatio:CGFloat = 2.3 // by ScWidth
+    let cellHeightRatio:CGFloat = 1.6 // by cellWidth
+    let collectionViewPadding:CGFloat = 20
+    let minimumColumnSpacing:CGFloat = 5
+    let minimumInteritemSpacing:CGFloat = 5
     
-    var cellWidth : CGFloat!
-    var cellHeiht: CGFloat!
+    private var searchBarPendingRequestWorkItem: DispatchWorkItem?
+    
+    let pageLimit = 15
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var discoveredUsersCollectionView: UICollectionView!
         
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
         configureBinds()
+        configureUI()
         
         DiscoveryRouter.createModule(ref: self)
-        presenter?.getDiscoveredUsers()
-        
+        presenter?.getDiscoveredUsers(pageLimit)
     }
     
-    func configureUI(){        
-        let deviceWidth = view.frame.width
-        cellWidth = deviceWidth * cellWidthRatio
-        cellHeiht = cellWidth * cellHeightRatio
-        let totalCellArea = cellWidth * 3
-        let totalDiscoveredUsersCollectionViewPadding = CGFloat(discoveredUsersCollectionViewPadding * 2)
-        let interItemSpace = (deviceWidth - (totalCellArea + totalDiscoveredUsersCollectionViewPadding)) / 2
+    func configureUI(){
+        searchBar.placeholder = "Search a user".localized()
         
-        let layout = LeftAlignedCollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0,
-                                           left: discoveredUsersCollectionViewPadding,
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.minimumColumnSpacing = minimumColumnSpacing
+        layout.minimumInteritemSpacing = minimumInteritemSpacing
+        
+        // Collection view attributes
+        discoveredUsersCollectionView.alwaysBounceVertical = true
+        
+        layout.sectionInset = UIEdgeInsets(top: collectionViewPadding,
+                                           left: collectionViewPadding,
                                            bottom: 0,
-                                           right: discoveredUsersCollectionViewPadding)
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = interItemSpace
-        layout.minimumLineSpacing = 5
+                                           right: collectionViewPadding)
         discoveredUsersCollectionView.collectionViewLayout = layout
     }
     
     func configureBinds(){
+        searchBar.delegate = self
+        
         discoveredUsersCollectionView.delegate = self
         discoveredUsersCollectionView.dataSource = self
         discoveredUsersCollectionView.register(DiscoveredUserCollectionViewCell.self)
+        discoveredUsersCollectionView.register(PaginationLoadCollectionViewCell.self)
     }
 }
 
-extension DiscoverVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension DiscoverVC : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.resetPagination()
+        
+        // Cancel previous work when user input data.
+        searchBarPendingRequestWorkItem?.cancel()
+        
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            if !searchText.isEmpty {
+                if searchText.count >= 3 {
+                    self?.presenter?.searchUser(searchText)
+                }
+            }else {
+                self?.discoveredUsers?.removeAll()
+                self?.presenter?.getDiscoveredUsers(self?.pageLimit ?? 0)
+            }
+        }
+        searchBarPendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
+                                      execute: requestWorkItem)
+    }
+}
+
+extension DiscoverVC : UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return DiscoveredUsersSection.allCases.count
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return discoveredUsers?.count ?? 0
+        guard let section = DiscoveredUsersSection(rawValue: section) else {return 0}
+        
+        switch section {
+        case .DISCOVERED_USER_SECTION:
+            return discoveredUsers?.count ?? 0
+        case .PAGINATION_SECTION:
+            let stat = discoveredUsers?.count ?? 0 >= pageLimit
+            return stat ? 1 : 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = discoveredUsers![indexPath.row]
-        let cell = collectionView.dequeue(indexPath, type: DiscoveredUserCollectionViewCell.self)
-        cell.delegate = self
-        cell.initialize(item)
-        return cell
+        guard let section = DiscoveredUsersSection(rawValue: indexPath.section) else {return UICollectionViewCell()}
+        if section == .DISCOVERED_USER_SECTION {
+            let item = discoveredUsers![indexPath.row]
+            let cell = collectionView.dequeue(indexPath, type: DiscoveredUserCollectionViewCell.self)
+            cell.delegate = self
+            cell.initialize(item)
+            return cell
+        }
+        return collectionView.dequeue(indexPath, type: PaginationLoadCollectionViewCell.self)
     }
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let section = DiscoveredUsersSection(rawValue: indexPath.section) else {return}
+        guard ((discoveredUsers != nil) && (discoveredUsers?.isEmpty ?? false)) else {return}
+        if section == .PAGINATION_SECTION {
+            (cell as! PaginationLoadCollectionViewCell).startAnimating()
+            presenter?.getDiscoveredUsers(pageLimit)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth, height: cellHeiht)
+        let scWidth = collectionView.frame.width
+        
+        if let type = DiscoveredUsersSection(rawValue: indexPath.section), type == .PAGINATION_SECTION {
+            return CGSize(width: scWidth, height: 50)
+        }
+        
+        let current = discoveredUsers![indexPath.row]
+        let cellWidth = (scWidth - (2 * collectionViewPadding)) / cellWidthRatio
+        let cellHeight = cellWidth * cellHeightRatio
+        
+        let cell = collectionView.dequeue(indexPath, type: DiscoveredUserCollectionViewCell.self)
+        
+        cell.initialize(current)
+        
+        var minusHeight:CGFloat = 0
+        
+        if let manifesto = current.userManifesto,!manifesto.isEmpty, manifesto.height(withConstrainedWidth: cell.manifestoTextView.frame.width, font: cell.manifestoTextView.font!) < cell.manifestoTextView.frame.height{
+            minusHeight += (cell.manifestoTextView.frame.height - manifesto.height(withConstrainedWidth: cell.manifestoTextView.frame.width, font: cell.manifestoTextView.font!))
+        }else {
+            minusHeight += cell.manifestoTextView.frame.height
+        }
+        return CGSize(width: cellWidth, height: cellHeight - minusHeight)
     }
 }
 
@@ -86,6 +158,9 @@ extension DiscoverVC : PresenterToViewDiscorveryProtocol {
                 self.discoveredUsers = users
                 self.discoveredUsersCollectionView.reloadData()
             }
+            break
+            
+        case .pagedDataError:
             break
         }
     }
@@ -101,5 +176,10 @@ extension DiscoverVC : DiscoveredUserCollectionViewCellProtocol {
 
 enum DiscoveryState{
     case discoveredUsers(users:[User])
+    case pagedDataError
 }
 
+enum DiscoveredUsersSection : Int, CaseIterable  {
+    case DISCOVERED_USER_SECTION
+    case PAGINATION_SECTION
+}

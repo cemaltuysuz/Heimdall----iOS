@@ -11,15 +11,14 @@ import FirebaseFirestore
 
 class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
     
-    var previousUsersDateLimit = 5
-    var pageLimit = 10
+    var lastSnapshot:DocumentSnapshot?
     
     var presenter: InteractorToPresenterDiscorveryProtocol?
     var dbRef = Firestore.firestore()
     
-    func getDiscoveredUsers() {
+    func getDiscoveredUsers(_ limit:Int) {
         guard let currentUserId = FirebaseAuthService.shared.getUUID() else {return}
-        getUsers(currentUserId,usersCompletion: {users in
+        getUsers(currentUserId,limit,usersCompletion: {users in
             self.presenter?.onStateChange(state: .discoveredUsers(users: users))
         })
     }
@@ -45,68 +44,54 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
             }
         })
     }
-    // MARK: - Fetch list of users that the user has seen before
-    private func getPreviousUsers(dateLimit:Int,userCompletion: @escaping ([PreviousUser]) -> Void) {
-        let currentDate = Date()
-        let previousDate = Calendar.current.date(byAdding: .day, value: -dateLimit, to: currentDate)
-        let previousTimestamp = previousDate!.toMilliSeconds()
-        // karşıdan gelen bilgi bu timestamp dan büyük olması lazım
-        let previousUsersQuery = dbRef.collection(FireStoreCollection.USER_COLLECTION).whereField("timestamp", isGreaterThanOrEqualTo: previousTimestamp)
+    
+    private func getUsers(_ currentUserId:String,_ limit:Int,usersCompletion: @escaping ([User]) -> Void){
         
-        FireStoreService.shared.getCollection(query: previousUsersQuery,
-                                              onCompletion: {(users: [PreviousUser?]?,_,error) in
-            guard let error = error else {
-                var nonOptionalPreviousUsers = [PreviousUser]()
-                
-                if let users = users {
-                    for user in users {
-                        if let user = user {
-                            nonOptionalPreviousUsers.append(user)
-                        }
-                    }
-                    userCompletion(nonOptionalPreviousUsers)
+        let query = getQuery(limit)
+        
+        FireStoreService.shared.getCollection(query: query, onCompletion: { (users:[User?]?, snapShot, error) in
+            
+            if let error = error {
+                print(error)
+                if self.lastSnapshot != nil {
+                    self.presenter?.onStateChange(state: .pagedDataError) // get paged data error
                 }else {
-                    print("Error : The Previous Users list is nil.")
-                    userCompletion([])
+                    // Starter data are null
+                    // TODO: SHOW ERROR MESSAGE
                 }
                 return
             }
-            print("Error : When getting Previous Users \(error)")
-            userCompletion([])
-
-        })
-    }
-    
-    private func getUsers(_ currentUserId:String,usersCompletion: @escaping ([User]) -> Void){
-        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION)
-        FireStoreService.shared.getCollection(ref: ref,
-                                              onCompletion: {(users:[User?]?,error) in
-            var nonOptionalUsers = [User]()
             
+            var nonOptionalUsers = [User]()
             if let users = users {
+                self.lastSnapshot = snapShot
                 for user in users {
-                    if let user = user, let uid = user.userId, currentUserId != uid {
-                        let ref = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(uid).collection(FireStoreCollection.USER_INTERESTS)
-                        FireStoreService.shared.getCollection(ref: ref,
-                                                              onCompletion: {(interests:[Interest?]?,error) in
-                            var nonOptionalInterestList = [Interest]()
-                            if let interests = interests {
-                                for interest in interests {
-                                    if let interest = interest {
-                                        nonOptionalInterestList.append(interest)
-                                    }
-                                }
-                                user.userInterests = nonOptionalInterestList
-                                if user.userId == users.last??.userId {
-                                    usersCompletion(nonOptionalUsers)
-                                }
-                            }
-                        })
+                    if let user = user{
                         nonOptionalUsers.append(user)
                     }
                 }
+                usersCompletion(nonOptionalUsers)
             }
-            
         })
+        
+    }
+    
+    func searchUser(_ keyword: String) {
+        
+    }
+    
+    func resetPagination() {
+        lastSnapshot = nil
+    }
+    
+    func getQuery(_ limit:Int) -> Query{
+        if let lastSnapshot = lastSnapshot {
+            return dbRef.collection(FireStoreCollection.USER_COLLECTION)
+                .order(by: "userLastSeen", descending: true)
+                .limit(to: limit)
+                .start(afterDocument: lastSnapshot)
+        }
+        return dbRef.collection(FireStoreCollection.USER_COLLECTION).limit(to: limit)
     }
 }
+
