@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol InterestActionCellProtocol : AnyObject {
+    func onClickItem(item:Interest, isInsertAction:Bool)
+}
+
 class InterestSelectedCell: UICollectionViewCell {
     @IBOutlet weak var interestTitleLabel: UILabel!
-    var deSelect:InterestSelectCellToViewProtocol?
-    var title:String!
+    weak var delegate:InterestActionCellProtocol?
+    var item:Interest!
     
-    func initialize(row:String) {
-        interestTitleLabel.text = row
-        title = row
+    func initialize(item:Interest) {
+        self.item = item
+        interestTitleLabel.text = getLanguageCode == "tr" ? item.interestTR : item.interestEN
     }
+    
     @IBAction func interestDeselectButton(_ sender: Any) {
-        deSelect?.onClick(item: InterestSelectionModel(title: title,
-                                                       status: false))
+        delegate?.onClickItem(item: item,
+                              isInsertAction: false)
     }
 }
+

@@ -50,7 +50,7 @@ extension EditPostAlbumView : UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeue(indexPath, type: AlbumItemCell.self)
         cell.delegate = self
         if indexPath.row == 0 {
-            cell.lastCellConfigure()
+            cell.firstCellConfigure()
             return cell
         }
         let post = posts![indexPath.row - 1]

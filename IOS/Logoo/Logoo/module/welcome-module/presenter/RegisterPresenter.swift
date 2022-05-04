@@ -41,8 +41,8 @@ class RegisterPresenter : InteractorToPresenterRegister, ViewToPresenterRegister
         interactor?.setUserInfo(username: username, userMail: userMail, userPassword: userPassword)
     }
     
-    func setUserBirthDay(date: String) {
-        interactor?.setUserBirthDay(date: date)
+    func setUserBirthDay(birthDay: String) {
+        interactor?.setUserBirthDay(birthDay: birthDay)
     }
     
     func setUserGender(gender: GenderType) {

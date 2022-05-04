@@ -17,7 +17,7 @@ protocol ViewToPresenterRegister {
     
     func setUserImage(image:UIImage)
     func setUserInfo(username:String,userMail:String,userPassword:String)
-    func setUserBirthDay(date:String)
+    func setUserBirthDay(birthDay:String)
     func setUserGender(gender:GenderType)
     
     func setUserInfoForGoogleUsers()
@@ -32,7 +32,7 @@ protocol PresenterToInteractorRegister {
     
     func setUserImage(image:UIImage)
     func setUserInfo(username:String,userMail:String,userPassword:String)
-    func setUserBirthDay(date:String)
+    func setUserBirthDay(birthDay:String)
     func setUserGender(gender:GenderType)
     
     func setUserInfoForGoogleUsers()

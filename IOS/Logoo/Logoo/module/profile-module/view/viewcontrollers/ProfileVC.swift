@@ -17,31 +17,70 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userAgeLabel: UILabel!
     @IBOutlet weak var userCountryLabel: UILabel!
     @IBOutlet weak var userGenderLabel: UILabel!
+    @IBOutlet weak var sendMessageButton: UIButton!
+    @IBOutlet weak var superScrollView: UIScrollView!
+    @IBOutlet weak var pageIndicator: UIActivityIndicatorView!
     
+    
+    @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
+    
+    var user:User? {
+        didSet {
+            if let user = user {
+                loadUser(user: user)
+            }
+        }
+    }
     
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
-    
-    
     var presenter:ViewToPresenterProfileProtocol?
+    var userUUID:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ProfileRouter.createModule(ref: self)
         configureUI()
         loadPage()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.loadPage()
+        loadPage()
+    }
+    @IBAction func onClickSendMessageButton(_ sender: Any) {
+        if let user = user, let hasSendMessagePermission = user.isAllowTheInboxInvite {
+            if hasSendMessagePermission {
+                // TODO: GO TO CHAT SCREEN
+            }else {
+                createBasicAlert(title: "Confirm".localized(),
+                                 message: "This user does not allow direct messages. You can send a request.".localized(),
+                                 okTitle: "Send", onCompletion: { type in
+                    if type == .CONFIRM {
+                        // TODO: SEND REQUEST
+                    }
+                })
+            }
+        }
     }
     
     func configureUI(){
         let height = userInterestsViewer.interestsCollectionView.collectionViewLayout.collectionViewContentSize.height
         userInterestsViewer.heightAnchor.constraint(equalToConstant: height).activate(withIdentifier: "interestsHeightConstant")
         userManifestoTextView.heightAnchor.constraint(equalToConstant: 50).activate(withIdentifier: "userManifestoHeightConstraint")
+        userInterestsViewer.delegate = self
+        
+        if userUUID != nil {
+            settingsBarButtonItem.isEnabled = false
+            editProfileBarButtonItem.isEnabled = false
+            settingsBarButtonItem.tintColor = UIColor.clear
+            editProfileBarButtonItem.tintColor = UIColor.clear
+        }
     }
     
     func loadPage(){
-        userInterestsViewer.delegate = self
-        presenter?.loadPage()
+        // if userUUD object is nil, interactor get account owner informations.
+        // is userUUID object is not nil, interactor get spesific user informations.
+        presenter?.loadPage(userUUID)
     }
     
     func updateUserManifesto(text:String) {
@@ -62,14 +101,13 @@ class ProfileVC: BaseVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
     func onStateChange(state: ProfileState) {
         switch state {
         case .onUserLoad(let user):
-            loadUser(user: user)
+            self.user = user
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
         case .onPostsLoadFail:
@@ -83,9 +121,19 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     func loadUser(user:User) {
         DispatchQueue.main.async {
             
+            if self.userUUID != nil {
+                let hasSendMessagePermission = user.isAllowTheInboxInvite ?? false
+                if hasSendMessagePermission {
+                    self.sendMessageButton.setImage(nil, for: .normal)
+                }else {
+                    let lockImage = UIImage(systemName: "lock")
+                    self.sendMessageButton.setImage(lockImage, for: .normal)
+                }
+                self.sendMessageButton.isHidden = false
+            }
+            
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)
-                self.title = user.username
             }
             
             if let userBirth = user.userBirthDay?.toDate() {
@@ -100,11 +148,12 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             
             self.userManifestoTextView.text = user.userManifesto
             
-            if let interests = user.userInterests?.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR) {
+            if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
-            
-            
+            self.pageIndicator.stopAnimating()
+            self.superScrollView.isHidden = false
+            self.title = user.username
         }
     }
 }
@@ -122,7 +171,6 @@ extension ProfileVC : InterestsViewerProtocol {
         }
     }
 }
-
 
 enum ProfileState {
     case onUserLoad(user:User)

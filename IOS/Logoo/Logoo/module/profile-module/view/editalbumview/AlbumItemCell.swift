@@ -36,10 +36,11 @@ class AlbumItemCell: UICollectionViewCell {
         albumItemImageView.removeDashedBorder()
     }
     
-    func lastCellConfigure(){
+    func firstCellConfigure(){
         plusButtonOutlet.isHidden = false
         trashContainer.isHidden = true
         albumItemImageView.image = nil
+        albumItemImageView.isUserInteractionEnabled = false
         
         contentView.isUserInteractionEnabled = true
         let tapGestureContent = UITapGestureRecognizer(target: self, action: #selector(self.onPhotoInsert(_:)))

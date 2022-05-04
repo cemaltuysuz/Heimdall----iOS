@@ -96,7 +96,8 @@ extension SettingsVC {
         createBasicAlert(title: "Account sign out".localized(), message: "Are you sure you want to log out?".localized(), okTitle: "Yes".localized(), onCompletion: {type in
             if type == .CONFIRM {
                 self.presenter?.exitUser()
-                let vc = LoginPrefVC.instantiate(from: .Welcome)
+                
+                let vc = UINavigationController(rootViewController: LoginPrefVC.instantiate(from: .Welcome))
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true)
             }

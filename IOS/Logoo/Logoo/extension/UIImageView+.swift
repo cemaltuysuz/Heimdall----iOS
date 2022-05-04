@@ -12,35 +12,39 @@ import ImageViewer_swift
 
 extension UIImageView {
     
-    func setImage(urlString:String, radius:CGFloat? = nil, focustStatus:Bool = false){
+    func setImage(urlString:String?, radius:CGFloat? = nil, focustStatus:Bool = false){
         if let radius = radius {
             layer.masksToBounds = true
             layer.cornerRadius = radius
         }
-        let url = URL(string: urlString)
-        let processor = DownsamplingImageProcessor(size: self.bounds.size)
-        self.kf.indicatorType = .activity
-        self.kf.setImage(
-            with: url,
-            placeholder: nil,
-            options: [
-                .processor(processor),
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ])
-        {
-            result in
-            switch result {
-            case .success(let value):
-                if focustStatus {
-                    self.setupImageViewer()
+        if let urlString = urlString, let url = URL(string: urlString) {
+            let processor = DownsamplingImageProcessor(size: self.bounds.size)
+            self.kf.indicatorType = .activity
+            self.kf.setImage(
+                with: url,
+                placeholder: nil,
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    if focustStatus {
+                        self.setupImageViewer()
+                    }
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
                 }
-                print("Task done for: \(value.source.url?.absoluteString ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
             }
+        }else {
+            print("Url error")
         }
+
     }
 }
 
