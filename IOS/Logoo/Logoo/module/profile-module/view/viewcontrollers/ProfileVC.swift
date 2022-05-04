@@ -18,11 +18,21 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userCountryLabel: UILabel!
     @IBOutlet weak var userGenderLabel: UILabel!
     @IBOutlet weak var sendMessageButton: UIButton!
+    @IBOutlet weak var superScrollView: UIScrollView!
+    @IBOutlet weak var pageIndicator: UIActivityIndicatorView!
+    
     
     @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
     
-    var user:User?
+    var user:User? {
+        didSet {
+            if let user = user {
+                loadUser(user: user)
+            }
+        }
+    }
+    
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
     var presenter:ViewToPresenterProfileProtocol?
     var userUUID:String?
@@ -91,7 +101,6 @@ class ProfileVC: BaseVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
@@ -99,19 +108,6 @@ extension ProfileVC : PresenterToViewProfileProtocol {
         switch state {
         case .onUserLoad(let user):
             self.user = user
-            if userUUID != nil {
-                let hasSendMessagePermission = user.isAllowTheInboxInvite ?? false
-                print(hasSendMessagePermission)
-                if hasSendMessagePermission {
-                    sendMessageButton.setImage(nil, for: .normal)
-                }else {
-                    let lockImage = UIImage(systemName: "lock")
-                    sendMessageButton.setImage(lockImage, for: .normal)
-                }
-                sendMessageButton.isHidden = false
-            }
-            
-            loadUser(user: user)
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
         case .onPostsLoadFail:
@@ -125,9 +121,19 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     func loadUser(user:User) {
         DispatchQueue.main.async {
             
+            if self.userUUID != nil {
+                let hasSendMessagePermission = user.isAllowTheInboxInvite ?? false
+                if hasSendMessagePermission {
+                    self.sendMessageButton.setImage(nil, for: .normal)
+                }else {
+                    let lockImage = UIImage(systemName: "lock")
+                    self.sendMessageButton.setImage(lockImage, for: .normal)
+                }
+                self.sendMessageButton.isHidden = false
+            }
+            
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)
-                self.title = user.username
             }
             
             if let userBirth = user.userBirthDay?.toDate() {
@@ -145,6 +151,9 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
+            self.pageIndicator.stopAnimating()
+            self.superScrollView.isHidden = false
+            self.title = user.username
         }
     }
 }
@@ -162,7 +171,6 @@ extension ProfileVC : InterestsViewerProtocol {
         }
     }
 }
-
 
 enum ProfileState {
     case onUserLoad(user:User)

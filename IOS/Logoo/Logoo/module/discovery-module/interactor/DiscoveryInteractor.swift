@@ -47,7 +47,7 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
     
     private func getUsers(_ currentUserId:String,_ limit:Int,usersCompletion: @escaping ([User]) -> Void){
         
-        let query = getQuery(limit)
+        let query = getQuery(limit,currentUserId)
         
         FireStoreService.shared.getCollection(query: query, onCompletion: { (users:[User?]?, snapShot, error) in
             
@@ -73,25 +73,51 @@ class DiscoveryInteractor : PresenterToInteractorDiscoveryProtocol {
                 usersCompletion(nonOptionalUsers)
             }
         })
-        
     }
     
     func searchUser(_ keyword: String) {
+        lastSnapshot = nil
         
+        let lessValue = keyword + "\u{f8ff}"
+        let query = dbRef.collection(FireStoreCollection.USER_COLLECTION)
+            .whereField("username", isGreaterThanOrEqualTo: keyword.lowercased())
+            .whereField("username", isLessThanOrEqualTo: lessValue.lowercased())
+            
+        
+        FireStoreService.shared.getCollection(query: query, onCompletion: {(users:[User?]?,_,error) in
+            if let error = error {
+                print(error)
+                // show error
+            }
+            
+            var nonOptionalUsers = [User]()
+            if let users = users {
+                for user in users {
+                    if let user = user {
+                        nonOptionalUsers.append(user)
+                    }
+                }
+                self.presenter?.onStateChange(state: .searchedUsers(users: nonOptionalUsers))
+            }
+        })
     }
     
     func resetPagination() {
         lastSnapshot = nil
     }
     
-    func getQuery(_ limit:Int) -> Query{
+    func getQuery(_ limit:Int,_ userId:String) -> Query{
         if let lastSnapshot = lastSnapshot {
             return dbRef.collection(FireStoreCollection.USER_COLLECTION)
                 .order(by: "userLastSeen", descending: true)
+                .whereField("userId", isNotEqualTo: userId)
                 .limit(to: limit)
                 .start(afterDocument: lastSnapshot)
+
         }
-        return dbRef.collection(FireStoreCollection.USER_COLLECTION).limit(to: limit)
+        return dbRef.collection(FireStoreCollection.USER_COLLECTION)
+            .whereField("userId", isNotEqualTo: userId)
+            .limit(to: limit)
     }
 }
 

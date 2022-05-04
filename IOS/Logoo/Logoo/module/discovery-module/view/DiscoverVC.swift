@@ -59,6 +59,7 @@ class DiscoverVC: BaseVC {
         
         discoveredUsersCollectionView.delegate = self
         discoveredUsersCollectionView.dataSource = self
+        
         discoveredUsersCollectionView.register(DiscoveredUserCollectionViewCell.self)
         discoveredUsersCollectionView.register(PaginationLoadCollectionViewCell.self)
     }
@@ -84,6 +85,22 @@ extension DiscoverVC : UISearchBarDelegate {
         searchBarPendingRequestWorkItem = requestWorkItem
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
                                       execute: requestWorkItem)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if let searchString = searchBar.text, !searchString.trimmingCharacters(in: .whitespaces).isEmpty {
+            discoveredUsers?.removeAll()
+            presenter?.resetPagination()
+            presenter?.getDiscoveredUsers(pageLimit)
+            searchBar.text = ""
+        }
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
     }
 }
 
@@ -160,6 +177,14 @@ extension DiscoverVC : PresenterToViewDiscorveryProtocol {
             }
             break
             
+        case .searchedUsers(let users):
+            DispatchQueue.main.async {
+                self.discoveredUsers?.removeAll()
+                self.discoveredUsers = users
+                self.discoveredUsersCollectionView.reloadData()
+            }
+            break
+            
         case .pagedDataError:
             break
         }
@@ -176,6 +201,7 @@ extension DiscoverVC : DiscoveredUserCollectionViewCellProtocol {
 
 enum DiscoveryState{
     case discoveredUsers(users:[User])
+    case searchedUsers(users:[User])
     case pagedDataError
 }
 

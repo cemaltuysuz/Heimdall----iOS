@@ -144,7 +144,7 @@ class SelectInterestInteractor : PresenterToInteractorInterestSelectProtocol {
     }
     
     func searchInterest(searchText: String) {
-        lastSnapshot = nil
+        resetPagination()
         let key = (Locale.current.languageCode ?? "en" == "en") ? Interest.CodingKeys.interestEN.rawValue : Interest.CodingKeys.interestTR.rawValue
         
         let lessValue = searchText + "\u{f8ff}"
