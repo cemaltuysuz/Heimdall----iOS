@@ -8,6 +8,6 @@
 import Foundation
 
 enum RequestType : String {
-    case ROOM_REQUEST = "RoomRequest"
-    case P2P_REQUEST = "P2PRequest"
+    case DIRECT_REQUEST = "DIRECT_REQUEST"
+    case ROOM_REQUEST = "GROUP_REQUEST"
 }

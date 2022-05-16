@@ -37,8 +37,8 @@ class FireStoreService {
             let result = Result {
                 try document.flatMap {
                     try $0.data(as: T.self)
-                 }
-              }
+                }
+            }
             switch result {
             case .success(let doc):
                 if let doc = doc {
@@ -51,7 +51,7 @@ class FireStoreService {
                 onCompletion(nil)
                 break
             }
-         }
+        }
     }
     
     public func getDocumentsByField<T>(ref:CollectionReference,getByField: String, getByValue: String,onCompletion: @escaping ([T?]?, Error?) -> Void) where T:Codable {
@@ -174,5 +174,16 @@ class FireStoreService {
             }
             onCompletion(SimpleResponse(status: false, message: error.localizedDescription))
         }
+    }
+    
+    func getUserPhotoURL(_ userUid:String, onCompletion: @escaping (String?) -> Void) {
+        let userRef = Firestore.firestore()
+            .collection(FireStoreCollection.USER_COLLECTION)
+            .document(userUid)
+        
+        FireStoreService.shared.getDocument(ref: userRef
+                                            , onCompletion: {(user:User?) in
+            onCompletion(user?.userPhotoUrl)
+        })
     }
 }

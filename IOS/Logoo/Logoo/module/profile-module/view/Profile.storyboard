@@ -133,7 +133,7 @@
                                                     <constraint firstAttribute="height" constant="120" id="a6C-yY-ane"/>
                                                 </constraints>
                                             </stackView>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Pa-Hjj">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Pa-Hjj">
                                                 <rect key="frame" x="0.0" y="151" width="384" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="iyQ-dd-9XI"/>

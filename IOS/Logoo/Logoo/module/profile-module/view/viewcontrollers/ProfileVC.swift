@@ -47,6 +47,7 @@ class ProfileVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         loadPage()
     }
+    
     @IBAction func onClickSendMessageButton(_ sender: Any) {
         if let user = user, let hasSendMessagePermission = user.isAllowTheInboxInvite {
             if hasSendMessagePermission {
@@ -56,7 +57,8 @@ class ProfileVC: BaseVC {
                                  message: "This user does not allow direct messages. You can send a request.".localized(),
                                  okTitle: "Send", onCompletion: { type in
                     if type == .CONFIRM {
-                        // TODO: SEND REQUEST
+                        self.showCurtain()
+                        self.presenter?.sendToRequest(self.userUUID)
                     }
                 })
             }
@@ -74,6 +76,7 @@ class ProfileVC: BaseVC {
             editProfileBarButtonItem.isEnabled = false
             settingsBarButtonItem.tintColor = UIColor.clear
             editProfileBarButtonItem.tintColor = UIColor.clear
+            
         }
     }
     
@@ -104,33 +107,55 @@ class ProfileVC: BaseVC {
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
+    
     func onStateChange(state: ProfileState) {
+        closeCurtain()
+        
         switch state {
         case .onUserLoad(let user):
             self.user = user
+            break
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
+            break
+        case .onProfileVisibleState(let type):
+            updateVisibleState(type)
+            break
+            
         case .onPostsLoadFail:
             // TODO: Create fail page
             break
-        case .onError(let message):
-            createAlertNotify(title: "Error".localized(), message: message)
+        case .onAlert(let title, let message):
+            createAlertNotify(title: title, message: message)
+            break
         }
+    }
+    
+    func updateVisibleState(_ type:ProfileVisibleType) {
+        
+        switch type {
+            
+        case .visible:
+            self.sendMessageButton.setImage(nil, for: .normal)
+            break
+            
+        case .inVisible:
+            let lockImage = UIImage(systemName: "lock")
+            self.sendMessageButton.setImage(lockImage, for: .normal)
+            break
+            
+        case .userVisible:
+            let lockImage = UIImage(systemName: "lock.open")
+            self.sendMessageButton.setImage(lockImage, for: .normal)
+            break
+        }
+        
+        self.sendMessageButton.isHidden = false
+        
     }
     
     func loadUser(user:User) {
         DispatchQueue.main.async {
-            
-            if self.userUUID != nil {
-                let hasSendMessagePermission = user.isAllowTheInboxInvite ?? false
-                if hasSendMessagePermission {
-                    self.sendMessageButton.setImage(nil, for: .normal)
-                }else {
-                    let lockImage = UIImage(systemName: "lock")
-                    self.sendMessageButton.setImage(lockImage, for: .normal)
-                }
-                self.sendMessageButton.isHidden = false
-            }
             
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)
@@ -151,9 +176,10 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
-            self.pageIndicator.stopAnimating()
             self.superScrollView.isHidden = false
             self.title = user.username
+            self.pageIndicator.stopAnimating()
+            print("loadUser is runned")
         }
     }
 }
@@ -175,6 +201,13 @@ extension ProfileVC : InterestsViewerProtocol {
 enum ProfileState {
     case onUserLoad(user:User)
     case onPostsLoadSuccess(posts:[UserPost])
+    case onProfileVisibleState(type:ProfileVisibleType)
     case onPostsLoadFail
-    case onError(message:String)
+    case onAlert(title:String, message:String)
+}
+
+enum ProfileVisibleType {
+    case visible // profile is public
+    case inVisible // this user can not see to the profile
+    case userVisible // this user can see to the profile
 }
