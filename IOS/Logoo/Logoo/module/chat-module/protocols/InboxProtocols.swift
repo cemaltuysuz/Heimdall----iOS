@@ -7,8 +7,6 @@
 
 import Foundation
 
-
- 
  protocol ViewToPresenterInboxProtocol {
      var view:PresenterToViewInboxProtocol? {get set}
      var interactor:PresenterToInteractorInboxProtocol? {get set}

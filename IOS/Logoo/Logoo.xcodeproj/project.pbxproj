@@ -38,6 +38,10 @@
 		1510A2D128228280003E89AB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510A2D028228280003E89AB /* Request.swift */; };
 		1510A2D328229909003E89AB /* RequestResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510A2D228229909003E89AB /* RequestResponseType.swift */; };
 		1510A2D72822B204003E89AB /* InboxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510A2D62822B204003E89AB /* InboxType.swift */; };
+		1513E5E9284254BF0043B257 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E5E7284254BF0043B257 /* MessageCell.swift */; };
+		1513E5EA284254BF0043B257 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1513E5E8284254BF0043B257 /* MessageCell.xib */; };
+		1513E5ED284257FE0043B257 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1513E5EC284257FE0043B257 /* MessageKit */; };
+		1513E5F228425BB70043B257 /* MessageEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E5F128425BB70043B257 /* MessageEntities.swift */; };
 		1517AF8B279E9AAA00D1194E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF8A279E9AAA00D1194E /* Util.swift */; };
 		1517AF94279EBCD900D1194E /* InboxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF93279EBCD900D1194E /* InboxVC.swift */; };
 		1517AF96279EBD4D00D1194E /* InboxProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517AF95279EBD4D00D1194E /* InboxProtocols.swift */; };
@@ -106,6 +110,11 @@
 		156F874028412B7B00864570 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F873E28412B7B00864570 /* InboxCell.swift */; };
 		156F874128412B7B00864570 /* InboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156F873F28412B7B00864570 /* InboxCell.xib */; };
 		156F87452842300D00864570 /* VisibleInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F87442842300D00864570 /* VisibleInbox.swift */; };
+		156F87472842454A00864570 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F87462842454A00864570 /* ChatVC.swift */; };
+		156F87492842465200864570 /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F87482842465200864570 /* ChatInteractor.swift */; };
+		156F874B2842467B00864570 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F874A2842467B00864570 /* ChatPresenter.swift */; };
+		156F874D284246A300864570 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F874C284246A300864570 /* ChatRouter.swift */; };
+		156F874F284246D100864570 /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F874E284246D100864570 /* ChatProtocols.swift */; };
 		1579A61B28040B1800812D1E /* RegisterCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A61A28040B1800812D1E /* RegisterCellType.swift */; };
 		1579A61D280437BD00812D1E /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A61C280437BD00812D1E /* Bindable.swift */; };
 		1579A61F2804441A00812D1E /* RegisterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1579A61E2804441A00812D1E /* RegisterProtocol.swift */; };
@@ -319,6 +328,9 @@
 		1510A2D028228280003E89AB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1510A2D228229909003E89AB /* RequestResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponseType.swift; sourceTree = "<group>"; };
 		1510A2D62822B204003E89AB /* InboxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxType.swift; sourceTree = "<group>"; };
+		1513E5E7284254BF0043B257 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		1513E5E8284254BF0043B257 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		1513E5F128425BB70043B257 /* MessageEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntities.swift; sourceTree = "<group>"; };
 		1517AF8A279E9AAA00D1194E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1517AF93279EBCD900D1194E /* InboxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxVC.swift; sourceTree = "<group>"; };
 		1517AF95279EBD4D00D1194E /* InboxProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxProtocols.swift; sourceTree = "<group>"; };
@@ -391,6 +403,11 @@
 		156F873E28412B7B00864570 /* InboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
 		156F873F28412B7B00864570 /* InboxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxCell.xib; sourceTree = "<group>"; };
 		156F87442842300D00864570 /* VisibleInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleInbox.swift; sourceTree = "<group>"; };
+		156F87462842454A00864570 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		156F87482842465200864570 /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		156F874A2842467B00864570 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		156F874C284246A300864570 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		156F874E284246D100864570 /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
 		1579A61A28040B1800812D1E /* RegisterCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCellType.swift; sourceTree = "<group>"; };
 		1579A61C280437BD00812D1E /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		1579A61E2804441A00812D1E /* RegisterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocol.swift; sourceTree = "<group>"; };
@@ -545,6 +562,7 @@
 				1510A2C528216EFF003E89AB /* CHTCollectionViewWaterfallLayout in Frameworks */,
 				1535674927B792AE007346D4 /* M13Checkbox in Frameworks */,
 				156F043827B26DC300D37039 /* Lottie in Frameworks */,
+				1513E5ED284257FE0043B257 /* MessageKit in Frameworks */,
 				156F043E27B39DBD00D37039 /* DeviceKit in Frameworks */,
 				15AE074227C9449B0012A81C /* FirebaseStorage in Frameworks */,
 				15A5B41727C69A200082029E /* Kingfisher in Frameworks */,
@@ -758,6 +776,32 @@
 			path = collectionview;
 			sourceTree = "<group>";
 		};
+		1513E5E32842547E0043B257 /* inbox */ = {
+			isa = PBXGroup;
+			children = (
+				156F873E28412B7B00864570 /* InboxCell.swift */,
+				156F873F28412B7B00864570 /* InboxCell.xib */,
+			);
+			path = inbox;
+			sourceTree = "<group>";
+		};
+		1513E5E42842548C0043B257 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				1513E5E7284254BF0043B257 /* MessageCell.swift */,
+				1513E5E8284254BF0043B257 /* MessageCell.xib */,
+			);
+			path = message;
+			sourceTree = "<group>";
+		};
+		1513E5F028425B8C0043B257 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				1513E5F128425BB70043B257 /* MessageEntities.swift */,
+			);
+			path = message;
+			sourceTree = "<group>";
+		};
 		1517AF8C279EBC5700D1194E /* chat-module */ = {
 			isa = PBXGroup;
 			children = (
@@ -778,6 +822,7 @@
 			children = (
 				1517AF95279EBD4D00D1194E /* InboxProtocols.swift */,
 				156F87302841065A00864570 /* RequestProtocols.swift */,
+				156F874E284246D100864570 /* ChatProtocols.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -787,6 +832,7 @@
 			children = (
 				153EA970279FFDC900871246 /* InboxRouter.swift */,
 				156F87322841073100864570 /* RequestRouter.swift */,
+				156F874C284246A300864570 /* ChatRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -794,6 +840,7 @@
 		1517AF8F279EBC8600D1194E /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				1513E5F028425B8C0043B257 /* message */,
 				153EA969279FFA0E00871246 /* enums */,
 				1510A2D028228280003E89AB /* Request.swift */,
 				156F87442842300D00864570 /* VisibleInbox.swift */,
@@ -806,6 +853,7 @@
 			children = (
 				153EA974279FFE1100871246 /* InboxPresenter.swift */,
 				156F87342841075C00864570 /* RequestPresenter.swift */,
+				156F874A2842467B00864570 /* ChatPresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -815,6 +863,7 @@
 			children = (
 				153EA972279FFDE000871246 /* InboxInteractor.swift */,
 				156F87362841078000864570 /* RequestInteractor.swift */,
+				156F87482842465200864570 /* ChatInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -827,6 +876,7 @@
 				1517AF93279EBCD900D1194E /* InboxVC.swift */,
 				159FBD6B280C109C00125C4E /* Chat.storyboard */,
 				152D8B7A2832D3F000B61B61 /* RequestVC.swift */,
+				156F87462842454A00864570 /* ChatVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -986,8 +1036,8 @@
 		156F873D28412B6200864570 /* tableview */ = {
 			isa = PBXGroup;
 			children = (
-				156F873E28412B7B00864570 /* InboxCell.swift */,
-				156F873F28412B7B00864570 /* InboxCell.xib */,
+				1513E5E42842548C0043B257 /* message */,
+				1513E5E32842547E0043B257 /* inbox */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -1627,6 +1677,7 @@
 				1541104B280045CE0099CE27 /* Mantis */,
 				15EF4F00280ABEC900DBFF48 /* GoogleSignIn */,
 				1510A2C428216EFF003E89AB /* CHTCollectionViewWaterfallLayout */,
+				1513E5EC284257FE0043B257 /* MessageKit */,
 			);
 			productName = Logoo;
 			productReference = 150C8FAE27994C6D000DAFBE /* Logoo.app */;
@@ -1713,6 +1764,7 @@
 				15AE073A27C9449B0012A81C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1541104A280045CD0099CE27 /* XCRemoteSwiftPackageReference "Mantis" */,
 				1510A2C328216EFF003E89AB /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */,
+				1513E5EB284257FE0043B257 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = 150C8FAF27994C6D000DAFBE /* Products */;
 			projectDirPath = "";
@@ -1774,6 +1826,7 @@
 				159FBD7A280C14F800125C4E /* Security.storyboard in Resources */,
 				159E052327A1550700E41035 /* GoogleService-Info.plist in Resources */,
 				152D8B77283281CE00B61B61 /* SmallRequestCollectionviewCollectionViewCell.xib in Resources */,
+				1513E5EA284254BF0043B257 /* MessageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1941,6 +1994,7 @@
 				15F272EF27CBA90B005BBC78 /* SettingsPresenter.swift in Sources */,
 				159FBD8A280C2DEE00125C4E /* CustomTabBarController.swift in Sources */,
 				15F6708927FC5E1B0083E58C /* ChangeMailPresenter.swift in Sources */,
+				1513E5E9284254BF0043B257 /* MessageCell.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
 				156F874028412B7B00864570 /* InboxCell.swift in Sources */,
@@ -1963,9 +2017,12 @@
 				151E8D3B27D1115D009CDE23 /* PasswordValidator.swift in Sources */,
 				15EF4F08280AD7C500DBFF48 /* Color.swift in Sources */,
 				151CBA1427F07C180088E548 /* LoginTransactionsVC.swift in Sources */,
+				156F874F284246D100864570 /* ChatProtocols.swift in Sources */,
 				15F6709127FDA8C70083E58C /* FirebaseAuthService.swift in Sources */,
 				151CBA1627F07C520088E548 /* LoginTransactionsProtocols.swift in Sources */,
+				156F87492842465200864570 /* ChatInteractor.swift in Sources */,
 				15FE357227B6C87E00D48F9F /* InterestProtocols.swift in Sources */,
+				156F87472842454A00864570 /* ChatVC.swift in Sources */,
 				150C8FB227994C6D000DAFBE /* AppDelegate.swift in Sources */,
 				15D6E03D27D277DC00011A36 /* UIToolbar+.swift in Sources */,
 				150FF44D27E1F85E0094B359 /* SecurityMenuItemType.swift in Sources */,
@@ -2031,6 +2088,7 @@
 				151E8D3927D11051009CDE23 /* UsernameValidator.swift in Sources */,
 				1531F95327E0A7D800FA53AE /* UserTransaction.swift in Sources */,
 				15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */,
+				156F874D284246A300864570 /* ChatRouter.swift in Sources */,
 				15FA1E3F2815CED100FC0573 /* UserView.swift in Sources */,
 				1531F94D27E09C5800FA53AE /* SecurityPresenter.swift in Sources */,
 				15EF4F06280ACFA100DBFF48 /* CustomUITextField.swift in Sources */,
@@ -2051,6 +2109,7 @@
 				15FE356827B6A3A400D48F9F /* LoginRouterPresenter.swift in Sources */,
 				1589830327FED7B300853BBC /* UserPost.swift in Sources */,
 				15D5614E27D8E2D40081DA5F /* EditFieldWithPickerViewCell.swift in Sources */,
+				1513E5F228425BB70043B257 /* MessageEntities.swift in Sources */,
 				156F044927B3A61300D37039 /* LoginPresenter.swift in Sources */,
 				1584958027CE00D700ED57B6 /* ProfileVC.swift in Sources */,
 				15FE356427B6A10500D48F9F /* LoginRouterProtocols.swift in Sources */,
@@ -2082,6 +2141,7 @@
 				15C64C5027BE26FE0088DD35 /* WelcomeInteractor.swift in Sources */,
 				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,
 				1584958C27CE242500ED57B6 /* EditProfileInteracor.swift in Sources */,
+				156F874B2842467B00864570 /* ChatPresenter.swift in Sources */,
 				156F044F27B3ACC100D37039 /* UserState.swift in Sources */,
 				153EA96B279FFA2E00871246 /* RequestType.swift in Sources */,
 				1517AF8B279E9AAA00D1194E /* Util.swift in Sources */,
@@ -2467,6 +2527,14 @@
 				minimumVersion = 0.9.9;
 			};
 		};
+		1513E5EB284257FE0043B257 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		1535674727B792AE007346D4 /* XCRemoteSwiftPackageReference "M13Checkbox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Marxon13/M13Checkbox.git";
@@ -2530,6 +2598,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1510A2C328216EFF003E89AB /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */;
 			productName = CHTCollectionViewWaterfallLayout;
+		};
+		1513E5EC284257FE0043B257 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1513E5EB284257FE0043B257 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 		1535674827B792AE007346D4 /* M13Checkbox */ = {
 			isa = XCSwiftPackageProductDependency;

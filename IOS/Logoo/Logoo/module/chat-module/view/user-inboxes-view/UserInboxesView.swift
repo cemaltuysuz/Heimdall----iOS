@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UserInboxesViewProtocol : AnyObject {
-    
+    func inboxOnClick(_ connectionId:String)
 }
 
 class UserInboxesView : NibLoadableView {
@@ -32,7 +32,7 @@ class UserInboxesView : NibLoadableView {
         inboxTableView.delegate = self
         inboxTableView.dataSource = self
         inboxTableView.register(InboxCell.self)
-        inboxTableView.rowHeight = 95
+        inboxTableView.rowHeight = 120
     }
     
     func onUpdate(_ inboxes:[VisibleInbox]) {
@@ -58,10 +58,15 @@ extension UserInboxesView : UITableViewDelegate, UITableViewDataSource {
         let current = inboxes![indexPath.row]
         
         let cell = tableView.dequeue(indexPath, type: InboxCell.self)
+        cell.selectionStyle = .none
         cell.setUp(current)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = inboxes![indexPath.row]
+        delegate?.inboxOnClick(item.connectionId)
+    }
     
 }

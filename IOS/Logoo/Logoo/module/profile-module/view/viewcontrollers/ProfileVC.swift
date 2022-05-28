@@ -50,8 +50,14 @@ class ProfileVC: BaseVC {
     }
     
     @IBAction func onClickSendMessageButton(_ sender: Any) {
-        print("message button tag :\(sendMessageButton.tag)")
         if sendMessageButton.tag == 1 {
+            if let currentUserUid = FirebaseAuthService.shared.getUUID(), let targetUser = userUUID {
+                let connectionUid = [currentUserUid,targetUser].dualConnectionOut()
+                
+                let vc = ChatVC.instantiate(from: .Chat)
+                vc.dualConnectionID = connectionUid
+                navigationController?.pushViewController(vc, animated: true)
+            }
             
         }else {
             createBasicAlert(title: "Confirm".localized(),

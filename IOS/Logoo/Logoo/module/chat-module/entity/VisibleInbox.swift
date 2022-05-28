@@ -12,4 +12,5 @@ struct VisibleInbox {
     var inboxTitle:String!
     var inboxLastMessage:String!
     var inboxLastUpdateTime:Int64!
+    var connectionId:String
 }

@@ -112,7 +112,8 @@ class InboxInteractor : PresenterToInteractorInboxProtocol{
                         visibleInboxes.append(VisibleInbox(inboxPhotoURL: user.userPhotoUrl,
                                                            inboxTitle: user.username,
                                                            inboxLastMessage: dual.lastMessage,
-                                                           inboxLastUpdateTime: dual.lastMessageTimestamp))
+                                                           inboxLastUpdateTime: dual.lastMessageTimestamp,
+                                                           connectionId: dual.connectionKey))
                     }
                     
                     if duals.last?.connectionKey == dual.connectionKey {

@@ -71,7 +71,7 @@ class RequestInteractor : PresenterToInteractorRequestProtocol {
             let dualConnection = DualConnection(connectionKey: connectionUid,
                                                 timestamp: timeInSeconds(),
                                                 lastMessage: "",
-                                                lastMessageTimestamp: 0)
+                                                lastMessageTimestamp: timeInSeconds())
             
             let ref = dbRef.collection(FireStoreCollection.DUAL_CONNECTION_COLLECTION)
                 .document(connectionUid)
