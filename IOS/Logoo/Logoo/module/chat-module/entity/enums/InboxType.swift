@@ -2,12 +2,12 @@
 //  InboxType.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 22.02.2022.
+//  Created by cemal tüysüz on 4.05.2022.
 //
 
 import Foundation
 
-enum InboxType {
-    case INBOX_GROUP
-    case INBOX_DIRECT
+enum InboxType : String {
+    case DIRECT = "DIRECT"
+    case ROOM = "ROOM"
 }

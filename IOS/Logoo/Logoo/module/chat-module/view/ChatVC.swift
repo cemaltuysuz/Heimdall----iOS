@@ -2,110 +2,207 @@
 //  ChatVC.swift
 //  Logoo
 //
-//  Created by cemal tüysüz on 24.01.2022.
+//  Created by cemal tüysüz on 28.05.2022.
 //
 
 import UIKit
-import Foundation
+import MessageKit
+import InputBarAccessoryView
 
 
-class ChatVC: UIViewController {
+class ChatVC: MessagesViewController {
     
-    @IBOutlet weak var waitingRequestsCollectionView: UICollectionView!
-    @IBOutlet weak var inboxCollectionView: UICollectionView!
-        
-    var chatList:[Any]?
-  //  var requestList:[ChatRequest]?
+    var dualConnectionID:String?
+    var presenter:ViewToPresenterChatProtocol?
+    var messages:[MessageLocal]?
+    var sender:CurrentMessager!
     
-  //  var presenter:ViewToPresenterChatProtocol?//
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chatList = [Any]()
-    //    requestList = [ChatRequest]()
+        initUI()
+        setRegisterAndDelegate()
         
-/*
- inboxCollectionView.delegate = self
- inboxCollectionView.dataSource = self
- 
- waitingRequestsCollectionView.delegate = self
- waitingRequestsCollectionView.dataSource = self
+        ChatRouter.createModule(ref: self)
+        
+        if let dualConnectionID = dualConnectionID {
+            presenter?.connectMessages(dualConnectionID)
+        }
+        
+    }
+    
+    func setRegisterAndDelegate() {
+        messageInputBar.delegate = self
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+    }
+    
+}
 
- ChatRouter.createModule(ref: self)
- presenter?.getAllRequirements()
- **/
+extension ChatVC : PresenterToViewChatProtocol {
+    func onStateChange(state: ChatState) {
+        
+        switch state {
+        case .onMessagesUpdated(let messages, let sender):
+            DispatchQueue.main.async {
+                self.navigationController?.title = sender.displayName
+                self.sender = sender as? CurrentMessager
+                self.messages = messages
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToLastItem()
+            }
+            break
+        case .onMessageSendSucces:
+            messageInputBar.inputTextView.text = ""
+            break
+        }
     }
 }
 
+extension ChatVC : InputBarAccessoryViewDelegate, MessagesDisplayDelegate {
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        presenter?.sendMessage(text)
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        
+        var photoUrl:String?
+        
+        if message.sender is CurrentMessager {
+            photoUrl = (message.sender as! CurrentMessager).photoUrl
+        }else {
+            photoUrl = (message.sender as! OtherMessager).photoUrl
+        }
+        avatarView.setImage(urlString: photoUrl, radius: nil, focustStatus: false)
+    }
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        
+        var corners: UIRectCorner = []
+        
+        if isFromCurrentSender(message: message) {
+            corners.formUnion(.topLeft)
+            corners.formUnion(.bottomLeft)
+            if !isPreviousMessageSameSender(at: indexPath) {
+                corners.formUnion(.topRight)
+            }
+            if !isNextMessageSameSender(at: indexPath) {
+                corners.formUnion(.bottomRight)
+            }
+        } else {
+            corners.formUnion(.topRight)
+            corners.formUnion(.bottomRight)
+            if !isPreviousMessageSameSender(at: indexPath) {
+                corners.formUnion(.topLeft)
+            }
+            if !isNextMessageSameSender(at: indexPath) {
+                corners.formUnion(.bottomLeft)
+            }
+        }
+        
+        return .custom { view in
+            let radius: CGFloat = 16
+            let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            view.layer.mask = mask
+        }
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages![indexPath.section].sender.senderId == messages![indexPath.section - 1].sender.senderId
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages!.count else { return false }
+        return messages![indexPath.section].sender.senderId == messages![indexPath.section + 1].sender.senderId
+    }
+    
+    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
+        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
+    }
+}
 
-/**
- extension ChatVC : PresenterToViewChatProtocol {
-     func chatsToView(chats: [Any]) {
-         DispatchQueue.main.async {
-             
-             self.chatList = chats
-             self.inboxCollectionView.reloadData()
-         }
-     }
-     
-     func requestsToView(requests: [ChatRequest]) {
-         DispatchQueue.main.async {
-             self.requestList = requests
-             self.waitingRequestsCollectionView.reloadData()
-             print("requestler geldi \(requests.count)")
-         }
-     }
- }
- */
+extension ChatVC : MessagesDataSource, MessagesLayoutDelegate {
+    
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if isTimeLabelVisible(at: indexPath) {
+            return 18
+        }
+        return 0
+    }
+    
+    func currentSender() -> SenderType {
+        return sender
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages![indexPath.section]
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages?.count ?? 0
+    }
+    
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if isTimeLabelVisible(at: indexPath) {
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        }
+        return nil
+    }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if !isPreviousMessageSameSender(at: indexPath) {
+            let name = message.sender.displayName
+            return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        }
+        return nil
+    }
 
-/**
- extension ChatVC : UICollectionViewDelegate, UICollectionViewDataSource {
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         if collectionView == self.inboxCollectionView {
-             return 0
-         }
-         return 0
-     }
-     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         
-         if collectionView == self.inboxCollectionView {
-             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "inboxCollectionViewCell", for: indexPath) as! InboxCollectionViewCell
-             let currentItem = chatList![indexPath.row]
-             if(currentItem is Any) {
-                 let item = currentItem as! Room
-                 cell.inboxTitleLabel.text = item.roomTitle!
-                 cell.inboxImageView.layer.masksToBounds = true
-                 cell.inboxImageView.layer.cornerRadius = cell.inboxImageView.bounds.width / 2
-             }else {
-                 let item = currentItem as! Any
-                 cell.inboxTitleLabel.text = item.p2pMembers![1].username!
-                 cell.inboxImageView.layer.masksToBounds = true
-                 cell.inboxImageView.layer.cornerRadius = 10
-             }
-             
-             return cell
-         }else {
-             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "waitingCollectionViewCell", for: indexPath) as! WaitingRequestCollectionViewCell
-             
-             let item = requestList![indexPath.row]
-             
-             if item.requestType == .ROOM_REQUEST {
-                 cell.waitingRequestImage.layer.masksToBounds = true
-                 cell.waitingRequestImage.layer.cornerRadius = cell.waitingRequestImage.bounds.width / 2
-                 cell.waitingRequestTitle.text = item.requestSenderId!
-             }else {
-                 cell.waitingRequestImage.layer.masksToBounds = true
-                 cell.waitingRequestImage.layer.cornerRadius = 10
-                 cell.waitingRequestTitle.text = item.requestSenderId!
-             }
-             
-             return cell
-         }
-     }
-     
-     
- }
- 
- */
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+
+        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+            return NSAttributedString(string: "Delivered", attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        }
+        return nil
+    }
+}
+// configure
+extension ChatVC {
+    
+    func initUI(){
+        configureMessageInputBar()
+    }
+    
+    func configureMessageInputBar() {
+        //super.configureMessageInputBar()
+        
+        messageInputBar.inputTextView.tintColor = Color.black700!
+        messageInputBar.sendButton.setTitleColor(Color.black700!, for: .normal)
+        messageInputBar.sendButton.setTitleColor(
+            Color.black700!.withAlphaComponent(0.3),
+            for: .highlighted)
+        
+        
+        messageInputBar.isTranslucent = true
+        messageInputBar.separatorLine.isHidden = true
+        messageInputBar.inputTextView.tintColor = Color.black700!
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
+        messageInputBar.inputTextView.layer.borderColor = Color.gray500?.cgColor
+        messageInputBar.inputTextView.layer.borderWidth = 1.0
+        messageInputBar.inputTextView.layer.cornerRadius = 16.0
+        messageInputBar.inputTextView.layer.masksToBounds = true
+        messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+    }
+}
+
+enum ChatState {
+    case onMessagesUpdated(messages:[MessageLocal], sender:SenderType)
+    case onMessageSendSucces
+}
+
+

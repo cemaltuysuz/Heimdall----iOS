@@ -133,7 +133,7 @@
                                                     <constraint firstAttribute="height" constant="120" id="a6C-yY-ane"/>
                                                 </constraints>
                                             </stackView>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Pa-Hjj">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Pa-Hjj">
                                                 <rect key="frame" x="0.0" y="151" width="384" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="iyQ-dd-9XI"/>
@@ -227,6 +227,7 @@
                         <outlet property="pageIndicator" destination="Wdp-7J-id3" id="Wcq-U8-AFI"/>
                         <outlet property="sendMessageButton" destination="cPL-Pa-Hjj" id="byT-kB-Fyg"/>
                         <outlet property="settingsBarButtonItem" destination="omv-rB-8j6" id="iNd-aV-LrA"/>
+                        <outlet property="sliderContainerOutlet" destination="vTF-jO-iJA" id="ek3-Qb-Ktl"/>
                         <outlet property="superScrollView" destination="kjY-1u-FKJ" id="nbY-jR-C6W"/>
                         <outlet property="userAgeLabel" destination="S32-E7-Kk6" id="aQe-qq-QwY"/>
                         <outlet property="userCountryLabel" destination="QO6-ES-gbo" id="tDE-dO-m1R"/>

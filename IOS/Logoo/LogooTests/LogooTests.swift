@@ -19,11 +19,17 @@ class LogooTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        XCTAssertTrue("cemal" == getOtherUserIDFromConnectionKey("tuysuz"))
+    }
+    
+    func getOtherUserIDFromConnectionKey(_ firstUserID:String) -> String {
+        let seperator = "."
+        
+        let key = "cemal.tuysuz"
+        let removedSeperator = key.replacingOccurrences(of: seperator, with: "")
+        let removedOtherUserId = removedSeperator.replacingOccurrences(of: firstUserID, with: "")
+        
+        return removedOtherUserId
     }
 
     func testPerformanceExample() throws {

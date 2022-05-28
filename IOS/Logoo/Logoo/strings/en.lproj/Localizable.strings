@@ -36,5 +36,9 @@
 "post_upload_error_message" = "An error was encountered while loading the post.";
 "post_delete_error_message" = "An error was encountered while deleting the post.";
 
+// request
+
+"request_title" = "wants to connect with you";
+
 
 

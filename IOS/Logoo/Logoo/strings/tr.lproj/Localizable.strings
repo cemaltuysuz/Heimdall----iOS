@@ -170,6 +170,15 @@
 "Your post will be deleted. Do you confirm of this ?" = "Gönderin silinecek. Bunu onaylıyor musun ?";
 
 //  discovery
-
 "Search a user" = "Bir kullanıcı ara";
+"Discovery" = "Keşfet";
 
+// Inbox
+
+"Inbox" = "Gelen Kutusu";
+"Pending Requests" = "Bekleyen istekler";
+"Messages" = "Mesajlar";
+
+// request
+
+"request_title" = "Seninle bağlantı kurmak istiyor.";

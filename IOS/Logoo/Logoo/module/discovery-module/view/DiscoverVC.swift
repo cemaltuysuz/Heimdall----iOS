@@ -66,6 +66,7 @@ class DiscoverVC: BaseVC {
 }
 
 extension DiscoverVC : UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.resetPagination()
         
@@ -165,6 +166,17 @@ extension DiscoverVC : UICollectionViewDelegate, UICollectionViewDataSource, CHT
         }
         return CGSize(width: cellWidth, height: cellHeight - minusHeight)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async {
+            let isHidden = scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.searchBar.isHidden = !isHidden
+            })
+        }
+    }
+
 }
 
 extension DiscoverVC : PresenterToViewDiscorveryProtocol {

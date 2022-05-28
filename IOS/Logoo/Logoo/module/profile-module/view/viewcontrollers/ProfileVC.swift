@@ -21,6 +21,7 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var superScrollView: UIScrollView!
     @IBOutlet weak var pageIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var sliderContainerOutlet: UIView!
     
     @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
@@ -47,19 +48,26 @@ class ProfileVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         loadPage()
     }
+    
     @IBAction func onClickSendMessageButton(_ sender: Any) {
-        if let user = user, let hasSendMessagePermission = user.isAllowTheInboxInvite {
-            if hasSendMessagePermission {
-                // TODO: GO TO CHAT SCREEN
-            }else {
-                createBasicAlert(title: "Confirm".localized(),
-                                 message: "This user does not allow direct messages. You can send a request.".localized(),
-                                 okTitle: "Send", onCompletion: { type in
-                    if type == .CONFIRM {
-                        // TODO: SEND REQUEST
-                    }
-                })
+        if sendMessageButton.tag == 1 {
+            if let currentUserUid = FirebaseAuthService.shared.getUUID(), let targetUser = userUUID {
+                let connectionUid = [currentUserUid,targetUser].dualConnectionOut()
+                
+                let vc = ChatVC.instantiate(from: .Chat)
+                vc.dualConnectionID = connectionUid
+                navigationController?.pushViewController(vc, animated: true)
             }
+            
+        }else {
+            createBasicAlert(title: "Confirm".localized(),
+                             message: "This user does not allow direct messages. You can send a request.".localized(),
+                             okTitle: "Send", onCompletion: { type in
+                if type == .CONFIRM {
+                    self.showCurtain()
+                    self.presenter?.sendToRequest(self.userUUID)
+                }
+            })
         }
     }
     
@@ -70,10 +78,12 @@ class ProfileVC: BaseVC {
         userInterestsViewer.delegate = self
         
         if userUUID != nil {
+            sliderContainerOutlet.isHidden = true
             settingsBarButtonItem.isEnabled = false
             editProfileBarButtonItem.isEnabled = false
             settingsBarButtonItem.tintColor = UIColor.clear
             editProfileBarButtonItem.tintColor = UIColor.clear
+            
         }
     }
     
@@ -104,33 +114,45 @@ class ProfileVC: BaseVC {
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
+    
     func onStateChange(state: ProfileState) {
+        closeCurtain()
+        
         switch state {
         case .onUserLoad(let user):
             self.user = user
+            break
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
+            break
+        case .onProfileVisibleState(let type):
+            updateVisibleState(type)
+            break
+            
         case .onPostsLoadFail:
             // TODO: Create fail page
             break
-        case .onError(let message):
-            createAlertNotify(title: "Error".localized(), message: message)
+        case .onAlert(let title, let message):
+            createAlertNotify(title: title, message: message)
+            break
         }
+    }
+    
+    func updateVisibleState(_ type:ProfileVisibleType) {
+        
+        let state = (type == .inVisible) ? true : false
+        sliderContainerOutlet.isHidden = state
+        
+        type.rawValue.isEmpty ? sendMessageButton.setImage(nil, for: .normal) : sendMessageButton.setImage(UIImage(systemName: type.rawValue), for: .normal)
+        
+        sendMessageButton.tag = type == .inVisible ? 0 : 1
+        
+        sendMessageButton.isHidden = false
+        
     }
     
     func loadUser(user:User) {
         DispatchQueue.main.async {
-            
-            if self.userUUID != nil {
-                let hasSendMessagePermission = user.isAllowTheInboxInvite ?? false
-                if hasSendMessagePermission {
-                    self.sendMessageButton.setImage(nil, for: .normal)
-                }else {
-                    let lockImage = UIImage(systemName: "lock")
-                    self.sendMessageButton.setImage(lockImage, for: .normal)
-                }
-                self.sendMessageButton.isHidden = false
-            }
             
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)
@@ -151,9 +173,9 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
-            self.pageIndicator.stopAnimating()
             self.superScrollView.isHidden = false
             self.title = user.username
+            self.pageIndicator.stopAnimating()
         }
     }
 }
@@ -175,6 +197,13 @@ extension ProfileVC : InterestsViewerProtocol {
 enum ProfileState {
     case onUserLoad(user:User)
     case onPostsLoadSuccess(posts:[UserPost])
+    case onProfileVisibleState(type:ProfileVisibleType)
     case onPostsLoadFail
-    case onError(message:String)
+    case onAlert(title:String, message:String)
+}
+
+enum ProfileVisibleType : String {
+    case visible = ""// profile is public
+    case inVisible = "lock"// this user can not see to the profile
+    case userVisible = "lock.open" // this user can see to the profile
 }
