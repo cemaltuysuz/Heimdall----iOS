@@ -8,13 +8,8 @@
 import Foundation
 
 struct DualConnection : Codable {
-    
     var connectionKey:String!
-    var timestamp:String!
-    
-    init(connectionKey: String? = nil, timestamp:String? = nil) {
-        self.connectionKey = connectionKey
-        self.timestamp = timestamp
-    }
-    
+    var timestamp:Int64!
+    var lastMessage:String!
+    var lastMessageTimestamp:Int64!
 }

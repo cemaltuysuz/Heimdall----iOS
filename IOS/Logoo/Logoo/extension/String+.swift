@@ -54,4 +54,14 @@ extension String {
        }
        return nil
     }
+    
+    func getOtherUserIDFromConnectionKey(_ firstUserID:String) -> String {
+        let seperator = GeneralConstant.DUAL_CONNECTION_SEPERATOR
+        
+        let key = self
+        let removedSeperator = key.replacingOccurrences(of: seperator, with: "")
+        let removedOtherUserId = removedSeperator.replacingOccurrences(of: firstUserID, with: "")
+        
+        return removedOtherUserId
+    }
 }

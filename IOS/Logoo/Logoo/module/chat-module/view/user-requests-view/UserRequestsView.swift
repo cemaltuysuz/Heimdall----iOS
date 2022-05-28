@@ -8,10 +8,16 @@
 import Foundation
 import UIKit
 
+protocol UserRequestsViewProtocol : AnyObject {
+    func onRequestClicked(_ request:Request)
+}
+
 class UserRequestsView : NibLoadableView {
     
     @IBOutlet weak var requestsCollectionView: UICollectionView!
-    private var requests : [RequestUser]?
+    private var requests : [Request]?
+    
+    weak var delegate:UserRequestsViewProtocol?
     
     var cellSize:CGSize!
     var cellRatio:CGFloat = 0.7
@@ -22,12 +28,11 @@ class UserRequestsView : NibLoadableView {
         initUI()
         initDelegateAndRegisters()
     }
-    
 }
 
 extension UserRequestsView {
     
-    func updateRequests(_ requests:[RequestUser]) {
+    func updateRequests(_ requests:[Request]) {
         self.requests = requests
         self.requestsCollectionView.reloadData()
     }
@@ -59,10 +64,13 @@ extension UserRequestsView : UICollectionViewDelegateFlowLayout, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cell deque")
         let item = requests![indexPath.row]
         let cell = collectionView.dequeue(indexPath, type: SmallRequestCollectionviewCollectionViewCell.self)
         cell.setup(item)
+        
+        cell.onClicked = { request in
+            self.delegate?.onRequestClicked(request)
+        }
         return cell
     }
     

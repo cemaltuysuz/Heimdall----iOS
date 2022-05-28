@@ -12,7 +12,7 @@ extension Array where Element == String {
     func dualConnectionOut() -> String? {
         if count == 2 {
             let sortedArray = sorted()
-            return sortedArray[0] + sortedArray[1]
+            return sortedArray[0] + GeneralConstant.DUAL_CONNECTION_SEPERATOR + sortedArray[1]
         }
         return nil
     }

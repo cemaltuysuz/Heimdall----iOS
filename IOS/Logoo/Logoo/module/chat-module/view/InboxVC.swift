@@ -10,11 +10,13 @@ import Foundation
 
 class InboxVC: BaseVC {
     
+    @IBOutlet weak var userInboxesView: UserInboxesView!
     @IBOutlet weak var userRequestView: UserRequestsView!
     var presenter:ViewToPresenterInboxProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setRegisterAndDelegate()
         
         InboxRouter.createModule(ref: self)
         presenter?.startConnection()
@@ -25,16 +27,47 @@ class InboxVC: BaseVC {
 // Tableview Refresh
 extension InboxVC {
     
-    func onRefreshInboxes(_ inboxes:[UserInbox]) {
+    func onRefreshInboxes(_ inboxes:[VisibleInbox]) {
+        
+        DispatchQueue.main.async {
+            self.userInboxesView.onUpdate(inboxes)
+        }
         
     }
     
-    func onRefreshRequests(_ requests:[RequestUser]) {
+    func onRefreshRequests(_ requests:[Request]) {
         DispatchQueue.main.async {
-            print("geldi bisiler :\(requests.count)")
             self.userRequestView.updateRequests(requests)
         }
     }
+    
+    func setRegisterAndDelegate(){
+        userRequestView.delegate = self
+    }
+}
+
+extension InboxVC : UserRequestsViewProtocol {
+    
+    func onRequestClicked(_ request: Request) {
+        
+        let vc = RequestVC.instantiate(from: .Chat)
+        vc.modalPresentationStyle = .popover
+        vc.request = request
+        vc.delegate = self
+        present(vc,animated: true)
+        
+    }
+    
+}
+
+extension InboxVC : RequestVCProtocol {
+    
+    func goProfile(_ userId: String) {
+        let vc = ProfileVC.instantiate(from: .Profile)
+        vc.userUUID = userId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension InboxVC : PresenterToViewInboxProtocol {
@@ -60,8 +93,8 @@ extension InboxVC : PresenterToViewInboxProtocol {
 }
 
 enum InboxState {
-    case onRequestsChange(requests:[RequestUser])
-    case onInboxesChange(inboxes:[UserInbox])
+    case onRequestsChange(requests:[Request])
+    case onInboxesChange(inboxes:[VisibleInbox])
     case onError(error:InboxError)
 }
 

@@ -10,8 +10,6 @@ import UIKit
 
 class BottomSheetVC: UIViewController {
     
-    
-    // last layer (BottomSheet)
     lazy var container : UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -32,11 +30,18 @@ class BottomSheetVC: UIViewController {
     var curtainAlpha:CGFloat = 0.6
     var animDurarion:CGFloat = 0.4
     
+    @IBInspectable
     var defaultHeight:CGFloat = 300
+    
     var maxHeight:CGFloat!
     var minHeight:CGFloat!
     var currentHeight:CGFloat!
-        
+    
+    @IBInspectable
+    var isScrollable = false
+    
+    @IBInspectable
+    var isClickable = false
     
     // Constraints
     var containerViewHeightConstraint:NSLayoutConstraint?
@@ -48,7 +53,6 @@ class BottomSheetVC: UIViewController {
         setupUI()
         setupConstraints()
         setupGestures()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,11 +114,13 @@ class BottomSheetVC: UIViewController {
     
     @objc
     func curtainOnClick(){
+        guard isClickable else {return}
         animateDismissView()
     }
     
     @objc
     func containerOnSwipe(gesture:UIPanGestureRecognizer){
+        guard isScrollable else {return}
         let translation = gesture.translation(in: view)
 
         // Kullanıcı parmağını aşağıya doğru mu kaydırıyor ?

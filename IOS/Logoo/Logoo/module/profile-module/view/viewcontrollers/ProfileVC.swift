@@ -21,6 +21,7 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var superScrollView: UIScrollView!
     @IBOutlet weak var pageIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var sliderContainerOutlet: UIView!
     
     @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
@@ -49,19 +50,18 @@ class ProfileVC: BaseVC {
     }
     
     @IBAction func onClickSendMessageButton(_ sender: Any) {
-        if let user = user, let hasSendMessagePermission = user.isAllowTheInboxInvite {
-            if hasSendMessagePermission {
-                // TODO: GO TO CHAT SCREEN
-            }else {
-                createBasicAlert(title: "Confirm".localized(),
-                                 message: "This user does not allow direct messages. You can send a request.".localized(),
-                                 okTitle: "Send", onCompletion: { type in
-                    if type == .CONFIRM {
-                        self.showCurtain()
-                        self.presenter?.sendToRequest(self.userUUID)
-                    }
-                })
-            }
+        print("message button tag :\(sendMessageButton.tag)")
+        if sendMessageButton.tag == 1 {
+            
+        }else {
+            createBasicAlert(title: "Confirm".localized(),
+                             message: "This user does not allow direct messages. You can send a request.".localized(),
+                             okTitle: "Send", onCompletion: { type in
+                if type == .CONFIRM {
+                    self.showCurtain()
+                    self.presenter?.sendToRequest(self.userUUID)
+                }
+            })
         }
     }
     
@@ -72,6 +72,7 @@ class ProfileVC: BaseVC {
         userInterestsViewer.delegate = self
         
         if userUUID != nil {
+            sliderContainerOutlet.isHidden = true
             settingsBarButtonItem.isEnabled = false
             editProfileBarButtonItem.isEnabled = false
             settingsBarButtonItem.tintColor = UIColor.clear
@@ -133,24 +134,14 @@ extension ProfileVC : PresenterToViewProfileProtocol {
     
     func updateVisibleState(_ type:ProfileVisibleType) {
         
-        switch type {
-            
-        case .visible:
-            self.sendMessageButton.setImage(nil, for: .normal)
-            break
-            
-        case .inVisible:
-            let lockImage = UIImage(systemName: "lock")
-            self.sendMessageButton.setImage(lockImage, for: .normal)
-            break
-            
-        case .userVisible:
-            let lockImage = UIImage(systemName: "lock.open")
-            self.sendMessageButton.setImage(lockImage, for: .normal)
-            break
-        }
+        let state = (type == .inVisible) ? true : false
+        sliderContainerOutlet.isHidden = state
         
-        self.sendMessageButton.isHidden = false
+        type.rawValue.isEmpty ? sendMessageButton.setImage(nil, for: .normal) : sendMessageButton.setImage(UIImage(systemName: type.rawValue), for: .normal)
+        
+        sendMessageButton.tag = type == .inVisible ? 0 : 1
+        
+        sendMessageButton.isHidden = false
         
     }
     
@@ -179,7 +170,6 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             self.superScrollView.isHidden = false
             self.title = user.username
             self.pageIndicator.stopAnimating()
-            print("loadUser is runned")
         }
     }
 }
@@ -206,8 +196,8 @@ enum ProfileState {
     case onAlert(title:String, message:String)
 }
 
-enum ProfileVisibleType {
-    case visible // profile is public
-    case inVisible // this user can not see to the profile
-    case userVisible // this user can see to the profile
+enum ProfileVisibleType : String {
+    case visible = ""// profile is public
+    case inVisible = "lock"// this user can not see to the profile
+    case userVisible = "lock.open" // this user can see to the profile
 }

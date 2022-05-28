@@ -18,4 +18,8 @@ class InboxPresenter : ViewToPresenterInboxProtocol, InteractorToPresenterInboxP
     func onStateChange(state: InboxState) {
         view?.onStateChange(state: state)
     }
+    
+    func confirmRequest(_ request: Request) {
+        interactor?.confirmRequest(request)
+    }
 }

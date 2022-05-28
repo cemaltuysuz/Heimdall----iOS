@@ -10,4 +10,5 @@ import Foundation
 struct RequestUser:Codable {
     let userUid:String!
     let timestamp:Int64!
+    let requestUid:String!
 }

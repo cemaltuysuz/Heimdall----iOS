@@ -13,4 +13,11 @@ struct Request : Codable {
     var timestamp:Int64!
     var requestType:String!
     var requestResponse:String!
+    
+    func getRequestType() -> RequestType? {
+        if let type = RequestType(rawValue: requestType) {
+            return type
+        }
+        return nil
+    }
 }
