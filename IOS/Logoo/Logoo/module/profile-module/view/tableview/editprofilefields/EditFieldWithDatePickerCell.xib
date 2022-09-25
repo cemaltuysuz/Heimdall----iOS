@@ -49,4 +49,9 @@
             <point key="canvasLocation" x="131.8840579710145" y="155.35714285714286"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="vGK-ii-d69">
+            <size key="intrinsicContentSize" width="32" height="34"/>
+        </designable>
+    </designables>
 </document>

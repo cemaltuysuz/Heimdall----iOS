@@ -63,8 +63,8 @@ class RegisterInteractor : PresenterToInteractorRegister{
         self.userPassword = userPassword
     }
     
-    func setUserBirthDay(date: String) {
-        self.userBirthDay = date
+    func setUserBirthDay(birthDay: String) {
+        userBirthDay = birthDay
     }
     
     func setUserGender(gender: GenderType) {
@@ -135,7 +135,7 @@ class RegisterInteractor : PresenterToInteractorRegister{
                                        userGender: self.userGender!.rawValue,
                                        userBirthDay: self.userBirthDay!,
                                        userManifesto: "",
-                                       userInterests: "",
+                                       userInterests: [],
                                        userLastSeen: "",
                                        userRegisterTime: "\(timeInSeconds())",
                                        isAnonymous: false,

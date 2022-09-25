@@ -17,6 +17,7 @@ class CustomTabBarController : UITabBarController {
     }
     
     func setupVC(){
+        // discovery
         let discoveryVC = DiscoverVC.instantiate(from: .Discovery)
         discoveryVC.tabBarItem.image = UIImage(systemName: "person.3")
         discoveryVC.tabBarItem.selectedImage = UIImage(systemName: "person.3.fill")
@@ -25,23 +26,26 @@ class CustomTabBarController : UITabBarController {
         let discoveryNavigationController = UINavigationController(rootViewController: discoveryVC)
         discoveryNavigationController.navigationBar.prefersLargeTitles = true
         
+        // global
         let globalVC = GlobalVC.instantiate(from: .Global)
-        globalVC.tabBarItem.title = "Global".localized()
+        globalVC.title = "Global".localized()
         globalVC.tabBarItem.image = UIImage(systemName: "globe.americas")
         globalVC.tabBarItem.selectedImage = UIImage(systemName: "globe.americas.fill")
         
         let globalNavigationController = UINavigationController(rootViewController: globalVC)
         
-        let chatVC = ChatVC.instantiate(from: .Chat)
-        chatVC.tabBarItem.title = "Chat".localized()
+        // Chat
+        let chatVC = InboxVC.instantiate(from: .Chat)
+        chatVC.title = "Inbox".localized()
         chatVC.tabBarItem.image = UIImage(systemName: "bubble.left.and.bubble.right")
         chatVC.tabBarItem.selectedImage = UIImage(systemName: "bubble.left.and.bubble.right.fill")
         
         let chatNavigationController = UINavigationController(rootViewController: chatVC)
         chatNavigationController.navigationBar.prefersLargeTitles = true
         
+        // Profile
         let profileVC = ProfileVC.instantiate(from: .Profile)
-        profileVC.tabBarItem.title = "Profile".localized()
+        profileVC.title = "Profile".localized()
         profileVC.tabBarItem.image = UIImage(systemName: "person")
         profileVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         

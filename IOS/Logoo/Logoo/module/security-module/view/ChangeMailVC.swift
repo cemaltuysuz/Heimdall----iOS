@@ -19,9 +19,10 @@ class ChangeMailVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ChangeMailRouter.createModule(ref: self)
 
         configureUI()
-        createModule()
+        configureBinds()
     }
     
     func configureUI(){
@@ -30,13 +31,12 @@ class ChangeMailVC: BaseVC {
         okButtonOutlet.setTitle("Okey".localized(), for: .normal)
         newMailAdressTextField.placeholder = "Enter your new mail adress".localized()
         currentPasswordTextField.placeholder = "Enter your current password".localized()
-        currentPasswordTextField.customDelegate = self
         view.addInputAccessoryForTextFields(textFields: [newMailAdressTextField, currentPasswordTextField], dismissable: true, previousNextable: true)
-
+        
     }
     
-    func createModule() {
-        ChangeMailRouter.createModule(ref: self)
+    func configureBinds() {
+        currentPasswordTextField.customDelegate = self
     }
     @IBAction func okButtonAction(_ sender: Any) {
         if let currentPass = currentPasswordTextField.text, !currentPass.isEmpty, let newMail = newMailAdressTextField.text, !newMail.isEmpty {
@@ -92,7 +92,8 @@ extension ChangeMailVC : PresenterToViewChangeMailProtocol {
 }
 
 extension ChangeMailVC : CustomUITextFieldProtocol {
-    func onRightButtonClick(textField: CustomUITextField, isActive: Bool) {
+    
+    func onRightButtonClick(_ textField: CustomUITextField, isActive: Bool) {
         textField.isSecureTextEntry = !isActive
         if isActive {
             textField.rightImage = UIImage(systemName: "eye.fill")
@@ -101,7 +102,6 @@ extension ChangeMailVC : CustomUITextFieldProtocol {
         }
     }
 }
-
 
 enum ChangeMailState {
     case CURTAIN

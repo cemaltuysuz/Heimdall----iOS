@@ -16,7 +16,7 @@ class User : Codable {
     var userBirthDay:String?
     var userLiveCountry:String?
     var userManifesto:String?
-    var userInterests:String?
+    var userInterests:[Interest]?
     var userLastSeen:String?
     var userRegisterTime:String?
     var isAnonymous:Bool?
@@ -26,7 +26,7 @@ class User : Codable {
     
     init(){}
     
-    init(userId: String, username: String, userMail: String?, userPhotoUrl: String, userGender: String, userBirthDay: String, userLiveCountry:String? = nil, userManifesto: String, userInterests:String, userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
+    init(userId: String, username: String, userMail: String?, userPhotoUrl: String, userGender: String, userBirthDay: String, userLiveCountry:String? = nil, userManifesto: String, userInterests:[Interest], userLastSeen: String, userRegisterTime: String, isAnonymous: Bool, isOnline: Bool, isAllowTheGroupInvite: Bool, isAllowTheInboxInvite: Bool) {
         self.userId = userId
         self.username = username
         self.userMail = userMail

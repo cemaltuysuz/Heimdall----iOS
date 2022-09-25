@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileSettingsRouter : PresenterToRouterSettingsProtocol {
+class SettingsRouter : PresenterToRouterSettingsProtocol {
     
     static func createModule(ref: SettingsVC) {
         let p = SettingsPresenter()

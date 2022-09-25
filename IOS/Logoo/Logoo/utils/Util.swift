@@ -16,6 +16,10 @@ func timeInSeconds() -> Int64 {
     return Int64(Date().timeIntervalSince1970 * 1000)
 }
 
+var getLanguageCode:String? = {
+    return Locale.current.languageCode
+}()
+
 func randomStringWithLength(len: Int) -> NSString {
     
     let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

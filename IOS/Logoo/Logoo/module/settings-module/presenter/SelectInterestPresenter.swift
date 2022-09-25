@@ -8,36 +8,35 @@
 import Foundation
 
 class SelectInterestPresenter : InteractorToPresenterInterestSelectProtocol, ViewToPresenterInterestSelectProtocol{
-    
+
     var view: PresenterToViewInterestSelectProtocol?
     var interactor: PresenterToInteractorInterestSelectProtocol?
     
-
-    func userAlreadyHobbies(alreadyList: [String]) {
-        view?.userAlreadyHobbies(alreadyList: alreadyList)
+    func onStateChange(state: InterestsState) {
+        view?.onStateChange(state: state)
     }
     
-    func allHobies(hobbyList: [InterestSelectionModel]) {
-        view?.allHobies(hobbyList: hobbyList)
+    func getInterests(_ pageLimit:Int) {
+        interactor?.getInterests(pageLimit)
+    }
+    
+    func getUserInterests() {
+        interactor?.getUserInterests()
+    }
+    
+    func saveInterests(list: [Interest]) {
+        interactor?.saveInterests(list: list)
     }
     
     func searchInterest(searchText: String) {
         interactor?.searchInterest(searchText: searchText)
     }
     
-    func getInterests() {
-        interactor?.getInterests()
+    func deleteInterest(_ interestID: String) {
+        interactor?.deleteInterest(interestID)
     }
-    
-    func indicatorVisibility(status: Bool) {
-        view?.indicatorVisibility(status: status)
-    }
-    
-    func saveInterestsResponse(resp: Resource<Any>) {
-        view?.saveInterestsResponse(resp: resp)
-    }
-    
-    func saveInterests(list: [String]) {
-        interactor?.saveInterests(list: list)
+
+    func resetPagination() {
+        interactor?.resetPagination()
     }
 }

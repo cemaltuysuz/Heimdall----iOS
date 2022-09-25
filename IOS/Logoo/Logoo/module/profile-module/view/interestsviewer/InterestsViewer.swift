@@ -17,7 +17,7 @@ protocol InterestsViewerProtocol : AnyObject {
 class InterestsViewer : NibLoadableView {
     
     @IBOutlet weak var interestsCollectionView: UICollectionView!
-    var interests:[String]?
+    var interests:[Interest]?
     weak var delegate:InterestsViewerProtocol?
     
     override func awakeFromNib() {
@@ -29,7 +29,6 @@ class InterestsViewer : NibLoadableView {
         setupBinds()
     }
     func setupUI(){
-        //let layout = CustomViewFlowLayout()
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 3
@@ -54,14 +53,14 @@ extension InterestsViewer : UICollectionViewDelegateFlowLayout, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(indexPath, type: InterestViewerCell.self)
         let current = interests![indexPath.row]
-        cell.congfigureCell(interest: current)
+        cell.congfigureCell(interest: current.getInterest())
         return cell
     }
 }
 
 extension InterestsViewer {
     
-    func updateAndReloadData(interests:[String]){
+    func updateAndReloadData(interests:[Interest]){
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else {return}
             if interests.count > 0 {

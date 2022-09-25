@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "CHTCollectionViewWaterfallLayout",
+        "repositoryURL": "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout",
+        "state": {
+          "branch": null,
+          "revision": "1fe42247efc8aea1ad03332d2b44f2d7fb1644bc",
+          "version": "0.9.10"
+        }
+      },
+      {
         "package": "DeviceKit",
         "repositoryURL": "https://github.com/devicekit/DeviceKit.git",
         "state": {
@@ -101,6 +110,15 @@
         }
       },
       {
+        "package": "InputBarAccessoryView",
+        "repositoryURL": "https://github.com/nathantannar4/InputBarAccessoryView",
+        "state": {
+          "branch": null,
+          "revision": "2843b4454cfb6de5b4d1e5939fef2dd6257b69ee",
+          "version": "5.5.0"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
@@ -143,6 +161,15 @@
           "branch": null,
           "revision": "d6880eb97267248f89e6cef2dd52785d50627639",
           "version": "1.9.0"
+        }
+      },
+      {
+        "package": "MessageKit",
+        "repositoryURL": "https://github.com/MessageKit/MessageKit",
+        "state": {
+          "branch": null,
+          "revision": "84236d91ac5783e3ecbefc15b82d854476720115",
+          "version": "3.8.0"
         }
       },
       {

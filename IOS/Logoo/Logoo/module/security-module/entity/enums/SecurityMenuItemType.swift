@@ -8,7 +8,7 @@
 import Foundation
 
 enum SecurityMenuItemType : Int {
-    case CHANGE_MAIL
-    case CHANGE_PASSWORD
-    case LOGIN_TRANSACTIONS
+    case CHANGE_MAIL = 0
+    case CHANGE_PASSWORD = 1
+    case LOGIN_TRANSACTIONS = 2
 }

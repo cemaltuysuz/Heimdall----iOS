@@ -31,14 +31,14 @@ class FireStoreService {
     func getDocument<T>(ref: DocumentReference, onCompletion: @escaping (T?) -> Void) where T:Codable{
         ref.getDocument{ (document,error) in
             if let error = error {
-                print("Error: \(error.localizedDescription)")
+                print("Error: \(error)")
                 return
             }
             let result = Result {
                 try document.flatMap {
                     try $0.data(as: T.self)
-                 }
-              }
+                }
+            }
             switch result {
             case .success(let doc):
                 if let doc = doc {
@@ -51,7 +51,7 @@ class FireStoreService {
                 onCompletion(nil)
                 break
             }
-         }
+        }
     }
     
     public func getDocumentsByField<T>(ref:CollectionReference,getByField: String, getByValue: String,onCompletion: @escaping ([T?]?, Error?) -> Void) where T:Codable {
@@ -123,6 +123,40 @@ class FireStoreService {
         })
     }
     
+    public func getCollection<T>(query:Query,onCompletion: @escaping ([T?]?,_ lastSnapShot:DocumentSnapshot?, Error?) -> Void) where T:Codable {
+        var docs:[T] = []
+        
+        query.getDocuments(completion: { (query, error) in
+            if let error = error {
+                onCompletion(nil, nil, error)
+            } else {
+                for document in query!.documents {
+                    print("\(document.documentID) => \(document.data())") // This line returns the snapshot documents correctly!
+                    let doc = document as QueryDocumentSnapshot?
+                    let result = Result {
+                        try doc.flatMap {
+                            try $0.data(as: T.self)
+                        }
+                    }
+                    if let error = error {
+                        print(error)
+                    }
+                    switch result {
+                    case .success(let uploadDocument) :
+                        if let uploadDocument = uploadDocument {
+                            docs.append(uploadDocument)
+                        } else {
+                        }
+                    case .failure(let error):
+                        print("Error decoding Document \(error)")
+                        onCompletion(nil,nil, error)
+                    }
+                }
+                onCompletion(docs, query!.documents.last ,nil)
+            }
+        })
+    }
+
     public func updateDocumentByField(ref:DocumentReference,fields:[String:String],onCompletion: @escaping (SimpleResponse) -> Void) {
             ref.updateData(fields) {error in
                 if let error = error {
@@ -140,5 +174,16 @@ class FireStoreService {
             }
             onCompletion(SimpleResponse(status: false, message: error.localizedDescription))
         }
+    }
+    
+    func getUserPhotoURL(_ userUid:String, onCompletion: @escaping (String?) -> Void) {
+        let userRef = Firestore.firestore()
+            .collection(FireStoreCollection.USER_COLLECTION)
+            .document(userUid)
+        
+        FireStoreService.shared.getDocument(ref: userRef
+                                            , onCompletion: {(user:User?) in
+            onCompletion(user?.userPhotoUrl)
+        })
     }
 }

@@ -8,14 +8,19 @@
 import Foundation
 
 class ProfilePresenter : ViewToPresenterProfileProtocol, InteractorToPresenterProfileProtocol {
+
     var interactor: PresenterToInteractorProfileProtocol?
     var view: PresenterToViewProfileProtocol?
     
-    func loadPage() {
-        interactor?.loadPage()
+    func loadPage(_ uid: String?) {
+        interactor?.loadPage(uid)
     }
     
     func onStateChange(state: ProfileState) {
         view?.onStateChange(state: state)
+    }
+    
+    func sendToRequest(_ uid: String?) {
+        interactor?.sendToRequest(uid)
     }
 }

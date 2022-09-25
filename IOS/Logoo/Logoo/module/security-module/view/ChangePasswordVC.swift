@@ -11,9 +11,9 @@ class ChangePasswordVC: BaseVC {
     
     @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var screenDescriptionLabel: UILabel!
-    @IBOutlet weak var currentPasswordTextField: UITextField!
-    @IBOutlet weak var newPasswordTextField: UITextField!
-    @IBOutlet weak var reNewPasswordTextField: UITextField!
+    @IBOutlet weak var currentPasswordTextField: CustomUITextField!
+    @IBOutlet weak var newPasswordTextField: CustomUITextField!
+    @IBOutlet weak var reNewPasswordTextField: CustomUITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var okButtonOutlet: UIButton!
     
@@ -22,20 +22,31 @@ class ChangePasswordVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ChangePasswordRouter.createModule(ref: self)
+        
         configureUI()
-        createModule()
+        configureBinds()
+        
     }
     
     func configureUI(){
         screenTitleLabel.text = "Change Password".localized()
         screenDescriptionLabel.text = "Change_Password_Screen_Description".localized()
         currentPasswordTextField.placeholder = "Enter your current password".localized()
+        
+        currentPasswordTextField.placeholder = "Enter your current password".localized()
+        newPasswordTextField.placeholder = "Enter your new password".localized()
+        reNewPasswordTextField.placeholder = "Re-Enter your new password".localized()
         okButtonOutlet.setTitle("Okey".localized(), for: .normal)
+        
+        view.addInputAccessoryForTextFields(textFields: [currentPasswordTextField,newPasswordTextField,reNewPasswordTextField])
+        
     }
-    
-    func createModule() {
-        ChangePasswordRouter.createModule(ref: self)
+
+    func configureBinds(){
+        currentPasswordTextField.customDelegate = self
+        newPasswordTextField.customDelegate = self
+        reNewPasswordTextField.customDelegate = self
     }
     
     @IBAction func okButton(_ sender: Any) {
@@ -82,6 +93,17 @@ extension ChangePasswordVC : PresenterToViewChangePasswordProtocol {
                 self.currentPasswordTextField.text = ""
             })
             break
+        }
+    }
+}
+
+extension ChangePasswordVC : CustomUITextFieldProtocol {
+    func onRightButtonClick(_ textField: CustomUITextField, isActive: Bool) {
+        textField.isSecureTextEntry = !isActive
+        if isActive {
+            textField.rightImage = UIImage(systemName: "eye.fill")
+        }else {
+            textField.rightImage = UIImage(systemName: "eye.slash.fill")
         }
     }
 }

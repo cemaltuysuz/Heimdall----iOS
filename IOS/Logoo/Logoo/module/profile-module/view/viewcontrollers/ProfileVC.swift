@@ -17,31 +17,80 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userAgeLabel: UILabel!
     @IBOutlet weak var userCountryLabel: UILabel!
     @IBOutlet weak var userGenderLabel: UILabel!
+    @IBOutlet weak var sendMessageButton: UIButton!
+    @IBOutlet weak var superScrollView: UIScrollView!
+    @IBOutlet weak var pageIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var sliderContainerOutlet: UIView!
+    
+    @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var editProfileBarButtonItem: UIBarButtonItem!
+    
+    var user:User? {
+        didSet {
+            if let user = user {
+                loadUser(user: user)
+            }
+        }
+    }
     
     @IBOutlet weak var interestViewerHeightConstraint: NSLayoutConstraint!
-    
-    
     var presenter:ViewToPresenterProfileProtocol?
+    var userUUID:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ProfileRouter.createModule(ref: self)
         configureUI()
         loadPage()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.loadPage()
+        loadPage()
+    }
+    
+    @IBAction func onClickSendMessageButton(_ sender: Any) {
+        if sendMessageButton.tag == 1 {
+            if let currentUserUid = FirebaseAuthService.shared.getUUID(), let targetUser = userUUID {
+                let connectionUid = [currentUserUid,targetUser].dualConnectionOut()
+                
+                let vc = ChatVC.instantiate(from: .Chat)
+                vc.dualConnectionID = connectionUid
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        }else {
+            createBasicAlert(title: "Confirm".localized(),
+                             message: "This user does not allow direct messages. You can send a request.".localized(),
+                             okTitle: "Send", onCompletion: { type in
+                if type == .CONFIRM {
+                    self.showCurtain()
+                    self.presenter?.sendToRequest(self.userUUID)
+                }
+            })
+        }
     }
     
     func configureUI(){
         let height = userInterestsViewer.interestsCollectionView.collectionViewLayout.collectionViewContentSize.height
         userInterestsViewer.heightAnchor.constraint(equalToConstant: height).activate(withIdentifier: "interestsHeightConstant")
         userManifestoTextView.heightAnchor.constraint(equalToConstant: 50).activate(withIdentifier: "userManifestoHeightConstraint")
+        userInterestsViewer.delegate = self
+        
+        if userUUID != nil {
+            sliderContainerOutlet.isHidden = true
+            settingsBarButtonItem.isEnabled = false
+            editProfileBarButtonItem.isEnabled = false
+            settingsBarButtonItem.tintColor = UIColor.clear
+            editProfileBarButtonItem.tintColor = UIColor.clear
+            
+        }
     }
     
     func loadPage(){
-        userInterestsViewer.delegate = self
-        presenter?.loadPage()
+        // if userUUD object is nil, interactor get account owner informations.
+        // is userUUID object is not nil, interactor get spesific user informations.
+        presenter?.loadPage(userUUID)
     }
     
     func updateUserManifesto(text:String) {
@@ -62,22 +111,44 @@ class ProfileVC: BaseVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
 
 extension ProfileVC : PresenterToViewProfileProtocol {
+    
     func onStateChange(state: ProfileState) {
+        closeCurtain()
+        
         switch state {
         case .onUserLoad(let user):
-            loadUser(user: user)
+            self.user = user
+            break
         case .onPostsLoadSuccess(let posts):
             userPhotoSlider.updateUserPosts(posts: posts)
+            break
+        case .onProfileVisibleState(let type):
+            updateVisibleState(type)
+            break
+            
         case .onPostsLoadFail:
             // TODO: Create fail page
             break
-        case .onError(let message):
-            createAlertNotify(title: "Error".localized(), message: message)
+        case .onAlert(let title, let message):
+            createAlertNotify(title: title, message: message)
+            break
         }
+    }
+    
+    func updateVisibleState(_ type:ProfileVisibleType) {
+        
+        let state = (type == .inVisible) ? true : false
+        sliderContainerOutlet.isHidden = state
+        
+        type.rawValue.isEmpty ? sendMessageButton.setImage(nil, for: .normal) : sendMessageButton.setImage(UIImage(systemName: type.rawValue), for: .normal)
+        
+        sendMessageButton.tag = type == .inVisible ? 0 : 1
+        
+        sendMessageButton.isHidden = false
+        
     }
     
     func loadUser(user:User) {
@@ -85,7 +156,6 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             
             if let url = user.userPhotoUrl {
                 self.userPhotoImageView.setImage(urlString: url)
-                self.title = user.username
             }
             
             if let userBirth = user.userBirthDay?.toDate() {
@@ -100,11 +170,12 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             
             self.userManifestoTextView.text = user.userManifesto
             
-            if let interests = user.userInterests?.toListByCharacter(GeneralConstant.INTEREST_SEPERATOR) {
+            if let interests = user.userInterests {
                 self.userInterestsViewer.updateAndReloadData(interests: interests)
             }
-            
-            
+            self.superScrollView.isHidden = false
+            self.title = user.username
+            self.pageIndicator.stopAnimating()
         }
     }
 }
@@ -123,10 +194,16 @@ extension ProfileVC : InterestsViewerProtocol {
     }
 }
 
-
 enum ProfileState {
     case onUserLoad(user:User)
     case onPostsLoadSuccess(posts:[UserPost])
+    case onProfileVisibleState(type:ProfileVisibleType)
     case onPostsLoadFail
-    case onError(message:String)
+    case onAlert(title:String, message:String)
+}
+
+enum ProfileVisibleType : String {
+    case visible = ""// profile is public
+    case inVisible = "lock"// this user can not see to the profile
+    case userVisible = "lock.open" // this user can see to the profile
 }

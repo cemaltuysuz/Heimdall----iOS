@@ -21,18 +21,16 @@ class SecurityInteractor : PresenterToInteractorSecurityProtocol {
         items.append(LineMenuItem(iconName: "envelope.fill",
                                   itemTitle: "Change Mail".localized(),
                                   rawValue: SecurityMenuItemType.CHANGE_MAIL.rawValue,
-                                  isEnabled: isEnabledButton,
-                                  warningMessage: nil))
+                                  isEnabled: isEnabledButton))
         
         items.append(LineMenuItem(iconName: "key.fill",
                                   itemTitle: "Change Password".localized(),
                                   rawValue: SecurityMenuItemType.CHANGE_PASSWORD.rawValue,
-                                  isEnabled: true))
+                                  isEnabled: isEnabledButton))
         
         items.append(LineMenuItem(iconName: "lock.rotation",
                                   itemTitle: "Login Transactions".localized(),
-                                  rawValue: SecurityMenuItemType.LOGIN_TRANSACTIONS.rawValue,
-                                  warningMessage: ""))
+                                  rawValue: SecurityMenuItemType.LOGIN_TRANSACTIONS.rawValue))
         
         presenter?.securityItems(items: items)
     }

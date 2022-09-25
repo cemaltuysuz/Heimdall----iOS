@@ -387,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjd-hX-TqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2549" y="464"/>
+            <point key="canvasLocation" x="2548" y="433"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="DPg-FC-D2Z">
@@ -679,11 +679,14 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="3dP-3B-9MH">
+            <size key="intrinsicContentSize" width="186.5" height="34"/>
+        </designable>
         <designable name="BJq-n7-VBy">
-            <size key="intrinsicContentSize" width="151.5" height="34"/>
+            <size key="intrinsicContentSize" width="186.5" height="34"/>
         </designable>
         <designable name="g71-VC-hcN">
-            <size key="intrinsicContentSize" width="90.5" height="34"/>
+            <size key="intrinsicContentSize" width="152.5" height="34"/>
         </designable>
     </designables>
     <color key="tintColor" name="black700"/>

@@ -11,13 +11,15 @@ protocol ViewToPresenterProfileProtocol {
     var interactor:PresenterToInteractorProfileProtocol? {get set}
     var view:PresenterToViewProfileProtocol? {get set}
     
-    func loadPage()
+    func loadPage(_ uid:String?)
+    func sendToRequest(_ uid:String?)
 }
 
 protocol PresenterToInteractorProfileProtocol {
     var presenter:InteractorToPresenterProfileProtocol? {get set}
     
-    func loadPage()
+    func loadPage(_ uid:String?)
+    func sendToRequest(_ uid:String?)
 }
 
 protocol InteractorToPresenterProfileProtocol {

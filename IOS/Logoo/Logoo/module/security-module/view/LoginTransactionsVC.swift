@@ -29,7 +29,7 @@ class LoginTransactionsVC: UIViewController {
     func configureUI(){
         transactionsTableView.delegate = self
         transactionsTableView.dataSource = self
-        transactionsTableView.register(UINib(nibName: "LoginTransactionsCell", bundle: nil), forCellReuseIdentifier: "LoginTransactionsCell")
+        transactionsTableView.register(LoginTransactionsCell.self)
     }
 }
 
@@ -50,7 +50,7 @@ extension LoginTransactionsVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let current = transactions![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LoginTransactionsCell") as! LoginTransactionsCell
+        let cell = tableView.dequeue(indexPath, type: LoginTransactionsCell.self)
         cell.configure(transaction: current)
         return cell
     }

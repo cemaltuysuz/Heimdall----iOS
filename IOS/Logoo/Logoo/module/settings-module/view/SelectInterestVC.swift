@@ -8,76 +8,105 @@
 import UIKit
 import FirebaseFirestore
 
-class SelectInterestVC: UIViewController {
+class SelectInterestVC: BaseVC {
     
     @IBOutlet weak var interestSearchBar: UISearchBar!
-    @IBOutlet weak var interestsTableViewIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var screenTitleLabel: UILabel!
+    @IBOutlet weak var screenDescriptionLabel: UILabel!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
     
-    @IBOutlet weak var interestSelectionCollectionView: UICollectionView!
+    @IBOutlet weak var interestSelectionTableView: UITableView!
     @IBOutlet weak var interestSelectedCollectionView: UICollectionView!
     
-    private var pendingRequestWorkItem: DispatchWorkItem?
+    private var searchBarPendingRequestWorkItem: DispatchWorkItem?
+    private var loadViewPendingRequestWorkItem: DispatchWorkItem?
     
-    var hobbyList:[InterestSelectionModel]?
-    var alreadySelectedList:[String]?
+    var allInterests = [Interest]()
+    var userInterests:[Interest]?
+    
+    var pageLimit = 12
+    
     var presenter:ViewToPresenterInterestSelectProtocol?
     var isFirst:Bool? = false
     var alert:CustomAlert?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        hobbyList = [InterestSelectionModel]()
-        alreadySelectedList = [String]()
-        
         SelectInterestRouter.createModule(ref: self)
-        presenter?.getInterests()
-        
-        interestSelectionCollectionView.delegate = self
-        interestSelectionCollectionView.dataSource = self
+        presenter?.getInterests(pageLimit)
+        presenter?.getUserInterests()
+                
+        configureUI()
+        configureBinds()
+    }
+    
+    func configureBinds() {
+        interestSelectionTableView.register(PaginationLoadCell.self)
+        interestSelectionTableView.delegate = self
+        interestSelectionTableView.dataSource = self
         
         interestSelectedCollectionView.delegate = self
         interestSelectedCollectionView.dataSource = self
         
-        interestSearchBar.tintColor = .black
         interestSearchBar.delegate = self
+    }
+    
+    func configureUI() {
+        screenTitleLabel.text = "Your Interests".localized()
+        screenDescriptionLabel.text = "With the right area of ​​interest, you can get better recommendations.".localized()
+        interestSearchBar.placeholder = "Sport, art, daily activity...".localized()
+        saveButtonOutlet.setTitle("Save".localized(), for: .normal)
+        interestSearchBar.tintColor = .black
         
+        interestSelectionTableView.register(InterestSelectionCell.self)
+        interestSelectionTableView.rowHeight = UITableView.automaticDimension
     }
     
     @IBAction func interestsSaveButton(_ sender: Any) {
-        if self.alreadySelectedList!.count > 0 {
-            self.interestsTableViewIndicator.startAnimating()
-            presenter?.saveInterests(list: self.alreadySelectedList!)
+        if let userInterests = userInterests {
+            presenter?.saveInterests(list: userInterests)
         }
     }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
         if isFirst ?? false {
-            performSegue(withIdentifier: SelectInterestVCSegues
-                            .interestSelectionToHomeVC
-                            .rawValue, sender: nil)
+            let vc = CustomTabBarController.instantiate(from: .Main)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }else {
             dismiss(animated: true)
         }
     }
-    
 }
 
 extension SelectInterestVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.resetPagination()
+        
         // Cancel previous work when user input data.
-        pendingRequestWorkItem?.cancel()
+        searchBarPendingRequestWorkItem?.cancel()
         
         let requestWorkItem = DispatchWorkItem { [weak self] in
-            self?.presenter?.searchInterest(searchText: searchText)
+            if !searchText.isEmpty {
+                if searchText.count >= 4 {
+                    self?.presenter?.searchInterest(searchText: searchText)
+                }
+            }else {
+                self?.allInterests.removeAll()
+                self?.presenter?.getInterests(self?.pageLimit ?? 0)
+            }
         }
         // I created a work with 250 millisecond delay.
-        pendingRequestWorkItem = requestWorkItem
+        searchBarPendingRequestWorkItem = requestWorkItem
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250),
                                       execute: requestWorkItem)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
+        if let searchString = searchBar.text, !searchString.trimmingCharacters(in: .whitespaces).isEmpty {
+            allInterests.removeAll()
+            presenter?.getInterests(pageLimit)
+            searchBar.text = ""
+        }
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.endEditing(true)
     }
@@ -89,111 +118,159 @@ extension SelectInterestVC : UISearchBarDelegate {
 }
 
 extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
-    func userAlreadyHobbies(alreadyList: [String]) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            strongSelf.alreadySelectedList = alreadyList
-            strongSelf.interestSelectedCollectionView.reloadData()
-        }
-    }
     
-    func allHobies(hobbyList: [InterestSelectionModel]) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            strongSelf.hobbyList = hobbyList
-            strongSelf.interestSelectionCollectionView.reloadData()
-            strongSelf.interestsTableViewIndicator.stopAnimating()
-        }
-    }
-    
-    func indicatorVisibility(status: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            if status {
-                strongSelf.interestsTableViewIndicator.startAnimating()
-            }else {
-                strongSelf.interestsTableViewIndicator.stopAnimating()
+    func onStateChange(state: InterestsState) {
+        closeCurtain()
+        switch state {
+        case .interests(let pagedInterests):
+            DispatchQueue.main.async {
+                self.allInterests += pagedInterests
+                self.interestSelectionTableView.reloadData()
             }
-        }
-    }
-    
-    func saveInterestsResponse(resp: Resource<Any>) {
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else {return}
-            
-            strongSelf.alert?.dismissAlert()
-            if resp.status == .SUCCESS {
-                if strongSelf.isFirst ?? false {
-                    strongSelf.performSegue(withIdentifier: SelectInterestVCSegues
-                                    .interestSelectionToHomeVC
-                                    .rawValue, sender: nil)
+            break
+        case .userInterests(let userInterests):
+            DispatchQueue.main.async {
+                self.userInterests = userInterests
+                self.interestSelectedCollectionView.reloadData()
+                self.interestSelectionTableView.reloadData()
+            }
+            break
+        case .showCurtain:
+            showCurtain()
+            break
+        case .saveInterestsResponse(let response):
+            if response.status ?? false {
+                if self.isFirst ?? false {
+                    let vc = CustomTabBarController.instantiate(from: .Main)
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true)
                 }else {
-                    strongSelf.dismiss(animated: true)
+                    self.dismiss(animated: true)
                 }
             }else {
-                print("Error when save interest : \(resp.message!)")
+                createAlertNotify(title: "Error".localized(),
+                                  message: "An error occurred while saving interests. Please try again later.".localized())
             }
-            strongSelf.interestsTableViewIndicator.stopAnimating()
+            break
+        case .getInterestError:
+            loadViewPendingRequestWorkItem?.cancel()
+            let workItem = DispatchWorkItem{[weak self] in
+                if let interests = self?.allInterests, !interests.isEmpty {
+                    let last = IndexPath(row: interests.count - 1, section: InterestSelectionTableViewSection.Interests.rawValue)
+                    self?.interestSelectionTableView.scrollToRow(at: last, at: .bottom, animated: true)
+                }
+            }
+            self.loadViewPendingRequestWorkItem = workItem
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500), execute: workItem)
+            break
+        case .searchedInterests(let interests):
+            allInterests.removeAll()
+            allInterests += interests
+            interestSelectionTableView.reloadData()
+            break
         }
     }
 }
 
-extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSource, InterestSelectCellToViewProtocol {
+extension SelectInterestVC : UICollectionViewDelegate, UICollectionViewDataSource, InterestActionCellProtocol {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView == self.interestSelectedCollectionView {
-            return self.alreadySelectedList!.count
-        }
-        return hobbyList!.count
+        return userInterests?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == self.interestSelectedCollectionView {
-            let current = alreadySelectedList![indexPath.row]
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectedCell", for: indexPath) as! InterestSelectedCell
-            cell.deSelect = self
-            cell.initialize(row: current)
-            return cell
-        }
-        
-        
-        var current = hobbyList![indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectionCell", for: indexPath) as! InterestSelectionCell
-        
-        current.isSelected = alreadySelectedList!.contains(current.interestTitle!)
-        
-        cell.initialize(item: current)
-        cell.indexPath = indexPath
-        cell.cellToVC = self
+        let item = userInterests![indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "interestSelectedCell", for: indexPath) as! InterestSelectedCell
+        cell.delegate = self
+        cell.initialize(item: item)
         return cell
+        
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    // From CollectionView Cell
-    func onClick(item: InterestSelectionModel) {
+    func onClickItem(item: Interest, isInsertAction: Bool) {
         DispatchQueue.main.async {
-            if item.isSelected! == true {
-                self.alreadySelectedList?.append(item.interestTitle!)
+            if isInsertAction == true {
+                self.userInterests?.append(item)
             }else {
                 var count = 0
-                for i in self.alreadySelectedList! {
-                    if i == item.interestTitle! {
-                        self.alreadySelectedList!.remove(at: count)
+                for i in self.userInterests! {
+                    if i.interestKey == item.interestKey {
+                        self.userInterests!.remove(at: count)
+                        //self.presenter?.deleteInterest(item.interestKey)
                         break
                     }
                     count = count + 1
                 }
             }
-            self.interestSelectionCollectionView.reloadData()
             self.interestSelectedCollectionView.reloadData()
+            self.interestSelectionTableView.reloadData()
         }
     }
 }
 
-
-enum SelectInterestVCSegues : String {
-    case interestSelectionToHomeVC = "interestSelectionToHomeVC"
+extension SelectInterestVC : UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return InterestSelectionTableViewSection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let sectionType = InterestSelectionTableViewSection(rawValue: section) else {return 0}
+        
+        switch sectionType {
+        case .Interests:
+            return allInterests.count
+        case .LoadView:
+            let stat = allInterests.count >= pageLimit
+            return stat ? 1 : 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let sectionType = InterestSelectionTableViewSection(rawValue: indexPath.section) else {return UITableViewCell()}
+        
+        if sectionType == .Interests {
+            let item = allInterests[indexPath.row]
+            let cell = tableView.dequeue(indexPath, type: InterestSelectionCell.self)
+            cell.indexPath = indexPath
+            cell.delegate = self
+            
+            for index in userInterests ?? [] {
+                if item.interestKey == index.interestKey {
+                    cell.initialize(item: item, isSelected: true)
+                    return cell
+                }
+            }
+            cell.initialize(item: item, isSelected: false)
+            return cell
+        }
+        let cell = tableView.dequeue(indexPath, type: PaginationLoadCell.self)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let sectionType = InterestSelectionTableViewSection(rawValue: indexPath.section) else {return}
+        guard !allInterests.isEmpty else { return }
+        
+        if sectionType == .LoadView {
+            (cell as! PaginationLoadCell).startAnimating()
+            presenter?.getInterests(pageLimit)
+        }
+    }
 }
+
+enum InterestsState  {
+    case interests(pagedInterests:[Interest])
+    case userInterests(userInterests:[Interest]?)
+    case showCurtain
+    case saveInterestsResponse(response:SimpleResponse)
+    case getInterestError
+    case searchedInterests(interests:[Interest])
+}
+
+enum InterestSelectionTableViewSection : Int,CaseIterable {
+    case Interests
+    case LoadView
+}
+

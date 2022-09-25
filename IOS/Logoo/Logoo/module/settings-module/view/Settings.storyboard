@@ -69,73 +69,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNt-q3-CXL">
                                 <rect key="frame" x="52" y="367" width="310" height="350"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xAU-vG-IaP">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vPL-mn-dBT">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="350"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ntx-Vd-z1O">
-                                            <size key="itemSize" width="310" height="70"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="interestSelectionCell" id="clV-Ac-eYe" customClass="InterestSelectionCell" customModule="Logoo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ien-En-ozc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SM3-A4-eJ1">
-                                                            <rect key="frame" x="8" y="16" width="38" height="38"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <gestureRecognizers/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="38" id="IzX-3H-S1D"/>
-                                                                <constraint firstAttribute="width" constant="38" id="c7Y-wC-pJb"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBa-0k-Scq">
-                                                            <rect key="frame" x="66" y="16" width="236" height="38"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="38" id="bnf-Nu-10r"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                            <color key="textColor" name="black700"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="PBa-0k-Scq" secondAttribute="trailing" constant="8" id="67W-Br-aSw"/>
-                                                        <constraint firstItem="SM3-A4-eJ1" firstAttribute="leading" secondItem="Ien-En-ozc" secondAttribute="leading" constant="8" id="ECQ-Ne-cxW"/>
-                                                        <constraint firstItem="PBa-0k-Scq" firstAttribute="leading" secondItem="SM3-A4-eJ1" secondAttribute="trailing" constant="20" id="Ev6-Bl-WAu"/>
-                                                        <constraint firstAttribute="bottom" secondItem="PBa-0k-Scq" secondAttribute="bottom" constant="16" id="gZe-b5-Ulx"/>
-                                                        <constraint firstItem="PBa-0k-Scq" firstAttribute="top" secondItem="Ien-En-ozc" secondAttribute="top" constant="16" id="lxX-8R-fnq"/>
-                                                        <constraint firstItem="SM3-A4-eJ1" firstAttribute="top" secondItem="Ien-En-ozc" secondAttribute="top" constant="16" id="pyb-7L-FKA"/>
-                                                        <constraint firstAttribute="bottom" secondItem="SM3-A4-eJ1" secondAttribute="bottom" constant="16" id="tuK-nk-HDs"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="310" height="70"/>
-                                                <connections>
-                                                    <outlet property="checkBoxContainer" destination="SM3-A4-eJ1" id="mII-ms-3Yu"/>
-                                                    <outlet property="interestTitle" destination="PBa-0k-Scq" id="VoP-no-4e7"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="nel-In-ekA">
-                                        <rect key="frame" x="136.5" y="156.5" width="37" height="37"/>
-                                    </activityIndicatorView>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="3bg-h2-2Jm"/>
-                                    <constraint firstAttribute="trailing" secondItem="xAU-vG-IaP" secondAttribute="trailing" id="ISQ-CE-7CJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="xAU-vG-IaP" secondAttribute="bottom" id="OhT-FF-3R4"/>
-                                    <constraint firstItem="nel-In-ekA" firstAttribute="centerY" secondItem="QNt-q3-CXL" secondAttribute="centerY" id="Qka-ZF-Kay"/>
-                                    <constraint firstItem="nel-In-ekA" firstAttribute="centerX" secondItem="QNt-q3-CXL" secondAttribute="centerX" id="fCf-RY-qPV"/>
-                                    <constraint firstItem="xAU-vG-IaP" firstAttribute="top" secondItem="QNt-q3-CXL" secondAttribute="top" id="mGV-BZ-hSy"/>
-                                    <constraint firstItem="xAU-vG-IaP" firstAttribute="leading" secondItem="QNt-q3-CXL" secondAttribute="leading" id="nVr-5e-OSa"/>
+                                    <constraint firstAttribute="trailing" secondItem="vPL-mn-dBT" secondAttribute="trailing" id="HBB-1E-5iK"/>
+                                    <constraint firstAttribute="bottom" secondItem="vPL-mn-dBT" secondAttribute="bottom" id="LMf-lK-hWm"/>
+                                    <constraint firstItem="vPL-mn-dBT" firstAttribute="top" secondItem="QNt-q3-CXL" secondAttribute="top" id="YLo-wH-bYM"/>
+                                    <constraint firstItem="vPL-mn-dBT" firstAttribute="leading" secondItem="QNt-q3-CXL" secondAttribute="leading" id="uM9-qP-L5i"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8D-Uo-8Fr">
@@ -262,8 +207,10 @@
                     <connections>
                         <outlet property="interestSearchBar" destination="fW8-Rf-b1P" id="jB8-H8-dhl"/>
                         <outlet property="interestSelectedCollectionView" destination="ORv-iw-Hug" id="PIs-Fe-9On"/>
-                        <outlet property="interestSelectionCollectionView" destination="xAU-vG-IaP" id="Uth-3Y-AS3"/>
-                        <outlet property="interestsTableViewIndicator" destination="nel-In-ekA" id="39I-3a-ktZ"/>
+                        <outlet property="interestSelectionTableView" destination="vPL-mn-dBT" id="aWJ-Ui-3Tn"/>
+                        <outlet property="saveButtonOutlet" destination="V8D-Uo-8Fr" id="peP-Qf-BI6"/>
+                        <outlet property="screenDescriptionLabel" destination="7mv-Y4-etG" id="gcv-kW-oZR"/>
+                        <outlet property="screenTitleLabel" destination="gGJ-JV-tPw" id="6iE-vz-wG7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfp-bd-qj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

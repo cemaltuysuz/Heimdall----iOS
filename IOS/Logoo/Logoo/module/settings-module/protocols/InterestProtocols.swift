@@ -11,34 +11,31 @@ protocol ViewToPresenterInterestSelectProtocol {
     var view: PresenterToViewInterestSelectProtocol? {get set}
     var interactor: PresenterToInteractorInterestSelectProtocol? {get set}
     
-    func getInterests()
-    func saveInterests(list:[String])
+    func getInterests(_ pageLimit:Int)
+    func getUserInterests()
+    func saveInterests(list:[Interest])
     func searchInterest(searchText:String)
+    func deleteInterest(_ interestID:String)
+    func resetPagination()
 }
 
 protocol PresenterToInteractorInterestSelectProtocol {
     var presenter: InteractorToPresenterInterestSelectProtocol? {get set}
     
-    func getInterests()
-    func saveInterests(list:[String])
+    func getUserInterests()
+    func getInterests(_ pageLimit:Int)
+    func saveInterests(list:[Interest])
     func searchInterest(searchText:String)
+    func deleteInterest(_ interestID:String)
+    func resetPagination()
 }
 
 protocol InteractorToPresenterInterestSelectProtocol {
-    func userAlreadyHobbies(alreadyList:[String])
-    func allHobies(hobbyList:[InterestSelectionModel])
-    
-    func indicatorVisibility(status:Bool)
-    func saveInterestsResponse(resp:Resource<Any>)
+    func onStateChange(state:InterestsState)
 }
 
 protocol PresenterToViewInterestSelectProtocol {
-    
-    func userAlreadyHobbies(alreadyList:[String])
-    func allHobies(hobbyList:[InterestSelectionModel])
-    
-    func indicatorVisibility(status:Bool)
-    func saveInterestsResponse(resp:Resource<Any>)
+    func onStateChange(state:InterestsState)
 }
 
 protocol PresenterToRouterInterestSelectProtocol {

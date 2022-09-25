@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjY-1u-FKJ">
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjY-1u-FKJ">
                                 <rect key="frame" x="15" y="44" width="384" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wcX-Ii-ctH">
@@ -133,6 +133,17 @@
                                                     <constraint firstAttribute="height" constant="120" id="a6C-yY-ane"/>
                                                 </constraints>
                                             </stackView>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Pa-Hjj">
+                                                <rect key="frame" x="0.0" y="151" width="384" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="iyQ-dd-9XI"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Send Message"/>
+                                                <connections>
+                                                    <action selector="onClickSendMessageButton:" destination="jsq-fE-CoX" eventType="touchUpInside" id="yDH-gq-yEO"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="f0V-xg-OuV" customClass="InterestsViewer" customModule="Logoo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="159" width="384" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -179,13 +190,18 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="D8B-52-dMC"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="pdx-Co-q7h"/>
                             </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Wdp-7J-id3">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ke4-eL-cKw"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Wdp-7J-id3" firstAttribute="centerX" secondItem="rog-C8-M8d" secondAttribute="centerX" id="FxR-6T-hgw"/>
                             <constraint firstItem="kjY-1u-FKJ" firstAttribute="top" secondItem="Ke4-eL-cKw" secondAttribute="top" id="HmY-UM-CSh"/>
                             <constraint firstItem="kjY-1u-FKJ" firstAttribute="leading" secondItem="Ke4-eL-cKw" secondAttribute="leading" constant="15" id="QMR-qG-iV2"/>
                             <constraint firstItem="kjY-1u-FKJ" firstAttribute="trailing" secondItem="Ke4-eL-cKw" secondAttribute="trailing" constant="-15" id="VpM-Np-aQv"/>
+                            <constraint firstItem="Wdp-7J-id3" firstAttribute="centerY" secondItem="rog-C8-M8d" secondAttribute="centerY" id="Y4v-gs-7i0"/>
                             <constraint firstItem="kjY-1u-FKJ" firstAttribute="bottom" secondItem="Ke4-eL-cKw" secondAttribute="bottom" id="aIE-aO-UKg"/>
                         </constraints>
                     </view>
@@ -206,7 +222,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="editProfileBarButtonItem" destination="oMF-WT-dCc" id="3Pv-ms-tR0"/>
                         <outlet property="interestViewerHeightConstraint" destination="VZ9-jn-TuX" id="nfn-Aa-2v1"/>
+                        <outlet property="pageIndicator" destination="Wdp-7J-id3" id="Wcq-U8-AFI"/>
+                        <outlet property="sendMessageButton" destination="cPL-Pa-Hjj" id="byT-kB-Fyg"/>
+                        <outlet property="settingsBarButtonItem" destination="omv-rB-8j6" id="iNd-aV-LrA"/>
+                        <outlet property="sliderContainerOutlet" destination="vTF-jO-iJA" id="ek3-Qb-Ktl"/>
+                        <outlet property="superScrollView" destination="kjY-1u-FKJ" id="nbY-jR-C6W"/>
                         <outlet property="userAgeLabel" destination="S32-E7-Kk6" id="aQe-qq-QwY"/>
                         <outlet property="userCountryLabel" destination="QO6-ES-gbo" id="tDE-dO-m1R"/>
                         <outlet property="userGenderLabel" destination="qqY-dU-3DH" id="QwV-8I-ckU"/>

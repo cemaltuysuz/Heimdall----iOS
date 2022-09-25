@@ -7,6 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "E63C08E1-B12B-4AC4-874A-CB47866E67C0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -33,6 +34,18 @@
             startingLineNumber = "21"
             endingLineNumber = "21"
             landmarkName = "allHobies(hobbyList:)"
+=======
+            uuid = "8D5045B3-8DCE-46BF-ACF2-8E893C179B78"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Logoo/module/security-module/view/SecurityVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "onClickMenu(instance:)"
+>>>>>>> 5440a8cf7c63ee8296ff9949f37b1ffb8cd6f4cc
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,7 +13,7 @@ class CustomUITextField : UITextField {
     
     var validate:Validatable?
     var realtimeCompare:CompareSettings? // key & value
-    var customDelegate:CustomUITextFieldProtocol?
+    weak var customDelegate:CustomUITextFieldProtocol?
     
     
     // UITextField placeholder color

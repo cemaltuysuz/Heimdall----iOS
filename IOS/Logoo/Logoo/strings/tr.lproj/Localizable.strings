@@ -103,9 +103,6 @@
 
 "Please wait" = "Lütfen bekleyiniz.";
 
-
-
-
 //  settings
 "Security" = "Güvenlik";
 "Privacy" = "Gizlilik";
@@ -120,7 +117,15 @@
 "Are you sure you want to log out?" = "Çıkış yapmak istediğinize emin misiniz ?";
 "Yes" = "Evet";
 
+// Interests
+"Your Interests" = "İlgi Alanların";
+"With the right area of ​​interest, you can get better recommendations." = "Doğru ilgi alanı seçimi ile daha iyi öneriler yakalayabilirsiniz.";
+"Sport, art, daily activity..." = "Spor, sanat, günlük aktivite...";
+"Save" = "Kayıt Et";
+"An error occurred while saving interests. Please try again later." = "İlgi alanları kayıt edilirken hata meydana geldi. Lütfen sonra tekrar deneyiniz.";
+
 // Security
+"Account Security" = "Hesap Güvenliği";
 "Change your mail adress" = "Mail adresi değişikliği";
 "Change your password" = "Şifre değişikiği";
 
@@ -139,7 +144,7 @@
 
 // Change password
 
-"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri doğru şekilde doldurunuz.";
+"Change_Password_Screen_Description" = "Şifrenizi değiştirebilmeniz için lütfen aşağıdaki bilgileri  doldurunuz.";
 "Enter your current password" = "Şu anki şifreniz";
 "Please fill in the missing fields" = "Lütfen eksik alanları doldurun.";
 "Passwords entered must be equal." = "Girilen parolalar eşit olmalıdır.";
@@ -164,5 +169,16 @@
 "post_delete_error_message" = "Gönderi silinirken bir hata oluştu.";
 "Your post will be deleted. Do you confirm of this ?" = "Gönderin silinecek. Bunu onaylıyor musun ?";
 
+//  discovery
+"Search a user" = "Bir kullanıcı ara";
+"Discovery" = "Keşfet";
 
+// Inbox
 
+"Inbox" = "Gelen Kutusu";
+"Pending Requests" = "Bekleyen istekler";
+"Messages" = "Mesajlar";
+
+// request
+
+"request_title" = "Seninle bağlantı kurmak istiyor.";

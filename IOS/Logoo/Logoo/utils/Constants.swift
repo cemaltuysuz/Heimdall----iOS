@@ -28,6 +28,11 @@ enum LogEventType :String {
 class FireStoreCollection {
     static let USER_COLLECTION = "users"
     static let USER_POSTS = "posts" // inside user document
+    static let USER_INTERESTS = "interests" // inside user document
+    static let USER_INBOX = "inbox"
+    static let USER_REQUESTS = "requests"
+    
+    static let DUAL_CONNECTION_COLLECTION = "dual-connections"
     static let INBOX_COLLECTION = "inboxes"
     static let DIRECT_COLLECTION = "directs"
     static let GROUP_COLLECTION = "groups"
@@ -43,9 +48,9 @@ class FireStoragePath {
 }
 
 class GeneralConstant {
+    static let DATE_OF_BIRTH_PATTERN = "dd.MM.YYYY"
     static let INTEREST_SEPERATOR = "&"
+    static let DUAL_CONNECTION_SEPERATOR = "*-*"
     static let USER_POST_HORIZONTAL_RATIO:Double = 4.0
     static let USER_POST_VERTICAL_RATIO:Double = 5.0
 }
-
-

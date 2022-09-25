@@ -23,7 +23,6 @@ class SettingsInteractor : PresenterToInteractorSettingsProtocol {
         }catch{
             print("Log out is failure. MSG: \(error.localizedDescription)")
         }
-        self.presenter?.exitUserFeedback()
     }
     
     func getOptions() {
