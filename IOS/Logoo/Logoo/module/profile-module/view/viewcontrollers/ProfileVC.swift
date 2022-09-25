@@ -60,8 +60,8 @@ class ProfileVC: BaseVC {
             }
             
         }else {
-            createBasicAlert(title: "Confirm".localized(),
-                             message: "This user does not allow direct messages. You can send a request.".localized(),
+            createBasicAlert(title: "Confirm".localized,
+                             message: "This user does not allow direct messages. You can send a request.".localized,
                              okTitle: "Send", onCompletion: { type in
                 if type == .CONFIRM {
                     self.showCurtain()
@@ -165,7 +165,7 @@ extension ProfileVC : PresenterToViewProfileProtocol {
             self.userCountryLabel.text = user.userLiveCountry ?? "Turkey"
             
             if let gender = user.userGender {
-                self.userGenderLabel.text = gender.localized()
+                self.userGenderLabel.text = gender.localized
             }
             
             self.userManifestoTextView.text = user.userManifesto

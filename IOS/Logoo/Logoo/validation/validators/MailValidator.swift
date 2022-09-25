@@ -20,9 +20,9 @@ class MailValidator : Validatable {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         
         if emailPred.evaluate(with: mail) {
-            return ValidateResult(isSuccess: true, message: "Success".localized())
+            return ValidateResult(isSuccess: true, message: "Success".localized)
         }
-        return ValidateResult(isSuccess: false, message: "This email address is not correct format.".localized())
+        return ValidateResult(isSuccess: false, message: "This email address is not correct format.".localized)
     }
     
     func changeValueAndReValidate(value: String) -> ValidateResult {

@@ -26,11 +26,11 @@ class ChangeMailVC: BaseVC {
     }
     
     func configureUI(){
-        screenTitleLabel.text = "Change Mail".localized()
-        screenDescriptionLabel.text = "Change_Mail_Screen_Description".localized()
-        okButtonOutlet.setTitle("Okey".localized(), for: .normal)
-        newMailAdressTextField.placeholder = "Enter your new mail adress".localized()
-        currentPasswordTextField.placeholder = "Enter your current password".localized()
+        screenTitleLabel.text = "Change Mail".localized
+        screenDescriptionLabel.text = "Change_Mail_Screen_Description".localized
+        okButtonOutlet.setTitle("Okey".localized, for: .normal)
+        newMailAdressTextField.placeholder = "Enter your new mail adress".localized
+        currentPasswordTextField.placeholder = "Enter your current password".localized
         view.addInputAccessoryForTextFields(textFields: [newMailAdressTextField, currentPasswordTextField], dismissable: true, previousNextable: true)
         
     }
@@ -50,7 +50,7 @@ class ChangeMailVC: BaseVC {
                 errorLabel.isHidden = false
             }
         }else {
-            errorLabel.text = "Please fill in the missing fields".localized()
+            errorLabel.text = "Please fill in the missing fields".localized
             errorLabel.isHidden = false
         }
     }
@@ -64,14 +64,14 @@ extension ChangeMailVC : PresenterToViewChangeMailProtocol {
             showCurtain()
             break
         case .RE_AUTH_FAIL(let message):
-            createAlertNotify(title: "Error".localized(), message: message)
+            createAlertNotify(title: "Error".localized, message: message)
             break
         case .CHANGE_MAIL_FAIL(let message):
-            createAlertNotify(title: "Error".localized(), message: message)
+            createAlertNotify(title: "Error".localized, message: message)
             break
         case .SUCCESS_RE_AUTH(let oldMail):
-            let message = "Do you approve the update of your e-mail address?".localized() + "\n" + "Old :".localized() + "\(oldMail)" + "\n" + "New :".localized() + newMailAdressTextField.text!
-            createBasicAlertSheet(title: "Alert".localized(), message: message, okTitle: "Approve".localized(), onCompletion: { type in
+            let message = "Do you approve the update of your e-mail address?".localized + "\n" + "Old :".localized + "\(oldMail)" + "\n" + "New :".localized + newMailAdressTextField.text!
+            createBasicAlertSheet(title: "Alert".localized, message: message, okTitle: "Approve".localized, onCompletion: { type in
                 switch type {
                 case .CONFIRM:
                     self.showCurtain()
@@ -83,7 +83,7 @@ extension ChangeMailVC : PresenterToViewChangeMailProtocol {
             })
             break
         case .SUCCESS_MAIL_CHANGE:
-            createAlertNotify(title: "Success".localized(), message: "do_change_mail_success_message".localized() + "\n\(newMailAdressTextField.text!)".localized(), onCompletion: {
+            createAlertNotify(title: "Success".localized, message: "do_change_mail_success_message".localized + "\n\(newMailAdressTextField.text!)".localized, onCompletion: {
                 self.navigationController?.popViewController(animated: true)
             })
             break

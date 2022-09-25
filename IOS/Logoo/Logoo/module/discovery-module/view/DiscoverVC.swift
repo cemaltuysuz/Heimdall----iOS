@@ -38,7 +38,7 @@ class DiscoverVC: BaseVC {
     }
     
     func configureUI(){
-        searchBar.placeholder = "Search a user".localized()
+        searchBar.placeholder = "Search a user".localized
         
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = minimumColumnSpacing

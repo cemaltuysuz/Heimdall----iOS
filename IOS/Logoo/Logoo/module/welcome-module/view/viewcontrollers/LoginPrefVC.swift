@@ -26,9 +26,9 @@ class LoginPrefVC: BaseVC {
     }
     
     func configureUI(){
-        loginButtonOutlet.setTitle("Login".localized(), for: .normal)
-        signInWithGoogleButtonOutlet.setTitle("Sign In With Google".localized(), for: .normal)
-        registerButtonOutlet.setTitle("Don't have an account yet? Register".localized(), for: .normal)
+        loginButtonOutlet.setTitle("Login".localized, for: .normal)
+        signInWithGoogleButtonOutlet.setTitle("Sign In With Google".localized, for: .normal)
+        registerButtonOutlet.setTitle("Don't have an account yet? Register".localized, for: .normal)
     }
 
     @IBAction func toLoginButton(_ sender: Any) {
@@ -72,15 +72,15 @@ extension LoginPrefVC : PresenterToViewLoginPref {
         closeCurtain()
         if status == .SUCCESS {
             if userState == .GOOGLE_USER_CONFIRMED {
-                let vc = CustomTabBarController.instantiate(from: .Main)
+                let vc = LGTabBarController.instantiate(from: .Main)
                 vc.modalPresentationStyle = .fullScreen
                 present(vc, animated: true)
             }
             else if userState == .GOOGLE_USER_MISSING_INFORMATION {
                 
-                createBasicAlert(title: "Welcome".localized(),
-                                 message: "Welcome to Heimdall. Missing information has been detected in your subscription. Do you want complete informations ?".localized(),
-                                 okTitle: "Complete".localized(),
+                createBasicAlert(title: "Welcome".localized,
+                                 message: "Welcome to Heimdall. Missing information has been detected in your subscription. Do you want complete informations ?".localized,
+                                 okTitle: "Complete".localized,
                                  onCompletion: {action in
                     switch action {
                     case .CONFIRM:
@@ -89,7 +89,7 @@ extension LoginPrefVC : PresenterToViewLoginPref {
                         self.navigationController?.pushViewController(vc, animated: true)
                         break
                     case .DISMISS:
-                        let vc = CustomTabBarController.instantiate(from: .Main)
+                        let vc = LGTabBarController.instantiate(from: .Main)
                         vc.modalPresentationStyle = .fullScreen
                         self.present(vc, animated: true)
                         break
@@ -98,8 +98,8 @@ extension LoginPrefVC : PresenterToViewLoginPref {
             }
             
         }else {
-            createAlertNotify(title: "Error".localized(),
-                              message: "Something went wrong.".localized())
+            createAlertNotify(title: "Error".localized,
+                              message: "Something went wrong.".localized)
         }
     }
 }

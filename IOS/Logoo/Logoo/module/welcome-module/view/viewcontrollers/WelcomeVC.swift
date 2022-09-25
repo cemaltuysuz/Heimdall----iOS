@@ -35,7 +35,7 @@ extension WelcomeVC : PresenterToViewWelcomeProtocol {
             vc = UINavigationController(rootViewController: LoginPrefVC.instantiate(from: .Welcome))
             break
         case .goToHome:
-            vc = CustomTabBarController.instantiate(from: .Main)
+            vc = LGTabBarController.instantiate(from: .Main)
             break
         }
         vc.modalPresentationStyle = .fullScreen

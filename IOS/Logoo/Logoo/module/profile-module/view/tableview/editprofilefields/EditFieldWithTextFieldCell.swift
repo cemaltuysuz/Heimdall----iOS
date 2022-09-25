@@ -95,7 +95,7 @@ extension EditFieldWithTextFieldCell {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.fieldErrorLabel.text = "The information entered is already in use by another account.".localized()
+                            self?.fieldErrorLabel.text = "The information entered is already in use by another account.".localized
                             self?.fieldErrorLabel.isHidden = false
                             self?.isAlreadyUsedAnotherUser = true
                         }else {

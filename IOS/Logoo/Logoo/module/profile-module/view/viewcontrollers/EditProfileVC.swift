@@ -75,7 +75,7 @@ class EditProfileVC: BaseVC {
     
     func setupUI(){
         navigationController?.navigationBar.prefersLargeTitles = false
-        changePhotoButtonOutlet.setTitle("Change Photo".localized(), for: .normal)
+        changePhotoButtonOutlet.setTitle("Change Photo".localized, for: .normal)
         editPostAlbumView.heightAnchor.constraint(equalToConstant: getSafeAreaHeight()).activate(withIdentifier: "editAlbumHeight")
         editUserFieldsTableView.rowHeight = UITableView.automaticDimension
     }
@@ -118,7 +118,7 @@ extension EditProfileVC : PresenterToViewEditProfileProtocol {
             albumDelegate?.updateData(posts: posts)
             break
         case .onErrorNotify(let message):
-            createAlertNotify(title: "Error".localized(), message: message)
+            createAlertNotify(title: "Error".localized, message: message)
             break
         case .showCurtain:
             showCurtain()
@@ -236,8 +236,8 @@ extension EditProfileVC : CropViewControllerDelegate {
 extension EditProfileVC : EditPostAlbumViewProtocol {
     
     func deletePhotoRequest(postUUID: String) {
-        createBasicAlert(title: "Warning".localized(),
-                         message: "Your post will be deleted. Do you confirm of this ?".localized(), okTitle: "Confirm".localized(), onCompletion: {type in
+        createBasicAlert(title: "Warning".localized,
+                         message: "Your post will be deleted. Do you confirm of this ?".localized, okTitle: "Confirm".localized, onCompletion: {type in
             
             switch type {
             case .CONFIRM:

@@ -26,10 +26,14 @@ class RegisterConfirmCell: UICollectionViewCell {
     }
 }
 
-extension RegisterConfirmCell : RegisterBindable {
+extension RegisterConfirmCell : RegisterBindable, Registerable {
     func bind(_ viewController: RegisterVC) {
         resultMessageLabel.text = viewController.resultScreenMessage
         anim = AnimationView(name: viewController.resultScreenAnimName ?? "success")
         initialize()
+    }
+    
+    func validate() -> ValidationResponse {
+        return ValidationResponse(status: true)
     }
 }

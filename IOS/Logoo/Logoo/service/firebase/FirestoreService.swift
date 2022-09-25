@@ -163,7 +163,7 @@ class FireStoreService {
                     onCompletion(SimpleResponse(status: false, message: error.localizedDescription))
                 }
             }
-        onCompletion(SimpleResponse(status: true, message: "Success".localized()))
+        onCompletion(SimpleResponse(status: true, message: "Success".localized))
     }
     
     func deleteDocument(ref:DocumentReference, onCompletion:@escaping (SimpleResponse) -> Void) {

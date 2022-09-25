@@ -49,7 +49,7 @@ class BaseVC: UIViewController {
             onCompletion(.CONFIRM)
         })
         
-        let cancelButton = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: {_ in
+        let cancelButton = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {_ in
             onCompletion(.DISMISS)
         })
         
@@ -69,7 +69,7 @@ class BaseVC: UIViewController {
             onCompletion(.CONFIRM)
         })
         
-        let cancelButton = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: {_ in
+        let cancelButton = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {_ in
             onCompletion(.DISMISS)
         })
         
@@ -85,7 +85,7 @@ class BaseVC: UIViewController {
                                       message: message,
                                       preferredStyle: .alert)
         
-        let okButton = UIAlertAction(title: "Close".localized(), style: .cancel, handler: {_ in
+        let okButton = UIAlertAction(title: "Close".localized, style: .cancel, handler: {_ in
             if onCompletion != nil {
                 onCompletion!()
             }

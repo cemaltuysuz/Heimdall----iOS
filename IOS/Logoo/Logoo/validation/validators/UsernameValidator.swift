@@ -20,10 +20,10 @@ class UsernameValidator : Validatable {
         let result = username.range(of: "\\A\\w{7,18}\\z", options: .regularExpression) != nil
         
         if result {
-            return ValidateResult(isSuccess: true, message: "success".localized())
+            return ValidateResult(isSuccess: true, message: "success".localized)
         }
         
-        return ValidateResult(isSuccess: false, message: "usernameRules".localized())
+        return ValidateResult(isSuccess: false, message: "usernameRules".localized)
     }
     
     func changeValueAndReValidate(value: String) -> ValidateResult {

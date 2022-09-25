@@ -25,7 +25,7 @@ class RequestInteractor : PresenterToInteractorRequestProtocol {
                 self.presenter?.onStateChange(state: .onUserReceived(user: user))
             }
             else{
-                self.presenter?.onStateChange(state: .error(message: "Something went wrong.".localized()))
+                self.presenter?.onStateChange(state: .error(message: "Something went wrong.".localized))
             }
         })
         
@@ -81,7 +81,7 @@ class RequestInteractor : PresenterToInteractorRequestProtocol {
                 if status == true {
                     self.presenter?.onStateChange(state: .changeResponseSucces)
                 }else {
-                    self.presenter?.onStateChange(state: .error(message: "Something went wrong.".localized()))
+                    self.presenter?.onStateChange(state: .error(message: "Something went wrong.".localized))
                 }
             })
         }

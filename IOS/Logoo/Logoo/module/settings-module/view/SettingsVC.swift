@@ -83,7 +83,7 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemC
     
     func onClickWarning(instance: LineMenuItem) {
         guard let _ = SettingsMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
-        createAlertNotify(title: "Alert".localized(), message: message)
+        createAlertNotify(title: "Alert".localized, message: message)
     }
 }
 
@@ -93,7 +93,7 @@ extension SettingsVC {
     
     // on Exit
     func exitUser() {
-        createBasicAlert(title: "Account sign out".localized(), message: "Are you sure you want to log out?".localized(), okTitle: "Yes".localized(), onCompletion: {type in
+        createBasicAlert(title: "Account sign out".localized, message: "Are you sure you want to log out?".localized, okTitle: "Yes".localized, onCompletion: {type in
             if type == .CONFIRM {
                 self.presenter?.exitUser()
                 

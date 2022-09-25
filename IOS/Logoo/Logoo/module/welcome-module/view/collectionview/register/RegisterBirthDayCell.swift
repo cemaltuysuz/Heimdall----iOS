@@ -24,11 +24,13 @@ class RegisterBirthDayCell: UICollectionViewCell {
     }
     
     func initialize() {
-        titleLabel.text = "Enter your date of birth".localized()
+        titleLabel.text = "Enter your date of birth".localized
         registerBirthDayDatePicker.datePickerMode = .date
         if #available(iOS 13.4, *){
             registerBirthDayDatePicker.preferredDatePickerStyle = .wheels
         }
+        registerBirthDayDatePicker.maximumDate = Date()
+        registerBirthDayDatePicker.minimumDate = "01.01.1960".toDate()
     }
 }
 

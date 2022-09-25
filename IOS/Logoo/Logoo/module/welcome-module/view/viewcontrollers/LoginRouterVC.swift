@@ -22,7 +22,7 @@ class LoginRouterVC: BaseVC {
 
 extension LoginRouterVC : PresenterToViewLoginRouterProtocol {
     func loginToHomeVC() {
-        let vc = CustomTabBarController.instantiate(from: .Main)
+        let vc = LGTabBarController.instantiate(from: .Main)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

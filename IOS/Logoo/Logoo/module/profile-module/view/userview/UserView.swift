@@ -52,7 +52,7 @@ extension UserView {
             }
             
             if let gender = user.userGender, let type = GenderType(rawValue: gender) {
-                self.genderLabel.text = type.rawValue.localized()
+                self.genderLabel.text = type.rawValue.localized
             }
             if let interests = user.userInterests, !interests.isEmpty {
                 //self.interestsViewer.updateAndReloadData(interests: interests)

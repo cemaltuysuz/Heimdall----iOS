@@ -15,6 +15,6 @@ class BaseValidator {
                 return result
             }
         }
-        return ValidateResult(isSuccess: true, message: "Success".localized())
+        return ValidateResult(isSuccess: true, message: "Success".localized)
     }
 }

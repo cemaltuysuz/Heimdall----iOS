@@ -13,7 +13,7 @@ class ValidationResponse {
     
     init(){}
     
-    init(status:Bool,message:String?){
+    init(status:Bool,message:String? = nil){
         self.status = status
         self.message = message
     }

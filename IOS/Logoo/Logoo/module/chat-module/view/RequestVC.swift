@@ -72,7 +72,7 @@ class RequestVC : BaseVC {
         
         if request?.getRequestType() == .DIRECT_REQUEST {
             if let name = user.username {
-                reqTitleLabel.text = "\(name) \("request_title".localized())"
+                reqTitleLabel.text = "\(name) \("request_title".localized)"
             }
             
             if let photo = user.userPhotoUrl {
@@ -98,7 +98,7 @@ extension RequestVC : PresenterToViewRequestProtocol {
             break
             
         case .error(let message):
-            createAlertNotify(title: "Error".localized(),
+            createAlertNotify(title: "Error".localized,
                               message: message,
                               onCompletion: {
                 

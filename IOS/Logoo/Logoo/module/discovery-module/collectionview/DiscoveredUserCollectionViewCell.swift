@@ -63,7 +63,7 @@ class DiscoveredUserCollectionViewCell: UICollectionViewCell {
         }
         
         if let gender = user.userGender, let genderType = GenderType(rawValue: gender) {
-            userGenderLabel.text = genderType.rawValue.localized()
+            userGenderLabel.text = genderType.rawValue.localized
         }else {
             userGenderLabel.text = ""
         }

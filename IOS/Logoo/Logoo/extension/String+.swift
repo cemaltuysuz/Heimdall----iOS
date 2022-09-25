@@ -28,12 +28,12 @@ extension String {
         return self.components(separatedBy: char)
     }
     
-    func localized() -> String {
-        return NSLocalizedString(self,
-                                 tableName: "Localizable",
-                                 bundle: .main,
-                                 value: self,
-                                 comment: self)
+    var localized: String {
+        NSLocalizedString(self,
+                          tableName: "Localizable",
+                          bundle: .main,
+                          value: self,
+                          comment: self)
     }
     
     func toDate(withFormat format: String = "dd.MM.YYYY")-> Date?{

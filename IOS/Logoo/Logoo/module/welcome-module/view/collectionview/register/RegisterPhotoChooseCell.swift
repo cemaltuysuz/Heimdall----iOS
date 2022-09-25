@@ -23,7 +23,7 @@ class RegisterPhotoChooseCell: UICollectionViewCell {
     }
     
     func initialize(){
-        titleLabel.text = "Choose a photo".localized()
+        titleLabel.text = "Choose a photo".localized
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(photoClicked))
         registerProfileImage.isUserInteractionEnabled = true
         registerProfileImage.addGestureRecognizer(singleTap)
@@ -48,7 +48,7 @@ extension RegisterPhotoChooseCell : Registerable {
                 return ValidationResponse(status: true, message: "Success.")
             }
         }
-        return ValidationResponse(status: false, message: "No picture selected.".localized())
+        return ValidationResponse(status: false, message: "No picture selected.".localized)
     }
 }
 

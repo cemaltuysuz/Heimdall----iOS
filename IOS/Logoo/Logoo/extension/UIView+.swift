@@ -78,4 +78,15 @@ extension UIView {
             textField.inputAccessoryView = toolbar
         }
     }
+    
+    func setRadius(_ value:CGFloat){
+        layer.masksToBounds = true
+        layer.cornerRadius = value
+    }
+    
+    func setborder(_ width:CGFloat,
+                   _ color:UIColor){
+        layer.borderColor = color.cgColor
+        layer.borderWidth = width
+    }
 }

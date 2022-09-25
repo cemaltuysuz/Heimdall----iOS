@@ -64,7 +64,7 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemC
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Account Security".localized()
+        return "Account Security".localized
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,7 +100,7 @@ extension SecurityVC : UITableViewDelegate, UITableViewDataSource, LineMenuItemC
     
     func onClickWarning(instance: LineMenuItem) {
         guard let _ = SecurityMenuItemType(rawValue: instance.rawValue), instance.isWarningButtonEnabled, let message = instance.warningMessage else {return}
-        createAlertNotify(title: "Alert".localized(), message: message)
+        createAlertNotify(title: "Alert".localized, message: message)
     }
 }
 

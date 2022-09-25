@@ -182,7 +182,9 @@
 		159FBD7A280C14F800125C4E /* Security.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD79280C14F800125C4E /* Security.storyboard */; };
 		159FBD84280C1AD300125C4E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159FBD83280C1AD300125C4E /* Settings.storyboard */; };
 		159FBD87280C1E4F00125C4E /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FBD86280C1E4F00125C4E /* AppStoryboard.swift */; };
-		159FBD8A280C2DEE00125C4E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FBD89280C2DEE00125C4E /* CustomTabBarController.swift */; };
+		159FBD8A280C2DEE00125C4E /* LGTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FBD89280C2DEE00125C4E /* LGTabBarController.swift */; };
+		15A4CA4A28E0B2A3005FB8D2 /* LGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CA4928E0B2A3005FB8D2 /* LGButton.swift */; };
+		15A4CA4C28E0B4CE005FB8D2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A4CA4B28E0B4CE005FB8D2 /* UIColor+.swift */; };
 		15A5B41727C69A200082029E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 15A5B41627C69A200082029E /* Kingfisher */; };
 		15A5B42227C76AE10082029E /* RegisterPhotoChooseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B42027C76AE10082029E /* RegisterPhotoChooseCell.swift */; };
 		15A5B42627C76AF90082029E /* RegisterInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5B42427C76AF90082029E /* RegisterInformationCell.swift */; };
@@ -453,7 +455,9 @@
 		159FBD79280C14F800125C4E /* Security.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Security.storyboard; sourceTree = "<group>"; };
 		159FBD83280C1AD300125C4E /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		159FBD86280C1E4F00125C4E /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
-		159FBD89280C2DEE00125C4E /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		159FBD89280C2DEE00125C4E /* LGTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGTabBarController.swift; sourceTree = "<group>"; };
+		15A4CA4928E0B2A3005FB8D2 /* LGButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGButton.swift; sourceTree = "<group>"; };
+		15A4CA4B28E0B4CE005FB8D2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		15A5B42027C76AE10082029E /* RegisterPhotoChooseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhotoChooseCell.swift; sourceTree = "<group>"; };
 		15A5B42127C76AE10082029E /* RegisterPhotoChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterPhotoChooseCell.xib; sourceTree = "<group>"; };
 		15A5B42427C76AF90082029E /* RegisterInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInformationCell.swift; sourceTree = "<group>"; };
@@ -682,7 +686,7 @@
 		150C8FB027994C6D000DAFBE /* Logoo */ = {
 			isa = PBXGroup;
 			children = (
-				15EF4F04280ACF7B00DBFF48 /* custom */,
+				15EF4F04280ACF7B00DBFF48 /* components */,
 				15F461F427F9E3B300FFE46D /* base */,
 				151E8D2E27D10940009CDE23 /* validation */,
 				1584957C27CDEDD800ED57B6 /* extension */,
@@ -1074,6 +1078,7 @@
 				1579A6482805745400812D1E /* Int64+.swift */,
 				15F834D428082890004B8696 /* UIView+.swift */,
 				15EF4F02280AC1A900DBFF48 /* UIViewController+.swift */,
+				15A4CA4B28E0B4CE005FB8D2 /* UIColor+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1384,7 +1389,7 @@
 		159FBD88280C2DC800125C4E /* custom-tabbar-controller */ = {
 			isa = PBXGroup;
 			children = (
-				159FBD89280C2DEE00125C4E /* CustomTabBarController.swift */,
+				159FBD89280C2DEE00125C4E /* LGTabBarController.swift */,
 			);
 			path = "custom-tabbar-controller";
 			sourceTree = "<group>";
@@ -1513,15 +1518,16 @@
 			path = entity;
 			sourceTree = "<group>";
 		};
-		15EF4F04280ACF7B00DBFF48 /* custom */ = {
+		15EF4F04280ACF7B00DBFF48 /* components */ = {
 			isa = PBXGroup;
 			children = (
 				156284282813FA1800832B5A /* pagination-load */,
 				159FBD88280C2DC800125C4E /* custom-tabbar-controller */,
 				159FBD76280C131A00125C4E /* line-menu-item */,
 				15EF4F09280B350600DBFF48 /* custom-textfield */,
+				15A4CA4928E0B2A3005FB8D2 /* LGButton.swift */,
 			);
-			path = custom;
+			path = components;
 			sourceTree = "<group>";
 		};
 		15EF4F09280B350600DBFF48 /* custom-textfield */ = {
@@ -1992,12 +1998,13 @@
 				1589830727FED8D400853BBC /* ProfileProtocols.swift in Sources */,
 				15C64C6627BE6E170088DD35 /* LoginPrefProtocols.swift in Sources */,
 				15F272EF27CBA90B005BBC78 /* SettingsPresenter.swift in Sources */,
-				159FBD8A280C2DEE00125C4E /* CustomTabBarController.swift in Sources */,
+				159FBD8A280C2DEE00125C4E /* LGTabBarController.swift in Sources */,
 				15F6708927FC5E1B0083E58C /* ChangeMailPresenter.swift in Sources */,
 				1513E5E9284254BF0043B257 /* MessageCell.swift in Sources */,
 				150C9000279966EA000DAFBE /* OnBoardInteractor.swift in Sources */,
 				15A5B42C27C76B740082029E /* RegisterConfirmCell.swift in Sources */,
 				156F874028412B7B00864570 /* InboxCell.swift in Sources */,
+				15A4CA4C28E0B4CE005FB8D2 /* UIColor+.swift in Sources */,
 				1510A2CE28218274003E89AB /* PaginationLoadCollectionViewCell.swift in Sources */,
 				15C64C6827BE6F690088DD35 /* LoginPrefInteractor.swift in Sources */,
 				1589832627FF217100853BBC /* NibLoadableView.swift in Sources */,
@@ -2138,6 +2145,7 @@
 				151CBA1C27F080C10088E548 /* LoginTransactionsRouter.swift in Sources */,
 				151E8D3427D10A1F009CDE23 /* ValidateResult.swift in Sources */,
 				1589831627FEE73300853BBC /* LGPhotoSliderCell.swift in Sources */,
+				15A4CA4A28E0B2A3005FB8D2 /* LGButton.swift in Sources */,
 				15C64C5027BE26FE0088DD35 /* WelcomeInteractor.swift in Sources */,
 				15BDA68627B647440066F469 /* LoginRouterVC.swift in Sources */,
 				1584958C27CE242500ED57B6 /* EditProfileInteracor.swift in Sources */,

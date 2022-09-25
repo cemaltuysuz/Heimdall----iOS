@@ -12,7 +12,7 @@ class OnBoardVC : UIViewController {
     
     @IBOutlet weak var onBoardPageControl: UIPageControl!
     @IBOutlet weak var onBoardCollectionView: UICollectionView!
-    @IBOutlet weak var letStartButtonOutlet: UIButton!
+    @IBOutlet weak var letStartButtonOutlet: LGButton!
     
     var presenter:ViewToPresenterOnBoardProtocol?
     var onBoardList:[OnBoard]?
@@ -27,7 +27,7 @@ class OnBoardVC : UIViewController {
     }
     
     func configureUI(){
-        letStartButtonOutlet.setTitle("Let's Start !".localized(), for: .normal)
+        letStartButtonOutlet.setButtonTitle("Let's Start !".localized)
     }
     
     func configureBinds(){
@@ -53,7 +53,7 @@ class OnBoardVC : UIViewController {
     }
 }
 
-extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
+extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return onBoardList?.count ?? 0
     }
@@ -68,7 +68,8 @@ extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.onBoardCollectionView.frame.width, height: self.onBoardCollectionView.frame.height)
+        let width = self.onBoardCollectionView.frame.width
+        return CGSize(width: width, height: width * 1.4)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -79,6 +80,15 @@ extension OnBoardVC : UICollectionViewDelegate, UICollectionViewDataSource {
         let page = Int(offSet + horizontalCenter) / Int(width)
         onBoardPageControl.currentPage = page
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 }
 
 extension OnBoardVC : PresenterToViewOnBoardProtocol {

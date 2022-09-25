@@ -23,7 +23,7 @@ class RegisterGenderCell: UICollectionViewCell {
     }
 
     func initialize() {
-        titleLabel.text = "Choose your gender".localized()
+        titleLabel.text = "Choose your gender".localized
         registerGenderPickerView.delegate = self
         registerGenderPickerView.dataSource = self
     }
@@ -48,7 +48,7 @@ extension RegisterGenderCell :UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return genders[row].rawValue.localized()
+        return genders[row].rawValue.localized
     }
 }
 

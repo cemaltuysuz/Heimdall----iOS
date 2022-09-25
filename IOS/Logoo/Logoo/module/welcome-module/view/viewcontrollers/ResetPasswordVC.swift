@@ -25,10 +25,10 @@ class ResetPasswordVC: BaseVC {
     }
     
     func configureUI(){
-        screenTitleLabel.text = "Reset Password".localized()
-        screenDescriptionLabel.text = "reset_password_description".localized()
-        resetMailTextField.placeholder = "E-mail Adress".localized()
-        sendResetLinkButtonOutlet.setTitle("Send Reset Link".localized(), for: .normal)
+        screenTitleLabel.text = "Reset Password".localized
+        screenDescriptionLabel.text = "reset_password_description".localized
+        resetMailTextField.placeholder = "E-mail Adress".localized
+        sendResetLinkButtonOutlet.setTitle("Send Reset Link".localized, for: .normal)
     }
     
     
@@ -51,14 +51,14 @@ extension ResetPasswordVC : PresenterToViewResetPasswordProtocol {
     func sendLinkResponse(resp: Status) {
         closeCurtain()
         if resp == .SUCCESS {
-            createAlertNotify(title: "Successfully".localized(),
-                              message: "The connection was sent successfully. Check your inbox.".localized(),
+            createAlertNotify(title: "Successfully".localized,
+                              message: "The connection was sent successfully. Check your inbox.".localized,
                               onCompletion: {
                 self.navigationController?.popViewController(animated: true)
             })
         }else {
-            createAlertNotify(title: "Failed".localized(),
-                              message: "Something went wrong. Please check your e-mail address.".localized(),
+            createAlertNotify(title: "Failed".localized,
+                              message: "Something went wrong. Please check your e-mail address.".localized,
                               onCompletion: {
                 self.navigationController?.popViewController(animated: true)
             })

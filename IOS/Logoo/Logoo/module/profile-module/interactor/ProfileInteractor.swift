@@ -120,7 +120,7 @@ class ProfileInteractor : PresenterToInteractorProfileProtocol {
                                       requestResponse: responseType)
             
             FireStoreService.shared.pushDocument(requestData, ref: ref, onCompletion: { (status:Bool?) in
-                (status ?? false) ? self.presenter?.onStateChange(state: .onAlert(title: "Success".localized(), message: "Your request has been sent successfully".localized())) : self.presenter?.onStateChange(state: .onAlert(title: "Error".localized(), message: "Something went wrong.".localized()))
+                (status ?? false) ? self.presenter?.onStateChange(state: .onAlert(title: "Success".localized, message: "Your request has been sent successfully".localized)) : self.presenter?.onStateChange(state: .onAlert(title: "Error".localized, message: "Something went wrong.".localized))
             })
         }
     }

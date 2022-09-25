@@ -52,10 +52,10 @@ class SelectInterestVC: BaseVC {
     }
     
     func configureUI() {
-        screenTitleLabel.text = "Your Interests".localized()
-        screenDescriptionLabel.text = "With the right area of ​​interest, you can get better recommendations.".localized()
-        interestSearchBar.placeholder = "Sport, art, daily activity...".localized()
-        saveButtonOutlet.setTitle("Save".localized(), for: .normal)
+        screenTitleLabel.text = "Your Interests".localized
+        screenDescriptionLabel.text = "With the right area of ​​interest, you can get better recommendations.".localized
+        interestSearchBar.placeholder = "Sport, art, daily activity...".localized
+        saveButtonOutlet.setTitle("Save".localized, for: .normal)
         interestSearchBar.tintColor = .black
         
         interestSelectionTableView.register(InterestSelectionCell.self)
@@ -69,7 +69,7 @@ class SelectInterestVC: BaseVC {
     }
     @IBAction func closeInterestsScreenButton(_ sender: Any) {
         if isFirst ?? false {
-            let vc = CustomTabBarController.instantiate(from: .Main)
+            let vc = LGTabBarController.instantiate(from: .Main)
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         }else {
@@ -141,15 +141,15 @@ extension SelectInterestVC : PresenterToViewInterestSelectProtocol {
         case .saveInterestsResponse(let response):
             if response.status ?? false {
                 if self.isFirst ?? false {
-                    let vc = CustomTabBarController.instantiate(from: .Main)
+                    let vc = LGTabBarController.instantiate(from: .Main)
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true)
                 }else {
                     self.dismiss(animated: true)
                 }
             }else {
-                createAlertNotify(title: "Error".localized(),
-                                  message: "An error occurred while saving interests. Please try again later.".localized())
+                createAlertNotify(title: "Error".localized,
+                                  message: "An error occurred while saving interests. Please try again later.".localized)
             }
             break
         case .getInterestError:

@@ -1,5 +1,5 @@
 //
-//  CustomTabBarController.swift
+//  LGTabBarController.swift
 //  Logoo
 //
 //  Created by cemal tüysüz on 17.04.2022.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CustomTabBarController : UITabBarController {
+class LGTabBarController : UITabBarController {
     
     
     override func viewDidLoad() {
@@ -21,14 +21,14 @@ class CustomTabBarController : UITabBarController {
         let discoveryVC = DiscoverVC.instantiate(from: .Discovery)
         discoveryVC.tabBarItem.image = UIImage(systemName: "person.3")
         discoveryVC.tabBarItem.selectedImage = UIImage(systemName: "person.3.fill")
-        discoveryVC.title = "Discovery".localized()
+        discoveryVC.title = "Discovery".localized
         
         let discoveryNavigationController = UINavigationController(rootViewController: discoveryVC)
         discoveryNavigationController.navigationBar.prefersLargeTitles = true
         
         // global
         let globalVC = GlobalVC.instantiate(from: .Global)
-        globalVC.title = "Global".localized()
+        globalVC.title = "Global".localized
         globalVC.tabBarItem.image = UIImage(systemName: "globe.americas")
         globalVC.tabBarItem.selectedImage = UIImage(systemName: "globe.americas.fill")
         
@@ -36,7 +36,7 @@ class CustomTabBarController : UITabBarController {
         
         // Chat
         let chatVC = InboxVC.instantiate(from: .Chat)
-        chatVC.title = "Inbox".localized()
+        chatVC.title = "Inbox".localized
         chatVC.tabBarItem.image = UIImage(systemName: "bubble.left.and.bubble.right")
         chatVC.tabBarItem.selectedImage = UIImage(systemName: "bubble.left.and.bubble.right.fill")
         
@@ -45,7 +45,7 @@ class CustomTabBarController : UITabBarController {
         
         // Profile
         let profileVC = ProfileVC.instantiate(from: .Profile)
-        profileVC.title = "Profile".localized()
+        profileVC.title = "Profile".localized
         profileVC.tabBarItem.image = UIImage(systemName: "person")
         profileVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         

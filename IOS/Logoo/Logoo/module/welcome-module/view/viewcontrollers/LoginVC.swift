@@ -47,12 +47,12 @@ class LoginVC: BaseVC {
     func configureUI(){
         view.addInputAccessoryForTextFields(textFields: [loginUserMail,loginUserPassword], dismissable: true, previousNextable: true)
         
-        loginUserMail.placeholder = "E-mail Adress".localized()
-        loginUserPassword.placeholder = "Password".localized()
-        loginButtonOutlet.setTitle("Login".localized(), for: .normal)
-        forgetPasswordButtonOutlet.setTitle("I forget my password".localized(), for: .normal)
-        sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
-        registerButton.setTitle("Not registered ? Register".localized(), for: .normal)
+        loginUserMail.placeholder = "E-mail Adress".localized
+        loginUserPassword.placeholder = "Password".localized
+        loginButtonOutlet.setTitle("Login".localized, for: .normal)
+        forgetPasswordButtonOutlet.setTitle("I forget my password".localized, for: .normal)
+        sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized, for: .normal)
+        registerButton.setTitle("Not registered ? Register".localized, for: .normal)
     }
     
     func configureBinds(){
@@ -99,7 +99,7 @@ class LoginVC: BaseVC {
     
     private func mailVerificationMode(){
         // Notifying the user that their account has not been confirmed.
-        loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress.".localized()
+        loginErrorMessageLabel.text = "Your account is not verified. Please confirm your mail adress.".localized
         loginErrorMessageLabel.isHidden = false
         
         mailConfirmationContainer.isHidden = false
@@ -151,12 +151,12 @@ extension LoginVC : PresenterToViewLoginProtocol {
     private func changeLabel(){
         if counter != 0
         {
-            sendVerificationButtonOutlet.setTitle("Time to resubmit:".localized() + "\(counter!)", for: .normal)
+            sendVerificationButtonOutlet.setTitle("Time to resubmit:".localized + "\(counter!)", for: .normal)
             counter -= 1
         }
         else
         {
-            sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized(), for: .normal)
+            sendVerificationButtonOutlet.setTitle("Send Confirmation Link".localized, for: .normal)
             sendVerificationButtonOutlet.isEnabled = true
             countTimer.invalidate()
             counter = 100

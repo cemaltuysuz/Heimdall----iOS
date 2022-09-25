@@ -34,10 +34,10 @@ class RegisterInformationCell: UICollectionViewCell {
     }
     
     func configureUI(){
-        titleLabel.text = "Fill The Informations".localized()
-        registerUsernameTextField.placeholder = "username".localized()
-        registerMailTextField.placeholder = "E-mail adress".localized()
-        registerPasswordTextField.placeholder = "Password".localized()
+        titleLabel.text = "Fill The Informations".localized
+        registerUsernameTextField.placeholder = "username".localized
+        registerMailTextField.placeholder = "E-mail adress".localized
+        registerPasswordTextField.placeholder = "Password".localized
     }
     
     func initialize() {
@@ -61,16 +61,16 @@ extension RegisterInformationCell : Registerable {
                         delegate?.informationToView(username: username, userMail: mail, userPassword: password)
                         return ValidationResponse(status: true, message: "Successfull.")
                     }else {
-                        return ValidationResponse(status: false, message: "This email address is being used by another account.".localized())
+                        return ValidationResponse(status: false, message: "This email address is being used by another account.".localized)
                     }
                 }else {
-                    return ValidationResponse(status: false, message: "This username is being used by another account.".localized())
+                    return ValidationResponse(status: false, message: "This username is being used by another account.".localized)
                 }
             }else {
                 return ValidationResponse(status: false, message: result.message!)
             }
         }else {
-            return ValidationResponse(status: false, message: "Please fill in all fields.".localized())
+            return ValidationResponse(status: false, message: "Please fill in all fields.".localized)
         }
     }
 }
@@ -91,7 +91,7 @@ extension RegisterInformationCell {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: false, message: "This username is being used by another account.".localized()))
+                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: false, message: "This username is being used by another account.".localized))
                             self?.isUsernameUsed = true
                         }else {
                             self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: true, message: nil))
@@ -122,7 +122,7 @@ extension RegisterInformationCell {
                             return
                         }
                         if let users = users, users.count > 0 {
-                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: false, message: "This email address is being used by another account.".localized()))
+                            self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: false, message: "This email address is being used by another account.".localized))
                             self?.isEmailUsed = true
                         }else {
                             self?.delegate?.informationRealtimeValidation(response: ValidationResponse(status: true, message: nil))

@@ -20,9 +20,9 @@ class PasswordValidator:Validatable {
         let result =  NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
         
         if result {
-            return ValidateResult(isSuccess: true, message: "success".localized())
+            return ValidateResult(isSuccess: true, message: "success".localized)
         }
-        return ValidateResult(isSuccess: false, message: "passwordRules".localized())
+        return ValidateResult(isSuccess: false, message: "passwordRules".localized)
     }
     
     func changeValueAndReValidate(value: String) -> ValidateResult {

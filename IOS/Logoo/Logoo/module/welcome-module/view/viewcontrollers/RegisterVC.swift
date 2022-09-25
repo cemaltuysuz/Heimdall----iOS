@@ -51,7 +51,7 @@ class RegisterVC: BaseVC {
     }
     
     func setupUI(){
-        registerNextButton.setTitle("Next".localized(), for: .normal)
+        registerNextButton.setTitle("Next".localized, for: .normal)
         if let registerType = registerType {
             if registerType == .REGISTER_WITH_MAIL {
                 presenter?.getRegisterMailSteps()
@@ -72,8 +72,8 @@ class RegisterVC: BaseVC {
     }
     
     func goBackForError(){
-        createAlertNotify(title: "error".localized(),
-                         message: "Something went wrong. Please try again later.".localized(),
+        createAlertNotify(title: "error".localized,
+                         message: "Something went wrong. Please try again later.".localized,
                          onCompletion: {
             self.navigationController?.popViewController(animated: true)
         })
@@ -91,7 +91,8 @@ class RegisterVC: BaseVC {
     
     @IBAction func registerNextButton(_ sender: Any) {
         guard let currentRegisterClass = currentRegisterCell(), currentRegisterClass is Registerable else {
-            return}
+            return
+        }
         let currentRegisterProtocol = currentRegisterClass as! Registerable
         
         if currentRegisterCellIndex() != registerSteps!.count - 1 && currentRegisterCellIndex() != registerSteps!.count - 2 {
@@ -122,10 +123,11 @@ class RegisterVC: BaseVC {
             }
         }
         else {
-            let vc = LoginVC.instantiate(from: .Welcome)
-            vc.incomingMail = confirmMailAdress
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            let loginPrefVC = LoginPrefVC.instantiate(from: .Welcome)
+            let loginVC = LoginVC.instantiate(from: .Welcome)
+            loginVC.incomingMail = confirmMailAdress
+            
+            navigationController?.setViewControllers([loginPrefVC,loginVC], animated: true)
         }
     }
     
@@ -144,12 +146,12 @@ extension RegisterVC : PresenterToViewRegister {
     func registerFeedBack(response: ValidationResponse) {
         if response.status! {
             if registerType == .REGISTER_WITH_MAIL {
-                resultScreenMessage = "We have sent confirmation link to your email address.".localized()
+                resultScreenMessage = "We have sent confirmation link to your email address.".localized
                 resultScreenAnimName = "mail_sended"
                 confirmMailAdress = response.message!
             }
             else if registerType == .REGISTER_WITH_GOOGLE {
-                resultScreenMessage = "Registration Successful".localized()
+                resultScreenMessage = "Registration Successful".localized
                 resultScreenAnimName = "success"
             }
             scrollToNextItem()
@@ -211,15 +213,15 @@ extension RegisterVC : UICollectionViewDelegate, UICollectionViewDataSource {
         if page == 0 {
             registerBackButton.isHidden = true
         }else if page < registerSteps!.count-1 && page > 0 && page != self.registerSteps!.count - 2 {
-            registerNextButton.setTitle("Next".localized(), for: UIControl.State.normal)
+            registerNextButton.setTitle("Next".localized, for: UIControl.State.normal)
             registerBackButton.isHidden = false
         }
         else if page == registerSteps!.count - 2 {
-            registerNextButton.setTitle("Finish It".localized(), for: UIControl.State.normal)
+            registerNextButton.setTitle("Finish It".localized, for: UIControl.State.normal)
             registerBackButton.isHidden = false
         }
         else {
-            registerNextButton.setTitle("Log In".localized(), for: UIControl.State.normal)
+            registerNextButton.setTitle("Log In".localized, for: UIControl.State.normal)
             registerBackButton.isHidden = true
             if registerType == .REGISTER_WITH_GOOGLE {
                 registerNextButton.isHidden = true
@@ -325,6 +327,7 @@ extension RegisterVC {
         self.moveToFrame(contentOffset: contentOffset) */
         let nextItem: IndexPath = IndexPath(item: currentRegisterCellIndex() + 1, section: 0)
         registerCollectionView.scrollToItem(at: nextItem, at: .left, animated: true)
+        view.endEditing(true)
     }
 
     func scrollToPreviousItem() {

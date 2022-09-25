@@ -25,13 +25,13 @@ class ChangePasswordInteractor : PresenterToInteractorChangePasswordProtocol {
                         
                         switch type {
                         case .wrongPassword:
-                            self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "Wrong Password".localized()))
+                            self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "Wrong Password".localized))
                             break
                         case .tooManyRequests:
-                            self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "The request was denied because the trial limit was exceeded. Try again later.".localized()))
+                            self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "The request was denied because the trial limit was exceeded. Try again later.".localized))
                             break
                         default:
-                            self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "An error occurred while changing the password. Try again later.".localized()))
+                            self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "An error occurred while changing the password. Try again later.".localized))
                         }
                     }
                     return
@@ -40,14 +40,14 @@ class ChangePasswordInteractor : PresenterToInteractorChangePasswordProtocol {
                 user.updatePassword(to: newPassword, completion: {(error) in
                     if let error = error {
                         print(error)
-                        self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "An error occurred while changing the password. Try again later.".localized()))
+                        self.presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "An error occurred while changing the password. Try again later.".localized))
                     }
                     self.presenter?.onStateChange(state: .CHANGE_PASSWORD_SUCCESS)
                 })
             })
         }else {
             presenter?.onStateChange(state: .CLEAR_CURTAIN)
-            presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "Something went wrong".localized()))
+            presenter?.onStateChange(state: .CHANGE_PASSWORD_FAIL(message: "Something went wrong".localized))
         }
     }
 }

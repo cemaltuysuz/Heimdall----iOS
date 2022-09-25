@@ -30,14 +30,14 @@ class ChangePasswordVC: BaseVC {
     }
     
     func configureUI(){
-        screenTitleLabel.text = "Change Password".localized()
-        screenDescriptionLabel.text = "Change_Password_Screen_Description".localized()
-        currentPasswordTextField.placeholder = "Enter your current password".localized()
+        screenTitleLabel.text = "Change Password".localized
+        screenDescriptionLabel.text = "Change_Password_Screen_Description".localized
+        currentPasswordTextField.placeholder = "Enter your current password".localized
         
-        currentPasswordTextField.placeholder = "Enter your current password".localized()
-        newPasswordTextField.placeholder = "Enter your new password".localized()
-        reNewPasswordTextField.placeholder = "Re-Enter your new password".localized()
-        okButtonOutlet.setTitle("Okey".localized(), for: .normal)
+        currentPasswordTextField.placeholder = "Enter your current password".localized
+        newPasswordTextField.placeholder = "Enter your new password".localized
+        reNewPasswordTextField.placeholder = "Re-Enter your new password".localized
+        okButtonOutlet.setTitle("Okey".localized, for: .normal)
         
         view.addInputAccessoryForTextFields(textFields: [currentPasswordTextField,newPasswordTextField,reNewPasswordTextField])
         
@@ -62,11 +62,11 @@ class ChangePasswordVC: BaseVC {
                     errorLabel.isHidden = false
                 }
             }else {
-                errorLabel.text = "Passwords entered must be equal.".localized()
+                errorLabel.text = "Passwords entered must be equal.".localized
                 errorLabel.isHidden = false
             }
         }else {
-            errorLabel.text = "Please fill in the missing fields".localized()
+            errorLabel.text = "Please fill in the missing fields".localized
             errorLabel.isHidden = false
         }
     }
@@ -81,13 +81,13 @@ extension ChangePasswordVC : PresenterToViewChangePasswordProtocol {
             showCurtain()
         case .CHANGE_PASSWORD_SUCCESS:
             closeCurtain()
-            createAlertNotify(title: "Success".localized(), message: "Your password has been successfully updated.".localized(), onCompletion: { [weak self] in
+            createAlertNotify(title: "Success".localized, message: "Your password has been successfully updated.".localized, onCompletion: { [weak self] in
                 guard let strongSelf = self else {return}
                 strongSelf.navigationController?.popViewController(animated: true)
             })
         case .CHANGE_PASSWORD_FAIL(message: let msg):
             closeCurtain()
-            createAlertNotify(title: "Error".localized(), message: msg, onCompletion: {
+            createAlertNotify(title: "Error".localized, message: msg, onCompletion: {
                 self.errorLabel.text = ""
                 self.errorLabel.isHidden = true
                 self.currentPasswordTextField.text = ""

@@ -30,56 +30,56 @@ class SettingsInteractor : PresenterToInteractorSettingsProtocol {
         
         options.append(LineMenuItem(
             iconName: "person.fill.badge.plus",
-            itemTitle: "Invite Friends".localized(),
+            itemTitle: "Invite Friends".localized,
             rawValue: SettingsMenuItemType.INVITE_FRIENDS.rawValue,
             isEnabled: false,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "lock.shield.fill",
-            itemTitle: "Security".localized(),
+            itemTitle: "Security".localized,
             rawValue: SettingsMenuItemType.SECURITY.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "paintpalette.fill",
-            itemTitle: "Preferences".localized(),
+            itemTitle: "Preferences".localized,
             rawValue: SettingsMenuItemType.PREFERENCES.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "gamecontroller.fill",
-            itemTitle: "Interests".localized(),
+            itemTitle: "Interests".localized,
             rawValue: SettingsMenuItemType.INTERESTS.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "bell.fill",
-            itemTitle: "Notifications".localized(),
+            itemTitle: "Notifications".localized,
             rawValue: SettingsMenuItemType.NOTIFICATIONS.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "eye.slash.fill",
-            itemTitle: "Privacy".localized(),
+            itemTitle: "Privacy".localized,
             rawValue: SettingsMenuItemType.PRIVACY.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "info.circle.fill",
-            itemTitle: "About".localized(),
+            itemTitle: "About".localized,
             rawValue: SettingsMenuItemType.ABOUT.rawValue,
             isEnabled: true,
             warningMessage: nil))
         
         options.append(LineMenuItem(
             iconName: "rectangle.portrait.and.arrow.right.fill",
-            itemTitle: "LogOut".localized(),
+            itemTitle: "LogOut".localized,
             rawValue: SettingsMenuItemType.LOGOUT.rawValue,
             isEnabled: true,
             warningMessage: nil))

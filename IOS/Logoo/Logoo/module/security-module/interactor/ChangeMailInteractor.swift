@@ -25,13 +25,13 @@ class ChangeMailInteractor : PresenterToInteractorChangeMailProtocol {
                         
                         switch type {
                         case .wrongPassword:
-                            self.presenter?.onStateChange(state: .RE_AUTH_FAIL(message: "Wrong Password".localized()))
+                            self.presenter?.onStateChange(state: .RE_AUTH_FAIL(message: "Wrong Password".localized))
                             break
                         case .tooManyRequests:
-                            self.presenter?.onStateChange(state: .RE_AUTH_FAIL(message: "The request was denied because the trial limit was exceeded. Try again later.".localized()))
+                            self.presenter?.onStateChange(state: .RE_AUTH_FAIL(message: "The request was denied because the trial limit was exceeded. Try again later.".localized))
                             break
                         default:
-                            self.presenter?.onStateChange(state: .RE_AUTH_FAIL(message: "An error occurred while changing the password. Try again later.".localized()))
+                            self.presenter?.onStateChange(state: .RE_AUTH_FAIL(message: "An error occurred while changing the password. Try again later.".localized))
                         }
                     }
                     return
@@ -48,7 +48,7 @@ class ChangeMailInteractor : PresenterToInteractorChangeMailProtocol {
                 if let error = error {
                     print(error)
                     self.presenter?.onStateChange(
-                        state: .CHANGE_MAIL_FAIL(message: "An error occurred. Try again later.".localized())
+                        state: .CHANGE_MAIL_FAIL(message: "An error occurred. Try again later.".localized)
                     )
                     return
                 }

@@ -20,7 +20,7 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
             let reference = Firestore.firestore().collection(FireStoreCollection.USER_COLLECTION).document(currentUserId)
             FireStoreService.shared.getDocument(ref: reference, onCompletion: {(user:User?) in
                 
-                fields.append(EditFieldConfigure(displayName: "Username".localized(),
+                fields.append(EditFieldConfigure(displayName: "Username".localized,
                                                  key: UserFieldType.USERNAME.rawValue,
                                                  value: user?.username ?? "",
                                                  hasCheckForAlreadyUsed: true,
@@ -28,21 +28,21 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                                                  validator: UsernameValidator(),
                                                  fieldLeftIconName: "person.fill"))
                 
-                fields.append(EditFieldConfigure(displayName: "Manifesto".localized(),
+                fields.append(EditFieldConfigure(displayName: "Manifesto".localized,
                                                  key: UserFieldType.USER_MANIFESTO.rawValue,
                                                  value: user?.userManifesto ?? "",
                                                  hasCheckForAlreadyUsed: false,
                                                  editType: .EDIT_WITH_TEXTFIELD,
                                                  fieldLeftIconName: "doc.append.fill.rtl"))
                 
-                fields.append(EditFieldConfigure(displayName: "Gender".localized(),
+                fields.append(EditFieldConfigure(displayName: "Gender".localized,
                                                  key: UserFieldType.USER_GENDER.rawValue,
                                                  value: user?.userGender ?? "",
                                                  hasCheckForAlreadyUsed: false,
                                                  editType: .EDIT_WITH_PICKER_VIEW,
                                                  fieldLeftIconName: "person.crop.circle.badge.questionmark.fill"))
                 
-                fields.append(EditFieldConfigure(displayName: "Date of birth".localized(),
+                fields.append(EditFieldConfigure(displayName: "Date of birth".localized,
                                                  key: UserFieldType.USER_BIRTHDAY.rawValue,
                                                  value: user?.userBirthDay ?? "",
                                                  hasCheckForAlreadyUsed: false,
@@ -84,7 +84,7 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                 self.getUserposts()
             }else {
                 // fail deleted
-                self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_delete_error_message".localized())\n \(response.message ?? "Description_Not_Found")"))
+                self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_delete_error_message".localized)\n \(response.message ?? "Description_Not_Found")"))
             }
         })
     }
@@ -101,7 +101,7 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                 
                 if let error = error {
                     print(error.localizedDescription)
-                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())\n \(error.localizedDescription)"))
+                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized)\n \(error.localizedDescription)"))
                 }
                 if let imageUrl = imageUrl {
                     let postObject = UserPost(postUUID: documentID,
@@ -113,11 +113,11 @@ class EditProfileInteractor :PresenterToInteractorEditProfileProtocol {
                         if status ?? false {
                             self.getUserposts()
                         }else {
-                            self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())"))
+                            self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized)"))
                         }
                     })
                 }else {
-                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized())\n URL_NOT_FOUND_ERROR"))
+                    self.presenter?.onStateChange(state: .onErrorNotify(message: "\("post_upload_error_message".localized)\n URL_NOT_FOUND_ERROR"))
                 }
             })
 
